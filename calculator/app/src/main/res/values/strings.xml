@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="editTextDisplay">0</string>
+    <string name="buttonClear">CE</string>
+    <string name="buttonDelete">DEL</string>
+    <string name="buttonEquals">=</string>
+    <string name="buttonModulo">%</string>
+    <string name="buttonPlus">+</string>
+    <string name="buttonMinus">-</string>
+    <string name="buttonMulti">*</string>
+    <string name="buttonDiv">/</string>
+    <string name="buttonDot">.</string>
+    <string name="button1">1</string>
+    <string name="button2">2</string>
+    <string name="button3">3</string>
+    <string name="button4">4</string>
+    <string name="button5">5</string>
+    <string name="button6">6</string>
+    <string name="button7">7</string>
+    <string name="button8">8</string>
+    <string name="button9">9</string>
+    <string name="button0">0</string>
+    <string name="toast_unsupportedOperation">Unsupported operation..</string>
+    <string name="toast_givePositiveNumbers">Give Positive Numbers!</string>
+    <string name="toast_divisionByZero">Division by Zero!</string>
+</resources>

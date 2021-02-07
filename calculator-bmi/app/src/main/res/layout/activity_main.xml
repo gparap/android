@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/buttonFindBMI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="FindBMI"
+        android:text="@string/buttonFindBMI"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCategoryLabel"
+        app:layout_constraintVertical_bias="0.26" />
+
+    <Button
+        android:id="@+id/buttonClearFields"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="clearFields"
+        android:text="@string/buttonClearFields"
+        app:layout_constraintEnd_toEndOf="@+id/buttonFindBMI"
+        app:layout_constraintStart_toStartOf="@+id/buttonFindBMI"
+        app:layout_constraintTop_toBottomOf="@+id/buttonFindBMI" />
+
+    <EditText
+        android:id="@+id/editTextHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="false"
+        android:ems="5"
+        android:gravity="center_horizontal"
+        android:hint="@string/editTextHeight"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewHeight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewHeight"
+        app:layout_constraintTop_toTopOf="@+id/textViewHeight" />
+
+    <EditText
+        android:id="@+id/editTextWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="false"
+        android:ems="5"
+        android:gravity="center_horizontal"
+        android:hint="@string/editTextWeight"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/editTextHeight"
+        app:layout_constraintStart_toStartOf="@+id/editTextHeight"
+        app:layout_constraintTop_toBottomOf="@+id/editTextHeight" />
+
+    <TextView
+        android:id="@+id/textViewAppLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:gravity="center_horizontal"
+        android:text="@string/textViewAppLabel"
+        android:textAlignment="center"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
+
+    <TextView
+        android:id="@+id/textViewHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/textViewHeight"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAppLabel" />
+
+    <TextView
+        android:id="@+id/textViewWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/textViewWeight"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewHeight"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHeight" />
+
+    <TextView
+        android:id="@+id/textViewBMILabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/textViewBMILabel"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewWeight"
+        app:layout_constraintStart_toStartOf="@+id/textViewWeight"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWeight" />
+
+    <TextView
+        android:id="@+id/textViewCategoryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/textViewCategoryLabel"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBMILabel"
+        app:layout_constraintStart_toStartOf="@+id/textViewBMILabel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBMILabel" />
+
+    <TextView
+        android:id="@+id/textViewCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewCategoryLabel"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBMI"
+        app:layout_constraintStart_toStartOf="@+id/textViewBMI"
+        app:layout_constraintTop_toTopOf="@+id/textViewCategoryLabel" />
+
+    <TextView
+        android:id="@+id/textViewBMI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewBMILabel"
+        app:layout_constraintEnd_toEndOf="@+id/editTextWeight"
+        app:layout_constraintStart_toStartOf="@+id/editTextWeight"
+        app:layout_constraintTop_toTopOf="@+id/textViewBMILabel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

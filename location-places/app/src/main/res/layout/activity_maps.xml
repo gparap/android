@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--google map-->
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintTop_toBottomOf="@+id/editTextSearch"
+        tools:context=".MapsActivity" />
+
+    <!--button search custom named location-->
+    <ImageButton
+        android:id="@+id/imageButtonSearchText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/image_button_search"
+        android:onClick="onClick"
+        android:src="@android:drawable/ic_menu_search"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintTop_toBottomOf="@+id/imageButtonSearchSpinner" />
+
+    <!--button search points of interest-->
+    <ImageButton
+        android:id="@+id/imageButtonSearchSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/image_button_search"
+        android:onClick="onClick"
+        android:src="@android:drawable/ic_menu_search"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintTop_toTopOf="parent" />
+
+    <!--named location custom search-->
+    <EditText
+        android:id="@+id/editTextSearch"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autofillHints="true"
+        android:ems="10"
+        android:hint="@string/search_named_location_hint"
+        android:inputType="textPersonName"
+        map:layout_constraintBottom_toBottomOf="@+id/imageButtonSearchText"
+        map:layout_constraintEnd_toStartOf="@+id/imageButtonSearchText"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toBottomOf="@+id/spinnerSearch" />
+
+    <!--points of interest-->
+    <Spinner
+        android:id="@+id/spinnerSearch"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        map:layout_constraintBottom_toBottomOf="@+id/imageButtonSearchSpinner"
+        map:layout_constraintEnd_toStartOf="@+id/imageButtonSearchSpinner"
+        map:layout_constraintHorizontal_bias="0.0"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="parent"
+        map:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

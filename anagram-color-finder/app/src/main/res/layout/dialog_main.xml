@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_light_background">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textViewLabelAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:padding="8sp"
+                android:text="@string/your_answer_is"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewLabelAnswerCorrect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="8sp"
+                android:text="@string/correct_answer_is"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@+id/textViewLabelAnswer"
+                app:layout_constraintTop_toBottomOf="@+id/textViewLabelAnswer"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/textViewAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:padding="8sp"
+                app:layout_constraintStart_toEndOf="@+id/textViewLabelAnswer"
+                app:layout_constraintTop_toTopOf="@+id/textViewLabelAnswer"
+                tools:text="Correct of not" />
+
+            <TextView
+                android:id="@+id/textViewAnswerCorrect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="8sp"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="@+id/textViewAnswer"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAnswer"
+                tools:text="Correct answer"
+                tools:visibility="visible" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

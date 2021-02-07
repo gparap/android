@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Compass</string>
+    <string name="image_view_compass">imageViewCompass</string>
+</resources>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/buttonMinusFive"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/value_minus_5"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewTipPercentageLabel"
+        app:layout_constraintEnd_toEndOf="@+id/editTextBill"
+        app:layout_constraintTop_toTopOf="@+id/textViewTipPercentageLabel"
+        app:layout_constraintVertical_bias="0.541" />
+
+    <Button
+        android:id="@+id/buttonMinusOne"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/value_minus_1"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPersonsToSplitLabel"
+        app:layout_constraintEnd_toEndOf="@+id/editTextBill"
+        app:layout_constraintTop_toTopOf="@+id/textViewPersonsToSplitLabel" />
+
+    <Button
+        android:id="@+id/buttonPlusOne"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/value_plus_1"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPersonsToSplitLabel"
+        app:layout_constraintEnd_toEndOf="@+id/buttonPlusFive"
+        app:layout_constraintTop_toTopOf="@+id/textViewPersonsToSplitLabel" />
+
+    <Button
+        android:id="@+id/buttonPlusFive"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/value_plus_5"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewTipPercentageLabel"
+        app:layout_constraintStart_toEndOf="@+id/buttonMinusFive"
+        app:layout_constraintTop_toTopOf="@+id/textViewTipPercentageLabel"
+        app:layout_constraintVertical_bias="0.541" />
+
+    <EditText
+        android:id="@+id/editTextBill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:autofillHints="false"
+        android:ems="5"
+        android:hint="@string/enter_bill_hint"
+        android:inputType="numberDecimal"
+        app:layout_constraintBaseline_toBaselineOf="@id/textViewBillLabel"
+        app:layout_constraintStart_toEndOf="@+id/textViewBillLabel"
+        tools:text="100" />
+
+    <TextView
+        android:id="@+id/textViewBillLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/initial_bill"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewTipPercentageLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/tip_percentage"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBillLabel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBillLabel" />
+
+
+    <TextView
+        android:id="@+id/textViewAmountTipLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/tip_amount"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBillLabel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPersonsToSplitLabel" />
+
+    <TextView
+        android:id="@+id/textViewAmountTotalLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/total_amount"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBillLabel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAmountTipLabel" />
+
+    <TextView
+        android:id="@+id/textViewAmountPerPersonLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/amount_per_person"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBillLabel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAmountTotalLabel" />
+
+    <TextView
+        android:id="@+id/textViewAmountTip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:text="@string/value_0"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewAmountTipLabel"
+        app:layout_constraintStart_toEndOf="@+id/textViewBillLabel"
+        app:layout_constraintTop_toTopOf="@+id/textViewAmountTipLabel"
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="10.10" />
+
+    <TextView
+        android:id="@+id/textViewAmountTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:text="@string/value_0"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewAmountTotalLabel"
+        app:layout_constraintStart_toEndOf="@+id/textViewBillLabel"
+        app:layout_constraintTop_toTopOf="@+id/textViewAmountTotalLabel"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="100.10" />
+
+    <TextView
+        android:id="@+id/textViewTipPercentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:text="@string/value_0"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewTipPercentageLabel"
+        app:layout_constraintStart_toEndOf="@+id/textViewBillLabel"
+        app:layout_constraintTop_toTopOf="@+id/textViewTipPercentageLabel" />
+
+    <TextView
+        android:id="@+id/textViewPersonsToSplitLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/persons_to_split"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBillLabel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTipPercentageLabel" />
+
+    <TextView
+        android:id="@+id/textViewPersonsToSplit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:text="@string/value_1"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPersonsToSplitLabel"
+        app:layout_constraintStart_toEndOf="@+id/textViewBillLabel"
+        app:layout_constraintTop_toTopOf="@+id/textViewPersonsToSplitLabel" />
+
+    <TextView
+        android:id="@+id/textViewAmountPerPerson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:text="@string/value_0"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewAmountPerPersonLabel"
+        app:layout_constraintStart_toEndOf="@+id/textViewBillLabel"
+        app:layout_constraintTop_toTopOf="@+id/textViewAmountPerPersonLabel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

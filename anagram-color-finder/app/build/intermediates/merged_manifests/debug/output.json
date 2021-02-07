@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "applicationId": "gparap.apps.anagram_color_finder",
+  "variantType": "BASE_APK",
+  "elements": [
+    {
+      "outputType": {
+        "type": "MERGED_MANIFESTS"
+      },
+      "apkData": {
+        "type": "MAIN",
+        "splits": [],
+        "versionCode": 1,
+        "versionName": "1.0",
+        "outputFile": "app-debug.apk",
+        "fullName": "debug",
+        "baseName": "debug",
+        "dirName": ""
+      },
+      "path": "AndroidManifest.xml",
+      "properties": {
+        "packageId": "gparap.apps.anagram_color_finder",
+        "split": "",
+        "minSdkVersion": "16"
+      }
+    }
+  ]
+}

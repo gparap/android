@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Step Counter</string>
+    <string name="value_0">0</string>
+    <string name="step_today">Steps Today:</string>
+</resources>

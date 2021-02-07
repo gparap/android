@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewContactName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Contact Name" />
+
+            <TextView
+                android:id="@+id/textViewPhoneNumberPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/imageButtonCall"
+                app:layout_constraintTop_toTopOf="@+id/imageButtonCall"
+                tools:text="Phone Number" />
+
+            <TextView
+                android:id="@+id/textViewPhoneNumberSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/textViewPhoneNumberPrimary"
+                app:layout_constraintStart_toStartOf="@+id/textViewPhoneNumberPrimary"
+                app:layout_constraintTop_toBottomOf="@+id/textViewPhoneNumberPrimary"
+                tools:text="Phone Number" />
+
+            <ImageButton
+                android:id="@+id/imageButtonCall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/image_button_call"
+                app:layout_constraintStart_toStartOf="@+id/textViewContactName"
+                app:layout_constraintTop_toBottomOf="@+id/textViewContactName"
+                app:srcCompat="@drawable/ic_action_call" />
+
+            <CheckBox
+                android:id="@+id/checkBoxCallSecondaryPhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/call_secondary_phone_number"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewPhoneNumberSecondary"
+                app:layout_constraintStart_toEndOf="@+id/textViewPhoneNumberSecondary"
+                app:layout_constraintTop_toTopOf="@+id/textViewPhoneNumberSecondary"
+                tools:visibility="visible" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

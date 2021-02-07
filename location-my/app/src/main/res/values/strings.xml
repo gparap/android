@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My Location</string>
+    <string name="maps_api_key">AIzaSyBPfNJ1I39iQj6QGZpWdOkFWodN8R8tKBk</string>
+    <string name="show_my_location">Show My Location</string>
+</resources>

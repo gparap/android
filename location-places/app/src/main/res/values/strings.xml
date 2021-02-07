@@ -1,0 +1,104 @@
+<resources>
+    <string name="app_name">Location Places</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="image_button_search">imageButtonSearch</string>
+    <string name="search_named_location_hint">search named location</string>
+    <string-array name="points_of_interest_array">
+        <item>Accounting</item>
+        <item>Airports</item>
+        <item>Amusement Parks</item>
+        <item>Aquariums</item>
+        <item>Art galleries</item>
+        <item>ATMs</item>
+        <item>Bakeries</item>
+        <item>Banks</item>
+        <item>Bars</item>
+        <item>Beauty Salons</item>
+        <item>Bicycle Stores</item>
+        <item>Book Stores</item>
+        <item>Bowling Alleys</item>
+        <item>Bus Stations</item>
+        <item>Cafes</item>
+        <item>Campgrounds</item>
+        <item>Car Dealers</item>
+        <item>Car Rentals</item>
+        <item>Car Repairs</item>
+        <item>Car Wash</item>
+        <item>Casinos</item>
+        <item>Cemeteries</item>
+        <item>Churches</item>
+        <item>City Hall</item>
+        <item>Clothing Stores</item>
+        <item>Convenience Stores</item>
+        <item>Courthouses</item>
+        <item>Dentists</item>
+        <item>Department Stores</item>
+        <item>Doctors</item>
+        <item>Drugstores</item>
+        <item>Electricians</item>
+        <item>Electronics Stores</item>
+        <item>Embassies</item>
+        <item>Fire Station</item>
+        <item>Florists</item>
+        <item>Funeral Homes</item>
+        <item>Furniture Stores</item>
+        <item>Gas Stations</item>
+        <item>Gym</item>
+        <item>Hair Care</item>
+        <item>Hardware Stores</item>
+        <item>Hindu Temples</item>
+        <item>Home Goods Stores</item>
+        <item>Hospitals</item>
+        <item>Insurance Agencies</item>
+        <item>Jewelry Stores</item>
+        <item>Laundry</item>
+        <item>Lawyers</item>
+        <item>Libraries</item>
+        <item>Light Rail Stations</item>
+        <item>Liquor Stores</item>
+        <item>Local Government Office</item>
+        <item>Locksmiths</item>
+        <item>Lodging</item>
+        <item>Meal Delivery</item>
+        <item>Meal Takeaway</item>
+        <item>Mosques</item>
+        <item>Movie Rentals</item>
+        <item>Movie Theaters</item>
+        <item>Moving Companies</item>
+        <item>Museums</item>
+        <item>Night Clubs</item>
+        <item>Painters</item>
+        <item>Parks</item>
+        <item>Parking</item>
+        <item>Pet Stores</item>
+        <item>Pharmacies</item>
+        <item>Physiotherapists</item>
+        <item>Plumbers</item>
+        <item>Police</item>
+        <item>Post Offices</item>
+        <item>Primary Schools</item>
+        <item>Real Estate Agencies</item>
+        <item>Restaurants</item>
+        <item>Roofing Contractors</item>
+        <item>Rv Parks</item>
+        <item>Schools</item>
+        <item>Secondary Schools</item>
+        <item>Shoe Stores</item>
+        <item>Shopping Malls</item>
+        <item>Spa</item>
+        <item>Stadiums</item>
+        <item>Storage</item>
+        <item>Stores</item>
+        <item>Subway Stations</item>
+        <item>Supermarkets</item>
+        <item>Synagogues</item>
+        <item>Taxi Stands</item>
+        <item>Tourist Attractions</item>
+        <item>Train Stations</item>
+        <item>Transit Stations</item>
+        <item>Travel Agencies</item>
+        <item>Universities</item>
+        <item>Veterinary Care</item>
+        <item>Zoo</item>
+    </string-array>
+</resources>

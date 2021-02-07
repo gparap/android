@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Notebook</string>
+    <string name="enter_note_title">Enter Note Title</string>
+    <string name="enter_note_details">Enter Note Details</string>
+    <string name="button_note_add">Button Note Add</string>
+    <string name="save">Save</string>
+    <string name="clear">Clear</string>
+    <string name="cancel">Cancel</string>
+    <string name="image_view_note">Image View Note</string>
+</resources>

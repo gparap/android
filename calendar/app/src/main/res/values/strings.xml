@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Calendar</string>
+    <string name="remove_event">Remove</string>
+    <string name="add_new_event">Add New</string>
+    <string name="clear_text">Clear</string>
+    <string name="enter_event_details">enter event details</string>
+    <string name="enter_event_name">enter event name</string>
+    <string name="details">Details:</string>
+    <string name="event">Event:</string>
+</resources>

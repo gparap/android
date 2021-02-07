@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Web Browser</string>
+    <string name="image_button_search_url">imageButtonSearchUrl</string>
+    <string name="image_button_home">imageButtonHome</string>
+    <string name="search_web_here">search web here</string>
+    <string name="google">Google</string>
+    <string name="facebook">Facebook</string>
+    <string name="instagram">Instagram</string>
+    <string name="youtube">Youtube</string>
+    <string name="wikipedia">Wikipedia</string>
+    <string name="snapchat">Snapchat</string>
+    <string name="gmail">GMail</string>
+    <string name="reddit">Reddit</string>
+    <string name="viber">Viber</string>
+</resources>

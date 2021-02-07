@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Alarm Clock</string>
+    <string name="time_now">Time Now:</string>
+    <string name="alarm">Alarm:</string>
+    <string name="set_alarm">Set Alarm</string>
+    <string name="text_00_00">00:00</string>
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Anagram Color Finder</string>
+    <string name="answer_correct">Correct!</string>
+    <string name="answer_wrong">Wrong..</string>
+    <string name="your_answer_is">Your answer is:</string>
+    <string name="correct_answer_is">Correct answer is:</string>
+    <string name="enter_your_answer">Enter your Answer:</string>
+    <string name="submit">Submit</string>
+</resources>

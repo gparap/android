@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">BMI Calculator</string>
+    <string name="textViewAppLabel">Body Mass Index Calculator</string>
+    <string name="textViewHeight">Enter height:</string>
+    <string name="editTextHeight">meters</string>
+    <string name="textViewWeight">Enter weight:</string>
+    <string name="textViewBMILabel">My BMI:</string>
+    <string name="textViewCategoryLabel">Category:</string>
+    <string name="editTextWeight">kilos</string>
+    <string name="buttonFindBMI">Find my BMI</string>
+    <string name="buttonClearFields">Clear</string>
+    <string name="categoryUnderweight">Underweight</string>
+    <string name="categoryNormal">Normal</string>
+    <string name="categoryOverweight">Overweight</string>
+    <string name="categoryObese">Obese</string>
+</resources>

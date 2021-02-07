@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Button style for smallest screen and portrait orientation-->
+    <style name="button_small_portrait">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/button_shape</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!--Button style for smallest screen and landscape orientation-->
+    <style name="button_small_landscape">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">1dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/button_shape</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minHeight">6dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!--Button style for default screen and portrait orientation-->
+    <style name="button_default_portrait">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/button_shape</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!--Button style for default screen and landscape orientation-->
+    <style name="button_default_landscape">
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">1dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/button_shape</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minHeight">14dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!--Button style for large screen (tablet)-->
+    <style name="button_large">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/button_shape</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <!--Button style for extra large screen (tablet)-->
+    <style name="button_extra_large">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/button_shape</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">26sp</item>
+    </style>
+</resources>

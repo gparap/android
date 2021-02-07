@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Contacts</string>
+    <string name="logo">logo</string>
+    <string name="show_contacts">Show Contacts</string>
+    <string name="image_button_call">imageButtonCall</string>
+    <string name="call_secondary_phone_number">Call This Number</string>
+</resources>

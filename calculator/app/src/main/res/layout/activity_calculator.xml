@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CalculatorActivity">
+
+    <TextView
+        android:id="@+id/textViewDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/editTextDisplay"
+        android:textSize="54sp"
+        android:theme="@style/ThemeDisplayResult"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDisplay">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button1"
+                style="@style/button_default_portrait"
+                android:onClick="OnButtonClickNumber"
+                android:text="@string/button1" />
+
+            <Button
+                android:id="@+id/button2"
+                style="@style/button_default_portrait"
+                android:onClick="OnButtonClickNumber"
+                android:text="@string/button2" />
+
+            <Button
+                android:id="@+id/button3"
+                style="@style/button_default_portrait"
+                android:onClick="OnButtonClickNumber"
+                android:text="@string/button3" />
+
+            <Button
+                android:id="@+id/buttonMulti"
+                style="@style/button_default_portrait"
+                android:onClick="OnButtonClickOperation"
+                android:text="@string/buttonMulti" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button4"
+                style="@style/button_default_portrait"
+                android:onClick="OnButtonClickNumber"
+                android:text="@string/button4" />
+
+            <Button
+                android:id="@+id/button5"
+                style="@style/button_default_portrait"
+                android:onClick="OnButtonClickNumber"
+                android:text="@string/button5" />
+
+            <Button
+                android:id="@+id/button6"
+                style="@style/button_default_portrait"
+                android:onClick="OnButtonClickNumber"
+                android:text="@string/button6" />
+
+            <Button
+                android:id="@+id/buttonMinus"
+                style="@style/button_default_portrait"
+                android:onClick="OnButtonClickOperation"
+                android:text="@string/buttonMinus" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button7"
+                style="@style/button_default_portrait"
+                android:onClick="OnButtonClickNumber"
+                android:text="@string/button7" />
+
+            <Button
+                android:id="@+id/button8"
+                style="@style/button_default_portrait"
+                android:onClick="OnButtonClickNumber"
+                android:text="@string/button8" />
+
+            <Button
+                android:id="@+id/button9"
+                style="@style/button_default_portrait"
+                android:onClick="OnButtonClickNumber"
+                android:text="@string/button9" />
+
+            <Button
+                android:id="@+id/buttonPlus"
+                style="@style/button_default_portrait"
+                android:onClick="OnButtonClickOperation"
+                android:text="@string/buttonPlus" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/buttonDot"
+                style="@style/button_default_portrait"
+                android:onClick="OnButtonClickDot"
+                android:text="@string/buttonDot" />
+
+            <Button
+                android:id="@+id/button0"
+                style="@style/button_default_portrait"
+                android:onClick="OnButtonClickNumber"
+                android:text="@string/button0" />
+
+            <Button
+                android:id="@+id/buttonModulo"
+                style="@style/button_default_portrait"
+                android:onClick="OnButtonClickOperation"
+                android:text="@string/buttonModulo" />
+
+            <Button
+                android:id="@+id/buttonDiv"
+                style="@style/button_default_portrait"
+                android:onClick="OnButtonClickOperation"
+                android:text="@string/buttonDiv" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/buttonDelete"
+                style="@style/button_default_portrait"
+                android:layout_weight="1"
+                android:onClick="OnButtonClickDelete"
+                android:text="@string/buttonDelete" />
+
+            <Button
+                android:id="@+id/buttonClear"
+                style="@style/button_default_portrait"
+                android:layout_weight="1"
+                android:onClick="OnButtonClickClear"
+                android:text="@string/buttonClear" />
+
+            <Button
+                android:id="@+id/buttonEquals"
+                style="@style/button_default_portrait"
+                android:layout_weight="2"
+                android:onClick="OnButtonClickEquals"
+                android:text="@string/buttonEquals" />
+        </TableRow>
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

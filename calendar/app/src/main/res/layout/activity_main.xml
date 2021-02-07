@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/buttonRemoveEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickRemoveEvent"
+        android:text="@string/remove_event"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/calendarView"
+        app:layout_constraintStart_toStartOf="@+id/calendarView"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEventDetails" />
+
+    <Button
+        android:id="@+id/buttonAddEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickAddEvent"
+        android:text="@string/add_new_event"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonRemoveEvent"
+        app:layout_constraintStart_toStartOf="@+id/calendarView"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEventDetails" />
+
+    <Button
+        android:id="@+id/buttonClearText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickClearText"
+        android:text="@string/clear_text"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/calendarView"
+        app:layout_constraintStart_toEndOf="@+id/buttonRemoveEvent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEventDetails" />
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextEventDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:autofillHints="false"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/enter_event_details"
+        android:inputType="textPersonName"
+        android:maxLength="100"
+        android:nestedScrollingEnabled="true"
+        app:layout_constraintEnd_toEndOf="@+id/editTextEventName"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextEventName"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEventName"
+        tools:text="Event Details" />
+
+    <EditText
+        android:id="@+id/editTextEventName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:autofillHints="false"
+        android:ems="10"
+        android:hint="@string/enter_event_name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/calendarView"
+        app:layout_constraintStart_toStartOf="@+id/calendarView"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        tools:text="Event Name" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
