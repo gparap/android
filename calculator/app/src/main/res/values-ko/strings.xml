@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">계산자</string>
+    <string name="toast_unsupportedOperation">지원되지 않는 작업 ..</string>
+    <string name="toast_givePositiveNumbers">양수를주십시오!</string>
+    <string name="toast_divisionByZero">0으로 나누기!</string>
+    <string name="str_delete">지우다</string>
+</resources>

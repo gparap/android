@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">آلة حاسبة</string>
+    <string name="toast_unsupportedOperation">عملية غير مدعومة ..</string>
+    <string name="toast_givePositiveNumbers">أعط أرقام موجبة!</string>
+    <string name="toast_divisionByZero">القسمة على صفر!</string>
+    <string name="str_delete">حذف</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ਕੈਲਕੁਲੇਟਰ</string>
+    <string name="toast_unsupportedOperation">ਅਸਮਰਥਿਤ ਓਪਰੇਸ਼ਨ ..</string>
+    <string name="toast_givePositiveNumbers">ਸਕਾਰਾਤਮਕ ਨੰਬਰ ਦਿਓ!</string>
+    <string name="toast_divisionByZero">ਜ਼ੀਰੋ ਦੁਆਰਾ ਵੰਡ!</string>
+    <string name="str_delete">ਮਿਟਾਓ</string>
+</resources>

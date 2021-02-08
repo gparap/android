@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">máy tính</string>
+    <string name="toast_unsupportedOperation">Hoạt động không được hỗ trợ ..</string>
+    <string name="toast_givePositiveNumbers">Đưa ra số tích cực!</string>
+    <string name="toast_divisionByZero">Chia cho số không!</string>
+    <string name="str_delete">Xóa bỏ</string>
+</resources>

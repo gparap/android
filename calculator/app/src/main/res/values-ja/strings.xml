@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">電卓</string>
+    <string name="str_delete">削除</string>
+    <string name="toast_divisionByZero">ゼロ除算！</string>
+    <string name="toast_givePositiveNumbers">正の数を与えてください！</string>
+    <string name="toast_unsupportedOperation">サポートされていない操作。</string>
+</resources>

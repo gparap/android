@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Taschenrechner</string>
+    <string name="str_delete">Löschen</string>
+    <string name="toast_divisionByZero">Durch Null teilen!</string>
+    <string name="toast_givePositiveNumbers">Geben Sie positive Zahlen!</string>
+    <string name="toast_unsupportedOperation">Nicht unterstützter Betrieb ..</string>
+</resources>

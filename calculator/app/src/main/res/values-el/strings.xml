@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Αριθμομηχανή</string>
+    <string name="toast_unsupportedOperation">Μη υποστηριζόμενη λειτουργία ..</string>
+    <string name="toast_givePositiveNumbers">Δώστε θετικούς αριθμούς!</string>
+    <string name="toast_divisionByZero">Διαίρεση με το μηδέν!</string>
+    <string name="str_delete">Διαγραφή</string>
+</resources>

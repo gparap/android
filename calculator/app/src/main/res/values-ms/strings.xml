@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="toast_unsupportedOperation">Operasi tidak disokong ..</string>
+    <string name="toast_givePositiveNumbers">Berikan Nombor Positif!</string>
+    <string name="toast_divisionByZero">Bahagian oleh Zero!</string>
+    <string name="str_delete">Padam</string>
+    <string name="app_name">Kalkulator</string>
+</resources>

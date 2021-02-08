@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">calculatrice</string>
+    <string name="toast_unsupportedOperation">Opération non prise en charge.</string>
+    <string name="toast_givePositiveNumbers">Donnez des nombres positifs!</string>
+    <string name="toast_divisionByZero">Division par zéro!</string>
+    <string name="str_delete">Effacer</string>
+</resources>

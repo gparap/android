@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">калькулятор</string>
+    <string name="toast_unsupportedOperation">Неподдерживаемая операция ..</string>
+    <string name="toast_givePositiveNumbers">Дайте положительные числа!</string>
+    <string name="toast_divisionByZero">Деление на ноль!</string>
+    <string name="str_delete">Удалить</string>
+</resources>

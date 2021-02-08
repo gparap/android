@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">कैलकुलेटर</string>
+    <string name="toast_unsupportedOperation">असमर्थित संचालन ।।</string>
+    <string name="toast_givePositiveNumbers">पॉजिटिव नंबर दो!</string>
+    <string name="toast_divisionByZero">शून्य से विभाजन!</string>
+    <string name="str_delete">हटा दें</string>
+</resources>

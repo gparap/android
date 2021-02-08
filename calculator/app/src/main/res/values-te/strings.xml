@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">కాలిక్యులేటర్</string>
+    <string name="toast_unsupportedOperation">మద్దతు లేని ఆపరేషన్ ..</string>
+    <string name="toast_givePositiveNumbers">సానుకూల సంఖ్యలను ఇవ్వండి!</string>
+    <string name="toast_divisionByZero">సున్నాతో భాగించటం!</string>
+    <string name="str_delete">తొలగించు</string>
+</resources>
