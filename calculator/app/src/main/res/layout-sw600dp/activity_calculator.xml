@@ -150,12 +150,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Button
+            <ImageButton
                 android:id="@+id/buttonDelete"
-                style="@style/button_large"
+                style="@style/button_default_portrait"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:contentDescription="@string/str_delete"
                 android:onClick="OnButtonClickDelete"
-                android:text="@string/buttonDelete" />
+                app:srcCompat="@drawable/ic_baseline_backspace_24" />
 
             <Button
                 android:id="@+id/buttonClear"
