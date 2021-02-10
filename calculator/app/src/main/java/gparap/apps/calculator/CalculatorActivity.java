@@ -65,7 +65,7 @@ public class CalculatorActivity extends AppCompatActivity implements MathOperati
             if (result.charAt(0) == '-') {
                 operands = result.substring(1).split("[+[-[*[/[%]]]]]");
             } else {
-                operands = result.split("[+[-[*[/[%]]]]]");
+                operands = result.split("[+[-[*[/[%[\\^]]]]]]");
             }
 
             //disappear multiple zeros in front of number - 2nd operand
@@ -145,7 +145,7 @@ public class CalculatorActivity extends AppCompatActivity implements MathOperati
         //remove operation
         char helperChar = result.charAt(result.length()-1);
         if (helperChar == '+' || helperChar == '-' || helperChar == '*' || helperChar == '/' ||
-            helperChar == '%') {
+            helperChar == '%' || helperChar == '^') {
             operations--;
         }
         result = result.substring(0, result.length()-1);
@@ -175,10 +175,10 @@ public class CalculatorActivity extends AppCompatActivity implements MathOperati
         //expression starts with negative number
         String[] operands;
         if (result.charAt(0) == '-') {
-            operands = result.substring(1).split("[+[-[*[/[%]]]]]");
+            operands = result.substring(1).split("[+[-[*[/[%[\\^]]]]]]");
             operands[0] = "-".concat(operands[0]);
         } else {
-            operands = result.split("[+[-[*[/[%]]]]]");
+            operands = result.split("[+[-[*[/[%[\\^]]]]]]");
         }
 
         //dont eveluate if operand is missing
@@ -216,6 +216,10 @@ public class CalculatorActivity extends AppCompatActivity implements MathOperati
                 else {
                     tempResult = moduloTwoNumbers(Double.parseDouble(operands[0]), Double.parseDouble(operands[1]));
                 }
+                break;
+            case '^':
+                tempResult = powerTwoNumbers(Double.parseDouble(operands[0]), Double.parseDouble(operands[1]));
+                break;
         }
 
         //check if it is a physical number and remove decimal zero (.0)
@@ -329,18 +333,6 @@ public class CalculatorActivity extends AppCompatActivity implements MathOperati
 
     @Override
     public double powerTwoNumbers(double number1, double number2) {
-        double result;
-        if (number1 > 0) {
-            if (number2 == 0)
-                result = 1;
-            else
-                result = Math.pow(number1, number2);
-        } else {
-            if (number2 == 0)
-                result = -1;
-            else
-                result = -Math.pow(number1, number2);
-        }
-        return result;
+        return Math.pow(number1, number2);
     }
 }
