@@ -170,9 +170,16 @@
                 android:text="@string/buttonClear" />
 
             <Button
+                android:id="@+id/buttonPower"
+                style="@style/button_large"
+                android:layout_weight="1"
+                android:onClick="OnButtonClickClear"
+                android:text="@string/buttonPower" />
+
+            <Button
                 android:id="@+id/buttonEquals"
                 style="@style/button_large"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:onClick="OnButtonClickEquals"
                 android:text="@string/buttonEquals" />
         </TableRow>
