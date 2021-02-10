@@ -74,6 +74,7 @@ public class CalculatorActivityInstrumentedTest {
         onView(withId(R.id.buttonMinus)).check(matches(isDisplayed()));
         onView(withId(R.id.buttonPlus)).check(matches(isDisplayed()));
         onView(withId(R.id.buttonModulo)).check(matches(isDisplayed()));
+        onView(withId(R.id.buttonPower)).check(matches(isDisplayed()));
         onView(withId(R.id.buttonDiv)).check(matches(isDisplayed()));
         onView(withId(R.id.buttonEquals)).check(matches(isDisplayed()));
     }
@@ -236,6 +237,13 @@ public class CalculatorActivityInstrumentedTest {
         onView(withText(R.string.toast_givePositiveNumbers))
                 .inRoot(withDecorView(not(rootView)))
                 .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void onButtonClickOperation_TypePower() {
+        onView(withId(R.id.button1)).perform(click());
+        onView(withId(R.id.buttonPower)).perform(click());
+        onView(withId(R.id.textViewDisplay)).check(matches(withText("1^")));
     }
 
     @Test

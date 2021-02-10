@@ -4,6 +4,7 @@
     <string name="buttonClear" translatable="false">CE</string>
     <string name="buttonEquals" translatable="false">=</string>
     <string name="buttonModulo" translatable="false">%</string>
+    <string name="buttonPower" translatable="false">^</string>
     <string name="buttonPlus" translatable="false">+</string>
     <string name="buttonMinus" translatable="false">-</string>
     <string name="buttonMulti" translatable="false">*</string>

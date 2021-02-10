@@ -84,7 +84,7 @@ public class CalculatorActivity extends AppCompatActivity implements MathOperati
         textViewDisplay.setText(result);
     }
 
-    //display the operator ("+", "-", "*", "/", "%")
+    //display the operator ("+", "-", "*", "/", "%", "^")
     public void OnButtonClickOperation(View view) {
         CharSequence tempText = ((Button) view).getText();
 
@@ -96,7 +96,7 @@ public class CalculatorActivity extends AppCompatActivity implements MathOperati
         //handle operations
         if (tempText.toString().equals("+") || tempText.toString().equals("-") ||
             tempText.toString().equals("*") || tempText.toString().equals("/") ||
-            tempText.toString().equals("%")) {
+            tempText.toString().equals("%") || tempText.toString().equals("^")) {
 
             //check if more than 1 operation is pressed
             if (operations == 0) {
@@ -111,7 +111,7 @@ public class CalculatorActivity extends AppCompatActivity implements MathOperati
                 //check if last index of display was an operation
                 if (result.charAt(result.length() - 1) == '+' || result.charAt(result.length() - 1) == '-' ||
                     result.charAt(result.length() - 1) == '*' || result.charAt(result.length() - 1) == '/' ||
-                    result.charAt(result.length() - 1) == '%') {
+                    result.charAt(result.length() - 1) == '%' || result.charAt(result.length() - 1) == '^') {
 
                     //change operation
                     operation = tempText.charAt(0);
@@ -325,5 +325,22 @@ public class CalculatorActivity extends AppCompatActivity implements MathOperati
     @Override
     public double moduloTwoNumbers(double number1, double number2) {
         return number1 % number2;
+    }
+
+    @Override
+    public double powerTwoNumbers(double number1, double number2) {
+        double result;
+        if (number1 > 0) {
+            if (number2 == 0)
+                result = 1;
+            else
+                result = Math.pow(number1, number2);
+        } else {
+            if (number2 == 0)
+                result = -1;
+            else
+                result = -Math.pow(number1, number2);
+        }
+        return result;
     }
 }

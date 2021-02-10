@@ -60,4 +60,29 @@ public class CalculatorActivityTest {
     public void moduloTwoNumbers_positive_positive() {
         assertEquals(1, calculatorActivity.moduloTwoNumbers(5, 2), 0);
     }
+
+    @Test
+    public void powerTwoNumbers_positive_positive() {
+        assertEquals(16, calculatorActivity.powerTwoNumbers(4,2), 0);
+    }
+
+    @Test
+    public void powerTwoNumbers_negative_positive() {
+        assertEquals(-16, calculatorActivity.powerTwoNumbers(-4,2), 0);
+    }
+
+    @Test
+    public void powerTwoNumbers_zero_positive() {
+        assertEquals(0, calculatorActivity.powerTwoNumbers(0,2), 0);
+    }
+
+    @Test
+    public void powerTwoNumbers_positive_zero() {
+        assertEquals(1, calculatorActivity.powerTwoNumbers(4,0), 0);
+    }
+
+    @Test
+    public void powerTwoNumbers_negative_zero() {
+        assertEquals(-1, calculatorActivity.powerTwoNumbers(-4,0), 0);
+    }
 }

@@ -13,4 +13,6 @@ public interface MathOperations {
     double divideTwoNumbers(double number1, double number2);
 
     double moduloTwoNumbers(double number1, double number2);
+
+    double powerTwoNumbers(double number1, double number2);
 }
