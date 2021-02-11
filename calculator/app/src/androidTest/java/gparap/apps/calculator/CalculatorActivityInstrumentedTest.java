@@ -1,6 +1,5 @@
 package gparap.apps.calculator;
 
-import android.app.Activity;
 import android.os.RemoteException;
 import android.view.View;
 
@@ -27,16 +26,16 @@ import static org.hamcrest.Matchers.not;
  */
 public class CalculatorActivityInstrumentedTest {
     @Rule
-    public ActivityScenarioRule activityScenarioRule = new ActivityScenarioRule(CalculatorActivity.class);
+    public ActivityScenarioRule<CalculatorActivity> activityScenarioRule = new ActivityScenarioRule<>(CalculatorActivity.class);
     private View rootView = null;
     UiDevice device;    /* minSdkVersion 18 */
 
     @Before
     public void setUp() throws Exception {
         //get the top-level window decor view
-        activityScenarioRule.getScenario().onActivity(new ActivityScenario.ActivityAction() {
+        activityScenarioRule.getScenario().onActivity(new ActivityScenario.ActivityAction<CalculatorActivity>() {
             @Override
-            public void perform(Activity activity) {
+            public void perform(CalculatorActivity activity) {
                 rootView = activity.getWindow().getDecorView();
             }
         });

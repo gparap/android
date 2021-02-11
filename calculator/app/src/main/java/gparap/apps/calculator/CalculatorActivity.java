@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 /**
  * Created by gparap on 2020-08-31.
  */
-public class CalculatorActivity extends AppCompatActivity implements MathOperations {
+public class CalculatorActivity extends AppCompatActivity {
     TextView textViewDisplay;   //displays the result
     String result = "";         //final result of operation
     int operations = 0;         //number of operations allowed
@@ -191,20 +191,24 @@ public class CalculatorActivity extends AppCompatActivity implements MathOperati
         boolean isDivisionByZero = false;
         switch (operation) {
             case '+':
-                tempResult = addTwoNumbers(Double.parseDouble(operands[0]), Double.parseDouble(operands[1]));
+                tempResult = CalculatorOperationsKt.addTwoNumbers(
+                        Double.parseDouble(operands[0]), Double.parseDouble(operands[1]));
                 break;
             case '-':
-                tempResult = subtractTwoNumbers(Double.parseDouble(operands[0]), Double.parseDouble(operands[1]));
+                tempResult = CalculatorOperationsKt.subtractTwoNumbers(
+                        Double.parseDouble(operands[0]), Double.parseDouble(operands[1]));
                 break;
             case '*':
-                tempResult = multiplyTwoNumbers(Double.parseDouble(operands[0]), Double.parseDouble(operands[1]));
+                tempResult = CalculatorOperationsKt.multiplyTwoNumbers(
+                        Double.parseDouble(operands[0]), Double.parseDouble(operands[1]));
                 break;
             case '/':
                 // check for division by zero
                 if (Double.parseDouble(operands[1]) == 0) {
                     isDivisionByZero = true;
                 } else {
-                    tempResult = divideTwoNumbers(Double.parseDouble(operands[0]), Double.parseDouble(operands[1]));
+                    tempResult = CalculatorOperationsKt.divideTwoNumbers(
+                            Double.parseDouble(operands[0]), Double.parseDouble(operands[1]));
                 }
                 break;
             case '%':
@@ -214,11 +218,13 @@ public class CalculatorActivity extends AppCompatActivity implements MathOperati
                     return;
                 }
                 else {
-                    tempResult = moduloTwoNumbers(Double.parseDouble(operands[0]), Double.parseDouble(operands[1]));
+                    tempResult = CalculatorOperationsKt.moduloTwoNumbers(Double.parseDouble(operands[0]),
+                            Double.parseDouble(operands[1]));
                 }
                 break;
             case '^':
-                tempResult = powerTwoNumbers(Double.parseDouble(operands[0]), Double.parseDouble(operands[1]));
+                tempResult = CalculatorOperationsKt.powerTwoNumbers(Double.parseDouble(operands[0]),
+                        Double.parseDouble(operands[1]));
                 break;
         }
 
@@ -304,35 +310,5 @@ public class CalculatorActivity extends AppCompatActivity implements MathOperati
         textViewDisplay.setText("0");
         result = "";
         operations = 0;
-    }
-
-    @Override
-    public double addTwoNumbers(double number1, double number2) {
-        return number1 + number2;
-    }
-
-    @Override
-    public double subtractTwoNumbers(double number1, double number2) {
-        return number1 - number2;
-    }
-
-    @Override
-    public double multiplyTwoNumbers(double number1, double number2) {
-        return number1 * number2;
-    }
-
-    @Override
-    public double divideTwoNumbers(double number1, double number2) {
-        return number1 / number2;
-    }
-
-    @Override
-    public double moduloTwoNumbers(double number1, double number2) {
-        return number1 % number2;
-    }
-
-    @Override
-    public double powerTwoNumbers(double number1, double number2) {
-        return Math.pow(number1, number2);
     }
 }

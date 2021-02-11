@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 30
@@ -33,4 +34,11 @@ android {
         //for orientation changes
         androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
     }
+}
+dependencies {
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
