@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Area Calculator</string>
+    <string-array name="shapes2D">
+        <item>Square</item>
+        <item>Rectangle</item>
+        <item>Parallelogram</item>
+        <item>Equilateral Triangle</item>
+        <item>Triangle</item>
+        <item>Trapezoid</item>
+        <item>Hexagon</item>
+        <item>Circle</item>
+    </string-array>
+
+    <!--Error messages-->
+    <string name="toast_EnterValue">Please, enter values…</string>
 </resources>

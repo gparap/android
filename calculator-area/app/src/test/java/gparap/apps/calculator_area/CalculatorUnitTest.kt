@@ -5,9 +5,7 @@ import org.junit.Test
 import org.junit.Assert.*
 
 /**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
+ * Created by gparap on 2021-02-12.
  */
 class CalculatorUnitTest {
 }
