@@ -13,4 +13,8 @@
 
     <!--Error messages-->
     <string name="toast_EnterValue">Please, enter values…</string>
+    <string name="toast_EnterValueSideA">Please, enter side (a) value…</string>
+    <string name="toast_EnterValueSideB">Please, enter side (b) value…</string>
+    <string name="toast_EnterValueHeight">Please, enter height value…</string>
+    <string name="toast_EnterValueDiameter">Please, enter diameter value…</string>
 </resources>

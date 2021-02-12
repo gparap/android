@@ -50,8 +50,11 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             //
             when (spinner2d.selectedItem.toString()) {
                 "Square" -> {
-
-                    result.text = calculateSquare2D(editTextSideA.text.toString().toInt()).toString()
+                    if (editTextSideA.text.isEmpty()) {
+                        Toast.makeText(this, R.string.toast_EnterValueSideA, Toast.LENGTH_SHORT).show()
+                    }else {
+                        result.text = CalculatorOperations.calculateSquare(editTextSideA.text.toString().toInt()).toString()
+                    }
                 }
             }
         }
@@ -67,11 +70,6 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     override fun onNothingSelected(parent: AdapterView<*>?) {
         parent?.getItemAtPosition(0)
     }
-
-    private fun calculateSquare2D(side: Int) : Int {
-        return side.plus(side)
-    }
-
 
     private fun handleFieldsActivation(selectedItem: String) {
         when (selectedItem){
