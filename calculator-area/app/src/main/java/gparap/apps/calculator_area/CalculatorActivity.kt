@@ -1,11 +1,9 @@
 package gparap.apps.calculator_area
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-import androidx.core.view.get
-import java.lang.Exception
+import androidx.appcompat.app.AppCompatActivity
 
 /**
  * Created by gparap on 2021-02-12.
@@ -17,7 +15,6 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     lateinit var editTextHeight: EditText
     lateinit var editTextDiameter: EditText
     lateinit var result: TextView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,16 +44,11 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         ) {
             Toast.makeText(this, R.string.toast_EnterValue, Toast.LENGTH_SHORT).show()
         } else {
-            //
-            when (spinner2d.selectedItem.toString()) {
-                "Square" -> {
-                    if (editTextSideA.text.isEmpty()) {
-                        Toast.makeText(this, R.string.toast_EnterValueSideA, Toast.LENGTH_SHORT).show()
-                    }else {
-                        result.text = CalculatorOperations.calculateSquare(editTextSideA.text.toString().toInt()).toString()
-                    }
-                }
-            }
+            // TODO: validation based on active fields ie: see bellow
+            //if    activeField is empty then toast "should not be empty"
+            //else  calculate result
+
+            calculateArea()
         }
     }
 
@@ -65,6 +57,9 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
 
         //de-activate input fields based on spinner selection
         handleFieldsActivation(spinner2d.selectedItem.toString())
+
+        //clear input and output fields
+        clear()
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -72,7 +67,7 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     }
 
     private fun handleFieldsActivation(selectedItem: String) {
-        when (selectedItem){
+        when (selectedItem) {
             "Square" -> {
                 editTextSideA.isEnabled = true
                 editTextSideB.isEnabled = false
@@ -123,15 +118,54 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             }
         }
     }
+
+    private fun clear() {
+        editTextSideA.text.clear()
+        editTextSideB.text.clear()
+        editTextHeight.text.clear()
+        editTextDiameter.text.clear()
+        result.text = ""
+    }
+
+    private fun calculateArea() {
+        when (spinner2d.selectedItem.toString()) {
+            "Square" -> result.text =
+                CalculatorOperations.calculateSquare(editTextSideA.text.toString().toInt())
+                    .toString()
+
+            "Rectangle" -> result.text = CalculatorOperations.calculateRectangle(
+                editTextSideA.text.toString().toInt(),
+                editTextSideB.text.toString().toInt()
+            ).toString()
+
+            "Parallelogram" -> result.text = CalculatorOperations.calculateParallelogram(
+                editTextSideA.text.toString().toInt(),
+                editTextHeight.text.toString().toInt()
+            ).toString()
+
+            "Equilateral Triangle" -> result.text =
+                CalculatorOperations.calculateEquilateralTriangle(
+                    editTextSideA.text.toString().toInt()
+                ).toString()
+
+            "Triangle" -> result.text = CalculatorOperations.calculateTriangle(
+                editTextSideA.text.toString().toInt(),
+                editTextHeight.text.toString().toInt()
+            ).toString()
+
+            "Trapezoid" -> result.text = CalculatorOperations.calculateTrapezoid(
+                editTextSideA.text.toString().toInt(),
+                editTextSideB.text.toString().toInt(),
+                editTextHeight.text.toString().toInt()
+            ).toString()
+
+            "Hexagon" -> result.text =
+                CalculatorOperations.calculateHexagon(editTextSideA.text.toString().toInt())
+                    .toString()
+
+            "Circle" -> result.text =
+                CalculatorOperations.calculateCircle(editTextDiameter.text.toString().toInt())
+                    .toString()
+        }
+    }
 }
-/*
- FORMULAS:
- area of a square                   = a ^ 2
- area of a rectangle                = a * b
- area of a parallelogram            = a * h
- area of an equilateral triangle    = [√3 *a^2] / 4
- area of a triangle                 = a * h / 2
- area of a trapezoid                = 1/2 * (a + b) * h
- area of a hexagon                  = (3 * √3 * a^2) / 2
- area of a circle                   = π * (d / 2)
- */
