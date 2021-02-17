@@ -1,5 +1,8 @@
 package gparap.apps.calculator_area
 
+import kotlin.math.pow
+import kotlin.math.sqrt
+
 /**
  * Area calculations for shapes:
  * Square, Rectangle, Parallelogram, Equilateral Triangle, Triangle, Trapezoid, Hexagon and Circle.
@@ -8,43 +11,43 @@ package gparap.apps.calculator_area
 class CalculatorOperations {
     companion object {
         @JvmStatic
-        fun calculateSquare(side: Int): Int {//a ^ 2
-            return 0;TODO(reason = "Method stub")
+        fun calculateSquare(side: Int): Int {
+            return side.toDouble().pow(2).toInt()
         }
 
         @JvmStatic
-        fun calculateRectangle(sideA: Int, sideB: Int): Int {//a * b
-            return 0;TODO(reason = "Method stub")
+        fun calculateRectangle(sideA: Int, sideB: Int): Int {
+            return sideA.times(sideB)
         }
 
         @JvmStatic
-        fun calculateParallelogram(side: Int, height: Int): Int {//a * h
-            return 0;TODO(reason = "Method stub")
+        fun calculateParallelogram(side: Int, height: Int): Int {
+            return side.times(height)
         }
 
         @JvmStatic
-        fun calculateEquilateralTriangle(side: Int): Int {//[√3 *a^2] / 4
-            return 0;TODO(reason = "Method stub")
+        fun calculateEquilateralTriangle(side: Int): Float {
+            return ((sqrt(3.0f)) * (side.toFloat().pow(2))) / 4
         }
 
         @JvmStatic
-        fun calculateTriangle(side: Int, height: Int): Int {//a * h / 2
-            return 0;TODO(reason = "Method stub")
+        fun calculateTriangle(side: Int, height: Int): Float {
+            return side.times(height) / 2.0f
         }
 
         @JvmStatic
-        fun calculateTrapezoid(sideA: Int, sideB: Int, height: Int): Int {//1/2 * (a + b) * h
-            return 0;TODO(reason = "Method stub")
+        fun calculateTrapezoid(sideA: Int, sideB: Int, height: Int): Float {
+            return 0.5f * (sideA + sideB) * height
         }
 
         @JvmStatic
-        fun calculateHexagon(side: Int): Int {//(3 * √3 * a^2) / 2
-            return 0;TODO(reason = "Method stub")
+        fun calculateHexagon(side: Int): Float {
+            return (3.0f * (sqrt(3.0f)) * (side.toFloat().pow(2))) / 2.0f
         }
 
         @JvmStatic
-        fun calculateCircle(diameter: Int): Int {//π * (d / 2)
-            return 0;TODO(reason = "Method stub")
+        fun calculateCircle(diameter: Int): Double {
+            return Math.PI * ((diameter.div(2)))
         }
     }
 
