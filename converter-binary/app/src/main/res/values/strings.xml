@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Binary Converter</string>
+    <string name="corvert_to_binary">Corvert to Binary</string>
+    <string name="convert_to_text">Convert to Text</string>
+    <string name="clear">Clear</string>
+    <string name="hint_enter_value">enter some value..</string>
 </resources>
