@@ -112,49 +112,6 @@ class CalculatorActivityInstrumentedTest {
     }
     //endof FUNCTIONALITY OF WIDGETS
 
-    //FUNCTIONALITY OF WIDGETS - VALIDATION
-    @Test
-    fun validateInput_EditTextSideA_cannotBeEmpty(){
-        onView(withId(R.id.editTextSideB)).perform(typeText("1"))
-        onView(withId(R.id.editTextHeight)).perform(typeText("1"))
-        onView(withId(R.id.editTextDiameter)).perform(typeText("1"))
-        onView(withId(R.id.buttonCalculate)).perform(click())
-        onView(withText(R.string.toast_EnterValue))
-            .inRoot(withDecorView(not(rootView)))
-            .check(matches(isDisplayed()))
-    }
-    @Test
-    fun validateInput_EditTextSideB_cannotBeEmpty(){
-        onView(withId(R.id.editTextSideA)).perform(typeText("1"))
-        onView(withId(R.id.editTextHeight)).perform(typeText("1"))
-        onView(withId(R.id.editTextDiameter)).perform(typeText("1"))
-        onView(withId(R.id.buttonCalculate)).perform(click())
-        onView(withText(R.string.toast_EnterValue))
-            .inRoot(withDecorView(not(rootView)))
-            .check(matches(isDisplayed()))
-    }
-    @Test
-    fun validateInput_EditTextHeight_cannotBeEmpty(){
-        onView(withId(R.id.editTextSideA)).perform(typeText("1"))
-        onView(withId(R.id.editTextSideB)).perform(typeText("1"))
-        onView(withId(R.id.editTextDiameter)).perform(typeText("1"))
-        onView(withId(R.id.buttonCalculate)).perform(click())
-        onView(withText(R.string.toast_EnterValue))
-            .inRoot(withDecorView(not(rootView)))
-            .check(matches(isDisplayed()))
-    }
-    @Test
-    fun validateInput_EditTextDiameter_cannotBeEmpty(){
-        onView(withId(R.id.editTextSideA)).perform(typeText("1"))
-        onView(withId(R.id.editTextSideB)).perform(typeText("1"))
-        onView(withId(R.id.editTextHeight)).perform(typeText("1"))
-        onView(withId(R.id.buttonCalculate)).perform(click())
-        onView(withText(R.string.toast_EnterValue))
-            .inRoot(withDecorView(not(rootView)))
-            .check(matches(isDisplayed()))
-    }
-    //FUNCTIONALITY OF WIDGETS - VALIDATION
-
     //INPUT FIELDS - ACTIVATION/DE-ACTIVATION
     @Test
     fun squareItemSelected_Activate_SideA_Deactivate_SideB_Height_Diameter() {
@@ -229,4 +186,14 @@ class CalculatorActivityInstrumentedTest {
         onView(withId(R.id.editTextDiameter)).check(matches(isEnabled()))
     }
     //endof INPUT FIELDS - ACTIVATION/DE-ACTIVATION
+
+    //INPUT FIELDS - VALIDATION
+    @Test
+    fun validateInput_Error_FieldMustNotBeEmpty() {
+        onView(withId(R.id.buttonCalculate)).perform(click())
+        onView(withText(R.string.toast_EnterValue))
+            .inRoot(withDecorView(not(rootView)))
+            .check(matches(isDisplayed()))
+    }
+    //endof INPUT FIELDS - VALIDATION
 }

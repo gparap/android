@@ -15,6 +15,7 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     lateinit var editTextHeight: EditText
     lateinit var editTextDiameter: EditText
     lateinit var result: TextView
+    var activeFields: ArrayList<EditText>? = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,17 +39,10 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     }
 
     fun onClickCalculateArea(view: View) {
-        //only natural numbers allowed
-        if (editTextSideA.text.isEmpty() && editTextSideB.text.isEmpty() &&
-            editTextHeight.text.isEmpty() && editTextDiameter.text.isEmpty()
-        ) {
-            Toast.makeText(this, R.string.toast_EnterValue, Toast.LENGTH_SHORT).show()
-        } else {
-            // TODO: validation based on active fields ie: see bellow
-            //if    activeField is empty then toast "should not be empty"
-            //else  calculate result
-
+        result.text = ""
+        if (validateInputFields()){
             calculateArea()
+            beautifyResult()
         }
     }
 
@@ -67,45 +61,49 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     }
 
     private fun handleFieldsActivation(selectedItem: String) {
+        //clear active fields list before activation
+        activeFields?.clear()
+
+        //(de)activate fields and add to list
         when (selectedItem) {
             "Square" -> {
-                editTextSideA.isEnabled = true
+                editTextSideA.isEnabled = true.also { activeFields?.add(editTextSideA) }
                 editTextSideB.isEnabled = false
                 editTextHeight.isEnabled = false
                 editTextDiameter.isEnabled = false
             }
             "Rectangle" -> {
-                editTextSideA.isEnabled = true
-                editTextSideB.isEnabled = true
+                editTextSideA.isEnabled = true.also { activeFields?.add(editTextSideA) }
+                editTextSideB.isEnabled = true.also { activeFields?.add(editTextSideB) }
                 editTextHeight.isEnabled = false
                 editTextDiameter.isEnabled = false
             }
             "Parallelogram" -> {
-                editTextSideA.isEnabled = true
+                editTextSideA.isEnabled = true.also { activeFields?.add(editTextSideA) }
                 editTextSideB.isEnabled = false
-                editTextHeight.isEnabled = true
+                editTextHeight.isEnabled = true.also { activeFields?.add(editTextHeight) }
                 editTextDiameter.isEnabled = false
             }
             "Equilateral Triangle" -> {
-                editTextSideA.isEnabled = true
+                editTextSideA.isEnabled = true.also { activeFields?.add(editTextSideA) }
                 editTextSideB.isEnabled = false
                 editTextHeight.isEnabled = false
                 editTextDiameter.isEnabled = false
             }
             "Triangle" -> {
-                editTextSideA.isEnabled = true
+                editTextSideA.isEnabled = true.also { activeFields?.add(editTextSideA) }
                 editTextSideB.isEnabled = false
                 editTextHeight.isEnabled = true
                 editTextDiameter.isEnabled = false
             }
             "Trapezoid" -> {
-                editTextSideA.isEnabled = true
-                editTextSideB.isEnabled = true
-                editTextHeight.isEnabled = true
+                editTextSideA.isEnabled = true.also { activeFields?.add(editTextSideA) }
+                editTextSideB.isEnabled = true.also { activeFields?.add(editTextSideB) }
+                editTextHeight.isEnabled = true.also { activeFields?.add(editTextHeight) }
                 editTextDiameter.isEnabled = false
             }
             "Hexagon" -> {
-                editTextSideA.isEnabled = true
+                editTextSideA.isEnabled = true.also { activeFields?.add(editTextSideA) }
                 editTextSideB.isEnabled = false
                 editTextHeight.isEnabled = false
                 editTextDiameter.isEnabled = false
@@ -114,9 +112,20 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextSideA.isEnabled = false
                 editTextSideB.isEnabled = false
                 editTextHeight.isEnabled = false
-                editTextDiameter.isEnabled = true
+                editTextDiameter.isEnabled = true.also { activeFields?.add(editTextDiameter) }
             }
         }
+    }
+
+    private fun validateInputFields() :Boolean {
+        for (field in activeFields!!) {
+            //Check if active field is empty
+            if (field.text.isEmpty()) {
+                Toast.makeText(this, R.string.toast_EnterValue, Toast.LENGTH_SHORT).show()
+                return false
+            }
+        }
+        return true
     }
 
     private fun clear() {
@@ -167,5 +176,20 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 CalculatorOperations.calculateCircle(editTextDiameter.text.toString().toInt())
                     .toString()
         }
+    }
+
+    /**
+     * Beautifies the result string
+     *  ie. 500.0 -> 500, 13.46234756 -> 13.46, etc
+     */
+    private fun beautifyResult() {
+        // remove zero ("0.")
+        if (result.text.toString().endsWith(".0")){
+            result.text = result.text.dropLast(2)
+        }
+
+        // keep only two (2) decimals
+        val tempDouble: Double = result.text.toString().toDouble()
+        result.text = "%.2f".format(tempDouble).toDouble().toString()
     }
 }
