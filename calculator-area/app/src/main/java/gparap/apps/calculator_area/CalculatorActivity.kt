@@ -39,7 +39,7 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     }
 
     fun onClickCalculateArea(view: View) {
-        result.text = ""
+        result.text = getString(R.string.string_area)
         if (validateInputFields()){
             calculateArea()
             beautifyResult()
@@ -133,14 +133,14 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         editTextSideB.text.clear()
         editTextHeight.text.clear()
         editTextDiameter.text.clear()
-        result.text = ""
+        result.text = getString(R.string.string_area)
     }
 
     private fun calculateArea() {
         when (spinner2d.selectedItem.toString()) {
-            "Square" -> result.text =
-                CalculatorOperations.calculateSquare(editTextSideA.text.toString().toInt())
-                    .toString()
+            "Square" -> result.text = CalculatorOperations.calculateSquare(
+                editTextSideA.text.toString().toInt()
+            ).toString()
 
             "Rectangle" -> result.text = CalculatorOperations.calculateRectangle(
                 editTextSideA.text.toString().toInt(),
@@ -183,13 +183,18 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
      *  ie. 500.0 -> 500, 13.46234756 -> 13.46, etc
      */
     private fun beautifyResult() {
-        // remove zero ("0.")
-        if (result.text.toString().endsWith(".0")){
-            result.text = result.text.dropLast(2)
+        //keep only two (2) decimals
+        val tempDouble: Double = result.text.toString().toDouble()
+        var tempResult: String = "%.2f".format(tempDouble).toDouble().toString()
+
+        //remove zero ("0.")
+        if (tempResult.endsWith(".0")) {
+            tempResult = tempResult.dropLast(2)
         }
 
-        // keep only two (2) decimals
-        val tempDouble: Double = result.text.toString().toDouble()
-        result.text = "%.2f".format(tempDouble).toDouble().toString()
+        //add initial string plus equals sign ("Area = ")
+        result.text = getString(R.string.string_area)
+            .plus(" = ")
+            .plus(tempResult)
     }
 }

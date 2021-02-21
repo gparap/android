@@ -10,6 +10,7 @@
         <item>Hexagon</item>
         <item>Circle</item>
     </string-array>
+    <string name="string_area">Area</string>
 
     <!--Error messages-->
     <string name="toast_EnterValue">Please, enter values…</string>
