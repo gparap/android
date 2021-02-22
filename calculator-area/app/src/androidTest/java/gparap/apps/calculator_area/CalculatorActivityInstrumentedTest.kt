@@ -69,10 +69,6 @@ class CalculatorActivityInstrumentedTest {
         onView(withId(R.id.editTextDiameter)).check(matches(isDisplayed()))
     }
     @Test
-    fun isDisplayed_LabelArea(){
-        onView(withId(R.id.labelArea)).check(matches(isDisplayed()))
-    }
-    @Test
     fun isDisplayed_EditTextResult(){
         onView(withId(R.id.textViewResult)).check(matches(isDisplayed()))
     }
@@ -112,80 +108,80 @@ class CalculatorActivityInstrumentedTest {
     }
     //endof FUNCTIONALITY OF WIDGETS
 
-    //INPUT FIELDS - ACTIVATION/DE-ACTIVATION
+    //INPUT FIELDS - CHANGE VISIBILITY
     @Test
-    fun squareItemSelected_Activate_SideA_Deactivate_SideB_Height_Diameter() {
+    fun squareItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Diameter() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`("Square")).perform(click())
-        onView(withId(R.id.editTextSideA)).check(matches(isEnabled()))
-        onView(withId(R.id.editTextSideB)).check(matches(not(isEnabled())))
-        onView(withId(R.id.editTextHeight)).check(matches(not(isEnabled())))
-        onView(withId(R.id.editTextDiameter)).check(matches(not(isEnabled())))
+        onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiameter)).check(matches(not(isDisplayed())))
     }
     @Test
-    fun rectangleItemSelected_Activate_SideA_Deactivate_SideB_Height_Diameter() {
+    fun rectangleItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Diameter() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`("Rectangle")).perform(click())
-        onView(withId(R.id.editTextSideA)).check(matches(isEnabled()))
-        onView(withId(R.id.editTextSideB)).check(matches(isEnabled()))
-        onView(withId(R.id.editTextHeight)).check(matches(not(isEnabled())))
-        onView(withId(R.id.editTextDiameter)).check(matches(not(isEnabled())))
+        onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextSideB)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiameter)).check(matches(not(isDisplayed())))
     }
     @Test
-    fun parallelogramItemSelected_Activate_SideA_Height_Deactivate_SideB_Diameter() {
+    fun parallelogramItemSelected_SetVisible_SideA_Height_SetInvisible_SideB_Diameter() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`("Parallelogram")).perform(click())
-        onView(withId(R.id.editTextSideA)).check(matches(isEnabled()))
-        onView(withId(R.id.editTextSideB)).check(matches(not(isEnabled())))
-        onView(withId(R.id.editTextHeight)).check(matches(isEnabled()))
-        onView(withId(R.id.editTextDiameter)).check(matches(not(isEnabled())))
+        onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextHeight)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextDiameter)).check(matches(not(isDisplayed())))
     }
     @Test
-    fun equilateralTriangleItemSelected_Activate_SideA_Deactivate_SideB_Height_Diameter() {
+    fun equilateralTriangleItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Diameter() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`("Equilateral Triangle")).perform(click())
-        onView(withId(R.id.editTextSideA)).check(matches(isEnabled()))
-        onView(withId(R.id.editTextSideB)).check(matches(not(isEnabled())))
-        onView(withId(R.id.editTextHeight)).check(matches(not(isEnabled())))
-        onView(withId(R.id.editTextDiameter)).check(matches(not(isEnabled())))
+        onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiameter)).check(matches(not(isDisplayed())))
     }
     @Test
-    fun triangleItemSelected_Activate_SideA_Height_Deactivate_SideB_Diameter() {
+    fun triangleItemSelected_SetVisible_SideA_Height_SetInvisible_SideB_Diameter() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`("Triangle")).perform(click())
-        onView(withId(R.id.editTextSideA)).check(matches(isEnabled()))
-        onView(withId(R.id.editTextSideB)).check(matches(not(isEnabled())))
-        onView(withId(R.id.editTextHeight)).check(matches(isEnabled()))
-        onView(withId(R.id.editTextDiameter)).check(matches(not(isEnabled())))
+        onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextHeight)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextDiameter)).check(matches(not(isDisplayed())))
     }
     @Test
-    fun trapezoidItemSelected_Activate_SideA_SideB_Height_Deactivate_Diameter() {
+    fun trapezoidItemSelected_SetVisible_SideA_SideB_Height_SetInvisible_Diameter() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`("Trapezoid")).perform(click())
-        onView(withId(R.id.editTextSideA)).check(matches(isEnabled()))
-        onView(withId(R.id.editTextSideB)).check(matches(isEnabled()))
-        onView(withId(R.id.editTextHeight)).check(matches(isEnabled()))
-        onView(withId(R.id.editTextDiameter)).check(matches(not(isEnabled())))
+        onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextSideB)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextHeight)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextDiameter)).check(matches(not(isDisplayed())))
     }
     @Test
-    fun hexagonItemSelected_Activate_SideA_Deactivate_SideB_Height_Diameter() {
+    fun hexagonItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Diameter() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`("Hexagon")).perform(click())
-        onView(withId(R.id.editTextSideA)).check(matches(isEnabled()))
-        onView(withId(R.id.editTextSideB)).check(matches(not(isEnabled())))
-        onView(withId(R.id.editTextHeight)).check(matches(not(isEnabled())))
-        onView(withId(R.id.editTextDiameter)).check(matches(not(isEnabled())))
+        onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiameter)).check(matches(not(isDisplayed())))
     }
     @Test
-    fun circleItemSelected_Activate_SideA_Deactivate_SideB_Height_Diameter() {
+    fun circleItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Diameter() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`("Circle")).perform(click())
-        onView(withId(R.id.editTextSideA)).check(matches(not(isEnabled())))
-        onView(withId(R.id.editTextSideB)).check(matches(not(isEnabled())))
-        onView(withId(R.id.editTextHeight)).check(matches(not(isEnabled())))
-        onView(withId(R.id.editTextDiameter)).check(matches(isEnabled()))
+        onView(withId(R.id.editTextSideA)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiameter)).check(matches(isDisplayed()))
     }
-    //endof INPUT FIELDS - ACTIVATION/DE-ACTIVATION
+    //endof INPUT FIELDS - CHANGE VISIBILITY
 
     //INPUT FIELDS - VALIDATION
     @Test

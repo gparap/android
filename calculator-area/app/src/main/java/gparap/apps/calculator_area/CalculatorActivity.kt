@@ -1,9 +1,12 @@
 package gparap.apps.calculator_area
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 
 /**
  * Created by gparap on 2021-02-12.
@@ -15,8 +18,9 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     lateinit var editTextHeight: EditText
     lateinit var editTextDiameter: EditText
     lateinit var result: TextView
-    var activeFields: ArrayList<EditText>? = ArrayList()
+    var visibleFields: ArrayList<EditText>? = ArrayList()
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculator)
@@ -50,7 +54,7 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         parent?.getItemAtPosition(position)
 
         //de-activate input fields based on spinner selection
-        handleFieldsActivation(spinner2d.selectedItem.toString())
+        handleFieldsVisibility(spinner2d.selectedItem.toString())
 
         //clear input and output fields
         clear()
@@ -60,65 +64,65 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         parent?.getItemAtPosition(0)
     }
 
-    private fun handleFieldsActivation(selectedItem: String) {
+    private fun handleFieldsVisibility(selectedItem: String) {
         //clear active fields list before activation
-        activeFields?.clear()
+        visibleFields?.clear()
 
-        //(de)activate fields and add to list
+        //change visibility of fields and add to list
         when (selectedItem) {
             "Square" -> {
-                editTextSideA.isEnabled = true.also { activeFields?.add(editTextSideA) }
-                editTextSideB.isEnabled = false
-                editTextHeight.isEnabled = false
-                editTextDiameter.isEnabled = false
+                editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
+                editTextSideB.isVisible = false
+                editTextHeight.isVisible = false
+                editTextDiameter.isVisible = false
             }
             "Rectangle" -> {
-                editTextSideA.isEnabled = true.also { activeFields?.add(editTextSideA) }
-                editTextSideB.isEnabled = true.also { activeFields?.add(editTextSideB) }
-                editTextHeight.isEnabled = false
-                editTextDiameter.isEnabled = false
+                editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
+                editTextSideB.isVisible = true.also { visibleFields?.add(editTextSideB) }
+                editTextHeight.isVisible = false
+                editTextDiameter.isVisible = false
             }
             "Parallelogram" -> {
-                editTextSideA.isEnabled = true.also { activeFields?.add(editTextSideA) }
-                editTextSideB.isEnabled = false
-                editTextHeight.isEnabled = true.also { activeFields?.add(editTextHeight) }
-                editTextDiameter.isEnabled = false
+                editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
+                editTextSideB.isVisible = false
+                editTextHeight.isVisible = true.also { visibleFields?.add(editTextHeight) }
+                editTextDiameter.isVisible = false
             }
             "Equilateral Triangle" -> {
-                editTextSideA.isEnabled = true.also { activeFields?.add(editTextSideA) }
-                editTextSideB.isEnabled = false
-                editTextHeight.isEnabled = false
-                editTextDiameter.isEnabled = false
+                editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
+                editTextSideB.isVisible = false
+                editTextHeight.isVisible = false
+                editTextDiameter.isVisible = false
             }
             "Triangle" -> {
-                editTextSideA.isEnabled = true.also { activeFields?.add(editTextSideA) }
-                editTextSideB.isEnabled = false
-                editTextHeight.isEnabled = true
-                editTextDiameter.isEnabled = false
+                editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
+                editTextSideB.isVisible = false
+                editTextHeight.isVisible = true
+                editTextDiameter.isVisible = false
             }
             "Trapezoid" -> {
-                editTextSideA.isEnabled = true.also { activeFields?.add(editTextSideA) }
-                editTextSideB.isEnabled = true.also { activeFields?.add(editTextSideB) }
-                editTextHeight.isEnabled = true.also { activeFields?.add(editTextHeight) }
-                editTextDiameter.isEnabled = false
+                editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
+                editTextSideB.isVisible = true.also { visibleFields?.add(editTextSideB) }
+                editTextHeight.isVisible = true.also { visibleFields?.add(editTextHeight) }
+                editTextDiameter.isVisible = false
             }
             "Hexagon" -> {
-                editTextSideA.isEnabled = true.also { activeFields?.add(editTextSideA) }
-                editTextSideB.isEnabled = false
-                editTextHeight.isEnabled = false
-                editTextDiameter.isEnabled = false
+                editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
+                editTextSideB.isVisible = false
+                editTextHeight.isVisible = false
+                editTextDiameter.isVisible = false
             }
             "Circle" -> {
-                editTextSideA.isEnabled = false
-                editTextSideB.isEnabled = false
-                editTextHeight.isEnabled = false
-                editTextDiameter.isEnabled = true.also { activeFields?.add(editTextDiameter) }
+                editTextSideA.isVisible = false
+                editTextSideB.isVisible = false
+                editTextHeight.isVisible = false
+                editTextDiameter.isVisible = true.also { visibleFields?.add(editTextDiameter) }
             }
         }
     }
 
     private fun validateInputFields() :Boolean {
-        for (field in activeFields!!) {
+        for (field in visibleFields!!) {
             //Check if active field is empty
             if (field.text.isEmpty()) {
                 Toast.makeText(this, R.string.toast_EnterValue, Toast.LENGTH_SHORT).show()
