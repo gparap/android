@@ -16,4 +16,9 @@
     <string name="toast_EnterValue">Please, enter values…</string>
     <string name="toast_EnterNumericValue">Please, enter numeric values…</string>
     <string name="toast_EnterPositiveValue">Please, enter positive values…</string>
+    <string name="hint_enter_side_a">enter side a</string>
+    <string name="hint_enter_side_b">enter side b</string>
+    <string name="hint_enter_height">enter height</string>
+    <string name="hint_enter_diameter">enter diameter</string>
+    <string name="button_calculate">Calculate</string>
 </resources>

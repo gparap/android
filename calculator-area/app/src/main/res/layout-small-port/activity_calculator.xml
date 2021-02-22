@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    tools:context=".CalculatorActivity">
+
+    <Spinner
+        android:id="@+id/spinnerShapes2D"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center_horizontal"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextSideA"
+        style="@style/Theme_layout_small_port"
+        android:autofillHints="false"
+        android:hint="@string/hint_enter_side_a"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
+        app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerShapes2D"
+        tools:ignore="TextFields" /><!--is inside style Theme_layout_small-->
+
+    <EditText
+        android:id="@+id/editTextSideB"
+        style="@style/Theme_layout_small_port"
+        android:autofillHints="false"
+        android:hint="@string/hint_enter_side_b"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
+        app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSideA"
+        tools:ignore="TextFields" /><!--is inside style Theme_layout_small-->
+
+    <EditText
+        android:id="@+id/editTextHeight"
+        style="@style/Theme_layout_small_port"
+        android:autofillHints="false"
+        android:hint="@string/hint_enter_height"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
+        app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSideB"
+        tools:ignore="TextFields" /><!--is inside style Theme_layout_small-->
+
+    <EditText
+        android:id="@+id/editTextDiameter"
+        style="@style/Theme_layout_small_port"
+        android:autofillHints="false"
+        android:hint="@string/hint_enter_diameter"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
+        app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
+        app:layout_constraintTop_toBottomOf="@+id/editTextHeight"
+        tools:ignore="TextFields" /><!--is inside style Theme_layout_small-->
+
+    <Button
+        android:id="@+id/buttonCalculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="onClickCalculateArea"
+        android:text="@string/button_calculate"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
+        app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
+        app:layout_constraintTop_toBottomOf="@+id/textViewResult" />
+
+    <TextView
+        android:id="@+id/textViewResult"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:focusable="true"
+        android:gravity="center"
+        android:text="@string/string_area"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
+        app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDiameter" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

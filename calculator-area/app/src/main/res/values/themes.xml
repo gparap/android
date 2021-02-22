@@ -13,4 +13,21 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!-- Layouts for small screens. -->
+    <style name="Theme_layout_small">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ems">10</item>
+        <item name="android:gravity">center</item>
+        <item name="android:inputType">number</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@android:drawable/editbox_background</item>
+    </style>
+    <style name="Theme_layout_small_port" parent="Theme_layout_small">
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+    <style name="Theme_layout_small_land" parent="Theme_layout_small">
+        <item name="android:layout_marginTop">0dp</item>
+    </style>
 </resources>
