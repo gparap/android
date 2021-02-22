@@ -14,60 +14,60 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:gravity="center_horizontal"
-        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextSideA"
-        style="@style/Theme_layout_small_land"
+        style="@style/edit_text_small_land"
         android:autofillHints="false"
         android:hint="@string/hint_enter_side_a"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
         app:layout_constraintTop_toBottomOf="@+id/spinnerShapes2D"
-        tools:ignore="TextFields" /><!--is inside style Theme_layout_small-->
+        tools:ignore="TextFields" />
 
     <EditText
         android:id="@+id/editTextSideB"
-        style="@style/Theme_layout_small_land"
+        style="@style/edit_text_small_land"
         android:autofillHints="false"
         android:hint="@string/hint_enter_side_b"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
         app:layout_constraintTop_toBottomOf="@+id/editTextSideA"
-        tools:ignore="TextFields" /><!--is inside style Theme_layout_small-->
+        tools:ignore="TextFields" />
 
     <EditText
         android:id="@+id/editTextHeight"
-        style="@style/Theme_layout_small_land"
+        style="@style/edit_text_small_land"
         android:autofillHints="false"
         android:hint="@string/hint_enter_height"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
         app:layout_constraintTop_toBottomOf="@+id/editTextSideB"
-        tools:ignore="TextFields" /><!--is inside style Theme_layout_small-->
+        tools:ignore="TextFields" />
 
     <EditText
         android:id="@+id/editTextDiameter"
-        style="@style/Theme_layout_small_land"
+        style="@style/edit_text_small_land"
         android:autofillHints="false"
         android:hint="@string/hint_enter_diameter"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
         app:layout_constraintTop_toBottomOf="@+id/editTextHeight"
-        tools:ignore="TextFields" /><!--is inside style Theme_layout_small-->
+        tools:ignore="TextFields"
+        tools:visibility="visible" />
 
     <Button
         android:id="@+id/buttonCalculate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="8dp"
         android:onClick="onClickCalculateArea"
         android:text="@string/button_calculate"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
@@ -78,7 +78,7 @@
         android:id="@+id/textViewResult"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="8dp"
         android:focusable="true"
         android:gravity="center"
         android:text="@string/string_area"

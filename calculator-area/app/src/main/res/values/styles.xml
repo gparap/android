@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- EditText style portrait mode. (DEFAULT) -->
+    <style name="edit_text_default_port">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:autofillHints" tools:targetApi="o">false</item>
+        <item name="android:background">@android:drawable/edit_text</item>
+        <item name="android:ems">10</item>
+        <item name="android:gravity">center</item>
+        <item name="android:inputType">number</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <!-- EditText style landscape variation. -->
+    <style name="edit_text_default_land" parent="@style/edit_text_default_port">
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:background">@android:drawable/editbox_background</item>
+    </style>
+
+    <!-- EditText style for small screens. -->
+    <style name="edit_text_small">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ems">10</item>
+        <item name="android:gravity">center</item>
+        <item name="android:inputType">number</item>
+        <item name="android:background">@android:drawable/editbox_background</item>
+    </style>
+    <style name="edit_text_small_port" parent="edit_text_small">
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+    <style name="edit_text_small_land" parent="edit_text_small">
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+</resources>

@@ -13,9 +13,7 @@
     <string name="string_area">Area</string>
 
     <!--Error messages-->
-    <string name="toast_EnterValue">Please, enter values…</string>
-    <string name="toast_EnterNumericValue">Please, enter numeric values…</string>
-    <string name="toast_EnterPositiveValue">Please, enter positive values…</string>
+    <string name="toast_EnterValue">Please, enter value(s)…</string>
     <string name="hint_enter_side_a">enter side a</string>
     <string name="hint_enter_side_b">enter side b</string>
     <string name="hint_enter_height">enter height</string>
