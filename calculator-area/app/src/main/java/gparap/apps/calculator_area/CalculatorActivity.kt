@@ -7,6 +7,7 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import java.lang.Exception
 
 /**
  * Created by gparap on 2021-02-12.
@@ -122,13 +123,33 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     }
 
     private fun validateInputFields() :Boolean {
+        //check if active field is empty
         for (field in visibleFields!!) {
-            //Check if active field is empty
             if (field.text.isEmpty()) {
                 Toast.makeText(this, R.string.toast_EnterValue, Toast.LENGTH_SHORT).show()
                 return false
             }
         }
+
+        //check if Parallelogram's side is equal with its height
+        if (spinner2d.selectedItem.toString() == "Parallelogram") {
+            try {
+                if (editTextSideA.text.toString() == editTextHeight.text.toString()) {
+                    Toast.makeText(this, R.string.toast_EqualValues_Parallelogram, Toast.LENGTH_SHORT).show()
+                    return false
+                }
+            }catch (e: Exception){e.printStackTrace()}
+
+        }
+        //check if one of Trapezoid's sides are equal with its height
+        else if (spinner2d.selectedItem.toString() == "Trapezoid") {
+            if (editTextSideA.text.toString() == editTextHeight.text.toString() ||
+                editTextSideB.text.toString() == editTextHeight.text.toString()) {
+                Toast.makeText(this, R.string.toast_EqualValues_Trapezoid, Toast.LENGTH_SHORT).show()
+                return false
+            }
+        }
+
         return true
     }
 
