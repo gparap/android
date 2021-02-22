@@ -8,6 +8,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import java.lang.Exception
+import kotlin.properties.Delegates
 
 /**
  * Created by gparap on 2021-02-12.
@@ -20,6 +21,15 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     lateinit var editTextDiameter: EditText
     lateinit var result: TextView
     var visibleFields: ArrayList<EditText>? = ArrayList()
+
+    //used for helping in clearing input fields (spinner's onItemSelected)
+    // when orientation changes occur and need to save/restore state
+    companion object {
+        var previousItemPosition by Delegates.notNull<Int>()
+        init {
+            previousItemPosition = 0
+        }
+    }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +51,10 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         adapter2d.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner2d.adapter = adapter2d
         spinner2d.onItemSelectedListener = this
+
+        //restore values after orientation changes
+        if (savedInstanceState != null)
+        restoreInstanceState(savedInstanceState)
     }
 
     fun onClickCalculateArea(view: View) {
@@ -58,11 +72,19 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         handleFieldsVisibility(spinner2d.selectedItem.toString())
 
         //clear input and output fields
-        clear()
+        if (previousItemPosition != position) {
+            clear()
+        }
+        previousItemPosition = position
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
         parent?.getItemAtPosition(0)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        saveInstanceState(outState)
     }
 
     private fun handleFieldsVisibility(selectedItem: String) {
@@ -133,18 +155,15 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
 
         //check if Parallelogram's side is equal with its height
         if (spinner2d.selectedItem.toString() == "Parallelogram") {
-            try {
-                if (editTextSideA.text.toString() == editTextHeight.text.toString()) {
-                    Toast.makeText(this, R.string.toast_EqualValues_Parallelogram, Toast.LENGTH_SHORT).show()
-                    return false
-                }
-            }catch (e: Exception){e.printStackTrace()}
-
+            if (editTextSideA.text.toString() == editTextHeight.text.toString()) {
+                Toast.makeText(this, R.string.toast_EqualValues_Parallelogram, Toast.LENGTH_SHORT).show()
+                return false
+            }
         }
-        //check if one of Trapezoid's sides are equal with its height
+
+        //check if Trapezoid's sides are equal
         else if (spinner2d.selectedItem.toString() == "Trapezoid") {
-            if (editTextSideA.text.toString() == editTextHeight.text.toString() ||
-                editTextSideB.text.toString() == editTextHeight.text.toString()) {
+            if (editTextSideA.text.toString() == editTextSideB.text.toString()) {
                 Toast.makeText(this, R.string.toast_EqualValues_Trapezoid, Toast.LENGTH_SHORT).show()
                 return false
             }
@@ -221,5 +240,27 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         result.text = getString(R.string.string_area)
             .plus(" = ")
             .plus(tempResult)
+    }
+
+    /*
+     * Persists values on orientation changes
+     */
+    private fun saveInstanceState(outState: Bundle) {
+        outState.putString("result", result.text.toString())
+        outState.putString("side_a", editTextSideA.text.toString())
+        outState.putString("side_b", editTextSideB.text.toString())
+        outState.putString("height", editTextHeight.text.toString())
+        outState.putString("diameter", editTextDiameter.text.toString())
+    }
+
+    /*
+     * Restores values after orientation changes
+     */
+    private fun restoreInstanceState(savedInstanceState: Bundle?) {
+        editTextSideA.setText(savedInstanceState?.get("side_a").toString())
+        editTextSideB.setText(savedInstanceState?.get("side_b").toString())
+        editTextHeight.setText(savedInstanceState?.get("height").toString())
+        editTextDiameter.setText(savedInstanceState?.get("diameter").toString())
+        result.text = savedInstanceState?.get("result").toString()
     }
 }

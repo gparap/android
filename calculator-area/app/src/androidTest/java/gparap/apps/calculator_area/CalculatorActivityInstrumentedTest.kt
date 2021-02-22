@@ -4,16 +4,13 @@ import android.view.View
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.RootMatchers.withDecorView
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import androidx.test.platform.ui.UiController
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.not
 import org.junit.Assert.assertEquals
@@ -217,8 +214,8 @@ class CalculatorActivityInstrumentedTest {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`("Trapezoid")).perform(click())
         onView(withId(R.id.editTextSideA)).perform(typeText("10"))
-        onView(withId(R.id.editTextSideB)).perform(typeText("1"))   //indifferent
-        onView(withId(R.id.editTextHeight)).perform(typeText("10"))
+        onView(withId(R.id.editTextSideB)).perform(typeText("10"))
+        onView(withId(R.id.editTextHeight)).perform(typeText("1"))   //indifferent
 
         //close keyboard
         onView(isRoot()).perform(closeSoftKeyboard())
@@ -227,24 +224,6 @@ class CalculatorActivityInstrumentedTest {
         onView(withId(R.id.buttonCalculate)).perform(click())
         onView(withText(R.string.toast_EqualValues_Trapezoid))
             .inRoot(withDecorView(not(`is`(rootView))))
-            .check(matches(isDisplayed()))
-    }
-    @Test
-    fun validateInput_Error_SidesCannotBeEqual_Trapezoid_SideBWithHeight() {
-        //enter values
-        onView(withId(R.id.spinnerShapes2D)).perform(click())
-        onData(`is`("Trapezoid")).perform(click())
-        onView(withId(R.id.editTextSideA)).perform(typeText("1"))   //indifferent
-        onView(withId(R.id.editTextSideB)).perform(typeText("10"))
-        onView(withId(R.id.editTextHeight)).perform(typeText("10"))
-
-        //close keyboard
-        onView(isRoot()).perform(closeSoftKeyboard())
-
-        //test
-        onView(withId(R.id.buttonCalculate)).perform(click())
-        onView(withText(R.string.toast_EqualValues_Trapezoid))
-            .inRoot(withDecorView(not(rootView)))
             .check(matches(isDisplayed()))
     }
     //endof INPUT FIELDS - VALIDATION

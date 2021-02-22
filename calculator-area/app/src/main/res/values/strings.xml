@@ -18,7 +18,7 @@
     <!--Error messages-->
     <string name="toast_EnterValue">Please, enter value(s)…</string>
     <string name="toast_EqualValues_Parallelogram">Side A and Height cannot be equal…</string>
-    <string name="toast_EqualValues_Trapezoid">Sides A and A cannot be equal…</string>
+    <string name="toast_EqualValues_Trapezoid">Sides A and B cannot be equal…</string>
 
     <!--Hints-->
     <string name="hint_enter_side_a">enter side a</string>
