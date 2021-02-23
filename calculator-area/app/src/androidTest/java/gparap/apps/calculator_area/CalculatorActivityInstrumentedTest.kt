@@ -47,143 +47,101 @@ class CalculatorActivityInstrumentedTest {
         assertEquals("gparap.apps.calculator_area", appContext.packageName)
     }
 
-    //VISIBILITY OF WIDGETS
     @Test
-    fun isDisplayed_Spinner2D(){
+    fun isDisplayed_Spinner2D() {
         onView(withId(R.id.spinnerShapes2D)).check(matches(isDisplayed()))
     }
+
     @Test
-    fun isDisplayed_EditTextSideA(){
-        onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
-    }
-    @Test
-    fun isDisplayed_EditTextSideB(){
-        onView(withId(R.id.editTextSideB)).check(matches(isDisplayed()))
-    }
-    @Test
-    fun isDisplayed_EditTextHeight(){
-        onView(withId(R.id.editTextHeight)).check(matches(isDisplayed()))
-    }
-    @Test
-    fun isDisplayed_EditTextDiameter(){
-        onView(withId(R.id.editTextDiameter)).check(matches(isDisplayed()))
-    }
-    @Test
-    fun isDisplayed_EditTextResult(){
+    fun isDisplayed_EditTextResult() {
         onView(withId(R.id.textViewResult)).check(matches(isDisplayed()))
     }
+
     @Test
-    fun isDisplayed_ButtonCalculate(){
+    fun isDisplayed_ButtonCalculate() {
         onView(withId(R.id.buttonCalculate)).check(matches(isDisplayed()))
     }
-    //endof VISIBILITY OF WIDGETS
-
-    //FUNCTIONALITY OF WIDGETS - BASIC
-    @Test
-    fun clickSpinnerToshowListOfShapes2D() {
-        onView(withId(R.id.spinnerShapes2D)).perform(click())
-        onData(`is`("Hexagon")).perform(click())
-        onView(withId(R.id.spinnerShapes2D)).check(matches(isDisplayed()))
-    }
 
     @Test
-    fun inputSideA() {
-        onView(withId(R.id.editTextSideA)).perform(typeText("1"), closeSoftKeyboard())
-        onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
-    }
-    @Test
-    fun inputSideB() {
-        onView(withId(R.id.editTextSideB)).perform(typeText("1"), closeSoftKeyboard())
-        onView(withId(R.id.editTextSideB)).check(matches(isDisplayed()))
-    }
-    @Test
-    fun inputSideHeight() {
-        onView(withId(R.id.editTextHeight)).perform(typeText("1"), closeSoftKeyboard())
-        onView(withId(R.id.editTextHeight)).check(matches(isDisplayed()))
-    }
-    @Test
-    fun inputSideDiameter() {
-        onView(withId(R.id.editTextDiameter)).perform(typeText("1"), closeSoftKeyboard())
-        onView(withId(R.id.editTextDiameter)).check(matches(isDisplayed()))
-    }
-    //endof FUNCTIONALITY OF WIDGETS
-
-    //INPUT FIELDS - CHANGE VISIBILITY
-    @Test
-    fun squareItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Diameter() {
+    fun squareItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Radius() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`("Square")).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
-        onView(withId(R.id.editTextDiameter)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextRadius)).check(matches(not(isDisplayed())))
     }
+
     @Test
-    fun rectangleItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Diameter() {
+    fun rectangleItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Radius() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`("Rectangle")).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
-        onView(withId(R.id.editTextDiameter)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextRadius)).check(matches(not(isDisplayed())))
     }
+
     @Test
-    fun parallelogramItemSelected_SetVisible_SideA_Height_SetInvisible_SideB_Diameter() {
+    fun parallelogramItemSelected_SetVisible_SideA_Height_SetInvisible_SideB_Radius() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`("Parallelogram")).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextHeight)).check(matches(isDisplayed()))
-        onView(withId(R.id.editTextDiameter)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextRadius)).check(matches(not(isDisplayed())))
     }
+
     @Test
-    fun equilateralTriangleItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Diameter() {
+    fun equilateralTriangleItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Radius() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`("Equilateral Triangle")).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
-        onView(withId(R.id.editTextDiameter)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextRadius)).check(matches(not(isDisplayed())))
     }
+
     @Test
-    fun triangleItemSelected_SetVisible_SideA_Height_SetInvisible_SideB_Diameter() {
+    fun triangleItemSelected_SetVisible_SideA_Height_SetInvisible_SideB_Radius() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`("Triangle")).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextHeight)).check(matches(isDisplayed()))
-        onView(withId(R.id.editTextDiameter)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextRadius)).check(matches(not(isDisplayed())))
     }
+
     @Test
-    fun trapezoidItemSelected_SetVisible_SideA_SideB_Height_SetInvisible_Diameter() {
+    fun trapezoidItemSelected_SetVisible_SideA_SideB_Height_SetInvisible_Radius() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`("Trapezoid")).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextHeight)).check(matches(isDisplayed()))
-        onView(withId(R.id.editTextDiameter)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextRadius)).check(matches(not(isDisplayed())))
     }
+
     @Test
-    fun hexagonItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Diameter() {
+    fun hexagonItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Radius() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`("Hexagon")).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
-        onView(withId(R.id.editTextDiameter)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextRadius)).check(matches(not(isDisplayed())))
     }
+
     @Test
-    fun circleItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Diameter() {
+    fun circleItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Radius() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`("Circle")).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
-        onView(withId(R.id.editTextDiameter)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextRadius)).check(matches(isDisplayed()))
     }
-    //endof INPUT FIELDS - CHANGE VISIBILITY
 
-    //INPUT FIELDS - VALIDATION
     @Test
     fun validateInput_Error_FieldMustNotBeEmpty() {
         onView(withId(R.id.buttonCalculate)).perform(click())
@@ -191,6 +149,7 @@ class CalculatorActivityInstrumentedTest {
             .inRoot(withDecorView(not(rootView)))
             .check(matches(isDisplayed()))
     }
+
     @Test
     fun validateInput_Error_SidesCannotBeEqual_Parallelogram() {
         //enter values
@@ -208,6 +167,7 @@ class CalculatorActivityInstrumentedTest {
             .inRoot(withDecorView(not(rootView)))
             .check(matches(isDisplayed()))
     }
+
     @Test
     fun validateInput_Error_SidesCannotBeEqual_Trapezoid_SideAWithHeight() {
         //enter values
@@ -226,5 +186,4 @@ class CalculatorActivityInstrumentedTest {
             .inRoot(withDecorView(not(`is`(rootView))))
             .check(matches(isDisplayed()))
     }
-    //endof INPUT FIELDS - VALIDATION
 }
