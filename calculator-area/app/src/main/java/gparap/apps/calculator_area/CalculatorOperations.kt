@@ -46,8 +46,8 @@ class CalculatorOperations {
         }
 
         @JvmStatic
-        fun calculateCircle(diameter: Int): Double {
-            return Math.PI * ((diameter.div(2)))
+        fun calculateCircle(radius: Int): Double {
+            return Math.PI * (radius.toFloat().pow(2))
         }
     }
 

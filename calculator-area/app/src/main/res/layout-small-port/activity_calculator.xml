@@ -52,10 +52,10 @@
         tools:ignore="TextFields" /><!--is inside style Theme_layout_small-->
 
     <EditText
-        android:id="@+id/editTextDiameter"
+        android:id="@+id/editTextRadius"
         style="@style/edit_text_small_port"
         android:autofillHints="false"
-        android:hint="@string/hint_enter_diameter"
+        android:hint="@string/hint_enter_radius"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
         app:layout_constraintTop_toBottomOf="@+id/editTextHeight"
@@ -84,6 +84,6 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDiameter" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextRadius" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

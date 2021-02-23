@@ -51,7 +51,7 @@ class CalculatorUnitTest {
     }
     @Test
     fun calculateCircle() {
-        val expected = 6.283185307179586
+        val expected = 50.26548245743669
         val actual = CalculatorOperations.calculateCircle(4)
         assertEquals(expected, actual, 0.0)
     }

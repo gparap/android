@@ -7,7 +7,6 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import java.lang.Exception
 import kotlin.properties.Delegates
 
 /**
@@ -18,7 +17,7 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     lateinit var editTextSideA: EditText
     lateinit var editTextSideB: EditText
     lateinit var editTextHeight: EditText
-    lateinit var editTextDiameter: EditText
+    lateinit var editTextRadius: EditText
     lateinit var result: TextView
     var visibleFields: ArrayList<EditText>? = ArrayList()
 
@@ -40,7 +39,7 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         editTextSideA = findViewById(R.id.editTextSideA)
         editTextSideB = findViewById(R.id.editTextSideB)
         editTextHeight = findViewById(R.id.editTextHeight)
-        editTextDiameter = findViewById(R.id.editTextDiameter)
+        editTextRadius = findViewById(R.id.editTextRadius)
         result = findViewById(R.id.textViewResult)
 
         //populate spinner with 2D shapes
@@ -97,49 +96,49 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = false
                 editTextHeight.isVisible = false
-                editTextDiameter.isVisible = false
+                editTextRadius.isVisible = false
             }
             "Rectangle" -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = true.also { visibleFields?.add(editTextSideB) }
                 editTextHeight.isVisible = false
-                editTextDiameter.isVisible = false
+                editTextRadius.isVisible = false
             }
             "Parallelogram" -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = false
                 editTextHeight.isVisible = true.also { visibleFields?.add(editTextHeight) }
-                editTextDiameter.isVisible = false
+                editTextRadius.isVisible = false
             }
             "Equilateral Triangle" -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = false
                 editTextHeight.isVisible = false
-                editTextDiameter.isVisible = false
+                editTextRadius.isVisible = false
             }
             "Triangle" -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = false
                 editTextHeight.isVisible = true
-                editTextDiameter.isVisible = false
+                editTextRadius.isVisible = false
             }
             "Trapezoid" -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = true.also { visibleFields?.add(editTextSideB) }
                 editTextHeight.isVisible = true.also { visibleFields?.add(editTextHeight) }
-                editTextDiameter.isVisible = false
+                editTextRadius.isVisible = false
             }
             "Hexagon" -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = false
                 editTextHeight.isVisible = false
-                editTextDiameter.isVisible = false
+                editTextRadius.isVisible = false
             }
             "Circle" -> {
                 editTextSideA.isVisible = false
                 editTextSideB.isVisible = false
                 editTextHeight.isVisible = false
-                editTextDiameter.isVisible = true.also { visibleFields?.add(editTextDiameter) }
+                editTextRadius.isVisible = true.also { visibleFields?.add(editTextRadius) }
             }
         }
     }
@@ -176,7 +175,7 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         editTextSideA.text.clear()
         editTextSideB.text.clear()
         editTextHeight.text.clear()
-        editTextDiameter.text.clear()
+        editTextRadius.text.clear()
         result.text = getString(R.string.string_area)
     }
 
@@ -217,7 +216,7 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                     .toString()
 
             "Circle" -> result.text =
-                CalculatorOperations.calculateCircle(editTextDiameter.text.toString().toInt())
+                CalculatorOperations.calculateCircle(editTextRadius.text.toString().toInt())
                     .toString()
         }
     }
@@ -250,7 +249,7 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         outState.putString("side_a", editTextSideA.text.toString())
         outState.putString("side_b", editTextSideB.text.toString())
         outState.putString("height", editTextHeight.text.toString())
-        outState.putString("diameter", editTextDiameter.text.toString())
+        outState.putString("radius", editTextRadius.text.toString())
     }
 
     /*
@@ -260,7 +259,7 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         editTextSideA.setText(savedInstanceState?.get("side_a").toString())
         editTextSideB.setText(savedInstanceState?.get("side_b").toString())
         editTextHeight.setText(savedInstanceState?.get("height").toString())
-        editTextDiameter.setText(savedInstanceState?.get("diameter").toString())
+        editTextRadius.setText(savedInstanceState?.get("radius").toString())
         result.text = savedInstanceState?.get("result").toString()
     }
 }
