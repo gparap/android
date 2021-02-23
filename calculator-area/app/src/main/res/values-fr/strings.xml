@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Calculateur de superficie</string>
+    <string name="button_calculate">Calculer</string>
+    <string name="string_area">Zone</string>
+    <string name="toast_EnterValue">Veuillez saisir des valeurs…</string>
+    <string name="toast_EqualValues_Parallelogram">Le côté A et la hauteur ne peuvent pas être égaux…</string>
+    <string name="toast_EqualValues_Trapezoid">Les côtés A et B ne peuvent pas être égaux…</string>
+    <string name="hint_enter_side_a">entrer côté a</string>
+    <string name="hint_enter_side_b">entrer côté b</string>
+    <string name="hint_enter_height">entrer la hauteur</string>
+    <string name="hint_enter_radius">entrer le rayon</string>
+</resources>

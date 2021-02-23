@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ఏరియా కాలిక్యులేటర్</string>
+    <string name="button_calculate">లెక్కించండి</string>
+    <string name="string_area">ప్రాంతం</string>
+    <string name="toast_EnterValue">దయచేసి, విలువ (ల) ను నమోదు చేయండి…</string>
+    <string name="toast_EqualValues_Parallelogram">సైడ్ ఎ మరియు ఎత్తు సమానంగా ఉండకూడదు…</string>
+    <string name="toast_EqualValues_Trapezoid">A మరియు B వైపులు సమానంగా ఉండకూడదు…</string>
+    <string name="hint_enter_side_a">వైపు ఎంటర్ a</string>
+    <string name="hint_enter_side_b">వైపు ఎంటర్ b</string>
+    <string name="hint_enter_height">ఎత్తు ఎంటర్</string>
+    <string name="hint_enter_radius">వ్యాసార్థాన్ని నమోదు చేయండి</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">면적 계산기</string>
+    <string name="button_calculate">계산하다</string>
+    <string name="string_area">지역</string>
+    <string name="toast_EnterValue">값을 입력하십시오…</string>
+    <string name="toast_EqualValues_Parallelogram">A면과 높이는 같을 수 없습니다…</string>
+    <string name="toast_EqualValues_Trapezoid">A면과 B면은 같을 수 없습니다.</string>
+    <string name="hint_enter_side_a">측면에 들어가다</string>
+    <string name="hint_enter_side_b">b면에 들어가다</string>
+    <string name="hint_enter_height">높이를 입력</string>
+    <string name="hint_enter_radius">반경 입력</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">क्षेत्र कैलकुलेटर</string>
+    <string name="button_calculate">गणना</string>
+    <string name="string_area">क्षेत्र</string>
+    <string name="toast_EnterValue">कृपया, मान दर्ज करें …</string>
+    <string name="toast_EqualValues_Parallelogram">साइड ए और ऊंचाई बराबर नहीं हो सकती …</string>
+    <string name="toast_EqualValues_Trapezoid">पक्ष A और B समान नहीं हो सकते …</string>
+    <string name="hint_enter_side_a">एक तरफ प्रवेश करें</string>
+    <string name="hint_enter_side_b">साइड बी दर्ज करें</string>
+    <string name="hint_enter_height">ऊंचाई दर्ज करें</string>
+    <string name="hint_enter_radius">त्रिज्या दर्ज करें</string>
+</resources>

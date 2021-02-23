@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Calculadora de Área</string>
+    <string name="button_calculate">Calcular</string>
+    <string name="string_area">Área</string>
+    <string name="toast_EnterValue">Por favor, insira o (s) valor (es) …</string>
+    <string name="toast_EqualValues_Parallelogram">O lado A e a altura não podem ser iguais …</string>
+    <string name="toast_EqualValues_Trapezoid">Os lados A e B não podem ser iguais …</string>
+    <string name="hint_enter_side_a">entre no lado a</string>
+    <string name="hint_enter_side_b">entre no lado b</string>
+    <string name="hint_enter_height">insira a altura</string>
+    <string name="hint_enter_radius">entrar no raio</string>
+</resources>

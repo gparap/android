@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Υπολογιστής εμβαδού</string>
+    <string name="button_calculate">Υπολόγισε</string>
+    <string name="string_area">Εμβαδόν</string>
+    <string name="toast_EnterValue">Παρακαλώ, εισαγάγετε τιμές…</string>
+    <string name="toast_EqualValues_Parallelogram">Η πλευρά A και το ύψος δεν μπορούν να είναι ίσες…</string>
+    <string name="toast_EqualValues_Trapezoid">Οι πλευρές Α και Β δεν μπορούν να είναι ίσες…</string>
+    <string name="hint_enter_side_a">εισάγετε πλευρά a</string>
+    <string name="hint_enter_side_b">εισάγετε πλευρά β</string>
+    <string name="hint_enter_height">εισάγετε ύψος</string>
+    <string name="hint_enter_radius">εισάγετε ακτίνα</string>
+</resources>

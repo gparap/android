@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">面積計算機</string>
+    <string name="button_calculate">計算する</string>
+    <string name="string_area">範囲</string>
+    <string name="toast_EnterValue">値を入力してください…</string>
+    <string name="toast_EqualValues_Parallelogram">サイドAと高さを等しくすることはできません…</string>
+    <string name="toast_EqualValues_Trapezoid">サイドAとサイドBを等しくすることはできません…</string>
+    <string name="hint_enter_side_a">サイドに入る</string>
+    <string name="hint_enter_side_b">サイドbに入る</string>
+    <string name="hint_enter_height">高さを入力してください</string>
+    <string name="hint_enter_radius">半径を入力してください</string>
+</resources>

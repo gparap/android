@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Máy tính diện tích</string>
+    <string name="button_calculate">Tính toán</string>
+    <string name="string_area">Khu vực</string>
+    <string name="toast_EnterValue">Vui lòng nhập (các) giá trị…</string>
+    <string name="toast_EqualValues_Parallelogram">Cạnh A và Chiều cao không được bằng nhau…</string>
+    <string name="toast_EqualValues_Trapezoid">Các mặt A và B không thể bằng nhau…</string>
+    <string name="hint_enter_side_a">nhập bên a</string>
+    <string name="hint_enter_side_b">nhập bên b</string>
+    <string name="hint_enter_height">nhập chiều cao</string>
+    <string name="hint_enter_radius">nhập bán kính</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">অঞ্চল ক্যালকুলেটর</string>
+    <string name="button_calculate">গণনা</string>
+    <string name="string_area">ক্ষেত্রফল</string>
+    <string name="toast_EnterValue">দয়া করে, মান (গুলি) প্রবেশ করান …</string>
+    <string name="toast_EqualValues_Parallelogram">সাইড এ এবং উচ্চতা সমান হতে পারে না …</string>
+    <string name="toast_EqualValues_Trapezoid">পক্ষ A এবং B সমান হতে পারে না …</string>
+    <string name="hint_enter_side_a">পাশ প্রবেশ করান a</string>
+    <string name="hint_enter_side_b">পাশ প্রবেশ খ</string>
+    <string name="hint_enter_height">উচ্চতা প্রবেশ করান</string>
+    <string name="hint_enter_radius">ব্যাসার্ধ প্রবেশ করান</string>
+</resources>

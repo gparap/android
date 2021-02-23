@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Flächenrechner</string>
+    <string name="button_calculate">Berechnung</string>
+    <string name="string_area">Bereich</string>
+    <string name="toast_EnterValue">Bitte geben Sie Werte ein…</string>
+    <string name="toast_EqualValues_Parallelogram">Seite A und Höhe können nicht gleich sein …</string>
+    <string name="toast_EqualValues_Trapezoid">Seiten A und B können nicht gleich sein …</string>
+    <string name="hint_enter_side_a">Seite betreten a</string>
+    <string name="hint_enter_side_b">Seite betreten b</string>
+    <string name="hint_enter_height">Höhe eingeben</string>
+    <string name="hint_enter_radius">Radius eingeben</string>
+</resources>

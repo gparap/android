@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Калькулятор площади</string>
+    <string name="button_calculate">Рассчитать</string>
+    <string name="string_area">Площадь</string>
+    <string name="toast_EnterValue">Пожалуйста, введите значение (я)…</string>
+    <string name="toast_EqualValues_Parallelogram">Сторона A и высота не могут быть равными…</string>
+    <string name="toast_EqualValues_Trapezoid">Стороны A и B не могут быть равными …</string>
+    <string name="hint_enter_side_a">войти в сторону</string>
+    <string name="hint_enter_side_b">введите сторону b</string>
+    <string name="hint_enter_height">введите высоту</string>
+    <string name="hint_enter_radius">введите радиус</string>
+</resources>

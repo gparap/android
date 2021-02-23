@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">面積計算器</string>
+    <string name="button_calculate">計算</string>
+    <string name="string_area">區域</string>
+    <string name="toast_EnterValue">請輸入值…</string>
+    <string name="toast_EqualValues_Parallelogram">邊A和高度不能相等…</string>
+    <string name="toast_EqualValues_Trapezoid">A和B邊不能相等…</string>
+    <string name="hint_enter_side_a">進入A面</string>
+    <string name="hint_enter_side_b">進入b面</string>
+    <string name="hint_enter_height">輸入身高</string>
+    <string name="hint_enter_radius">輸入半徑</string>
+</resources>

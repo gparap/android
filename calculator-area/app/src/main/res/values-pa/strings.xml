@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ਖੇਤਰ ਕੈਲਕੁਲੇਟਰ</string>
+    <string name="button_calculate">ਗਣਨਾ ਕਰੋ</string>
+    <string name="string_area">ਖੇਤਰ</string>
+    <string name="toast_EnterValue">ਕਿਰਪਾ ਕਰਕੇ, ਮੁੱਲ ਦਿਓ …</string>
+    <string name="toast_EqualValues_Parallelogram">ਸਾਈਡ ਏ ਅਤੇ ਕੱਦ ਬਰਾਬਰ ਨਹੀਂ ਹੋ ਸਕਦੇ …</string>
+    <string name="toast_EqualValues_Trapezoid">ਸਾਈਡ ਏ ਅਤੇ ਬੀ ਬਰਾਬਰ ਨਹੀਂ ਹੋ ਸਕਦੇ …</string>
+    <string name="hint_enter_side_a">ਪਾਸੇ ਦਿਓ</string>
+    <string name="hint_enter_side_b">ਪਾਸੇ ਦਾਖਲ ਕਰੋ ਬੀ</string>
+    <string name="hint_enter_height">ਉਚਾਈ ਦਿਓ</string>
+    <string name="hint_enter_radius">ਦਾਇਰਾ ਦਿਓ</string>
+</resources>
