@@ -1,6 +1,7 @@
 package gparap.apps.converter_binary
 
 import android.os.Bundle
+import android.text.Editable
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -27,6 +28,11 @@ class MainActivity : AppCompatActivity() {
         buttonConvertToText = findViewById(R.id.buttonConvertToText)
         buttonClear = findViewById(R.id.buttonClear)
 
+        //restore state after orientation changes
+        if (savedInstanceState != null) {
+            editTextResult.text = savedInstanceState.getCharSequence("result") as Editable
+        }
+
         //clear text
         buttonClear.setOnClickListener { editTextResult.text.clear() }
 
@@ -48,6 +54,13 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        //save state before orientation changes
+        outState.putCharSequence("result", editTextResult.text)
     }
 
     private fun isInputEmpty(): Boolean {
