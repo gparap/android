@@ -9,14 +9,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="2dp"
-
         android:layout_weight="1"
         android:text="@string/corvert_to_binary"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/buttonConvertToText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:textColor="@color/black"
         android:id="@+id/buttonConvertToText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -28,6 +29,7 @@
         app:layout_constraintStart_toStartOf="@+id/buttonConvertToBinary" />
 
     <Button
+        android:textColor="@color/black"
         android:id="@+id/buttonClear"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

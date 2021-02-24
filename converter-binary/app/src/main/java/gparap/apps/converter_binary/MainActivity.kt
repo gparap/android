@@ -1,10 +1,11 @@
 package gparap.apps.converter_binary
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+
 
 /**
  * Created by gparap on 2021-02-19.
