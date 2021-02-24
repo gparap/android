@@ -4,4 +4,8 @@
     <string name="convert_to_text">Convert to Text</string>
     <string name="clear">Clear</string>
     <string name="hint_enter_value">enter some value..</string>
+
+    <!--error messages-->
+    <string name="toast_EmptyInput">Please, enter some value..</string>
+    <string name="toast_WrongInput">Not a binary value!</string>
 </resources>

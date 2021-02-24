@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 /**
  * Created by gparap on 2021-02-19.
@@ -30,15 +31,29 @@ class MainActivity : AppCompatActivity() {
 
         //convert from text to binary
         buttonConvertToBinary.setOnClickListener {
-            editTextResult.setText(converter.convertTextToBinary(editTextResult.text.toString()))
+            if (!isInputEmpty()){
+                editTextResult.setText(converter.convertTextToBinary(editTextResult.text.toString()))
+            }
         }
 
         //convert from binary to text
         buttonConvertToText.setOnClickListener {
-            //validate input first
-            if (converter.validateBinaryInput(editTextResult.text.toString())) {
-                editTextResult.setText(converter.convertBinaryToText(editTextResult.text.toString()))
+            if (!isInputEmpty()) {
+                //validate input and act accordingly
+                if (converter.validateBinaryInput(editTextResult.text.toString())) {
+                    editTextResult.setText(converter.convertBinaryToText(editTextResult.text.toString()))
+                } else {
+                    Toast.makeText(this, R.string.toast_WrongInput, Toast.LENGTH_SHORT).show()
+                }
             }
         }
+    }
+
+    private fun isInputEmpty(): Boolean {
+        if (editTextResult.text.toString().isEmpty()) {
+            Toast.makeText(this, R.string.toast_EmptyInput, Toast.LENGTH_SHORT).show()
+            return true
+        }
+        return false
     }
 }
