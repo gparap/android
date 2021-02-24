@@ -1,6 +1,7 @@
 package gparap.apps.converter_binary
 
 /**
+ * Converts from binary to text and vice versa.
  * Created by gparap on 2021-02-19.
  */
 class Converter {
@@ -14,8 +15,8 @@ class Converter {
 
         val charArray: CharArray = textString.toCharArray()
         for (char: Char in charArray) {
-            val byte: Byte = char.toByte()
-            val binary: String = byte.toString(2)
+            val ascii: Short = char.toShort()
+            val binary: String = ascii.toString(2)
             stringBuffer.append(String.format("%08d", binary.toInt()))  //restores missing zeros in
         }                                                               // the front from conversion
         return stringBuffer.toString()
@@ -36,5 +37,22 @@ class Converter {
         }
 
         return stringBuffer.toString()
+    }
+
+    /**
+     * Validates binary input
+     *  -contains only "1" and/or "0"?
+     *  -is length dividable by 8?
+     */
+    fun validateBinaryInput(binaryString: String): Boolean {
+        //check if input consists only from "1" and "0"
+        if (binaryString.contains(Regex("[23456789.,-[+]]"))) { return false }
+        try { binaryString.toDouble() } catch (e:Exception) { return false }
+
+        //check if input length is divisable with 8
+        if (binaryString.length.rem(8) != 0) { return false }
+
+        //validation passes
+        return true
     }
 }
