@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ड्युअल कन्व्हर्टर</string>
+    <string name="corvert_to_binary">बायनरीमध्ये रूपांतरित करा</string>
+    <string name="convert_to_text">मजकूरामध्ये रूपांतरित करा</string>
+    <string name="clear">साफ</string>
+    <string name="hint_enter_value">काही मूल्य प्रविष्ट करा.</string>
+    <string name="toast_EmptyInput">कृपया मूल्य प्रविष्ट करा.</string>
+    <string name="toast_WrongInput">बायनरी मूल्य नाही!</string>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">বাইনারি রূপান্তরকারী</string>
+    <string name="corvert_to_binary">বাইনারি রূপান্তর করুন</string>
+    <string name="convert_to_text">পাঠ্যে রূপান্তর করুন</string>
+    <string name="clear">স্পষ্ট</string>
+    <string name="hint_enter_value">কিছু মান লিখুন ..</string>
+    <string name="toast_EmptyInput">দয়া করে কিছু মান লিখুন ..</string>
+    <string name="toast_WrongInput">বাইনারি মান নয়!</string>
+</resources>

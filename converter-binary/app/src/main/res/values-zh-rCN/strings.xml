@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">二進制轉換器</string>
+    <string name="corvert_to_binary">轉換為二進制</string>
+    <string name="convert_to_text">轉換成文字</string>
+    <string name="clear">清除</string>
+    <string name="hint_enter_value">輸入一些值。</string>
+    <string name="toast_EmptyInput">請輸入一些值。</string>
+    <string name="toast_WrongInput">不是二進制值！</string>
+</resources>

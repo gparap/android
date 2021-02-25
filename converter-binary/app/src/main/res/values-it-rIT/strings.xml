@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Convertitore binario</string>
+    <string name="corvert_to_binary">Converti in binario</string>
+    <string name="convert_to_text">Converti in testo</string>
+    <string name="clear">Chiaro</string>
+    <string name="hint_enter_value">inserisci un valore ..</string>
+    <string name="toast_EmptyInput">Per favore, inserisci un valore ..</string>
+    <string name="toast_WrongInput">Non è un valore binario!</string>
+</resources>

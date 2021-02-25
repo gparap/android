@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Δυαδικός μετατροπέας</string>
+    <string name="corvert_to_binary">Μετατροπή σε δυαδικό</string>
+    <string name="convert_to_text">Μετατροπή σε κείμενο</string>
+    <string name="clear">Καθαρισμός</string>
+    <string name="hint_enter_value">εισάγετε κάποια τιμή ..</string>
+    <string name="toast_EmptyInput">Παρακαλώ, εισαγάγετε κάποια τιμή ..</string>
+    <string name="toast_WrongInput">Μη δυαδική τιμή!</string>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Công cụ chuyển đổi nhị phân</string>
+    <string name="corvert_to_binary">Chuyển đổi sang Binary</string>
+    <string name="convert_to_text">Chuyển đổi sang văn bản</string>
+    <string name="clear">Thông thoáng</string>
+    <string name="hint_enter_value">nhập một số giá trị ..</string>
+    <string name="toast_EmptyInput">Vui lòng nhập một số giá trị ..</string>
+    <string name="toast_WrongInput">Không phải là giá trị nhị phân!</string>
+</resources>

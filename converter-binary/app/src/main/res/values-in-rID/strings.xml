@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Konverter ganda</string>
+    <string name="corvert_to_binary">Ubah ke biner</string>
+    <string name="convert_to_text">Ubah menjadi teks</string>
+    <string name="clear">Bersih</string>
+    <string name="hint_enter_value">Masukkan beberapa nilai.</string>
+    <string name="toast_EmptyInput">Harap masukkan nilai.</string>
+    <string name="toast_WrongInput">Bukan nilai biner!</string>
+</resources>

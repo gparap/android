@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Conversor duplo</string>
+    <string name="corvert_to_binary">Converter para binário</string>
+    <string name="convert_to_text">Converter para texto</string>
+    <string name="clear">Claro</string>
+    <string name="hint_enter_value">Insira algum valor.</string>
+    <string name="toast_EmptyInput">Por favor insira um valor.</string>
+    <string name="toast_WrongInput">Não é um valor binário!</string>
+</resources>

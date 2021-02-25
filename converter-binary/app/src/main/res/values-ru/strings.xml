@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Двойной конвертер</string>
+    <string name="corvert_to_binary">Преобразовать в двоичный</string>
+    <string name="convert_to_text">Преобразовать в текст</string>
+    <string name="clear">Прозрачный</string>
+    <string name="hint_enter_value">Введите какое-нибудь значение.</string>
+    <string name="toast_EmptyInput">Пожалуйста, введите значение.</string>
+    <string name="toast_WrongInput">Не двоичное значение!</string>
+</resources>

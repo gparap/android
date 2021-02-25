@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">듀얼 컨버터</string>
+    <string name="corvert_to_binary">바이너리로 변환</string>
+    <string name="convert_to_text">텍스트로 변환</string>
+    <string name="clear">맑은</string>
+    <string name="hint_enter_value">값을 입력하십시오.</string>
+    <string name="toast_EmptyInput">값을 입력하십시오.</string>
+    <string name="toast_WrongInput">이진 값이 아닙니다!</string>
+</resources>

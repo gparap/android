@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Konverter dobel</string>
+    <string name="corvert_to_binary">Ngonversi menyang binar</string>
+    <string name="convert_to_text">Ngonversi menyang teks</string>
+    <string name="clear">Bening</string>
+    <string name="hint_enter_value">Ketik sawetara regane.</string>
+    <string name="toast_EmptyInput">Ketik regane</string>
+    <string name="toast_WrongInput">Ora regane binar!</string>
+</resources>

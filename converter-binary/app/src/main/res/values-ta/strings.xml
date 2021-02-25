@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">பைனரி மாற்றி</string>
+    <string name="corvert_to_binary">பைனரிக்கு மாற்றவும்</string>
+    <string name="convert_to_text">உரைக்கு மாற்றவும்</string>
+    <string name="clear">அழி</string>
+    <string name="hint_enter_value">சில மதிப்பை உள்ளிடுக ..</string>
+    <string name="toast_EmptyInput">தயவுசெய்து, சில மதிப்பை உள்ளிடுக ..</string>
+    <string name="toast_WrongInput">பைனரி மதிப்பு அல்ல!</string>
+</resources>

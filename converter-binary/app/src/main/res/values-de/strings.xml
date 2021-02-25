@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Doppelkonverter</string>
+    <string name="corvert_to_binary">In Binär konvertieren</string>
+    <string name="convert_to_text">In Text konvertieren</string>
+    <string name="clear">klar</string>
+    <string name="hint_enter_value">Geben Sie einen Wert ein.</string>
+    <string name="toast_EmptyInput">Bitte einen Wert eingeben.</string>
+    <string name="toast_WrongInput">Kein Binärwert!</string>
+</resources>

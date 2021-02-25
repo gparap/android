@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ద్వంద్వ కన్వర్టర్</string>
+    <string name="corvert_to_binary">బైనరీకి మార్చండి</string>
+    <string name="convert_to_text">వచనానికి మార్చండి</string>
+    <string name="clear">క్లియర్</string>
+    <string name="hint_enter_value">కొంత విలువను నమోదు చేయండి.</string>
+    <string name="toast_EmptyInput">దయచేసి విలువను నింపండి.</string>
+    <string name="toast_WrongInput">బైనరీ విలువ కాదు!</string>
+</resources>

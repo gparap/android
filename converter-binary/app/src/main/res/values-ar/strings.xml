@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">محول ثنائي</string>
+    <string name="corvert_to_binary">قم بالتحويل إلى ثنائي</string>
+    <string name="convert_to_text">تحويل إلى نص</string>
+    <string name="clear">واضح</string>
+    <string name="hint_enter_value">أدخل بعض القيمة ..</string>
+    <string name="toast_EmptyInput">من فضلك أدخل قيمة ..</string>
+    <string name="toast_WrongInput">ليست قيمة ثنائية!</string>
+</resources>
