@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var buttonConvertToText: Button
     private lateinit var buttonClear: Button
     private val converter: Converter = Converter()
+    private val validator: Validator = Validator()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         buttonConvertToBinary.setOnClickListener {
             if (!isInputEmpty()){
                 editTextResult.setText(converter.convertTextToBinary(editTextResult.text.toString()))
+                //TODO: parse result with spaces after every byte
             }
         }
 
@@ -47,8 +49,9 @@ class MainActivity : AppCompatActivity() {
         buttonConvertToText.setOnClickListener {
             if (!isInputEmpty()) {
                 //validate input and act accordingly
-                if (converter.validateBinaryInput(editTextResult.text.toString())) {
+                if (validator.validateBinaryInput(editTextResult.text.toString())) {
                     editTextResult.setText(converter.convertBinaryToText(editTextResult.text.toString()))
+                    //TODO: parse result remove spaces
                 } else {
                     Toast.makeText(this, R.string.toast_WrongInput, Toast.LENGTH_SHORT).show()
                 }
