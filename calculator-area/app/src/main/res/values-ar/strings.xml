@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">حاسبة المنطقة</string>
+    <string name="button_calculate">احسب</string>
+    <string name="string_area">منطقة</string>
+    <string name="toast_EnterValue">من فضلك ، أدخل القيمة (القيم) …</string>
+    <string name="toast_EqualValues_Parallelogram">لا يمكن أن يكون الجانب \"أ\" والارتفاع متساويين …</string>
+    <string name="toast_EqualValues_Trapezoid">لا يمكن أن يكون الجانبان \"أ\" و \"ب\" متساويين …</string>
+    <string name="hint_enter_side_a">أدخل الجانب أ</string>
+    <string name="hint_enter_side_b">أدخل الجانب ب</string>
+    <string name="hint_enter_height">أدخل الارتفاع</string>
+    <string name="hint_enter_radius">أدخل نصف القطر</string>
+    <string-array name="shapes2D">
+        <item>مربع</item>
+        <item>مستطيل</item>
+        <item>متوازي الاضلاع</item>
+        <item>مثلث متساوي الاضلاع</item>
+        <item>مثلث</item>
+        <item>شبه منحرف</item>
+        <item>سداسي الزوايا</item>
+        <item>دائرة</item>
+    </string-array>
+    <string name="shape_square">مربع</string>
+    <string name="shape_rectangle">مستطيل</string>
+    <string name="shape_parallelogram">متوازي الاضلاع</string>
+    <string name="shape_equilateral_triangle">مثلث متساوي الاضلاع</string>
+    <string name="shape_triangle">مثلث</string>
+    <string name="shape_trapezoid">شبه منحرف</string>
+    <string name="shape_hexagon">سداسي الزوايا</string>
+    <string name="shape_circle">دائرة</string>
+</resources>
