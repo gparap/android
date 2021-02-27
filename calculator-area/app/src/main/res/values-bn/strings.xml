@@ -10,4 +10,22 @@
     <string name="hint_enter_side_b">পাশ প্রবেশ খ</string>
     <string name="hint_enter_height">উচ্চতা প্রবেশ করান</string>
     <string name="hint_enter_radius">ব্যাসার্ধ প্রবেশ করান</string>
+    <string-array name="shapes2D">
+        <item>স্কয়ার</item>
+        <item>আয়তক্ষেত্র</item>
+        <item>সমান্তরাল</item>
+        <item>সমবাহু ত্রিভুজ</item>
+        <item>ত্রিভুজ</item>
+        <item>ট্র্যাপিজয়েড</item>
+        <item>ষড়ভুজ</item>
+        <item>বৃত্ত</item>
+    </string-array>
+    <string name="shape_square">স্কয়ার</string>
+    <string name="shape_rectangle">আয়তক্ষেত্র</string>
+    <string name="shape_parallelogram">সমান্তরাল</string>
+    <string name="shape_equilateral_triangle">সমবাহু ত্রিভুজ</string>
+    <string name="shape_triangle">ত্রিভুজ</string>
+    <string name="shape_trapezoid">ট্র্যাপিজয়েড</string>
+    <string name="shape_hexagon">ষড়ভুজ</string>
+    <string name="shape_circle">বৃত্ত</string>
 </resources>

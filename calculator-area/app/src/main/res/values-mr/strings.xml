@@ -10,4 +10,22 @@
     <string name="hint_enter_side_b">बाजू प्रविष्ट करा ब</string>
     <string name="hint_enter_height">उंची प्रविष्ट करा</string>
     <string name="hint_enter_radius">त्रिज्या प्रविष्ट करा</string>
+    <string-array name="shapes2D">
+        <item>चौरस</item>
+        <item>आयत</item>
+        <item>समांतरभुज</item>
+        <item>समभुज त्रिकोण</item>
+        <item>त्रिकोण</item>
+        <item>ट्रॅपेझॉइड</item>
+        <item>षटकोन</item>
+        <item>वर्तुळ</item>
+    </string-array>
+    <string name="shape_square">चौरस</string>
+    <string name="shape_rectangle">आयत</string>
+    <string name="shape_parallelogram">समांतरभुज</string>
+    <string name="shape_equilateral_triangle">समभुज त्रिकोण</string>
+    <string name="shape_triangle">त्रिकोण</string>
+    <string name="shape_trapezoid">ट्रॅपेझॉइड</string>
+    <string name="shape_hexagon">षटकोन</string>
+    <string name="shape_circle">वर्तुळ</string>
 </resources>

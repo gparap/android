@@ -10,4 +10,22 @@
     <string name="hint_enter_side_b">b면에 들어가다</string>
     <string name="hint_enter_height">높이를 입력</string>
     <string name="hint_enter_radius">반경 입력</string>
+    <string-array name="shapes2D">
+        <item>광장</item>
+        <item>직사각형</item>
+        <item>평행 사변형</item>
+        <item>정삼각형</item>
+        <item>삼각형</item>
+        <item>사다리꼴</item>
+        <item>육각형</item>
+        <item>원</item>
+    </string-array>
+    <string name="shape_square">광장</string>
+    <string name="shape_rectangle">직사각형</string>
+    <string name="shape_parallelogram">평행 사변형</string>
+    <string name="shape_equilateral_triangle">정삼각형</string>
+    <string name="shape_triangle">삼각형</string>
+    <string name="shape_trapezoid">사다리꼴</string>
+    <string name="shape_hexagon">육각형</string>
+    <string name="shape_circle">원</string>
 </resources>

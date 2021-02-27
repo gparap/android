@@ -10,4 +10,22 @@
     <string name="hint_enter_side_b">వైపు ఎంటర్ b</string>
     <string name="hint_enter_height">ఎత్తు ఎంటర్</string>
     <string name="hint_enter_radius">వ్యాసార్థాన్ని నమోదు చేయండి</string>
+    <string-array name="shapes2D">
+        <item>స్క్వేర్</item>
+        <item>దీర్ఘ చతురస్రం</item>
+        <item>సమాంతర చతుర్భుజం</item>
+        <item>సమబాహు త్రిభుజం</item>
+        <item>త్రిభుజం</item>
+        <item>ట్రాపెజాయిడ్</item>
+        <item>షడ్భుజి</item>
+        <item>వృత్తం</item>
+    </string-array>
+    <string name="shape_square">స్క్వేర్</string>
+    <string name="shape_rectangle">దీర్ఘ చతురస్రం</string>
+    <string name="shape_parallelogram">సమాంతర చతుర్భుజం</string>
+    <string name="shape_equilateral_triangle">సమబాహు త్రిభుజం</string>
+    <string name="shape_triangle">త్రిభుజం</string>
+    <string name="shape_trapezoid">ట్రాపెజాయిడ్</string>
+    <string name="shape_hexagon">షడ్భుజి</string>
+    <string name="shape_circle">వృత్తం</string>
 </resources>

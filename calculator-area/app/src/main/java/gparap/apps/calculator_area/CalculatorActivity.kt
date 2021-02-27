@@ -28,13 +28,13 @@ import kotlin.properties.Delegates
  * Created by gparap on 2021-02-12.
  */
 class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
-    lateinit var spinner2d: Spinner
-    lateinit var editTextSideA: EditText
-    lateinit var editTextSideB: EditText
-    lateinit var editTextHeight: EditText
-    lateinit var editTextRadius: EditText
-    lateinit var result: TextView
-    var visibleFields: ArrayList<EditText>? = ArrayList()
+    private lateinit var spinner2d: Spinner
+    private lateinit var editTextSideA: EditText
+    private lateinit var editTextSideB: EditText
+    private lateinit var editTextHeight: EditText
+    private lateinit var editTextRadius: EditText
+    private lateinit var result: TextView
+    private var visibleFields: ArrayList<EditText>? = ArrayList()
 
     //used for helping in clearing input fields (spinner's onItemSelected)
     // when orientation changes occur and need to save/restore state
@@ -107,49 +107,49 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
 
         //change visibility of fields and add to list
         when (selectedItem) {
-            "Square" -> {
+            getString(R.string.shape_square) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = false
                 editTextHeight.isVisible = false
                 editTextRadius.isVisible = false
             }
-            "Rectangle" -> {
+            getString(R.string.shape_rectangle) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = true.also { visibleFields?.add(editTextSideB) }
                 editTextHeight.isVisible = false
                 editTextRadius.isVisible = false
             }
-            "Parallelogram" -> {
+            getString(R.string.shape_parallelogram) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = false
                 editTextHeight.isVisible = true.also { visibleFields?.add(editTextHeight) }
                 editTextRadius.isVisible = false
             }
-            "Equilateral Triangle" -> {
+            getString(R.string.shape_equilateral_triangle) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = false
                 editTextHeight.isVisible = false
                 editTextRadius.isVisible = false
             }
-            "Triangle" -> {
+            getString(R.string.shape_triangle) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = false
                 editTextHeight.isVisible = true
                 editTextRadius.isVisible = false
             }
-            "Trapezoid" -> {
+            getString(R.string.shape_trapezoid) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = true.also { visibleFields?.add(editTextSideB) }
                 editTextHeight.isVisible = true.also { visibleFields?.add(editTextHeight) }
                 editTextRadius.isVisible = false
             }
-            "Hexagon" -> {
+            getString(R.string.shape_hexagon) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = false
                 editTextHeight.isVisible = false
                 editTextRadius.isVisible = false
             }
-            "Circle" -> {
+            getString(R.string.shape_circle) -> {
                 editTextSideA.isVisible = false
                 editTextSideB.isVisible = false
                 editTextHeight.isVisible = false
@@ -168,7 +168,7 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         }
 
         //check if Parallelogram's side is equal with its height
-        if (spinner2d.selectedItem.toString() == "Parallelogram") {
+        if (spinner2d.selectedItem.toString() == getString(R.string.shape_parallelogram)) {
             if (editTextSideA.text.toString() == editTextHeight.text.toString()) {
                 Toast.makeText(this, R.string.toast_EqualValues_Parallelogram, Toast.LENGTH_SHORT).show()
                 return false
@@ -176,7 +176,7 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         }
 
         //check if Trapezoid's sides are equal
-        else if (spinner2d.selectedItem.toString() == "Trapezoid") {
+        else if (spinner2d.selectedItem.toString() == getString(R.string.shape_trapezoid)) {
             if (editTextSideA.text.toString() == editTextSideB.text.toString()) {
                 Toast.makeText(this, R.string.toast_EqualValues_Trapezoid, Toast.LENGTH_SHORT).show()
                 return false
@@ -196,41 +196,41 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
 
     private fun calculateArea() {
         when (spinner2d.selectedItem.toString()) {
-            "Square" -> result.text = CalculatorOperations.calculateSquare(
+            getString(R.string.shape_square) -> result.text = CalculatorOperations.calculateSquare(
                 editTextSideA.text.toString().toInt()
             ).toString()
 
-            "Rectangle" -> result.text = CalculatorOperations.calculateRectangle(
+            getString(R.string.shape_rectangle) -> result.text = CalculatorOperations.calculateRectangle(
                 editTextSideA.text.toString().toInt(),
                 editTextSideB.text.toString().toInt()
             ).toString()
 
-            "Parallelogram" -> result.text = CalculatorOperations.calculateParallelogram(
+            getString(R.string.shape_parallelogram) -> result.text = CalculatorOperations.calculateParallelogram(
                 editTextSideA.text.toString().toInt(),
                 editTextHeight.text.toString().toInt()
             ).toString()
 
-            "Equilateral Triangle" -> result.text =
+            getString(R.string.shape_equilateral_triangle) -> result.text =
                 CalculatorOperations.calculateEquilateralTriangle(
                     editTextSideA.text.toString().toInt()
                 ).toString()
 
-            "Triangle" -> result.text = CalculatorOperations.calculateTriangle(
+            getString(R.string.shape_triangle) -> result.text = CalculatorOperations.calculateTriangle(
                 editTextSideA.text.toString().toInt(),
                 editTextHeight.text.toString().toInt()
             ).toString()
 
-            "Trapezoid" -> result.text = CalculatorOperations.calculateTrapezoid(
+            getString(R.string.shape_trapezoid) -> result.text = CalculatorOperations.calculateTrapezoid(
                 editTextSideA.text.toString().toInt(),
                 editTextSideB.text.toString().toInt(),
                 editTextHeight.text.toString().toInt()
             ).toString()
 
-            "Hexagon" -> result.text =
+            getString(R.string.shape_hexagon) -> result.text =
                 CalculatorOperations.calculateHexagon(editTextSideA.text.toString().toInt())
                     .toString()
 
-            "Circle" -> result.text =
+            getString(R.string.shape_circle) -> result.text =
                 CalculatorOperations.calculateCircle(editTextRadius.text.toString().toInt())
                     .toString()
         }
@@ -242,8 +242,11 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
      */
     private fun beautifyResult() {
         //keep only two (2) decimals
-        val tempDouble: Double = result.text.toString().toDouble()
-        var tempResult: String = "%.2f".format(tempDouble).toDouble().toString()
+        var tempResult = try {
+            result.text.toString().substring(0, result.text.toString().indexOf(".") + 3)
+        } catch (e: Exception) {
+            result.text.toString()
+        }
 
         //remove zero ("0.")
         if (tempResult.endsWith(".0")) {

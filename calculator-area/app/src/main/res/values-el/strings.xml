@@ -10,4 +10,22 @@
     <string name="hint_enter_side_b">εισάγετε πλευρά β</string>
     <string name="hint_enter_height">εισάγετε ύψος</string>
     <string name="hint_enter_radius">εισάγετε ακτίνα</string>
+    <string-array name="shapes2D">
+        <item>Τετράγωνο</item>
+        <item>Ορθογώνιο Παραλληλόγραμμο</item>
+        <item>Παραλληλόγραμμο</item>
+        <item>Ισόπλευρο Τρίγωνο</item>
+        <item>Τρίγωνο</item>
+        <item>Τραπέζιο</item>
+        <item>Εξάγωνο</item>
+        <item>Κύκλος</item>
+    </string-array>
+    <string name="shape_square">Τετράγωνο</string>
+    <string name="shape_rectangle">Ορθογώνιο Παραλληλόγραμμο</string>
+    <string name="shape_parallelogram">Παραλληλόγραμμο</string>
+    <string name="shape_equilateral_triangle">Ισόπλευρο Τρίγωνο</string>
+    <string name="shape_triangle">Τρίγωνο</string>
+    <string name="shape_trapezoid">Τραπέζιο</string>
+    <string name="shape_hexagon">Εξάγωνο</string>
+    <string name="shape_circle">Κύκλος</string>
 </resources>

@@ -10,4 +10,22 @@
     <string name="hint_enter_side_b">ਪਾਸੇ ਦਾਖਲ ਕਰੋ ਬੀ</string>
     <string name="hint_enter_height">ਉਚਾਈ ਦਿਓ</string>
     <string name="hint_enter_radius">ਦਾਇਰਾ ਦਿਓ</string>
+    <string-array name="shapes2D">
+        <item>ਵਰਗ</item>
+        <item>ਆਇਤਾਕਾਰ</item>
+        <item>ਪੈਰਲਲੋਗ੍ਰਾਮ</item>
+        <item>ਸਮਾਨੁਤਰ ਤ੍ਰਿਕੋਣ</item>
+        <item>ਤਿਕੋਣ</item>
+        <item>ਟਰੈਪੋਜ਼ਾਈਡ</item>
+        <item>ਹੈਕਸਾਗਨ</item>
+        <item>ਚੱਕਰ</item>
+    </string-array>
+    <string name="shape_square">ਵਰਗ</string>
+    <string name="shape_rectangle">ਆਇਤਾਕਾਰ</string>
+    <string name="shape_parallelogram">ਪੈਰਲਲੋਗ੍ਰਾਮ</string>
+    <string name="shape_equilateral_triangle">ਸਮਾਨੁਤਰ ਤ੍ਰਿਕੋਣ</string>
+    <string name="shape_triangle">ਤਿਕੋਣ</string>
+    <string name="shape_trapezoid">ਟਰੈਪੋਜ਼ਾਈਡ</string>
+    <string name="shape_hexagon">ਹੈਕਸਾਗਨ</string>
+    <string name="shape_circle">ਚੱਕਰ</string>
 </resources>

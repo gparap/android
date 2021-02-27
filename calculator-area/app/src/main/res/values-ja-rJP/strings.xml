@@ -10,4 +10,22 @@
     <string name="hint_enter_side_b">サイドbに入る</string>
     <string name="hint_enter_height">高さを入力してください</string>
     <string name="hint_enter_radius">半径を入力してください</string>
+    <string-array name="shapes2D">
+        <item>平方</item>
+        <item>矩形</item>
+        <item>平行四辺形</item>
+        <item>正三角形</item>
+        <item>三角形</item>
+        <item>台形</item>
+        <item>六角形</item>
+        <item>サークル</item>
+    </string-array>
+    <string name="shape_square">平方</string>
+    <string name="shape_rectangle">矩形</string>
+    <string name="shape_parallelogram">平行四辺形</string>
+    <string name="shape_equilateral_triangle">正三角形</string>
+    <string name="shape_triangle">三角形</string>
+    <string name="shape_trapezoid">台形</string>
+    <string name="shape_hexagon">六角形</string>
+    <string name="shape_circle">サークル</string>
 </resources>

@@ -10,4 +10,22 @@
     <string name="hint_enter_side_b">введите сторону b</string>
     <string name="hint_enter_height">введите высоту</string>
     <string name="hint_enter_radius">введите радиус</string>
+    <string-array name="shapes2D">
+        <item>Квадрат</item>
+        <item>Прямоугольник</item>
+        <item>Параллелограмм</item>
+        <item>Равносторонний треугольник</item>
+        <item>Треугольник</item>
+        <item>Трапеция</item>
+        <item>Шестиугольник</item>
+        <item>Круг</item>
+    </string-array>
+    <string name="shape_square">Квадрат</string>
+    <string name="shape_rectangle">Прямоугольник</string>
+    <string name="shape_parallelogram">Параллелограмм</string>
+    <string name="shape_equilateral_triangle">Равносторонний треугольник</string>
+    <string name="shape_triangle">Треугольник</string>
+    <string name="shape_trapezoid">Трапеция</string>
+    <string name="shape_hexagon">Шестиугольник</string>
+    <string name="shape_circle">Круг</string>
 </resources>

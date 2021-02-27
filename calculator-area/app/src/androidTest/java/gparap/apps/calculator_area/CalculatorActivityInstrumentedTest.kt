@@ -15,6 +15,7 @@
  */
 package gparap.apps.calculator_area
 
+import android.content.Context
 import android.view.View
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onData
@@ -42,12 +43,16 @@ class CalculatorActivityInstrumentedTest {
     @get:Rule
     val activityScenarioRule = ActivityScenarioRule(CalculatorActivity::class.java)
     var rootView: View? = null
+    var context: Context? = null
 
     @Before
     fun setUp() {
-        //get the top-level window decor view
         activityScenarioRule.scenario.onActivity { activity ->
+            //get the top-level window decor view
             rootView = activity.window.decorView
+
+            //get the activity context
+            context = activity.baseContext
         }
 
         //launch activity
@@ -79,7 +84,7 @@ class CalculatorActivityInstrumentedTest {
     @Test
     fun squareItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Radius() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
-        onData(`is`("Square")).perform(click())
+        onData(`is`(context?.getString(R.string.shape_square))).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
@@ -89,7 +94,7 @@ class CalculatorActivityInstrumentedTest {
     @Test
     fun rectangleItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Radius() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
-        onData(`is`("Rectangle")).perform(click())
+        onData(`is`(context?.getString(R.string.shape_rectangle))).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
@@ -99,7 +104,7 @@ class CalculatorActivityInstrumentedTest {
     @Test
     fun parallelogramItemSelected_SetVisible_SideA_Height_SetInvisible_SideB_Radius() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
-        onData(`is`("Parallelogram")).perform(click())
+        onData(`is`(context?.getString(R.string.shape_parallelogram))).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextHeight)).check(matches(isDisplayed()))
@@ -109,7 +114,7 @@ class CalculatorActivityInstrumentedTest {
     @Test
     fun equilateralTriangleItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Radius() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
-        onData(`is`("Equilateral Triangle")).perform(click())
+        onData(`is`(context?.getString(R.string.shape_equilateral_triangle))).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
@@ -119,7 +124,7 @@ class CalculatorActivityInstrumentedTest {
     @Test
     fun triangleItemSelected_SetVisible_SideA_Height_SetInvisible_SideB_Radius() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
-        onData(`is`("Triangle")).perform(click())
+        onData(`is`(context?.getString(R.string.shape_triangle))).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextHeight)).check(matches(isDisplayed()))
@@ -129,7 +134,7 @@ class CalculatorActivityInstrumentedTest {
     @Test
     fun trapezoidItemSelected_SetVisible_SideA_SideB_Height_SetInvisible_Radius() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
-        onData(`is`("Trapezoid")).perform(click())
+        onData(`is`(context?.getString(R.string.shape_trapezoid))).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextHeight)).check(matches(isDisplayed()))
@@ -139,7 +144,7 @@ class CalculatorActivityInstrumentedTest {
     @Test
     fun hexagonItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Radius() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
-        onData(`is`("Hexagon")).perform(click())
+        onData(`is`(context?.getString(R.string.shape_hexagon))).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
@@ -149,7 +154,7 @@ class CalculatorActivityInstrumentedTest {
     @Test
     fun circleItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Radius() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
-        onData(`is`("Circle")).perform(click())
+        onData(`is`(context?.getString(R.string.shape_circle))).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
@@ -168,7 +173,7 @@ class CalculatorActivityInstrumentedTest {
     fun validateInput_Error_SidesCannotBeEqual_Parallelogram() {
         //enter values
         onView(withId(R.id.spinnerShapes2D)).perform(click())
-        onData(`is`("Parallelogram")).perform(click())
+        onData(`is`(context?.getString(R.string.shape_parallelogram))).perform(click())
         onView(withId(R.id.editTextSideA)).perform(typeText("10"))
         onView(withId(R.id.editTextHeight)).perform(typeText("10"))
 
@@ -186,7 +191,7 @@ class CalculatorActivityInstrumentedTest {
     fun validateInput_Error_SidesCannotBeEqual_Trapezoid_SideAWithHeight() {
         //enter values
         onView(withId(R.id.spinnerShapes2D)).perform(click())
-        onData(`is`("Trapezoid")).perform(click())
+        onData(`is`(context?.getString(R.string.shape_trapezoid))).perform(click())
         onView(withId(R.id.editTextSideA)).perform(typeText("10"))
         onView(withId(R.id.editTextSideB)).perform(typeText("10"))
         onView(withId(R.id.editTextHeight)).perform(typeText("1"))   //indifferent

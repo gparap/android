@@ -10,4 +10,22 @@
     <string name="hint_enter_side_b">साइड बी दर्ज करें</string>
     <string name="hint_enter_height">ऊंचाई दर्ज करें</string>
     <string name="hint_enter_radius">त्रिज्या दर्ज करें</string>
+    <string-array name="shapes2D">
+        <item>वर्ग</item>
+        <item>आयत</item>
+        <item>चतुर्भुज</item>
+        <item>समान भुजाओं वाला त्रिकोण</item>
+        <item>त्रिकोण</item>
+        <item>चतुर्भुज</item>
+        <item>षट्भुज</item>
+        <item>वृत्त</item>
+    </string-array>
+    <string name="shape_square">वर्ग</string>
+    <string name="shape_rectangle">आयत</string>
+    <string name="shape_parallelogram">चतुर्भुज</string>
+    <string name="shape_equilateral_triangle">समान भुजाओं वाला त्रिकोण</string>
+    <string name="shape_triangle">त्रिकोण</string>
+    <string name="shape_trapezoid">चतुर्भुज</string>
+    <string name="shape_hexagon">षट्भुज</string>
+    <string name="shape_circle">वृत्त</string>
 </resources>

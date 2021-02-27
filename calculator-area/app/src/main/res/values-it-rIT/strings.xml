@@ -10,4 +10,22 @@
     <string name="hint_enter_side_b">entrare nel lato b</string>
     <string name="hint_enter_height">inserire l\'altezza</string>
     <string name="hint_enter_radius">inserisci raggio</string>
+    <string-array name="shapes2D">
+        <item>Piazza</item>
+        <item>Rettangolo</item>
+        <item>Parallelogramma</item>
+        <item>Triangolo equilatero</item>
+        <item>Triangolo</item>
+        <item>Trapezio</item>
+        <item>Esagono</item>
+        <item>Cerchio</item>
+    </string-array>
+    <string name="shape_square">Piazza</string>
+    <string name="shape_rectangle">Rettangolo</string>
+    <string name="shape_parallelogram">Parallelogramma</string>
+    <string name="shape_equilateral_triangle">Triangolo equilatero</string>
+    <string name="shape_triangle">Triangolo</string>
+    <string name="shape_trapezoid">Trapezio</string>
+    <string name="shape_hexagon">Esagono</string>
+    <string name="shape_circle">Cerchio</string>
 </resources>

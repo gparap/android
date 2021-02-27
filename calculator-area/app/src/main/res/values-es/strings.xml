@@ -10,4 +10,22 @@
     <string name="toast_EnterValue">Por favor, ingrese valor (es)…</string>
     <string name="toast_EqualValues_Parallelogram">El lado A y la altura no pueden ser iguales …</string>
     <string name="toast_EqualValues_Trapezoid">Los lados A y B no pueden ser iguales …</string>
+    <string-array name="shapes2D">
+        <item>Cuadrado</item>
+        <item>Rectángulo</item>
+        <item>Paralelogramo</item>
+        <item>Triángulo equilátero</item>
+        <item>Triángulo</item>
+        <item>Trapezoide</item>
+        <item>Hexágono</item>
+        <item>Circulo</item>
+    </string-array>
+    <string name="shape_square">Cuadrado</string>
+    <string name="shape_rectangle">Rectángulo</string>
+    <string name="shape_parallelogram">Paralelogramo</string>
+    <string name="shape_equilateral_triangle">Triángulo equilátero</string>
+    <string name="shape_triangle">Triángulo</string>
+    <string name="shape_trapezoid">Trapezoide</string>
+    <string name="shape_hexagon">Hexágono</string>
+    <string name="shape_circle">Circulo</string>
 </resources>

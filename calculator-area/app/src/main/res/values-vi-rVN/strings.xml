@@ -10,4 +10,22 @@
     <string name="hint_enter_side_b">nhập bên b</string>
     <string name="hint_enter_height">nhập chiều cao</string>
     <string name="hint_enter_radius">nhập bán kính</string>
+    <string-array name="shapes2D">
+        <item>Quảng trường</item>
+        <item>Hình chữ nhật</item>
+        <item>Hình bình hành</item>
+        <item>Tam giác đều</item>
+        <item>Tam giác</item>
+        <item>Hình thang</item>
+        <item>Hình lục giác</item>
+        <item>Vòng tròn</item>
+    </string-array>
+    <string name="shape_square">Quảng trường</string>
+    <string name="shape_rectangle">Hình chữ nhật</string>
+    <string name="shape_parallelogram">Hình bình hành</string>
+    <string name="shape_equilateral_triangle">Tam giác đều</string>
+    <string name="shape_triangle">Tam giác</string>
+    <string name="shape_trapezoid">Hình thang</string>
+    <string name="shape_hexagon">Hình lục giác</string>
+    <string name="shape_circle">Vòng tròn</string>
 </resources>

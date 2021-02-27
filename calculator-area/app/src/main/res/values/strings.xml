@@ -26,4 +26,14 @@
     <string name="hint_enter_height">enter height</string>
     <string name="hint_enter_radius">enter radius</string>
 
+    <!--Shape 2D strings for internationalization-->
+    <string name="shape_square">Square</string>
+    <string name="shape_rectangle">Rectangle</string>
+    <string name="shape_parallelogram">Parallelogram</string>
+    <string name="shape_equilateral_triangle">Equilateral Triangle</string>
+    <string name="shape_triangle">Triangle</string>
+    <string name="shape_trapezoid">Trapezoid</string>
+    <string name="shape_hexagon">Hexagon</string>
+    <string name="shape_circle">Circle</string>
+
 </resources>

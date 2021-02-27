@@ -10,4 +10,22 @@
     <string name="hint_enter_side_b">Seite betreten b</string>
     <string name="hint_enter_height">Höhe eingeben</string>
     <string name="hint_enter_radius">Radius eingeben</string>
+    <string-array name="shapes2D">
+        <item>Platz</item>
+        <item>Rechteck</item>
+        <item>Parallelogramm</item>
+        <item>Gleichseitiges Dreieck</item>
+        <item>Dreieck</item>
+        <item>Trapez</item>
+        <item>Hexagon</item>
+        <item>Kreis</item>
+    </string-array>
+    <string name="shape_square">Platz</string>
+    <string name="shape_rectangle">Rechteck</string>
+    <string name="shape_parallelogram">Parallelogramm</string>
+    <string name="shape_equilateral_triangle">Gleichseitiges Dreieck</string>
+    <string name="shape_triangle">Dreieck</string>
+    <string name="shape_trapezoid">Trapez</string>
+    <string name="shape_hexagon">Hexagon</string>
+    <string name="shape_circle">Kreis</string>
 </resources>
