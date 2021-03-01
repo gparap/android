@@ -15,11 +15,12 @@
  */
 package gparap.apps.converter_currency
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 
 /**
  * Created by gparap on 2021-02-20.
@@ -31,8 +32,10 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
     private lateinit var labelFromCurrency: TextView
     private lateinit var labelToCurrency: TextView
     private lateinit var buttonConvert: Button
+    private lateinit var processBar: ProgressBar
     private lateinit var result: TextView
     private lateinit var currencies: HashMap<String, String>
+    private var baseURL = "https://api.ratesapi.io/api/latest"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +63,7 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
         labelFromCurrency = findViewById(R.id.textViewLabelFromCurrency)
         labelToCurrency = findViewById(R.id.textViewLabelToCurrency)
         buttonConvert = findViewById(R.id.buttonConvert)
+        processBar = findViewById(R.id.progressBar)
         result = findViewById(R.id.textViewResult)
     }
 
@@ -82,6 +86,9 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
     private fun convert() {
         //pass test
         result.text = "pass test"
+        showProgressBar()
+        Connection.fetchRates(baseURL)
+        hideProgressBar()
     }
 
     /**
@@ -95,5 +102,13 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
         for (i in 0 until count) {
             currencies[codes[i].toString()] = names[i].toString()
         }
+    }
+
+    private fun hideProgressBar() {
+        processBar.isVisible = false
+    }
+
+    private fun showProgressBar() {
+        processBar.isVisible = true
     }
 }
