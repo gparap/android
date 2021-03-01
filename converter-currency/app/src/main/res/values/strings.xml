@@ -6,75 +6,111 @@
 
     <!--International Currency Codes-->
     <string-array name="currencyCodes">
-        <item name="EUR">EUR</item>
-        <item name="USD">USD</item>
-        <item name="JPY">JPY</item>
-        <item name="BGN">BGN</item>
-        <item name="CZK">CZK</item>
-        <item name="DKK">DKK</item>
-        <item name="GBP">GBP</item>
-        <item name="HUF">HUF</item>
-        <item name="PLN">PLN</item>
-        <item name="RON">RON</item>
-        <item name="SEK">SEK</item>
-        <item name="CHF">CHF</item>
-        <item name="ISK">ISK</item>
-        <item name="NOK">NOK</item>
-        <item name="HRK">HRK</item>
-        <item name="RUB">RUB</item>
-        <item name="TRY">TRY</item>
-        <item name="AUD">AUD</item>
-        <item name="BRL">BRL</item>
-        <item name="CAD">CAD</item>
-        <item name="CNY">CNY</item>
-        <item name="HKD">HKD</item>
-        <item name="IDR">IDR</item>
-        <item name="ILS">ILS</item>
-        <item name="INR">INR</item>
-        <item name="KRW">KRW</item>
-        <item name="MXN">MXN</item>
-        <item name="MYR">MYR</item>
-        <item name="NZD">NZD</item>
-        <item name="PHP">PHP</item>
-        <item name="SGD">SGD</item>
-        <item name="THB">THB</item>
-        <item name="ZAR">ZAR</item>
+        <item>EUR</item>
+        <item>USD</item>
+        <item>JPY</item>
+        <item>BGN</item>
+        <item>CZK</item>
+        <item>DKK</item>
+        <item>GBP</item>
+        <item>HUF</item>
+        <item>PLN</item>
+        <item>RON</item>
+        <item>SEK</item>
+        <item>CHF</item>
+        <item>ISK</item>
+        <item>NOK</item>
+        <item>HRK</item>
+        <item>RUB</item>
+        <item>TRY</item>
+        <item>AUD</item>
+        <item>BRL</item>
+        <item>CAD</item>
+        <item>CNY</item>
+        <item>HKD</item>
+        <item>IDR</item>
+        <item>ILS</item>
+        <item>INR</item>
+        <item>KRW</item>
+        <item>MXN</item>
+        <item>MYR</item>
+        <item>NZD</item>
+        <item>PHP</item>
+        <item>SGD</item>
+        <item>THB</item>
+        <item>ZAR</item>
     </string-array>
 
     <!--International Currency Names-->
     <string-array name="currencyNames">
-        <item name="EUR">Euro</item>
-        <item name="USD">US dollar</item>
-        <item name="JPY">Japanese yen</item>
-        <item name="BGN">Bulgarian lev</item>
-        <item name="CZK">Czech koruna</item>
-        <item name="DKK">Danish krone</item>
-        <item name="GBP">Pound sterling</item>
-        <item name="HUF">Hungarian forint</item>
-        <item name="PLN">Polish zloty</item>
-        <item name="RON">Romanian leu</item>
-        <item name="SEK">Swedish krona</item>
-        <item name="CHF">Swiss franc</item>
-        <item name="ISK">Icelandic krona</item>
-        <item name="NOK">Norwegian krone</item>
-        <item name="HRK">Croatian kuna</item>
-        <item name="RUB">Russian rouble</item>
-        <item name="TRY">Turkish lira</item>
-        <item name="AUD">Australian dollar</item>
-        <item name="BRL">Brazilian real</item>
-        <item name="CAD">Canadian dollar</item>
-        <item name="CNY">Chinese yuan renminbi</item>
-        <item name="HKD">Hong Kong dollar</item>
-        <item name="IDR">Indonesian rupiah</item>
-        <item name="ILS">Israeli shekel</item>
-        <item name="INR">Indian rupee</item>
-        <item name="KRW">South Korean won</item>
-        <item name="MXN">Mexican peso</item>
-        <item name="MYR">Malaysian ringgit</item>
-        <item name="NZD">New Zealand dollar</item>
-        <item name="PHP">Philippine peso</item>
-        <item name="SGD">Singapore dollar</item>
-        <item name="THB">Thai baht</item>
-        <item name="ZAR">South African rand</item>
+        <item>Euro</item>
+        <item>US dollar</item>
+        <item>Japanese yen</item>
+        <item>Bulgarian lev</item>
+        <item>Czech koruna</item>
+        <item>Danish krone</item>
+        <item>Pound sterling</item>
+        <item>Hungarian forint</item>
+        <item>Polish zloty</item>
+        <item>Romanian leu</item>
+        <item>Swedish krona</item>
+        <item>Swiss franc</item>
+        <item>Icelandic krona</item>
+        <item>Norwegian krone</item>
+        <item>Croatian kuna</item>
+        <item>Russian rouble</item>
+        <item>Turkish lira</item>
+        <item>Australian dollar</item>
+        <item>Brazilian real</item>
+        <item>Canadian dollar</item>
+        <item>Chinese yuan renminbi</item>
+        <item>Hong Kong dollar</item>
+        <item>Indonesian rupiah</item>
+        <item>Israeli shekel</item>
+        <item>Indian rupee</item>
+        <item>South Korean won</item>
+        <item>Mexican peso</item>
+        <item>Malaysian ringgit</item>
+        <item>New Zealand dollar</item>
+        <item>Philippine peso</item>
+        <item>Singapore dollar</item>
+        <item>Thai baht</item>
+        <item>South African rand</item>
     </string-array>
+
+    <!--International Currency Names strings used for internationalization-->
+    <string name="string_EUR">Euro</string>
+    <string name="string_USD">US dollar</string>
+    <string name="string_JPY">Japanese yen</string>
+    <string name="string_BGN">Bulgarian lev</string>
+    <string name="string_CZK">Czech koruna</string>
+    <string name="string_DKK">Danish krone</string>
+    <string name="string_GBP">Pound sterling</string>
+    <string name="string_HUF">Hungarian forint</string>
+    <string name="string_PLN">Polish zloty</string>
+    <string name="string_RON">Romanian leu</string>
+    <string name="string_SEK">Swedish krona</string>
+    <string name="string_CHF">Swiss franc</string>
+    <string name="string_ISK">Icelandic krona</string>
+    <string name="string_NOK">Norwegian krone</string>
+    <string name="string_HRK">Croatian kuna</string>
+    <string name="string_RUB">Russian rouble</string>
+    <string name="string_TRY">Turkish lira</string>
+    <string name="string_AUD">Australian dollar</string>
+    <string name="string_BRL">Brazilian real</string>
+    <string name="string_CAD">Canadian dollar</string>
+    <string name="string_CNY">Chinese yuan renminbi</string>
+    <string name="string_HKD">Hong Kong dollar</string>
+    <string name="string_IDR">Indonesian rupiah</string>
+    <string name="string_ILS">Israeli shekel</string>
+    <string name="string_INR">Indian rupee</string>
+    <string name="string_KRW">South Korean won</string>
+    <string name="string_MXN">Mexican peso</string>
+    <string name="string_MYR">Malaysian ringgit</string>
+    <string name="string_NZD">New Zealand dollar</string>
+    <string name="string_PHP">Philippine peso</string>
+    <string name="string_SGD">Singapore dollar</string>
+    <string name="string_THB">Thai baht</string>
+    <string name="string_ZAR">South African rand</string>
+
 </resources>

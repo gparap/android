@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.converter_currency
 
 import androidx.appcompat.app.AppCompatActivity
@@ -16,18 +31,21 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
     lateinit var labelToCurrency: TextView
     lateinit var buttonConvert: Button
     lateinit var result: TextView
+    lateinit var currencies: HashMap<String, String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_converter)
+        initCurrencies()
         getWidgets()
         initSpinners()
         buttonConvert.setOnClickListener { convert() }
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        labelFromCurrency.text = spinnerFromCurrency.selectedItem.toString()
-        labelToCurrency.text = spinnerToCurrency.selectedItem.toString()
+        //display full currency name
+        labelFromCurrency.text = currencies[spinnerFromCurrency.selectedItem.toString()]
+        labelToCurrency.text = currencies[spinnerToCurrency.selectedItem.toString()]
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -62,5 +80,18 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
     private fun convert() {
         //pass test
         result.text = "pass test"
+    }
+
+    /**
+     * Creates a collection of currencies
+     */
+    private fun initCurrencies() {
+        currencies = HashMap()
+        val count = 33
+        val codes = resources.getStringArray(R.array.currencyCodes)
+        val names = resources.getStringArray(R.array.currencyNames)
+        for (i in 0 until count) {
+            currencies[codes[i].toString()] = names[i].toString()
+        }
     }
 }
