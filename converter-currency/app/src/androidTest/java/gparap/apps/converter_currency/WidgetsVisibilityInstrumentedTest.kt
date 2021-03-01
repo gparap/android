@@ -36,6 +36,11 @@ class WidgetsVisibilityInstrumentedTest {
     }
 
     @Test
+    fun widgetIsDisplayed_editTextAmount() {
+        onView(withId(R.id.editTextAmount)).check(matches(isDisplayed()))
+    }
+
+    @Test
     fun widgetIsDisplayed_textViewLabelFromCurrencyCode() {
         onView(withId(R.id.textViewLabelFromCurrencyCode)).check(matches(isDisplayed()))
     }

@@ -23,5 +23,7 @@ import org.junit.runners.Suite
  * Created by gparap on 2021-02-28.
  */
 @RunWith(Suite::class)
-@Suite.SuiteClasses(WidgetsVisibilityInstrumentedTest::class)
+@Suite.SuiteClasses(
+        WidgetsVisibilityInstrumentedTest::class,
+        WidgetsFunctionalityInstrumentedTest::class)
 class ConverterActivityInstrumentedTestSuite

@@ -25,13 +25,14 @@ import android.widget.AdapterView.OnItemSelectedListener
  * Created by gparap on 2021-02-20.
  */
 class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
-    lateinit var spinnerFromCurrency: Spinner
-    lateinit var spinnerToCurrency: Spinner
-    lateinit var labelFromCurrency: TextView
-    lateinit var labelToCurrency: TextView
-    lateinit var buttonConvert: Button
-    lateinit var result: TextView
-    lateinit var currencies: HashMap<String, String>
+    private lateinit var spinnerFromCurrency: Spinner
+    private lateinit var spinnerToCurrency: Spinner
+    private lateinit var amount: EditText
+    private lateinit var labelFromCurrency: TextView
+    private lateinit var labelToCurrency: TextView
+    private lateinit var buttonConvert: Button
+    private lateinit var result: TextView
+    private lateinit var currencies: HashMap<String, String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +56,7 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
     private fun getWidgets() {
         spinnerFromCurrency = findViewById(R.id.spinnerFromCurrency)
         spinnerToCurrency = findViewById(R.id.spinnerToCurrency)
+        amount = findViewById(R.id.editTextAmount)
         labelFromCurrency = findViewById(R.id.textViewLabelFromCurrency)
         labelToCurrency = findViewById(R.id.textViewLabelToCurrency)
         buttonConvert = findViewById(R.id.buttonConvert)
