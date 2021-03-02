@@ -87,7 +87,8 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
         //pass test
         result.text = "pass test"
         showProgressBar()
-        Connection.fetchRates(baseURL)
+        val base = Connection.fetchRates(baseURL)
+        result.text = base
         hideProgressBar()
     }
 

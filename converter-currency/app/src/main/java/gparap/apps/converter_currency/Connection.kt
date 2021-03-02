@@ -20,6 +20,7 @@ import java.io.BufferedReader
 import java.io.InputStream
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
+//java.net.HttpURLConnection
 import java.net.URL
 import java.util.concurrent.Callable
 import java.util.concurrent.Executors
@@ -30,14 +31,18 @@ import java.util.concurrent.Executors
 class Connection {
     companion object {
         @JvmStatic
-        fun fetchRates(stringURL: String) {
+        fun fetchRates(stringURL: String): String? {
             val url = URL(stringURL)
             val connection: HttpURLConnection = url.openConnection() as HttpURLConnection
+            val androidMobileUserAgents =
+                "Mozilla/5.0 AppleWebKit/537.36 Chrome/62.0.3202.84 Mobile Safari/537.36"
+            connection.setRequestProperty("User-Agent", androidMobileUserAgents)
             var inputStream: InputStream? = null
+            var baseCurrency: String? = null
             try {
                 val executor = Executors.newSingleThreadExecutor()
 
-                //get latest exchange rates asynchronously
+                //fetch exchange rates asynchronously
                 executor.submit(Callable {
                     //read api data
                     inputStream = connection.inputStream
@@ -45,9 +50,14 @@ class Connection {
                     val data = bufferedReader.readText()
                     bufferedReader.close()
 
-                    //create a new JSONObject to hold the exchange rates
-                    var exchangeRates = JSONObject(data)
-                })
+                    //create JSONObject to hold latest exchange rates
+                    if (connection.responseCode == 200) {
+                        val exchangeRates = JSONObject(data)
+
+                        //for unit testing
+                        baseCurrency = exchangeRates.getString("base")
+                    }
+                }).get()
             } catch (e: Exception) {
                 e.printStackTrace()
             } finally {
@@ -55,6 +65,7 @@ class Connection {
                 inputStream?.close()
                 connection.disconnect()
             }
+            return baseCurrency
         }
     }
 }
