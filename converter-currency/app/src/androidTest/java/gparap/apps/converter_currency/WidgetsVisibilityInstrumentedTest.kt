@@ -17,7 +17,7 @@ package gparap.apps.converter_currency
 
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -73,6 +73,7 @@ class WidgetsVisibilityInstrumentedTest {
     @Test
     fun widgetIsDisplayed_textViewResult() {
         //result has any value
+        onView(withId(R.id.editTextAmount)).perform(typeText("1"), closeSoftKeyboard())
         onView(withId(R.id.buttonConvert)).perform(click())
         onView(withId(R.id.textViewResult)).check(matches(isDisplayed()))
     }
