@@ -124,10 +124,10 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
      * Initializes Parser with currency exchange rates from API
      */
     private fun initParser() {
-        parser = if (Connection.latestExchangeRates == null){
+        parser = if (Connection.latestExchangeRates == null) {
             Connection.fetchRates(baseURL)
             Parser(Connection.latestExchangeRates!!)
-        }else{
+        } else {
             Parser(Connection.latestExchangeRates!!)
         }
     }
@@ -135,10 +135,10 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
     /**
      * Gets a currency exchange rate
      */
-    private fun getCurrencyRate(currency: String) : Double {
+    private fun getCurrencyRate(currency: String): Double {
         var rate: Double
         parser.getRates().also {
-            rate  = parser.getRate(currency)
+            rate = parser.getRate(currency)
         }
         return rate
     }
@@ -146,58 +146,121 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
     /**
      * Converts a specific amount from one currency to another
      */
-    private fun calculateConversion() : String {
+    private fun calculateConversion(): String {
         val result: Double?
-        val amount = editTextAmount.text.toString().toDouble()
+
+        //get amount
+        val amount =
+            if (editTextAmount.text.isNullOrBlank() || editTextAmount.text.toString() == ".") {
+                1.toDouble()
+            } else {
+                editTextAmount.text.toString().toDouble()
+            }
+
+        //get result
         result = toCurrencyRate?.times((amount / fromCurrencyRate!!))
         return String.format("%.2f", result)
     }
 
     /**
      * Beautifies result
-     * (like ie. "100 EUR = 120 USD", etc.)
+     *  ie. "100 EUR = 120 USD", "1,000 EUR = 1,200 USD", etc.
      */
     private fun beautifyResult(conversion: String): String {
-        var tempResult = conversion
         val stringBuilder = StringBuilder()
+        val space = " "
 
-        //remove trailing zeros
-        if (tempResult.endsWith(".00")) { tempResult = tempResult.dropLast(3) }
-
-        //give a space between thousands ie. 1000000 -> 1,000,000
-        val array = tempResult.split(".")
-        if (array[0].length > 3) {
-            val reversed = array[0].reversed()
-            val range = array[0].length-1
-            for (i in 0..range step 3){
-                try {
-                    stringBuilder.append(reversed[i]).append(reversed[i+1]).append(reversed[i+2])
-                    stringBuilder.append(",")
-                }catch (e:Exception){}
-
-            }
-            stringBuilder.reverse()
-            tempResult = if (array.size > 1){
-                stringBuilder.append(".").append(array[1]).toString()
-            }else {
-                stringBuilder.toString()
-            }
-            //remove possible "," in the start
-            if (tempResult.startsWith(",")){
-                 tempResult = tempResult.drop(1)
-            }
-
+        //there is no conversion
+        if (spinnerFromCurrency.selectedItem == spinnerToCurrency.selectedItem) {
+            //construct the final conversion result info
+            stringBuilder.append("1").append(space)
+            stringBuilder.append(spinnerFromCurrency.selectedItem.toString()).append(space)
+            stringBuilder.append("=").append(space)
+            stringBuilder.append("1").append(space)
+            stringBuilder.append(spinnerToCurrency.selectedItem.toString())
+            return stringBuilder.toString()
         }
 
-        //add info
-        stringBuilder.clear()
-        val spaceChar = " "
-        stringBuilder.append(editTextAmount.text.toString()).append(spaceChar)                      //ie 100
-        stringBuilder.append(spinnerFromCurrency.selectedItem.toString()).append(spaceChar)         //ie EUR
-        stringBuilder.append("=").append(spaceChar)                                                 //ie EUR =
-        stringBuilder.append(tempResult).append(spaceChar)                                          //ie EUR = 120
-        stringBuilder.append(spinnerToCurrency.selectedItem.toString())                             //ie EUR = 120 USD
+        var outputTo = conversion   //the "to" currency conversion output
+        var outputFrom =
+            if (editTextAmount.text.toString().isEmpty() || editTextAmount.text.toString() == ".") {
+                "1"
+            } else if (editTextAmount.text.toString().toDoubleOrNull() == 0.0) {
+                "0"
+            } else { editTextAmount.text.toString()
+            }   //the "from" currency conversion output
 
+        //remove trailing zeros
+        val integer: Int?
+        val decimal: Double?
+        if (outputFrom.contains(".")){
+            integer = outputFrom.substring(0, outputFrom.indexOf(".")).toInt()
+            decimal = outputFrom.substring(outputFrom.indexOf("."), outputFrom.length).toDouble()
+            if (decimal == 0.0){
+                outputFrom = integer.toString()
+            }
+        }
+        if (outputTo.endsWith(".00")) {
+            outputTo = outputTo.dropLast(3)
+        }
+
+        //append commas (",") between thousands
+        if (outputTo.contains(".")){
+            if (outputTo.substring(0, outputTo.indexOf(".")).length > 3)
+                outputTo = beautifyThousands(outputTo)
+        }else{
+            if (outputTo.length > 3)
+                outputTo = beautifyThousands(outputTo)
+        }
+        if (outputFrom.contains(".")){
+            if (outputFrom.substring(0, outputFrom.indexOf(".")).length > 3)
+                outputFrom = beautifyThousands(outputFrom)
+        }else{
+            if (outputFrom.length > 3)
+                outputFrom = beautifyThousands(outputFrom)
+        }
+
+        //remove possible "," in the start
+        if (outputTo.startsWith(",")) {
+            outputTo = outputTo.drop(1)
+        }
+        if (outputFrom.startsWith(",")) {
+            outputFrom = outputFrom.drop(1)
+        }
+
+        //construct the final conversion result info
+        stringBuilder.append(outputFrom).append(space)                                              //ie 100
+        stringBuilder.append(spinnerFromCurrency.selectedItem.toString()).append(space)             //ie 100 EUR
+        stringBuilder.append("=").append(space)                                                     //ie 100 EUR =
+        stringBuilder.append(outputTo).append(space)                                                //ie 100 EUR = 120
+        stringBuilder.append(spinnerToCurrency.selectedItem.toString())                             //ie 100 EUR = 120 USD
+
+        return stringBuilder.toString()
+    }
+
+    /**
+     * Appends "," between thousands ie. 1000000 -> 1,000,000
+     */
+    private fun beautifyThousands(inputString: String) : String {
+        val stringBuilder = StringBuilder()
+        val array = inputString.split(".")
+        if (array[0].length > 3) {
+            val reversed = array[0].reversed()
+            val range = array[0].length - 1
+            for (i in 0..range step 3) {
+                try {
+                    stringBuilder.append(reversed[i]).append(reversed[i + 1])
+                        .append(reversed[i + 2])
+                    stringBuilder.append(",")
+                } catch (e: Exception) { }
+            }
+            stringBuilder.reverse()
+            if (array.size > 1) {
+                stringBuilder.append(".").append(array[1]).toString()
+            } else {
+                stringBuilder.toString()
+            }
+        }
         return stringBuilder.toString()
     }
 }
