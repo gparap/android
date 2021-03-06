@@ -37,7 +37,7 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
     private lateinit var processBar: ProgressBar
     private lateinit var editTextResult: TextView
     private lateinit var currencies: HashMap<String, String>
-    private val baseURL = "https://api.ratesapi.io/api/latest"
+    private val baseURL = "https://api.exchangeratesapi.io/latest"
     private lateinit var parser: Parser
     private var fromCurrencyRate: Double? = null
     private var toCurrencyRate: Double? = null
