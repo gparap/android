@@ -20,9 +20,6 @@ import android.view.View
 import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
-import java.lang.Exception
-import java.lang.StringBuilder
 
 /**
  * Created by gparap on 2021-02-20.
@@ -34,7 +31,6 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
     private lateinit var labelFromCurrency: TextView
     private lateinit var labelToCurrency: TextView
     private lateinit var buttonConvert: Button
-    private lateinit var processBar: ProgressBar
     private lateinit var editTextResult: TextView
     private lateinit var currencies: HashMap<String, String>
     private val baseURL = "https://api.exchangeratesapi.io/latest"
