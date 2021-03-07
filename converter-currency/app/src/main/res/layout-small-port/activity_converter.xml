@@ -79,7 +79,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/textViewLabelFromCurrencyCode"
+        app:layout_constraintEnd_toEndOf="@+id/editTextAmount"
+        app:layout_constraintStart_toStartOf="@+id/editTextAmount"
         app:layout_constraintTop_toBottomOf="@+id/spinnerToCurrency"
         tools:text="1 USD = 1 EUR" />
 
@@ -89,13 +90,12 @@
         android:id="@+id/editTextAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="enter amount"
         android:inputType="numberDecimal"
         android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

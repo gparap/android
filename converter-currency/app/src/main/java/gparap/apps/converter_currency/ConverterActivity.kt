@@ -68,7 +68,6 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
         labelFromCurrency = findViewById(R.id.textViewLabelFromCurrency)
         labelToCurrency = findViewById(R.id.textViewLabelToCurrency)
         buttonConvert = findViewById(R.id.buttonConvert)
-        processBar = findViewById(R.id.progressBar)
         editTextResult = findViewById(R.id.textViewResult)
     }
 
@@ -91,12 +90,10 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
     }
 
     private fun convert() {
-        showProgressBar()
         initParser()
         fromCurrencyRate = getCurrencyRate(spinnerFromCurrency.selectedItem.toString())
         toCurrencyRate = getCurrencyRate(spinnerToCurrency.selectedItem.toString())
         editTextResult.text = beautifyResult(calculateConversion())
-        hideProgressBar()
     }
 
     /**
@@ -110,14 +107,6 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
         for (i in 0 until count) {
             currencies[codes[i].toString()] = names[i].toString()
         }
-    }
-
-    private fun hideProgressBar() {
-        processBar.isVisible = false
-    }
-
-    private fun showProgressBar() {
-        processBar.isVisible = true
     }
 
     /**
