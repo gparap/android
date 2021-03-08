@@ -1,4 +1,0 @@
-#Fri Jan 22 14:56:09 GMT+02:00 2021
-base.0=I\:\\gparap_clone\\android\\anagram-color-finder\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
