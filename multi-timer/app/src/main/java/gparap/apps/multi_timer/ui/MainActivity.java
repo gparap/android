@@ -18,6 +18,10 @@ package gparap.apps.multi_timer.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+
+import com.google.android.material.appbar.MaterialToolbar;
 
 import gparap.apps.multi_timer.R;
 
@@ -27,5 +31,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //set toolbar to act as action bar
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //inflate navigation menu
+        new MenuInflater(this).inflate(R.menu.navigation_menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }
