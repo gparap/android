@@ -16,6 +16,7 @@
 package gparap.apps.multi_timer.ui;
 
 import androidx.test.core.app.ActivityScenario;
+import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -23,9 +24,12 @@ import org.junit.Test;
 import gparap.apps.multi_timer.R;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
+import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 /**
  * Created by gparap on 2021-03-09.
@@ -40,5 +44,26 @@ public class MainActivityInstrumentedTest {
     @Test
     public void Toolbar_IsDisplayed() {
         onView(withId(R.id.toolbar)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void AlarmClockFragment_IsDisplayed() {
+        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getContext());
+        onView(withText(R.string.item_alarm_clock)).perform(click());
+        onView(withId(R.id.alarmClockFragment)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void ChronometerFragment_IsDisplayed() {
+        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getContext());
+        onView(withText(R.string.item_chronometer)).perform(click());
+        onView(withId(R.id.chronometerFragment)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void CountdownTimerFragment_IsDisplayed() {
+        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getContext());
+        onView(withText(R.string.item_countdown_timer)).perform(click());
+        onView(withId(R.id.countdownTimerFragment)).check(matches(isDisplayed()));
     }
 }

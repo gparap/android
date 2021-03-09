@@ -15,21 +15,31 @@
  */
 package gparap.apps.multi_timer.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
 import gparap.apps.multi_timer.R;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //init activity content with chronometer fragment
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .setReorderingAllowed(true)
+                    .add(R.id.fragmentContainer, ChronometerFragment.class, null)
+                    .commit();
+        }
         setContentView(R.layout.activity_main);
 
         //set toolbar to act as action bar
@@ -40,7 +50,40 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //inflate navigation menu
-        new MenuInflater(this).inflate(R.menu.navigation_menu, menu);
+        new MenuInflater(this).inflate(R.menu.fragment_navigation, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //navigate through fragments
+        int id = item.getItemId();
+        switch (id) {
+            //display alarm clock fragment
+            case R.id.menu_item_alarm_clock:
+                getSupportFragmentManager().beginTransaction()
+                        .setReorderingAllowed(true)
+                        .replace(R.id.fragmentContainer, AlarmClockFragment.class, null)
+                        .commit();
+                break;
+
+            //display chronometer fragment
+            case R.id.menu_item_chronometer:
+                getSupportFragmentManager().beginTransaction()
+                        .setReorderingAllowed(true)
+                        .replace(R.id.fragmentContainer, ChronometerFragment.class, null)
+                        .commit();
+                break;
+
+            //display countdown timer fragment
+            case R.id.menu_item_countdown_timer:
+                getSupportFragmentManager().beginTransaction()
+                        .setReorderingAllowed(true)
+                        .replace(R.id.fragmentContainer, CountdownTimerFragment.class, null)
+                        .commit();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
