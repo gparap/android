@@ -4,7 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     tools:context=".ConverterActivity">
+
+    <!--currency amount-->
+    <EditText
+        android:id="@+id/editTextAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints="number"
+        android:ems="10"
+        android:hint="@string/hint_enter_amount"
+        android:inputType="numberDecimal"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!--convert FROM currency-->
     <TextView
@@ -80,21 +98,5 @@
         app:layout_constraintStart_toStartOf="@+id/textViewLabelFromCurrencyCode"
         app:layout_constraintTop_toBottomOf="@+id/spinnerToCurrency"
         tools:text="1 USD = 1 EUR" />
-
-    <!--conversion progress-->
-    <EditText
-        android:id="@+id/editTextAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:autofillHints="number"
-        android:ems="10"
-        android:hint="@string/hint_enter_amount"
-        android:inputType="numberDecimal"
-        android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

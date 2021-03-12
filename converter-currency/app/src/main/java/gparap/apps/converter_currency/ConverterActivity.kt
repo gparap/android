@@ -54,7 +54,6 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
-        TODO("Not yet implemented")
     }
 
     private fun getWidgets() {
@@ -214,11 +213,11 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
         }
 
         //construct the final conversion result info
-        stringBuilder.append(outputFrom).append(space)                                              //ie 100
-        stringBuilder.append(spinnerFromCurrency.selectedItem.toString()).append(space)             //ie 100 EUR
-        stringBuilder.append("=").append(space)                                                     //ie 100 EUR =
-        stringBuilder.append(outputTo).append(space)                                                //ie 100 EUR = 120
-        stringBuilder.append(spinnerToCurrency.selectedItem.toString())                             //ie 100 EUR = 120 USD
+        stringBuilder.append(outputFrom).append(space)
+        stringBuilder.append(spinnerFromCurrency.selectedItem.toString()).append(space)
+        stringBuilder.append("=").append(space)
+        stringBuilder.append(outputTo).append(space)
+        stringBuilder.append(spinnerToCurrency.selectedItem.toString())
 
         return stringBuilder.toString()
     }
