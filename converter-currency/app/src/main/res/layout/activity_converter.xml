@@ -7,21 +7,24 @@
     tools:context=".ConverterActivity">
 
     <!--convert FROM currency-->
-
     <TextView
         android:id="@+id/textViewLabelFromCurrencyCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/string_from"
-        app:layout_constraintStart_toStartOf="@+id/editTextAmount"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/spinnerFromCurrency"
         app:layout_constraintTop_toBottomOf="@+id/editTextAmount" />
 
     <Spinner
         android:id="@+id/spinnerFromCurrency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:entries="@array/currencyCodes"
-        app:layout_constraintStart_toStartOf="@+id/textViewLabelFromCurrencyCode"
+        app:layout_constraintStart_toStartOf="@+id/editTextAmount"
         app:layout_constraintTop_toBottomOf="@+id/textViewLabelFromCurrencyCode" />
 
     <TextView
@@ -40,6 +43,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/string_to"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewLabelFromCurrencyCode"
         app:layout_constraintStart_toStartOf="@+id/textViewLabelFromCurrencyCode"
         app:layout_constraintTop_toBottomOf="@+id/spinnerFromCurrency" />
 
@@ -47,8 +53,9 @@
         android:id="@+id/spinnerToCurrency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:entries="@array/currencyCodes"
-        app:layout_constraintStart_toStartOf="@+id/textViewLabelFromCurrencyCode"
+        app:layout_constraintStart_toStartOf="@+id/editTextAmount"
         app:layout_constraintTop_toBottomOf="@+id/textViewLabelToCurrencyCode" />
 
     <TextView
@@ -67,9 +74,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/string_convert"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editTextAmount"
         app:layout_constraintHorizontal_bias="0.528"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/editTextAmount"
         app:layout_constraintTop_toBottomOf="@+id/textViewResult" />
 
     <!--conversion result-->
@@ -79,23 +86,25 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/textViewLabelFromCurrencyCode"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/editTextAmount"
+        app:layout_constraintStart_toStartOf="@+id/editTextAmount"
         app:layout_constraintTop_toBottomOf="@+id/spinnerToCurrency"
         tools:text="1 USD = 1 EUR" />
 
     <!--conversion progress-->
-
     <EditText
         android:id="@+id/editTextAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="48dp"
+        android:autofillHints="number"
         android:ems="10"
-        android:hint="enter amount"
+        android:gravity="center"
+        android:hint="@string/hint_enter_amount"
         android:inputType="numberDecimal"
         android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

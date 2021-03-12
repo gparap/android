@@ -112,5 +112,6 @@
     <string name="string_SGD">Singapore dollar</string>
     <string name="string_THB">Thai baht</string>
     <string name="string_ZAR">South African rand</string>
+    <string name="hint_enter_amount">enter amount</string>
 
 </resources>

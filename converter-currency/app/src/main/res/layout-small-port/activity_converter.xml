@@ -7,7 +7,6 @@
     tools:context=".ConverterActivity">
 
     <!--convert FROM currency-->
-
     <TextView
         android:id="@+id/textViewLabelFromCurrencyCode"
         android:layout_width="wrap_content"
@@ -85,14 +84,14 @@
         tools:text="1 USD = 1 EUR" />
 
     <!--conversion progress-->
-
     <EditText
         android:id="@+id/editTextAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:autofillHints="number"
         android:ems="10"
-        android:hint="enter amount"
+        android:hint="@string/hint_enter_amount"
         android:inputType="numberDecimal"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
