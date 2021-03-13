@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Konverter Mata Uang</string>
+    <string name="string_from">Saka</string>
+    <string name="string_to">Kanggo</string>
+    <string name="string_convert">Ngonversi</string>
+    <string name="hint_enter_amount">ketik jumlah</string>
+    <string-array name="currencyNames">
+        <item>Dolar Australia</item>
+        <item>Lev Bulgaria</item>
+        <item>Brasil nyata</item>
+        <item>Dolar Kanada</item>
+        <item>Franc Swiss</item>
+        <item>Yuan renminbi</item>
+        <item>Koruna Ceko</item>
+        <item>Krone Denmark</item>
+        <item>Euro</item>
+        <item>Pound sterling</item>
+        <item>Dolar Hong Kong</item>
+        <item>Kroasia kuna</item>
+        <item>Forint Hungaria</item>
+        <item>Rupiah indonesia</item>
+        <item>Sekel Israel</item>
+        <item>Rupee India</item>
+        <item>Krona Islandia</item>
+        <item>Yen Jepang</item>
+        <item>Won Korea Selatan</item>
+        <item>Peso Meksiko</item>
+        <item>Ringgit malaysia</item>
+        <item>Krone Norwegia</item>
+        <item>Dolar Selandia Baru</item>
+        <item>Peso Filipina</item>
+        <item>Zloty Polandia</item>
+        <item>Leu rumania</item>
+        <item>Rubel Rusia</item>
+        <item>Krona Swedia</item>
+        <item>Dolar Singapura</item>
+        <item>Baht Thailand</item>
+        <item>Lira Turki</item>
+        <item>Dolar AS</item>
+        <item>Rand Afrika Kidul</item>
+    </string-array>
+
+</resources>

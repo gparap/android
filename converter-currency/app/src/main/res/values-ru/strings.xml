@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Конвертер валют</string>
+    <string name="string_from">Из</string>
+    <string name="string_to">К</string>
+    <string name="string_convert">Конвертировать</string>
+    <string name="hint_enter_amount">введите сумму</string>
+    <string-array name="currencyNames">
+        <item>Австралийский доллар</item>
+        <item>Болгарский лев</item>
+        <item>Бразильский реал</item>
+        <item>канадский доллар</item>
+        <item>швейцарский франк</item>
+        <item>Китайский юань юань</item>
+        <item>Чешская крона</item>
+        <item>Датская крона</item>
+        <item>Евро</item>
+        <item>Фунт стерлингов</item>
+        <item>Гонконгский доллар</item>
+        <item>Хорватская куна</item>
+        <item>Венгерский форинт</item>
+        <item>Индонезийская рупия</item>
+        <item>Израильский шекель</item>
+        <item>Индийская рупия</item>
+        <item>Исландская крона</item>
+        <item>Японская иена</item>
+        <item>Южнокорейский вон</item>
+        <item>Мексиканский песо</item>
+        <item>Малайзийский ринггит</item>
+        <item>Норвежская крона</item>
+        <item>Новозеландский доллар</item>
+        <item>Филиппинское песо</item>
+        <item>Польский злотый</item>
+        <item>Румынский лей</item>
+        <item>Российский рубль</item>
+        <item>Шведская крона</item>
+        <item>Сингапурский доллар</item>
+        <item>Тайский бат</item>
+        <item>Турецкая лира</item>
+        <item>Доллар США</item>
+        <item>Южноафриканский рэнд</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">貨幣換算</string>
+    <string name="string_from">從</string>
+    <string name="string_to">到</string>
+    <string name="string_convert">轉變</string>
+    <string name="hint_enter_amount">輸入金額</string>
+    <string-array name="currencyNames">
+        <item>澳元</item>
+        <item>保加利亞列弗</item>
+        <item>巴西雷亞爾</item>
+        <item>加元</item>
+        <item>瑞士法郎</item>
+        <item>人民幣</item>
+        <item>捷克克朗</item>
+        <item>丹麥克朗</item>
+        <item>歐元</item>
+        <item>英鎊</item>
+        <item>港元</item>
+        <item>克羅地亞庫納</item>
+        <item>匈牙利福林</item>
+        <item>印尼盾</item>
+        <item>以色列謝克爾</item>
+        <item>印度盧比</item>
+        <item>冰島克朗</item>
+        <item>日圓</item>
+        <item>韓元</item>
+        <item>墨西哥比索</item>
+        <item>馬來西亞林吉特</item>
+        <item>挪威克朗</item>
+        <item>新西蘭元</item>
+        <item>菲律賓比索</item>
+        <item>波蘭茲羅提</item>
+        <item>羅馬尼亞列伊</item>
+        <item>俄羅斯盧布</item>
+        <item>瑞典克朗</item>
+        <item>新加坡元</item>
+        <item>泰銖</item>
+        <item>土耳其里拉</item>
+        <item>美元</item>
+        <item>南非蘭特</item>
+    </string-array>
+
+</resources>

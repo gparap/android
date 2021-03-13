@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Währungsrechner</string>
+    <string name="string_from">Von</string>
+    <string name="string_to">Zu</string>
+    <string name="string_convert">Konvertieren</string>
+    <string name="hint_enter_amount">Menge eingeben</string>
+    <string-array name="currencyNames">
+        <item>Australischer Dollar</item>
+        <item>Bulgarische Lev</item>
+        <item>Brasilianischer Real</item>
+        <item>Kanadischer Dollar</item>
+        <item>Schweizerfranken</item>
+        <item>Chinesischer Yuan Renminbi</item>
+        <item>Tschechische Krone</item>
+        <item>Dänische Krone</item>
+        <item>Euro</item>
+        <item>Pfund Sterling</item>
+        <item>Hongkong Dollar</item>
+        <item>Kroatische Kuna</item>
+        <item>Ungarischer Forint</item>
+        <item>Indonesische Rupiah</item>
+        <item>Israelischer Schekel</item>
+        <item>Indische Rupie</item>
+        <item>Isländische Krone</item>
+        <item>Japanische YEN</item>
+        <item>Südkoreaner gewonnen</item>
+        <item>Mexikanischer Peso</item>
+        <item>Malaysischer Ringgit</item>
+        <item>Norwegische Krone</item>
+        <item>Neuseeland Dollar</item>
+        <item>Philippinischer Peso</item>
+        <item>Polnischer Zloty</item>
+        <item>Rumänischer Leu</item>
+        <item>Russischer Rubel</item>
+        <item>Schwedische Krone</item>
+        <item>Singapur-Dollar</item>
+        <item>Thailändischer Baht</item>
+        <item>türkische Lire</item>
+        <item>US Dollar</item>
+        <item>Südafrikanischer Rand</item>
+    </string-array>
+
+</resources>

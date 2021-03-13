@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">通貨換算</string>
+    <string name="string_from">から</string>
+    <string name="string_to">に</string>
+    <string name="string_convert">変換する</string>
+    <string name="hint_enter_amount">金額を入力します</string>
+    <string-array name="currencyNames">
+        <item>オーストラリアドル</item>
+        <item>ブルガリアレフ</item>
+        <item>ブラジルレアル</item>
+        <item>カナダドル</item>
+        <item>スイスフラン</item>
+        <item>中国人民元</item>
+        <item>チェココルナ</item>
+        <item>デンマーククローネ</item>
+        <item>ユーロ</item>
+        <item>英ポンド</item>
+        <item>香港ドル</item>
+        <item>クロアチアのクナ</item>
+        <item>ハンガリーフォリント</item>
+        <item>インドネシアルピア</item>
+        <item>イスラエルシェケル</item>
+        <item>インドルピー</item>
+        <item>アイスランドクローナ</item>
+        <item>日本円</item>
+        <item>大韓民国ウォン</item>
+        <item>メキシコペソ</item>
+        <item>マレーシアリンギット</item>
+        <item>ノルウェークローネ</item>
+        <item>ニュージーランドドル</item>
+        <item>フィリピンペソ</item>
+        <item>ポーランドズウォティ</item>
+        <item>ルーマニアレウ</item>
+        <item>ロシアルーブル</item>
+        <item>スウェーデンクローナ</item>
+        <item>シンガポールドル</item>
+        <item>タイバーツ</item>
+        <item>トルコリラ</item>
+        <item>米ドル</item>
+        <item>南アフリカランド</item>
+    </string-array>
+
+</resources>

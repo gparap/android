@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">కరెన్సీ కన్వర్టర్</string>
+    <string name="string_from">నుండి</string>
+    <string name="string_to">కు</string>
+    <string name="string_convert">మార్చండి</string>
+    <string name="hint_enter_amount">మొత్తాన్ని నమోదు చేయండి</string>
+    <string-array name="currencyNames">
+        <item>ఆస్ట్రేలియన్ డాలర్</item>
+        <item>బల్గేరియన్ లెవ్</item>
+        <item>బ్రెజిలియన్ రియల్</item>
+        <item>కెనడియన్ డాలర్</item>
+        <item>స్విస్ ఫ్రాంక్</item>
+        <item>చైనీస్ యువాన్ రెన్మిన్బి</item>
+        <item>చెక్ కొరుణ</item>
+        <item>డానిష్ క్రోన్</item>
+        <item>యూరో</item>
+        <item>పౌండ్ స్టెర్లింగ్</item>
+        <item>హాంకాంగ్ డాలర్</item>
+        <item>క్రొయేషియన్ కునా</item>
+        <item>హంగేరియన్ ఫోరింట్</item>
+        <item>ఇండోనేషియా రూపయ్య</item>
+        <item>ఇజ్రాయెల్ షెకెల్</item>
+        <item>భారత రూపాయి</item>
+        <item>ఐస్లాండిక్ క్రోనా</item>
+        <item>జపనీస్ యెన్</item>
+        <item>దక్షిణ కొరియా గెలిచింది</item>
+        <item>మెక్సికన్ పెసో</item>
+        <item>మలేషియా రింగ్‌గిట్</item>
+        <item>నార్వేజియన్ క్రోన్</item>
+        <item>న్యూజిలాండ్ డాలర్</item>
+        <item>ఫిలిప్పీన్ పెసో</item>
+        <item>పోలిష్ జ్లోటీ</item>
+        <item>రొమేనియన్ ల్యూ</item>
+        <item>రష్యన్ రూబుల్</item>
+        <item>స్వీడిష్ క్రోనా</item>
+        <item>సింగపూర్ డాలర్</item>
+        <item>థాయ్ భాట్</item>
+        <item>టర్కిష్ లిరా</item>
+        <item>యుఎస్ డాలర్</item>
+        <item>దక్షిణాఫ్రికా రాండ్</item>
+    </string-array>
+
+</resources>

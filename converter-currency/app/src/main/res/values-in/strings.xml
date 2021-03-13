@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Konverter Mata Uang</string>
+    <string name="string_from">Dari</string>
+    <string name="string_to">Untuk</string>
+    <string name="string_convert">Mengubah</string>
+    <string name="hint_enter_amount">masukan jumlah</string>
+    <string-array name="currencyNames">
+        <item>dollar Australia</item>
+        <item>Lev. Bulgaria</item>
+        <item>Real Brasil</item>
+        <item>dolar Kanada</item>
+        <item>Franc Swiss</item>
+        <item>Yuan renminbi Cina</item>
+        <item>Koruna Ceko</item>
+        <item>Krone Denmark</item>
+        <item>Euro</item>
+        <item>Pound sterling</item>
+        <item>dollar Hongkong</item>
+        <item>Kuna Kroasia</item>
+        <item>Forint Hongaria</item>
+        <item>Rupiah indonesia</item>
+        <item>Syikal Israel</item>
+        <item>Rupee India</item>
+        <item>Krona Islandia</item>
+        <item>Yen jepang</item>
+        <item>Won Korea Selatan</item>
+        <item>Peso Meksiko</item>
+        <item>Ringgit Malaysia</item>
+        <item>Krone Norwegia</item>
+        <item>Dolar Selandia Baru</item>
+        <item>Peso Filipina</item>
+        <item>Zloty Polandia</item>
+        <item>Leu Rumania</item>
+        <item>Rubel Rusia</item>
+        <item>Krona Swedia</item>
+        <item>Dolar Singapura</item>
+        <item>Baht Thailand</item>
+        <item>Lira Turki</item>
+        <item>Dolar Amerika</item>
+        <item>Rand Afrika Selatan</item>
+    </string-array>
+
+</resources>

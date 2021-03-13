@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">환율 계산기</string>
+    <string name="string_from">에서</string>
+    <string name="string_to">에</string>
+    <string name="string_convert">변하게 하다</string>
+    <string name="hint_enter_amount">금액을 입력하세요</string>
+    <string-array name="currencyNames">
+        <item>호주 달러</item>
+        <item>불가리아 레프</item>
+        <item>브라질 헤알</item>
+        <item>캐나다 달러</item>
+        <item>스위스 프랑</item>
+        <item>중국 위안 인민폐</item>
+        <item>체코 코 루나</item>
+        <item>덴마크 크로네</item>
+        <item>유로</item>
+        <item>파운드 스털링</item>
+        <item>홍콩 달러</item>
+        <item>크로아티아 쿠나</item>
+        <item>헝가리 포린 트</item>
+        <item>인도네시아 루피아</item>
+        <item>이스라엘 셰켈</item>
+        <item>인도 루피</item>
+        <item>아이슬란드 크로나</item>
+        <item>일본 엔</item>
+        <item>대한민국 원</item>
+        <item>멕시코 페소</item>
+        <item>말레이시아 링깃</item>
+        <item>노르웨이 크로네</item>
+        <item>뉴질랜드 달러</item>
+        <item>필리핀 페소</item>
+        <item>폴란드 즐 로티</item>
+        <item>루마니아어 leu</item>
+        <item>러시아 루블</item>
+        <item>스웨덴 크로나</item>
+        <item>싱가포르 달러</item>
+        <item>태국 바트</item>
+        <item>터키 리라</item>
+        <item>미국 달러</item>
+        <item>남아프리카 랜드</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">মুদ্রা রূপান্তরকারী</string>
+    <string name="string_from">থেকে</string>
+    <string name="string_to">প্রতি</string>
+    <string name="string_convert">রূপান্তর</string>
+    <string name="hint_enter_amount">পরিমান লিখুন</string>
+    <string-array name="currencyNames">
+        <item>অস্ট্রেলিয়ান ডলার</item>
+        <item>বুলগেরিয়ান লেভ</item>
+        <item>ব্রাজিলিয়ান বাস্তব</item>
+        <item>কানাডিয়ান ডলার</item>
+        <item>সুইস ফ্রাংক</item>
+        <item>চাইনিজ ইউয়ান রেনমিনবি</item>
+        <item>চেক করুনা</item>
+        <item>ডেনিশ ক্রোন</item>
+        <item>ইউরো</item>
+        <item>পাউন্ড স্টার্লিং</item>
+        <item>হংকং ডলার</item>
+        <item>ক্রোয়েশিয়ান কুনা</item>
+        <item>হাঙ্গেরিয়ান ফরিন্ট</item>
+        <item>ইন্দোনেশীয় রুপিয়াহ</item>
+        <item>ইস্রায়েলি শেল</item>
+        <item>ভারতীয় রুপি</item>
+        <item>আইসল্যান্ডীয় ক্রোনা</item>
+        <item>জাপানি ইয়েন</item>
+        <item>দক্ষিণ কোরিয়ান জিতেছে</item>
+        <item>মেক্সিকান পেসো</item>
+        <item>মালয়েশিয়ার রিঙ্গিত</item>
+        <item>নরওয়েজিয়ান ক্রোন</item>
+        <item>নিউজিল্যান্ড ডলার</item>
+        <item>ফিলিপাইন পেসো</item>
+        <item>পোলিশ জলোটি</item>
+        <item>রোমানিয়ান লিউ</item>
+        <item>রাশিয়ান রুবেল</item>
+        <item>সুইডিশ ক্রোনা</item>
+        <item>সিঙ্গাপুর ডলার</item>
+        <item>থাই বাত</item>
+        <item>তুর্কি লিরা</item>
+        <item>আমেরিকান ডলার</item>
+        <item>দক্ষিণ আফ্রিকার র্যান্ড</item>
+    </string-array>
+    
+</resources>

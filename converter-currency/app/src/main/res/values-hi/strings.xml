@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">मुद्रा परिवर्तक</string>
+    <string name="string_from">से</string>
+    <string name="string_to">सेवा</string>
+    <string name="string_convert">धर्मांतरित</string>
+    <string name="hint_enter_amount">राशी डालें</string>
+    <string-array name="currencyNames">
+        <item>ऑस्ट्रलियन डॉलर</item>
+        <item>बल्गेरियाई लेव</item>
+        <item>ब्राजीली रियल</item>
+        <item>कैनेडियन डॉलर</item>
+        <item>स्विस फ्रैंक</item>
+        <item>चीनी युआन रॅन्मिन्बी</item>
+        <item>चेक कोरुना</item>
+        <item>डेनिश क्रोन</item>
+        <item>यूरो</item>
+        <item>पौंड स्टर्लिंग</item>
+        <item>होन्ग कोंग डॉलर</item>
+        <item>क्रोएशियाई कुना</item>
+        <item>हंगेरियन फ़ोरिंट</item>
+        <item>इंडोनेशियाई रुपिया</item>
+        <item>इजरायली शेकेल</item>
+        <item>भारतीय रुपया</item>
+        <item>आइसलैंडिक क्रोना</item>
+        <item>जापानी येन</item>
+        <item>दक्षिण कोरियाई वोन</item>
+        <item>मैक्सिकन पेसो</item>
+        <item>मलेशियाई रिंग्गित</item>
+        <item>नॉर्वेजियन क्रोन</item>
+        <item>न्यूजीलैंड डॉलर</item>
+        <item>फिलीपीन पेसो</item>
+        <item>पोलिश ज़्लॉटी</item>
+        <item>रोमानियाई ल्यू</item>
+        <item>रूसी रूबल</item>
+        <item>स्वीडिश क्रोना</item>
+        <item>सिंगापुर का डॉलर</item>
+        <item>थाईलैण्ड की मुद्रा</item>
+        <item>तुर्की लीरा</item>
+        <item>अमेरिकी डॉलर</item>
+        <item>दक्षिण अफ्रीकी रैंड</item>
+    </string-array>
+
+</resources>

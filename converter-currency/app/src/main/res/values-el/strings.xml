@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Μετατροπέας νομίσματος</string>
+    <string name="string_from">Από</string>
+    <string name="string_to">Προς</string>
+    <string name="string_convert">Μετέτρεψε</string>
+    <string name="hint_enter_amount">Εισάγετε ποσό</string>
+    <string-array name="currencyNames">
+        <item>Δολάριο αυστραλίας</item>
+        <item>Λεβ Βουλγαρίας</item>
+        <item>Ρεάλ Βραζιλίας</item>
+        <item>Δολάριο Καναδά</item>
+        <item>Ελβετικό φράγκο</item>
+        <item>Κινεζικό γιουάν</item>
+        <item>Τσεχική κορώνα</item>
+        <item>Δανική κορώνα</item>
+        <item>Ευρώ</item>
+        <item>Λίρα στερλίνα</item>
+        <item>Δολάριο Χονγκ Κονγκ</item>
+        <item>Κούνα της Κροατίας</item>
+        <item>Ουγγρικό φιορίνι</item>
+        <item>Ινδονησιακή ρουπία</item>
+        <item>Ισραηλινό σεκέλ</item>
+        <item>Ινδική ρουπία</item>
+        <item>Ισλανδική κορώνα</item>
+        <item>Γεν Ιαπωνίας</item>
+        <item>Γουόν Νότιας Κορέας</item>
+        <item>Μεξικάνικο πέσο</item>
+        <item>Ρινγκτ Μαλαισίας</item>
+        <item>Νορβηγική κορώνα</item>
+        <item>Δολάριο Νέας Ζηλανδίας</item>
+        <item>Φιλιππινέζικο πέσο</item>
+        <item>Πολωνικά ζλότι</item>
+        <item>Ρουμανικό λεβ</item>
+        <item>Ρωσικό ρούβλι</item>
+        <item>Σουηδική κορώνα</item>
+        <item>Δολάριο Σιγκαπούρης</item>
+        <item>Μπατ Ταϊλάνδης</item>
+        <item>Τουρκική λίρα</item>
+        <item>Αμερικάνικο δολάριο</item>
+        <item>Ραντ Νοτίου Αφρικής</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">محول العملات</string>
+    <string name="string_from">من</string>
+    <string name="string_to">إلى</string>
+    <string name="string_convert">يتحول</string>
+    <string name="hint_enter_amount">أدخل المبلغ</string>
+    <string-array name="currencyNames">
+        <item>دولار استرالي</item>
+        <item>ليف بلغاري</item>
+        <item>ريال برازيلي</item>
+        <item>الدولار الكندي</item>
+        <item>فرنك سويسري</item>
+        <item>اليوان الرينمنبي الصيني</item>
+        <item>الكورونا التشيكية</item>
+        <item>كرونة دنماركية</item>
+        <item>اليورو</item>
+        <item>الجنيه الاسترليني</item>
+        <item>الدولار هونج كونج</item>
+        <item>كونا كرواتية</item>
+        <item>فورنت مجري</item>
+        <item>الروبية الاندونيسية</item>
+        <item>شيكل إسرائيلي</item>
+        <item>روبية هندية</item>
+        <item>كرونا آيسلندية</item>
+        <item>الين الياباني</item>
+        <item>وون كوريا الجنوبية</item>
+        <item>بيزو مكسيكي</item>
+        <item>رينغيت ماليزي</item>
+        <item>الكرونة النرويجية</item>
+        <item>الدولار النيوزيلندي</item>
+        <item>بيزو فلبيني</item>
+        <item>الزلوتي البولندي</item>
+        <item>ليو روماني</item>
+        <item>روبل روسي</item>
+        <item>كرونة سويدية</item>
+        <item>دولار سينغافوري</item>
+        <item>بات تايلندي</item>
+        <item>الليرة التركية</item>
+        <item>الدولار الأمريكي</item>
+        <item>راند جنوب أفريقيا</item>
+    </string-array>
+
+</resources>

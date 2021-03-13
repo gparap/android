@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Convertisseur de devises</string>
+    <string name="string_from">De</string>
+    <string name="string_to">À</string>
+    <string name="string_convert">Convertir</string>
+    <string name="hint_enter_amount">entrer le montant</string>
+    <string-array name="currencyNames">
+        <item>dollar australien</item>
+        <item>Lev bulgare</item>
+        <item>Real brésilien</item>
+        <item>dollar canadien</item>
+        <item>franc suisse</item>
+        <item>Yuan chinois renminbi</item>
+        <item>Couronne tchèque</item>
+        <item>Couronne danoise</item>
+        <item>euro</item>
+        <item>Livre sterling</item>
+        <item>dollar de Hong Kong</item>
+        <item>Kuna croate</item>
+        <item>Forint hongrois</item>
+        <item>Roupie indonésienne</item>
+        <item>Shekel israélien</item>
+        <item>Roupie indienne</item>
+        <item>Couronne islandaise</item>
+        <item>yen japonais</item>
+        <item>Won sud-coréen</item>
+        <item>Peso mexicain</item>
+        <item>Cloche malaisienne</item>
+        <item>Couronne norvégienne</item>
+        <item>Dollar néo-zélandais</item>
+        <item>Peso philippin</item>
+        <item>Zloty polonais</item>
+        <item>Leu roumain</item>
+        <item>Rouble russe</item>
+        <item>Couronne suédoise</item>
+        <item>Dollar de Singapour</item>
+        <item>baht thaïlandais</item>
+        <item>Lire turque</item>
+        <item>Dollars américain</item>
+        <item>Rand sud-africain</item>
+    </string-array>
+
+</resources>
