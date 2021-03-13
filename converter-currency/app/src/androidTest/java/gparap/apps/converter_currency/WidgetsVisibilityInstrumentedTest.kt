@@ -88,9 +88,4 @@ class WidgetsVisibilityInstrumentedTest {
     fun widgetIsDisplayed_buttonConvert() {
         onView(withId(R.id.buttonConvert)).check(matches(isDisplayed()))
     }
-
-    @Test
-    fun widgetIsNotDisplayed_progressBar() {
-        onView(withId(R.id.progressBar)).check(matches(not(isDisplayed())))
-    }
 }

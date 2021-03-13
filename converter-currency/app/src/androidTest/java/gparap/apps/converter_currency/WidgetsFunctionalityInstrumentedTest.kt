@@ -22,7 +22,6 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
@@ -38,7 +37,9 @@ class WidgetsFunctionalityInstrumentedTest {
     @get:Rule
     val rule = ActivityScenarioRule(ConverterActivity::class.java)
     private var context: Context? = null
-    val usDollarIndex = 1
+    val euroIndex = 8
+    val euroName = "Euro"
+
     @Before
     fun setUp() {
         //get base context
@@ -58,14 +59,14 @@ class WidgetsFunctionalityInstrumentedTest {
     @Test
     fun displayCurrencyName_FromCurrencySpinner() {
         onView(withId(R.id.spinnerFromCurrency)).perform(click())
-        onData(`is`(context?.resources?.getStringArray(R.array.currencyCodes)?.get(usDollarIndex))).perform(click())
-        onView(withId(R.id.textViewLabelFromCurrency)).check(matches(withText(R.string.string_USD)))
+        onData(`is`(context?.resources?.getStringArray(R.array.currencyCodes)?.get(euroIndex))).perform(click())
+        onView(withId(R.id.textViewLabelFromCurrency)).check(matches(withText(euroName)))
     }
 
     @Test
     fun displayCurrencyName_ToCurrencySpinner() {
         onView(withId(R.id.spinnerToCurrency)).perform(click())
-        onData(`is`(context?.resources?.getStringArray(R.array.currencyCodes)?.get(usDollarIndex))).perform(click())
-        onView(withId(R.id.textViewLabelToCurrency)).check(matches(withText(R.string.string_USD)))
+        onData(`is`(context?.resources?.getStringArray(R.array.currencyCodes)?.get(euroIndex))).perform(click())
+        onView(withId(R.id.textViewLabelToCurrency)).check(matches(withText(euroName)))
     }
 }
