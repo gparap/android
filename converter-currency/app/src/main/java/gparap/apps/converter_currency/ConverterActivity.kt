@@ -165,14 +165,16 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
             return stringBuilder.toString()
         }
 
-        var outputTo = conversion   //the "to" currency conversion output
+        //the "to" and "from" currency conversion outputs
+        var outputTo = conversion.replace(",", ".")
         var outputFrom =
             if (editTextAmount.text.toString().isEmpty() || editTextAmount.text.toString() == ".") {
                 "1"
             } else if (editTextAmount.text.toString().toDoubleOrNull() == 0.0) {
                 "0"
-            } else { editTextAmount.text.toString()
-            }   //the "from" currency conversion output
+            } else {
+                editTextAmount.text.toString()
+            }
 
         //remove trailing zeros
         val integer: Int?
@@ -246,5 +248,12 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
             }
         }
         return stringBuilder.toString()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        //clear exchange rate cache
+        Connection.latestExchangeRates = null
     }
 }
