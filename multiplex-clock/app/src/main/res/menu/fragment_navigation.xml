@@ -3,12 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_item_countdown_timer"
-        android:title="@string/item_countdown_timer"
+        android:id="@+id/menu_item_clock"
+        android:title="@string/item_clock"
         app:showAsAction="never" />
     <item
         android:id="@+id/menu_item_chronometer"
         android:title="@string/item_chronometer"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_item_countdown_timer"
+        android:title="@string/item_countdown_timer"
         app:showAsAction="never" />
     <item
         android:id="@+id/menu_item_alarm_clock"

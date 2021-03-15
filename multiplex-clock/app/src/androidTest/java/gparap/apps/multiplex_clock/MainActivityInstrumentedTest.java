@@ -29,10 +29,10 @@ public class MainActivityInstrumentedTest {
     }
 
     @Test
-    public void AlarmClockFragment_IsDisplayed() {
+    public void AlarmFragment_IsDisplayed() {
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getContext());
-        onView(withText(R.string.item_alarm_clock)).perform(click());
-        onView(withId(R.id.alarmClockFragment)).check(matches(isDisplayed()));
+        onView(withText(R.string.item_clock)).perform(click());
+        onView(withId(R.id.clockFragment)).check(matches(isDisplayed()));
     }
 
     @Test
@@ -47,5 +47,12 @@ public class MainActivityInstrumentedTest {
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getContext());
         onView(withText(R.string.item_countdown_timer)).perform(click());
         onView(withId(R.id.countdownTimerFragment)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void AlarmClockFragment_IsDisplayed() {
+        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getContext());
+        onView(withText(R.string.item_alarm_clock)).perform(click());
+        onView(withId(R.id.alarmClockFragment)).check(matches(isDisplayed()));
     }
 }

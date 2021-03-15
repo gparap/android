@@ -15,9 +15,16 @@
  */
 package gparap.apps.multiplex_clock.ui;
 
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import com.google.android.material.appbar.MaterialToolbar;
 
 import gparap.apps.multiplex_clock.R;
 
@@ -27,5 +34,60 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //set MaterialToolbar to act as the ActionBar
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        //show the clock when app starts
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragmentContainer, ClockFragment.class, null)
+                .commit();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        new MenuInflater(this).inflate(R.menu.fragment_navigation, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        //navigate to fragments
+        switch (id) {
+
+            //clock
+            case R.id.menu_item_clock:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragmentContainer, ClockFragment.class, null)
+                        .commit();
+                break;
+
+            //chronometer timer
+            case R.id.menu_item_chronometer:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragmentContainer, ChronometerFragment.class, null)
+                        .commit();
+                break;
+
+            //countdown timer
+            case R.id.menu_item_countdown_timer:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragmentContainer, CountdownTimerFragment.class, null)
+                        .commit();
+                break;
+
+            //alarm clock
+            case R.id.menu_item_alarm_clock:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragmentContainer, AlarmClockFragment.class, null)
+                        .commit();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
