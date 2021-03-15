@@ -29,13 +29,6 @@ public class MainActivityInstrumentedTest {
     }
 
     @Test
-    public void AlarmFragment_IsDisplayed() {
-        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getContext());
-        onView(withText(R.string.item_clock)).perform(click());
-        onView(withId(R.id.clockFragment)).check(matches(isDisplayed()));
-    }
-
-    @Test
     public void ChronometerFragment_IsDisplayed() {
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getContext());
         onView(withText(R.string.item_chronometer)).perform(click());

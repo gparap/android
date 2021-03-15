@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //show the clock when app starts
+        //show the chronometer when app starts
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragmentContainer, ClockFragment.class, null)
+                .add(R.id.fragmentContainer, ChronometerFragment.class, null)
                 .commit();
     }
 
@@ -58,13 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
         //navigate to fragments
         switch (id) {
-
-            //clock
-            case R.id.menu_item_clock:
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragmentContainer, ClockFragment.class, null)
-                        .commit();
-                break;
 
             //chronometer timer
             case R.id.menu_item_chronometer:
