@@ -27,11 +27,11 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
-public class ChronometerFragmentInstrumentedTest {
+public class ChronometerTimerFragmentInstrumentedTest {
 
     @Before
     public void setUp() throws Exception {
-        FragmentScenario.launchInContainer(ChronometerFragment.class);
+        FragmentScenario.launchInContainer(ChronometerTimerFragment.class);
     }
 
     @Test

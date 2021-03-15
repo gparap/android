@@ -19,6 +19,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,23 +28,27 @@ import android.widget.Chronometer;
 
 import gparap.apps.multiplex_clock.R;
 
-public class ChronometerFragment extends Fragment {
+public class ChronometerTimerFragment extends Fragment {
     private Chronometer chronometer;
     private Button buttonStart;
     private Button buttonStop;
     private Button buttonReset;
+    private long stoppedTime;
+    private boolean isRunning;
+    private boolean hasStarted;
 
-    public ChronometerFragment() {
+    public ChronometerTimerFragment() {
     }
 
-    public static ChronometerFragment newInstance() {
-        ChronometerFragment fragment = new ChronometerFragment();
+    public static ChronometerTimerFragment newInstance() {
+        ChronometerTimerFragment fragment = new ChronometerTimerFragment();
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initTimer();
     }
 
     @Override
@@ -59,16 +64,52 @@ public class ChronometerFragment extends Fragment {
         addOnClickListenersToFragmentWidgets();
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        hasStarted = isRunning;
+        stopTimer();
+    }
+
+    @Override
+    public void onResume() {
+        //restore state
+        super.onResume();
+        if (hasStarted){
+            startTimer();
+        }
+    }
+
+    private void initTimer() {
+        stoppedTime = 0L;
+        isRunning = false;
+        hasStarted = false;
+    }
+
     private void startTimer() {
-        System.out.println("Chronometer started");
+        if (!isRunning) {
+            //start clock from now on (not app boot)
+            chronometer.setBase(SystemClock.elapsedRealtime() - stoppedTime);
+            chronometer.start();
+            isRunning = true;
+        }
     }
 
     private void stopTimer() {
-        System.out.println("Chronometer stopped");
+        if (isRunning) {
+            //hold time that passed since the start of the counting
+            stoppedTime = SystemClock.elapsedRealtime() - chronometer.getBase();
+            chronometer.stop();
+            isRunning = false;
+        }
     }
 
     private void resetTimer() {
-        System.out.println("Chronometer reset");
+        chronometer.setBase(SystemClock.elapsedRealtime());
+        stoppedTime = 0L;
+        chronometer.stop();
+        isRunning = false;
+        hasStarted = false;
     }
 
     private void addOnClickListenersToFragmentWidgets() {
