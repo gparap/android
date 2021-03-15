@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">MultiTimer</string>
-    <string name="item_chronometer">Chronometer</string>
     <string name="item_countdown_timer">Countdown Timer</string>
     <string name="item_alarm_clock">Alarm Clock</string>
+
+    <!-- Chronometer timer-->
+    <string name="menu_item_chronometer">Chronometer</string>
+    <string name="button_start">Start</string>
+    <string name="button_stop">Stop</string>
+    <string name="button_reset">Reset</string>
 </resources>
