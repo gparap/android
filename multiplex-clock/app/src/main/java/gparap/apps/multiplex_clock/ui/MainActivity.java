@@ -29,6 +29,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import gparap.apps.multiplex_clock.R;
 
 public class MainActivity extends AppCompatActivity {
+    private ChronometerFragment chronometerFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         //show the chronometer when app starts
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragmentContainer, ChronometerTimerFragment.class, null)
+                .add(R.id.fragmentContainer, ChronometerFragment.class, null)
                 .commit();
     }
 
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             //chronometer timer
             case R.id.menu_item_chronometer:
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragmentContainer, ChronometerTimerFragment.class, null)
+                        .replace(R.id.fragmentContainer, ChronometerFragment.class, null)
                         .commit();
                 break;
 
