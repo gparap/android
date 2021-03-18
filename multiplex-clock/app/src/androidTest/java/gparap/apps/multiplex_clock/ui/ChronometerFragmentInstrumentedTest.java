@@ -15,23 +15,29 @@
  */
 package gparap.apps.multiplex_clock.ui;
 
+import android.widget.Chronometer;
+
 import androidx.fragment.app.testing.FragmentScenario;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.concurrent.atomic.AtomicReference;
+
 import gparap.apps.multiplex_clock.R;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 public class ChronometerFragmentInstrumentedTest {
+    FragmentScenario fragmentScenario;
 
     @Before
     public void setUp() throws Exception {
-        FragmentScenario.launchInContainer(ChronometerFragment.class);
+        fragmentScenario = FragmentScenario.launchInContainer(ChronometerFragment.class);
     }
 
     @Test
@@ -54,4 +60,67 @@ public class ChronometerFragmentInstrumentedTest {
         onView(withId(R.id.buttonReset)).check(matches(isDisplayed()));
     }
 
+    @Test
+    public void startButton_ChronometerTimerIsRunning() throws InterruptedException {
+        AtomicReference<String> startTime = new AtomicReference<>("-1");
+        fragmentScenario.onFragment(fragment -> {
+            Chronometer chronometer = fragment.getActivity().findViewById(R.id.chronometer);
+            startTime.set(chronometer.getText().toString());
+        });//get the timer value BEFORE started counting
+
+        onView(withId(R.id.buttonStart)).perform(click());
+        Thread.sleep(1000);
+
+        AtomicReference<String> runningTime = new AtomicReference<>("");
+        fragmentScenario.onFragment(fragment -> {
+            Chronometer chronometer = fragment.getActivity().findViewById(R.id.chronometer);
+            runningTime.set(chronometer.getText().toString());
+        });//get the timer value AFTER started counting
+
+        assert !(startTime.toString().equals(runningTime.toString()));
+    }
+
+    @Test
+    public void stopButton_ChronometerTimerIsStopping() throws InterruptedException {
+        //start timer
+        onView(withId(R.id.buttonStart)).perform(click());
+        Thread.sleep(1000);
+
+        AtomicReference<String> justBeforeStopTime = new AtomicReference<>("-1");
+        fragmentScenario.onFragment(fragment -> {
+            Chronometer chronometer = fragment.getActivity().findViewById(R.id.chronometer);
+            justBeforeStopTime.set(chronometer.getText().toString());
+        });//get the timer value JUST before stopped counting
+
+        onView(withId(R.id.buttonStop)).perform(click());
+
+        AtomicReference<String> justAfterStopTime = new AtomicReference<>("");
+        fragmentScenario.onFragment(fragment -> {
+            Chronometer chronometer = fragment.getActivity().findViewById(R.id.chronometer);
+            justAfterStopTime.set(chronometer.getText().toString());
+        });//get the timer value after stopped counting
+
+        // !!! we assume that the delay will be less than 1 second
+        // !!! from the moment espresso presses the stop button
+        // !!! and after it retrieves the timer value
+        assert justBeforeStopTime.toString().equals(justAfterStopTime.toString());
+    }
+
+    @Test
+    public void startButton_ChronometerTimerIsResetting() throws InterruptedException {
+        String zeroTime = "00:00";
+
+        //start and reset timer
+        onView(withId(R.id.buttonStart)).perform(click());
+        Thread.sleep(1000);
+        onView(withId(R.id.buttonReset)).perform(click());
+
+        AtomicReference<String> resetTime = new AtomicReference<>("");
+        fragmentScenario.onFragment(fragment -> {
+            Chronometer chronometer = fragment.getActivity().findViewById(R.id.chronometer);
+            resetTime.set(chronometer.getText().toString());
+        });//get the timer value after reset
+
+        assert zeroTime.equals(resetTime.toString());
+    }
 }
