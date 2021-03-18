@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">MultiTimer</string>
-    <string name="item_countdown_timer">Countdown Timer</string>
-    <string name="item_alarm_clock">Alarm Clock</string>
+    <string name="menu_item_clock">Clock</string>
+    <string name="menu_item_countdown_timer">Countdown Timer</string>
+    <string name="menu_item_alarm_clock">Alarm Clock</string>
 
     <!-- Chronometer timer-->
     <string name="menu_item_chronometer">Chronometer</string>
