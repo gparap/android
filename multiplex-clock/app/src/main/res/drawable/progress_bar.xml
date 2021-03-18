@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--Progress background; draws first-->
+    <item>
+        <shape
+            android:shape="ring"
+            android:useLevel="false">
+            <solid android:color="@color/material_on_background_disabled" />
+        </shape>
+    </item>
+
+    <!--Real progress; draws on top of previous ring-->
+    <item>
+        <rotate
+            android:fromDegrees="270"
+            android:toDegrees="270">
+            <shape
+                android:shape="ring"
+                android:useLevel="true">
+                <gradient
+                    android:endColor="@color/purple_700"
+                    android:startColor="@color/purple_200" />
+            </shape>
+        </rotate>
+    </item>
+
+</layer-list>
