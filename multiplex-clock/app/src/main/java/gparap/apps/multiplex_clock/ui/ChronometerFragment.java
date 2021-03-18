@@ -15,29 +15,36 @@
  */
 package gparap.apps.multiplex_clock.ui;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.ProgressBar;
 
 import androidx.fragment.app.Fragment;
-import androidx.test.core.app.ActivityScenario;
 
 import gparap.apps.multiplex_clock.R;
 import gparap.apps.multiplex_clock.utils.PreferencesManager;
 
-public class ChronometerFragment extends Fragment implements ActivityScenario.ActivityAction {
+public class ChronometerFragment extends Fragment { //TODO: save state for progress
     private Chronometer chronometer;
+    private ProgressBar progressBar;
     private Button buttonStart;
     private Button buttonStop;
     private Button buttonReset;
     private long stoppedTime;
     private boolean isRunning;
     private static long startTime = -1L;
+    private volatile int progress;
+    private Thread progressThread;
+    private Handler progressHandler;
+    private static int PROGRESS_MIN = 0;
+    private static int PROGRESS_MAX = 60;
 
     public ChronometerFragment() {
     }
@@ -63,6 +70,7 @@ public class ChronometerFragment extends Fragment implements ActivityScenario.Ac
     public void onStart() {
         super.onStart();
         addOnClickListenersToFragmentWidgets();
+        initProgress();
     }
 
     @Override
@@ -105,6 +113,7 @@ public class ChronometerFragment extends Fragment implements ActivityScenario.Ac
             chronometer.setBase(SystemClock.elapsedRealtime() - stoppedTime);
             chronometer.start();
             isRunning = true;
+            startProgress();
         }
     }
 
@@ -116,6 +125,7 @@ public class ChronometerFragment extends Fragment implements ActivityScenario.Ac
             isRunning = false;
         }
         PreferencesManager.getInstance().saveLong(getActivity(), "stoppedTime", stoppedTime);
+        stopProgress();
     }
 
     private void resetTimer() {
@@ -124,6 +134,93 @@ public class ChronometerFragment extends Fragment implements ActivityScenario.Ac
         chronometer.stop();
         isRunning = false;
         PreferencesManager.getInstance().saveLong(getActivity(), "stoppedTime", stoppedTime);
+        resetProgress();
+    }
+
+    private void initProgress() {
+        progress = PROGRESS_MIN;
+        progressBar.setMax(PROGRESS_MAX);
+        progressBar.setProgress(progress);
+    }
+
+    private void startProgress() {
+        progressBar.setVisibility(View.VISIBLE);
+
+        //handle progress
+        progressThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (progressThread != null && progress < PROGRESS_MAX) {
+                    progress = getProgress();
+
+                    //update progress bar
+                    progressHandler = new Handler(Looper.getMainLooper());
+                    progressHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressBar.setProgress(progress);
+                        }
+                    });
+                }
+            }
+        });
+        progressThread.start();
+    }
+
+    private void stopProgress() {
+        progressHandler.removeCallbacks(progressThread);
+        stopProgressThread();
+        progress = reCalculateProgress();
+        progressBar.setProgress(progress);
+    }
+
+    private void resetProgress() {
+        initProgress();
+        progressHandler.removeCallbacks(progressThread);
+        stopProgressThread();
+    }
+
+    private synchronized void stopProgressThread() {
+        try {
+            progressThread.interrupt();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (progressThread != null) {
+                progressThread = null;
+            }
+        }
+    }
+
+    private int getProgress() {
+        progress++;
+
+        //cycle progress every minute
+        if (progress < PROGRESS_MAX) {
+            stepProgress();
+        } else {
+            stepProgress();
+            progress = PROGRESS_MIN;
+            progressBar.setProgress(progress);
+        }
+        return progress;
+    }
+
+    private void stepProgress() {
+        //step progress every second
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //Re-Calculates progress based on seconds left every time the chronometer is stopped
+    //  for syncing the chronometer with the progress bar
+    private int reCalculateProgress() {
+        String timer = chronometer.getText().toString();
+        String seconds = timer.substring(timer.lastIndexOf(':') + 1, timer.length());
+        return Integer.parseInt(seconds);
     }
 
     private void addOnClickListenersToFragmentWidgets() {
@@ -149,13 +246,9 @@ public class ChronometerFragment extends Fragment implements ActivityScenario.Ac
 
     private void getFragmentWidgets(View view) {
         chronometer = view.findViewById(R.id.chronometer);
+        progressBar = view.findViewById(R.id.progressBarChronometer);
         buttonStart = view.findViewById(R.id.buttonStart);
         buttonStop = view.findViewById(R.id.buttonStop);
         buttonReset = view.findViewById(R.id.buttonReset);
-    }
-
-    @Override
-    public void perform(Activity activity) {
-
     }
 }
