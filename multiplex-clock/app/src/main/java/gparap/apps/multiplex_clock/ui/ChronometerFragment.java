@@ -15,8 +15,7 @@
  */
 package gparap.apps.multiplex_clock.ui;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.LayoutInflater;
@@ -26,10 +25,12 @@ import android.widget.Button;
 import android.widget.Chronometer;
 
 import androidx.fragment.app.Fragment;
+import androidx.test.core.app.ActivityScenario;
 
 import gparap.apps.multiplex_clock.R;
+import gparap.apps.multiplex_clock.utils.PreferencesManager;
 
-public class ChronometerFragment extends Fragment {
+public class ChronometerFragment extends Fragment implements ActivityScenario.ActivityAction {
     private Chronometer chronometer;
     private Button buttonStart;
     private Button buttonStop;
@@ -37,9 +38,6 @@ public class ChronometerFragment extends Fragment {
     private long stoppedTime;
     private boolean isRunning;
     private static long startTime = -1L;
-    private SharedPreferences preferences;
-    private SharedPreferences.Editor editor;
-
 
     public ChronometerFragment() {
     }
@@ -70,7 +68,8 @@ public class ChronometerFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        saveRunningTimePrefs();
+        PreferencesManager.getInstance().saveBoolean(getActivity(), "isRunning", isRunning);
+        PreferencesManager.getInstance().saveLong(getActivity(), "runningTime", chronometer.getBase());
     }
 
     @Override
@@ -80,14 +79,13 @@ public class ChronometerFragment extends Fragment {
         if (startTime == -1) {
             startTime = SystemClock.elapsedRealtime();
             chronometer.setBase(SystemClock.elapsedRealtime());
-        }else{
-            SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-            isRunning = getBooleanPrefs("isRunning", false);
+        } else {
+            isRunning = PreferencesManager.getInstance().getBoolean(getActivity(), "isRunning", false);
 
             if (!isRunning) {
-                stoppedTime = getLongPrefs("stoppedTime", 0L);
+                stoppedTime = PreferencesManager.getInstance().getLong(getActivity(), "stoppedTime", 0L);
                 chronometer.setBase(SystemClock.elapsedRealtime() - stoppedTime);
-            }else{
+            } else {
                 resumeTimer();
             }
         }
@@ -95,7 +93,7 @@ public class ChronometerFragment extends Fragment {
 
     private void resumeTimer() {
         //start clock from where it was before losing focus
-        long runningTime = getLongPrefs("runningTime", 0L);
+        long runningTime = PreferencesManager.getInstance().getLong(getActivity(), "runningTime", 0L);
         chronometer.setBase(runningTime);
         chronometer.start();
         isRunning = true;
@@ -117,7 +115,7 @@ public class ChronometerFragment extends Fragment {
             chronometer.stop();
             isRunning = false;
         }
-        saveStoppedTimePrefs();
+        PreferencesManager.getInstance().saveLong(getActivity(), "stoppedTime", stoppedTime);
     }
 
     private void resetTimer() {
@@ -125,7 +123,7 @@ public class ChronometerFragment extends Fragment {
         stoppedTime = 0L;
         chronometer.stop();
         isRunning = false;
-        saveStoppedTimePrefs();
+        PreferencesManager.getInstance().saveLong(getActivity(), "stoppedTime", stoppedTime);
     }
 
     private void addOnClickListenersToFragmentWidgets() {
@@ -156,28 +154,8 @@ public class ChronometerFragment extends Fragment {
         buttonReset = view.findViewById(R.id.buttonReset);
     }
 
-    private void saveStoppedTimePrefs() {
-        preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-        editor = preferences.edit();
-        editor.putLong("stoppedTime", stoppedTime);
-        editor.apply();
-    }
+    @Override
+    public void perform(Activity activity) {
 
-    private void saveRunningTimePrefs() {
-        preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-        editor = preferences.edit();
-        editor.putBoolean("isRunning", isRunning);
-        editor.putLong("runningTime", chronometer.getBase());
-        editor.apply();
-    }
-
-    private Boolean getBooleanPrefs(String key, Boolean defaultValue) {
-        preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-        return preferences.getBoolean(key, defaultValue);
-    }
-
-    private Long getLongPrefs(String key, Long defaultValue) {
-        preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-        return preferences.getLong(key, defaultValue);
     }
 }
