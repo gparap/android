@@ -16,8 +16,6 @@
 package gparap.apps.multiplex_clock.ui;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +27,7 @@ import android.widget.ProgressBar;
 import androidx.fragment.app.Fragment;
 
 import gparap.apps.multiplex_clock.R;
+import gparap.apps.multiplex_clock.CircularProgress;
 import gparap.apps.multiplex_clock.utils.PreferencesManager;
 
 public class ChronometerFragment extends Fragment {
@@ -40,11 +39,7 @@ public class ChronometerFragment extends Fragment {
     private long stoppedTime;
     private boolean isRunning;
     private static long startTime = -1L;
-    private int progress;
-    private Thread progressThread;
-    private Handler progressHandler;
-    private static int PROGRESS_MIN = 0;
-    private static int PROGRESS_MAX = 60;
+    CircularProgress circularProgress;
 
     public ChronometerFragment() {
     }
@@ -70,7 +65,11 @@ public class ChronometerFragment extends Fragment {
     public void onStart() {
         super.onStart();
         addOnClickListenersToFragmentWidgets();
-        setupProgress();
+
+        //create a circular progree object
+        circularProgress = new CircularProgress();
+        circularProgress.setProgressBar(progressBar);
+        circularProgress.setupProgress();
     }
 
     @Override
@@ -93,15 +92,15 @@ public class ChronometerFragment extends Fragment {
             if (!isRunning) {
                 stoppedTime = PreferencesManager.getInstance().getLong(getActivity(), "stoppedTime", 0L);
                 chronometer.setBase(SystemClock.elapsedRealtime() - stoppedTime);
-                resumeProgress();
+                circularProgress.resumeProgress(chronometer.getText().toString());
             } else {
                 resumeTimer();
-                resumeProgress();
+                circularProgress.resumeProgress(chronometer.getText().toString());
 
                 // !!! do NOT remove !!!
                 // (thread becomes null when UI no longer exists)
-                if (progressThread == null) {
-                    startProgress();
+                if (circularProgress.getProgressThread() == null) {
+                    circularProgress.startProgress();
                 }
             }
         }
@@ -121,7 +120,7 @@ public class ChronometerFragment extends Fragment {
             chronometer.setBase(SystemClock.elapsedRealtime() - stoppedTime);
             chronometer.start();
             isRunning = true;
-            startProgress();
+            circularProgress.startProgress();
         }
     }
 
@@ -133,7 +132,7 @@ public class ChronometerFragment extends Fragment {
             isRunning = false;
         }
         PreferencesManager.getInstance().saveLong(getActivity(), "stoppedTime", stoppedTime);
-        stopProgress();
+        circularProgress.stopProgress(chronometer.getText().toString());
     }
 
     private void resetTimer() {
@@ -142,110 +141,7 @@ public class ChronometerFragment extends Fragment {
         chronometer.stop();
         isRunning = false;
         PreferencesManager.getInstance().saveLong(getActivity(), "stoppedTime", stoppedTime);
-        resetProgress();
-    }
-
-    private void setupProgress() {
-        progress = PROGRESS_MIN;
-        progressBar.setMax(PROGRESS_MAX);
-        progressBar.setProgress(progress);
-        progressBar.setVisibility(View.INVISIBLE);
-    }
-
-    private void startProgress() {
-        progressBar.setVisibility(View.VISIBLE);
-
-        //handle progress
-        progressThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (progressThread != null && progress < PROGRESS_MAX) {
-                    progress = getProgress();
-
-                    //update progress bar
-                    progressHandler = new Handler(Looper.getMainLooper());
-                    progressHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            progressBar.setProgress(progress);
-                        }
-                    });
-                }
-            }
-        });
-        progressThread.start();
-    }
-
-    private void stopProgress() {
-        if (progressHandler != null) {
-            progressHandler.removeCallbacks(progressThread);
-            stopProgressThread();
-        }
-        progress = reCalculateProgress();
-        progressBar.setProgress(progress);
-    }
-
-    private void resetProgress() {
-        if (progressHandler != null) {
-            progressHandler.removeCallbacks(progressThread);
-            stopProgressThread();
-        }
-        setupProgress();
-    }
-
-    private void resumeProgress() {
-        progress = reCalculateProgress();
-        progressBar.setProgress(progress);
-        if (progress == PROGRESS_MIN) {
-            progressBar.setVisibility(View.INVISIBLE);
-        } else {
-            progressBar.setVisibility(View.VISIBLE);
-        }
-    }
-
-    private synchronized void stopProgressThread() {
-        try {
-            progressThread.interrupt();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (progressThread != null) {
-                progressThread = null;
-            }
-        }
-    }
-
-    private int getProgress() {
-        progress++;
-        //cycle progress every minute
-        if (progress < PROGRESS_MAX) {
-            stepProgress();
-        } else {
-            stepProgress();
-            progress = PROGRESS_MIN;
-            progressBar.setProgress(progress);
-
-            //for extra sync
-            stepProgress();
-        }
-        return progress;
-    }
-
-    private void stepProgress() {
-        //step progress every second
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    //Re-Calculates progress based on seconds left every time the chronometer is stopped
-    //  for syncing the chronometer with the progress bar
-    private int reCalculateProgress() {
-        String timer = chronometer.getText().toString();
-        String seconds = timer.substring(timer.lastIndexOf(':') + 1, timer.length());
-        return Integer.parseInt(seconds);
+        circularProgress.resetProgress();
     }
 
     private void addOnClickListenersToFragmentWidgets() {
