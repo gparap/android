@@ -31,7 +31,7 @@ import androidx.fragment.app.Fragment;
 import gparap.apps.multiplex_clock.R;
 import gparap.apps.multiplex_clock.utils.PreferencesManager;
 
-public class ChronometerFragment extends Fragment { //TODO: save state for progress
+public class ChronometerFragment extends Fragment {
     private Chronometer chronometer;
     private ProgressBar progressBar;
     private Button buttonStart;
@@ -40,7 +40,7 @@ public class ChronometerFragment extends Fragment { //TODO: save state for progr
     private long stoppedTime;
     private boolean isRunning;
     private static long startTime = -1L;
-    private volatile int progress;
+    private int progress;
     private Thread progressThread;
     private Handler progressHandler;
     private static int PROGRESS_MIN = 0;
@@ -70,7 +70,7 @@ public class ChronometerFragment extends Fragment { //TODO: save state for progr
     public void onStart() {
         super.onStart();
         addOnClickListenersToFragmentWidgets();
-        initProgress();
+        setupProgress();
     }
 
     @Override
@@ -93,8 +93,16 @@ public class ChronometerFragment extends Fragment { //TODO: save state for progr
             if (!isRunning) {
                 stoppedTime = PreferencesManager.getInstance().getLong(getActivity(), "stoppedTime", 0L);
                 chronometer.setBase(SystemClock.elapsedRealtime() - stoppedTime);
+                resumeProgress();
             } else {
                 resumeTimer();
+                resumeProgress();
+
+                // !!! do NOT remove !!!
+                // (thread becomes null when UI no longer exists)
+                if (progressThread == null) {
+                    startProgress();
+                }
             }
         }
     }
@@ -137,10 +145,11 @@ public class ChronometerFragment extends Fragment { //TODO: save state for progr
         resetProgress();
     }
 
-    private void initProgress() {
+    private void setupProgress() {
         progress = PROGRESS_MIN;
         progressBar.setMax(PROGRESS_MAX);
         progressBar.setProgress(progress);
+        progressBar.setVisibility(View.INVISIBLE);
     }
 
     private void startProgress() {
@@ -168,16 +177,30 @@ public class ChronometerFragment extends Fragment { //TODO: save state for progr
     }
 
     private void stopProgress() {
-        progressHandler.removeCallbacks(progressThread);
-        stopProgressThread();
+        if (progressHandler != null) {
+            progressHandler.removeCallbacks(progressThread);
+            stopProgressThread();
+        }
         progress = reCalculateProgress();
         progressBar.setProgress(progress);
     }
 
     private void resetProgress() {
-        initProgress();
-        progressHandler.removeCallbacks(progressThread);
-        stopProgressThread();
+        if (progressHandler != null) {
+            progressHandler.removeCallbacks(progressThread);
+            stopProgressThread();
+        }
+        setupProgress();
+    }
+
+    private void resumeProgress() {
+        progress = reCalculateProgress();
+        progressBar.setProgress(progress);
+        if (progress == PROGRESS_MIN) {
+            progressBar.setVisibility(View.INVISIBLE);
+        } else {
+            progressBar.setVisibility(View.VISIBLE);
+        }
     }
 
     private synchronized void stopProgressThread() {
@@ -194,7 +217,6 @@ public class ChronometerFragment extends Fragment { //TODO: save state for progr
 
     private int getProgress() {
         progress++;
-
         //cycle progress every minute
         if (progress < PROGRESS_MAX) {
             stepProgress();
@@ -202,6 +224,9 @@ public class ChronometerFragment extends Fragment { //TODO: save state for progr
             stepProgress();
             progress = PROGRESS_MIN;
             progressBar.setProgress(progress);
+
+            //for extra sync
+            stepProgress();
         }
         return progress;
     }
