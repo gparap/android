@@ -26,8 +26,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
-import gparap.apps.multiplex_clock.R;
-
 public class MainActivity extends AppCompatActivity {
     private ChronometerFragment chronometerFragment;
 
@@ -77,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             //countdown timer
             case R.id.menu_item_countdown_timer:
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragmentContainer, CountdownTimerFragment.class, null)
+                        .replace(R.id.fragmentContainer, CountdownFragment.class, null)
                         .commit();
                 break;
 

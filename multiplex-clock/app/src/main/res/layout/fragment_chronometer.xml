@@ -5,7 +5,7 @@
     android:id="@+id/chronometerFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ChronometerFragment">
+    tools:context="ChronometerFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:indeterminateOnly="false"
             android:progressDrawable="@drawable/progress_bar"
             android:visibility="invisible"
-            app:layout_constraintBottom_toTopOf="@+id/buttonStart"
+            app:layout_constraintBottom_toTopOf="@+id/buttonStartChronometer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -29,13 +29,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/buttonStart"
-            app:layout_constraintEnd_toEndOf="@+id/buttonStart"
-            app:layout_constraintStart_toStartOf="@+id/buttonStart"
+            app:layout_constraintBottom_toTopOf="@+id/buttonStartChronometer"
+            app:layout_constraintEnd_toEndOf="@+id/buttonStartChronometer"
+            app:layout_constraintStart_toStartOf="@+id/buttonStartChronometer"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/buttonStart"
+            android:id="@+id/buttonStartChronometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_start"
@@ -45,24 +45,24 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/buttonStop"
+            android:id="@+id/buttonStopChronometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/button_stop"
-            app:layout_constraintEnd_toEndOf="@+id/buttonStart"
-            app:layout_constraintStart_toStartOf="@+id/buttonStart"
-            app:layout_constraintTop_toBottomOf="@+id/buttonStart" />
+            app:layout_constraintEnd_toEndOf="@+id/buttonStartChronometer"
+            app:layout_constraintStart_toStartOf="@+id/buttonStartChronometer"
+            app:layout_constraintTop_toBottomOf="@+id/buttonStartChronometer" />
 
         <Button
-            android:id="@+id/buttonReset"
+            android:id="@+id/buttonResetChronometer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/button_reset"
-            app:layout_constraintEnd_toEndOf="@+id/buttonStart"
-            app:layout_constraintStart_toStartOf="@+id/buttonStart"
-            app:layout_constraintTop_toBottomOf="@+id/buttonStop" />
+            app:layout_constraintEnd_toEndOf="@+id/buttonStartChronometer"
+            app:layout_constraintStart_toStartOf="@+id/buttonStartChronometer"
+            app:layout_constraintTop_toBottomOf="@+id/buttonStopChronometer" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

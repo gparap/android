@@ -29,8 +29,6 @@ import android.widget.TextView;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import gparap.apps.multiplex_clock.R;
-
 public class ClockFragment extends Fragment {
 
     public ClockFragment() {

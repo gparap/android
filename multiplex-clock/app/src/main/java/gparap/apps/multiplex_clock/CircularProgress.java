@@ -27,19 +27,17 @@ public class CircularProgress {
     private Thread progressThread;
     private Handler progressHandler;
     private static int PROGRESS_MIN = 0;
-    private static int PROGRESS_MAX = 60;
     private static short PROGRESS_SLEEP_INTERVAL = 1000;
+    private int progressMax;
 
     public CircularProgress() {
-    }
-
-    public ProgressBar getProgressBar() {
-        return progressBar;
     }
 
     public void setProgressBar(ProgressBar progressBar) {
         this.progressBar = progressBar;
     }
+
+    public void setProgressMax(int progressMax) { this.progressMax = progressMax; }
 
     public Thread getProgressThread() {
         return progressThread;
@@ -48,7 +46,7 @@ public class CircularProgress {
     public int getProgress() {
         progress++;
         //cycle progress every minute
-        if (progress < PROGRESS_MAX) {
+        if (progress < progressMax) {
             delayProgress(PROGRESS_SLEEP_INTERVAL);
         } else {
             delayProgress(PROGRESS_SLEEP_INTERVAL);
@@ -63,7 +61,7 @@ public class CircularProgress {
 
     public void setupProgress() {
         progress = PROGRESS_MIN;
-        progressBar.setMax(PROGRESS_MAX);
+        progressBar.setMax(progressMax);
         progressBar.setProgress(progress);
         progressBar.setVisibility(View.INVISIBLE);
     }
@@ -85,7 +83,7 @@ public class CircularProgress {
         progressThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (progressThread != null && progress < PROGRESS_MAX) {
+                while (progressThread != null && progress < progressMax) {
                     progress = getProgress();
 
                     //update progress bar
@@ -105,8 +103,8 @@ public class CircularProgress {
     public void stopProgress(String timer) {
         if (progressHandler != null) {
             progressHandler.removeCallbacks(progressThread);
-            stopProgressThread();
         }
+        stopProgressThread();
         progress = calculateProgress(timer);
         progressBar.setProgress(progress);
     }
@@ -114,8 +112,8 @@ public class CircularProgress {
     public void resetProgress() {
         if (progressHandler != null) {
             progressHandler.removeCallbacks(progressThread);
-            stopProgressThread();
         }
+        stopProgressThread();
         setupProgress();
     }
 

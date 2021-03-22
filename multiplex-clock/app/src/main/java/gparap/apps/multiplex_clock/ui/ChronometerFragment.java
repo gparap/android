@@ -25,11 +25,10 @@ import android.widget.Chronometer;
 import android.widget.ProgressBar;
 
 import androidx.fragment.app.Fragment;
-
-import gparap.apps.multiplex_clock.R;
 import gparap.apps.multiplex_clock.CircularProgress;
 import gparap.apps.multiplex_clock.utils.PreferencesManager;
 
+@SuppressWarnings("FieldCanBeLocal")
 public class ChronometerFragment extends Fragment {
     private Chronometer chronometer;
     private ProgressBar progressBar;
@@ -39,7 +38,8 @@ public class ChronometerFragment extends Fragment {
     private long stoppedTime;
     private boolean isRunning;
     private static long startTime = -1L;
-    CircularProgress circularProgress;
+    private static int PROGRESS_MAX = 60;
+    private CircularProgress circularProgress;
 
     public ChronometerFragment() {
     }
@@ -66,9 +66,10 @@ public class ChronometerFragment extends Fragment {
         super.onStart();
         addOnClickListenersToFragmentWidgets();
 
-        //create a circular progree object
+        //create and setup a circular progress
         circularProgress = new CircularProgress();
         circularProgress.setProgressBar(progressBar);
+        circularProgress.setProgressMax(PROGRESS_MAX);
         circularProgress.setupProgress();
     }
 
@@ -168,8 +169,8 @@ public class ChronometerFragment extends Fragment {
     private void getFragmentWidgets(View view) {
         chronometer = view.findViewById(R.id.chronometer);
         progressBar = view.findViewById(R.id.progressBarChronometer);
-        buttonStart = view.findViewById(R.id.buttonStart);
-        buttonStop = view.findViewById(R.id.buttonStop);
-        buttonReset = view.findViewById(R.id.buttonReset);
+        buttonStart = view.findViewById(R.id.buttonStartChronometer);
+        buttonStop = view.findViewById(R.id.buttonStopChronometer);
+        buttonReset = view.findViewById(R.id.buttonResetChronometer);
     }
 }
