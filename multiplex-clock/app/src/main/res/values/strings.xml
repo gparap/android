@@ -1,12 +1,20 @@
 <resources>
     <string name="app_name">MultiTimer</string>
+
+    <!--Menu Items-->
     <string name="menu_item_clock">Clock</string>
     <string name="menu_item_countdown_timer">Countdown Timer</string>
     <string name="menu_item_alarm_clock">Alarm Clock</string>
-
-    <!-- Chronometer timer-->
     <string name="menu_item_chronometer">Chronometer</string>
+
+    <!--Buttons-->
     <string name="button_start">Start</string>
     <string name="button_stop">Stop</string>
     <string name="button_reset">Reset</string>
+
+    <!--Miscellaneous-->
+    <string name="hh_mm_ss">HH:MM:SS</string>
+    <string name="value_0">0</string>
+    <string name="value_23">23</string>
+    <string name="value_59">59</string>
 </resources>
