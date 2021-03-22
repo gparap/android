@@ -25,6 +25,7 @@ import android.widget.Chronometer;
 import android.widget.ProgressBar;
 
 import androidx.fragment.app.Fragment;
+
 import gparap.apps.multiplex_clock.CircularProgress;
 import gparap.apps.multiplex_clock.utils.PreferencesManager;
 
@@ -37,7 +38,7 @@ public class ChronometerFragment extends Fragment {
     private Button buttonReset;
     private long stoppedTime;
     private boolean isRunning;
-    private static long startTime = -1L;
+    private static long startTime = 0L;
     private static int PROGRESS_MAX = 60;
     private CircularProgress circularProgress;
 
@@ -66,11 +67,14 @@ public class ChronometerFragment extends Fragment {
         super.onStart();
         addOnClickListenersToFragmentWidgets();
 
-        //create and setup a circular progress
+        //setup circular progress
         circularProgress = new CircularProgress();
         circularProgress.setProgressBar(progressBar);
         circularProgress.setProgressMax(PROGRESS_MAX);
         circularProgress.setupProgress();
+
+        //initialize or resume chronometer
+        restoreTimer();
     }
 
     @Override
@@ -83,8 +87,13 @@ public class ChronometerFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        restoreTimer();
+    }
 
-        if (startTime == -1) {
+    //Handles the initialization and resuming of the chronometer
+    //  independent of app changes (orientation, shutdown, etc.)
+    private void restoreTimer() {
+        if (startTime == 0L) {
             startTime = SystemClock.elapsedRealtime();
             chronometer.setBase(SystemClock.elapsedRealtime());
         } else {
@@ -93,7 +102,9 @@ public class ChronometerFragment extends Fragment {
             if (!isRunning) {
                 stoppedTime = PreferencesManager.getInstance().getLong(getActivity(), "stoppedTime", 0L);
                 chronometer.setBase(SystemClock.elapsedRealtime() - stoppedTime);
-                circularProgress.resumeProgress(chronometer.getText().toString());
+                if (circularProgress != null) {
+                    circularProgress.resumeProgress(chronometer.getText().toString());
+                }
             } else {
                 resumeTimer();
                 circularProgress.resumeProgress(chronometer.getText().toString());
@@ -143,6 +154,7 @@ public class ChronometerFragment extends Fragment {
         isRunning = false;
         PreferencesManager.getInstance().saveLong(getActivity(), "stoppedTime", stoppedTime);
         circularProgress.resetProgress();
+        startTime = 0L;
     }
 
     private void addOnClickListenersToFragmentWidgets() {

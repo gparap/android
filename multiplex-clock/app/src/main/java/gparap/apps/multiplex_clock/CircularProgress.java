@@ -66,6 +66,17 @@ public class CircularProgress {
         progressBar.setVisibility(View.INVISIBLE);
     }
 
+    public void setupProgress(String timer) {
+        progress = calculateProgress(timer);
+        progressBar.setMax(progressMax);
+        progressBar.setProgress(progress);
+        if (progress == PROGRESS_MIN) {
+            progressBar.setVisibility(View.INVISIBLE);
+        } else {
+            progressBar.setVisibility(View.VISIBLE);
+        }
+    }
+
     public void resumeProgress(String timer) {
         progress = calculateProgress(timer);
         progressBar.setProgress(progress);
