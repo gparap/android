@@ -33,9 +33,10 @@ import gparap.apps.multiplex_clock.utils.PreferencesManager;
 public class CountdownFragment extends Fragment {
     private EditText editTextHours, editTextMinutes, editTextSeconds;
     private Button buttonStart, buttonStop, buttonReset;
-    private int hours, minutes, seconds;
     private CountDownTimer countDownTimer;
     private boolean isCounting;
+    private long millisInFuture;
+    private long backroungTime;
 
     public CountdownFragment() {
     }
@@ -61,7 +62,23 @@ public class CountdownFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        setupCountdown();
+
+        //restore countdown state
+        isCounting = PreferencesManager.getInstance().getBoolean(getActivity(), "isCounting", false);
+        millisInFuture = PreferencesManager.getInstance().getLong(getActivity(), "millisInFuture", 0L);
+        if (isCounting) {
+            backroungTime = PreferencesManager.getInstance().getLong(getActivity(), "backroungTime", 0L);
+            millisInFuture = backroungTime - System.currentTimeMillis();
+            if (millisInFuture < 0) {
+                millisInFuture = 0;
+                isCounting = false;
+            } else {
+                updateTextFieldsInputState(false);
+                isCounting = false;
+                startCountdown();
+            }
+        }
+        updateTextFieldsToHHMMSS();
         addOnClickListeners();
         addTextChangedListeners();
     }
@@ -71,181 +88,70 @@ public class CountdownFragment extends Fragment {
         super.onPause();
 
         //save state
-        PreferencesManager.getInstance().saveInteger(getActivity(), "hours",hours);
-        PreferencesManager.getInstance().saveInteger(getActivity(), "minutes",minutes);
-        PreferencesManager.getInstance().saveInteger(getActivity(), "seconds",seconds);
-        PreferencesManager.getInstance().saveBoolean(getActivity(), "isCounting",isCounting);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        //restore  state
-        isCounting = PreferencesManager.getInstance().getBoolean(getActivity(), "isCounting", false);
-        hours = PreferencesManager.getInstance().getInteger(getActivity(),"hours",0);
-        minutes = PreferencesManager.getInstance().getInteger(getActivity(),"minutes",0);
-        seconds = PreferencesManager.getInstance().getInteger(getActivity(),"seconds",0);
-
-        //there was an orientation change
-        //and the timer was counting
-        if (isCounting){
-            //restart the counter
-            isCounting = false;
-            if (countDownTimer != null)
-                countDownTimer.cancel();
-            startCountdown();
-            isCounting = true;
-        }
-    }
-
-    private void setupCountdown() {
-        isCounting = PreferencesManager.getInstance().getBoolean(getActivity(), "isCounting", false);
-        hours = PreferencesManager.getInstance().getInteger(getActivity(),"hours",0);
-        minutes = PreferencesManager.getInstance().getInteger(getActivity(),"minutes",0);
-        seconds = PreferencesManager.getInstance().getInteger(getActivity(),"seconds",0);
-        editTextHours.setText(String.valueOf(hours));
-        editTextMinutes.setText(String.valueOf(minutes));
-        editTextSeconds.setText(String.valueOf(seconds));
-
-        //set colors when input fields are disabled (because of countdown)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            editTextHours.setTextColor(getResources().getColor(R.color.black, null));
-            editTextMinutes.setTextColor(getResources().getColor(R.color.black, null));
-            editTextSeconds.setTextColor(getResources().getColor(R.color.black, null));
-        }else{
-            editTextHours.setTextColor(getResources().getColor(R.color.black));
-            editTextMinutes.setTextColor(getResources().getColor(R.color.black));
-            editTextSeconds.setTextColor(getResources().getColor(R.color.black));
+        PreferencesManager.getInstance().saveBoolean(getActivity(), "isCounting", isCounting);
+        PreferencesManager.getInstance().saveLong(getActivity(), "millisInFuture", millisInFuture);
+        PreferencesManager.getInstance().saveLong(getActivity(), "backroungTime", backroungTime);
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
         }
     }
 
     private void startCountdown() {
         if (!isCounting) {
 
-            //get time from the edit fields
-            if (!editTextHours.getText().toString().equals("")) {
-                hours = Integer.parseInt(editTextHours.getText().toString());
-                editTextHours.setText(String.valueOf(hours));       //remove redundant zeros
+            //setup timer
+            if (isInputEnabled()) {
+                getTimeOutputFromTextFields();
+                getMillisInFuture();
             }
-            if (!editTextMinutes.getText().toString().equals("")) {
-                minutes = Integer.parseInt(editTextMinutes.getText().toString());
-                editTextMinutes.setText(String.valueOf(minutes));   //remove redundant zeros
-            }
-            if (!editTextSeconds.getText().toString().equals("")) {
-                seconds = Integer.parseInt(editTextSeconds.getText().toString());
-                editTextSeconds.setText(String.valueOf(seconds));   //remove redundant zeros
-            }
-
-            //compute the total number of milliseconds in the future until the countdown is done
-            long millisInFuture = 0L;
-            millisInFuture = seconds * 1000;
-            millisInFuture += (minutes * 60 * 1000);
-            millisInFuture += (hours * 60 * 60 * 1000);
+            backroungTime = System.currentTimeMillis() + millisInFuture;
 
             //start the countdown
+            isCounting = true;
+            updateTextFieldsInputState(false);
             countDownTimer = new CountDownTimer(millisInFuture, 1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
-                    //display seconds
-                    seconds -= 1;
-                    editTextSeconds.setText(String.valueOf(seconds));
-
-                    //display minutes
-                    if (seconds < 0) {
-                        seconds = 59;
-                        editTextSeconds.setText(String.valueOf(seconds));
-                        minutes -= 1;
-                        editTextMinutes.setText(String.valueOf(minutes));
-                    }
-
-                    //display hours
-                    if (minutes < 0) {
-                        minutes = 59;
-                        editTextMinutes.setText(String.valueOf(minutes));
-                        hours -= 1;
-                        editTextHours.setText(String.valueOf(hours));
-                    }
+                    millisInFuture = millisUntilFinished;
+                    updateTextFieldsToHHMMSS();
                 }
 
                 @Override
                 public void onFinish() {
-                    isCounting = false;
-
-//                    //register an intent to be broadcast by the receiver
-//                    Intent intent = new Intent(MainActivity.this, CountdownReceiver.class);
-//                    PendingIntent pendingIntent = PendingIntent
-//                            .getBroadcast(getApplicationContext(), 0, intent, 0);
-//
-//                    //create an alarm manager to schedule the broadcast
-//                    AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-//                    alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), pendingIntent);
+                    resetCountdown();
                 }
             };
+            countDownTimer.start();
 
-            //check if not all fields are zero
-            if ((!editTextHours.getText().toString().isEmpty() && !editTextHours.getText().toString().equals("0"))     ||
-                    (!editTextMinutes.getText().toString().isEmpty() && !editTextMinutes.getText().toString().equals("0")) ||
-                    (!editTextSeconds.getText().toString().isEmpty() && !editTextSeconds.getText().toString().equals("0"))) {
-
-                //start countdown
-                countDownTimer.start();
-                isCounting = true;
-
-//                //close virtual keyboard if start button is pressed
-//                if (focusedView != null){
-//                    InputMethodManager inputMethodManager = (InputMethodManager) this.getActivity().getSystemService(INPUT_METHOD_SERVICE);
-//                    inputMethodManager.hideSoftInputFromWindow(focusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-//                }
-
-                //disable input fields
-                editTextHours.setEnabled(false);
-                editTextMinutes.setEnabled(false);
-                editTextSeconds.setEnabled(false);
-            }
         }
     }
 
     private void stopCountdown() {
-        //stop countdown
-        if (countDownTimer != null){
+        if (countDownTimer != null) {
             countDownTimer.cancel();
         }
         isCounting = false;
+        updateTextFieldsInputState(true);
     }
 
     private void resetCountdown() {
-        //stop countdown
         if (countDownTimer != null)
             countDownTimer.cancel();
         isCounting = false;
-
-        //clear values
-        hours = minutes = seconds = 0;
-
-        //clear fields
-        editTextHours.setText("");
-        editTextMinutes.setText("");
-        editTextSeconds.setText("");
-
-        //show hints
-        editTextHours.setHint("0");
-        editTextMinutes.setHint("0");
-        editTextSeconds.setHint("0");
-
-        //enable input fields
-        editTextHours.setEnabled(true);
-        editTextMinutes.setEnabled(true);
-        editTextSeconds.setEnabled(true);
+        millisInFuture = 0;
+        updateTextFieldsInputState(true);
+        clearTextFields();
     }
 
     private void addTextChangedListeners() {
         editTextHours.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -259,10 +165,12 @@ public class CountdownFragment extends Fragment {
         });
         editTextMinutes.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -276,10 +184,12 @@ public class CountdownFragment extends Fragment {
         });
         editTextSeconds.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -322,4 +232,95 @@ public class CountdownFragment extends Fragment {
         buttonStop = view.findViewById(R.id.buttonStopCountdown);
         buttonReset = view.findViewById(R.id.buttonResetCountdown);
     }
+
+    private boolean isInputEnabled() {
+        if (editTextHours.isEnabled() || editTextMinutes.isEnabled() || editTextSeconds.isEnabled()) {
+            return true;
+        }
+        return false;
+    }
+
+    private void updateTextFieldsInputState(boolean state) {
+        editTextHours.setEnabled(state);
+        editTextMinutes.setEnabled(state);
+        editTextSeconds.setEnabled(state);
+        if (state == false) {
+            restoreTextFieldsColor();
+        }
+    }
+
+    private void clearTextFields() {
+        editTextHours.setText(getString(R.string.value_00));
+        editTextMinutes.setText(getString(R.string.value_00));
+        editTextSeconds.setText(getString(R.string.value_00));
+    }
+
+    //restore text fields black color after being disabled
+    private void restoreTextFieldsColor() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            editTextHours.setTextColor(getResources().getColor(R.color.black, null));
+            editTextMinutes.setTextColor(getResources().getColor(R.color.black, null));
+            editTextSeconds.setTextColor(getResources().getColor(R.color.black, null));
+        } else {
+            editTextHours.setTextColor(getResources().getColor(R.color.black));
+            editTextMinutes.setTextColor(getResources().getColor(R.color.black));
+            editTextSeconds.setTextColor(getResources().getColor(R.color.black));
+        }
+    }
+
+    //compute the total number of milliseconds in the future until the countdown is done
+    private void getMillisInFuture() {
+        millisInFuture = 0L;
+        if (!editTextSeconds.getText().toString().isEmpty()) {
+            millisInFuture = Integer.parseInt(editTextSeconds.getText().toString()) * 1000;
+        }
+        if (!editTextMinutes.getText().toString().isEmpty()) {
+            millisInFuture += (Integer.parseInt(editTextMinutes.getText().toString()) * 60 * 1000);
+        }
+        if (!editTextHours.getText().toString().isEmpty()) {
+            millisInFuture += (Integer.parseInt(editTextHours.getText().toString()) * 60 * 60 * 1000);
+        }
+    }
+
+    private void getTimeOutputFromTextFields() {
+        if (!editTextHours.getText().toString().equals("")) {
+            int hours = Integer.parseInt(editTextHours.getText().toString());
+            editTextHours.setText(String.valueOf(hours));
+        }
+        if (!editTextMinutes.getText().toString().equals("")) {
+            int minutes = Integer.parseInt(editTextMinutes.getText().toString());
+            editTextMinutes.setText(String.valueOf(minutes));
+        }
+        if (!editTextSeconds.getText().toString().equals("")) {
+            int seconds = Integer.parseInt(editTextSeconds.getText().toString());
+            editTextSeconds.setText(String.valueOf(seconds));
+        }
+    }
+
+    //converts from total number of millis to hours-minutes-seconds and update text fields
+    private void updateTextFieldsToHHMMSS() {
+        //get total seconds remaining
+        int countdownTime = (int) (millisInFuture / 1000);
+
+        //calculate hours-minutes-seconds
+        int hours = (countdownTime / 3600);
+        int minutesRemaining = countdownTime % 3600;
+        int minutes = (minutesRemaining / 60);
+        int seconds = minutesRemaining % 60;
+
+        //update fields
+        editTextHours.setText(String.format("%s%s", handleZeroPreffix(hours), String.valueOf(hours)));
+        editTextMinutes.setText(String.format("%s%s", handleZeroPreffix(minutes), String.valueOf(minutes)));
+        editTextSeconds.setText(String.format("%s%s", handleZeroPreffix(seconds), String.valueOf(seconds)));
+    }
+
+    //checks if an integer is less than ten and returns a zero string
+    private String handleZeroPreffix(int value) {
+        if (value < 10) {
+            return getString(R.string.value_0);
+        }
+        return "";
+    }
+
+
 }
