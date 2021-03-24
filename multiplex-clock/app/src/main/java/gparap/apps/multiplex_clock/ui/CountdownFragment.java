@@ -122,7 +122,6 @@ public class CountdownFragment extends Fragment {
                 }
             };
             countDownTimer.start();
-
         }
     }
 
@@ -321,6 +320,4 @@ public class CountdownFragment extends Fragment {
         }
         return "";
     }
-
-
 }

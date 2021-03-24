@@ -11,19 +11,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ProgressBar
-            android:id="@+id/progressBarCountdown"
-            android:layout_width="192dp"
-            android:layout_height="192dp"
-            android:indeterminateOnly="false"
-            android:progressDrawable="@drawable/progress_bar"
-            android:visibility="invisible"
+        <!--HH:MM:SS-->
+        <TextView
+            android:id="@+id/textViewHHMMSS"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/hh_mm_ss"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/buttonStartCountdown"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/editTextSeconds"
+            app:layout_constraintStart_toStartOf="@+id/editTextHours"
             app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="visible" />
+            app:layout_constraintVertical_bias="0.5" />
 
         <!--Countdown Fields-->
         <EditText
@@ -35,6 +35,7 @@
             android:gravity="center"
             android:hint="@string/value_00"
             android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextMinutes"
             app:layout_constraintEnd_toStartOf="@+id/editTextMinutes"
             app:layout_constraintTop_toTopOf="@+id/editTextMinutes" />
 
@@ -47,10 +48,10 @@
             android:gravity="center"
             android:hint="@string/value_00"
             android:inputType="number"
-            app:layout_constraintBottom_toBottomOf="@+id/progressBarCountdown"
-            app:layout_constraintEnd_toEndOf="@+id/progressBarCountdown"
-            app:layout_constraintStart_toStartOf="@+id/progressBarCountdown"
-            app:layout_constraintTop_toTopOf="@+id/progressBarCountdown" />
+            app:layout_constraintBottom_toTopOf="@+id/buttonStartCountdown"
+            app:layout_constraintEnd_toEndOf="@+id/buttonStartCountdown"
+            app:layout_constraintStart_toStartOf="@+id/buttonStartCountdown"
+            app:layout_constraintTop_toBottomOf="@+id/textViewHHMMSS" />
 
         <EditText
             android:id="@+id/editTextSeconds"
@@ -61,6 +62,7 @@
             android:gravity="center"
             android:hint="@string/value_00"
             android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextMinutes"
             app:layout_constraintStart_toEndOf="@+id/editTextMinutes"
             app:layout_constraintTop_toTopOf="@+id/editTextMinutes" />
 

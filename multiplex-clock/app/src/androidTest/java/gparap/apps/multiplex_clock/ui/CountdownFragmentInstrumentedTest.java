@@ -41,8 +41,8 @@ public class CountdownFragmentInstrumentedTest {
     }
 
     @Test
-    public void isNotWidgetVisible_progressBar() {
-        onView(withId(R.id.progressBarCountdown)).check(matches(not(isDisplayed())));
+    public void isWidgetVisible_TextViewHHMMSS() {
+        onView(withId(R.id.textViewHHMMSS)).check(matches(not(isDisplayed())));
     }
 
     @Test
