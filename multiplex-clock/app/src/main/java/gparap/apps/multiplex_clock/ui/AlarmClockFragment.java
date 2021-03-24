@@ -66,7 +66,7 @@ public class AlarmClockFragment extends Fragment {
         buttonSetAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: setAlarm
+                setAlarm();
             }
         });
     }
@@ -109,5 +109,49 @@ public class AlarmClockFragment extends Fragment {
             }
         };
         thread.start();
+    }
+
+    private void setAlarm() {
+        displayAlarmTime();
+    }
+
+    //display time picked (as alarm) using 12-hour format
+    private void displayAlarmTime(){
+        boolean isPM = false;
+        int hour;
+        int minute;
+        StringBuilder stringBuilder = new StringBuilder();
+
+        //get time from picker
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            hour = timePicker.getHour();
+            minute = timePicker.getMinute();
+        }else{
+            hour = timePicker.getCurrentHour();
+            minute = timePicker.getCurrentMinute();
+        }
+
+        //handle 12-hour format
+        if (hour > 12){
+            isPM = true;
+            hour %= 12;
+        }
+        stringBuilder.append(hour).append(":");
+
+        //handle append minutes with "0" ie 7 -> 07
+        if (minute < 10){
+            stringBuilder.append("0");
+        }
+        stringBuilder.append(minute);
+
+        //handle AM or PM display
+        if (isPM){
+            stringBuilder.append(" PM");
+        }else{
+            stringBuilder.append(" AM");
+        }
+
+        //update alarm display field
+        textViewAlarm.setText(stringBuilder);
     }
 }
