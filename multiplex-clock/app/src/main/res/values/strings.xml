@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">MultiTimer</string>
+    <string name="hh_mm_ss">HH:MM:SS</string>
+    <string name="time_now">Time Now:</string>
+    <string name="alarm">Alarm:</string>
+    <string name="set_alarm">Set Alarm</string>
 
     <!--Menu Items-->
     <string name="menu_item_clock">Clock</string>
@@ -12,10 +16,10 @@
     <string name="button_stop">Stop</string>
     <string name="button_reset">Reset</string>
 
-    <!--Miscellaneous-->
-    <string name="hh_mm_ss">HH:MM:SS</string>
+    <!--Misc. values-->
     <string name="value_0">0</string>
     <string name="value_00">00</string>
     <string name="value_23">23</string>
     <string name="value_59">59</string>
+    <string name="value_00_00">00:00</string>
 </resources>
