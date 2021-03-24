@@ -29,6 +29,7 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static org.hamcrest.CoreMatchers.not;
 
 public class ChronometerFragmentInstrumentedTest {
     FragmentScenario fragmentScenario;
@@ -36,6 +37,11 @@ public class ChronometerFragmentInstrumentedTest {
     @Before
     public void setUp() throws Exception {
         fragmentScenario = FragmentScenario.launchInContainer(ChronometerFragment.class);
+    }
+
+    @Test
+    public void isWidgetNotVisible_ProgressBar() {
+        onView(withId(R.id.progressBarChronometer)).check(matches(not(isDisplayed())));
     }
 
     @Test
