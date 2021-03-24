@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
         //show the clock when app starts
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragmentContainer, ClockFragment.class, null)
+                //.add(R.id.fragmentContainer, ClockFragment.class, null)
+                .add(R.id.fragmentContainer, AlarmClockFragment.class, null)
                 .commit();
     }
 

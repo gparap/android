@@ -26,7 +26,7 @@ import android.widget.ProgressBar;
 
 import androidx.fragment.app.Fragment;
 
-import gparap.apps.multiplex_clock.CircularProgress;
+import gparap.apps.multiplex_clock.utils.CircularProgress;
 import gparap.apps.multiplex_clock.utils.PreferencesManager;
 
 @SuppressWarnings("FieldCanBeLocal")

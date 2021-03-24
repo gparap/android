@@ -27,8 +27,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.text.DateFormat;
+
+import gparap.apps.multiplex_clock.utils.Utils;
 
 public class AlarmClockFragment extends Fragment {
     TextView textViewTimer;
@@ -113,45 +116,86 @@ public class AlarmClockFragment extends Fragment {
 
     private void setAlarm() {
         displayAlarmTime();
+
+        //get current time
+        int hourNow = Utils.getInstance().getCurrentHour();
+        int minuteNow = Utils.getInstance().getCurrentMinute();
+
+        //get alarm time
+        int hourAlarm = Utils.getInstance().getPickedHour(timePicker);
+        int minuteAlarm = Utils.getInstance().getPickedMinute(timePicker);
+
+        //get the time in milliseconds that the alarm should go off
+        long triggerAtMillis;
+        if (validateAlarm(hourNow, minuteNow, hourAlarm, minuteAlarm)) {
+            int hour = hourAlarm - hourNow;
+            int minute = minuteAlarm - minuteNow;
+            triggerAtMillis = getTriggerAtMillis(hour, minute);
+        }
+
+        //TODO: broadcast receiver for alarm notifications
     }
 
     //display time picked (as alarm) using 12-hour format
-    private void displayAlarmTime(){
+    private void displayAlarmTime() {
         boolean isPM = false;
         int hour;
         int minute;
         StringBuilder stringBuilder = new StringBuilder();
 
         //get time from picker
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            hour = timePicker.getHour();
-            minute = timePicker.getMinute();
-        }else{
-            hour = timePicker.getCurrentHour();
-            minute = timePicker.getCurrentMinute();
-        }
+        hour = Utils.getInstance().getPickedHour(timePicker);
+        minute = Utils.getInstance().getPickedMinute(timePicker);
 
         //handle 12-hour format
-        if (hour > 12){
+        if (hour > 12) {
             isPM = true;
             hour %= 12;
         }
         stringBuilder.append(hour).append(":");
 
         //handle append minutes with "0" ie 7 -> 07
-        if (minute < 10){
+        if (minute < 10) {
             stringBuilder.append("0");
         }
         stringBuilder.append(minute);
 
         //handle AM or PM display
-        if (isPM){
+        if (isPM) {
             stringBuilder.append(" PM");
-        }else{
+        } else {
             stringBuilder.append(" AM");
         }
 
         //update alarm display field
         textViewAlarm.setText(stringBuilder);
+    }
+
+    //get how many milliseconds is the difference between current time and alarm time
+    private long getTriggerAtMillis(int hour, int minute) {
+        return Utils.getInstance().convertToMillis(hour, minute, 0);
+    }
+
+    //check if alarm is set on future time
+    private boolean validateAlarm(int hourNow, int minuteNow, int hourAlarm, int minuteAlarm) {
+        isAlarmSet = true;
+
+        //validate hour
+        int hour = hourAlarm - hourNow;
+        if (hour < 0) {
+            Toast.makeText(getActivity().getApplicationContext(), "Error in setting alarm hours", Toast.LENGTH_SHORT).show();
+            isAlarmSet = false;
+            return false;
+        }
+
+        //validate minute
+        int minute = minuteAlarm - minuteNow;
+        if (hour == 0 && minute <= 0) {
+            Toast.makeText(getActivity().getApplicationContext(), "Error in setting alarm minutes", Toast.LENGTH_SHORT).show();
+            isAlarmSet = false;
+            return false;
+        }
+
+        return true;
     }
 }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.multiplex_clock;
+package gparap.apps.multiplex_clock.utils;
 
 import android.os.Handler;
 import android.os.Looper;
