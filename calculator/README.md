@@ -1,7 +1,9 @@
 Basic Operations Calculator:
 ----------------------------
 Basic operations supported (+, -, *, /)
+
 Modulo supported (%)
+
 Decimal numbers supported
 
 View on Google Play:
