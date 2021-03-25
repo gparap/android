@@ -28,21 +28,25 @@ import com.google.android.material.appbar.MaterialToolbar;
 
 public class MainActivity extends AppCompatActivity {
     private ChronometerFragment chronometerFragment;
+    private int currentFragmentID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //show the clock when app starts
+        if (savedInstanceState == null) {
+            currentFragmentID = 1;
+        }
+
+        addCurrentFragment();
+
         //set MaterialToolbar to act as the ActionBar
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //show the clock when app starts
-        getSupportFragmentManager().beginTransaction()
-                //.add(R.id.fragmentContainer, ClockFragment.class, null)
-                .add(R.id.fragmentContainer, AlarmClockFragment.class, null)
-                .commit();
+
     }
 
     @Override
@@ -63,14 +67,16 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_item_clock:
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragmentContainer, ClockFragment.class, null)
-                        .commit();
+                        .commitNow();
+                currentFragmentID = 1;
                 break;
 
             //chronometer timer
             case R.id.menu_item_chronometer:
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragmentContainer, ChronometerFragment.class, null)
-                        .commit();
+                        .commitNow();
+                currentFragmentID = 2;
                 break;
 
             //countdown timer
@@ -78,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragmentContainer, CountdownFragment.class, null)
                         .commit();
+                currentFragmentID = 3;
                 break;
 
             //alarm clock
@@ -85,9 +92,49 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragmentContainer, AlarmClockFragment.class, null)
                         .commit();
+                currentFragmentID = 4;
                 break;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Adds the current fragment after orientation changes.
+     */
+    private void addCurrentFragment() {
+        switch (currentFragmentID) {
+            //show the clock
+            case 1:
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.fragmentContainer, ClockFragment.class, null)
+                        .commitNow();
+                currentFragmentID = 1;
+                break;
+
+            //show the chronometer timer
+            case 2:
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.fragmentContainer, ChronometerFragment.class, null)
+                        .commitNow();
+                currentFragmentID = 2;
+                break;
+
+            //show the countdown timer
+            case 3:
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.fragmentContainer, CountdownFragment.class, null)
+                        .commitNow();
+                currentFragmentID = 3;
+                break;
+
+            //show the alarm clock
+            case 4:
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.fragmentContainer, AlarmClockFragment.class, null)
+                        .commitNow();
+                currentFragmentID = 4;
+                break;
+        }
     }
 }
