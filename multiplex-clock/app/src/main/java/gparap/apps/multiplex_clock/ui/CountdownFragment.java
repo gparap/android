@@ -29,7 +29,7 @@ import android.widget.EditText;
 import androidx.fragment.app.Fragment;
 
 import gparap.apps.multiplex_clock.utils.PreferencesManager;
-import gparap.apps.multiplex_clock.utils.Utils;
+import gparap.apps.multiplex_clock.utils.TimeUtils;
 
 public class CountdownFragment extends Fragment {
     private EditText editTextHours, editTextMinutes, editTextSeconds;
@@ -272,13 +272,13 @@ public class CountdownFragment extends Fragment {
     private void getMillisInFuture() {
         millisInFuture = 0L;
         if (!editTextSeconds.getText().toString().isEmpty()) {
-            millisInFuture += Utils.getInstance().convertToMillis(0, 0, Integer.parseInt(editTextSeconds.getText().toString()));
+            millisInFuture += TimeUtils.getInstance().convertToMillis(0, 0, Integer.parseInt(editTextSeconds.getText().toString()));
         }
         if (!editTextMinutes.getText().toString().isEmpty()) {
-            millisInFuture += Utils.getInstance().convertToMillis(0, Integer.parseInt(editTextMinutes.getText().toString()), 0);
+            millisInFuture += TimeUtils.getInstance().convertToMillis(0, Integer.parseInt(editTextMinutes.getText().toString()), 0);
         }
         if (!editTextHours.getText().toString().isEmpty()) {
-            millisInFuture += Utils.getInstance().convertToMillis(Integer.parseInt(editTextHours.getText().toString()), 0, 0);
+            millisInFuture += TimeUtils.getInstance().convertToMillis(Integer.parseInt(editTextHours.getText().toString()), 0, 0);
         }
     }
 

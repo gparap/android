@@ -15,6 +15,10 @@
  */
 package gparap.apps.multiplex_clock.ui;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -31,7 +35,8 @@ import android.widget.Toast;
 
 import java.text.DateFormat;
 
-import gparap.apps.multiplex_clock.utils.Utils;
+import gparap.apps.multiplex_clock.services.AlarmReceiver;
+import gparap.apps.multiplex_clock.utils.TimeUtils;
 
 public class AlarmClockFragment extends Fragment {
     TextView textViewTimer;
@@ -118,22 +123,30 @@ public class AlarmClockFragment extends Fragment {
         displayAlarmTime();
 
         //get current time
-        int hourNow = Utils.getInstance().getCurrentHour();
-        int minuteNow = Utils.getInstance().getCurrentMinute();
+        int hourNow = TimeUtils.getInstance().getCurrentHour();
+        int minuteNow = TimeUtils.getInstance().getCurrentMinute();
 
         //get alarm time
-        int hourAlarm = Utils.getInstance().getPickedHour(timePicker);
-        int minuteAlarm = Utils.getInstance().getPickedMinute(timePicker);
+        int hourAlarm = TimeUtils.getInstance().getPickedHour(timePicker);
+        int minuteAlarm = TimeUtils.getInstance().getPickedMinute(timePicker);
 
         //get the time in milliseconds that the alarm should go off
-        long triggerAtMillis;
+        long triggerAtMillis = 0L;
         if (validateAlarm(hourNow, minuteNow, hourAlarm, minuteAlarm)) {
             int hour = hourAlarm - hourNow;
             int minute = minuteAlarm - minuteNow;
             triggerAtMillis = getTriggerAtMillis(hour, minute);
         }
 
-        //TODO: broadcast receiver for alarm notifications
+        //register an intent to be broadcasted by the alarm receiver
+        Intent intent = new Intent(getActivity(), AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity().getApplicationContext(), 0, intent, 0);
+
+        //schedule an alarm if set correctly
+        if (isAlarmSet){
+            AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+            alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + triggerAtMillis, pendingIntent);
+        }
     }
 
     //display time picked (as alarm) using 12-hour format
@@ -144,8 +157,8 @@ public class AlarmClockFragment extends Fragment {
         StringBuilder stringBuilder = new StringBuilder();
 
         //get time from picker
-        hour = Utils.getInstance().getPickedHour(timePicker);
-        minute = Utils.getInstance().getPickedMinute(timePicker);
+        hour = TimeUtils.getInstance().getPickedHour(timePicker);
+        minute = TimeUtils.getInstance().getPickedMinute(timePicker);
 
         //handle 12-hour format
         if (hour > 12) {
@@ -173,7 +186,7 @@ public class AlarmClockFragment extends Fragment {
 
     //get how many milliseconds is the difference between current time and alarm time
     private long getTriggerAtMillis(int hour, int minute) {
-        return Utils.getInstance().convertToMillis(hour, minute, 0);
+        return TimeUtils.getInstance().convertToMillis(hour, minute, 0);
     }
 
     //check if alarm is set on future time

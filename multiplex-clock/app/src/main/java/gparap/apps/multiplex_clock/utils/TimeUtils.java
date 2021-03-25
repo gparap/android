@@ -20,15 +20,15 @@ import android.widget.TimePicker;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class Utils {
-    private static Utils instance;
+public class TimeUtils {
+    private static TimeUtils instance;
 
-    private Utils() {
+    private TimeUtils() {
     }
 
-    public static Utils getInstance() {
+    public static TimeUtils getInstance() {
         if (instance == null) {
-            instance = new Utils();
+            instance = new TimeUtils();
         }
         return instance;
     }
