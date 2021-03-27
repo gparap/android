@@ -6,7 +6,7 @@
         <shape
             android:shape="ring"
             android:useLevel="false">
-            <solid android:color="@color/material_on_background_disabled" />
+            <solid android:color="?attr/colorSecondary" />
         </shape>
     </item>
 
@@ -19,8 +19,8 @@
                 android:shape="ring"
                 android:useLevel="true">
                 <gradient
-                    android:endColor="@color/purple_700"
-                    android:startColor="@color/purple_200" />
+                    android:endColor="?attr/colorPrimary"
+                    android:startColor="?attr/colorPrimaryVariant" />
             </shape>
         </rotate>
     </item>
