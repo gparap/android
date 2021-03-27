@@ -244,28 +244,12 @@ public class CountdownFragment extends Fragment {
         editTextHours.setEnabled(state);
         editTextMinutes.setEnabled(state);
         editTextSeconds.setEnabled(state);
-        if (state == false) {
-            restoreTextFieldsColor();
-        }
     }
 
     private void clearTextFields() {
         editTextHours.setText(getString(R.string.value_00));
         editTextMinutes.setText(getString(R.string.value_00));
         editTextSeconds.setText(getString(R.string.value_00));
-    }
-
-    //restore text fields black color after being disabled
-    private void restoreTextFieldsColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            editTextHours.setTextColor(getResources().getColor(R.color.black, null));
-            editTextMinutes.setTextColor(getResources().getColor(R.color.black, null));
-            editTextSeconds.setTextColor(getResources().getColor(R.color.black, null));
-        } else {
-            editTextHours.setTextColor(getResources().getColor(R.color.black));
-            editTextMinutes.setTextColor(getResources().getColor(R.color.black));
-            editTextSeconds.setTextColor(getResources().getColor(R.color.black));
-        }
     }
 
     //compute the total number of milliseconds in the future until the countdown is done

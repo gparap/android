@@ -6,4 +6,5 @@
     <color name="pure_pink_200">#FFff5b8d</color>
     <color name="pure_pink_700">#FFc00037</color>
     <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
 </resources>
