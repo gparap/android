@@ -15,6 +15,7 @@
  */
 package gparap.apps.multiplex_clock.ui;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -55,11 +56,13 @@ public class ClockFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         //display time zone
-        TextView timeZoneLong = view.findViewById(R.id.textViewTimeZoneLong);
-        TextView timeZoneShort = view.findViewById(R.id.textViewTimeZoneShort);
-        timeZoneShort.setText(TimeZone.getDefault()
-                .getDisplayName(false, TimeZone.SHORT, Locale.getDefault()).toString());
-        timeZoneLong.setText(TimeZone.getDefault()
-                .getDisplayName(false, TimeZone.LONG, Locale.getDefault()).toString());
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            TextView timeZoneLong = view.findViewById(R.id.textViewTimeZoneLong);
+            TextView timeZoneShort = view.findViewById(R.id.textViewTimeZoneShort);
+            timeZoneShort.setText(TimeZone.getDefault()
+                    .getDisplayName(false, TimeZone.SHORT, Locale.getDefault()).toString());
+            timeZoneLong.setText(TimeZone.getDefault()
+                    .getDisplayName(false, TimeZone.LONG, Locale.getDefault()).toString());
+        }
     }
 }
