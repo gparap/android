@@ -1,16 +1,8 @@
 <resources>
     <string name="app_name">Weather</string>
-    <string name="weather_providers_credits">Weather Providers Credits:</string>
     <string name="search">Search…</string>
-    <string name="weatherapi_image">WeatherApi.com image</string>
-    <string name="openweather_image">OpenWeather image</string>
     <string name="search_location_image">Search Location image</string>
-    <string name="metaweather_com_image">MetaWeather.com image</string>
-    <string name="powered_by">Powered by</string>
-    <string name="metaweather_com">Metaweather.com</string>
     <string name="openweather">OpenWeather - visit website</string>
-    <string name="weatherapi_com">WeatherAPI.com</string>
-    <string name="licence">licence</string>
     <string name="imageviewweather">imageViewWeather</string>
     <string name="humidity">Humidity:</string>
     <string name="wind_speed">Wind Speed:</string>
@@ -19,5 +11,4 @@
     <string name="temperature">Temperature:</string>
     <string name="weather">Weather:</string>
     <string name="temperature_max">Temperature Max:</string>
-    <string name="hidden">hidden</string>
 </resources>

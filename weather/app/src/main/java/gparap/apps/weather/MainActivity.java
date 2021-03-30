@@ -40,8 +40,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Random;
-
 import static android.view.View.VISIBLE;
 
 @SuppressWarnings("Convert2Lambda")
@@ -51,10 +49,9 @@ public class MainActivity extends AppCompatActivity {
             textViewWeather, textViewTemperature, textViewTemperatureMax, textViewTemperatureMin, textViewWindSpeed, textViewAirPressure,
             textViewHumidity;
     ImageView imageViewWeather;
-    Button buttonMetaWeather, buttonOpenWeather, buttonWeatherApi;
+    Button buttonOpenWeather;
     EditText editTextLocation;
     ImageView imageViewSearch;
-    WeatherAPI randomAPI;
     String location;
     String locationID;
 
@@ -62,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        randomAPI = getRandomAPI();
         location = "";
         locationID = "";
     }
@@ -72,9 +68,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
         //get widgets
-        buttonMetaWeather = findViewById(R.id.buttonVisitMetaWeather);
         buttonOpenWeather = findViewById(R.id.buttonVisitOpenWeather);
-        buttonWeatherApi = findViewById(R.id.buttonVisitWeatherApi);
         editTextLocation = findViewById(R.id.editTextSearch);
         imageViewSearch = findViewById(R.id.imageViewSearch);
         imageViewWeather = findViewById(R.id.imageViewWeather);
@@ -96,43 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
-                //randomize weather api to use
-                // (less requests for each API)
-                randomAPI = getRandomAPI();
-
-                //forecast weather
-                switch (randomAPI) {
-                    case META_WEATHER_COM:
-
-                        //---------------------------------------------
-                        //MetaWeather API logic:
-                        // 1st. find the id of the location (city)
-                        // 2nd. re-request with the id to get json data
-                        //---------------------------------------------
-
-                        getWeatherForecastByMetaWeather();
-                        break;
-
-                    case OPEN_WEATHER_ORG:
-
-                        //---------------------------------------------------
-                        //WeatherApi API logic:
-                        // request with api key and location to get json data
-                        //---------------------------------------------------
-
-                        getWeatherForecastByOpenWeather();
-                        break;
-
-                    case WEATHER_API_COM:
-
-                        //---------------------------------------------------
-                        //WeatherApi API logic:
-                        // request with api key and location to get json data
-                        //---------------------------------------------------
-
-                        getWeatherForecastByWeatherApi();
-                        break;
-                }
+                getWeatherForecastByOpenWeather();
             }
         });
     }
@@ -143,95 +101,16 @@ public class MainActivity extends AppCompatActivity {
      * @param view button
      */
     public void onClickCredits(View view) {
-        int id = view.getId();
-        switch (id) {
-            case R.id.buttonVisitMetaWeather:
-                visitLink(Utils.META_WEATHER);
-                break;
-            case R.id.buttonVisitOpenWeather:
-                visitLink(Utils.OPEN_WEATHER);
-                break;
-            case R.id.buttonVisitWeatherApi:
-                visitLink(Utils.WEATHER_API);
-                break;
-        }
+        visitLink();
     }
 
     /**
      * Creates an intent to visit a website.
-     *
-     * @param uri website's identifier
      */
-    private void visitLink(String uri) {
+    private void visitLink() {
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(uri));
+        intent.setData(Uri.parse(Utils.OPEN_WEATHER));
         startActivity(intent);
-    }
-
-    /**
-     * Don't use the same API for weather forecast (workaround for less single API calls).
-     *
-     * @return WeatherAPI enum
-     */
-    private WeatherAPI getRandomAPI() {
-        int random = new Random().nextInt(Utils.API_COUNT);
-        switch (random) {
-            case 0:
-                return WeatherAPI.META_WEATHER_COM;
-            case 1:
-                return WeatherAPI.OPEN_WEATHER_ORG;
-            case 2:
-                return WeatherAPI.WEATHER_API_COM;
-        }
-        return null;
-    }
-
-    /**
-     * Gets location JSON data using an id. This data contain the weather forecast.
-     *
-     * @param response string containing location id
-     */
-    private void getWeatherForecastById(String response) {
-        //get location (city) id
-        JSONArray jsonArray;
-        try {
-            jsonArray = new JSONArray(response);
-            JSONObject jsonObject = jsonArray.getJSONObject(0);
-            locationID = jsonObject.getString(Utils.META_WEATHER_LOCATION_ID_FIELD);
-
-            //init RequestQueue
-            RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
-
-            //request response from URL
-            String url = Utils.META_WEATHER_URL_FOR_DATA_PREFIX + locationID + Utils.META_WEATHER_URL_FOR_DATA_SUFFIX;
-            StringRequest stringRequest = new StringRequest(url,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            try {
-                                getWeatherForecast(response, Utils.META_WEATHER);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            try {
-                                Toast.makeText(MainActivity.this, String.valueOf(error), Toast.LENGTH_SHORT).show();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-
-            //add request to RequestQueue
-            requestQueue.add(stringRequest);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -241,110 +120,35 @@ public class MainActivity extends AppCompatActivity {
      * @throws JSONException JSONException
      */
     @SuppressLint("SetTextI18n")
-    private void getWeatherForecast(String response, String api) throws JSONException {
+    private void getWeatherForecast(String response) throws JSONException {
         JSONObject jsonObjectResponse;
         JSONArray jsonArrayWeather;
         JSONObject jsonObjectWeather;
 
-        switch (api) {
-            case Utils.META_WEATHER:
-                jsonObjectResponse = new JSONObject(response);
-                jsonArrayWeather = jsonObjectResponse.getJSONArray("consolidated_weather");
-                jsonObjectWeather = jsonArrayWeather.getJSONObject(0);
+        jsonObjectResponse = new JSONObject(response);
 
-                //display the proper icon according to the weather
-                Utils.displayWeatherIcon(jsonObjectWeather.get("weather_state_name").toString(), imageViewWeather);
+        //get json objects
+        jsonArrayWeather = jsonObjectResponse.getJSONArray("weather");
+        jsonObjectWeather = jsonArrayWeather.getJSONObject(0);
+        JSONObject main = (JSONObject) jsonObjectResponse.get("main");
+        JSONObject wind = (JSONObject) jsonObjectResponse.get("wind");
 
-                //fill in weather widgets
-                textViewWeather.setText(jsonObjectWeather.get("weather_state_name").toString());
-                textViewTemperature.setText(Utils.formatValue(jsonObjectWeather.get("the_temp").toString(), 0) + Utils.SUFFIX_CELCIOUS);
-                textViewTemperatureMax.setText(Utils.formatValue(jsonObjectWeather.get("max_temp").toString(), 0) + Utils.SUFFIX_CELCIOUS);
-                textViewTemperatureMin.setText(Utils.formatValue(jsonObjectWeather.get("min_temp").toString(), 0) + Utils.SUFFIX_CELCIOUS);
-                textViewWindSpeed.setText(Utils.formatValue(jsonObjectWeather.get("wind_speed").toString(), 2) + Utils.SUFFIX_WIND_SPEED);
-                textViewAirPressure.setText(Utils.formatValue(jsonObjectWeather.get("air_pressure").toString(), 2) + Utils.SUFFIX_AIR_PRESSURE);
-                textViewHumidity.setText(Utils.formatValue(jsonObjectWeather.get("humidity").toString(), 2) + Utils.SUFFIX_HUMIDITY);
-                break;
+        //display the proper icon according to the weather
+        Utils.displayWeatherIcon(jsonObjectWeather.getString("main"), imageViewWeather);
 
-            case Utils.OPEN_WEATHER:
-                jsonObjectResponse = new JSONObject(response);
+        //convert temperatures
+        String temp = Utils.convertKelvinToCelcious(main.get("temp"));
+        String temp_max = Utils.convertKelvinToCelcious(main.get("temp_max"));
+        String temp_min = Utils.convertKelvinToCelcious(main.get("temp_min"));
 
-                //get json objects
-                jsonArrayWeather = jsonObjectResponse.getJSONArray("weather");
-                jsonObjectWeather = jsonArrayWeather.getJSONObject(0);
-                JSONObject main = (JSONObject) jsonObjectResponse.get("main");
-                JSONObject wind = (JSONObject) jsonObjectResponse.get("wind");
-
-                //display the proper icon according to the weather
-                Utils.displayWeatherIcon(jsonObjectWeather.getString("main"), imageViewWeather);
-
-                //convert temperatures
-                String temp = Utils.convertKelvinToCelcious(main.get("temp"));
-                String temp_max = Utils.convertKelvinToCelcious(main.get("temp_max"));
-                String temp_min = Utils.convertKelvinToCelcious(main.get("temp_min"));
-
-                //fill in weather widgets
-                textViewWeather.setText(jsonObjectWeather.getString("main"));
-                textViewTemperature.setText(Utils.formatValue(temp, 0) + Utils.SUFFIX_CELCIOUS);
-                textViewTemperatureMax.setText(Utils.formatValue(temp_max, 0) + Utils.SUFFIX_CELCIOUS);
-                textViewTemperatureMin.setText(Utils.formatValue(temp_min, 0) + Utils.SUFFIX_CELCIOUS);
-                textViewWindSpeed.setText(wind.get("speed").toString() + Utils.SUFFIX_WIND_SPEED);
-                textViewAirPressure.setText(main.get("pressure").toString() + Utils.SUFFIX_AIR_PRESSURE);
-                textViewHumidity.setText(main.get("humidity").toString() + Utils.SUFFIX_HUMIDITY);
-                break;
-
-            case Utils.WEATHER_API:
-                jsonObjectResponse = new JSONObject(response);
-                JSONObject current = (JSONObject) jsonObjectResponse.get("current");
-
-                //display the proper icon according to the weather
-                String condition = current.getJSONObject("condition").getString("text");
-                Utils.displayWeatherIcon(condition, imageViewWeather);
-
-                //fill in weather widgets
-                textViewWeather.setText(condition);
-                textViewTemperature.setText(current.getString("temp_c") + Utils.SUFFIX_CELCIOUS);
-                textViewTemperatureMax.setText("N/A");
-                textViewTemperatureMin.setText("N/A");
-                textViewWindSpeed.setText(current.getString("wind_kph") + Utils.SUFFIX_WIND_SPEED);
-                textViewAirPressure.setText(current.getString("pressure_mb") + Utils.SUFFIX_AIR_PRESSURE);
-                textViewHumidity.setText(current.getString("humidity") + Utils.SUFFIX_HUMIDITY);
-                break;
-        }
-    }
-
-    /**
-     * Gets current weather data using the MetaWeather API.
-     */
-    private void getWeatherForecastByMetaWeather() {
-        //init RequestQueue
-        RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
-
-        //request response from URL
-        String url = Utils.META_WEATHER_URL_FOR_ID + location;
-        StringRequest stringRequest = new StringRequest(url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //display the weather
-                        showLabelWidgets();
-                        getWeatherForecastById(response);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainActivity.this, "Cannot find city.", Toast.LENGTH_SHORT).show();
-                        try {
-
-                            Log.e("VOLLEY_ERROR", "onErrorResponse: " + error);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-
-        //add request to RequestQueue
-        requestQueue.add(stringRequest);
+        //fill in weather widgets
+        textViewWeather.setText(jsonObjectWeather.getString("main"));
+        textViewTemperature.setText(Utils.formatValue(temp, 0) + Utils.SUFFIX_CELCIOUS);
+        textViewTemperatureMax.setText(Utils.formatValue(temp_max, 0) + Utils.SUFFIX_CELCIOUS);
+        textViewTemperatureMin.setText(Utils.formatValue(temp_min, 0) + Utils.SUFFIX_CELCIOUS);
+        textViewWindSpeed.setText(wind.get("speed").toString() + Utils.SUFFIX_WIND_SPEED);
+        textViewAirPressure.setText(main.get("pressure").toString() + Utils.SUFFIX_AIR_PRESSURE);
+        textViewHumidity.setText(main.get("humidity").toString() + Utils.SUFFIX_HUMIDITY);
     }
 
     /**
@@ -363,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             //display the weather
                             showLabelWidgets();
-                            getWeatherForecast(response, Utils.OPEN_WEATHER);
+                            getWeatherForecast(response);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -374,45 +178,6 @@ public class MainActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(MainActivity.this, "Cannot find city.", Toast.LENGTH_SHORT).show();
                         try {
-                            Log.e("VOLLEY_ERROR", "onErrorResponse: " + error);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-
-        //add request to RequestQueue
-        requestQueue.add(stringRequest);
-    }
-
-    /**
-     * Gets current weather data using the WeatherApi API.
-     */
-    private void getWeatherForecastByWeatherApi() {
-        //init RequestQueue
-        RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
-
-        //request response from URL
-        String url = Utils.WEATHER_API_URL_FOR_DATA_PREFIX + Utils.WEATHER_API_KEY + Utils.WEATHER_API_URL_FOR_DATA_SUFFIX + location;
-        StringRequest stringRequest = new StringRequest(url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            //display the weather
-                            showLabelWidgets();
-                            getWeatherForecast(response, Utils.WEATHER_API);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainActivity.this, "Cannot find city.", Toast.LENGTH_SHORT).show();
-                        try {
-
                             Log.e("VOLLEY_ERROR", "onErrorResponse: " + error);
                         } catch (Exception e) {
                             e.printStackTrace();
