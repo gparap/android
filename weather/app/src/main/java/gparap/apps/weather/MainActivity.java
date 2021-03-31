@@ -39,7 +39,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 
 import gparap.apps.weather.model.CurrentWeatherDataModel;
-import gparap.apps.weather.utils.CurrentWeatherParserJSON;
+import gparap.apps.weather.utils.CurrentWeatherParser;
 import gparap.apps.weather.utils.Utils;
 
 import static android.view.View.VISIBLE;
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
      */
     @SuppressLint("SetTextI18n")
     private void displayCurrentWeather(String response) throws JSONException {
-         model = CurrentWeatherParserJSON.getInstance().getCurrentWeatherDataModel(response);
+         model = CurrentWeatherParser.getInstance().getCurrentWeatherDataModel(response);
 
         //display the proper icon according to the weather
         Utils.displayWeatherIcon(model.getWeather(), imageViewWeather);

@@ -21,8 +21,8 @@ import org.json.JSONObject;
 
 import gparap.apps.weather.model.CurrentWeatherDataModel;
 
-public class CurrentWeatherParserJSON {
-    private static CurrentWeatherParserJSON instance;
+public class CurrentWeatherParser {
+    private static CurrentWeatherParser instance;
     private CurrentWeatherDataModel model;
     private JSONObject jsonObjectResponse;
     private JSONObject coord;
@@ -32,13 +32,13 @@ public class CurrentWeatherParserJSON {
     private JSONObject clouds;
     private JSONObject sys;
 
-    private CurrentWeatherParserJSON() {
+    private CurrentWeatherParser() {
 
     }
 
-    public static CurrentWeatherParserJSON getInstance() {
+    public static CurrentWeatherParser getInstance() {
         if (instance == null) {
-            instance = new CurrentWeatherParserJSON();
+            instance = new CurrentWeatherParser();
         }
         return instance;
     }
@@ -65,8 +65,8 @@ public class CurrentWeatherParserJSON {
 
     private void initWeatherModelWithData() throws JSONException {
         //coord
-        model.setLongitude(coord.getLong("lon"));
-        model.setLatitude(coord.getLong("lat"));
+        model.setLongitude(coord.getDouble("lon"));
+        model.setLatitude(coord.getDouble("lat"));
         //weather
         model.setId(weather.getJSONObject(0).getInt("id"));
         model.setWeather(weather.getJSONObject(0).getString("main"));
