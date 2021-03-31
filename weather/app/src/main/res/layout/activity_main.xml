@@ -6,56 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!--IMAGES-->
-    <TextView
-        android:id="@+id/textViewHumidity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/labelHumidity"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAirPressure"
-        tools:text="values" />
-
-    <TextView
-        android:id="@+id/textViewWeather"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/labelWeather"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewWeather"
-        tools:text="values" />
-
-    <TextView
-        android:id="@+id/textViewAirPressure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/labelAirPressure"
-        app:layout_constraintTop_toBottomOf="@+id/textViewWindSpeed"
-        tools:text="values" />
-
-    <TextView
-        android:id="@+id/textViewWindSpeed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/labelWindSpeed"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTemperatureMin"
-        tools:text="values" />
-
-    <!--LABELS-->
-
-    <!--SEARCH-->
+    <!--Search widgets-->
     <EditText
-        android:id="@+id/editTextSearch"
+        android:id="@+id/editTextSearchCity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -63,59 +16,84 @@
         android:layout_marginTop="8dp"
         android:autofillHints="true"
         android:ems="10"
-        android:hint="@string/search"
+        android:hint="@string/search_city"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/imageViewSearch"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewSearchCityIcon"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageViewSearch"
+        android:id="@+id/imageViewSearchCityIcon"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:contentDescription="@string/search_location_image"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextSearch"
+        android:contentDescription="@string/search_city_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextSearchCity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextSearch"
+        app:layout_constraintTop_toTopOf="@+id/editTextSearchCity"
         app:srcCompat="@drawable/ic_baseline_search_24" />
 
-    <!--BUTTONS-->
-    <Button
-        android:id="@+id/buttonVisitOpenWeather"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onClickCredits"
-        android:text="@string/openweather"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
+    <!--Weather icon placeholder-->
     <ImageView
-        android:id="@+id/imageViewWeather"
+        android:id="@+id/imageViewWeatherIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/imageviewweather"
+        android:contentDescription="@string/weather_icon"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/editTextSearch"
-        app:layout_constraintStart_toStartOf="@+id/editTextSearch"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSearch"
+        app:layout_constraintEnd_toEndOf="@+id/editTextSearchCity"
+        app:layout_constraintStart_toStartOf="@+id/editTextSearchCity"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSearchCity"
         app:srcCompat="@drawable/clear_sky_night"
         tools:srcCompat="@drawable/clear_sky_night" />
 
+    <!--Weather labels-->
     <TextView
-        android:id="@+id/labelHumidity"
+        android:id="@+id/labelWeather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/humidity"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:text="@string/weather"
         android:textSize="18sp"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/labelAirPressure"
-        app:layout_constraintTop_toBottomOf="@+id/labelAirPressure"
-        tools:text="Humidity:" />
+        app:layout_constraintEnd_toEndOf="@+id/imageViewWeatherIcon"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewWeatherIcon"
+        tools:text="Weather:" />
+
+    <TextView
+        android:id="@+id/labelTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/temperature"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/labelWeather"
+        app:layout_constraintTop_toBottomOf="@+id/labelWeather"
+        tools:text="Temperature:" />
+
+    <TextView
+        android:id="@+id/labelTemperatureMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/temperature_max"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/labelTemperature"
+        app:layout_constraintTop_toBottomOf="@+id/labelTemperature"
+        tools:text="Temperature Max:" />
+
+    <TextView
+        android:id="@+id/labelTemperatureMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/temperature_min"
+        android:textSize="18sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/labelTemperatureMax"
+        app:layout_constraintTop_toBottomOf="@+id/labelTemperatureMax"
+        tools:text="Temperature Min:" />
 
     <TextView
         android:id="@+id/labelWindSpeed"
@@ -140,60 +118,37 @@
         tools:text="Air Pressure:" />
 
     <TextView
-        android:id="@+id/labelTemperatureMin"
+        android:id="@+id/labelHumidity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/temperature_min"
+        android:text="@string/humidity"
         android:textSize="18sp"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/labelTemperatureMax"
-        app:layout_constraintTop_toBottomOf="@+id/labelTemperatureMax"
-        tools:text="Temperature Min:" />
+        app:layout_constraintEnd_toEndOf="@+id/labelAirPressure"
+        app:layout_constraintTop_toBottomOf="@+id/labelAirPressure"
+        tools:text="Humidity:" />
 
+    <!--Weather values-->
     <TextView
-        android:id="@+id/labelTemperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/temperature"
-        android:textSize="18sp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/labelWeather"
-        app:layout_constraintTop_toBottomOf="@+id/labelWeather"
-        tools:text="Temperature:" />
-
-    <TextView
-        android:id="@+id/labelWeather"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:text="@string/weather"
-        android:textSize="18sp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewWeather"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewWeather"
-        tools:text="Weather:" />
-
-    <TextView
-        android:id="@+id/labelTemperatureMax"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/temperature_max"
-        android:textSize="18sp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/labelTemperature"
-        app:layout_constraintTop_toBottomOf="@+id/labelTemperature"
-        tools:text="Temperature Max:" />
-
-    <TextView
-        android:id="@+id/textViewTemperatureMin"
+        android:id="@+id/textViewWeather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/labelTemperatureMin"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTemperatureMax"
+        app:layout_constraintStart_toEndOf="@+id/labelWeather"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewWeatherIcon"
+        tools:text="values" />
+
+    <TextView
+        android:id="@+id/textViewTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/labelTemperature"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWeather"
         tools:text="values" />
 
     <TextView
@@ -208,14 +163,58 @@
         tools:text="values" />
 
     <TextView
-        android:id="@+id/textViewTemperature"
+        android:id="@+id/textViewTemperatureMin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/labelTemperature"
-        app:layout_constraintTop_toBottomOf="@+id/textViewWeather"
+        app:layout_constraintStart_toEndOf="@+id/labelTemperatureMin"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTemperatureMax"
         tools:text="values" />
+
+    <TextView
+        android:id="@+id/textViewWindSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/labelWindSpeed"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTemperatureMin"
+        tools:text="values" />
+
+    <TextView
+        android:id="@+id/textViewAirPressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/labelAirPressure"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWindSpeed"
+        tools:text="values" />
+
+    <TextView
+        android:id="@+id/textViewHumidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/labelHumidity"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAirPressure"
+        tools:text="values" />
+
+    <!--Weather provider-->
+    <Button
+        android:id="@+id/buttonWeatherProvider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/weather_provider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

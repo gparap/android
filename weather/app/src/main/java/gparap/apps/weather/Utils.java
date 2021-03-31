@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-present gparap
+ * Copyright 2020 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -71,7 +71,7 @@ public class Utils {
      * @param offset how many decimals after dot(.)
      * @return formatted string value
      */
-    public static String formatValue(String value, int offset) {
+    public static String formatWeatherValue(String value, int offset) {
         String temp = value;
         try {
             temp = temp.substring(0, temp.indexOf('.') + offset);

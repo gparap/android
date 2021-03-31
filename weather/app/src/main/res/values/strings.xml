@@ -1,14 +1,18 @@
 <resources>
     <string name="app_name">Weather</string>
-    <string name="search">Search…</string>
-    <string name="search_location_image">Search Location image</string>
-    <string name="openweather">OpenWeather - visit website</string>
-    <string name="imageviewweather">imageViewWeather</string>
-    <string name="humidity">Humidity:</string>
+    <string name="toast_empty_search">City cannot be empty.</string>
+    <!--search-->
+    <string name="search_city">Search…</string>
+    <string name="search_city_icon">Search Location image</string>
+    <!--weather-->
+    <string name="weather_icon">Weather Icon</string>
+    <string name="weather">Weather:</string>
+    <string name="temperature">Temperature:</string>
+    <string name="temperature_max">Temperature Max:</string>
+    <string name="temperature_min">Temperature Min:</string>
     <string name="wind_speed">Wind Speed:</string>
     <string name="air_pressure">Air Pressure:</string>
-    <string name="temperature_min">Temperature Min:</string>
-    <string name="temperature">Temperature:</string>
-    <string name="weather">Weather:</string>
-    <string name="temperature_max">Temperature Max:</string>
+    <string name="humidity">Humidity:</string>
+    <!--provider-->
+    <string name="weather_provider">Weather Provider - openweathermap.org</string>
 </resources>

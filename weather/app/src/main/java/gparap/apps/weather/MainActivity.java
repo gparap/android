@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-present gparap
+ * Copyright 2020 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,72 +45,43 @@ import static android.view.View.VISIBLE;
 @SuppressWarnings("Convert2Lambda")
 @SuppressLint("NonConstantResourceId")
 public class MainActivity extends AppCompatActivity {
-    TextView labelWeather, labelTemperature, labelTemperatureMax, labelTemperatureMin, labelWindSpeed, labelAirPressure, labelHumidity,
-            textViewWeather, textViewTemperature, textViewTemperatureMax, textViewTemperatureMin, textViewWindSpeed, textViewAirPressure,
-            textViewHumidity;
-    ImageView imageViewWeather;
-    Button buttonOpenWeather;
-    EditText editTextLocation;
-    ImageView imageViewSearch;
-    String location;
-    String locationID;
+    private TextView labelWeather,
+                     labelTemperature, labelTemperatureMax, labelTemperatureMin,
+                     labelWindSpeed, labelAirPressure, labelHumidity,
+                     textViewWeather,
+                     textViewTemperature, textViewTemperatureMax, textViewTemperatureMin,
+                     textViewWindSpeed, textViewAirPressure, textViewHumidity;
+    private ImageView imageViewWeather;
+    private Button buttonWeatherProvider;
+    private EditText editTextCity;
+    private ImageView iconCitySearch;
+    private String city = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        location = "";
-        locationID = "";
-    }
+        getWidgets();
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        //get widgets
-        buttonOpenWeather = findViewById(R.id.buttonVisitOpenWeather);
-        editTextLocation = findViewById(R.id.editTextSearch);
-        imageViewSearch = findViewById(R.id.imageViewSearch);
-        imageViewWeather = findViewById(R.id.imageViewWeather);
-        getLabelWidgets();
-        getWeatherWidgets();
-
-        //search a location for weather
-        imageViewSearch.setOnClickListener(new View.OnClickListener() {
+        //search a city for weather
+        iconCitySearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //location cannot be empty
-                if (editTextLocation.getText().toString().isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Location cannot be empty.", Toast.LENGTH_SHORT).show();
-                    return;
+                if (!isCitySearchEmpty()) {
+                    city = editTextCity.getText().toString();
+                    hideSoftKeyboard(v);
+                    getCurrentWeather();
                 }
-                location = editTextLocation.getText().toString();
-
-                //hide soft keyboard
-                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-
-                getWeatherForecastByOpenWeather();
             }
         });
-    }
 
-    /**
-     * Goes to the website of a link or licence.
-     *
-     * @param view button
-     */
-    public void onClickCredits(View view) {
-        visitLink();
-    }
-
-    /**
-     * Creates an intent to visit a website.
-     */
-    private void visitLink() {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(Utils.OPEN_WEATHER));
-        startActivity(intent);
+        //goto weather provider website
+        buttonWeatherProvider.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoProviderWebsite();
+            }
+        });
     }
 
     /**
@@ -143,9 +114,9 @@ public class MainActivity extends AppCompatActivity {
 
         //fill in weather widgets
         textViewWeather.setText(jsonObjectWeather.getString("main"));
-        textViewTemperature.setText(Utils.formatValue(temp, 0) + Utils.SUFFIX_CELCIOUS);
-        textViewTemperatureMax.setText(Utils.formatValue(temp_max, 0) + Utils.SUFFIX_CELCIOUS);
-        textViewTemperatureMin.setText(Utils.formatValue(temp_min, 0) + Utils.SUFFIX_CELCIOUS);
+        textViewTemperature.setText(Utils.formatWeatherValue(temp, 0) + Utils.SUFFIX_CELCIOUS);
+        textViewTemperatureMax.setText(Utils.formatWeatherValue(temp_max, 0) + Utils.SUFFIX_CELCIOUS);
+        textViewTemperatureMin.setText(Utils.formatWeatherValue(temp_min, 0) + Utils.SUFFIX_CELCIOUS);
         textViewWindSpeed.setText(wind.get("speed").toString() + Utils.SUFFIX_WIND_SPEED);
         textViewAirPressure.setText(main.get("pressure").toString() + Utils.SUFFIX_AIR_PRESSURE);
         textViewHumidity.setText(main.get("humidity").toString() + Utils.SUFFIX_HUMIDITY);
@@ -154,12 +125,12 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Gets current weather data using the OpenWeather API.
      */
-    private void getWeatherForecastByOpenWeather() {
+    private void getCurrentWeather() {
         //init RequestQueue
         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
 
         //request response from URL
-        String url = Utils.OPEN_WEATHER__URL_FOR_DATA_PREFIX + location + Utils.OPEN_WEATHER__URL_FOR_DATA_SUFFIX + Utils.OPEN_WEATHER_API_KEY;
+        String url = Utils.OPEN_WEATHER__URL_FOR_DATA_PREFIX + city + Utils.OPEN_WEATHER__URL_FOR_DATA_SUFFIX + Utils.OPEN_WEATHER_API_KEY;
         StringRequest stringRequest = new StringRequest(url,
                 new Response.Listener<String>() {
                     @Override
@@ -189,35 +160,25 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    /**
-     * Gets all views used as weather labels.
-     */
-    private void getLabelWidgets() {
-        labelWeather = findViewById(R.id.labelWeather);
-        labelTemperature = findViewById(R.id.labelTemperature);
-        labelTemperatureMax = findViewById(R.id.labelTemperatureMax);
-        labelTemperatureMin = findViewById(R.id.labelTemperatureMin);
-        labelWindSpeed = findViewById(R.id.labelWindSpeed);
-        labelAirPressure = findViewById(R.id.labelAirPressure);
-        labelHumidity = findViewById(R.id.labelHumidity);
+    private boolean isCitySearchEmpty() {
+        if (editTextCity.getText().toString().isEmpty()) {
+            Toast.makeText(MainActivity.this, R.string.toast_empty_search, Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return false;
     }
 
-    /**
-     * Gets all views used as response weather data.
-     */
-    private void getWeatherWidgets() {
-        textViewWeather = findViewById(R.id.textViewWeather);
-        textViewTemperature = findViewById(R.id.textViewTemperature);
-        textViewTemperatureMax = findViewById(R.id.textViewTemperatureMax);
-        textViewTemperatureMin = findViewById(R.id.textViewTemperatureMin);
-        textViewWindSpeed = findViewById(R.id.textViewWindSpeed);
-        textViewAirPressure = findViewById(R.id.textViewAirPressure);
-        textViewHumidity = findViewById(R.id.textViewHumidity);
+    private void hideSoftKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
-    /**
-     * Shows all views used as weather labels.
-     */
+    private void gotoProviderWebsite() {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(Utils.OPEN_WEATHER));
+        startActivity(intent);
+    }
+
     private void showLabelWidgets() {
         labelWeather.setVisibility(VISIBLE);
         labelTemperature.setVisibility(VISIBLE);
@@ -226,5 +187,26 @@ public class MainActivity extends AppCompatActivity {
         labelWindSpeed.setVisibility(VISIBLE);
         labelAirPressure.setVisibility(VISIBLE);
         labelHumidity.setVisibility(VISIBLE);
+    }
+
+    private void getWidgets() {
+        buttonWeatherProvider = findViewById(R.id.buttonWeatherProvider);
+        editTextCity = findViewById(R.id.editTextSearchCity);
+        iconCitySearch = findViewById(R.id.imageViewSearchCityIcon);
+        imageViewWeather = findViewById(R.id.imageViewWeatherIcon);
+        labelWeather = findViewById(R.id.labelWeather);
+        labelTemperature = findViewById(R.id.labelTemperature);
+        labelTemperatureMax = findViewById(R.id.labelTemperatureMax);
+        labelTemperatureMin = findViewById(R.id.labelTemperatureMin);
+        labelWindSpeed = findViewById(R.id.labelWindSpeed);
+        labelAirPressure = findViewById(R.id.labelAirPressure);
+        labelHumidity = findViewById(R.id.labelHumidity);
+        textViewWeather = findViewById(R.id.textViewWeather);
+        textViewTemperature = findViewById(R.id.textViewTemperature);
+        textViewTemperatureMax = findViewById(R.id.textViewTemperatureMax);
+        textViewTemperatureMin = findViewById(R.id.textViewTemperatureMin);
+        textViewWindSpeed = findViewById(R.id.textViewWindSpeed);
+        textViewAirPressure = findViewById(R.id.textViewAirPressure);
+        textViewHumidity = findViewById(R.id.textViewHumidity);
     }
 }
