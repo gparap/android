@@ -17,6 +17,8 @@ package gparap.apps.weather;
 
 import org.junit.Test;
 
+import gparap.apps.weather.utils.Utils;
+
 import static org.junit.Assert.*;
 
 public class UtilsUnitTest {

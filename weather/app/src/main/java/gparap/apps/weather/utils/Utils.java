@@ -13,23 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.weather;
+package gparap.apps.weather.utils;
 
 import android.widget.ImageView;
+
+import gparap.apps.weather.R;
 
 import static android.view.View.VISIBLE;
 
 public class Utils {
-    final static String OPEN_WEATHER = "https://openweathermap.org";
-    final static String OPEN_WEATHER_API_KEY = "API_KEY_HERE";
-    final static String OPEN_WEATHER__URL_FOR_DATA_PREFIX = "https://api.openweathermap.org/data/2.5/weather?q=";
-    final static String OPEN_WEATHER__URL_FOR_DATA_SUFFIX = "&appid=";
+    public final static String OPEN_WEATHER = "https://openweathermap.org";
+    public final static String OPEN_WEATHER_API_KEY = "API_KEY_HERE";
+    public final static String OPEN_WEATHER__URL_FOR_DATA_PREFIX = "https://api.openweathermap.org/data/2.5/weather?q=";
+    public final static String OPEN_WEATHER__URL_FOR_DATA_SUFFIX = "&appid=";
 
     //helper suffixes
-    final static String SUFFIX_CELCIOUS = " \u2103";
-    final static String SUFFIX_WIND_SPEED = " km/h";
-    final static String SUFFIX_AIR_PRESSURE = " mb";
-    final static String SUFFIX_HUMIDITY = " %";
+    public final static String SUFFIX_CELCIOUS = " \u2103";
+    public final static String SUFFIX_WIND_SPEED = " km/h";
+    public final static String SUFFIX_AIR_PRESSURE = " mb";
+    public final static String SUFFIX_HUMIDITY = " %";
 
     /**
      * Displays the appropriate weather icon based on the text describing the weather condition.

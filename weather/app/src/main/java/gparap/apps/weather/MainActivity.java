@@ -36,9 +36,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
+
+import gparap.apps.weather.model.CurrentWeatherDataModel;
+import gparap.apps.weather.utils.CurrentWeatherParserJSON;
+import gparap.apps.weather.utils.Utils;
 
 import static android.view.View.VISIBLE;
 
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextCity;
     private ImageView iconCitySearch;
     private String city = "";
+    CurrentWeatherDataModel model = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,39 +94,29 @@ public class MainActivity extends AppCompatActivity {
      * @throws JSONException JSONException
      */
     @SuppressLint("SetTextI18n")
-    private void getWeatherForecast(String response) throws JSONException {
-        JSONObject jsonObjectResponse;
-        JSONArray jsonArrayWeather;
-        JSONObject jsonObjectWeather;
-
-        jsonObjectResponse = new JSONObject(response);
-
-        //get json objects
-        jsonArrayWeather = jsonObjectResponse.getJSONArray("weather");
-        jsonObjectWeather = jsonArrayWeather.getJSONObject(0);
-        JSONObject main = (JSONObject) jsonObjectResponse.get("main");
-        JSONObject wind = (JSONObject) jsonObjectResponse.get("wind");
+    private void displayCurrentWeather(String response) throws JSONException {
+         model = CurrentWeatherParserJSON.getInstance().getCurrentWeatherDataModel(response);
 
         //display the proper icon according to the weather
-        Utils.displayWeatherIcon(jsonObjectWeather.getString("main"), imageViewWeather);
+        Utils.displayWeatherIcon(model.getWeather(), imageViewWeather);
 
         //convert temperatures
-        String temp = Utils.convertKelvinToCelcious(main.get("temp"));
-        String temp_max = Utils.convertKelvinToCelcious(main.get("temp_max"));
-        String temp_min = Utils.convertKelvinToCelcious(main.get("temp_min"));
+        String temp = Utils.convertKelvinToCelcious(model.getTemperature());
+        String temp_max = Utils.convertKelvinToCelcious(model.getTemperatureMax());
+        String temp_min = Utils.convertKelvinToCelcious(model.getTemperatureMin());
 
         //fill in weather widgets
-        textViewWeather.setText(jsonObjectWeather.getString("main"));
+        textViewWeather.setText(model.getWeather());
         textViewTemperature.setText(Utils.formatWeatherValue(temp, 0) + Utils.SUFFIX_CELCIOUS);
         textViewTemperatureMax.setText(Utils.formatWeatherValue(temp_max, 0) + Utils.SUFFIX_CELCIOUS);
         textViewTemperatureMin.setText(Utils.formatWeatherValue(temp_min, 0) + Utils.SUFFIX_CELCIOUS);
-        textViewWindSpeed.setText(wind.get("speed").toString() + Utils.SUFFIX_WIND_SPEED);
-        textViewAirPressure.setText(main.get("pressure").toString() + Utils.SUFFIX_AIR_PRESSURE);
-        textViewHumidity.setText(main.get("humidity").toString() + Utils.SUFFIX_HUMIDITY);
+        textViewWindSpeed.setText(model.getWindSpeed() + Utils.SUFFIX_WIND_SPEED);
+        textViewAirPressure.setText(model.getAirPressure() + Utils.SUFFIX_AIR_PRESSURE);
+        textViewHumidity.setText(model.getHumidity() + Utils.SUFFIX_HUMIDITY);
     }
 
     /**
-     * Gets current weather data using the OpenWeather API.
+     * Gets current weather data using the provider API.
      */
     private void getCurrentWeather() {
         //init RequestQueue
@@ -138,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             //display the weather
                             showLabelWidgets();
-                            getWeatherForecast(response);
+                            displayCurrentWeather(response);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
