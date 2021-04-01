@@ -17,6 +17,7 @@ package gparap.apps.weather;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +29,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.RequestQueue;
@@ -40,7 +42,8 @@ import org.json.JSONException;
 
 import gparap.apps.weather.model.CurrentWeatherDataModel;
 import gparap.apps.weather.utils.CurrentWeatherParser;
-import gparap.apps.weather.utils.Utils;
+import gparap.apps.weather.utils.LocationUtils;
+import gparap.apps.weather.utils.WeatherUtils;
 
 import static android.view.View.VISIBLE;
 
@@ -48,11 +51,11 @@ import static android.view.View.VISIBLE;
 @SuppressLint("NonConstantResourceId")
 public class MainActivity extends AppCompatActivity {
     private TextView labelWeather,
-                     labelTemperature, labelTemperatureMax, labelTemperatureMin,
-                     labelWindSpeed, labelAirPressure, labelHumidity,
-                     textViewWeather,
-                     textViewTemperature, textViewTemperatureMax, textViewTemperatureMin,
-                     textViewWindSpeed, textViewAirPressure, textViewHumidity;
+            labelTemperature, labelTemperatureMax, labelTemperatureMin,
+            labelWindSpeed, labelAirPressure, labelHumidity,
+            textViewWeather,
+            textViewTemperature, textViewTemperatureMax, textViewTemperatureMin,
+            textViewWindSpeed, textViewAirPressure, textViewHumidity;
     private ImageView imageViewWeather;
     private Button buttonWeatherProvider;
     private EditText editTextCity;
@@ -65,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWidgets();
+        LocationUtils.getInstance().getUserLocation(this);
 
         //search a city for weather
         iconCitySearch.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +91,25 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LocationUtils.getInstance().stopLocationUpdates();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == LocationUtils.getInstance().getRequestCode()) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                LocationUtils.getInstance().getUserLocation(this);
+            } else {
+                Toast.makeText(this, R.string.toast_location_permission_denied, Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
     /**
      * Gets and displays weather forecast.
      *
@@ -95,24 +118,24 @@ public class MainActivity extends AppCompatActivity {
      */
     @SuppressLint("SetTextI18n")
     private void displayCurrentWeather(String response) throws JSONException {
-         model = CurrentWeatherParser.getInstance().getCurrentWeatherDataModel(response);
+        model = CurrentWeatherParser.getInstance().getCurrentWeatherDataModel(response);
 
         //display the proper icon according to the weather
-        Utils.displayWeatherIcon(model.getWeather(), imageViewWeather);
+        WeatherUtils.displayWeatherIcon(model.getWeather(), imageViewWeather);
 
         //convert temperatures
-        String temp = Utils.convertKelvinToCelcious(model.getTemperature());
-        String temp_max = Utils.convertKelvinToCelcious(model.getTemperatureMax());
-        String temp_min = Utils.convertKelvinToCelcious(model.getTemperatureMin());
+        String temp = WeatherUtils.convertKelvinToCelcious(model.getTemperature());
+        String temp_max = WeatherUtils.convertKelvinToCelcious(model.getTemperatureMax());
+        String temp_min = WeatherUtils.convertKelvinToCelcious(model.getTemperatureMin());
 
         //fill in weather widgets
         textViewWeather.setText(model.getWeather());
-        textViewTemperature.setText(Utils.formatWeatherValue(temp, 0) + Utils.SUFFIX_CELCIOUS);
-        textViewTemperatureMax.setText(Utils.formatWeatherValue(temp_max, 0) + Utils.SUFFIX_CELCIOUS);
-        textViewTemperatureMin.setText(Utils.formatWeatherValue(temp_min, 0) + Utils.SUFFIX_CELCIOUS);
-        textViewWindSpeed.setText(model.getWindSpeed() + Utils.SUFFIX_WIND_SPEED);
-        textViewAirPressure.setText(model.getAirPressure() + Utils.SUFFIX_AIR_PRESSURE);
-        textViewHumidity.setText(model.getHumidity() + Utils.SUFFIX_HUMIDITY);
+        textViewTemperature.setText(WeatherUtils.formatWeatherValue(temp, 0) + WeatherUtils.SUFFIX_CELCIOUS);
+        textViewTemperatureMax.setText(WeatherUtils.formatWeatherValue(temp_max, 0) + WeatherUtils.SUFFIX_CELCIOUS);
+        textViewTemperatureMin.setText(WeatherUtils.formatWeatherValue(temp_min, 0) + WeatherUtils.SUFFIX_CELCIOUS);
+        textViewWindSpeed.setText(model.getWindSpeed() + WeatherUtils.SUFFIX_WIND_SPEED);
+        textViewAirPressure.setText(model.getAirPressure() + WeatherUtils.SUFFIX_AIR_PRESSURE);
+        textViewHumidity.setText(model.getHumidity() + WeatherUtils.SUFFIX_HUMIDITY);
     }
 
     /**
@@ -123,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
 
         //request response from URL
-        String url = Utils.OPEN_WEATHER__URL_FOR_DATA_PREFIX + city + Utils.OPEN_WEATHER__URL_FOR_DATA_SUFFIX + Utils.OPEN_WEATHER_API_KEY;
+        String url = WeatherUtils.OPEN_WEATHER__URL_FOR_DATA_PREFIX + city + WeatherUtils.OPEN_WEATHER__URL_FOR_DATA_SUFFIX + WeatherUtils.OPEN_WEATHER_API_KEY;
         StringRequest stringRequest = new StringRequest(url,
                 new Response.Listener<String>() {
                     @Override
@@ -168,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void gotoProviderWebsite() {
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(Utils.OPEN_WEATHER));
+        intent.setData(Uri.parse(WeatherUtils.OPEN_WEATHER));
         startActivity(intent);
     }
 
