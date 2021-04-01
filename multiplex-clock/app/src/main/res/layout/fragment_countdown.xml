@@ -27,7 +27,6 @@
 
         <!--Countdown Fields-->
         <EditText
-            android:textColor="@drawable/edit_text_selector"
             android:id="@+id/editTextHours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,7 +40,6 @@
             app:layout_constraintTop_toTopOf="@+id/editTextMinutes" />
 
         <EditText
-            android:textColor="@drawable/edit_text_selector"
             android:id="@+id/editTextMinutes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,7 +54,6 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewHHMMSS" />
 
         <EditText
-            android:textColor="@drawable/edit_text_selector"
             android:id="@+id/editTextSeconds"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
