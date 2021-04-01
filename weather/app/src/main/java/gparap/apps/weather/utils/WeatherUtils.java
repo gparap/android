@@ -21,7 +21,7 @@ import gparap.apps.weather.R;
 
 import static android.view.View.VISIBLE;
 
-public class Utils {
+public class WeatherUtils {
     public final static String OPEN_WEATHER = "https://openweathermap.org";
     public final static String OPEN_WEATHER_API_KEY = "API_KEY_HERE";
     public final static String OPEN_WEATHER__URL_FOR_DATA_PREFIX = "https://api.openweathermap.org/data/2.5/weather?q=";

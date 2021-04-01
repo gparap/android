@@ -17,18 +17,18 @@ package gparap.apps.weather;
 
 import org.junit.Test;
 
-import gparap.apps.weather.utils.Utils;
+import gparap.apps.weather.utils.WeatherUtils;
 
 import static org.junit.Assert.*;
 
-public class UtilsUnitTest {
+public class WeatherUtilsUnitTest {
 
     @Test
     public void formatWeatherValue() {
         String valueToFormat = "01234.5566778899";
         int offset = 2;
         String expected = "01234.5";
-        String actual = Utils.formatWeatherValue(valueToFormat, offset);
+        String actual = WeatherUtils.formatWeatherValue(valueToFormat, offset);
         assertEquals("Error formatting weather value...", actual, expected);
     }
 
@@ -36,7 +36,7 @@ public class UtilsUnitTest {
     public void convertKelvinToCelcious() {
         Object kelvinDegrees = 10.5;
         String expected = "-262.65";
-        String actual = Utils.convertKelvinToCelcious(kelvinDegrees);
+        String actual = WeatherUtils.convertKelvinToCelcious(kelvinDegrees);
         assertEquals("Error converting Kelvin to Celcious...", actual, expected);
     }
 }
