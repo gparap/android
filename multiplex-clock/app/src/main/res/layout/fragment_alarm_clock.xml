@@ -14,56 +14,32 @@
 
         <!--Time-->
         <TextView
-            android:id="@+id/textViewTimeNowLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="@string/time_now"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewTimeNow"
-            app:layout_constraintEnd_toStartOf="@+id/textViewTimeNow"
-            app:layout_constraintTop_toTopOf="@+id/textViewTimeNow" />
-
-        <TextView
             android:id="@+id/textViewTimeNow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:textSize="36sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="@+id/textViewAlarm"
             app:layout_constraintStart_toStartOf="@+id/textViewAlarm"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="00:00" />
 
-        <!--Alarm time-->
-        <TextView
-            android:id="@+id/textViewAlarmLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/alarm"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewAlarm"
-            app:layout_constraintEnd_toEndOf="@+id/textViewTimeNowLabel"
-            app:layout_constraintStart_toStartOf="@+id/textViewTimeNowLabel"
-            app:layout_constraintTop_toTopOf="@+id/textViewAlarm" />
-
+        <!--Set alarm-->
         <TextView
             android:id="@+id/textViewAlarm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text="@string/value_00_00"
             android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="@+id/buttonSetAlarm"
-            app:layout_constraintHorizontal_bias="0.535"
+            app:layout_constraintHorizontal_bias="0.533"
             app:layout_constraintStart_toStartOf="@+id/buttonSetAlarm"
             app:layout_constraintTop_toBottomOf="@+id/textViewTimeNow"
             tools:text="00:00" />
 
-        <!--Set alarm-->
         <Button
             android:id="@+id/buttonSetAlarm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text="@string/set_alarm"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,11 +47,9 @@
 
         <TimePicker
             android:id="@+id/timePicker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleX="0.75"
-            android:scaleY="0.75"
-            android:timePickerMode="clock"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:timePickerMode="spinner"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
