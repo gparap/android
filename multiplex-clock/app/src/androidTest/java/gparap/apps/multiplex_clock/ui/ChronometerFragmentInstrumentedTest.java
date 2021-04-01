@@ -112,7 +112,10 @@ public class ChronometerFragmentInstrumentedTest {
 
     @Test
     public void startButton_ChronometerTimerIsResetting() throws InterruptedException {
-        String zeroTime = "00:00";
+        String zeroTime = "0:00";
+
+        //reset chronometer from previous values
+        onView(withId(R.id.buttonResetChronometer)).perform(click());
 
         //start and reset timer
         onView(withId(R.id.buttonStartChronometer)).perform(click());

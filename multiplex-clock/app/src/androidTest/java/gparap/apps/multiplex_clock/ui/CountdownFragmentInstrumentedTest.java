@@ -42,7 +42,7 @@ public class CountdownFragmentInstrumentedTest {
 
     @Test
     public void isWidgetVisible_TextViewHHMMSS() {
-        onView(withId(R.id.textViewHHMMSS)).check(matches(not(isDisplayed())));
+        onView(withId(R.id.textViewHHMMSS)).check(matches(isDisplayed()));
     }
 
     @Test
@@ -96,6 +96,9 @@ public class CountdownFragmentInstrumentedTest {
 
     @Test
     public void stopButton_CountdownTimerIsStopping() throws InterruptedException {
+        //reset timer from previous values
+        onView(withId(R.id.buttonResetCountdown)).perform(click());
+
         //init timer
         onView(withId(R.id.editTextSeconds)).perform(typeText("10"));
         String startTime = "10";

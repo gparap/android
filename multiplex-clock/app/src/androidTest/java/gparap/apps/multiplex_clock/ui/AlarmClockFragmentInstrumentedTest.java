@@ -34,18 +34,8 @@ public class AlarmClockFragmentInstrumentedTest {
     }
 
     @Test
-    public void isWidgetVisible_TextViewTimeNowLabel() {
-        onView(withId(R.id.textViewTimeNowLabel)).check(matches(isDisplayed()));
-    }
-
-    @Test
     public void isWidgetVisible_TextViewTimeNow() {
         onView(withId(R.id.textViewTimeNow)).check(matches(not(isDisplayed())));
-    }
-
-    @Test
-    public void isWidgetVisible_TextViewAlarmLabel() {
-        onView(withId(R.id.textViewAlarmLabel)).check(matches(isDisplayed()));
     }
 
     @Test
