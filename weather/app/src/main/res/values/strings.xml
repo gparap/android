@@ -15,4 +15,7 @@
     <string name="humidity">Humidity:</string>
     <!--provider-->
     <string name="weather_provider">Weather Provider - openweathermap.org</string>
+    <!--location-->
+    <string name="toast_location_permission_denied">Location permission denied.</string>
+    <string name="toast_location_disabled">Location is disabled.</string>
 </resources>
