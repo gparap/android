@@ -15,7 +15,7 @@
  */
 package gparap.apps.multiplex_clock.ui;
 
-import android.os.Build;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
@@ -244,6 +244,29 @@ public class CountdownFragment extends Fragment {
         editTextHours.setEnabled(state);
         editTextMinutes.setEnabled(state);
         editTextSeconds.setEnabled(state);
+
+        //don't use the default color for disabled state
+        if (state == false) {
+            restoreEditTextEnabledStateColor();
+        }
+    }
+
+    private void restoreEditTextEnabledStateColor() {
+        int nightModeEnabled = getContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+
+        //set color for dark mode to white
+        if (nightModeEnabled == Configuration.UI_MODE_NIGHT_NO) {
+            editTextHours.setTextColor(getResources().getColor(R.color.black));
+            editTextMinutes.setTextColor(getResources().getColor(R.color.black));
+            editTextSeconds.setTextColor(getResources().getColor(R.color.black));
+            return;
+        }
+        //set color for dark mode to white
+        if (nightModeEnabled == Configuration.UI_MODE_NIGHT_YES) {
+            editTextHours.setTextColor(getResources().getColor(R.color.white));
+            editTextMinutes.setTextColor(getResources().getColor(R.color.white));
+            editTextSeconds.setTextColor(getResources().getColor(R.color.white));
+        }
     }
 
     private void clearTextFields() {
