@@ -254,7 +254,7 @@ public class CountdownFragment extends Fragment {
     private void restoreEditTextEnabledStateColor() {
         int nightModeEnabled = getContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
 
-        //set color for dark mode to white
+        //set color for day mode to black
         if (nightModeEnabled == Configuration.UI_MODE_NIGHT_NO) {
             editTextHours.setTextColor(getResources().getColor(R.color.black));
             editTextMinutes.setTextColor(getResources().getColor(R.color.black));
