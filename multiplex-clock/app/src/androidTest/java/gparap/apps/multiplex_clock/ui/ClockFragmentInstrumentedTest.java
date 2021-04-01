@@ -15,9 +15,11 @@
  */
 package gparap.apps.multiplex_clock.ui;
 
+import android.os.Build;
 import android.widget.TextView;
 
 import androidx.fragment.app.testing.FragmentScenario;
+import androidx.test.filters.SdkSuppress;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -50,16 +52,19 @@ public class ClockFragmentInstrumentedTest {
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.JELLY_BEAN_MR2)
     public void isVisible_ShortTimeZone() {
         onView(withId(R.id.textViewTimeZoneShort)).check(matches(isDisplayed()));
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.JELLY_BEAN_MR2)
     public void isVisible_LongTimeZone() {
         onView(withId(R.id.textViewTimeZoneLong)).check(matches(isDisplayed()));
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.JELLY_BEAN_MR2)
     public void isValueCorrect_ShortTimeZone() {
         String expectedTimeZone = TimeZone.getDefault()
                 .getDisplayName(false, TimeZone.SHORT, Locale.getDefault());
@@ -74,6 +79,7 @@ public class ClockFragmentInstrumentedTest {
     }
 
     @Test
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.JELLY_BEAN_MR2)
     public void isValueCorrect_LongTimeZone() {
         String expectedTimeZone = TimeZone.getDefault()
                 .getDisplayName(false, TimeZone.LONG, Locale.getDefault());
