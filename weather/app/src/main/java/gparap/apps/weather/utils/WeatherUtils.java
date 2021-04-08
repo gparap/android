@@ -15,6 +15,9 @@
  */
 package gparap.apps.weather.utils;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.widget.ImageView;
 
 import gparap.apps.weather.R;
@@ -23,9 +26,10 @@ import static android.view.View.VISIBLE;
 
 public class WeatherUtils {
     public final static String OPEN_WEATHER = "https://openweathermap.org";
-    public final static String OPEN_WEATHER_API_KEY = "API_KEY_HERE";
-    public final static String OPEN_WEATHER__URL_FOR_DATA_PREFIX = "https://api.openweathermap.org/data/2.5/weather?q=";
-    public final static String OPEN_WEATHER__URL_FOR_DATA_SUFFIX = "&appid=";
+    public final static String APP_ID = "API_KEY_HERE";
+    public final static String CITY_SEARCH_API_URL_PREFIX = "http://api.openweathermap.org/data/2.5/weather?q=";
+    public final static String USER_SEARCH_API_URL_PREFIX = "http://api.openweathermap.org/data/2.5/weather?";
+    public final static String API_URL_SUFFIX = "&appid=";
 
     //helper suffixes
     public final static String SUFFIX_CELCIOUS = " \u2103";
@@ -92,5 +96,43 @@ public class WeatherUtils {
      */
     public static String convertKelvinToCelcious(Object temp) {
         return String.valueOf(Double.parseDouble(temp.toString()) - 273.15);
+    }
+
+    /**
+     * Generates a url to be used for weather api call.
+     *
+     * @param city city name given by user
+     * @return url
+     */
+    public static String generateURL(String city) {
+        return WeatherUtils.CITY_SEARCH_API_URL_PREFIX
+                + city
+                + WeatherUtils.API_URL_SUFFIX
+                + WeatherUtils.APP_ID;
+    }
+
+    /**
+     * Generates a url to be used for weather api call.
+     *
+     * @param latitude   user location's latitude
+     * @param longtitude user location's longtitude
+     * @return url
+     */
+    public static String generateURL(double latitude, double longtitude) {
+        return WeatherUtils.USER_SEARCH_API_URL_PREFIX
+                + "lat=" + latitude
+                + "&lon=" + longtitude
+                + WeatherUtils.API_URL_SUFFIX
+                + WeatherUtils.APP_ID;
+    }
+
+    /**
+     * Opens the weather api provider's website.
+     * @param context current activity
+     */
+    public static void gotoProviderWebsite(Context context) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(WeatherUtils.OPEN_WEATHER));
+        context.startActivity(intent);
     }
 }

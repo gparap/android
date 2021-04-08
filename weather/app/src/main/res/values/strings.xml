@@ -13,6 +13,7 @@
     <string name="wind_speed">Wind Speed:</string>
     <string name="air_pressure">Air Pressure:</string>
     <string name="humidity">Humidity:</string>
+    <string name="toast_cannot_fetch_weather">Cannot fetch weather.</string>
     <!--provider-->
     <string name="weather_provider">Weather Provider - openweathermap.org</string>
     <!--location-->
