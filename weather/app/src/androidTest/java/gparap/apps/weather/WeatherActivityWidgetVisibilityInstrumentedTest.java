@@ -26,11 +26,11 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.CoreMatchers.not;
 
-public class MainActivityWidgetVisibilityInstrumentedTest {
+public class WeatherActivityWidgetVisibilityInstrumentedTest {
 
     @Before
     public void setUp() {
-        ActivityScenario.launch(MainActivity.class);
+        ActivityScenario.launch(WeatherActivity.class);
     }
 
     @Test

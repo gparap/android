@@ -44,4 +44,7 @@ dependencies {
 
     //for mocking json
     testImplementation 'org.json:json:20210307'
+
+    //google play services for fused location provider
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
 }
