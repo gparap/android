@@ -22,6 +22,8 @@ import gparap.apps.weather.utils.WeatherUtils;
 import static org.junit.Assert.*;
 
 public class WeatherUtilsUnitTest {
+    // !!! do not use official appid
+    private final String APP_ID = WeatherUtils.APP_ID;
 
     @Test
     public void formatWeatherValue() {
@@ -38,5 +40,20 @@ public class WeatherUtilsUnitTest {
         String expected = "-262.65";
         String actual = WeatherUtils.convertKelvinToCelcious(kelvinDegrees);
         assertEquals("Error converting Kelvin to Celcious...", actual, expected);
+    }
+
+    @Test
+    public void generateURL_userLocationBased() {
+        String expected = "https://api.openweathermap.org/data/2.5/weather?q=Athens&appid=" + APP_ID;
+        String actual = WeatherUtils.generateURL("Athens");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+
+    public void generateURL_citySearchBased() {
+        String expected = "https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=" + APP_ID;
+        String actual = WeatherUtils.generateURL(35, 139);
+        assertEquals(expected, actual);
     }
 }

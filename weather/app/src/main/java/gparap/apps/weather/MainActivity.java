@@ -15,10 +15,15 @@
  */
 package gparap.apps.weather;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,6 +36,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -42,7 +48,6 @@ import org.json.JSONException;
 
 import gparap.apps.weather.model.CurrentWeatherDataModel;
 import gparap.apps.weather.utils.CurrentWeatherParser;
-import gparap.apps.weather.utils.LocationUtils;
 import gparap.apps.weather.utils.WeatherUtils;
 
 import static android.view.View.VISIBLE;
@@ -61,14 +66,20 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextCity;
     private ImageView iconCitySearch;
     private String city = "";
-    CurrentWeatherDataModel model = null;
+    private CurrentWeatherDataModel model;
+    final int REQUEST_CODE_ACCESS_FINE_LOCATION = 999;
+    private LocationManager locationManager;
+    private LocationListener locationListener;
+    private Location userLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWidgets();
-        LocationUtils.getInstance().getUserLocation(this);
+
+        //find the weather where the user is currently located
+        getUserLocation();
 
         //search a city for weather
         iconCitySearch.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 if (!isCitySearchEmpty()) {
                     city = editTextCity.getText().toString();
                     hideSoftKeyboard(v);
-                    getCurrentWeather();
+                    getCurrentWeather(false);
                 }
             }
         });
@@ -86,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         buttonWeatherProvider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoProviderWebsite();
+                WeatherUtils.gotoProviderWebsite(MainActivity.this);
             }
         });
     }
@@ -94,16 +105,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        LocationUtils.getInstance().stopLocationUpdates();
+
+        //unregister fror location updates
+        if (locationListener != null) {
+            locationManager.removeUpdates(locationListener);
+        }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode == LocationUtils.getInstance().getRequestCode()) {
+        if (requestCode == REQUEST_CODE_ACCESS_FINE_LOCATION) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                LocationUtils.getInstance().getUserLocation(this);
+                getUserLocation();
             } else {
                 Toast.makeText(this, R.string.toast_location_permission_denied, Toast.LENGTH_SHORT).show();
             }
@@ -140,13 +155,21 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Gets current weather data using the provider API.
+     *
+     * @param isUserLocationBased is search based on user location or city search
      */
-    private void getCurrentWeather() {
+    private void getCurrentWeather(boolean isUserLocationBased) {
         //init RequestQueue
         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
 
         //request response from URL
-        String url = WeatherUtils.OPEN_WEATHER__URL_FOR_DATA_PREFIX + city + WeatherUtils.OPEN_WEATHER__URL_FOR_DATA_SUFFIX + WeatherUtils.OPEN_WEATHER_API_KEY;
+        String url;
+        if (isUserLocationBased) {
+            url = WeatherUtils.generateURL(userLocation.getLatitude(), userLocation.getLongitude());
+        } else {
+            url = WeatherUtils.generateURL(city);
+        }
+
         StringRequest stringRequest = new StringRequest(url,
                 new Response.Listener<String>() {
                     @Override
@@ -155,6 +178,9 @@ public class MainActivity extends AppCompatActivity {
                             //display the weather
                             showLabelWidgets();
                             displayCurrentWeather(response);
+
+                            //display the user's city
+                            editTextCity.setText(model.getCityName());
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -163,7 +189,8 @@ public class MainActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainActivity.this, "Cannot find city.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, R.string.toast_cannot_fetch_weather, Toast.LENGTH_SHORT).show();
+                        //TODO: hide everything weather related
                         try {
                             Log.e("VOLLEY_ERROR", "onErrorResponse: " + error);
                         } catch (Exception e) {
@@ -174,6 +201,53 @@ public class MainActivity extends AppCompatActivity {
 
         //add request to RequestQueue
         requestQueue.add(stringRequest);
+    }
+
+    public void getUserLocation() {
+        String locationProvider = LocationManager.GPS_PROVIDER;
+        final int MIN_TIME = 1000;
+        final int MIN_DISTANCE = 1000;
+
+        //listen for user location changes
+        locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(@NonNull Location location) {
+                userLocation = location;
+                getCurrentWeather(true);
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+                // !!! must be implemented for api versions < 29
+                // !!!  or else runtime returns not implemented fatal exception
+            }
+
+            @Override
+            public void onProviderEnabled(@NonNull String provider) {
+                // !!! must be implemented for api versions < 29
+                // !!!  or else runtime returns not implemented fatal exception
+            }
+
+            @Override
+            public void onProviderDisabled(@NonNull String provider) {
+                //user has disabled location
+                Toast.makeText(MainActivity.this, R.string.toast_location_disabled, Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        //request location permissions
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(
+                        MainActivity.this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        REQUEST_CODE_ACCESS_FINE_LOCATION);
+                return;
+            }
+        }
+        //register for location updates
+        locationManager = (LocationManager) MainActivity.this.getSystemService(LOCATION_SERVICE);
+        locationManager.requestLocationUpdates(locationProvider, MIN_TIME, MIN_DISTANCE, locationListener);
     }
 
     private boolean isCitySearchEmpty() {
@@ -187,12 +261,6 @@ public class MainActivity extends AppCompatActivity {
     private void hideSoftKeyboard(View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-    }
-
-    private void gotoProviderWebsite() {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(WeatherUtils.OPEN_WEATHER));
-        startActivity(intent);
     }
 
     private void showLabelWidgets() {
