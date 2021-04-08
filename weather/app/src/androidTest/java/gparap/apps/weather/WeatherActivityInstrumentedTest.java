@@ -31,12 +31,12 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.not;
 
-public class MainActivityInstrumentedTest {
+public class WeatherActivityInstrumentedTest {
     private View rootView;
 
     @Before
     public void setUp() {
-        ActivityScenario<MainActivity> activityScenario = ActivityScenario.launch(MainActivity.class);
+        ActivityScenario<WeatherActivity> activityScenario = ActivityScenario.launch(WeatherActivity.class);
 
         //retrieve the top-level window decor view
         activityScenario.onActivity(activity ->
