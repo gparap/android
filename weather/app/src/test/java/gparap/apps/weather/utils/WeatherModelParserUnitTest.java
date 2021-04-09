@@ -20,9 +20,9 @@ import androidx.annotation.Nullable;
 import org.json.JSONException;
 import org.junit.Test;
 
-import gparap.apps.weather.model.CurrentWeatherDataModel;
+import gparap.apps.weather.data.WeatherModel;
 
-public class CurrentWeatherParserUnitTest {
+public class WeatherModelParserUnitTest {
     @Test
     public void getCurrentWeatherDataModel() throws JSONException {
         String mockJsonResponse = "{\"coord\":{\"lon\":23.7162,\"lat\":37.9795},\"weather\":[" +
@@ -35,15 +35,15 @@ public class CurrentWeatherParserUnitTest {
                 ":10800,\"id\":264371,\"name\":\"Athens\",\"cod\":200}";
 
 
-        CurrentWeatherDataModel expected = createExcpectedWeatherDataModel();
-        CurrentWeatherDataModel actual = CurrentWeatherParser.getInstance()
+        WeatherModel expected = createExcpectedWeatherDataModel();
+        WeatherModel actual = WeatherModelParser.getInstance()
                 .getCurrentWeatherDataModel(mockJsonResponse);
 
         assert areWeatherValuesEqual(actual, expected);
     }
 
-    private CurrentWeatherDataModel createExcpectedWeatherDataModel() {
-        CurrentWeatherDataModel model = new CurrentWeatherDataModel();
+    private WeatherModel createExcpectedWeatherDataModel() {
+        WeatherModel model = new WeatherModel();
 
         model.setLongitude(23.7162);
         model.setLatitude(37.9795);
@@ -68,8 +68,8 @@ public class CurrentWeatherParserUnitTest {
         return model;
     }
 
-    public boolean areWeatherValuesEqual(@Nullable CurrentWeatherDataModel actual,
-                                           CurrentWeatherDataModel expected) {
+    public boolean areWeatherValuesEqual(@Nullable WeatherModel actual,
+                                           WeatherModel expected) {
         if (actual == null) {
             return false;
         }
