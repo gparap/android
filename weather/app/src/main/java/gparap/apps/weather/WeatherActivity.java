@@ -31,6 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.Observer;
@@ -51,7 +52,7 @@ import gparap.apps.weather.viewmodel.WeatherActivityViewModel;
 
 import static android.view.View.VISIBLE;
 
-@SuppressWarnings("Convert2Lambda")
+@SuppressWarnings({"Convert2Lambda", "Anonymous2MethodRef"})
 @SuppressLint("NonConstantResourceId")
 public class WeatherActivity extends AppCompatActivity {
     private TextView labelWeather,
@@ -64,11 +65,10 @@ public class WeatherActivity extends AppCompatActivity {
     private Button buttonWeatherProvider;
     private EditText editTextCity;
     private ImageView iconCitySearch;
+    private final int REQUEST_CODE_ACCESS_FINE_LOCATION = 999;
     private String city = "";
-    private WeatherModel model;
-    final int REQUEST_CODE_ACCESS_FINE_LOCATION = 999;
     private Location userLocation;
-    WeatherActivityViewModel viewModel;
+    private WeatherActivityViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +80,9 @@ public class WeatherActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(WeatherActivityViewModel.class);
 
         //find the weather where the user is currently located
-        getUserLocation();
+        if (viewModel.getLocationData().getValue() == null) {
+            getUserLocation();
+        }
 
         //search a city for weather
         iconCitySearch.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +103,14 @@ public class WeatherActivity extends AppCompatActivity {
                 WeatherUtils.gotoProviderWebsite(WeatherActivity.this);
             }
         });
+
+        //observe and display weather data
+        viewModel.getWeatherData().observe(this, new Observer<WeatherModel>() {
+            @Override
+            public void onChanged(@Nullable final WeatherModel model) {
+                displayWeather(model);
+            }
+        });
     }
 
     @Override
@@ -116,15 +126,12 @@ public class WeatherActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Gets and displays weather forecast.
-     *
-     * @param response string containing weather data
-     * @throws JSONException JSONException
-     */
     @SuppressLint("SetTextI18n")
-    private void displayCurrentWeather(String response) throws JSONException {
-        model = WeatherModelParser.getInstance().getCurrentWeatherDataModel(response);
+    private void displayWeather(WeatherModel model) {
+        showLabelWidgets();
+
+        //display the user's city
+        editTextCity.setText(model.getCityName());
 
         //display the proper icon according to the weather
         WeatherUtils.displayWeatherIcon(model.getWeather(), imageViewWeather);
@@ -165,13 +172,9 @@ public class WeatherActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        //parse json response to model
                         try {
-                            //display the weather
-                            showLabelWidgets();
-                            displayCurrentWeather(response);
-
-                            //display the user's city
-                            editTextCity.setText(model.getCityName());
+                            viewModel.getWeatherData().setValue(WeatherModelParser.getInstance().getCurrentWeatherDataModel(response));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -207,18 +210,20 @@ public class WeatherActivity extends AppCompatActivity {
         }
 
         //observe for user location updates..
-        viewModel.getLocationData().observe(this, new Observer<Location>() {
+        //!!! we are using named observer here,
+        //!!! because we want to remove only THIS observer whenever a user location is found
+        final Observer<Location> locationObserver = new Observer<Location>() {
             @Override
             public void onChanged(Location location) {
                 userLocation = location;
                 getCurrentWeather(true);
-
                 //..until we have a user location
                 if (userLocation != null) {
-                    viewModel.getLocationData().removeObservers(WeatherActivity.this);
+                    viewModel.getLocationData().removeObserver(this);
                 }
             }
-        });
+        };
+        viewModel.getLocationData().observe(this, locationObserver);
     }
 
     private boolean isCitySearchEmpty() {

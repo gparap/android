@@ -19,11 +19,14 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.MutableLiveData;
 
 import gparap.apps.weather.data.LocationLiveData;
+import gparap.apps.weather.data.WeatherModel;
 
 public class WeatherActivityViewModel extends AndroidViewModel {
-    private LocationLiveData locationLiveData;
+    private final LocationLiveData locationLiveData;
+    private MutableLiveData<WeatherModel> weatherLiveData;
 
     public WeatherActivityViewModel(@NonNull Application application) {
         super(application);
@@ -32,5 +35,12 @@ public class WeatherActivityViewModel extends AndroidViewModel {
 
     public LocationLiveData getLocationData() {
         return locationLiveData;
+    }
+
+    public MutableLiveData<WeatherModel> getWeatherData() {
+        if (weatherLiveData == null) {
+            weatherLiveData = new MutableLiveData<>();
+        }
+        return weatherLiveData;
     }
 }
