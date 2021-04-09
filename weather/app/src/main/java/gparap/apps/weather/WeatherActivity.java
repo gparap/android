@@ -206,11 +206,17 @@ public class WeatherActivity extends AppCompatActivity {
             }
         }
 
-        //observe for user location updates
+        //observe for user location updates..
         viewModel.getLocationData().observe(this, new Observer<Location>() {
             @Override
             public void onChanged(Location location) {
                 userLocation = location;
+                getCurrentWeather(true);
+
+                //..until we have a user location
+                if (userLocation != null) {
+                    viewModel.getLocationData().removeObservers(WeatherActivity.this);
+                }
             }
         });
     }
