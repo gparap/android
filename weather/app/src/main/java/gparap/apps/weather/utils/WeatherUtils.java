@@ -27,8 +27,8 @@ import static android.view.View.VISIBLE;
 public class WeatherUtils {
     public final static String OPEN_WEATHER = "https://openweathermap.org";
     public final static String APP_ID = "API_KEY_HERE";
-    public final static String CITY_SEARCH_API_URL_PREFIX = "http://api.openweathermap.org/data/2.5/weather?q=";
-    public final static String USER_SEARCH_API_URL_PREFIX = "http://api.openweathermap.org/data/2.5/weather?";
+    public final static String CITY_SEARCH_API_URL_PREFIX = "https://api.openweathermap.org/data/2.5/weather?q=";
+    public final static String USER_SEARCH_API_URL_PREFIX = "https://api.openweathermap.org/data/2.5/weather?";
     public final static String API_URL_SUFFIX = "&appid=";
 
     //helper suffixes
