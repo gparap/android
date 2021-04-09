@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.weather.model;
+package gparap.apps.weather.data;
 
-public class CurrentWeatherDataModel {
+public class WeatherModel {
     private double longitude;
     private double latitude;
     private int id;
@@ -188,7 +188,7 @@ public class CurrentWeatherDataModel {
         this.cityName = cityName;
     }
 
-    public CurrentWeatherDataModel() {
+    public WeatherModel() {
 
     }
 }

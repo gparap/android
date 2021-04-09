@@ -19,11 +19,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import gparap.apps.weather.model.CurrentWeatherDataModel;
+import gparap.apps.weather.data.WeatherModel;
 
-public class CurrentWeatherParser {
-    private static CurrentWeatherParser instance;
-    private CurrentWeatherDataModel model;
+public class WeatherModelParser {
+    private static WeatherModelParser instance;
+    private WeatherModel model;
     private JSONObject jsonObjectResponse;
     private JSONObject coord;
     private JSONArray weather;
@@ -32,19 +32,19 @@ public class CurrentWeatherParser {
     private JSONObject clouds;
     private JSONObject sys;
 
-    private CurrentWeatherParser() {
+    private WeatherModelParser() {
 
     }
 
-    public static CurrentWeatherParser getInstance() {
+    public static WeatherModelParser getInstance() {
         if (instance == null) {
-            instance = new CurrentWeatherParser();
+            instance = new WeatherModelParser();
         }
         return instance;
     }
 
-    public CurrentWeatherDataModel getCurrentWeatherDataModel(String response) throws JSONException {
-        model = new CurrentWeatherDataModel();
+    public WeatherModel getCurrentWeatherDataModel(String response) throws JSONException {
+        model = new WeatherModel();
 
         getDataFromJsonResponse(response);
         initWeatherModelWithData();

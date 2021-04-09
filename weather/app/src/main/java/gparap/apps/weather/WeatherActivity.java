@@ -21,7 +21,6 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -34,27 +33,21 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 
 import org.json.JSONException;
 
-import gparap.apps.weather.model.CurrentWeatherDataModel;
-import gparap.apps.weather.utils.CurrentWeatherParser;
+import gparap.apps.weather.data.WeatherModel;
+import gparap.apps.weather.utils.WeatherModelParser;
 import gparap.apps.weather.utils.WeatherUtils;
+import gparap.apps.weather.viewmodel.WeatherActivityViewModel;
 
 import static android.view.View.VISIBLE;
 
@@ -72,15 +65,19 @@ public class WeatherActivity extends AppCompatActivity {
     private EditText editTextCity;
     private ImageView iconCitySearch;
     private String city = "";
-    private CurrentWeatherDataModel model;
+    private WeatherModel model;
     final int REQUEST_CODE_ACCESS_FINE_LOCATION = 999;
     private Location userLocation;
+    WeatherActivityViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
         getWidgets();
+
+        //create ViewModel for this activity
+        viewModel = new ViewModelProvider(this).get(WeatherActivityViewModel.class);
 
         //find the weather where the user is currently located
         getUserLocation();
@@ -127,7 +124,7 @@ public class WeatherActivity extends AppCompatActivity {
      */
     @SuppressLint("SetTextI18n")
     private void displayCurrentWeather(String response) throws JSONException {
-        model = CurrentWeatherParser.getInstance().getCurrentWeatherDataModel(response);
+        model = WeatherModelParser.getInstance().getCurrentWeatherDataModel(response);
 
         //display the proper icon according to the weather
         WeatherUtils.displayWeatherIcon(model.getWeather(), imageViewWeather);
@@ -198,23 +195,6 @@ public class WeatherActivity extends AppCompatActivity {
     }
 
     public void getUserLocation() {
-        FusedLocationProviderClient fusedLocationProviderClient =
-                LocationServices.getFusedLocationProviderClient(this);
-
-        //Used for receiving notifications from the FusedLocationProviderApi
-        // when the device location has changed or can no longer be determined.
-        LocationCallback locationCallback = new LocationCallback() {
-            @Override
-            public void onLocationResult(LocationResult locationResult) {
-                if (locationResult == null) {
-                    return;
-                }
-                for (Location location : locationResult.getLocations()) {
-                    System.out.println(location.toString());
-                }
-            }
-        };
-
         //request location permissions
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ActivityCompat.checkSelfPermission(WeatherActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -225,49 +205,14 @@ public class WeatherActivity extends AppCompatActivity {
                 return;
             }
         }
-        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+
+        //observe for user location updates
+        viewModel.getLocationData().observe(this, new Observer<Location>() {
             @Override
-            public void onComplete(@NonNull Task<Location> task) {
-                task.addOnSuccessListener(new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-                        if (location == null) {
-                            //request location permissions
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                if (ActivityCompat.checkSelfPermission(WeatherActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                                    ActivityCompat.requestPermissions(
-                                            WeatherActivity.this,
-                                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                                            REQUEST_CODE_ACCESS_FINE_LOCATION);
-                                    return;
-                                }
-                            }
-                            fusedLocationProviderClient.requestLocationUpdates(createLocationRequest(),
-                                    locationCallback,
-                                    Looper.getMainLooper());
-                        } else {
-                            userLocation = location;
-                            getCurrentWeather(true);
-                        }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        System.out.println(e.toString());
-                        //user has disabled location
-                        Toast.makeText(WeatherActivity.this, R.string.toast_location_disabled, Toast.LENGTH_SHORT).show();
-                    }
-                });
+            public void onChanged(Location location) {
+                userLocation = location;
             }
         });
-    }
-
-    private LocationRequest createLocationRequest() {
-        LocationRequest locationRequest = LocationRequest.create();
-        locationRequest.setInterval(10000);
-        locationRequest.setFastestInterval(5000);
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        return locationRequest;
     }
 
     private boolean isCitySearchEmpty() {
