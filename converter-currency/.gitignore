@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+/app/release/app-release.aab
+/app/LICENSE-2.0.txt
