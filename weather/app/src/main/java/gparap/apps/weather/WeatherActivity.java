@@ -21,7 +21,6 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -37,15 +36,13 @@ import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 
 import gparap.apps.weather.data.WeatherModel;
+import gparap.apps.weather.api.VolleyServiceCallback;
+import gparap.apps.weather.api.VolleyService;
 import gparap.apps.weather.utils.WeatherModelParser;
 import gparap.apps.weather.utils.WeatherUtils;
 import gparap.apps.weather.viewmodel.WeatherActivityViewModel;
@@ -157,10 +154,7 @@ public class WeatherActivity extends AppCompatActivity {
      * @param isUserLocationBased is search based on user location or city search
      */
     private void getCurrentWeather(boolean isUserLocationBased) {
-        //init RequestQueue
-        RequestQueue requestQueue = Volley.newRequestQueue(WeatherActivity.this);
-
-        //request response from URL
+        //generate request URL
         String url;
         if (isUserLocationBased) {
             url = WeatherUtils.generateURL(userLocation.getLatitude(), userLocation.getLongitude());
@@ -168,33 +162,26 @@ public class WeatherActivity extends AppCompatActivity {
             url = WeatherUtils.generateURL(city);
         }
 
-        StringRequest stringRequest = new StringRequest(url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //parse json response to model
-                        try {
-                            viewModel.getWeatherData().setValue(WeatherModelParser.getInstance().getCurrentWeatherDataModel(response));
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(WeatherActivity.this, R.string.toast_cannot_fetch_weather, Toast.LENGTH_SHORT).show();
-                        //TODO: hide everything weather related
-                        try {
-                            Log.e("VOLLEY_ERROR", "onErrorResponse: " + error);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
+        //create callback to communicate with volley service
+        VolleyServiceCallback volleyServiceCallback = new VolleyServiceCallback() {
+            @Override
+            public void onResponse(String response) {//TODO: hide everything weather related
+                //parse json response to model
+                try {
+                    viewModel.getWeatherData().setValue(WeatherModelParser.getInstance().getCurrentWeatherDataModel(response));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
 
-        //add request to RequestQueue
-        requestQueue.add(stringRequest);
+            @Override
+            public void onError(VolleyError error) {//TODO: hide everything weather related
+                Toast.makeText(WeatherActivity.this, R.string.toast_cannot_fetch_weather, Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        //get current weather from weather api provider using volley
+        VolleyService.getInstance(volleyServiceCallback).getApiResponse(this, url);
     }
 
     public void getUserLocation() {
