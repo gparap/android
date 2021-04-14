@@ -1,9 +1,0 @@
-<resources>
-    <!--floating action buttons-->
-    <dimen name="fab_margin">16dp</dimen>
-
-    <!--transitions-->
-    <integer name="transition_duration_default">1000</integer>
-    <integer name="transition_duration_long">1500</integer>
-    <integer name="transition_duration_short">500</integer>
-</resources>
