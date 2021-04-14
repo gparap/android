@@ -40,30 +40,44 @@ public class WeatherUtils {
     /**
      * Displays the appropriate weather icon based on the text describing the weather condition.
      *
-     * @param weather condition
+     * @param weather          main weather condition
+     * @param description      secondary weather condition description
+     * @param imageViewWeather weather icon placeholder
      */
-    public static void displayWeatherIcon(String weather, ImageView imageViewWeather) {
+    public static void displayWeatherIcon(String weather, String description, ImageView imageViewWeather) {
         switch (weather) {
             case "Thunderstorm":
-                imageViewWeather.setImageResource((R.drawable.thunderstorm));
+                imageViewWeather.setImageResource(R.drawable.thunderstorm);
                 break;
             case "Drizzle":
-                imageViewWeather.setImageResource((R.drawable.shower_rain));
+                imageViewWeather.setImageResource(R.drawable.shower_rain);
                 break;
             case "Rain":
-                imageViewWeather.setImageResource((R.drawable.rain_day));
+                if (description.equals("freezing rain")) {
+                    imageViewWeather.setImageResource(R.drawable.snow);
+                } else if (description.contains("shower")) {
+                    imageViewWeather.setImageResource(R.drawable.shower_rain);
+                } else {
+                    imageViewWeather.setImageResource(R.drawable.rain);
+                }
                 break;
             case "Snow":
-                imageViewWeather.setImageResource((R.drawable.snow));
+                imageViewWeather.setImageResource(R.drawable.snow);
                 break;
             case "Atmosphere":
-                imageViewWeather.setImageResource((R.drawable.mist));
+                imageViewWeather.setImageResource(R.drawable.mist);
                 break;
             case "Clear":
-                imageViewWeather.setImageResource((R.drawable.clear_sky_day));
+                imageViewWeather.setImageResource(R.drawable.clear_sky);
                 break;
-            case "Clouds":          //TODO: use id 'cause there are variations
-                imageViewWeather.setImageResource((R.drawable.few_clouds_day));
+            case "Clouds":
+                if (description.equals("few clouds")) {
+                    imageViewWeather.setImageResource(R.drawable.few_clouds);
+                } else if (description.equals("scattered clouds")) {
+                    imageViewWeather.setImageResource(R.drawable.scattered_clouds);
+                } else {
+                    imageViewWeather.setImageResource(R.drawable.broken_clouds);
+                }
                 break;
         }
         //show icon
@@ -128,6 +142,7 @@ public class WeatherUtils {
 
     /**
      * Opens the weather api provider's website.
+     *
      * @param context current activity
      */
     public static void gotoProviderWebsite(Context context) {

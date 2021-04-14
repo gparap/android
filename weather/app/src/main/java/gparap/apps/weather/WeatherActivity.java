@@ -131,7 +131,7 @@ public class WeatherActivity extends AppCompatActivity {
         editTextCity.setText(model.getCityName());
 
         //display the proper icon according to the weather
-        WeatherUtils.displayWeatherIcon(model.getWeather(), imageViewWeather);
+        WeatherUtils.displayWeatherIcon(model.getWeather(), model.getDescription(), imageViewWeather);
 
         //convert temperatures
         String temp = WeatherUtils.convertKelvinToCelcious(model.getTemperature());
