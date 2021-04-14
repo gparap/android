@@ -45,8 +45,8 @@
         app:layout_constraintEnd_toEndOf="@+id/editTextSearchCity"
         app:layout_constraintStart_toStartOf="@+id/editTextSearchCity"
         app:layout_constraintTop_toBottomOf="@+id/editTextSearchCity"
-        app:srcCompat="@drawable/clear_sky_night"
-        tools:srcCompat="@drawable/clear_sky_night" />
+        app:srcCompat="@drawable/clear_sky"
+        tools:srcCompat="@drawable/clear_sky" />
 
     <!--Weather labels-->
     <TextView
