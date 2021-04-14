@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">Blog</string>
-    <string name="fab_add_post">Add Post</string>
-    <string name="menu_add_post">Add Post</string>
-    <string name="app_logo">app logo</string>
-</resources>
