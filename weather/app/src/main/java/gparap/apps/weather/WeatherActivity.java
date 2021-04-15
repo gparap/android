@@ -176,16 +176,16 @@ public class WeatherActivity extends AppCompatActivity {
         WeatherUtils.displayWeatherIcon(model.getWeather(), model.getDescription(), imageViewWeather);
 
         //convert temperatures
-        String temp = WeatherUtils.convertKelvinToCelcious(model.getTemperature());
-        String temp_max = WeatherUtils.convertKelvinToCelcious(model.getTemperatureMax());
-        String temp_min = WeatherUtils.convertKelvinToCelcious(model.getTemperatureMin());
+        String temp = String.valueOf(model.getTemperature());
+        String temp_max = String.valueOf(model.getTemperatureMax());
+        String temp_min = String.valueOf(model.getTemperatureMin());
 
         //fill in weather widgets
         textViewWeather.setText(model.getWeather());
-        textViewTemperature.setText(WeatherUtils.formatWeatherValue(temp, 0) + WeatherUtils.SUFFIX_CELCIOUS);
-        textViewTemperatureMax.setText(WeatherUtils.formatWeatherValue(temp_max, 0) + WeatherUtils.SUFFIX_CELCIOUS);
-        textViewTemperatureMin.setText(WeatherUtils.formatWeatherValue(temp_min, 0) + WeatherUtils.SUFFIX_CELCIOUS);
-        textViewWindSpeed.setText(model.getWindSpeed() + WeatherUtils.SUFFIX_WIND_SPEED);
+        textViewTemperature.setText(WeatherUtils.formatWeatherValue(temp, 0));
+        textViewTemperatureMax.setText(WeatherUtils.formatWeatherValue(temp_max, 0));
+        textViewTemperatureMin.setText(WeatherUtils.formatWeatherValue(temp_min, 0));
+        textViewWindSpeed.setText(model.getWindSpeed() + WeatherUtils.getWindSpeedUnit());
         textViewAirPressure.setText(model.getAirPressure() + WeatherUtils.SUFFIX_AIR_PRESSURE);
         textViewHumidity.setText(model.getHumidity() + WeatherUtils.SUFFIX_HUMIDITY);
     }

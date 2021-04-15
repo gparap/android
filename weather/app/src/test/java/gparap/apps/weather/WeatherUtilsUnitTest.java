@@ -17,6 +17,7 @@ package gparap.apps.weather;
 
 import org.junit.Test;
 
+import gparap.apps.weather.utils.UnitUtils;
 import gparap.apps.weather.utils.WeatherUtils;
 
 import static org.junit.Assert.*;
@@ -26,34 +27,64 @@ public class WeatherUtilsUnitTest {
     private final String APP_ID = WeatherUtils.APP_ID;
 
     @Test
-    public void formatWeatherValue() {
+    public void formatWeatherValue_Celsius() {
+        //set unit to metric
+        UnitUtils.getInstance().setUnit(UnitUtils.Unit.METRIC);
+
         String valueToFormat = "01234.5566778899";
         int offset = 2;
-        String expected = "01234.5";
+        String expected = "01234.5" + WeatherUtils.SUFFIX_CELSIUS;
         String actual = WeatherUtils.formatWeatherValue(valueToFormat, offset);
         assertEquals("Error formatting weather value...", actual, expected);
     }
 
     @Test
-    public void convertKelvinToCelcious() {
-        Object kelvinDegrees = 10.5;
-        String expected = "-262.65";
-        String actual = WeatherUtils.convertKelvinToCelcious(kelvinDegrees);
-        assertEquals("Error converting Kelvin to Celcious...", actual, expected);
+    public void formatWeatherValue_Fahrenheit() {
+        //set unit to imperial
+        UnitUtils.getInstance().setUnit(UnitUtils.Unit.IMPERIAL);
+
+        String valueToFormat = "01234.5566778899";
+        int offset = 2;
+        String expected = "01234.5" + WeatherUtils.SUFFIX_FAHRENHEIT;
+        String actual = WeatherUtils.formatWeatherValue(valueToFormat, offset);
+        assertEquals("Error formatting weather value...", actual, expected);
     }
 
     @Test
     public void generateURL_userLocationBased() {
-        String expected = "https://api.openweathermap.org/data/2.5/weather?q=Athens&appid=" + APP_ID;
+        String expected = "https://api.openweathermap.org/data/2.5/weather?q=Athens&appid="
+                + APP_ID
+                + "&units=" + UnitUtils.getInstance().getUnit();
         String actual = WeatherUtils.generateURL("Athens");
         assertEquals(expected, actual);
     }
 
     @Test
-
     public void generateURL_citySearchBased() {
-        String expected = "https://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=" + APP_ID;
+        String expected = "https://api.openweathermap.org/data/2.5/weather?lat=35.0&lon=139.0&appid="
+                + APP_ID
+                + "&units=" + UnitUtils.getInstance().getUnit();
         String actual = WeatherUtils.generateURL(35, 139);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getWindSpeedUnit_Metric() {
+        //set unit to metric
+        UnitUtils.getInstance().setUnit(UnitUtils.Unit.METRIC);
+
+        String actual = WeatherUtils.SUFFIX_WIND_SPEED_METRIC;
+        String expected = WeatherUtils.getWindSpeedUnit();
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void getWindSpeedUnit_Imperial() {
+        //set unit to imperial
+        UnitUtils.getInstance().setUnit(UnitUtils.Unit.IMPERIAL);
+
+        String actual = WeatherUtils.SUFFIX_WIND_SPEED_IMPERIAL;
+        String expected = WeatherUtils.getWindSpeedUnit();
+        assertEquals(actual, expected);
     }
 }
