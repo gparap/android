@@ -21,6 +21,8 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -40,9 +42,10 @@ import com.android.volley.VolleyError;
 
 import org.json.JSONException;
 
-import gparap.apps.weather.data.WeatherModel;
-import gparap.apps.weather.api.VolleyServiceCallback;
 import gparap.apps.weather.api.VolleyService;
+import gparap.apps.weather.api.VolleyServiceCallback;
+import gparap.apps.weather.data.WeatherModel;
+import gparap.apps.weather.utils.Units;
 import gparap.apps.weather.utils.WeatherModelParser;
 import gparap.apps.weather.utils.WeatherUtils;
 import gparap.apps.weather.viewmodel.WeatherActivityViewModel;
@@ -66,6 +69,8 @@ public class WeatherActivity extends AppCompatActivity {
     private String city = "";
     private Location userLocation;
     private WeatherActivityViewModel viewModel;
+    private Units units;
+    private Menu unitsMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +113,43 @@ public class WeatherActivity extends AppCompatActivity {
                 displayWeather(model);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.units_of_measument, menu);
+        unitsMenu = menu;
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //handle units of measurement
+        switch (item.getItemId()) {
+            case R.id.unitsMetric:
+                if (!item.isChecked()) {
+                    //set unit as metric
+                    item.setChecked(true);
+                    units = Units.METRIC;
+
+                    //unset imperial unit
+                    MenuItem imperial = unitsMenu.findItem(R.id.unitsImperial);
+                    imperial.setChecked(false);
+                }
+                break;
+            case R.id.unitsImperial:
+                if (!item.isChecked()) {
+                    //set unit as imperial
+                    item.setChecked(true);
+                    units = Units.IMPERIAL;
+
+                    //unset metric unit
+                    MenuItem metric = unitsMenu.findItem(R.id.unitsMetric);
+                    metric.setChecked(false);
+                }
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
