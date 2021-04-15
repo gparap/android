@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/unitsMetric"
+        android:checkable="true"
+        android:checked="true"
+        android:title="@string/item_units_metric"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/unitsImperial"
+        android:checkable="true"
+        android:title="@string/item_units_imperial"
+        app:showAsAction="never" />
+</menu>
