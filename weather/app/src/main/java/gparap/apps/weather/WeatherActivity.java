@@ -45,7 +45,7 @@ import org.json.JSONException;
 import gparap.apps.weather.api.VolleyService;
 import gparap.apps.weather.api.VolleyServiceCallback;
 import gparap.apps.weather.data.WeatherModel;
-import gparap.apps.weather.utils.Units;
+import gparap.apps.weather.utils.UnitUtils;
 import gparap.apps.weather.utils.WeatherModelParser;
 import gparap.apps.weather.utils.WeatherUtils;
 import gparap.apps.weather.viewmodel.WeatherActivityViewModel;
@@ -69,7 +69,7 @@ public class WeatherActivity extends AppCompatActivity {
     private String city = "";
     private Location userLocation;
     private WeatherActivityViewModel viewModel;
-    private Units units;
+    //private Units units;
     private Menu unitsMenu;
 
     @Override
@@ -130,7 +130,7 @@ public class WeatherActivity extends AppCompatActivity {
                 if (!item.isChecked()) {
                     //set unit as metric
                     item.setChecked(true);
-                    units = Units.METRIC;
+                    UnitUtils.getInstance().setUnit(UnitUtils.Unit.METRIC);
 
                     //unset imperial unit
                     MenuItem imperial = unitsMenu.findItem(R.id.unitsImperial);
@@ -141,7 +141,7 @@ public class WeatherActivity extends AppCompatActivity {
                 if (!item.isChecked()) {
                     //set unit as imperial
                     item.setChecked(true);
-                    units = Units.IMPERIAL;
+                    UnitUtils.getInstance().setUnit(UnitUtils.Unit.IMPERIAL);
 
                     //unset metric unit
                     MenuItem metric = unitsMenu.findItem(R.id.unitsMetric);

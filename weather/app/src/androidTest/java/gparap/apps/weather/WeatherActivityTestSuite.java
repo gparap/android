@@ -20,7 +20,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        WeatherActivityWidgetVisibilityInstrumentedTest.class,
+        WidgetVisibilityInstrumentedTest.class,
         WeatherActivityInstrumentedTest.class
 })
 public class WeatherActivityTestSuite {

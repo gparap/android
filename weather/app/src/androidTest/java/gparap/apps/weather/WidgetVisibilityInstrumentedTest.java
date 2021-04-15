@@ -26,7 +26,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.CoreMatchers.not;
 
-public class WeatherActivityWidgetVisibilityInstrumentedTest {
+public class WidgetVisibilityInstrumentedTest {
 
     @Before
     public void setUp() {
@@ -49,77 +49,77 @@ public class WeatherActivityWidgetVisibilityInstrumentedTest {
     }
 
     @Test
-    public void isWidgetInVisible_imageViewWeatherIcon() {
+    public void isWidgetInvisible_imageViewWeatherIcon() {
         onView(withId(R.id.imageViewWeatherIcon)).check(matches(not(isDisplayed())));
     }
 
     @Test
-    public void isWidgetIsVisible_labelWeather() {
+    public void isWidgetInvisible_labelWeather() {
         onView(withId(R.id.labelWeather)).check(matches(not(isDisplayed())));
     }
 
     @Test
-    public void isWidgetIsVisible_labelTemperature() {
+    public void isWidgetInvisible_labelTemperature() {
         onView(withId(R.id.labelTemperature)).check(matches(not(isDisplayed())));
     }
 
     @Test
-    public void isWidgetIsVisible_labelTemperatureMax() {
+    public void isWidgetInvisible_labelTemperatureMax() {
         onView(withId(R.id.labelTemperatureMax)).check(matches(not(isDisplayed())));
     }
 
     @Test
-    public void isWidgetIsVisible_labelTemperatureMin() {
+    public void isWidgetInvisible_labelTemperatureMin() {
         onView(withId(R.id.labelTemperatureMin)).check(matches(not(isDisplayed())));
     }
 
     @Test
-    public void isWidgetIsVisible_labelWindSpeed() {
+    public void isWidgetInvisible_labelWindSpeed() {
         onView(withId(R.id.labelWindSpeed)).check(matches(not(isDisplayed())));
     }
 
     @Test
-    public void isWidgetIsVisible_labelAirPressure() {
+    public void isWidgetInvisible_labelAirPressure() {
         onView(withId(R.id.labelAirPressure)).check(matches(not(isDisplayed())));
     }
 
     @Test
-    public void isWidgetIsVisible_labelHumidity() {
+    public void isWidgetInvisible_labelHumidity() {
         onView(withId(R.id.labelHumidity)).check(matches(not(isDisplayed())));
     }
 
     @Test
-    public void isWidgetIsVisible_textViewWeather() {
+    public void isWidgetInvisible_textViewWeather() {
         onView(withId(R.id.textViewWeather)).check(matches(not(isDisplayed())));
     }
 
     @Test
-    public void isWidgetIsVisible_textViewTemperature() {
+    public void isWidgetInvisible_textViewTemperature() {
         onView(withId(R.id.textViewTemperature)).check(matches(not(isDisplayed())));
     }
 
     @Test
-    public void isWidgetIsVisible_textViewTemperatureMax() {
+    public void isWidgetInvisible_textViewTemperatureMax() {
         onView(withId(R.id.textViewTemperatureMax)).check(matches(not(isDisplayed())));
     }
 
     @Test
-    public void isWidgetIsVisible_textViewTemperatureMin() {
+    public void isWidgetInvisible_textViewTemperatureMin() {
         onView(withId(R.id.textViewTemperatureMin)).check(matches(not(isDisplayed())));
     }
 
     @Test
-    public void isWidgetIsVisible_textViewWindSpeed() {
+    public void isWidgetInvisible_textViewWindSpeed() {
         onView(withId(R.id.textViewWindSpeed)).check(matches(not(isDisplayed())));
     }
 
     @Test
-    public void isWidgetIsVisible_textViewAirPressure() {
+    public void isWidgetInvisible_textViewAirPressure() {
         onView(withId(R.id.textViewAirPressure)).check(matches(not(isDisplayed())));
     }
 
     @Test
-    public void isWidgetIsVisible_textViewHumidity() {
+    public void isWidgetInvisible_textViewHumidity() {
         onView(withId(R.id.textViewHumidity)).check(matches(not(isDisplayed())));
     }
 }
