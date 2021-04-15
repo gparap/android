@@ -32,9 +32,11 @@ public class WeatherUtils {
     public final static String API_URL_SUFFIX = "&appid=";
 
     //helper suffixes
-    public final static String SUFFIX_CELCIOUS = " \u2103";
-    public final static String SUFFIX_WIND_SPEED = " km/h";
-    public final static String SUFFIX_AIR_PRESSURE = " mb";
+    public final static String SUFFIX_CELSIUS = " \u2103";
+    public final static String SUFFIX_FAHRENHEIT = " \u2109";
+    public final static String SUFFIX_WIND_SPEED_METRIC = " m/s";
+    public final static String SUFFIX_WIND_SPEED_IMPERIAL = " mph";
+    public final static String SUFFIX_AIR_PRESSURE = " hPa";
     public final static String SUFFIX_HUMIDITY = " %";
 
     /**
@@ -98,18 +100,26 @@ public class WeatherUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return temp;
+
+        //pick the right symbol
+        if (UnitUtils.getInstance().getUnit() == UnitUtils.Unit.METRIC) {
+            return temp + WeatherUtils.SUFFIX_CELSIUS;
+        } else {
+            return temp + WeatherUtils.SUFFIX_FAHRENHEIT;
+        }
     }
 
     /**
-     * Converts kelvin temperature to celcious temperature using formula:
-     * Celsius = Kelvin - 273.15
+     * Returns the wind speed suffix according to the unit of measurement.
      *
-     * @param temp temperature in kelvin
-     * @return temperature in celcious to string
+     * @return meter/second or miles/hour
      */
-    public static String convertKelvinToCelcious(Object temp) {
-        return String.valueOf(Double.parseDouble(temp.toString()) - 273.15);
+    public static String getWindSpeedUnit() {
+        if (UnitUtils.getInstance().getUnit() == UnitUtils.Unit.METRIC) {
+            return WeatherUtils.SUFFIX_WIND_SPEED_METRIC;
+        } else {
+            return WeatherUtils.SUFFIX_WIND_SPEED_IMPERIAL;
+        }
     }
 
     /**
@@ -122,7 +132,8 @@ public class WeatherUtils {
         return WeatherUtils.CITY_SEARCH_API_URL_PREFIX
                 + city
                 + WeatherUtils.API_URL_SUFFIX
-                + WeatherUtils.APP_ID;
+                + WeatherUtils.APP_ID
+                + "&units=" + UnitUtils.getInstance().getUnit();
     }
 
     /**
@@ -137,7 +148,8 @@ public class WeatherUtils {
                 + "lat=" + latitude
                 + "&lon=" + longtitude
                 + WeatherUtils.API_URL_SUFFIX
-                + WeatherUtils.APP_ID;
+                + WeatherUtils.APP_ID
+                + "&units=" + UnitUtils.getInstance().getUnit();
     }
 
     /**
