@@ -20,6 +20,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.widget.ImageView;
 
+import java.util.Locale;
+
 import gparap.apps.weather.R;
 
 import static android.view.View.VISIBLE;
@@ -38,6 +40,10 @@ public class WeatherUtils {
     public final static String SUFFIX_WIND_SPEED_IMPERIAL = " mph";
     public final static String SUFFIX_AIR_PRESSURE = " hPa";
     public final static String SUFFIX_HUMIDITY = " %";
+
+    //units of measurement
+    public static final String UNIT_METRIC = "metric";
+    public static final String UNIT_IMPERIAL = "imperial";
 
     /**
      * Displays the appropriate weather icon based on the text describing the weather condition.
@@ -86,6 +92,15 @@ public class WeatherUtils {
         imageViewWeather.setVisibility(VISIBLE);
     }
 
+    public static String getMeasureUnit() {
+        //check if locale is "US" (officially uses imperial units)
+        if (Locale.getDefault().equals(Locale.US)) {
+            return UNIT_IMPERIAL;
+        }
+
+        return UNIT_METRIC;
+    }
+
     /**
      * Format string values got from API response.
      *
@@ -102,7 +117,7 @@ public class WeatherUtils {
         }
 
         //pick the right symbol
-        if (UnitUtils.getInstance().getUnit() == UnitUtils.Unit.METRIC) {
+        if (getMeasureUnit().equals(UNIT_METRIC)) {
             return temp + WeatherUtils.SUFFIX_CELSIUS;
         } else {
             return temp + WeatherUtils.SUFFIX_FAHRENHEIT;
@@ -115,7 +130,7 @@ public class WeatherUtils {
      * @return meter/second or miles/hour
      */
     public static String getWindSpeedUnit() {
-        if (UnitUtils.getInstance().getUnit() == UnitUtils.Unit.METRIC) {
+        if (getMeasureUnit().equals(UNIT_METRIC)) {
             return WeatherUtils.SUFFIX_WIND_SPEED_METRIC;
         } else {
             return WeatherUtils.SUFFIX_WIND_SPEED_IMPERIAL;
@@ -133,7 +148,7 @@ public class WeatherUtils {
                 + city
                 + WeatherUtils.API_URL_SUFFIX
                 + WeatherUtils.APP_ID
-                + "&units=" + UnitUtils.getInstance().getUnit();
+                + "&units=" + getMeasureUnit();
     }
 
     /**
@@ -149,7 +164,7 @@ public class WeatherUtils {
                 + "&lon=" + longtitude
                 + WeatherUtils.API_URL_SUFFIX
                 + WeatherUtils.APP_ID
-                + "&units=" + UnitUtils.getInstance().getUnit();
+                + "&units=" + getMeasureUnit();
     }
 
     /**
