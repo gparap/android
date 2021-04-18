@@ -15,17 +15,12 @@
  */
 package gparap.apps.weather;
 
-import android.content.Context;
 import android.view.View;
 
 import androidx.test.core.app.ActivityScenario;
-import androidx.test.espresso.Espresso;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import gparap.apps.weather.utils.UnitUtils;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -38,7 +33,6 @@ import static org.hamcrest.CoreMatchers.not;
 
 public class WeatherActivityInstrumentedTest {
     private View rootView;
-    Context context;
 
     @Before
     public void setUp() {
@@ -47,11 +41,6 @@ public class WeatherActivityInstrumentedTest {
         //retrieve the top-level window decor view
         activityScenario.onActivity(activity ->
                 rootView = activity.getWindow().getDecorView()
-        );
-
-        //get context
-        activityScenario.onActivity(activity ->
-                context = activity.getApplicationContext()
         );
     }
 
@@ -63,26 +52,5 @@ public class WeatherActivityInstrumentedTest {
         onView(withText(R.string.toast_empty_search))
                 .inRoot(withDecorView(not(rootView)))
                 .check(matches(isDisplayed()));
-    }
-
-    @Test
-    public void onOptionsItemSelected_checkTheSameItem() {
-        Espresso.openActionBarOverflowOrOptionsMenu(context);
-        onView(withText(R.string.item_units_metric)).perform(click());
-        assert (UnitUtils.getInstance().getUnit() == UnitUtils.Unit.METRIC);
-    }
-
-    @Test
-    public void onOptionsItemSelected_checkDifferentItem() {
-        Espresso.openActionBarOverflowOrOptionsMenu(context);
-        onView(withText(R.string.item_units_imperial)).perform(click());
-        assert (UnitUtils.getInstance().getUnit() == UnitUtils.Unit.IMPERIAL);
-    }
-
-    @After
-    public void after() {
-        //restore the default unit of measurement
-        //  because call to 'getInstance()' in UnitUtils mutates field 'instance'
-        UnitUtils.getInstance().setUnit(UnitUtils.Unit.METRIC);
     }
 }

@@ -17,7 +17,8 @@ package gparap.apps.weather;
 
 import org.junit.Test;
 
-import gparap.apps.weather.utils.UnitUtils;
+import java.util.Locale;
+
 import gparap.apps.weather.utils.WeatherUtils;
 
 import static org.junit.Assert.*;
@@ -29,7 +30,7 @@ public class WeatherUtilsUnitTest {
     @Test
     public void formatWeatherValue_Celsius() {
         //set unit to metric
-        UnitUtils.getInstance().setUnit(UnitUtils.Unit.METRIC);
+        Locale.setDefault(Locale.ENGLISH);
 
         String valueToFormat = "01234.5566778899";
         int offset = 2;
@@ -41,7 +42,7 @@ public class WeatherUtilsUnitTest {
     @Test
     public void formatWeatherValue_Fahrenheit() {
         //set unit to imperial
-        UnitUtils.getInstance().setUnit(UnitUtils.Unit.IMPERIAL);
+        Locale.setDefault(Locale.US);
 
         String valueToFormat = "01234.5566778899";
         int offset = 2;
@@ -54,7 +55,7 @@ public class WeatherUtilsUnitTest {
     public void generateURL_userLocationBased() {
         String expected = "https://api.openweathermap.org/data/2.5/weather?q=Athens&appid="
                 + APP_ID
-                + "&units=" + UnitUtils.getInstance().getUnit();
+                + "&units=" + WeatherUtils.getMeasureUnit();
         String actual = WeatherUtils.generateURL("Athens");
         assertEquals(expected, actual);
     }
@@ -63,7 +64,7 @@ public class WeatherUtilsUnitTest {
     public void generateURL_citySearchBased() {
         String expected = "https://api.openweathermap.org/data/2.5/weather?lat=35.0&lon=139.0&appid="
                 + APP_ID
-                + "&units=" + UnitUtils.getInstance().getUnit();
+                + "&units=" + WeatherUtils.getMeasureUnit();
         String actual = WeatherUtils.generateURL(35, 139);
         assertEquals(expected, actual);
     }
@@ -71,7 +72,7 @@ public class WeatherUtilsUnitTest {
     @Test
     public void getWindSpeedUnit_Metric() {
         //set unit to metric
-        UnitUtils.getInstance().setUnit(UnitUtils.Unit.METRIC);
+        Locale.setDefault(Locale.ENGLISH);
 
         String actual = WeatherUtils.SUFFIX_WIND_SPEED_METRIC;
         String expected = WeatherUtils.getWindSpeedUnit();
@@ -81,10 +82,30 @@ public class WeatherUtilsUnitTest {
     @Test
     public void getWindSpeedUnit_Imperial() {
         //set unit to imperial
-        UnitUtils.getInstance().setUnit(UnitUtils.Unit.IMPERIAL);
+        Locale.setDefault(Locale.US);
 
         String actual = WeatherUtils.SUFFIX_WIND_SPEED_IMPERIAL;
         String expected = WeatherUtils.getWindSpeedUnit();
         assertEquals(actual, expected);
+    }
+
+    @Test
+    public void getMeasureUnit_Metric() {
+        //set unit to metric
+        Locale.setDefault(Locale.ENGLISH);
+
+        String expected = WeatherUtils.UNIT_METRIC;
+        String actual = WeatherUtils.getMeasureUnit();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getMeasureUnit_Imperial() {
+        //set unit to imperial
+        Locale.setDefault(Locale.US);
+
+        String expected = WeatherUtils.UNIT_IMPERIAL;
+        String actual = WeatherUtils.getMeasureUnit();
+        assertEquals(expected, actual);
     }
 }

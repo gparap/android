@@ -19,7 +19,4 @@
     <!--location-->
     <string name="toast_location_permission_denied">Location permission denied.</string>
     <string name="toast_location_disabled">Location is disabled.</string>
-    <!--units of measurement-->
-    <string name="item_units_metric">Metric</string>
-    <string name="item_units_imperial">Imperial</string>
 </resources>
