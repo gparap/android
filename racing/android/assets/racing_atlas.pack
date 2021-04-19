@@ -1,0 +1,110 @@
+
+racing_atlas.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+road
+  rotate: false
+  xy: 0, 209
+  size: 480, 800
+  orig: 480, 800
+  offset: 0, 0
+  index: -1
+car_green
+  rotate: false
+  xy: 0, 64
+  size: 106, 145
+  orig: 106, 145
+  offset: 0, 0
+  index: -1
+car_orange
+  rotate: false
+  xy: 480, 864
+  size: 106, 145
+  orig: 106, 145
+  offset: 0, 0
+  index: -1
+car_red
+  rotate: false
+  xy: 106, 64
+  size: 106, 145
+  orig: 106, 145
+  offset: 0, 0
+  index: -1
+car_white
+  rotate: false
+  xy: 480, 719
+  size: 106, 145
+  orig: 106, 145
+  offset: 0, 0
+  index: -1
+driver_black
+  rotate: false
+  xy: 586, 864
+  size: 64, 145
+  orig: 64, 145
+  offset: 0, 0
+  index: -1
+driver_blue
+  rotate: false
+  xy: 212, 64
+  size: 64, 145
+  orig: 64, 145
+  offset: 0, 0
+  index: -1
+driver_green
+  rotate: false
+  xy: 480, 574
+  size: 64, 145
+  orig: 64, 145
+  offset: 0, 0
+  index: -1
+driver_red
+  rotate: false
+  xy: 586, 719
+  size: 64, 145
+  orig: 64, 145
+  offset: 0, 0
+  index: -1
+driver_yellow
+  rotate: false
+  xy: 650, 864
+  size: 64, 145
+  orig: 64, 145
+  offset: 0, 0
+  index: -1
+button_credits
+  rotate: false
+  xy: 0, 0
+  size: 107, 64
+  orig: 107, 64
+  offset: 0, 0
+  index: -1
+button_driver
+  rotate: false
+  xy: 276, 145
+  size: 107, 64
+  orig: 107, 64
+  offset: 0, 0
+  index: -1
+button_exit
+  rotate: false
+  xy: 714, 945
+  size: 107, 64
+  orig: 107, 64
+  offset: 0, 0
+  index: -1
+button_menu
+  rotate: false
+  xy: 107, 0
+  size: 107, 64
+  orig: 107, 64
+  offset: 0, 0
+  index: -1
+button_race
+  rotate: false
+  xy: 276, 81
+  size: 107, 64
+  orig: 107, 64
+  offset: 0, 0
+  index: -1

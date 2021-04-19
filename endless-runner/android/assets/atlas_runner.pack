@@ -1,0 +1,264 @@
+
+atlas_runner.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+button_alien
+  rotate: false
+  xy: 0, 192
+  size: 107, 64
+  orig: 107, 64
+  offset: 0, 0
+  index: -1
+button_credits
+  rotate: false
+  xy: 0, 128
+  size: 107, 64
+  orig: 107, 64
+  offset: 0, 0
+  index: -1
+button_exit
+  rotate: false
+  xy: 107, 192
+  size: 107, 64
+  orig: 107, 64
+  offset: 0, 0
+  index: -1
+button_menu
+  rotate: false
+  xy: 0, 64
+  size: 107, 64
+  orig: 107, 64
+  offset: 0, 0
+  index: -1
+button_play
+  rotate: false
+  xy: 0, 0
+  size: 107, 64
+  orig: 107, 64
+  offset: 0, 0
+  index: -1
+p1_front
+  rotate: false
+  xy: 107, 100
+  size: 66, 92
+  orig: 66, 92
+  offset: 0, 0
+  index: -1
+p2_front
+  rotate: false
+  xy: 107, 8
+  size: 66, 92
+  orig: 66, 92
+  offset: 0, 0
+  index: -1
+snake-slime
+  rotate: false
+  xy: 173, 90
+  size: 53, 102
+  orig: 53, 102
+  offset: 0, 0
+  index: -1
+spider_walk2
+  rotate: false
+  xy: 214, 203
+  size: 77, 53
+  orig: 77, 53
+  offset: 0, 0
+  index: -1
+p3_front
+  rotate: false
+  xy: 226, 111
+  size: 66, 92
+  orig: 66, 92
+  offset: 0, 0
+  index: -1
+bat_fly
+  rotate: false
+  xy: 291, 219
+  size: 88, 37
+  orig: 88, 37
+  offset: 0, 0
+  index: -1
+snake-slime_move
+  rotate: false
+  xy: 292, 117
+  size: 52, 102
+  orig: 52, 102
+  offset: 0, 0
+  index: -1
+barnacle_bite
+  rotate: false
+  xy: 173, 32
+  size: 51, 58
+  orig: 51, 58
+  offset: 0, 0
+  index: -1
+spider_walk1
+  rotate: false
+  xy: 379, 205
+  size: 72, 51
+  orig: 72, 51
+  offset: 0, 0
+  index: -1
+bat
+  rotate: false
+  xy: 451, 209
+  size: 70, 47
+  orig: 70, 47
+  offset: 0, 0
+  index: -1
+spider
+  rotate: false
+  xy: 521, 211
+  size: 71, 45
+  orig: 71, 45
+  offset: 0, 0
+  index: -1
+gem-blue
+  rotate: false
+  xy: 592, 208
+  size: 64, 48
+  orig: 64, 48
+  offset: 0, 0
+  index: -1
+gem-green
+  rotate: false
+  xy: 656, 208
+  size: 64, 48
+  orig: 64, 48
+  offset: 0, 0
+  index: -1
+gem-red
+  rotate: false
+  xy: 720, 208
+  size: 64, 48
+  orig: 64, 48
+  offset: 0, 0
+  index: -1
+gem-yellow
+  rotate: false
+  xy: 784, 208
+  size: 64, 48
+  orig: 64, 48
+  offset: 0, 0
+  index: -1
+bee
+  rotate: false
+  xy: 848, 208
+  size: 56, 48
+  orig: 56, 48
+  offset: 0, 0
+  index: -1
+fly_fly
+  rotate: false
+  xy: 904, 217
+  size: 65, 39
+  orig: 65, 39
+  offset: 0, 0
+  index: -1
+snail
+  rotate: false
+  xy: 969, 216
+  size: 55, 40
+  orig: 55, 40
+  offset: 0, 0
+  index: -1
+snake
+  rotate: false
+  xy: 226, 88
+  size: 63, 23
+  orig: 63, 23
+  offset: 0, 0
+  index: -1
+barnacle
+  rotate: false
+  xy: 224, 31
+  size: 51, 57
+  orig: 51, 57
+  offset: 0, 0
+  index: -1
+snake_walk
+  rotate: false
+  xy: 904, 194
+  size: 63, 23
+  orig: 63, 23
+  offset: 0, 0
+  index: -1
+fly
+  rotate: false
+  xy: 967, 171
+  size: 57, 45
+  orig: 57, 45
+  offset: 0, 0
+  index: -1
+bee_fly
+  rotate: false
+  xy: 344, 163
+  size: 61, 42
+  orig: 61, 42
+  offset: 0, 0
+  index: -1
+snail_walk
+  rotate: false
+  xy: 344, 123
+  size: 60, 40
+  orig: 60, 40
+  offset: 0, 0
+  index: -1
+lady-bug
+  rotate: false
+  xy: 405, 171
+  size: 58, 34
+  orig: 58, 34
+  offset: 0, 0
+  index: -1
+lady-bug_walk
+  rotate: false
+  xy: 463, 175
+  size: 61, 34
+  orig: 61, 34
+  offset: 0, 0
+  index: -1
+slime-blue_walk
+  rotate: false
+  xy: 524, 181
+  size: 57, 30
+  orig: 57, 30
+  offset: 0, 0
+  index: -1
+worm
+  rotate: false
+  xy: 581, 185
+  size: 63, 23
+  orig: 63, 23
+  offset: 0, 0
+  index: -1
+worm_walk
+  rotate: false
+  xy: 644, 185
+  size: 63, 23
+  orig: 63, 23
+  offset: 0, 0
+  index: -1
+slime_walk
+  rotate: false
+  xy: 707, 178
+  size: 57, 30
+  orig: 57, 30
+  offset: 0, 0
+  index: -1
+slime-blue
+  rotate: false
+  xy: 764, 174
+  size: 49, 34
+  orig: 49, 34
+  offset: 0, 0
+  index: -1
+slime
+  rotate: false
+  xy: 813, 174
+  size: 49, 34
+  orig: 49, 34
+  offset: 0, 0
+  index: -1

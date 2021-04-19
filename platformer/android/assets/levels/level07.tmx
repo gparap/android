@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="200" height="10" tilewidth="64" tileheight="64" nextobjectid="697">
+ <tileset firstgid="1" name="tiles" tilewidth="64" tileheight="64" tilecount="15" columns="0">
+  <tile id="0">
+   <image width="64" height="64" source="../tiles/grass_center.png"/>
+  </tile>
+  <tile id="1">
+   <image width="64" height="64" source="../tiles/grass_left.png"/>
+  </tile>
+  <tile id="2">
+   <image width="64" height="64" source="../tiles/grass_mid.png"/>
+  </tile>
+  <tile id="3">
+   <image width="64" height="64" source="../tiles/grass_right.png"/>
+  </tile>
+  <tile id="4">
+   <image width="64" height="64" source="../tiles/sign_exit.png"/>
+  </tile>
+  <tile id="5">
+   <image width="64" height="64" source="../tiles/box_crate_double.png"/>
+  </tile>
+  <tile id="6">
+   <image width="64" height="64" source="../tiles/box_crate.png"/>
+  </tile>
+  <tile id="8">
+   <image width="64" height="64" source="../tiles/box_coin_disabled.png"/>
+  </tile>
+  <tile id="9">
+   <image width="64" height="64" source="../tiles/box_coin.png"/>
+  </tile>
+  <tile id="10">
+   <image width="64" height="64" source="../tiles/box_item.png"/>
+  </tile>
+  <tile id="14">
+   <image width="64" height="64" source="../tiles/coin_brown.png"/>
+  </tile>
+  <tile id="15">
+   <image width="64" height="64" source="../tiles/coin_gold.png"/>
+  </tile>
+  <tile id="16">
+   <image width="64" height="64" source="../tiles/coin_silver.png"/>
+  </tile>
+  <tile id="18">
+   <image width="64" height="64" source="../tiles/placeholder.png"/>
+  </tile>
+  <tile id="148">
+   <image width="64" height="64" source="../tiles/box_wall.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="150" name="items" tilewidth="0" tileheight="0" tilecount="0" columns="0"/>
+ <tileset firstgid="150" name="candy_land" tilewidth="64" tileheight="64" tilecount="11" columns="0">
+  <tile id="9">
+   <image width="64" height="64" source="../tiles/candy_land/chocoCenter.png"/>
+  </tile>
+  <tile id="10">
+   <image width="64" height="64" source="../tiles/candy_land/chocoHillLeft.png"/>
+  </tile>
+  <tile id="11">
+   <image width="64" height="64" source="../tiles/candy_land/chocoHillRight.png"/>
+  </tile>
+  <tile id="12">
+   <image width="64" height="64" source="../tiles/candy_land/chocoLeft.png"/>
+  </tile>
+  <tile id="13">
+   <image width="64" height="64" source="../tiles/candy_land/chocoMid.png"/>
+  </tile>
+  <tile id="14">
+   <image width="64" height="64" source="../tiles/candy_land/chocoRight.png"/>
+  </tile>
+  <tile id="15">
+   <image width="64" height="64" source="../tiles/candy_land/cupCake.png"/>
+  </tile>
+  <tile id="20">
+   <image width="64" height="64" source="../tiles/candy_land/creamChoco.png"/>
+  </tile>
+  <tile id="21">
+   <image width="64" height="64" source="../tiles/candy_land/creamMocca.png"/>
+  </tile>
+  <tile id="22">
+   <image width="64" height="64" source="../tiles/candy_land/waffleChoco.png"/>
+  </tile>
+  <tile id="24">
+   <image width="64" height="64" source="../tiles/candy_land/waffleWhite.png"/>
+  </tile>
+ </tileset>
+ <layer name="background" width="200" height="10" opacity="0.88">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAYH0AAAQ==
+  </data>
+ </layer>
+ <layer name="foreground" width="200" height="10">
+  <data encoding="base64" compression="zlib">
+   eJztl9FugzAMRf2y//+Eutt4oRXfuFbDqntnEpskwIAjWUEQbOcmDoHo5OQY3EY7acM90HeYuD5Zj260o3AHm/v+4PTRq7ZPdaT3vcrT/yjw2glsnGtFXz1YCh7bm2Hah/Vc6FSL+5DVN9UfkTrdM/ywC9ybs6/tER7bpz61aqQDS8WWecF3PBbJJYpVj3s8IzP9zgHWR25fk+96ag/873oxvXQRjUprBNfR1LqS2DgvW6GkJkvgBWLoWBey5yE3Vo8uXr3kfFDzDFMK07suWifMs59oLVAvSz8de6v10YLcmZPJ1sPzHeNgLhJrbn3URNZIzTOMhfd/mOmvLqjVVfnT53XdzgFjH6k+cL/V/zZMLz0GeJb7jsm7XnSstepjUKbrY6pGRIsPde/zYV8NzNLF0svr7zuQb0mcFia5t9Y8oks0Z2t9p8ZhzYGnPnLaYF4Wlo/omsBxt7YasZbMt8X4l9a8Rc6l49BY9RH1YVFr7D97hWeJ
+  </data>
+ </layer>
+ <objectgroup name="earth">
+  <object id="177" name="ground" type="ground" x="2880" y="640">
+   <polyline points="0,0 0,-128 2943.88,-128 2943.88,0"/>
+  </object>
+  <object id="178" name="ground" type="ground" x="6016" y="640">
+   <polyline points="0,0 0,-128 2688,-128 2688,0"/>
+  </object>
+  <object id="179" name="ground" type="ground" x="8896" y="640">
+   <polyline points="0,0 0,-128 128,-128 128,0"/>
+  </object>
+  <object id="208" name="ground" type="ground" x="9216" y="640">
+   <polyline points="0,0 0,-128 832,-128 832,0"/>
+  </object>
+  <object id="209" name="ground" type="ground" x="10560" y="640">
+   <polyline points="0,0 0,-128 576,-128 576,0"/>
+  </object>
+  <object id="210" name="ground" type="ground" x="11648" y="640">
+   <polyline points="0,0 0,-128 1088,-128 1088,0"/>
+  </object>
+  <object id="565" name="ground" type="ground" x="64" y="640">
+   <polyline points="0,0 0,-128 1664,-128 1664,0"/>
+  </object>
+  <object id="566" name="ground" type="ground" x="1792" y="640">
+   <polyline points="0,0 0,-128 1024,-128 1024,0"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="slope">
+  <object id="608" name="slope" type="slope" x="1472" y="512">
+   <polyline points="0,0 256,-256 256,0"/>
+  </object>
+  <object id="609" name="slope" type="slope" x="1792" y="512">
+   <polyline points="0,0 0,-320 320,0"/>
+  </object>
+  <object id="610" name="slope" type="slope" x="3456" y="512">
+   <polyline points="0,0 320,-320 320,0"/>
+  </object>
+  <object id="611" name="slope" type="slope" x="7936" y="512">
+   <polyline points="0,0 192,-192 192,0"/>
+  </object>
+  <object id="612" name="slope" type="slope" x="8896" y="512">
+   <polyline points="0,0 128,-128 128,0"/>
+  </object>
+  <object id="613" name="slope" type="slope" x="9664" y="512">
+   <polyline points="0,0 384,-384 384,0"/>
+  </object>
+  <object id="614" name="slope" type="slope" x="12096" y="320">
+   <polyline points="0,0 192,192"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="exit">
+  <object id="696" name="sign_exit" type="sign" x="12672" y="448" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup name="crates">
+  <object id="322" name="wall" type="tileCrate" x="2368" y="384" width="64" height="127"/>
+  <object id="448" name="wall" type="tileCrate" x="8384" y="384" width="321" height="127"/>
+  <object id="549" name="wall" type="tileCrate" x="3008" y="192" width="256" height="128"/>
+  <object id="562" name="wall" type="tileCrate" x="11328" y="256" width="64" height="128"/>
+  <object id="588" name="wall" type="tileCrate" x="2944" y="320" width="128" height="128"/>
+  <object id="589" name="wall" type="tileCrate" x="3200" y="320" width="128" height="128"/>
+  <object id="595" name="wall" type="tileCrate" x="5248" y="192" width="128" height="128"/>
+  <object id="602" name="wall" type="tileCrate" x="10240" y="256" width="64" height="384"/>
+  <object id="603" name="wall" type="tileCrate" x="10752" y="320" width="256" height="64"/>
+  <object id="604" name="wall" type="tileCrate" x="10880" y="256" width="128" height="64"/>
+  <object id="606" name="wall" type="tileCrate" x="11968" y="320" width="128" height="192"/>
+  <object id="607" name="wall" type="tileCrate" x="11968" y="0" width="128" height="128"/>
+  <object id="678" name="wall" type="tileCrate" x="2496" y="384" width="64" height="127"/>
+  <object id="679" name="wall" type="tileCrate" x="2240" y="384" width="64" height="127"/>
+  <object id="680" name="wall" type="tileCrate" x="3840" y="192" width="832" height="128"/>
+  <object id="681" name="wall" type="tileCrate" x="4928" y="128" width="128" height="128"/>
+  <object id="682" name="wall" type="tileCrate" x="4800" y="128" width="64" height="127"/>
+  <object id="683" name="wall" type="tileCrate" x="5504" y="128" width="128" height="128"/>
+  <object id="684" name="wall" type="tileCrate" x="5696" y="128" width="128" height="128"/>
+  <object id="685" name="wall" type="tileCrate" x="6144" y="256" width="384" height="128"/>
+  <object id="693" name="wall" type="tileCrate" x="7488" y="384" width="192" height="128"/>
+ </objectgroup>
+ <objectgroup name="coins"/>
+ <objectgroup name="candys">
+  <object id="615" name="waffle_choco" type="tileCandy" x="3072" y="128" width="64" height="64"/>
+  <object id="616" name="waffle_choco" type="tileCandy" x="3136" y="128" width="64" height="64"/>
+  <object id="617" name="waffle_choco" type="tileCandy" x="4032" y="128" width="64" height="64"/>
+  <object id="618" name="waffle_choco" type="tileCandy" x="4288" y="128" width="64" height="64"/>
+  <object id="619" name="waffle_choco" type="tileCandy" x="4800" y="64" width="64" height="64"/>
+  <object id="620" name="waffle_choco" type="tileCandy" x="6272" y="192" width="64" height="64"/>
+  <object id="622" name="waffle_white" type="tileCandy" x="11904" y="448" width="64" height="64"/>
+  <object id="623" name="waffle_white" type="tileCandy" x="11776" y="448" width="64" height="64"/>
+  <object id="624" name="waffle_white" type="tileCandy" x="8128" y="448" width="64" height="64"/>
+  <object id="625" name="waffle_white" type="tileCandy" x="5696" y="64" width="64" height="64"/>
+  <object id="626" name="waffle_white" type="tileCandy" x="5504" y="64" width="64" height="64"/>
+  <object id="627" name="waffle_white" type="tileCandy" x="4160" y="128" width="64" height="64"/>
+  <object id="648" name="waffle_white" type="tileCandy" x="11840" y="448" width="64" height="64"/>
+  <object id="650" name="waffle_choco" type="tileCandy" x="2176" y="448" width="64" height="64"/>
+  <object id="651" name="waffle_white" type="tileCandy" x="6336" y="192" width="64" height="64"/>
+  <object id="653" name="waffle_white" type="tileCandy" x="7808" y="448" width="64" height="64"/>
+  <object id="654" name="waffle_white" type="tileCandy" x="8256" y="448" width="64" height="64"/>
+  <object id="656" name="waffle_choco" type="tileCandy" x="832" y="448" width="64" height="64"/>
+  <object id="657" name="waffle_choco" type="tileCandy" x="896" y="448" width="64" height="64"/>
+  <object id="658" name="waffle_choco" type="tileCandy" x="2112" y="448" width="64" height="64"/>
+  <object id="659" name="waffle_choco" type="tileCandy" x="3008" y="128" width="64" height="64"/>
+  <object id="660" name="waffle_choco" type="tileCandy" x="3200" y="128" width="64" height="64"/>
+  <object id="661" name="waffle_choco" type="tileCandy" x="4096" y="128" width="64" height="64"/>
+  <object id="662" name="waffle_choco" type="tileCandy" x="4224" y="128" width="64" height="64"/>
+  <object id="663" name="waffle_choco" type="tileCandy" x="7744" y="448" width="64" height="64"/>
+  <object id="664" name="waffle_choco" type="tileCandy" x="8192" y="448" width="64" height="64"/>
+  <object id="665" name="waffle_choco" type="tileCandy" x="10240" y="192" width="64" height="64"/>
+  <object id="666" name="waffle_choco" type="tileCandy" x="10816" y="256" width="64" height="64"/>
+  <object id="667" name="waffle_choco" type="tileCandy" x="10752" y="256" width="64" height="64"/>
+  <object id="692" name="waffle_white" type="tileCandy" x="12544" y="448" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup name="enemies">
+  <object id="517" name="enemy_snail" type="enemy" x="1408" y="448" width="64" height="64"/>
+  <object id="519" name="enemy_snail" type="enemy" x="4800" y="448" width="64" height="64"/>
+  <object id="525" name="enemy_snail" type="enemy" x="7296" y="448" width="64" height="64"/>
+  <object id="527" name="enemy_snail" type="enemy" x="8320" y="448" width="64" height="64"/>
+  <object id="531" name="enemy_snail" type="enemy" x="3712" y="128" width="64" height="64"/>
+  <object id="532" name="enemy_snail" type="enemy" x="7552" y="320" width="64" height="64"/>
+  <object id="533" name="enemy_snail" type="enemy" x="8064" y="256" width="64" height="64"/>
+  <object id="535" name="enemy_snail" type="enemy" x="11072" y="448" width="64" height="64"/>
+  <object id="536" name="enemy_snail" type="enemy" x="12032" y="256" width="64" height="64"/>
+  <object id="537" name="enemy_snail" type="enemy" x="4160" y="448" width="64" height="64"/>
+  <object id="538" name="enemy_snail" type="enemy" x="1664" y="192" width="64" height="64"/>
+  <object id="674" name="enemy_snail" type="enemy" x="3392" y="448" width="64" height="64"/>
+  <object id="675" name="enemy_snail" type="enemy" x="5312" y="448" width="64" height="64"/>
+  <object id="676" name="enemy_snail" type="enemy" x="6848" y="448" width="64" height="64"/>
+  <object id="677" name="enemy_snail" type="enemy" x="9600" y="448" width="64" height="64"/>
+ </objectgroup>
+</map>

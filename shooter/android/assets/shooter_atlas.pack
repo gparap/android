@@ -1,0 +1,166 @@
+
+shooter_atlas.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+starBackground
+  rotate: false
+  xy: 0, 0
+  size: 254, 256
+  orig: 254, 256
+  offset: 0, 0
+  index: -1
+shield
+  rotate: false
+  xy: 254, 138
+  size: 151, 118
+  orig: 151, 118
+  offset: 0, 0
+  index: -1
+meteorBrownBig
+  rotate: false
+  xy: 254, 27
+  size: 136, 111
+  orig: 136, 111
+  offset: 0, 0
+  index: -1
+button_credits
+  rotate: false
+  xy: 405, 192
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+button_exit
+  rotate: false
+  xy: 533, 192
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+button_menu
+  rotate: false
+  xy: 661, 192
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+button_play
+  rotate: false
+  xy: 789, 192
+  size: 128, 64
+  orig: 128, 64
+  offset: 0, 0
+  index: -1
+enemyBlack
+  rotate: false
+  xy: 917, 172
+  size: 103, 84
+  orig: 103, 84
+  offset: 0, 0
+  index: -1
+enemyBlue
+  rotate: false
+  xy: 405, 108
+  size: 103, 84
+  orig: 103, 84
+  offset: 0, 0
+  index: -1
+enemyGreen
+  rotate: false
+  xy: 508, 108
+  size: 103, 84
+  orig: 103, 84
+  offset: 0, 0
+  index: -1
+enemyRed
+  rotate: false
+  xy: 611, 108
+  size: 103, 84
+  orig: 103, 84
+  offset: 0, 0
+  index: -1
+ufoBlue
+  rotate: false
+  xy: 714, 101
+  size: 91, 91
+  orig: 91, 91
+  offset: 0, 0
+  index: -1
+ufoGreen
+  rotate: false
+  xy: 805, 101
+  size: 91, 91
+  orig: 91, 91
+  offset: 0, 0
+  index: -1
+player
+  rotate: false
+  xy: 390, 33
+  size: 99, 75
+  orig: 99, 75
+  offset: 0, 0
+  index: -1
+playerDamaged
+  rotate: false
+  xy: 489, 33
+  size: 99, 75
+  orig: 99, 75
+  offset: 0, 0
+  index: -1
+ufoRed
+  rotate: false
+  xy: 588, 17
+  size: 91, 91
+  orig: 91, 91
+  offset: 0, 0
+  index: -1
+ufoYellow
+  rotate: false
+  xy: 896, 81
+  size: 91, 91
+  orig: 91, 91
+  offset: 0, 0
+  index: -1
+meteorGreyBig
+  rotate: false
+  xy: 679, 19
+  size: 89, 82
+  orig: 89, 82
+  offset: 0, 0
+  index: -1
+meteorBrownSmall
+  rotate: false
+  xy: 768, 59
+  size: 44, 42
+  orig: 44, 42
+  offset: 0, 0
+  index: -1
+meteorGreySmall
+  rotate: false
+  xy: 812, 58
+  size: 43, 43
+  orig: 43, 43
+  offset: 0, 0
+  index: -1
+shield_silver
+  rotate: false
+  xy: 987, 142
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+laserGreen
+  rotate: false
+  xy: 768, 26
+  size: 9, 33
+  orig: 9, 33
+  offset: 0, 0
+  index: -1
+laserRed
+  rotate: false
+  xy: 855, 68
+  size: 9, 33
+  orig: 9, 33
+  offset: 0, 0
+  index: -1
