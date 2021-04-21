@@ -36,10 +36,10 @@ class GeneratorFragment : Fragment() {
     ): View? {
         generatorViewModel =
                 ViewModelProvider(this).get(GeneratorViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_evaluator, container, false)
-        val textView: TextView = root.findViewById(R.id.text_evaluator_fragment)
+        val root = inflater.inflate(R.layout.fragment_generator, container, false)
+        //val textView: TextView = root.findViewById(R.id.text_generator_fragment)
         generatorViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+            //textView.text = it
         })
         return root
     }

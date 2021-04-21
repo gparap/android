@@ -4,20 +4,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.manager.ManagerFragment">
+    tools:context=".ui.generator.GeneratorFragment">
 
+    <!--Text containing generated password-->
     <TextView
-        android:id="@+id/text_generator_fragment"
-        android:layout_width="match_parent"
+        android:id="@+id/textViewPasswordGenerated"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:gravity="center_horizontal"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGeneratePassword"
+        app:layout_constraintEnd_toEndOf="@+id/buttonGeneratePassword"
+        app:layout_constraintStart_toStartOf="@+id/buttonGeneratePassword"
+        tools:text="password generated"
+        tools:visibility="visible" />
+
+    <!--Button that generates password-->
+    <Button
+        android:id="@+id/buttonGeneratePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_generate_password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!--Length options for generating password-->
+    <RadioGroup
+        android:id="@+id/radioGroupPasswordLength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/buttonGeneratePassword"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/buttonGeneratePassword"
+        app:layout_constraintTop_toBottomOf="@+id/buttonGeneratePassword">
+
+        <RadioButton
+            android:id="@+id/radioButton08CharsLengthPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/radio_08_chars" />
+
+        <RadioButton
+            android:id="@+id/radioButton16CharsLengthPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_16_chars" />
+
+        <RadioButton
+            android:id="@+id/radioButtonCustomLengthPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_custom_chars" />
+    </RadioGroup>
+
+    <!--Custom length input for generating password-->
+    <EditText
+        android:id="@+id/editTextCustomLengthPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/radioGroupPasswordLength"
+        app:layout_constraintStart_toEndOf="@+id/radioGroupPasswordLength"
+        tools:text="100"
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
