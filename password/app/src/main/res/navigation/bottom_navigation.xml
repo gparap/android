@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_generator"
-        android:name="gparap.apps.password.ui.manager.ManagerFragment"
+        android:name="gparap.apps.password.ui.generator.GeneratorFragment"
         android:label="@string/title_generator"
         tools:layout="@layout/fragment_generator" />
 
     <fragment
         android:id="@+id/navigation_evaluator"
-        android:name="gparap.apps.password.ui.generator.GeneratorFragment"
+        android:name="gparap.apps.password.ui.evaluator.EvaluatorFragment"
         android:label="@string/title_evaluator"
         tools:layout="@layout/fragment_evaluator" />
 
     <fragment
         android:id="@+id/navigation_manager"
-        android:name="gparap.apps.password.ui.evaluator.EvaluatorFragment"
+        android:name="gparap.apps.password.ui.manager.ManagerFragment"
         android:label="@string/title_manager"
         tools:layout="@layout/fragment_manager" />
 </navigation>

@@ -15,13 +15,15 @@
  */
 package gparap.apps.password
 
+import gparap.apps.password.ui.generator.GeneratorFragmentInstrumentedTest
 import org.junit.runner.RunWith
 import org.junit.runners.Suite
 
 @RunWith(Suite::class)
 @Suite.SuiteClasses(
     MainActivityInstrumentedTest::class,
-    BottomNavigationInstrumentedTest::class
+    BottomNavigationInstrumentedTest::class,
+    GeneratorFragmentInstrumentedTest::class
 )
 class AppTestSuite {
 }
