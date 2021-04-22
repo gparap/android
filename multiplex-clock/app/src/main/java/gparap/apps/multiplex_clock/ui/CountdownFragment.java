@@ -31,6 +31,7 @@ import androidx.fragment.app.Fragment;
 import gparap.apps.multiplex_clock.utils.PreferencesManager;
 import gparap.apps.multiplex_clock.utils.TimeUtils;
 
+@SuppressWarnings("Convert2Lambda")
 public class CountdownFragment extends Fragment {
     private EditText editTextHours, editTextMinutes, editTextSeconds;
     private Button buttonStart, buttonStop, buttonReset;
@@ -40,11 +41,6 @@ public class CountdownFragment extends Fragment {
     private long backroungTime;
 
     public CountdownFragment() {
-    }
-
-    public static CountdownFragment newInstance() {
-        CountdownFragment fragment = new CountdownFragment();
-        return fragment;
     }
 
     @Override
@@ -234,10 +230,7 @@ public class CountdownFragment extends Fragment {
     }
 
     private boolean isInputEnabled() {
-        if (editTextHours.isEnabled() || editTextMinutes.isEnabled() || editTextSeconds.isEnabled()) {
-            return true;
-        }
-        return false;
+        return editTextHours.isEnabled() || editTextMinutes.isEnabled() || editTextSeconds.isEnabled();
     }
 
     private void updateTextFieldsInputState(boolean state) {
@@ -246,7 +239,7 @@ public class CountdownFragment extends Fragment {
         editTextSeconds.setEnabled(state);
 
         //don't use the default color for disabled state
-        if (state == false) {
+        if (!state) {
             restoreEditTextEnabledStateColor();
         }
     }
@@ -316,9 +309,9 @@ public class CountdownFragment extends Fragment {
         int seconds = minutesRemaining % 60;
 
         //update fields
-        editTextHours.setText(String.format("%s%s", handleZeroPreffix(hours), String.valueOf(hours)));
-        editTextMinutes.setText(String.format("%s%s", handleZeroPreffix(minutes), String.valueOf(minutes)));
-        editTextSeconds.setText(String.format("%s%s", handleZeroPreffix(seconds), String.valueOf(seconds)));
+        editTextHours.setText(String.format("%s%s", handleZeroPreffix(hours), hours));
+        editTextMinutes.setText(String.format("%s%s", handleZeroPreffix(minutes), minutes));
+        editTextSeconds.setText(String.format("%s%s", handleZeroPreffix(seconds), seconds));
     }
 
     //checks if an integer is less than ten and returns a zero string

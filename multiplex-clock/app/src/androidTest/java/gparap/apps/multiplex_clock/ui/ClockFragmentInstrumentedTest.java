@@ -34,10 +34,10 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 public class ClockFragmentInstrumentedTest {
-    FragmentScenario fragmentScenario;
+    FragmentScenario<ClockFragment> fragmentScenario;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         fragmentScenario = FragmentScenario.launchInContainer(ClockFragment.class);
     }
 
@@ -75,7 +75,7 @@ public class ClockFragmentInstrumentedTest {
             actualTimeZone.set(timeZoneShort.getText().toString());
         });
 
-        assert expectedTimeZone.equals(actualTimeZone.get().toString());
+        assert expectedTimeZone.equals(actualTimeZone.get());
     }
 
     @Test
@@ -90,6 +90,6 @@ public class ClockFragmentInstrumentedTest {
             actualTimeZone.set(timeZoneShort.getText().toString());
         });
 
-        assert expectedTimeZone.equals(actualTimeZone.get().toString());
+        assert expectedTimeZone.equals(actualTimeZone.get());
     }
 }

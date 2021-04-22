@@ -29,7 +29,7 @@ import static org.hamcrest.CoreMatchers.not;
 public class AlarmClockFragmentInstrumentedTest {
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         FragmentScenario.launchInContainer(AlarmClockFragment.class);
     }
 

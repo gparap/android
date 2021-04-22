@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MultiplexClock"
         tools:ignore="AllowBackup">
-        <activity android:name="MainActivity">
+        <activity android:name="gparap.apps.multiplex_clock.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

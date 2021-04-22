@@ -38,6 +38,7 @@ import java.text.DateFormat;
 import gparap.apps.multiplex_clock.services.AlarmReceiver;
 import gparap.apps.multiplex_clock.utils.TimeUtils;
 
+@SuppressWarnings("Convert2Lambda")
 public class AlarmClockFragment extends Fragment {
     TextView textViewTimer;
     DateFormat dateFormat;  //helper to format system time to default locale
@@ -47,11 +48,6 @@ public class AlarmClockFragment extends Fragment {
     boolean isAlarmSet;     //helper to handle cases where the alarm is not set correctly
 
     public AlarmClockFragment() {
-    }
-
-    public static AlarmClockFragment newInstance() {
-        AlarmClockFragment fragment = new AlarmClockFragment();
-        return fragment;
     }
 
     @Override
@@ -143,7 +139,7 @@ public class AlarmClockFragment extends Fragment {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity().getApplicationContext(), 0, intent, 0);
 
         //schedule an alarm if set correctly
-        if (isAlarmSet){
+        if (isAlarmSet) {
             AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
             alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + triggerAtMillis, pendingIntent);
         }
@@ -196,7 +192,7 @@ public class AlarmClockFragment extends Fragment {
         //validate hour
         int hour = hourAlarm - hourNow;
         if (hour < 0) {
-            Toast.makeText(getActivity().getApplicationContext(), "Error in setting alarm hours", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity().getApplicationContext(), R.string.toast_error_alarm_hours, Toast.LENGTH_SHORT).show();
             isAlarmSet = false;
             return false;
         }
@@ -204,11 +200,10 @@ public class AlarmClockFragment extends Fragment {
         //validate minute
         int minute = minuteAlarm - minuteNow;
         if (hour == 0 && minute <= 0) {
-            Toast.makeText(getActivity().getApplicationContext(), "Error in setting alarm minutes", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity().getApplicationContext(), R.string.toast_error_alarm_minutes, Toast.LENGTH_SHORT).show();
             isAlarmSet = false;
             return false;
         }
-
         return true;
     }
 }

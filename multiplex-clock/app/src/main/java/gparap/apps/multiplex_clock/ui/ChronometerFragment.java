@@ -29,7 +29,7 @@ import androidx.fragment.app.Fragment;
 import gparap.apps.multiplex_clock.utils.CircularProgress;
 import gparap.apps.multiplex_clock.utils.PreferencesManager;
 
-@SuppressWarnings("FieldCanBeLocal")
+@SuppressWarnings({"FieldCanBeLocal", "Convert2Lambda"})
 public class ChronometerFragment extends Fragment {
     private Chronometer chronometer;
     private ProgressBar progressBar;
@@ -39,15 +39,10 @@ public class ChronometerFragment extends Fragment {
     private long stoppedTime;
     private boolean isRunning;
     private static long startTime = 0L;
-    private static int PROGRESS_MAX = 60;
+    private static final int PROGRESS_MAX = 60;
     private CircularProgress circularProgress;
 
     public ChronometerFragment() {
-    }
-
-    public static ChronometerFragment newInstance() {
-        ChronometerFragment fragment = new ChronometerFragment();
-        return fragment;
     }
 
     @Override
