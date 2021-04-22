@@ -26,17 +26,17 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static org.hamcrest.CoreMatchers.not;
 
 public class CountdownFragmentInstrumentedTest {
-    FragmentScenario fragmentScenario;
+    FragmentScenario<CountdownFragment> fragmentScenario;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         fragmentScenario = FragmentScenario.launchInContainer(CountdownFragment.class);
     }
 
@@ -79,6 +79,7 @@ public class CountdownFragmentInstrumentedTest {
     public void startButton_CountdownTimerIsRunning() throws InterruptedException {
         //init timer
         onView(withId(R.id.editTextSeconds)).perform(typeText("10"));
+        onView(withId(R.id.editTextSeconds)).perform(closeSoftKeyboard());
         String startTime = "10";
 
         //start timer
@@ -91,7 +92,7 @@ public class CountdownFragmentInstrumentedTest {
             runningTime.set(editTextSeconds.getText().toString());
         });//get the timer value after started counting down
 
-        assert !(startTime.toString().equals(runningTime.toString()));
+        assert !(startTime.equals(runningTime.toString()));
     }
 
     @Test
@@ -101,7 +102,7 @@ public class CountdownFragmentInstrumentedTest {
 
         //init timer
         onView(withId(R.id.editTextSeconds)).perform(typeText("10"));
-        String startTime = "10";
+        onView(withId(R.id.editTextSeconds)).perform(closeSoftKeyboard());
 
         //start timer
         onView(withId(R.id.buttonStartCountdown)).perform(click());
@@ -134,6 +135,7 @@ public class CountdownFragmentInstrumentedTest {
 
         //start and reset timer
         onView(withId(R.id.editTextSeconds)).perform(typeText("10"));
+        onView(withId(R.id.editTextSeconds)).perform(closeSoftKeyboard());
         onView(withId(R.id.buttonStartCountdown)).perform(click());
         Thread.sleep(1000);
         onView(withId(R.id.buttonResetCountdown)).perform(click());
@@ -152,9 +154,8 @@ public class CountdownFragmentInstrumentedTest {
         onView(withId(R.id.editTextHours)).perform(typeText("24"));
 
         AtomicReference<EditText> hours = new AtomicReference<>();
-        fragmentScenario.onFragment(fragment -> {
-            hours.set(fragment.getActivity().findViewById(R.id.editTextHours));
-        });
+        fragmentScenario.onFragment(fragment ->
+                hours.set(fragment.getActivity().findViewById(R.id.editTextHours)));
 
         assert !(hours.get().getText().toString().equals("24"));
     }
@@ -164,9 +165,8 @@ public class CountdownFragmentInstrumentedTest {
         onView(withId(R.id.editTextMinutes)).perform(typeText("60"));
 
         AtomicReference<EditText> minutes = new AtomicReference<>();
-        fragmentScenario.onFragment(fragment -> {
-            minutes.set(fragment.getActivity().findViewById(R.id.editTextMinutes));
-        });
+        fragmentScenario.onFragment(fragment ->
+                minutes.set(fragment.getActivity().findViewById(R.id.editTextMinutes)));
 
         assert !(minutes.get().getText().toString().equals("60"));
     }
@@ -176,9 +176,8 @@ public class CountdownFragmentInstrumentedTest {
         onView(withId(R.id.editTextSeconds)).perform(typeText("60"));
 
         AtomicReference<EditText> seconds = new AtomicReference<>();
-        fragmentScenario.onFragment(fragment -> {
-            seconds.set(fragment.getActivity().findViewById(R.id.editTextSeconds));
-        });
+        fragmentScenario.onFragment(fragment ->
+                seconds.set(fragment.getActivity().findViewById(R.id.editTextSeconds)));
 
         assert !(seconds.get().getText().toString().equals("60"));
     }

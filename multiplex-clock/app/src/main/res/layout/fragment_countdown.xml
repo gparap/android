@@ -2,10 +2,10 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/countdownTimerFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CountdownFragment"
-    android:id="@+id/countdownTimerFragment">
+    tools:context=".CountdownFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

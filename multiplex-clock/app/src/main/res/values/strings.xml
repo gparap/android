@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MultiTimer</string>
+    <string name="app_name">Multiplex Clock</string>
     <string name="hh_mm_ss">HH:MM:SS</string>
     <string name="time_now">Time Now:</string>
     <string name="alarm">Alarm:</string>
@@ -22,4 +22,8 @@
     <string name="value_23">23</string>
     <string name="value_59">59</string>
     <string name="value_00_00">00:00</string>
+
+    <!--Error messages-->
+    <string name="toast_error_alarm_hours">Error in setting alarm hours</string>
+    <string name="toast_error_alarm_minutes">Error in setting alarm minutes</string>
 </resources>

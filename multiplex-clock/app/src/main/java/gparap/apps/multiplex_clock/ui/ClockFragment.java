@@ -31,13 +31,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 public class ClockFragment extends Fragment {
-
     public ClockFragment() {
-    }
-
-    public static ClockFragment newInstance() {
-        ClockFragment fragment = new ClockFragment();
-        return fragment;
     }
 
     @Override
@@ -60,9 +54,9 @@ public class ClockFragment extends Fragment {
             TextView timeZoneLong = view.findViewById(R.id.textViewTimeZoneLong);
             TextView timeZoneShort = view.findViewById(R.id.textViewTimeZoneShort);
             timeZoneShort.setText(TimeZone.getDefault()
-                    .getDisplayName(false, TimeZone.SHORT, Locale.getDefault()).toString());
+                    .getDisplayName(false, TimeZone.SHORT, Locale.getDefault()));
             timeZoneLong.setText(TimeZone.getDefault()
-                    .getDisplayName(false, TimeZone.LONG, Locale.getDefault()).toString());
+                    .getDisplayName(false, TimeZone.LONG, Locale.getDefault()));
         }
     }
 }

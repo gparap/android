@@ -32,10 +32,10 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.CoreMatchers.not;
 
 public class ChronometerFragmentInstrumentedTest {
-    FragmentScenario fragmentScenario;
+    FragmentScenario<ChronometerFragment> fragmentScenario;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         fragmentScenario = FragmentScenario.launchInContainer(ChronometerFragment.class);
     }
 
@@ -112,8 +112,6 @@ public class ChronometerFragmentInstrumentedTest {
 
     @Test
     public void startButton_ChronometerTimerIsResetting() throws InterruptedException {
-        String zeroTime = "0:00";
-
         //reset chronometer from previous values
         onView(withId(R.id.buttonResetChronometer)).perform(click());
 
@@ -128,6 +126,6 @@ public class ChronometerFragmentInstrumentedTest {
             resetTime.set(chronometer.getText().toString());
         });//get the timer value after reset
 
-        assert zeroTime.equals(resetTime.toString());
+        assert resetTime.toString().equals("00:00") || resetTime.toString().equals("0:00");
     }
 }

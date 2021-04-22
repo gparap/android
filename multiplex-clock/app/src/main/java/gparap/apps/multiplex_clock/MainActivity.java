@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.multiplex_clock.ui;
+package gparap.apps.multiplex_clock;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -26,8 +26,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
+import gparap.apps.multiplex_clock.ui.AlarmClockFragment;
+import gparap.apps.multiplex_clock.ui.ChronometerFragment;
+import gparap.apps.multiplex_clock.ui.ClockFragment;
+import gparap.apps.multiplex_clock.ui.CountdownFragment;
+import gparap.apps.multiplex_clock.ui.R;
+
 public class MainActivity extends AppCompatActivity {
-    private ChronometerFragment chronometerFragment;
     private int currentFragmentID;
 
     @Override
@@ -45,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
         //set MaterialToolbar to act as the ActionBar
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
     }
 
     @Override
