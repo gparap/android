@@ -40,5 +40,6 @@
         <item>Dollars américain</item>
         <item>Rand sud-africain</item>
     </string-array>
+    <string name="hint_wifi_disabled">Pas de connexion Internet.</string>
 
 </resources>

@@ -40,5 +40,6 @@
         <item>Доллар США</item>
         <item>Южноафриканский рэнд</item>
     </string-array>
+    <string name="hint_wifi_disabled">Подключение к Интернету отсутствует.</string>
 
 </resources>

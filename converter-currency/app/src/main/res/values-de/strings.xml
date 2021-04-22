@@ -40,5 +40,6 @@
         <item>US Dollar</item>
         <item>Südafrikanischer Rand</item>
     </string-array>
+    <string name="hint_wifi_disabled">Keine Internetverbindung.</string>
 
 </resources>

@@ -40,5 +40,6 @@
         <item>美元</item>
         <item>南非蘭特</item>
     </string-array>
+    <string name="hint_wifi_disabled">沒有網絡連接。</string>
 
 </resources>

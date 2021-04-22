@@ -40,5 +40,6 @@
         <item>Αμερικάνικο δολάριο</item>
         <item>Ραντ Νοτίου Αφρικής</item>
     </string-array>
+    <string name="hint_wifi_disabled">Δεν υπάρχει σύνδεση στο διαδίκτυο.</string>
 
 </resources>

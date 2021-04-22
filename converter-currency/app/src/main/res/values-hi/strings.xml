@@ -40,5 +40,6 @@
         <item>अमेरिकी डॉलर</item>
         <item>दक्षिण अफ्रीकी रैंड</item>
     </string-array>
+    <string name="hint_wifi_disabled">कोई इंटरनेट कनेक्शन नहीं।</string>
 
 </resources>

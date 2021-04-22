@@ -40,5 +40,6 @@
         <item>미국 달러</item>
         <item>남아프리카 랜드</item>
     </string-array>
+    <string name="hint_wifi_disabled">인터넷에 연결되지 않음.</string>
 
 </resources>

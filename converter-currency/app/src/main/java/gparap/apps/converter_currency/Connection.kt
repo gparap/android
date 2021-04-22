@@ -24,9 +24,6 @@ import java.net.URL
 import java.util.concurrent.Callable
 import java.util.concurrent.Executors
 
-/**
- * Created by gparap on 2021-03-01.
- */
 class Connection {
     companion object {
         @JvmStatic

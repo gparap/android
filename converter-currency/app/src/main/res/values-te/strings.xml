@@ -40,5 +40,6 @@
         <item>యుఎస్ డాలర్</item>
         <item>దక్షిణాఫ్రికా రాండ్</item>
     </string-array>
+    <string name="hint_wifi_disabled">ఇంటర్నెట్ కనెక్షన్ లేదు.</string>
 
 </resources>

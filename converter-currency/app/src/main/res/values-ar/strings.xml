@@ -40,5 +40,6 @@
         <item>الدولار الأمريكي</item>
         <item>راند جنوب أفريقيا</item>
     </string-array>
+    <string name="hint_wifi_disabled">لا يوجد اتصال بالإنترنت.</string>
 
 </resources>

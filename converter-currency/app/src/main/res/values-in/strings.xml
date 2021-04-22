@@ -40,5 +40,6 @@
         <item>Dolar Amerika</item>
         <item>Rand Afrika Selatan</item>
     </string-array>
+    <string name="hint_wifi_disabled">Tidak ada koneksi internet.</string>
 
 </resources>

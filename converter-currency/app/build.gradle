@@ -56,6 +56,6 @@ dependencies {
     testImplementation("org.junit.vintage:junit-vintage-engine:4.12.0")
 
     //"method..not mocked" workaround in Connection.kt using JSONObject
-    testImplementation 'org.json:json:20180813'
+    testImplementation 'org.json:json:20210307'
 
 }
