@@ -36,8 +36,8 @@ class EvaluatorFragment : Fragment() {
     ): View? {
         evaluatorViewModel =
                 ViewModelProvider(this).get(EvaluatorViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_manager, container, false)
-        val textView: TextView = root.findViewById(R.id.text_manager_fragment)
+        val root = inflater.inflate(R.layout.fragment_evaluator, container, false)
+        val textView: TextView = root.findViewById(R.id.text_evaluator_fragment)
         evaluatorViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })

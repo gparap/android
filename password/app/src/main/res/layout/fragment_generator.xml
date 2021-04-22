@@ -12,14 +12,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:hint="@string/hint_password_generated"
         android:textAlignment="center"
         android:textSize="20sp"
-        android:visibility="invisible"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/buttonGeneratePassword"
         app:layout_constraintEnd_toEndOf="@+id/buttonGeneratePassword"
-        app:layout_constraintStart_toStartOf="@+id/buttonGeneratePassword"
-        tools:text="password generated"
-        tools:visibility="visible" />
+        app:layout_constraintStart_toStartOf="@+id/buttonGeneratePassword" />
 
     <!--Button that generates password-->
     <Button
@@ -68,11 +67,13 @@
         android:id="@+id/editTextCustomLengthPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:digits="0123456789"
+        android:hint="@string/hint_00"
+        android:importantForAutofill="no"
         android:inputType="number"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/radioGroupPasswordLength"
         app:layout_constraintStart_toEndOf="@+id/radioGroupPasswordLength"
-        tools:text="100"
         tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

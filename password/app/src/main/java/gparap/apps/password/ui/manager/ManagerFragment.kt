@@ -36,8 +36,8 @@ class ManagerFragment : Fragment() {
     ): View? {
         managerViewModel =
                 ViewModelProvider(this).get(ManagerViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_generator, container, false)
-        val textView: TextView = root.findViewById(R.id.text_generator_fragment)
+        val root = inflater.inflate(R.layout.fragment_manager, container, false)
+        val textView: TextView = root.findViewById(R.id.text_manager_fragment)
         managerViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
