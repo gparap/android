@@ -18,11 +18,24 @@ package gparap.apps.password.ui.generator
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import java.lang.StringBuilder
+import kotlin.random.Random
 
 class GeneratorViewModel : ViewModel() {
+    private var passwordLiveData = MutableLiveData<String>()
+    val password: LiveData<String> = passwordLiveData
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "Password Generator Fragment"
+    /**
+     * Generates a random password using characters from ASCII code 33('!') to 126('~')
+     * @param length how many characters should the password be
+     */
+    fun generatePassword(length: Int) {
+        val stringBuilder = StringBuilder()
+
+        for (i in 0 until length) {
+            stringBuilder.append(Random.nextInt(33, 127).toChar())
+        }
+
+        passwordLiveData.value = stringBuilder.toString()
     }
-    val text: LiveData<String> = _text
 }

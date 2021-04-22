@@ -15,42 +15,80 @@
  */
 package gparap.apps.password.ui.generator
 
+import android.widget.TextView
 import androidx.fragment.app.testing.FragmentScenario
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import gparap.apps.password.R
 import org.hamcrest.core.IsNot.not
-import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
 class GeneratorFragmentInstrumentedTest {
+    private var fragmentScenario: FragmentScenario<GeneratorFragment>? = null
 
     @Before
     fun setUp() {
-        FragmentScenario.launchInContainer(GeneratorFragment::class.java)
+        fragmentScenario = FragmentScenario.launchInContainer(GeneratorFragment::class.java)
     }
 
     @Test
-    fun isInvisible_textViewPasswordGenerated() {
-        onView(withId(gparap.apps.password.R.id.textViewPasswordGenerated))
-            .check(matches(not(isDisplayed())))
+    fun isVisible_textViewPasswordGenerated() {
+        onView(withId(R.id.textViewPasswordGenerated)).check(matches(isDisplayed()))
     }
 
     @Test
     fun isVisible_buttonGeneratePassword() {
-        onView(withId(gparap.apps.password.R.id.buttonGeneratePassword)).check(matches(isDisplayed()))
+        onView(withId(R.id.buttonGeneratePassword)).check(matches(isDisplayed()))
     }
 
     @Test
     fun isVisible_radioGroupPasswordLength() {
-        onView(withId(gparap.apps.password.R.id.radioGroupPasswordLength)).check(matches(isDisplayed()))
+        onView(withId(R.id.radioGroupPasswordLength)).check(matches(isDisplayed()))
     }
 
     @Test
     fun isInvisible_editTextCustomLengthPassword() {
-        onView(withId(gparap.apps.password.R.id.textViewPasswordGenerated))
+        onView(withId(R.id.editTextCustomLengthPassword))
             .check(matches(not(isDisplayed())))
+    }
+
+    @Test
+    fun onClickRadioButton_generate08LengthPassword() {
+        onView(withId(R.id.radioButton08CharsLengthPassword)).perform(click())
+        onView(withId(R.id.buttonGeneratePassword)).perform(click())
+        val expectedLength = 8
+        val actualLength = getTextFromViewById(R.id.textViewPasswordGenerated)?.length
+        assert(expectedLength == actualLength) { "Password length is not correct" }
+    }
+
+    @Test
+    fun onClickRadioButton__generate16LengthPassword() {
+        onView(withId(R.id.radioButton16CharsLengthPassword)).perform(click())
+        onView(withId(R.id.buttonGeneratePassword)).perform(click())
+        val expectedLength = 16
+        val actualLength = getTextFromViewById(R.id.textViewPasswordGenerated)?.length
+        assert(expectedLength == actualLength) { "Password length is not correct" }
+    }
+
+    @Test
+    fun onClickradioButton_generateCustomLengthPassword() {
+        onView(withId(R.id.radioButtonCustomLengthPassword)).perform(click())
+        onView(withId(R.id.editTextCustomLengthPassword)).perform(typeText("5"))
+        val expectedLength = 5
+        val actualLength = getTextFromViewById(R.id.editTextCustomLengthPassword)?.toInt()
+        assert(expectedLength == actualLength) { "Password length is not correct" }
+    }
+
+    private fun getTextFromViewById(viewId: Int): String? {
+        var textView: TextView? = null
+        fragmentScenario?.onFragment {
+            textView = it.view?.findViewById(viewId)
+        }
+        return textView?.text?.toString()
     }
 }

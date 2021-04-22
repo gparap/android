@@ -16,31 +16,79 @@
 package gparap.apps.password.ui.generator
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.RadioGroup
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import gparap.apps.password.R
 
 class GeneratorFragment : Fragment() {
-
-    private lateinit var generatorViewModel: GeneratorViewModel
+    private lateinit var viewModel: GeneratorViewModel
+    private var passwordLength = 8
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-        generatorViewModel =
-                ViewModelProvider(this).get(GeneratorViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_generator, container, false)
-        //val textView: TextView = root.findViewById(R.id.text_generator_fragment)
-        generatorViewModel.text.observe(viewLifecycleOwner, Observer {
-            //textView.text = it
+        //inflate layout for this fragment
+        val rootView = inflater.inflate(R.layout.fragment_generator, container, false)
+
+        //create viewmodel for this fragment
+        viewModel = ViewModelProvider(this).get(GeneratorViewModel::class.java)
+
+        //generate random password
+        val buttonGenerate = rootView.findViewById<Button>(R.id.buttonGeneratePassword)
+        buttonGenerate.setOnClickListener {
+            viewModel.generatePassword(passwordLength)
+        }
+
+        //observe generated password
+        val passwordGenerated = rootView.findViewById<TextView>(R.id.textViewPasswordGenerated)
+        viewModel.password.observe(viewLifecycleOwner, {
+            passwordGenerated.text = it
         })
-        return root
+
+        //observe custom password length
+        val customLength = rootView.findViewById<TextView>(R.id.editTextCustomLengthPassword)
+        customLength.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                passwordLength = s.toString().toInt()
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+
+        //handle password length with radio buttons
+        val radioGroup = rootView.findViewById<RadioGroup>(R.id.radioGroupPasswordLength)
+        radioGroup.setOnCheckedChangeListener { _, id ->
+            when (id) {
+                R.id.radioButton08CharsLengthPassword -> {
+                    customLength.isVisible = false
+                    passwordLength = 8
+                }
+                R.id.radioButton16CharsLengthPassword -> {
+                    customLength.isVisible = false
+                    passwordLength = 16
+                }
+                R.id.radioButtonCustomLengthPassword -> {
+                    customLength.isVisible = true
+                    passwordLength = 0
+                    try {
+                        passwordLength = customLength.text.toString().toInt()
+                    } catch (e: Exception) {
+                    }
+                }
+            }
+        }
+        return rootView
     }
 }

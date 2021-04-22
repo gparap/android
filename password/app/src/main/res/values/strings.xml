@@ -4,9 +4,9 @@
     <string name="title_evaluator">Evaluate</string>
     <string name="title_manager">Manage</string>
     <string name="button_generate_password">Generate Password</string>
-
-    <!--radio buttons for password length-->
     <string name="radio_08_chars">08 chars length</string>
     <string name="radio_16_chars">16 chars length</string>
     <string name="radio_custom_chars">custom length</string>
+    <string name="hint_password_generated">password generated</string>
+    <string name="hint_00">00</string>
 </resources>

@@ -25,5 +25,4 @@ import org.junit.runners.Suite
     BottomNavigationInstrumentedTest::class,
     GeneratorFragmentInstrumentedTest::class
 )
-class AppTestSuite {
-}
+class AppTestSuite
