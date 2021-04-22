@@ -18,18 +18,16 @@ package gparap.apps.converter_currency
 import org.json.JSONObject
 
 /**
- * A class that parses JSON API http response.
- * Created by gparap on 2021-03-02.
+ * Parses JSON API http response.
  */
 class Parser(data: JSONObject) {
     private var data: JSONObject? = null
-    private var rates: JSONObject? = null
 
     init {
         this.data = data
     }
 
-    fun getRates() : JSONObject{
+    fun getRates(): JSONObject {
         return data?.getJSONObject("rates") as JSONObject
     }
 

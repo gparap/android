@@ -4,6 +4,7 @@
     <string name="string_to">To</string>
     <string name="string_convert">Convert</string>
     <string name="hint_enter_amount">enter amount</string>
+    <string name="hint_wifi_disabled">No internet connection.</string>
 
     <!--International Currency Codes-->
     <string-array name="currencyCodes">

@@ -40,5 +40,6 @@
         <item>米ドル</item>
         <item>南アフリカランド</item>
     </string-array>
+    <string name="hint_wifi_disabled">インターネットに接続できません。</string>
 
 </resources>

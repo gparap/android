@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">แปลงสกุลเงิน</string>
+    <string name="string_from">จาก</string>
+    <string name="string_to">ถึง</string>
+    <string name="string_convert">แปลง</string>
+    <string name="hint_enter_amount">ใส่จำนวนเงิน</string>
+    <string name="hint_wifi_disabled">ไม่มีการเชื่อมต่ออินเทอร์เน็ต.</string>
+</resources>

@@ -21,9 +21,6 @@ import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
 import androidx.appcompat.app.AppCompatActivity
 
-/**
- * Created by gparap on 2021-02-20.
- */
 class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
     private lateinit var spinnerFromCurrency: Spinner
     private lateinit var spinnerToCurrency: Spinner
@@ -33,7 +30,7 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
     private lateinit var buttonConvert: Button
     private lateinit var editTextResult: TextView
     private lateinit var currencies: HashMap<String, String>
-    private val baseURL = "https://api.vatcomply.com/rates";
+    private val baseURL = "https://api.vatcomply.com/rates"
     private lateinit var parser: Parser
     private var fromCurrencyRate: Double? = null
     private var toCurrencyRate: Double? = null
@@ -85,10 +82,11 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
     }
 
     private fun convert() {
-        initParser()
-        fromCurrencyRate = getCurrencyRate(spinnerFromCurrency.selectedItem.toString())
-        toCurrencyRate = getCurrencyRate(spinnerToCurrency.selectedItem.toString())
-        editTextResult.text = beautifyResult(calculateConversion())
+        if (initParser()) {
+            fromCurrencyRate = getCurrencyRate(spinnerFromCurrency.selectedItem.toString())
+            toCurrencyRate = getCurrencyRate(spinnerToCurrency.selectedItem.toString())
+            editTextResult.text = beautifyResult(calculateConversion())
+        }
     }
 
     /**
@@ -107,13 +105,22 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
     /**
      * Initializes Parser with currency exchange rates from API
      */
-    private fun initParser() {
+    private fun initParser(): Boolean {
         parser = if (Connection.latestExchangeRates == null) {
-            Connection.fetchRates(baseURL)
-            Parser(Connection.latestExchangeRates!!)
+            try {
+                Connection.fetchRates(baseURL)
+                Parser(Connection.latestExchangeRates!!)
+            } catch (e: Exception) {
+                e.printStackTrace()
+
+                //user has disabled wifi connection
+                Toast.makeText(this, R.string.hint_wifi_disabled, Toast.LENGTH_SHORT).show()
+                return false
+            }
         } else {
             Parser(Connection.latestExchangeRates!!)
         }
+        return true
     }
 
     /**
@@ -179,10 +186,10 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
         //remove trailing zeros
         val integer: Int?
         val decimal: Double?
-        if (outputFrom.contains(".")){
+        if (outputFrom.contains(".")) {
             integer = outputFrom.substring(0, outputFrom.indexOf(".")).toInt()
             decimal = outputFrom.substring(outputFrom.indexOf("."), outputFrom.length).toDouble()
-            if (decimal == 0.0){
+            if (decimal == 0.0) {
                 outputFrom = integer.toString()
             }
         }
@@ -191,17 +198,17 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
         }
 
         //append commas (",") between thousands
-        if (outputTo.contains(".")){
+        if (outputTo.contains(".")) {
             if (outputTo.substring(0, outputTo.indexOf(".")).length > 3)
                 outputTo = beautifyThousands(outputTo)
-        }else{
+        } else {
             if (outputTo.length > 3)
                 outputTo = beautifyThousands(outputTo)
         }
-        if (outputFrom.contains(".")){
+        if (outputFrom.contains(".")) {
             if (outputFrom.substring(0, outputFrom.indexOf(".")).length > 3)
                 outputFrom = beautifyThousands(outputFrom)
-        }else{
+        } else {
             if (outputFrom.length > 3)
                 outputFrom = beautifyThousands(outputFrom)
         }
@@ -227,7 +234,7 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
     /**
      * Appends "," between thousands ie. 1000000 -> 1,000,000
      */
-    private fun beautifyThousands(inputString: String) : String {
+    private fun beautifyThousands(inputString: String): String {
         val stringBuilder = StringBuilder()
         val array = inputString.split(".")
         if (array[0].length > 3) {
@@ -238,7 +245,8 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
                     stringBuilder.append(reversed[i]).append(reversed[i + 1])
                         .append(reversed[i + 2])
                     stringBuilder.append(",")
-                } catch (e: Exception) { }
+                } catch (e: Exception) {
+                }
             }
             stringBuilder.reverse()
             if (array.size > 1) {

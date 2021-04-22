@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Chuyển đổi tiền tệ</string>
+    <string name="string_from">Từ</string>
+    <string name="string_to">Đến</string>
+    <string name="string_convert">Đổi</string>
+    <string name="hint_enter_amount">nhập số tiền</string>
+    <string name="hint_wifi_disabled">Không có kết nối Internet.</string>
+</resources>

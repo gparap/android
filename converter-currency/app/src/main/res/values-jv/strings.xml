@@ -40,5 +40,6 @@
         <item>Dolar AS</item>
         <item>Rand Afrika Kidul</item>
     </string-array>
+    <string name="hint_wifi_disabled">Ora ana sambungan internet.</string>
 
 </resources>
