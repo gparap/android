@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">複数の時計</string>
+    <string name="alarm">警報</string>
+    <string name="set_alarm">目覚ましを設定する</string>
+    <string name="alarm_off">アラームが鳴った</string>
+    <string name="menu_item_clock">時計</string>
+    <string name="menu_item_countdown_timer">カウントダウンタイマー</string>
+    <string name="menu_item_alarm_clock">目覚まし時計</string>
+    <string name="menu_item_chronometer">クロノメーター</string>
+    <string name="button_start">開始</string>
+    <string name="button_stop">やめる</string>
+    <string name="button_reset">リセット</string>
+    <string name="toast_error_alarm_hours">アラーム時間の設定エラー</string>
+    <string name="toast_error_alarm_minutes">アラーム分設定エラー</string>
+    <string name="hh_mm_ss">HH:MM:SS</string>
+</resources>

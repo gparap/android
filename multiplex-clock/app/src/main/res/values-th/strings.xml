@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">นาฬิกาหลายเรือน</string>
+    <string name="alarm">นาฬิกาปลุก</string>
+    <string name="set_alarm">ตั้งนาฬิกาปลุก</string>
+    <string name="alarm_off">นาฬิกาปลุกดับลง</string>
+    <string name="menu_item_clock">นาฬิกา</string>
+    <string name="menu_item_countdown_timer">นาฬิกาจับเวลาถอยหลัง</string>
+    <string name="menu_item_alarm_clock">นาฬิกาปลุก</string>
+    <string name="menu_item_chronometer">โครโนมิเตอร์</string>
+    <string name="button_start">เริ่ม</string>
+    <string name="button_stop">หยุด</string>
+    <string name="button_reset">รีเซ็ต</string>
+    <string name="toast_error_alarm_hours">เกิดข้อผิดพลาดในการตั้งเวลาปลุก</string>
+    <string name="toast_error_alarm_minutes">เกิดข้อผิดพลาดในการตั้งค่านาทีการปลุก</string>
+    <string name="hh_mm_ss">HH:MM:SS</string>
+</resources>

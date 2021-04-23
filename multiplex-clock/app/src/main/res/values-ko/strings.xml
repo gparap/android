@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">다중 시계</string>
+    <string name="alarm">경보</string>
+    <string name="set_alarm">알람을 설정하다</string>
+    <string name="alarm_off">알람이 울림</string>
+    <string name="menu_item_clock">시계</string>
+    <string name="menu_item_countdown_timer">카운트 다운 타이머</string>
+    <string name="menu_item_alarm_clock">알람 시계</string>
+    <string name="menu_item_chronometer">메트로놈</string>
+    <string name="button_start">스타트</string>
+    <string name="button_stop">중지</string>
+    <string name="button_reset">초기화</string>
+    <string name="toast_error_alarm_hours">알람 시간 설정 오류</string>
+    <string name="toast_error_alarm_minutes">알람 시간 설정 오류</string>
+    <string name="hh_mm_ss">HH:MM:SS</string>
+</resources>

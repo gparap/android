@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ساعت چندگانه</string>
+    <string name="alarm">زنگ خطر. هشدار</string>
+    <string name="set_alarm">تنظیم هشدار</string>
+    <string name="alarm_off">آژیر قطع شد</string>
+    <string name="menu_item_clock">ساعت</string>
+    <string name="menu_item_countdown_timer">تایمر شمارش معکوس</string>
+    <string name="menu_item_alarm_clock">ساعت زنگدار</string>
+    <string name="menu_item_chronometer">تقویم سنج</string>
+    <string name="button_start">شروع کنید</string>
+    <string name="button_stop">متوقف کردن</string>
+    <string name="button_reset">تنظیم مجدد</string>
+    <string name="toast_error_alarm_hours">خطا در تنظیم ساعت هشدار</string>
+    <string name="toast_error_alarm_minutes">خطا در تنظیم دقایق هشدار</string>
+    <string name="hh_mm_ss">SS:MM:HH</string>
+</resources>

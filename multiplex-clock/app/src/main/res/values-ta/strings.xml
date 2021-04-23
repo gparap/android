@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">பல கடிகாரம்</string>
+    <string name="alarm">அலாரம்</string>
+    <string name="set_alarm">அலாரம் வை</string>
+    <string name="alarm_off">அலாரம் போய்விட்டது</string>
+    <string name="menu_item_clock">கடிகாரம்</string>
+    <string name="menu_item_countdown_timer">கவுண்டன் டைமர்</string>
+    <string name="menu_item_alarm_clock">அலாரம் கடிகாரம்</string>
+    <string name="menu_item_chronometer">காலவரிசை</string>
+    <string name="button_start">தொடங்கு</string>
+    <string name="button_stop">நிறுத்து</string>
+    <string name="button_reset">மீட்டமை</string>
+    <string name="toast_error_alarm_hours">எச்சரிக்கை நேரங்களை அமைப்பதில் பிழை</string>
+    <string name="toast_error_alarm_minutes">அலாரம் நிமிடங்களை அமைப்பதில் பிழை</string>
+    <string name="hh_mm_ss">HH:MM:SS</string>
+</resources>

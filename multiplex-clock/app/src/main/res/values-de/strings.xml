@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mehrfachuhr</string>
+    <string name="alarm">Alarm</string>
+    <string name="set_alarm">Wecker stellen</string>
+    <string name="alarm_off">Der Alarm ging los</string>
+    <string name="menu_item_clock">Uhr</string>
+    <string name="menu_item_countdown_timer">Countdown-Timer</string>
+    <string name="menu_item_alarm_clock">Wecker</string>
+    <string name="menu_item_chronometer">Chronometer</string>
+    <string name="button_start">Start</string>
+    <string name="button_stop">Halt</string>
+    <string name="button_reset">Zurücksetzen</string>
+    <string name="toast_error_alarm_hours">Fehler beim Einstellen der Alarmstunden</string>
+    <string name="toast_error_alarm_minutes">Fehler beim Einstellen der Alarmminuten</string>
+    <string name="hh_mm_ss">HH:MM:SS</string>
+</resources>

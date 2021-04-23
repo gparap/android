@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Orologio multiplo</string>
+    <string name="alarm">Allarme</string>
+    <string name="set_alarm">Imposta sveglia</string>
+    <string name="alarm_off">L\'allarme è scattato</string>
+    <string name="menu_item_clock">Orologio</string>
+    <string name="menu_item_countdown_timer">Conto alla rovescia</string>
+    <string name="menu_item_alarm_clock">Sveglia</string>
+    <string name="menu_item_chronometer">Cronometro</string>
+    <string name="button_start">Inizio</string>
+    <string name="button_stop">Fermare</string>
+    <string name="button_reset">Ripristina</string>
+    <string name="toast_error_alarm_hours">Errore durante l\'impostazione delle ore di allarme</string>
+    <string name="toast_error_alarm_minutes">Errore durante l\'impostazione dei minuti di allarme</string>
+    <string name="hh_mm_ss">HH:MM:SS</string>
+</resources>

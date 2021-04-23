@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jam Multiple</string>
+    <string name="alarm">Weker</string>
+    <string name="set_alarm">Setel Weker</string>
+    <string name="alarm_off">Weker mati</string>
+    <string name="menu_item_clock">Jam</string>
+    <string name="menu_item_countdown_timer">Timer Countdown</string>
+    <string name="menu_item_alarm_clock">Jam Weker</string>
+    <string name="menu_item_chronometer">Kometometer</string>
+    <string name="button_start">Miwiti</string>
+    <string name="button_stop">Mandheg</string>
+    <string name="button_reset">Reset</string>
+    <string name="toast_error_alarm_hours">Kesalahan nalika nyetel jam weker</string>
+    <string name="toast_error_alarm_minutes">Kesalahan nalika nyetel menit weker</string>
+    <string name="hh_mm_ss">HH:MM:SS</string>
+</resources>

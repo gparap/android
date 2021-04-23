@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">多時鐘</string>
+    <string name="alarm">警報</string>
+    <string name="set_alarm">設定鬧鐘</string>
+    <string name="alarm_off">鬧鈴響了</string>
+    <string name="menu_item_clock">鐘</string>
+    <string name="menu_item_countdown_timer">倒計時器</string>
+    <string name="menu_item_alarm_clock">鬧鐘</string>
+    <string name="menu_item_chronometer">天文台</string>
+    <string name="button_start">開始</string>
+    <string name="button_stop">停止</string>
+    <string name="button_reset">重啟</string>
+    <string name="toast_error_alarm_hours">設置鬧鐘時間時出錯</string>
+    <string name="toast_error_alarm_minutes">設置鬧鐘分鐘數時出錯</string>
+    <string name="hh_mm_ss">HH:MM:SS</string>
+</resources>

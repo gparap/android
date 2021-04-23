@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Multiplex Clock</string>
     <string name="hh_mm_ss">HH:MM:SS</string>
-    <string name="time_now">Time Now:</string>
-    <string name="alarm">Alarm:</string>
+    <string name="alarm">Alarm</string>
     <string name="set_alarm">Set Alarm</string>
+    <string name="alarm_off">Alarm went off</string>
 
     <!--Menu Items-->
     <string name="menu_item_clock">Clock</string>
@@ -17,13 +17,13 @@
     <string name="button_reset">Reset</string>
 
     <!--Misc. values-->
-    <string name="value_0">0</string>
-    <string name="value_00">00</string>
-    <string name="value_23">23</string>
-    <string name="value_59">59</string>
-    <string name="value_00_00">00:00</string>
+    <string name="value_0" translatable="false">0</string>
+    <string name="value_00" translatable="false">00</string>
+    <string name="value_23" translatable="false">23</string>
+    <string name="value_59" translatable="false">59</string>
+    <string name="value_00_00" translatable="false">00:00</string>
 
     <!--Error messages-->
-    <string name="toast_error_alarm_hours">Error in setting alarm hours</string>
-    <string name="toast_error_alarm_minutes">Error in setting alarm minutes</string>
+    <string name="toast_error_alarm_hours">Error setting alarm hours</string>
+    <string name="toast_error_alarm_minutes">Error setting alarm minutes</string>
 </resources>

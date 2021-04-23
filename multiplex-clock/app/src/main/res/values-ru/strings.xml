@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Несколько часов</string>
+    <string name="alarm">Аварийная сигнализация</string>
+    <string name="set_alarm">Установить будильник</string>
+    <string name="alarm_off">Тревога сработала</string>
+    <string name="menu_item_clock">Часы</string>
+    <string name="menu_item_countdown_timer">Таймер обратного отсчета</string>
+    <string name="menu_item_alarm_clock">Будильник</string>
+    <string name="menu_item_chronometer">Хронометр</string>
+    <string name="button_start">Начинать</string>
+    <string name="button_stop">Стоп</string>
+    <string name="button_reset">Сброс настроек</string>
+    <string name="toast_error_alarm_hours">Ошибка установки часов будильника</string>
+    <string name="toast_error_alarm_minutes">Ошибка установки минут будильника</string>
+    <string name="hh_mm_ss">HH:MM:SS</string>
+</resources>

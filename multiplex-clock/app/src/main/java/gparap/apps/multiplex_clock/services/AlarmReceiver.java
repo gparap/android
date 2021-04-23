@@ -43,8 +43,8 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         //create the notification
         Notification notification = new NotificationCompat.Builder(context, channelId)
-                .setContentTitle("Alarm")
-                .setContentText("Alarm is ON")
+                .setContentTitle(context.getResources().getString(R.string.alarm))
+                .setContentText(context.getResources().getString(R.string.alarm_off))
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT).build();
 

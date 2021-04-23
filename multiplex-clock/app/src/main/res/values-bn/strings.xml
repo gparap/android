@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">একাধিক ঘড়ি</string>
+    <string name="alarm">বিপদ</string>
+    <string name="set_alarm">সেট এলার্ম</string>
+    <string name="alarm_off">অ্যালার্ম থেমে গেল</string>
+    <string name="menu_item_clock">ঘড়ি</string>
+    <string name="menu_item_countdown_timer">কাউন্ট আডন টাইম</string>
+    <string name="menu_item_alarm_clock">অ্যালার্মঘড়ি</string>
+    <string name="menu_item_chronometer">ক্রোনোমিটার</string>
+    <string name="button_start">শুরু করুন</string>
+    <string name="button_stop">থামো</string>
+    <string name="button_reset">রিসেট</string>
+    <string name="toast_error_alarm_hours">অ্যালার্ম ঘন্টা সেট করতে ত্রুটি</string>
+    <string name="toast_error_alarm_minutes">অ্যালার্ম মিনিট সেট করতে ত্রুটি</string>
+    <string name="hh_mm_ss">HH:MM:SS</string>
+</resources>
