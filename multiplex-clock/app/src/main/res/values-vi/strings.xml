@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Nhiều đồng hồ</string>
+    <string name="alarm">báo thức</string>
+    <string name="set_alarm">Đặt báo thức</string>
+    <string name="alarm_off">Đồng hồ báo thức đã tắt</string>
+    <string name="menu_item_clock">Đồng hồ</string>
+    <string name="menu_item_countdown_timer">Đồng hồ đếm ngược</string>
+    <string name="menu_item_alarm_clock">Đồng hồ báo thức</string>
+    <string name="menu_item_chronometer">Chronometer</string>
+    <string name="button_start">Khởi đầu</string>
+    <string name="button_stop">Dừng lại</string>
+    <string name="button_reset">Cài lại</string>
+    <string name="toast_error_alarm_hours">Lỗi khi đặt giờ báo thức</string>
+    <string name="toast_error_alarm_minutes">Lỗi khi đặt số phút báo thức</string>
+    <string name="hh_mm_ss">HH:MM:SS</string>
+</resources>

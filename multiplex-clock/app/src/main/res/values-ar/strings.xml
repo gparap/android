@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">متعددة على مدار الساعة</string>
+    <string name="alarm">إنذار</string>
+    <string name="set_alarm">ضبط المنبه</string>
+    <string name="alarm_off">تم إيقاف التنبيه</string>
+    <string name="menu_item_clock">ساعة</string>
+    <string name="menu_item_countdown_timer">العد التنازلي</string>
+    <string name="menu_item_alarm_clock">منبه</string>
+    <string name="menu_item_chronometer">الكرونومتر</string>
+    <string name="button_start">بداية</string>
+    <string name="button_stop">قف</string>
+    <string name="button_reset">إعادة ضبط</string>
+    <string name="toast_error_alarm_hours">خطأ في ضبط ساعات التنبيه</string>
+    <string name="toast_error_alarm_minutes">خطأ في ضبط دقائق التنبيه</string>
+    <string name="hh_mm_ss">SS:MM:HH</string>
+</resources>

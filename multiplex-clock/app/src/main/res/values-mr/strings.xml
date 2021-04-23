@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">एकाधिक घड्याळ</string>
+    <string name="alarm">गजर</string>
+    <string name="set_alarm">अलार्म सेट करा</string>
+    <string name="alarm_off">गजर बंद गेला</string>
+    <string name="menu_item_clock">घड्याळ</string>
+    <string name="menu_item_countdown_timer">काउंटडाउन टाइमर</string>
+    <string name="menu_item_alarm_clock">गजराचे घड्याळ</string>
+    <string name="menu_item_chronometer">क्रोनोमीटर</string>
+    <string name="button_start">प्रारंभ करा</string>
+    <string name="button_stop">थांबा</string>
+    <string name="button_reset">रीसेट करा</string>
+    <string name="toast_error_alarm_hours">अलार्म तास सेट करताना त्रुटी</string>
+    <string name="toast_error_alarm_minutes">अलार्म मिनिटे सेट करताना त्रुटी</string>
+    <string name="hh_mm_ss">HH:MM:SS</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ρολόι πολλαπλής χρήσης</string>
+    <string name="alarm">Ξυπνητήρι</string>
+    <string name="set_alarm">Ορισε Ξυπνητηρι</string>
+    <string name="alarm_off">Το ξυπνητήρι χτύπησε</string>
+    <string name="menu_item_clock">Ρολόι</string>
+    <string name="menu_item_countdown_timer">Αντίστροφο χρονόμετρο</string>
+    <string name="menu_item_alarm_clock">Ξυπνητήρι</string>
+    <string name="menu_item_chronometer">Χρονόμετρο</string>
+    <string name="button_start">Εκκινηση</string>
+    <string name="button_stop">Παυση</string>
+    <string name="button_reset">Επαναφορα</string>
+    <string name="toast_error_alarm_hours">Σφάλμα στην ρύθμιση ωρών ξυπνητηριού</string>
+    <string name="toast_error_alarm_minutes">Σφάλμα στην ρύθμιση λεπτών ξυπνητηριού</string>
+    <string name="hh_mm_ss">ΩΩ:ΛΛ:ΔΔ</string>
+</resources>

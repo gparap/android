@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jam Ganda</string>
+    <string name="alarm">Alarm</string>
+    <string name="set_alarm">Pasang alarm</string>
+    <string name="alarm_off">Alarm berbunyi</string>
+    <string name="menu_item_clock">Jam</string>
+    <string name="menu_item_countdown_timer">Timer Hitung Mundur</string>
+    <string name="menu_item_alarm_clock">Jam Alarm</string>
+    <string name="menu_item_chronometer">Pencatat waktu</string>
+    <string name="button_start">Mulailah</string>
+    <string name="button_stop">Berhenti</string>
+    <string name="button_reset">Setel ulang</string>
+    <string name="toast_error_alarm_hours">Kesalahan menyetel jam alarm</string>
+    <string name="toast_error_alarm_minutes">Kesalahan menyetel menit alarm</string>
+    <string name="hh_mm_ss">HH:MM:SS</string>
+</resources>

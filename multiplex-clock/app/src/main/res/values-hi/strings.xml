@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">मल्टीपल क्लॉक</string>
+    <string name="alarm">अलार्म</string>
+    <string name="set_alarm">अलार्म सेट करो</string>
+    <string name="alarm_off">अलार्म शुरू हो गया</string>
+    <string name="menu_item_clock">घड़ी</string>
+    <string name="menu_item_countdown_timer">काउंटडाउन टाइमर</string>
+    <string name="menu_item_alarm_clock">अलार्म घड़ी</string>
+    <string name="menu_item_chronometer">ठीक घड़ी</string>
+    <string name="button_start">शुरू</string>
+    <string name="button_stop">रुकें</string>
+    <string name="button_reset">रीसेट</string>
+    <string name="toast_error_alarm_hours">अलार्म घंटे सेट करने में त्रुटि</string>
+    <string name="toast_error_alarm_minutes">अलार्म मिनट सेट करने में त्रुटि</string>
+    <string name="hh_mm_ss">HH:MM:SS</string>
+</resources>

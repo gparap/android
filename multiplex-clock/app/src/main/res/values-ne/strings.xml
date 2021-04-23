@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">बहु घडी</string>
+    <string name="alarm">अलार्म</string>
+    <string name="set_alarm">अलार्म सेट गर्नुहोस्</string>
+    <string name="alarm_off">अलार्म बन्द भयो</string>
+    <string name="menu_item_clock">घडी</string>
+    <string name="menu_item_countdown_timer">काउन्टडाउन टाइमर</string>
+    <string name="menu_item_alarm_clock">अलार्म घडी</string>
+    <string name="menu_item_chronometer">क्रोनोमीटर</string>
+    <string name="button_start">सुरु गर्नुहोस्</string>
+    <string name="button_stop">रोक</string>
+    <string name="button_reset">रिसेट गर्नुहोस्</string>
+    <string name="toast_error_alarm_hours">अलार्म घण्टा सेट गर्नमा त्रुटि</string>
+    <string name="toast_error_alarm_minutes">अलार्म मिनेटहरू सेट गर्दा त्रुटि</string>
+    <string name="hh_mm_ss">HH:MM:SS</string>
+</resources>

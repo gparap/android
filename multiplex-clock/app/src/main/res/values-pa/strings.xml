@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ਬਹੁ ਘੜੀ</string>
+    <string name="alarm">ਅਲਾਰਮ</string>
+    <string name="set_alarm">ਅਲਾਰਮ ਸੈੱਟ ਕਰੋ</string>
+    <string name="alarm_off">ਅਲਾਰਮ ਬੰਦ ਹੋ ਗਿਆ</string>
+    <string name="menu_item_clock">ਘੜੀ</string>
+    <string name="menu_item_countdown_timer">ਕਾਉਂਟਡਾਉਨ ਟਾਈਮਰ</string>
+    <string name="menu_item_alarm_clock">ਅਲਾਰਮ ਕਲਾਕ</string>
+    <string name="menu_item_chronometer">ਕ੍ਰੋਮੋਮੀਟਰ</string>
+    <string name="button_start">ਸ਼ੁਰੂ ਕਰੋ</string>
+    <string name="button_stop">ਰੂਕੋ</string>
+    <string name="button_reset">ਰੀਸੈੱਟ</string>
+    <string name="toast_error_alarm_hours">ਅਲਾਰਮ ਦੇ ਘੰਟੇ ਸੈਟ ਕਰਨ ਵਿੱਚ ਤਰੁੱਟੀ</string>
+    <string name="toast_error_alarm_minutes">ਅਲਾਰਮ ਮਿੰਟ ਸੈਟ ਕਰਨ ਵਿੱਚ ਗਲਤੀ</string>
+    <string name="hh_mm_ss">HH:MM:SS</string>
+</resources>

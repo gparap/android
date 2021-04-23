@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">బహుళ గడియారం</string>
+    <string name="alarm">అలారం</string>
+    <string name="set_alarm">అలారం పెట్టు</string>
+    <string name="alarm_off">అలారం అయిపోయింది</string>
+    <string name="menu_item_clock">గడియారం</string>
+    <string name="menu_item_countdown_timer">కౌంట్డౌన్ టైమర్</string>
+    <string name="menu_item_alarm_clock">అలారం గడియారం</string>
+    <string name="menu_item_chronometer">క్రోనోమీటర్</string>
+    <string name="button_start">ప్రారంభించండి</string>
+    <string name="button_stop">ఆపు</string>
+    <string name="button_reset">రీసెట్ చేయండి</string>
+    <string name="toast_error_alarm_hours">అలారం గంటలను సెట్ చేయడంలో లోపం</string>
+    <string name="toast_error_alarm_minutes">అలారం నిమిషాలు సెట్ చేయడంలో లోపం</string>
+    <string name="hh_mm_ss">HH:MM:SS</string>
+</resources>
