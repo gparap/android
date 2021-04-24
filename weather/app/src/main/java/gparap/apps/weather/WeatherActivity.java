@@ -139,7 +139,7 @@ public class WeatherActivity extends AppCompatActivity {
         String temp_min = String.valueOf(model.getTemperatureMin());
 
         //fill in weather widgets
-        textViewWeather.setText(model.getWeather());
+        textViewWeather.setText(model.getDescription());
         textViewTemperature.setText(WeatherUtils.formatWeatherValue(temp, 0));
         textViewTemperatureMax.setText(WeatherUtils.formatWeatherValue(temp_max, 0));
         textViewTemperatureMin.setText(WeatherUtils.formatWeatherValue(temp_min, 0));
@@ -165,7 +165,7 @@ public class WeatherActivity extends AppCompatActivity {
         //create callback to communicate with volley service
         VolleyServiceCallback volleyServiceCallback = new VolleyServiceCallback() {
             @Override
-            public void onResponse(String response) {//TODO: hide everything weather related
+            public void onResponse(String response) {
                 //parse json response to model
                 try {
                     viewModel.getWeatherData().setValue(WeatherModelParser.getInstance().getCurrentWeatherDataModel(response));
@@ -175,7 +175,7 @@ public class WeatherActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onError(VolleyError error) {//TODO: hide everything weather related
+            public void onError(VolleyError error) {
                 Toast.makeText(WeatherActivity.this, R.string.toast_cannot_fetch_weather, Toast.LENGTH_SHORT).show();
             }
         };

@@ -92,6 +92,10 @@ public class WeatherUtils {
         imageViewWeather.setVisibility(VISIBLE);
     }
 
+    /**
+     * Returns the appropriate unit of measurement based on user's locale
+     * @return metric or imperial
+     */
     public static String getMeasureUnit() {
         //check if locale is "US" (officially uses imperial units)
         if (Locale.getDefault().equals(Locale.US)) {
@@ -148,7 +152,8 @@ public class WeatherUtils {
                 + city
                 + WeatherUtils.API_URL_SUFFIX
                 + WeatherUtils.APP_ID
-                + "&units=" + getMeasureUnit();
+                + "&units=" + getMeasureUnit()
+                + "&lang=" + LocaleUtils.getInstance().getSupportedLanguage();
     }
 
     /**
@@ -164,7 +169,8 @@ public class WeatherUtils {
                 + "&lon=" + longtitude
                 + WeatherUtils.API_URL_SUFFIX
                 + WeatherUtils.APP_ID
-                + "&units=" + getMeasureUnit();
+                + "&units=" + getMeasureUnit()
+                + "&lang=" + LocaleUtils.getInstance().getSupportedLanguage();
     }
 
     /**
