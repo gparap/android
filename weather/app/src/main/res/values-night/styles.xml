@@ -4,13 +4,13 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorControlNormal">@color/colorBlack</item>
+        <item name="colorControlNormal">@color/colorWhite</item>
         <item name="colorOnPrimary">@color/colorBlackOpacity43</item>
         <item name="toolbarStyle">@style/ToolbarTheme</item>
     </style>
 
     <!-- Override default toolbar's text color. -->
-    <style name="ToolbarTheme" parent="@style/Widget.MaterialComponents.Toolbar">
+    <style name="ToolbarTheme" parent="@style/Widget.MaterialComponents.Toolbar.Primary">
         <item name="titleTextColor">@color/colorBlackOpacity43</item>
     </style>
 </resources>
