@@ -9,4 +9,6 @@
     <string name="radio_custom_chars">custom length</string>
     <string name="hint_password_generated">password generated</string>
     <string name="hint_00">00</string>
+    <string name="hint_password_title">enter title for password</string>
+    <string name="description_save_password">Save Password</string>
 </resources>

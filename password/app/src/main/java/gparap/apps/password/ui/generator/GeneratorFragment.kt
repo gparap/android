@@ -21,17 +21,19 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.RadioGroup
-import android.widget.TextView
+import android.widget.*
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.password.R
+import gparap.apps.password.data.DatabaseManager
+import gparap.apps.password.data.PasswordModel
 
 class GeneratorFragment : Fragment() {
     private lateinit var viewModel: GeneratorViewModel
     private var passwordLength = 8
+    private lateinit var passwordTitle: EditText
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,8 +48,10 @@ class GeneratorFragment : Fragment() {
 
         //generate random password
         val buttonGenerate = rootView.findViewById<Button>(R.id.buttonGeneratePassword)
+        passwordTitle = rootView.findViewById(R.id.generatedPasswordTitle)
         buttonGenerate.setOnClickListener {
             viewModel.generatePassword(passwordLength)
+            passwordTitle.isVisible = true
         }
 
         //observe generated password
@@ -89,6 +93,39 @@ class GeneratorFragment : Fragment() {
                 }
             }
         }
+
+        //save generated password
+        val fabSavePassword =
+            rootView.findViewById<FloatingActionButton>(R.id.fabSaveGeneratedPassword)
+        fabSavePassword.setOnClickListener {
+            saveGeneratedPassword()
+        }
+
         return rootView
+    }
+
+    private fun saveGeneratedPassword() {
+        //password validation
+        if (viewModel.password.value.isNullOrEmpty()) {
+            Toast.makeText(this.context, "Password is empty!", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        //password title validation
+        if (passwordTitle.text.isNullOrEmpty()) {
+            Toast.makeText(this.context, "Title is empty!", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        //create a password object
+        val password = PasswordModel(
+            -1, passwordTitle.text.toString(), viewModel.password.value.toString()
+        )
+
+        //save generated password to database
+        val databaseManager = DatabaseManager(this.requireContext())
+        if (databaseManager.insertPassword(password)) {
+            Toast.makeText(this.context, "Password saved.", Toast.LENGTH_SHORT).show()
+        }
     }
 }

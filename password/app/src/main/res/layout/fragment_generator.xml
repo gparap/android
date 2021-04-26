@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".ui.generator.GeneratorFragment">
 
+    <!--Generated password title-->
+    <EditText
+        android:id="@+id/generatedPasswordTitle"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_password_title"
+        app:layout_constraintBottom_toTopOf="@+id/textViewPasswordGenerated"
+        app:layout_constraintEnd_toEndOf="@+id/buttonGeneratePassword"
+        app:layout_constraintStart_toStartOf="@+id/buttonGeneratePassword"
+        android:autofillHints="false"
+        android:inputType="text" />
+
     <!--Text containing generated password-->
     <TextView
         android:id="@+id/textViewPasswordGenerated"
@@ -75,5 +89,18 @@
         app:layout_constraintBottom_toBottomOf="@+id/radioGroupPasswordLength"
         app:layout_constraintStart_toEndOf="@+id/radioGroupPasswordLength"
         tools:visibility="visible" />
+
+    <!--Button that saves generated password to database-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSaveGeneratedPassword"
+        android:src="@drawable/ic_save_black_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/description_save_password"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
