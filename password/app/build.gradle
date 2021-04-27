@@ -56,4 +56,7 @@ dependencies {
 
     //testing LiveData in unit tests
     testImplementation 'android.arch.core:core-testing:1.1.1'
+
+    //getting Context in unit tests
+    testImplementation 'org.robolectric:robolectric:4.0.2'
 }
