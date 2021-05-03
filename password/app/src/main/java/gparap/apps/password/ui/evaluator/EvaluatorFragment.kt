@@ -16,31 +16,42 @@
 package gparap.apps.password.ui.evaluator
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.EditText
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import gparap.apps.password.R
 
 class EvaluatorFragment : Fragment() {
-
     private lateinit var evaluatorViewModel: EvaluatorViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-        evaluatorViewModel =
-                ViewModelProvider(this).get(EvaluatorViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_evaluator, container, false)
-        val textView: TextView = root.findViewById(R.id.text_evaluator_fragment)
-        evaluatorViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+        //inflate layout for this fragment
+        val rootView = inflater.inflate(R.layout.fragment_evaluator, container, false)
+
+        //create viewmodel for this fragment
+        evaluatorViewModel = ViewModelProvider(this).get(EvaluatorViewModel::class.java)
+
+        //evaluate password strength
+        val evaluatedPassword = rootView.findViewById<EditText>(R.id.editTextEvaluatedPassword)
+        evaluatedPassword.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                Evaluator(context!!).evaluatePassword(s.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
         })
-        return root
+
+        return rootView
     }
 }

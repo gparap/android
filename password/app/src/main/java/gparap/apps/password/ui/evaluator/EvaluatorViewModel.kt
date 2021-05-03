@@ -15,14 +15,14 @@
  */
 package gparap.apps.password.ui.evaluator
 
+import android.text.TextWatcher
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class EvaluatorViewModel : ViewModel() {
+    private val passwordLiveData = MutableLiveData<String>()
+    val password: LiveData<String> = passwordLiveData
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "Password Evaluator Fragment"
-    }
-    val text: LiveData<String> = _text
+
 }
