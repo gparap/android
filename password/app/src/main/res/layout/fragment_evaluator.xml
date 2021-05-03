@@ -63,15 +63,14 @@
 
     <!--Evaluated password strength feedback-->
     <TextView
-        android:id="@+id/evaluatedPasswordStrengthInfo"
+        android:id="@+id/evaluatedPasswordStrengthFeedback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/password_evaluation_weak"
+        android:text="@string/password_evaluation_weakest"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/evaluatedPasswordLengthLabel"
-        tools:text="WEAK" />
+        app:layout_constraintTop_toBottomOf="@+id/evaluatedPasswordLengthLabel" />
 
     <!--Evaluation passed icon-->
     <ImageView
@@ -81,8 +80,8 @@
         android:contentDescription="@string/description_password_evaluation_passed"
         android:src="@drawable/ic_baseline_check_24"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/evaluatedPasswordStrengthInfo"
-        app:layout_constraintStart_toEndOf="@+id/evaluatedPasswordStrengthInfo"
+        app:layout_constraintBottom_toBottomOf="@+id/evaluatedPasswordStrengthFeedback"
+        app:layout_constraintStart_toEndOf="@+id/evaluatedPasswordStrengthFeedback"
         app:layout_constraintTop_toBottomOf="@+id/evaluatedPasswordLengthLabel"
         tools:visibility="visible" />
 
@@ -95,7 +94,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/evaluatedPasswordStrengthInfo" />
+        app:layout_constraintTop_toBottomOf="@+id/evaluatedPasswordStrengthFeedback" />
 
     <!--User tips for a safe password-->
     <TextView

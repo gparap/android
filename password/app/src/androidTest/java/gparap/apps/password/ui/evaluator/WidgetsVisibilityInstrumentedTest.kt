@@ -54,7 +54,7 @@ class WidgetsVisibilityInstrumentedTest {
 
     @Test
     fun isVisible_evaluatedPasswordStrengthInfo() {
-        onView(withId(R.id.evaluatedPasswordStrengthInfo)).check(matches(isDisplayed()))
+        onView(withId(R.id.evaluatedPasswordStrengthFeedback)).check(matches(isDisplayed()))
     }
 
     @Test
