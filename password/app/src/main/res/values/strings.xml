@@ -4,11 +4,22 @@
     <string name="title_evaluator">Evaluate</string>
     <string name="title_manager">Manage</string>
     <string name="button_generate_password">Generate Password</string>
+    <string name="button_save_evaluated_password">save</string>
     <string name="radio_08_chars">08 chars length</string>
     <string name="radio_16_chars">16 chars length</string>
     <string name="radio_custom_chars">custom length</string>
     <string name="hint_password_generated">password generated</string>
     <string name="hint_00">00</string>
     <string name="hint_password_title">enter title for password</string>
+    <string name="hint_type_password">Type password</string>
     <string name="description_save_password">Save Password</string>
+    <string name="description_password_evaluation_passed">Password Evaluation Passed</string>
+    <string name="label_evaluated_password_length">Length:</string>
+    <string name="value_zero">0</string>
+    <string name="password_evaluation_weakest">WEAKEST</string>
+    <string name="password_evaluation_weak">WEAK</string>
+    <string name="password_evaluation_medium">MEDIUM</string>
+    <string name="password_evaluation_strong">STRONG</string>
+    <string name="password_evaluation_strongest">STRONGEST</string>
+    <string name="user_tip_evaluate_password">Safest passwords should contain UPPERCASE and lowercase letters, digits, special characters (like \'!\', \'@\', etc.) and should not be too short.</string>
 </resources>
