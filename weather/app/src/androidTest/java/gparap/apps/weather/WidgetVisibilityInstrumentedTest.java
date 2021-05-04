@@ -54,13 +54,13 @@ public class WidgetVisibilityInstrumentedTest {
     }
 
     @Test
-    public void isWidgetInvisible_labelWeather() {
-        onView(withId(R.id.labelWeather)).check(matches(not(isDisplayed())));
+    public void isWidgetInvisible_labelTemperature() {
+        onView(withId(R.id.labelTemperature)).check(matches(not(isDisplayed())));
     }
 
     @Test
-    public void isWidgetInvisible_labelTemperature() {
-        onView(withId(R.id.labelTemperature)).check(matches(not(isDisplayed())));
+    public void isWidgetInvisible_labelTemperatureFeelsLike() {
+        onView(withId(R.id.labelTemperatureFeelsLike)).check(matches(not(isDisplayed())));
     }
 
     @Test
@@ -95,6 +95,11 @@ public class WidgetVisibilityInstrumentedTest {
 
     @Test
     public void isWidgetInvisible_textViewTemperature() {
+        onView(withId(R.id.textViewTemperature)).check(matches(not(isDisplayed())));
+    }
+
+    @Test
+    public void isWidgetInvisible_textViewTemperatureFeelsLike() {
         onView(withId(R.id.textViewTemperature)).check(matches(not(isDisplayed())));
     }
 
