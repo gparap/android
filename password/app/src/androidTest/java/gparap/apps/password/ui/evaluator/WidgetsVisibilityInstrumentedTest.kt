@@ -44,17 +44,17 @@ class WidgetsVisibilityInstrumentedTest {
 
     @Test
     fun isVisible_evaluatedPasswordLengthLabel() {
-        onView(withId(R.id.evaluatedPasswordLengthLabel)).check(matches(isDisplayed()))
+        onView(withId(R.id.textViewEvaluatedPasswordLengthLabel)).check(matches(isDisplayed()))
     }
 
     @Test
     fun isVisible_evaluatedPasswordLength() {
-        onView(withId(R.id.evaluatedPasswordLength)).check(matches(isDisplayed()))
+        onView(withId(R.id.textViewEvaluatedPasswordLength)).check(matches(isDisplayed()))
     }
 
     @Test
     fun isVisible_evaluatedPasswordStrengthInfo() {
-        onView(withId(R.id.evaluatedPasswordStrengthFeedback)).check(matches(isDisplayed()))
+        onView(withId(R.id.textViewEvaluatedPasswordStrength)).check(matches(isDisplayed()))
     }
 
     @Test
