@@ -21,13 +21,16 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import gparap.apps.password.R
 
 class EvaluatorFragment : Fragment() {
-    private lateinit var evaluatorViewModel: EvaluatorViewModel
+    private lateinit var viewModel: EvaluatorViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,20 +41,80 @@ class EvaluatorFragment : Fragment() {
         val rootView = inflater.inflate(R.layout.fragment_evaluator, container, false)
 
         //create viewmodel for this fragment
-        evaluatorViewModel = ViewModelProvider(this).get(EvaluatorViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(EvaluatorViewModel::class.java)
 
-        //evaluate password strength
-        val evaluatedPassword = rootView.findViewById<EditText>(R.id.editTextEvaluatedPassword)
-        evaluatedPassword.addTextChangedListener(object : TextWatcher {
+        //get password title widget
+        val passwordTitle = rootView.findViewById<EditText>(R.id.editTextEvaluatedPasswordTitle)
+
+        //handle evaluated password
+        val password = rootView.findViewById<EditText>(R.id.editTextEvaluatedPassword)
+        password.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                Evaluator(context!!).evaluatePassword(s.toString())
+                //handle password title visibility
+                if (s?.isNotEmpty() == true) {
+                    passwordTitle.visibility = View.VISIBLE
+                }else{
+                    passwordTitle.visibility = View.INVISIBLE
+                }
+
+                //evaluate password
+                viewModel.setPasswordStrength(Evaluator(context!!).evaluatePassword(s.toString()))
+
+                //keep track of password length
+                if (s != null) {
+                    viewModel.setPasswordLength(s.length)
+                }
             }
 
             override fun afterTextChanged(s: Editable?) {}
         })
 
+        //observe evaluated password
+        viewModel.password.observe(viewLifecycleOwner, {
+            password.setText(it)
+        })
+
+        //observe evaluated password length
+        val passwordLength = rootView.findViewById<TextView>(R.id.textViewEvaluatedPasswordLength)
+        viewModel.passwordLength.observe(viewLifecycleOwner, {
+            passwordLength.text = it.toString()
+        })
+
+        //observe evaluated password strength feedback
+        val passwordStrength = rootView.findViewById<TextView>(R.id.textViewEvaluatedPasswordStrength)
+        viewModel.passwordStrength.observe(viewLifecycleOwner, {
+            passwordStrength.text = it
+        })
+
+        //observe bassword title
+        viewModel.passwordTitle.observe(viewLifecycleOwner, {
+            viewModel.setPasswordTitle(passwordTitle.text.toString())
+        })
+
+        //save password to database
+        val buttonSave = rootView.findViewById<Button>(R.id.buttonSaveEvaluatedPassword)
+        buttonSave.setOnClickListener {
+            saveEvaluatedPassword(password.text, passwordTitle.text)
+        }
+
         return rootView
+    }
+
+    private fun saveEvaluatedPassword(password: Editable, passwordTitle: Editable) {
+        //password validation
+        if (password.isEmpty()) {
+            Toast.makeText(this.context, R.string.toast_empty_password, Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        //password title validation
+        if (passwordTitle.isEmpty()) {
+            Toast.makeText(this.context, R.string.toast_empty_title, Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        //TODO: save evaluated password to database
     }
 }

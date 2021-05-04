@@ -15,14 +15,33 @@
  */
 package gparap.apps.password.ui.evaluator
 
-import android.text.TextWatcher
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class EvaluatorViewModel : ViewModel() {
+    //handle password
     private val passwordLiveData = MutableLiveData<String>()
     val password: LiveData<String> = passwordLiveData
 
+    //handle password length
+    private var passwordLengthLiveData = MutableLiveData<Int>()
+    val passwordLength: LiveData<Int> = passwordLengthLiveData
+    fun setPasswordLength(length: Int) {
+        passwordLengthLiveData.value = length
+    }
 
+    //handle password strength feedback
+    private var passwordStrengthLiveData = MutableLiveData<String>()
+    val passwordStrength: LiveData<String> = passwordStrengthLiveData
+    fun setPasswordStrength(strength: String) {
+        passwordStrengthLiveData.value = strength
+    }
+
+    //handle password title
+    private val passwordTitleLiveData = MutableLiveData<String>()
+    val passwordTitle: LiveData<String> = passwordTitleLiveData
+    fun setPasswordTitle(title: String) {
+        passwordTitleLiveData.value = title
+    }
 }

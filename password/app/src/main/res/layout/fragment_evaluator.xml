@@ -42,7 +42,7 @@
 
     <!--Evaluated password length label-->
     <TextView
-        android:id="@+id/evaluatedPasswordLengthLabel"
+        android:id="@+id/textViewEvaluatedPasswordLengthLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/label_evaluated_password_length"
@@ -53,24 +53,24 @@
 
     <!--Evaluated password length-->
     <TextView
-        android:id="@+id/evaluatedPasswordLength"
+        android:id="@+id/textViewEvaluatedPasswordLength"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/value_zero"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/evaluatedPasswordLengthLabel"
+        app:layout_constraintStart_toEndOf="@+id/textViewEvaluatedPasswordLengthLabel"
         app:layout_constraintTop_toBottomOf="@+id/editTextEvaluatedPassword" />
 
     <!--Evaluated password strength feedback-->
     <TextView
-        android:id="@+id/evaluatedPasswordStrengthFeedback"
+        android:id="@+id/textViewEvaluatedPasswordStrength"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/password_evaluation_weakest"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/evaluatedPasswordLengthLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEvaluatedPasswordLengthLabel" />
 
     <!--Evaluation passed icon-->
     <ImageView
@@ -80,9 +80,9 @@
         android:contentDescription="@string/description_password_evaluation_passed"
         android:src="@drawable/ic_baseline_check_24"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/evaluatedPasswordStrengthFeedback"
-        app:layout_constraintStart_toEndOf="@+id/evaluatedPasswordStrengthFeedback"
-        app:layout_constraintTop_toBottomOf="@+id/evaluatedPasswordLengthLabel"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewEvaluatedPasswordStrength"
+        app:layout_constraintStart_toEndOf="@+id/textViewEvaluatedPasswordStrength"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEvaluatedPasswordLengthLabel"
         tools:visibility="visible" />
 
     <!--Button save-->
@@ -94,7 +94,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/evaluatedPasswordStrengthFeedback" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEvaluatedPasswordStrength" />
 
     <!--User tips for a safe password-->
     <TextView
