@@ -24,4 +24,5 @@
     <string name="user_tip_evaluate_password">Safest passwords should contain UPPERCASE and lowercase letters, digits, special characters (like \'!\', \'@\', etc.) and should not be too short.</string>
     <string name="toast_empty_password">Password is empty!</string>
     <string name="toast_empty_title">Title is empty!</string>
+    <string name="toast_password_saved">Password saved.</string>
 </resources>
