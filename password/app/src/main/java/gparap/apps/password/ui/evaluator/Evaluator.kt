@@ -36,7 +36,7 @@ class Evaluator(private val context: Context) {
         if (password.matchesRegularExpression("[0-9]")) {
             passwordStrength += 1
         }
-        if (password.matchesRegularExpression("[!@#$%]")) { //TODO: put all special chars
+        if (password.matchesRegularExpression("[~`!@#$%^&*()_\\-\\+=|\\\\}\\]{\\[\"\':;\\?/>.<,]")) {
             passwordStrength += 1
         }
         if (password.length >= 8) {
