@@ -49,14 +49,13 @@ import gparap.apps.weather.viewmodel.WeatherActivityViewModel;
 
 import static android.view.View.VISIBLE;
 
-@SuppressWarnings({"Convert2Lambda", "Anonymous2MethodRef"})
+@SuppressWarnings({"Convert2Lambda", "Anonymous2MethodRef", "ConstantConditions"})
 @SuppressLint("NonConstantResourceId")
 public class WeatherActivity extends AppCompatActivity {
-    private TextView labelWeather,
-            labelTemperature, labelTemperatureMax, labelTemperatureMin,
+    private TextView textViewWeather,
+            labelTemperature, labelTemperatureFeelsLike, labelTemperatureMax, labelTemperatureMin,
             labelWindSpeed, labelAirPressure, labelHumidity,
-            textViewWeather,
-            textViewTemperature, textViewTemperatureMax, textViewTemperatureMin,
+            textViewTemperature, textViewTemperatureFeelsLike, textViewTemperatureMax, textViewTemperatureMin,
             textViewWindSpeed, textViewAirPressure, textViewHumidity;
     private ImageView imageViewWeather;
     private Button buttonWeatherProvider;
@@ -135,12 +134,14 @@ public class WeatherActivity extends AppCompatActivity {
 
         //convert temperatures
         String temp = String.valueOf(model.getTemperature());
+        String temp_feels_like = String.valueOf(model.getFeelsLike());
         String temp_max = String.valueOf(model.getTemperatureMax());
         String temp_min = String.valueOf(model.getTemperatureMin());
 
         //fill in weather widgets
         textViewWeather.setText(model.getDescription());
         textViewTemperature.setText(WeatherUtils.formatWeatherValue(temp, 0));
+        textViewTemperatureFeelsLike.setText(WeatherUtils.formatWeatherValue(temp_feels_like, 0));
         textViewTemperatureMax.setText(WeatherUtils.formatWeatherValue(temp_max, 0));
         textViewTemperatureMin.setText(WeatherUtils.formatWeatherValue(temp_min, 0));
         textViewWindSpeed.setText(model.getWindSpeed() + WeatherUtils.getWindSpeedUnit());
@@ -227,8 +228,8 @@ public class WeatherActivity extends AppCompatActivity {
     }
 
     private void showLabelWidgets() {
-        labelWeather.setVisibility(VISIBLE);
         labelTemperature.setVisibility(VISIBLE);
+        labelTemperatureFeelsLike.setVisibility(VISIBLE);
         labelTemperatureMax.setVisibility(VISIBLE);
         labelTemperatureMin.setVisibility(VISIBLE);
         labelWindSpeed.setVisibility(VISIBLE);
@@ -241,8 +242,8 @@ public class WeatherActivity extends AppCompatActivity {
         editTextCity = findViewById(R.id.editTextSearchCity);
         iconCitySearch = findViewById(R.id.imageViewSearchCityIcon);
         imageViewWeather = findViewById(R.id.imageViewWeatherIcon);
-        labelWeather = findViewById(R.id.labelWeather);
         labelTemperature = findViewById(R.id.labelTemperature);
+        labelTemperatureFeelsLike = findViewById(R.id.labelTemperatureFeelsLike);
         labelTemperatureMax = findViewById(R.id.labelTemperatureMax);
         labelTemperatureMin = findViewById(R.id.labelTemperatureMin);
         labelWindSpeed = findViewById(R.id.labelWindSpeed);
@@ -250,6 +251,7 @@ public class WeatherActivity extends AppCompatActivity {
         labelHumidity = findViewById(R.id.labelHumidity);
         textViewWeather = findViewById(R.id.textViewWeather);
         textViewTemperature = findViewById(R.id.textViewTemperature);
+        textViewTemperatureFeelsLike = findViewById(R.id.textViewTemperatureFeelsLike);
         textViewTemperatureMax = findViewById(R.id.textViewTemperatureMax);
         textViewTemperatureMin = findViewById(R.id.textViewTemperatureMin);
         textViewWindSpeed = findViewById(R.id.textViewWindSpeed);

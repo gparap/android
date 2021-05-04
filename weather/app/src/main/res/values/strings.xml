@@ -8,6 +8,7 @@
     <string name="weather_icon">Weather Icon</string>
     <string name="weather">Weather:</string>
     <string name="temperature">Temperature:</string>
+    <string name="temperature_feels_like">Feels Like:</string>
     <string name="temperature_max">Temperature Max:</string>
     <string name="temperature_min">Temperature Min:</string>
     <string name="wind_speed">Wind Speed:</string>
@@ -15,7 +16,7 @@
     <string name="humidity">Humidity:</string>
     <string name="toast_cannot_fetch_weather">Cannot fetch weather.</string>
     <!--provider-->
-    <string name="weather_provider">Weather Provider - openweathermap.org</string>
+    <string name="weather_provider">weather data source - OpenWeather</string>
     <!--location-->
     <string name="toast_location_permission_denied">Location permission denied.</string>
     <string name="toast_location_disabled">Location is disabled.</string>
