@@ -28,6 +28,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import gparap.apps.password.R
+import gparap.apps.password.data.DatabaseManager
+import gparap.apps.password.data.PasswordModel
 
 class EvaluatorFragment : Fragment() {
     private lateinit var viewModel: EvaluatorViewModel
@@ -115,6 +117,15 @@ class EvaluatorFragment : Fragment() {
             return
         }
 
-        //TODO: save evaluated password to database
+        //create a password model object
+        val passwordModel = PasswordModel(
+            -1, passwordTitle.toString(), password.toString()
+        )
+
+        //save generated password to database
+        val databaseManager = DatabaseManager(this.requireContext())
+        if (databaseManager.insertPassword(passwordModel)) {
+            Toast.makeText(this.context, "Password saved.", Toast.LENGTH_SHORT).show()
+        }
     }
 }
