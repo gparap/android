@@ -24,12 +24,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import gparap.apps.password.R
-import gparap.apps.password.data.DatabaseManager
-import gparap.apps.password.data.PasswordModel
+import gparap.apps.password.utils.DatabaseUtils
 
 class EvaluatorFragment : Fragment() {
     private lateinit var viewModel: EvaluatorViewModel
@@ -98,34 +96,13 @@ class EvaluatorFragment : Fragment() {
         //save password to database
         val buttonSave = rootView.findViewById<Button>(R.id.buttonSaveEvaluatedPassword)
         buttonSave.setOnClickListener {
-            saveEvaluatedPassword(password.text, passwordTitle.text)
+            DatabaseUtils.getInstance()?.savePassword(
+                password.text.toString(),
+                passwordTitle.text.toString(),
+                this.requireContext()
+            )
         }
 
         return rootView
-    }
-
-    private fun saveEvaluatedPassword(password: Editable, passwordTitle: Editable) {
-        //password validation
-        if (password.isEmpty()) {
-            Toast.makeText(this.context, R.string.toast_empty_password, Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        //password title validation
-        if (passwordTitle.isEmpty()) {
-            Toast.makeText(this.context, R.string.toast_empty_title, Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        //create a password model object
-        val passwordModel = PasswordModel(
-            -1, passwordTitle.toString(), password.toString()
-        )
-
-        //save generated password to database
-        val databaseManager = DatabaseManager(this.requireContext())
-        if (databaseManager.insertPassword(passwordModel)) {
-            Toast.makeText(this.context, "Password saved.", Toast.LENGTH_SHORT).show()
-        }
     }
 }

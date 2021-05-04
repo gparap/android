@@ -21,14 +21,16 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.RadioGroup
+import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.password.R
-import gparap.apps.password.data.DatabaseManager
-import gparap.apps.password.data.PasswordModel
+import gparap.apps.password.utils.DatabaseUtils
 
 class GeneratorFragment : Fragment() {
     private lateinit var viewModel: GeneratorViewModel
@@ -98,34 +100,13 @@ class GeneratorFragment : Fragment() {
         val fabSavePassword =
             rootView.findViewById<FloatingActionButton>(R.id.fabSaveGeneratedPassword)
         fabSavePassword.setOnClickListener {
-            saveGeneratedPassword()
+            DatabaseUtils.getInstance()?.savePassword(
+                passwordGenerated.text.toString(),
+                passwordTitle.text.toString(),
+                this.requireContext()
+            )
         }
 
         return rootView
-    }
-
-    private fun saveGeneratedPassword() {
-        //password validation
-        if (viewModel.password.value.isNullOrEmpty()) {
-            Toast.makeText(this.context, "Password is empty!", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        //password title validation
-        if (passwordTitle.text.isNullOrEmpty()) {
-            Toast.makeText(this.context, "Title is empty!", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        //create a password object
-        val password = PasswordModel(
-            -1, passwordTitle.text.toString(), viewModel.password.value.toString()
-        )
-
-        //save generated password to database
-        val databaseManager = DatabaseManager(this.requireContext())
-        if (databaseManager.insertPassword(password)) {
-            Toast.makeText(this.context, "Password saved.", Toast.LENGTH_SHORT).show()
-        }
     }
 }
