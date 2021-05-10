@@ -17,6 +17,7 @@ package gparap.apps.password.data
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 
 class DatabaseManager(context: Context) {
@@ -40,6 +41,29 @@ class DatabaseManager(context: Context) {
 
         //if there is a new id then the values where inserted correctly
         return newRowId != -1L
+    }
+
+    /**
+     * Fetches all passwords from database.
+     */
+    fun fetchPasswords(): ArrayList<PasswordModel> {
+        db = dbHelper.readableDatabase
+
+        //fetch all passwords
+        val passwords = ArrayList<PasswordModel>()
+        val cursor: Cursor? = db?.rawQuery("SELECT * FROM $TABLE_NAME", null)
+        while (cursor?.moveToNext()!!) {
+            //add record to list of passwords
+            val id = cursor.getInt(cursor.getColumnIndex("id"))
+            val title = cursor.getString(cursor.getColumnIndex("title"))
+            val value = cursor.getString(cursor.getColumnIndex("value"))
+            passwords.add(PasswordModel(id, title, value))
+        }
+        //close everything
+        cursor.close()
+        dbHelper.close()
+
+        return passwords
     }
 
     companion object {
