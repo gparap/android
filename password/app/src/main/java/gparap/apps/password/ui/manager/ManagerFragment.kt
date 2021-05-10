@@ -19,28 +19,38 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.password.R
+import gparap.apps.password.adapters.PasswordAdapter
+import gparap.apps.password.data.DatabaseManager
+import gparap.apps.password.data.PasswordModel
 
 class ManagerFragment : Fragment() {
-
-    private lateinit var managerViewModel: ManagerViewModel
+    private lateinit var viewModel: ManagerViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-        managerViewModel =
-                ViewModelProvider(this).get(ManagerViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_manager, container, false)
-        val textView: TextView = root.findViewById(R.id.text_manager_fragment)
-        managerViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+        //inflate layout for this fragment
+        val rootView = inflater.inflate(R.layout.fragment_manager, container, false)
+
+        //create viewmodel for this fragment
+        viewModel = ViewModelProvider(this).get(ManagerViewModel::class.java)
+
+        //setup a password RecyclerView with adapter
+        val recyclerView = rootView.findViewById<RecyclerView>(R.id.recyclerViewPasswords)
+        val passwords = ArrayList<PasswordModel>()
+        val adapter: PasswordAdapter = PasswordAdapter(passwords)
+        recyclerView.adapter = adapter
+
+        //fetch all passwords from database
+        val databaseManager = DatabaseManager(this.requireContext())
+        passwords.addAll(databaseManager.fetchPasswords())
+
+        return rootView
     }
 }

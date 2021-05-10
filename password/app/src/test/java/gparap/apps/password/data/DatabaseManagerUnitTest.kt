@@ -67,7 +67,7 @@ class DatabaseManagerUnitTest {
         //fetch all passwords from database
         //!!! test only the fetched records length (assert that insertion in database is working ok)
         val passwords = ArrayList<PasswordModel>().apply {
-            addAll(dbManager.fetchPasswords()!!)
+            addAll(dbManager.fetchPasswords())
         }
 
         //test if there is at least two passwords in the database
