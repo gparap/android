@@ -15,7 +15,6 @@
  */
 package gparap.apps.password.data
 
-import android.content.ContentValues
 import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Before
 import org.junit.Test
@@ -37,19 +36,46 @@ class DatabaseManagerUnitTest {
     @Test
     fun insertPassword() {
         //open database for writing
-        val queryInsert = dbHelper.writableDatabase
+        val query = dbHelper.writableDatabase
 
-        //prepare value to insert to database
-        val contentValues = ContentValues()
+        //insert a test password model value into the database
         val model = PasswordModel(-1, "title", "value")
-        contentValues.put("title", model.title)
-        contentValues.put("value", model.value)
+        val isModelInserted = dbManager.insertPassword(model)
 
-        //insert value into database
-        val newRowId = queryInsert.insert(DatabaseManager.TABLE_NAME, null, contentValues)
+        //test
+        assert(isModelInserted)
+
+        //remove test value from database
+        query.rawQuery("DELETE FROM " + DatabaseManager.TABLE_NAME + " WHERE title='title'", null)
         dbHelper.close()
+    }
 
-        //test if there is a new id
-        assert(newRowId != -1L)
+    @Test
+    fun fetchPasswords() {
+        //open database for writing
+        val query = dbHelper.writableDatabase
+
+        //insert a few test password model values into the database
+        var testPasswordsCount = 0
+        var model = PasswordModel(-1, "title1", "value1")
+        dbManager.insertPassword(model)
+        testPasswordsCount++
+        model = PasswordModel(-1, "title2", "value2")
+        dbManager.insertPassword(model)
+        testPasswordsCount++
+
+        //fetch all passwords from database
+        //!!! test only the fetched records length (assert that insertion in database is working ok)
+        val passwords = ArrayList<PasswordModel>().apply {
+            addAll(dbManager.fetchPasswords()!!)
+        }
+
+        //test if there is at least two passwords in the database
+        assert(passwords.size >= testPasswordsCount)
+
+        //remove test values from database
+        query.rawQuery("DELETE FROM " + DatabaseManager.TABLE_NAME + " WHERE title='title1'", null)
+        query.rawQuery("DELETE FROM " + DatabaseManager.TABLE_NAME + " WHERE title='title2'", null)
+        dbHelper.close()
     }
 }
