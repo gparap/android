@@ -25,4 +25,6 @@
     <string name="toast_empty_password">Password is empty!</string>
     <string name="toast_empty_title">Title is empty!</string>
     <string name="toast_password_saved">Password saved.</string>
+    <string name="switch_password_show">show</string>
+    <string name="switch_password_hide">hide</string>
 </resources>
