@@ -8,6 +8,7 @@
 
     <!--Search widgets-->
     <EditText
+        android:textSize="@dimen/textSize_big"
         android:id="@+id/editTextSearchCity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
