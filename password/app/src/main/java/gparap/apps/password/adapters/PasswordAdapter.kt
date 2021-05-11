@@ -15,10 +15,12 @@
  */
 package gparap.apps.password.adapters
 
+import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.appcompat.widget.SwitchCompat
 import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.password.R
 import gparap.apps.password.data.PasswordModel
@@ -36,9 +38,17 @@ class PasswordAdapter(private val passwords: ArrayList<PasswordModel>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        //give password title and value a place inside RecyclerView
+        //give cardview widgets a place inside RecyclerView
         holder.title?.setText(passwords[position].title)
         holder.value?.setText(passwords[position].value)
+        holder.showHidePassword?.setOnCheckedChangeListener { _, isChecked ->
+            //toggle password visibility
+            if (isChecked) {
+                holder.value?.transformationMethod = null
+            } else {
+                holder.value?.transformationMethod = PasswordTransformationMethod()
+            }
+        }
     }
 
     override fun getItemCount(): Int {
@@ -46,7 +56,9 @@ class PasswordAdapter(private val passwords: ArrayList<PasswordModel>) :
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        //get cardview widgets
         val title: EditText? = itemView.findViewById(R.id.editTextPasswordTitle)
         val value: EditText? = itemView.findViewById(R.id.editTextPasswordValue)
+        val showHidePassword: SwitchCompat? = itemView.findViewById(R.id.switchShowHidePassword)
     }
 }
