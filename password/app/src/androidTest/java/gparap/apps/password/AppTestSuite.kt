@@ -27,6 +27,7 @@ import org.junit.runners.Suite
     gparap.apps.password.ui.generator.WidgetsVisibilityInstrumentedTest::class,
     GeneratorFragmentInstrumentedTest::class,
     gparap.apps.password.ui.evaluator.WidgetsVisibilityInstrumentedTest::class,
-    EvaluatorFragmentInstrumentedTest::class
+    EvaluatorFragmentInstrumentedTest::class,
+    gparap.apps.password.ui.manager.WidgetsVisibilityInstrumentedTest::class
 )
 class AppTestSuite
