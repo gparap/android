@@ -20,11 +20,8 @@ import androidx.fragment.app.testing.FragmentScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import gparap.apps.password.R
-import org.hamcrest.core.IsNot.not
 import org.junit.Before
 import org.junit.Test
 
@@ -34,27 +31,6 @@ class GeneratorFragmentInstrumentedTest {
     @Before
     fun setUp() {
         fragmentScenario = FragmentScenario.launchInContainer(GeneratorFragment::class.java)
-    }
-
-    @Test
-    fun isVisible_textViewPasswordGenerated() {
-        onView(withId(R.id.textViewPasswordGenerated)).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun isVisible_buttonGeneratePassword() {
-        onView(withId(R.id.buttonGeneratePassword)).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun isVisible_radioGroupPasswordLength() {
-        onView(withId(R.id.radioGroupPasswordLength)).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun isInvisible_editTextCustomLengthPassword() {
-        onView(withId(R.id.editTextCustomLengthPassword))
-            .check(matches(not(isDisplayed())))
     }
 
     @Test
