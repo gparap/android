@@ -24,6 +24,9 @@ android {
         }
         debug{
             ext.enableCrashlytics = false
+
+            //multidex support
+            multiDexEnabled true
         }
     }
     compileOptions {
@@ -66,4 +69,10 @@ dependencies {
 
     //getting Context in unit tests
     testImplementation 'org.robolectric:robolectric:4.0.2'
+
+    //using a matcher to select a particular view/viewholder within the RecyclerView
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.4.0-alpha06'
+
+    //fitting requested classes in a single dex file
+    implementation 'com.android.support:multidex:1.0.3'
 }
