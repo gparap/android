@@ -79,7 +79,7 @@ class WidgetsVisibilityInstrumentedTest {
     @After
     fun tearDown() {
         //remove test value from database
-        query.rawQuery("DELETE FROM " + DatabaseManager.TABLE_NAME + " WHERE title='title'", null)
+        query.execSQL("DELETE FROM " + DatabaseManager.TABLE_NAME + " WHERE title='title'")
         dbHelper.close()
     }
 

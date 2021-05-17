@@ -17,6 +17,7 @@ package gparap.apps.password
 
 import gparap.apps.password.ui.evaluator.EvaluatorFragmentInstrumentedTest
 import gparap.apps.password.ui.generator.GeneratorFragmentInstrumentedTest
+import gparap.apps.password.ui.manager.ManagerFragmentInstrumentedTest
 import org.junit.runner.RunWith
 import org.junit.runners.Suite
 
@@ -28,6 +29,7 @@ import org.junit.runners.Suite
     GeneratorFragmentInstrumentedTest::class,
     gparap.apps.password.ui.evaluator.WidgetsVisibilityInstrumentedTest::class,
     EvaluatorFragmentInstrumentedTest::class,
-    gparap.apps.password.ui.manager.WidgetsVisibilityInstrumentedTest::class
+    gparap.apps.password.ui.manager.WidgetsVisibilityInstrumentedTest::class,
+    ManagerFragmentInstrumentedTest::class
 )
 class AppTestSuite
