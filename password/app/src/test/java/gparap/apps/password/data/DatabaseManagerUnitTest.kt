@@ -15,6 +15,8 @@
  */
 package gparap.apps.password.data
 
+import android.content.ContentValues
+import android.database.Cursor
 import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Before
 import org.junit.Test
@@ -31,6 +33,34 @@ class DatabaseManagerUnitTest {
         //initialize database
         dbManager = DatabaseManager(InstrumentationRegistry.getInstrumentation().targetContext)
         dbHelper = DatabaseHelper(InstrumentationRegistry.getInstrumentation().targetContext)
+    }
+
+    @Test
+    fun deletePassword() {
+        //open database for writing
+        val query = dbHelper.writableDatabase
+
+        //insert value into the database
+        val contentValues = ContentValues()
+        val model = PasswordModel(-1, "title", "value")
+        contentValues.put("title", model.title)
+        contentValues.put("value", model.value)
+        val newRowId = query?.insert(DatabaseManager.TABLE_NAME, null, contentValues)
+
+        //delete the test value
+        newRowId?.toInt()?.let { dbManager.deletePassword(it) }
+
+        //test
+        val cursor: Cursor = query.rawQuery(
+            "SELECT * FROM " + DatabaseManager.TABLE_NAME + " WHERE id='" + newRowId.toString() + "'",
+            null
+        )
+        assert(cursor.count < 1)
+
+        //remove test value from database
+        //!!! if test fails don't screw up the database
+        query.rawQuery("DELETE FROM " + DatabaseManager.TABLE_NAME + " WHERE title='title'", null)
+        dbHelper.close()
     }
 
     @Test

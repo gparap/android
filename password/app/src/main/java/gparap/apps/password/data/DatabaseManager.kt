@@ -25,6 +25,15 @@ class DatabaseManager(context: Context) {
     private var db: SQLiteDatabase? = null
 
     /**
+     * Deletes a password from database.
+     */
+    fun deletePassword(id: Int) {
+        db = dbHelper.writableDatabase
+        db?.delete(TABLE_NAME, id.toString(), null)
+        dbHelper.close()
+    }
+
+    /**
      * Inserts a password into the database.
      */
     fun insertPassword(model: PasswordModel): Boolean {
