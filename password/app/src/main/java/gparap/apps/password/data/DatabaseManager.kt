@@ -29,7 +29,7 @@ class DatabaseManager(context: Context) {
      */
     fun deletePassword(id: Int) {
         db = dbHelper.writableDatabase
-        db?.delete(TABLE_NAME, id.toString(), null)
+        db?.delete(TABLE_NAME, "id="+ id.toString(), null)
         dbHelper.close()
     }
 

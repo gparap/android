@@ -41,6 +41,14 @@ android {
         //for testing android resources in unit tests
         unitTests.includeAndroidResources = true
     }
+    //workaround for the following instrumented test exception
+    //"java.lang.NoSuchMethodError: No static method loadSingleServiceOrNull(Ljava/lang/Class;)Ljava/lang/Object;
+    // in class Landroidx/test/internal/platform/ServiceLoaderWrapper; or its super classes"
+    configurations.all {
+        resolutionStrategy {
+            force 'androidx.test:monitor:1.4.0-alpha06'
+        }
+    }
 }
 
 dependencies {
