@@ -13,6 +13,7 @@
     <string name="hint_password_title">enter title for password</string>
     <string name="hint_type_password">Type password</string>
     <string name="description_save_password">Save Password</string>
+    <string name="description_delete_password">Delete Password</string>
     <string name="description_password_evaluation_passed">Password Evaluation Passed</string>
     <string name="label_evaluated_password_length">Length:</string>
     <string name="value_zero">0</string>
