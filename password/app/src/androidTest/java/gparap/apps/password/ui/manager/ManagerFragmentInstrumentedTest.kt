@@ -69,17 +69,13 @@ class ManagerFragmentInstrumentedTest {
     @Test
     fun recyclerView_switchShowHidePassword() {
         //get the number of items in the recycler view
-        var recyclerViewChildCount = 0
-        activityScenario.onActivity {
-            val recyclerView = it.findViewById<RecyclerView>(R.id.recyclerViewPasswords)
-            recyclerViewChildCount = recyclerView.childCount
-        }
+        val recyclerViewChildCount = getRecyclerViewItemCount()
 
         //press switch widget to make (the last) password visible
         onView(withId(R.id.recyclerViewPasswords))
             .perform(
                 actionOnItemAtPosition<PasswordAdapter.ViewHolder>(
-                    recyclerViewChildCount - 1, showHidePasswordAction()
+                    recyclerViewChildCount - 1, recyclerViewAction(R.id.switchShowHidePassword)
                 )
             )
 
@@ -90,6 +86,25 @@ class ManagerFragmentInstrumentedTest {
                 withText(`is`(TEST_VALUE))
             )
         ).check(matches(isPasswordVisible()))
+    }
+
+    @Test
+    fun deletePassword() {
+        //get the old number of items in the recycler view
+        val recyclerViewChildCountOld = getRecyclerViewItemCount()
+
+        //delete the test password value
+        onView(withId(R.id.recyclerViewPasswords))
+            .perform(
+                actionOnItemAtPosition<PasswordAdapter.ViewHolder>(
+                    recyclerViewChildCountOld - 1, recyclerViewAction(R.id.iconDeletePassword)
+                )
+            )
+
+        //get the new number of items in the recycler view
+        val recyclerViewChildCountNew = getRecyclerViewItemCount()
+
+        assert(recyclerViewChildCountNew < recyclerViewChildCountOld)
     }
 
     @After
@@ -115,9 +130,9 @@ class ManagerFragmentInstrumentedTest {
     }
 
     /**
-     * Defines a custom view action for accessing the RecyclerView switch widgets.
+     * Defines a custom view action for accessing the RecyclerView clickable widgets.
      */
-    private fun showHidePasswordAction(): ViewAction {
+    private fun recyclerViewAction(id: Int): ViewAction {
         return object : ViewAction {
             override fun getConstraints(): Matcher<View>? {
                 return null
@@ -128,7 +143,7 @@ class ManagerFragmentInstrumentedTest {
             }
 
             override fun perform(uiController: UiController?, view: View?) {
-                val v = view?.findViewById<View>(R.id.switchShowHidePassword)
+                val v = view?.findViewById<View>(id)
                 v?.performClick()
             }
         }
@@ -148,5 +163,17 @@ class ManagerFragmentInstrumentedTest {
         //insert a test password model into the database (in case it is empty)
         val model = PasswordModel(-1, "title", TEST_VALUE)
         dbManager.insertPassword(model)
+    }
+
+    /**
+     * Gets the number of items in the recycler view
+     */
+    private fun getRecyclerViewItemCount(): Int {
+        var count = 0
+        activityScenario.onActivity {
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recyclerViewPasswords)
+            count = recyclerView.childCount
+        }
+        return count
     }
 }

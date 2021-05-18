@@ -15,20 +15,28 @@
  */
 package gparap.apps.password.adapters
 
+import android.content.Context
 import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageButton
 import androidx.appcompat.widget.SwitchCompat
 import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.password.R
+import gparap.apps.password.data.DatabaseManager
 import gparap.apps.password.data.PasswordModel
 
 class PasswordAdapter(private val passwords: ArrayList<PasswordModel>) :
     RecyclerView.Adapter<PasswordAdapter.ViewHolder>() {
+    private lateinit var context: Context
+    private lateinit var dbManager: DatabaseManager
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        context = parent.context
+        dbManager = DatabaseManager(context)
+
         //inflate cardview layout
         val view: View =
             LayoutInflater.from(parent.context).inflate(R.layout.cardview_password, parent, false)
@@ -38,16 +46,23 @@ class PasswordAdapter(private val passwords: ArrayList<PasswordModel>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        //give cardview widgets a place inside RecyclerView
         holder.title?.setText(passwords[position].title)
         holder.value?.setText(passwords[position].value)
+
+        //toggle password visibility
         holder.showHidePassword?.setOnCheckedChangeListener { _, isChecked ->
-            //toggle password visibility
             if (isChecked) {
                 holder.value?.transformationMethod = null
             } else {
                 holder.value?.transformationMethod = PasswordTransformationMethod()
             }
+        }
+
+        //delete password from database and remove from list
+        holder.deletePassword?.setOnClickListener {
+            dbManager.deletePassword(passwords[position].id)
+            passwords.removeAt(position)
+            this.notifyDataSetChanged()
         }
     }
 
@@ -60,5 +75,6 @@ class PasswordAdapter(private val passwords: ArrayList<PasswordModel>) :
         val title: EditText? = itemView.findViewById(R.id.editTextPasswordTitle)
         val value: EditText? = itemView.findViewById(R.id.editTextPasswordValue)
         val showHidePassword: SwitchCompat? = itemView.findViewById(R.id.switchShowHidePassword)
+        val deletePassword: ImageButton? = itemView.findViewById(R.id.iconDeletePassword)
     }
 }
