@@ -26,6 +26,7 @@ android {
             ext.enableCrashlytics = false
 
             //multidex support
+            //!!! do comment for Robolectric tests
             multiDexEnabled true
         }
     }
