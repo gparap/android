@@ -8,7 +8,6 @@
 
     <!--Search widgets-->
     <EditText
-        android:textSize="@dimen/textSize_big"
         android:id="@+id/editTextSearchCity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -18,6 +17,7 @@
         android:ems="10"
         android:hint="@string/search_city"
         android:inputType="textPersonName"
+        android:textSize="@dimen/textSize_big"
         app:layout_constraintEnd_toStartOf="@+id/imageViewSearchCityIcon"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="@+id/editTextSearchCity"
         app:layout_constraintStart_toStartOf="@+id/editTextSearchCity"
         app:layout_constraintTop_toBottomOf="@+id/editTextSearchCity"
-        app:srcCompat="@drawable/clear_sky"
+        app:srcCompat="@drawable/thunderstorm"
         tools:srcCompat="@drawable/clear_sky" />
 
     <!--Weather labels-->
@@ -219,6 +219,7 @@
         android:layout_marginBottom="@dimen/marginBottom_weatherProvider"
         android:text="@string/weather_provider"
         android:textAllCaps="false"
+        android:textSize="@dimen/textSize_big"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
