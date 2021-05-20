@@ -36,34 +36,6 @@ class DatabaseManagerUnitTest {
     }
 
     @Test
-    fun deletePassword() {
-        //open database for writing
-        val query = dbHelper.writableDatabase
-
-        //insert value into the database
-        val contentValues = ContentValues()
-        val model = PasswordModel(-1, "title", "value")
-        contentValues.put("title", model.title)
-        contentValues.put("value", model.value)
-        val newRowId = query?.insert(DatabaseManager.TABLE_NAME, null, contentValues)
-
-        //delete the test value
-        newRowId?.toInt()?.let { dbManager.deletePassword(it) }
-
-        //test
-        val cursor: Cursor = query.rawQuery(
-            "SELECT * FROM " + DatabaseManager.TABLE_NAME + " WHERE id='" + newRowId.toString() + "'",
-            null
-        )
-        assert(cursor.count < 1)
-
-        //remove test value from database
-        //!!! if test fails don't screw up the database
-        query.rawQuery("DELETE FROM " + DatabaseManager.TABLE_NAME + " WHERE title='title'", null)
-        dbHelper.close()
-    }
-
-    @Test
     fun insertPassword() {
         //open database for writing
         val query = dbHelper.writableDatabase
@@ -106,6 +78,75 @@ class DatabaseManagerUnitTest {
         //remove test values from database
         query.rawQuery("DELETE FROM " + DatabaseManager.TABLE_NAME + " WHERE title='title1'", null)
         query.rawQuery("DELETE FROM " + DatabaseManager.TABLE_NAME + " WHERE title='title2'", null)
+        dbHelper.close()
+    }
+
+    @Test
+    fun deletePassword() {
+        //open database for writing
+        val query = dbHelper.writableDatabase
+
+        //insert value into the database
+        val contentValues = ContentValues()
+        val model = PasswordModel(-1, "title", "value")
+        contentValues.put("title", model.title)
+        contentValues.put("value", model.value)
+        val newRowId = query?.insert(DatabaseManager.TABLE_NAME, null, contentValues)
+
+        //delete the test value
+        newRowId?.toInt()?.let { dbManager.deletePassword(it) }
+
+        //test
+        val cursor: Cursor = query.rawQuery(
+            "SELECT * FROM " + DatabaseManager.TABLE_NAME + " WHERE id='" + newRowId.toString() + "'",
+            null
+        )
+        assert(cursor.count < 1)
+
+        //remove test value from database
+        //!!! if test fails don't screw up the database
+        query.rawQuery("DELETE FROM " + DatabaseManager.TABLE_NAME + " WHERE title='title'", null)
+        dbHelper.close()
+    }
+
+    @Test
+    fun updatePassword() {
+        //open database for writing
+        val query = dbHelper.writableDatabase
+
+        //insert a test password model into the database
+        val contentValues = ContentValues()
+        val model = PasswordModel(-1, "starting title", "starting value")
+        contentValues.put("title", model.title)
+        contentValues.put("value", model.value)
+        val passwordId = query?.insert(DatabaseManager.TABLE_NAME, null, contentValues)
+
+        //edit the test password model (title & value)
+        model.id = passwordId?.toInt() ?: -1
+        model.title = "editted title"
+        model.value = "editted value"
+
+        //update the editted test password
+        dbManager.updatePassword(model)
+
+        //query the database for the updated password
+        val cursor: Cursor = query.rawQuery(
+            "SELECT * FROM ${DatabaseManager.TABLE_NAME} " +
+                    "WHERE id='${passwordId.toString()}'", null
+        )
+        cursor.moveToFirst()
+        val title = cursor.getString(cursor.getColumnIndex("title"))
+        val value = cursor.getString(cursor.getColumnIndex("value"))
+
+        //test
+        assert(title.equals(model.title))
+        assert(value.equals(model.value))
+
+        //remove test value from database
+        query.rawQuery(
+            "DELETE FROM " + DatabaseManager.TABLE_NAME + " WHERE title='starting title'",
+            null
+        )
         dbHelper.close()
     }
 }

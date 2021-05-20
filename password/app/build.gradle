@@ -77,7 +77,7 @@ dependencies {
     testImplementation 'android.arch.core:core-testing:1.1.1'
 
     //getting Context in unit tests
-    testImplementation 'org.robolectric:robolectric:4.0.2'
+    testImplementation 'org.robolectric:robolectric:4.2.1'
 
     //using a matcher to select a particular view/viewholder within the RecyclerView
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.4.0-alpha06'
