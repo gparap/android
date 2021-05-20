@@ -16,7 +16,7 @@
 package gparap.apps.password.data
 
 data class PasswordModel(
-    val id: Int,
-    val title: String,
-    val value: String
+    var id: Int,
+    var title: String,
+    var value: String
 )

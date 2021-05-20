@@ -25,15 +25,6 @@ class DatabaseManager(context: Context) {
     private var db: SQLiteDatabase? = null
 
     /**
-     * Deletes a password from database.
-     */
-    fun deletePassword(id: Int) {
-        db = dbHelper.writableDatabase
-        db?.delete(TABLE_NAME, "id="+ id.toString(), null)
-        dbHelper.close()
-    }
-
-    /**
      * Inserts a password into the database.
      */
     fun insertPassword(model: PasswordModel): Boolean {
@@ -73,6 +64,33 @@ class DatabaseManager(context: Context) {
         dbHelper.close()
 
         return passwords
+    }
+
+    /**
+     * Updates an existing password in the database.
+     */
+    fun updatePassword(password: PasswordModel) {
+        //open database for writing
+        val db = dbHelper.writableDatabase
+
+        //prepare password to update
+        val contentValues = ContentValues()
+        contentValues.put("title", password.title)
+        contentValues.put("value", password.value)
+
+        //update password
+        db.update(TABLE_NAME, contentValues, "id='${password.id}'", null)
+
+        dbHelper.close()
+    }
+
+    /**
+     * Deletes a password from database.
+     */
+    fun deletePassword(id: Int) {
+        db = dbHelper.writableDatabase
+        db?.delete(TABLE_NAME, "id=" + id.toString(), null)
+        dbHelper.close()
     }
 
     companion object {
