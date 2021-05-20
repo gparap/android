@@ -28,6 +28,7 @@ import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.BoundedMatcher
+import androidx.test.espresso.matcher.RootMatchers.withDecorView
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.platform.app.InstrumentationRegistry
 import gparap.apps.password.MainActivity
@@ -40,16 +41,19 @@ import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.core.AllOf.allOf
 import org.hamcrest.core.Is.`is`
+import org.hamcrest.core.IsNot.not
 import org.hamcrest.core.StringEndsWith.endsWith
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
+
 
 class ManagerFragmentInstrumentedTest {
     private lateinit var dbManager: DatabaseManager
     private lateinit var dbHelper: DatabaseHelper
     private lateinit var query: SQLiteDatabase
     private lateinit var activityScenario: ActivityScenario<MainActivity>
+    private lateinit var rootView: View
 
     @Suppress("PropertyName")
     val TEST_VALUE = "this is a test password value"
@@ -61,6 +65,11 @@ class ManagerFragmentInstrumentedTest {
         //goto manager fragment
         activityScenario = ActivityScenario.launch(MainActivity::class.java)
         onView(withId(R.id.navigation_manager)).perform(ViewActions.click())
+
+        //get root view
+        activityScenario.onActivity {
+            rootView = it.window.decorView
+        }
 
         //wait to load sqlite results
         Thread.sleep(500)
@@ -107,6 +116,60 @@ class ManagerFragmentInstrumentedTest {
         assert(recyclerViewChildCountNew < recyclerViewChildCountOld)
     }
 
+    @Test
+    fun updatePassword_passwordTitleNotEmpty() {
+        //clear password title
+        onView(withId(R.id.recyclerViewPasswords))
+            .perform(
+                actionOnItemAtPosition<PasswordAdapter.ViewHolder>(
+                    0, recyclerViewEditableAction(R.id.editTextPasswordTitle)
+                )
+            )
+
+        //try to update
+        onView(withId(R.id.recyclerViewPasswords))
+            .perform(
+                actionOnItemAtPosition<PasswordAdapter.ViewHolder>(
+                    0, recyclerViewAction(R.id.iconSavePassword)
+                )
+            )
+
+        onView(withText(R.string.toast_empty_title))
+            .inRoot(withDecorView(not(rootView)))
+            .check(matches(isDisplayed()))
+
+        // !!! testing must sleep as long as the duration of the toast message
+        // !!! when we test more than one toasts
+        Thread.sleep(2000)
+    }
+
+    @Test
+    fun updatePassword_passwordValueNotEmpty() {
+        //clear password value
+        onView(withId(R.id.recyclerViewPasswords))
+            .perform(
+                actionOnItemAtPosition<PasswordAdapter.ViewHolder>(
+                    0, recyclerViewEditableAction(R.id.editTextPasswordValue)
+                )
+            )
+
+        //try to update
+        onView(withId(R.id.recyclerViewPasswords))
+            .perform(
+                actionOnItemAtPosition<PasswordAdapter.ViewHolder>(
+                    0, recyclerViewAction(R.id.iconSavePassword)
+                )
+            )
+
+        onView(withText(R.string.toast_empty_password))
+            .inRoot(withDecorView(not(rootView)))
+            .check(matches(isDisplayed()))
+
+        // !!! testing must sleep as long as the duration of the toast message
+        // !!! when we test more than one toasts
+        Thread.sleep(2000)
+    }
+
     @After
     fun tearDown() {
         //remove test value from database
@@ -145,6 +208,26 @@ class ManagerFragmentInstrumentedTest {
             override fun perform(uiController: UiController?, view: View?) {
                 val v = view?.findViewById<View>(id)
                 v?.performClick()
+            }
+        }
+    }
+
+    //..
+    private fun recyclerViewEditableAction(id: Int): ViewAction {
+        return object : ViewAction {
+            override fun getConstraints(): Matcher<View>? {
+//                return allOf(isDisplayed(), isAssignableFrom(EditText::class.java))
+                //return allOf(isAssignableFrom(EditText::class.java))
+                return null
+            }
+
+            override fun getDescription(): String {
+                return "Clear Text Action Description"
+            }
+
+            override fun perform(uiController: UiController?, view: View?) {
+                val v = view?.findViewById<View>(id)
+                (v as EditText).setText("")
             }
         }
     }
