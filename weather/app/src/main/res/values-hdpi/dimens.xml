@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--margins-->
+    <dimen name="marginStart_citySearch">12dp</dimen>
+    <dimen name="marginStart_weatherValue">6dp</dimen>
+    <dimen name="marginTop_citySearch">6dp</dimen>
+    <dimen name="marginTop_weatherLabel">4dp</dimen>
+    <dimen name="marginTop_weatherValue">3dp</dimen>
+    <dimen name="marginEnd_searchIcon">12dp</dimen>
+    <dimen name="marginEnd_weatherLabel">24dp</dimen>
+    <dimen name="marginBottom_weatherProvider">4dp</dimen>
+    <!--text sizes-->
+    <dimen name="textSize_normal">14sp</dimen>
+    <dimen name="textSize_big">16sp</dimen>
+</resources>
