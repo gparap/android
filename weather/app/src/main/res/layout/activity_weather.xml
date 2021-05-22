@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     tools:context=".WeatherActivity">
 
     <!--Search widgets-->
@@ -44,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="@+id/editTextSearchCity"
         app:layout_constraintStart_toStartOf="@+id/editTextSearchCity"
         app:layout_constraintTop_toBottomOf="@+id/editTextSearchCity"
-        app:srcCompat="@drawable/thunderstorm"
+        app:srcCompat="@drawable/clear_sky"
         tools:srcCompat="@drawable/clear_sky" />
 
     <!--Weather labels-->
