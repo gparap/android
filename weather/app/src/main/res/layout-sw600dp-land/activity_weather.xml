@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    tools:context=".WeatherActivity">
+
+    <!--Search widgets-->
+    <EditText
+        android:id="@+id/editTextSearchCity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginStart_citySearch"
+        android:layout_marginTop="@dimen/marginTop_citySearch"
+        android:autofillHints="true"
+        android:ems="10"
+        android:hint="@string/search_city"
+        android:inputType="textPersonName"
+        android:textSize="@dimen/textSize_big"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewSearchCityIcon"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewSearchCityIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/marginEnd_searchIcon"
+        android:contentDescription="@string/search_city_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextSearchCity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editTextSearchCity"
+        app:srcCompat="@drawable/ic_baseline_search_24" />
+
+    <!--Weather icon placeholder-->
+    <ImageView
+        android:id="@+id/imageViewWeatherIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/weather_icon"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/editTextSearchCity"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSearchCity"
+        app:srcCompat="@drawable/clear_sky"
+        tools:srcCompat="@drawable/clear_sky" />
+
+    <!--Weather labels-->
+    <TextView
+        android:id="@+id/labelTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop_weatherLabel"
+        android:text="@string/temperature"
+        android:textSize="@dimen/textSize_normal"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/buttonWeatherProvider"
+        app:layout_constraintStart_toEndOf="@+id/imageViewWeatherIcon"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSearchCity"
+        tools:text="Temperature:" />
+
+    <TextView
+        android:id="@+id/labelTemperatureFeelsLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/temperature_feels_like"
+        android:textSize="@dimen/textSize_normal"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/labelTemperature"
+        app:layout_constraintTop_toBottomOf="@+id/labelTemperature"
+        tools:text="Feels Like:" />
+
+    <TextView
+        android:id="@+id/labelTemperatureMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/temperature_max"
+        android:textSize="@dimen/textSize_normal"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/labelTemperatureFeelsLike"
+        app:layout_constraintTop_toBottomOf="@+id/labelTemperatureFeelsLike"
+        tools:text="Temperature Max:" />
+
+    <TextView
+        android:id="@+id/labelTemperatureMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/temperature_min"
+        android:textSize="@dimen/textSize_normal"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/labelTemperatureMax"
+        app:layout_constraintTop_toBottomOf="@+id/labelTemperatureMax"
+        tools:text="Temperature Min:" />
+
+    <TextView
+        android:id="@+id/labelWindSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wind_speed"
+        android:textSize="@dimen/textSize_normal"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/labelTemperatureMin"
+        app:layout_constraintTop_toBottomOf="@+id/labelTemperatureMin"
+        tools:text="Wind Speed:" />
+
+    <TextView
+        android:id="@+id/labelAirPressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/air_pressure"
+        android:textSize="@dimen/textSize_normal"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/labelWindSpeed"
+        app:layout_constraintTop_toBottomOf="@+id/labelWindSpeed"
+        tools:text="Air Pressure:" />
+
+    <TextView
+        android:id="@+id/labelHumidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/humidity"
+        android:textSize="@dimen/textSize_normal"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/labelAirPressure"
+        app:layout_constraintTop_toBottomOf="@+id/labelAirPressure"
+        tools:text="Humidity:" />
+
+    <TextView
+        android:id="@+id/labelVisibility"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/visibility"
+        android:textSize="@dimen/textSize_normal"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/labelHumidity"
+        app:layout_constraintTop_toBottomOf="@+id/labelHumidity"
+        tools:text="Visibility:" />
+
+    <TextView
+        android:id="@+id/labelCloudness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cloudness"
+        android:textSize="@dimen/textSize_normal"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/labelVisibility"
+        app:layout_constraintTop_toBottomOf="@+id/labelVisibility"
+        tools:text="Cloudness:" />
+
+    <!--Weather values-->
+    <TextView
+        android:id="@+id/textViewWeather"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="@dimen/textSize_big"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewWeatherIcon"
+        app:layout_constraintStart_toStartOf="@+id/imageViewWeatherIcon"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewWeatherIcon"
+        tools:text="values" />
+
+    <TextView
+        android:id="@+id/textViewTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginStart_weatherValue"
+        android:textSize="@dimen/textSize_normal"
+        app:layout_constraintStart_toEndOf="@+id/labelTemperature"
+        app:layout_constraintTop_toTopOf="@+id/labelTemperature"
+        tools:text="values" />
+
+    <TextView
+        android:id="@+id/textViewTemperatureFeelsLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginStart_weatherValue"
+        android:textSize="@dimen/textSize_normal"
+        app:layout_constraintStart_toEndOf="@+id/labelTemperatureFeelsLike"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTemperature"
+        tools:text="values" />
+
+    <TextView
+        android:id="@+id/textViewTemperatureMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginStart_weatherValue"
+        android:textSize="@dimen/textSize_normal"
+        app:layout_constraintStart_toEndOf="@+id/labelTemperatureMax"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTemperatureFeelsLike"
+        tools:text="values" />
+
+    <TextView
+        android:id="@+id/textViewTemperatureMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginStart_weatherValue"
+        android:textSize="@dimen/textSize_normal"
+        app:layout_constraintStart_toEndOf="@+id/labelTemperatureMin"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTemperatureMax"
+        tools:text="values" />
+
+    <TextView
+        android:id="@+id/textViewWindSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginStart_weatherValue"
+        android:textSize="@dimen/textSize_normal"
+        app:layout_constraintStart_toEndOf="@+id/labelWindSpeed"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTemperatureMin"
+        tools:text="values" />
+
+    <TextView
+        android:id="@+id/textViewAirPressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginStart_weatherValue"
+        android:textSize="@dimen/textSize_normal"
+        app:layout_constraintStart_toEndOf="@+id/labelAirPressure"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWindSpeed"
+        tools:text="values" />
+
+    <TextView
+        android:id="@+id/textViewHumidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginStart_weatherValue"
+        android:textSize="@dimen/textSize_normal"
+        app:layout_constraintStart_toEndOf="@+id/labelHumidity"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAirPressure"
+        tools:text="values" />
+
+    <TextView
+        android:id="@+id/textViewVisibility"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginStart_weatherValue"
+        android:textSize="@dimen/textSize_normal"
+        app:layout_constraintStart_toEndOf="@+id/labelVisibility"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHumidity"
+        tools:text="values" />
+
+    <TextView
+        android:id="@+id/textViewCloudness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginStart_weatherValue"
+        android:textSize="@dimen/textSize_normal"
+        app:layout_constraintStart_toEndOf="@+id/labelCloudness"
+        app:layout_constraintTop_toBottomOf="@+id/textViewVisibility"
+        tools:text="values" />
+
+    <!--Weather provider-->
+    <Button
+        android:id="@+id/buttonWeatherProvider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/marginBottom_weatherProvider"
+        android:text="@string/weather_provider"
+        android:textAllCaps="false"
+        android:textSize="@dimen/textSize_big"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
