@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Public Holidays</string>
+    <string name="label_holiday_date">Date:</string>
+    <string name="label_holiday_local_name">Local Name:</string>
+    <string name="label_holiday_global_name">Global Name:</string>
+    <string name="label_is_fixed_date_holiday">Fixed Date:</string>
+    <string name="label_is_global_holiday">Global Holiday:</string>
+    <string name="label_holiday_launch_year">Launch Year:</string>
 </resources>
