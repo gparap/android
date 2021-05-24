@@ -28,7 +28,14 @@ import org.junit.Test
 class WidgetsVisibilityInstrumentedTest {
     @Before
     fun setUp() {
-        FragmentScenario.launchInContainer(GeneratorFragment::class.java)
+        FragmentScenario.launchInContainer(
+            GeneratorFragment::class.java, null, R.style.Base_Theme_MaterialComponents, null
+        )
+    }
+
+    @Test
+    fun isInvisible_textViewPasswordGeneratedTitle() {
+        onView(withId(R.id.editTextGeneratedPasswordTitle)).check(matches(not(isDisplayed())))
     }
 
     @Test

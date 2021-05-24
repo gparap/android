@@ -16,7 +16,6 @@
 package gparap.apps.password.ui.generator
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import org.junit.Before
 import org.junit.Test
 
 import org.junit.Assert.*
