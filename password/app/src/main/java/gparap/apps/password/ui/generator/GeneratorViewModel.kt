@@ -25,6 +25,12 @@ class GeneratorViewModel : ViewModel() {
     private var passwordLiveData = MutableLiveData<String>()
     val password: LiveData<String> = passwordLiveData
 
+    private var passwordTitleLiveData = MutableLiveData<Boolean>()
+    val passwordTitleVisibility: LiveData<Boolean> = passwordTitleLiveData
+    fun setPasswordTitleVisibility(visibility: Boolean) {
+        passwordTitleLiveData.value = visibility
+    }
+
     /**
      * Generates a random password using characters from ASCII code 33('!') to 126('~')
      * @param length how many characters should the password be

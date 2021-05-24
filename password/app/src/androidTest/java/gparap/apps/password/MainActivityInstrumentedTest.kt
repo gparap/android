@@ -15,23 +15,44 @@
  */
 package gparap.apps.password
 
+import android.content.pm.ActivityInfo
+import androidx.lifecycle.Lifecycle
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
 class MainActivityInstrumentedTest {
+    lateinit var activityScenario: ActivityScenario<MainActivity>
 
     @Before
     fun setUp() {
-        ActivityScenario.launch(MainActivity::class.java)
+        activityScenario = ActivityScenario.launch(MainActivity::class.java)
     }
 
     @Test
     fun onCreate_isBottomNavigationBarVisible() {
         onView(withId(R.id.bottom_nav_view)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun onScreenOrientationChange_maintainGeneratedPasswordTitleVisibility() {
+        //make title visible
+        onView(withId(R.id.navigation_generator)).perform(click())
+        onView(withId(R.id.buttonGeneratePassword)).perform(click())
+
+        //change screen orientation
+        activityScenario.onActivity {
+            it.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        }
+
+        onView(withId(R.id.editTextGeneratedPasswordTitle)).check(matches(isDisplayed()))
     }
 }

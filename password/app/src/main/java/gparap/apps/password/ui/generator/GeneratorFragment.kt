@@ -42,6 +42,11 @@ class GeneratorFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //restore state of password length
+        if (savedInstanceState != null) {
+            passwordLength = savedInstanceState.getInt("passwordLength")
+        }
+
         //inflate layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_generator, container, false)
 
@@ -50,10 +55,10 @@ class GeneratorFragment : Fragment() {
 
         //generate random password
         val buttonGenerate = rootView.findViewById<Button>(R.id.buttonGeneratePassword)
-        passwordTitle = rootView.findViewById(R.id.generatedPasswordTitle)
+        passwordTitle = rootView.findViewById(R.id.editTextGeneratedPasswordTitle)
         buttonGenerate.setOnClickListener {
             viewModel.generatePassword(passwordLength)
-            passwordTitle.isVisible = true
+            viewModel.setPasswordTitleVisibility(true)
         }
 
         //observe generated password
@@ -62,12 +67,19 @@ class GeneratorFragment : Fragment() {
             passwordGenerated.text = it
         })
 
+        //observe password title visibility
+        viewModel.passwordTitleVisibility.observe(viewLifecycleOwner, {
+            passwordTitle.isVisible = it
+        })
+
         //observe custom password length
         val customLength = rootView.findViewById<TextView>(R.id.editTextCustomLengthPassword)
         customLength.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                passwordLength = s.toString().toInt()
+                if (customLength.isVisible) {
+                    passwordLength = if (s.toString() == "") 0 else s.toString().toInt()
+                }
             }
 
             override fun afterTextChanged(s: Editable?) {}
@@ -108,5 +120,12 @@ class GeneratorFragment : Fragment() {
         }
 
         return rootView
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        //save state of password length
+        outState.putInt("passwordLength", passwordLength)
     }
 }
