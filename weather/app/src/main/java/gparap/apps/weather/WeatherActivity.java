@@ -107,35 +107,6 @@ public class WeatherActivity extends AppCompatActivity {
                 displayWeather(model);
             }
         });
-
-//        //DEBUG
-//        //------------------------------------------------------------------------------------------
-//        labelTemperature.setVisibility(VISIBLE);
-//        labelTemperatureFeelsLike.setVisibility(VISIBLE);
-//        labelTemperatureMax.setVisibility(VISIBLE);
-//        labelTemperatureMin.setVisibility(VISIBLE);
-//        labelWindSpeed.setVisibility(VISIBLE);
-//        labelAirPressure.setVisibility(VISIBLE);
-//        labelHumidity.setVisibility(VISIBLE);
-//        imageViewWeather.setVisibility(VISIBLE);
-//        textViewWeather.setVisibility(VISIBLE);
-//        textViewWeather.setText("thunderstorm with heavy drizzle");
-//
-//
-////CONVERT FROM UNIX TO TIME
-//        long unixSeconds = 1621655948 + 3600;
-//// convert seconds to milliseconds
-//        Date date = new java.util.Date(unixSeconds*1000L);
-//// the format of your date
-//        SimpleDateFormat sdf = new java.text.SimpleDateFormat("HH:mm:ss z");
-//
-//// give a timezone reference for formatting (see comment at the bottom)
-//        sdf.setTimeZone(java.util.TimeZone.getDefault());
-//        String formattedDate = sdf.format(date);
-//        System.out.println(formattedDate);
-//
-//        textViewWeather.setText(formattedDate);
-//        //------------------------------------------------------------------------------------------
     }
 
     @Override

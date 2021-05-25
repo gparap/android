@@ -15,10 +15,14 @@
  */
 package gparap.apps.weather;
 
+import android.util.DisplayMetrics;
+
 import androidx.test.core.app.ActivityScenario;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.concurrent.atomic.AtomicReference;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -28,9 +32,11 @@ import static org.hamcrest.CoreMatchers.not;
 
 public class WidgetVisibilityInstrumentedTest {
 
+    private ActivityScenario<WeatherActivity> activityScenario;
+
     @Before
     public void setUp() {
-        ActivityScenario.launch(WeatherActivity.class);
+        activityScenario = ActivityScenario.launch(WeatherActivity.class);
     }
 
     @Test
@@ -89,6 +95,24 @@ public class WidgetVisibilityInstrumentedTest {
     }
 
     @Test
+    //!! Should run in tablets
+    public void isWidgetInvisible_labelVisibility() {
+        if (isTablet())
+            onView(withId(R.id.labelVisibility)).check(matches(not(isDisplayed())));
+        else
+            assert (false);
+    }
+
+    @Test
+    //!! Should run in tablets
+    public void isWidgetInvisible_labelCloudness() {
+        if (isTablet())
+            onView(withId(R.id.labelCloudness)).check(matches(not(isDisplayed())));
+        else
+            assert (false);
+    }
+
+    @Test
     public void isWidgetInvisible_textViewWeather() {
         onView(withId(R.id.textViewWeather)).check(matches(not(isDisplayed())));
     }
@@ -126,5 +150,38 @@ public class WidgetVisibilityInstrumentedTest {
     @Test
     public void isWidgetInvisible_textViewHumidity() {
         onView(withId(R.id.textViewHumidity)).check(matches(not(isDisplayed())));
+    }
+
+    @Test
+    //!! Should run in tablets
+    public void isWidgetInvisible_textViewVisibility() {
+        if (isTablet())
+            onView(withId(R.id.textViewVisibility)).check(matches(not(isDisplayed())));
+        else
+            assert (false);
+    }
+
+    @Test
+    //!! Should run in tablets
+    public void isWidgetInvisible_textViewCloudness() {
+        if (isTablet())
+            onView(withId(R.id.textViewCloudness)).check(matches(not(isDisplayed())));
+        else
+            assert (false);
+    }
+
+    //Checks if the smallest screen width is equal/bigger than 600dp (tablet)
+    private boolean isTablet() {
+        DisplayMetrics metrics = new DisplayMetrics();
+        AtomicReference<Float> smallestScreenWidth = new AtomicReference<>(0.0f);
+        activityScenario.onActivity(activity -> {
+            //noinspection deprecation
+            activity.getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+            float width = metrics.widthPixels / metrics.density;
+            float height = metrics.heightPixels / metrics.density;
+            smallestScreenWidth.set(Math.min(width, height));
+
+        });
+        return smallestScreenWidth.get() >= 600.0f;
     }
 }

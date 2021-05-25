@@ -64,9 +64,6 @@ public class WeatherModelParser {
     }
 
     private void initWeatherModelWithData() throws JSONException {
-        //coord
-        model.setLongitude(coord.getDouble("lon"));
-        model.setLatitude(coord.getDouble("lat"));
         //weather
         model.setId(weather.getJSONObject(0).getInt("id"));
         model.setWeather(weather.getJSONObject(0).getString("main"));
@@ -85,10 +82,6 @@ public class WeatherModelParser {
         model.setWindSpeed(wind.getDouble("speed"));
         //clouds
         model.setCloudness(clouds.getInt("all"));
-        //sys
-        model.setCountryCode(sys.getString("country"));
-        model.setSunrise(sys.getLong("sunrise"));
-        model.setSunset(sys.getLong("sunset"));
         //name
         model.setCityName(jsonObjectResponse.getString("name"));
     }
