@@ -19,7 +19,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="visible" />
+        tools:visibility="visible"
+        tools:ignore="TextFields" />
 
     <!--Evaluated password-->
     <EditText
@@ -38,7 +39,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.25"
+        tools:ignore="TextFields" />
 
     <!--Evaluated password length label-->
     <TextView
@@ -85,16 +87,17 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewEvaluatedPasswordLengthLabel"
         tools:visibility="visible" />
 
-    <!--Button save-->
-    <Button
+    <!--Button that saves generated password to database-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/buttonSaveEvaluatedPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_save_evaluated_password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEvaluatedPasswordStrength" />
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/description_save_password"
+        android:src="@drawable/ic_save_black_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!--User tips for a safe password-->
     <TextView
@@ -106,6 +109,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSaveEvaluatedPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEvaluatedPasswordStrength" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
