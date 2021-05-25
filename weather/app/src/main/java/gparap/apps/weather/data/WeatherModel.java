@@ -16,8 +16,6 @@
 package gparap.apps.weather.data;
 
 public class WeatherModel {
-    private double longitude;
-    private double latitude;
     private int id;
     private String weather;
     private String description;
@@ -31,26 +29,7 @@ public class WeatherModel {
     private double visibility;
     private double windSpeed;
     private int cloudness;
-    private String countryCode;
-    private long sunrise;
-    private long sunset;
     private String cityName;
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
 
     public int getId() {
         return id;
@@ -154,30 +133,6 @@ public class WeatherModel {
 
     public void setCloudness(int cloudness) {
         this.cloudness = cloudness;
-    }
-
-    public String getCountryCode() {
-        return countryCode;
-    }
-
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
-    }
-
-    public long getSunrise() {
-        return sunrise;
-    }
-
-    public void setSunrise(long sunrise) {
-        this.sunrise = sunrise;
-    }
-
-    public long getSunset() {
-        return sunset;
-    }
-
-    public void setSunset(long sunset) {
-        this.sunset = sunset;
     }
 
     public String getCityName() {

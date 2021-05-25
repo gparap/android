@@ -55,7 +55,8 @@ public class WeatherUtilsUnitTest {
     public void generateURL_userLocationBased() {
         String expected = "https://api.openweathermap.org/data/2.5/weather?q=Athens&appid="
                 + APP_ID
-                + "&units=" + WeatherUtils.getMeasureUnit();
+                + "&units=" + WeatherUtils.getMeasureUnit()
+                + "&lang=en";
         String actual = WeatherUtils.generateURL("Athens");
         assertEquals(expected, actual);
     }
@@ -64,7 +65,8 @@ public class WeatherUtilsUnitTest {
     public void generateURL_citySearchBased() {
         String expected = "https://api.openweathermap.org/data/2.5/weather?lat=35.0&lon=139.0&appid="
                 + APP_ID
-                + "&units=" + WeatherUtils.getMeasureUnit();
+                + "&units=" + WeatherUtils.getMeasureUnit()
+                + "&lang=en";
         String actual = WeatherUtils.generateURL(35, 139);
         assertEquals(expected, actual);
     }

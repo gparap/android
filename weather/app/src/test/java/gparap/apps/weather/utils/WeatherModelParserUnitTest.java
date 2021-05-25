@@ -45,8 +45,6 @@ public class WeatherModelParserUnitTest {
     private WeatherModel createExcpectedWeatherDataModel() {
         WeatherModel model = new WeatherModel();
 
-        model.setLongitude(23.7162);
-        model.setLatitude(37.9795);
         model.setId(803);
         model.setWeather("Clouds");
         model.setDescription("broken clouds");
@@ -60,9 +58,6 @@ public class WeatherModelParserUnitTest {
         model.setVisibility(9000);
         model.setWindSpeed(5.14);
         model.setCloudness(75);
-        model.setCountryCode("GR");
-        model.setSunrise(1617163904);
-        model.setSunset(1617209193);
         model.setCityName("Athens");
 
         return model;
@@ -75,9 +70,7 @@ public class WeatherModelParserUnitTest {
         }
 
         //compare weather data objects value by value
-        return actual.getLongitude() == expected.getLongitude() &&
-                actual.getLatitude() == expected.getLatitude() &&
-                actual.getId() == expected.getId() &&
+        return actual.getId() == expected.getId() &&
                 actual.getWeather().equals(expected.getWeather()) &&
                 actual.getDescription().equals(expected.getDescription()) &&
                 actual.getIcon().equals(expected.getIcon()) &&
@@ -90,9 +83,6 @@ public class WeatherModelParserUnitTest {
                 actual.getVisibility() == expected.getVisibility() &&
                 actual.getWindSpeed() == expected.getWindSpeed() &&
                 actual.getCloudness() == expected.getCloudness() &&
-                actual.getCountryCode().equals(expected.getCountryCode()) &&
-                actual.getSunrise() == expected.getSunrise() &&
-                actual.getSunset() == expected.getSunset() &&
                 actual.getCityName().equals(expected.getCityName());
     }
 }
