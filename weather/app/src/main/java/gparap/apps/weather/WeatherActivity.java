@@ -49,14 +49,14 @@ import gparap.apps.weather.viewmodel.WeatherActivityViewModel;
 
 import static android.view.View.VISIBLE;
 
-@SuppressWarnings({"Convert2Lambda", "Anonymous2MethodRef", "ConstantConditions"})
+@SuppressWarnings({"Convert2Lambda", "ConstantConditions", "unused"})
 @SuppressLint("NonConstantResourceId")
 public class WeatherActivity extends AppCompatActivity {
     private TextView textViewWeather,
             labelTemperature, labelTemperatureFeelsLike, labelTemperatureMax, labelTemperatureMin,
-            labelWindSpeed, labelAirPressure, labelHumidity,
+            labelWindSpeed, labelAirPressure, labelHumidity, labelVisibility, labelCloudness,
             textViewTemperature, textViewTemperatureFeelsLike, textViewTemperatureMax, textViewTemperatureMin,
-            textViewWindSpeed, textViewAirPressure, textViewHumidity;
+            textViewWindSpeed, textViewAirPressure, textViewHumidity, textViewVisibility, textViewCloudness;
     private ImageView imageViewWeather;
     private Button buttonWeatherProvider;
     private EditText editTextCity;
@@ -107,6 +107,35 @@ public class WeatherActivity extends AppCompatActivity {
                 displayWeather(model);
             }
         });
+
+//        //DEBUG
+//        //------------------------------------------------------------------------------------------
+//        labelTemperature.setVisibility(VISIBLE);
+//        labelTemperatureFeelsLike.setVisibility(VISIBLE);
+//        labelTemperatureMax.setVisibility(VISIBLE);
+//        labelTemperatureMin.setVisibility(VISIBLE);
+//        labelWindSpeed.setVisibility(VISIBLE);
+//        labelAirPressure.setVisibility(VISIBLE);
+//        labelHumidity.setVisibility(VISIBLE);
+//        imageViewWeather.setVisibility(VISIBLE);
+//        textViewWeather.setVisibility(VISIBLE);
+//        textViewWeather.setText("thunderstorm with heavy drizzle");
+//
+//
+////CONVERT FROM UNIX TO TIME
+//        long unixSeconds = 1621655948 + 3600;
+//// convert seconds to milliseconds
+//        Date date = new java.util.Date(unixSeconds*1000L);
+//// the format of your date
+//        SimpleDateFormat sdf = new java.text.SimpleDateFormat("HH:mm:ss z");
+//
+//// give a timezone reference for formatting (see comment at the bottom)
+//        sdf.setTimeZone(java.util.TimeZone.getDefault());
+//        String formattedDate = sdf.format(date);
+//        System.out.println(formattedDate);
+//
+//        textViewWeather.setText(formattedDate);
+//        //------------------------------------------------------------------------------------------
     }
 
     @Override
@@ -138,6 +167,9 @@ public class WeatherActivity extends AppCompatActivity {
         String temp_max = String.valueOf(model.getTemperatureMax());
         String temp_min = String.valueOf(model.getTemperatureMin());
 
+        //get unit system for visibility
+        String units = WeatherUtils.getMeasureUnit();
+
         //fill in weather widgets
         textViewWeather.setText(model.getDescription());
         textViewTemperature.setText(WeatherUtils.formatWeatherValue(temp, 0));
@@ -146,7 +178,14 @@ public class WeatherActivity extends AppCompatActivity {
         textViewTemperatureMin.setText(WeatherUtils.formatWeatherValue(temp_min, 0));
         textViewWindSpeed.setText(model.getWindSpeed() + WeatherUtils.getWindSpeedUnit());
         textViewAirPressure.setText(model.getAirPressure() + WeatherUtils.SUFFIX_AIR_PRESSURE);
-        textViewHumidity.setText(model.getHumidity() + WeatherUtils.SUFFIX_HUMIDITY);
+        textViewHumidity.setText(model.getHumidity() + WeatherUtils.SUFFIX_HUMIDITY_CLOUDNESS);
+        if (units.equals(WeatherUtils.UNIT_METRIC)) {
+            textViewVisibility.setText(model.getVisibility() + WeatherUtils.SUFFIX_VISIBILITY_METRIC);
+        } else {
+            textViewVisibility.setText(WeatherUtils.convertMetersToMiles(model.getVisibility())
+                    + WeatherUtils.SUFFIX_VISIBILITY_IMPERIAL);
+        }
+        textViewCloudness.setText(model.getCloudness() + WeatherUtils.SUFFIX_HUMIDITY_CLOUDNESS);
     }
 
     /**
@@ -235,6 +274,8 @@ public class WeatherActivity extends AppCompatActivity {
         labelWindSpeed.setVisibility(VISIBLE);
         labelAirPressure.setVisibility(VISIBLE);
         labelHumidity.setVisibility(VISIBLE);
+        labelVisibility.setVisibility(VISIBLE);
+        labelCloudness.setVisibility(VISIBLE);
     }
 
     private void getWidgets() {
@@ -249,6 +290,8 @@ public class WeatherActivity extends AppCompatActivity {
         labelWindSpeed = findViewById(R.id.labelWindSpeed);
         labelAirPressure = findViewById(R.id.labelAirPressure);
         labelHumidity = findViewById(R.id.labelHumidity);
+        labelVisibility = findViewById(R.id.labelVisibility);
+        labelCloudness = findViewById(R.id.labelCloudness);
         textViewWeather = findViewById(R.id.textViewWeather);
         textViewTemperature = findViewById(R.id.textViewTemperature);
         textViewTemperatureFeelsLike = findViewById(R.id.textViewTemperatureFeelsLike);
@@ -257,5 +300,7 @@ public class WeatherActivity extends AppCompatActivity {
         textViewWindSpeed = findViewById(R.id.textViewWindSpeed);
         textViewAirPressure = findViewById(R.id.textViewAirPressure);
         textViewHumidity = findViewById(R.id.textViewHumidity);
+        textViewVisibility = findViewById(R.id.textViewVisibility);
+        textViewCloudness = findViewById(R.id.textViewCloudness);
     }
 }
