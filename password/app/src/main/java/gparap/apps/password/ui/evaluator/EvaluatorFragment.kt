@@ -21,11 +21,11 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.password.R
 import gparap.apps.password.utils.DatabaseUtils
 
@@ -94,7 +94,7 @@ class EvaluatorFragment : Fragment() {
         })
 
         //save password to database
-        val buttonSave = rootView.findViewById<Button>(R.id.buttonSaveEvaluatedPassword)
+        val buttonSave = rootView.findViewById<FloatingActionButton>(R.id.buttonSaveEvaluatedPassword)
         buttonSave.setOnClickListener {
             DatabaseUtils.getInstance()?.savePassword(
                 password.text.toString(),
