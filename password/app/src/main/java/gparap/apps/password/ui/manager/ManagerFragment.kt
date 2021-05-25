@@ -20,7 +20,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.password.R
 import gparap.apps.password.adapters.PasswordAdapter
@@ -28,8 +27,6 @@ import gparap.apps.password.data.DatabaseManager
 import gparap.apps.password.data.PasswordModel
 
 class ManagerFragment : Fragment() {
-    private lateinit var viewModel: ManagerViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,13 +35,10 @@ class ManagerFragment : Fragment() {
         //inflate layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_manager, container, false)
 
-        //create viewmodel for this fragment
-        viewModel = ViewModelProvider(this).get(ManagerViewModel::class.java)
-
         //setup a password RecyclerView with adapter
         val recyclerView = rootView.findViewById<RecyclerView>(R.id.recyclerViewPasswords)
         val passwords = ArrayList<PasswordModel>()
-        val adapter: PasswordAdapter = PasswordAdapter(passwords)
+        val adapter = PasswordAdapter(passwords)
         recyclerView.adapter = adapter
 
         //fetch all passwords from database
