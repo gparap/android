@@ -108,4 +108,12 @@ public class WeatherUtilsUnitTest {
         String actual = WeatherUtils.getMeasureUnit();
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void convertMetersToMiles() {
+        double meters = 1000;
+        double expected_miles = 0.621;
+        double actual_miles = WeatherUtils.convertMetersToMiles(meters);
+        assertEquals("Error converting meters to miles...", expected_miles, actual_miles, 0.0);
+    }
 }

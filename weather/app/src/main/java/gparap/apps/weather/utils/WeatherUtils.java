@@ -39,7 +39,9 @@ public class WeatherUtils {
     public final static String SUFFIX_WIND_SPEED_METRIC = " m/s";
     public final static String SUFFIX_WIND_SPEED_IMPERIAL = " mph";
     public final static String SUFFIX_AIR_PRESSURE = " hPa";
-    public final static String SUFFIX_HUMIDITY = " %";
+    public final static String SUFFIX_HUMIDITY_CLOUDNESS = " %";
+    public final static String SUFFIX_VISIBILITY_METRIC = " meters";
+    public final static String SUFFIX_VISIBILITY_IMPERIAL = " miles";
 
     //units of measurement
     public static final String UNIT_METRIC = "metric";
@@ -94,6 +96,7 @@ public class WeatherUtils {
 
     /**
      * Returns the appropriate unit of measurement based on user's locale
+     *
      * @return metric or imperial
      */
     public static String getMeasureUnit() {
@@ -139,6 +142,18 @@ public class WeatherUtils {
         } else {
             return WeatherUtils.SUFFIX_WIND_SPEED_IMPERIAL;
         }
+    }
+
+    /**
+     * Converts meters to international miles. (1meter ~= 0.000621miles)
+     * Used for visibility display, because weather provider's service doesn't make the conversion
+     * when we have imperial units.
+     *
+     * @param meters to convert
+     * @return visibility in international miles
+     */
+    public static double convertMetersToMiles(double meters) {
+        return meters * 0.000621;
     }
 
     /**
