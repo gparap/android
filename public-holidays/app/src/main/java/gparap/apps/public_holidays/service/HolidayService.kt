@@ -13,14 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.public_holidays
+package gparap.apps.public_holidays.service
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import gparap.apps.public_holidays.model.HolidayModel
+import retrofit2.Call
+import retrofit2.http.GET
+import retrofit2.http.Path
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
+interface HolidayService {
+    /**
+     * Gets all public holidays for current year (2021) based on country code path.
+     */
+    @GET("/api/v3/PublicHolidays/2021/{countryCode}")
+    fun getPublicHolidays(
+        @Path("countryCode") countryCode: String
+    ) : Call<List<HolidayModel>>
 }
