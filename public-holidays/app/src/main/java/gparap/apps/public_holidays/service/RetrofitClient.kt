@@ -20,23 +20,23 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 
-class RetrofitClient {
-    private val BASE_URL = "https://date.nager.at/"
-    private lateinit var instance: Retrofit
+object RetrofitClient {
+    private val BASE_URL = "https://date.nager.at"
+    private var retrofit: Retrofit? = null
 
     //returns the Retrofit instance
-    fun instance() : Retrofit {
-        if (instance == null){
+    fun instance(): Retrofit? {
+        if (retrofit == null) {
             init()
         }
-        return instance
+        return retrofit
     }
 
     //creates the Retrofit instance
     private fun init() {
         val httpClient = OkHttpClient()
 
-        instance = Retrofit.Builder()
+        retrofit = Retrofit.Builder()
             .client(httpClient)
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
