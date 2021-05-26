@@ -22,10 +22,8 @@ import retrofit2.http.Path
 
 interface HolidayService {
     /**
-     * Gets all public holidays for current year (2021) based on country code path.
+     * Gets all public holidays for current year (2021) based on country code URL path segment.
      */
     @GET("/api/v3/PublicHolidays/2021/{countryCode}")
-    fun getPublicHolidays(
-        @Path("countryCode") countryCode: String
-    ) : Call<List<HolidayModel>>
+    fun getPublicHolidays(@Path("countryCode") countryCode: String): Call<List<HolidayModel>>
 }
