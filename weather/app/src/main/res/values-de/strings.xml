@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Wetter</string>
+    <string name="toast_empty_search">Stadt kann nicht leer sein.</string>
+    <string name="search_city">Suche nach einer Stadt…</string>
+    <string name="search_city_icon">Standortbild suchen</string>
+    <string name="weather_icon">Wettersymbol</string>
+    <string name="weather">Wetter:</string>
+    <string name="temperature">Temperatur:</string>
+    <string name="temperature_feels_like">Fühlt sich an wie:</string>
+    <string name="temperature_max">Temperatur max:</string>
+    <string name="temperature_min">Temperatur min:</string>
+    <string name="wind_speed">Windgeschwindigkeit:</string>
+    <string name="air_pressure">Luftdruck:</string>
+    <string name="humidity">Feuchtigkeit:</string>
+    <string name="visibility">Sichtweite:</string>
+    <string name="cloudness">Trübung:</string>
+    <string name="toast_cannot_fetch_weather">Wetter kann nicht abgerufen werden.</string>
+    <string name="weather_provider">Wetterdatenquelle - OpenWeather</string>
+    <string name="toast_location_permission_denied">Standortberechtigung verweigert.</string>
+    <string name="toast_location_disabled">Standort ist deaktiviert.</string>
+</resources>

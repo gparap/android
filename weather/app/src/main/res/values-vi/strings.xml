@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Thời tiết</string>
+    <string name="toast_empty_search">Thành phố không được để trống.</string>
+    <string name="search_city">Tìm kiếm một thành phố…</string>
+    <string name="search_city_icon">Tìm kiếm hình ảnh vị trí</string>
+    <string name="weather_icon">Biểu tượng thời tiết</string>
+    <string name="weather">Thời tiết:</string>
+    <string name="temperature">Nhiệt độ:</string>
+    <string name="temperature_feels_like">Cảm thấy như:</string>
+    <string name="temperature_max">Nhiệt độ tối đa:</string>
+    <string name="temperature_min">Nhiệt độ tối thiểu:</string>
+    <string name="wind_speed">Tốc độ gió:</string>
+    <string name="air_pressure">Áp suất không khí:</string>
+    <string name="humidity">Độ ẩm:</string>
+    <string name="visibility">Hiển thị:</string>
+    <string name="cloudness">Mây:</string>
+    <string name="toast_cannot_fetch_weather">Không thể tìm nạp thời tiết.</string>
+    <string name="weather_provider">nguồn dữ liệu thời tiết - OpenWeather</string>
+    <string name="toast_location_permission_denied">Quyền vị trí bị từ chối.</string>
+    <string name="toast_location_disabled">Vị trí bị vô hiệu hóa.</string>
+</resources>

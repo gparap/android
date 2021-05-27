@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">天気</string>
+    <string name="toast_empty_search">都市を空にすることはできません。</string>
+    <string name="search_city">都市を検索…</string>
+    <string name="search_city_icon">場所の画像を検索</string>
+    <string name="weather_icon">天気アイコン</string>
+    <string name="weather">天気：</string>
+    <string name="temperature">温度：</string>
+    <string name="temperature_feels_like">のように感じている：</string>
+    <string name="temperature_max">最高温度：</string>
+    <string name="temperature_min">最小温度：</string>
+    <string name="wind_speed">風速：</string>
+    <string name="air_pressure">空気圧：</string>
+    <string name="humidity">湿度：</string>
+    <string name="visibility">可視性：</string>
+    <string name="cloudness">曇り：</string>
+    <string name="toast_cannot_fetch_weather">天気を取得できません。</string>
+    <string name="weather_provider">気象データソース- OpenWeather</string>
+    <string name="toast_location_permission_denied">ロケーション許可が拒否されました。</string>
+    <string name="toast_location_disabled">場所は無効になっています。</string>
+</resources>

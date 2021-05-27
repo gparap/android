@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Καιρός</string>
+    <string name="toast_empty_search">Η πόλη δεν μπορεί να είναι άδεια.</string>
+    <string name="search_city">Αναζήτηση πόλης…</string>
+    <string name="search_city_icon">Εικονίδιο αναζήτησης τοποθεσίας</string>
+    <string name="weather_icon">Εικονίδιο καιρού</string>
+    <string name="weather">Καιρός:</string>
+    <string name="temperature">Θερμοκρασία:</string>
+    <string name="temperature_feels_like">Αίσθηση σαν:</string>
+    <string name="temperature_max">Μέγιστη θερμοκρασία:</string>
+    <string name="temperature_min">Ελάχιστη θερμοκρασία:</string>
+    <string name="wind_speed">Ταχύτητα Ανέμου:</string>
+    <string name="air_pressure">Πίεση αέρα:</string>
+    <string name="humidity">Υγρασία:</string>
+    <string name="visibility">Ορατότητα:</string>
+    <string name="cloudness">Συννεφιά:</string>
+    <string name="toast_cannot_fetch_weather">Δεν είναι δυνατή η λήψη καιρού.</string>
+    <string name="weather_provider">πηγή δεδομένων καιρού - OpenWeather</string>
+    <string name="toast_location_permission_denied">Η άδεια τοποθεσίας απορρίφθηκε.</string>
+    <string name="toast_location_disabled">Η τοποθεσία είναι απενεργοποιημένη.</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">मौसम</string>
+    <string name="toast_empty_search">शहर खाली नहीं हो सकता.</string>
+    <string name="search_city">एक शहर खोजें…</string>
+    <string name="search_city_icon">स्थान छवि खोजें</string>
+    <string name="weather_icon">मौसम आइकन</string>
+    <string name="weather">मौसम:</string>
+    <string name="temperature">तापमान:</string>
+    <string name="temperature_feels_like">की तरह लगना:</string>
+    <string name="temperature_max">तापमान अधिकतम:</string>
+    <string name="temperature_min">तापमान न्यूनतम:</string>
+    <string name="wind_speed">हवा की गति:</string>
+    <string name="air_pressure">हवा का दबाव:</string>
+    <string name="humidity">आर्द्रता:</string>
+    <string name="visibility">दृश्यता:</string>
+    <string name="cloudness">बादल:</string>
+    <string name="toast_cannot_fetch_weather">मौसम नहीं लाया जा सकता.</string>
+    <string name="weather_provider">मौसम डेटा स्रोत - OpenWeather</string>
+    <string name="toast_location_permission_denied">स्थान अनुमति अस्वीकृत.</string>
+    <string name="toast_location_disabled">स्थान अक्षम है.</string>
+</resources>

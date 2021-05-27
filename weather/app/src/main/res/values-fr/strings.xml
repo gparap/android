@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">La météo</string>
+    <string name="toast_empty_search">La ville ne peut pas être vide.</string>
+    <string name="search_city">Rechercher une ville…</string>
+    <string name="search_city_icon">Image de l\'emplacement de recherche</string>
+    <string name="weather_icon">Icône météo</string>
+    <string name="weather">La météo:</string>
+    <string name="temperature">Température:</string>
+    <string name="temperature_feels_like">Ressenti comme:</string>
+    <string name="temperature_max">Température max:</string>
+    <string name="temperature_min">Température Min:</string>
+    <string name="wind_speed">Vitesse du vent:</string>
+    <string name="air_pressure">Pression de l\'air:</string>
+    <string name="humidity">Humidité:</string>
+    <string name="visibility">Visibilité:</string>
+    <string name="cloudness">Nébulosité:</string>
+    <string name="toast_cannot_fetch_weather">Impossible de récupérer la météo.</string>
+    <string name="weather_provider">source de données météorologiques - OpenWeather</string>
+    <string name="toast_location_permission_denied">Autorisation de localisation refusée.</string>
+    <string name="toast_location_disabled">La localisation est désactivée.</string>
+</resources>

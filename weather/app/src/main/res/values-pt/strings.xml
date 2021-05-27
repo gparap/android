@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Clima</string>
+    <string name="toast_empty_search">A cidade não pode estar vazia.</string>
+    <string name="search_city">Pesquise uma cidade ...</string>
+    <string name="search_city_icon">Imagem de localização de pesquisa</string>
+    <string name="weather_icon">Ícone do clima</string>
+    <string name="weather">Clima:</string>
+    <string name="temperature">Temperatura:</string>
+    <string name="temperature_feels_like">Parece:</string>
+    <string name="temperature_max">Temperatura máxima:</string>
+    <string name="temperature_min">Temperatura Mín:</string>
+    <string name="wind_speed">Velocidade do vento:</string>
+    <string name="air_pressure">Pressão do ar:</string>
+    <string name="humidity">Umidade:</string>
+    <string name="visibility">Visibilidade:</string>
+    <string name="cloudness">Nebulosidade:</string>
+    <string name="toast_cannot_fetch_weather">Não é possível buscar o clima.</string>
+    <string name="weather_provider">fonte de dados meteorológicos - OpenWeather</string>
+    <string name="toast_location_permission_denied">Permissão de localização negada.</string>
+    <string name="toast_location_disabled">A localização está desativada.</string>
+</resources>
