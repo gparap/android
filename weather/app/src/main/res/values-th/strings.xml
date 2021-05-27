@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">สภาพอากาศ</string>
+    <string name="toast_empty_search">เมืองต้องไม่ว่างเปล่า</string>
+    <string name="search_city">ค้นหาเมือง ...</string>
+    <string name="search_city_icon">ค้นหาภาพสถานที่</string>
+    <string name="weather_icon">ไอคอนสภาพอากาศ</string>
+    <string name="weather">สภาพอากาศ:</string>
+    <string name="temperature">อุณหภูมิ:</string>
+    <string name="temperature_feels_like">รู้สึกเหมือน:</string>
+    <string name="temperature_max">อุณหภูมิสูงสุด:</string>
+    <string name="temperature_min">อุณหภูมิต่ำสุด:</string>
+    <string name="wind_speed">ความเร็วลม:</string>
+    <string name="air_pressure">ความดันอากาศ:</string>
+    <string name="humidity">ความชื้น:</string>
+    <string name="visibility">ทัศนวิสัย:</string>
+    <string name="cloudness">ความขุ่นมัว:</string>
+    <string name="toast_cannot_fetch_weather">ไม่สามารถดึงข้อมูลสภาพอากาศ</string>
+    <string name="weather_provider">แหล่งข้อมูลสภาพอากาศ - OpenWeather</string>
+    <string name="toast_location_permission_denied">การอนุญาตตำแหน่งถูกปฏิเสธ</string>
+    <string name="toast_location_disabled">ตำแหน่งถูกปิดใช้งาน</string>
+</resources>

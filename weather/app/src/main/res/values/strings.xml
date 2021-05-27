@@ -2,10 +2,10 @@
     <string name="app_name">Weather</string>
     <string name="toast_empty_search">City cannot be empty.</string>
     <!--search-->
-    <string name="search_city">Search…</string>
-    <string name="search_city_icon">Search Location image</string>
+    <string name="search_city">Search for a city…</string>
+    <string name="search_city_icon">Search location image</string>
     <!--weather-->
-    <string name="weather_icon">Weather Icon</string>
+    <string name="weather_icon">Weather icon</string>
     <string name="weather">Weather:</string>
     <string name="temperature">Temperature:</string>
     <string name="temperature_feels_like">Feels Like:</string>

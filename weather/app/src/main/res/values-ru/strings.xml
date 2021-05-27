@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Погода</string>
+    <string name="toast_empty_search">Город не может быть пустым.</string>
+    <string name="search_city">Искать город…</string>
+    <string name="search_city_icon">Изображение местоположения поиска</string>
+    <string name="weather_icon">Значок погоды</string>
+    <string name="weather">Погода:</string>
+    <string name="temperature">Температура:</string>
+    <string name="temperature_feels_like">Как будто:</string>
+    <string name="temperature_max">Макс.температура:</string>
+    <string name="temperature_min">Мин. Температура:</string>
+    <string name="wind_speed">Скорость ветра:</string>
+    <string name="air_pressure">Давление воздуха:</string>
+    <string name="humidity">Влажность:</string>
+    <string name="visibility">Видимость:</string>
+    <string name="cloudness">Облачность:</string>
+    <string name="toast_cannot_fetch_weather">Не удается получить информацию о погоде.</string>
+    <string name="weather_provider">источник данных о погоде - OpenWeather</string>
+    <string name="toast_location_permission_denied">В разрешении на размещение отказано.</string>
+    <string name="toast_location_disabled">Местоположение отключено.</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tempo metereologico</string>
+    <string name="toast_empty_search">La città non può essere vuota.</string>
+    <string name="search_city">Cerca una città ...</string>
+    <string name="search_city_icon">Cerca l\'immagine della posizione</string>
+    <string name="weather_icon">Icona del tempo</string>
+    <string name="weather">Tempo metereologico:</string>
+    <string name="temperature">Temperatura:</string>
+    <string name="temperature_feels_like">Si sente come:</string>
+    <string name="temperature_max">Temperatura massima:</string>
+    <string name="temperature_min">Temperatura Min:</string>
+    <string name="wind_speed">Velocità del vento:</string>
+    <string name="air_pressure">Pressione dell\'aria:</string>
+    <string name="humidity">Umidità:</string>
+    <string name="visibility">Visibilità:</string>
+    <string name="cloudness">Nuvolosità:</string>
+    <string name="toast_cannot_fetch_weather">Impossibile recuperare il meteo.</string>
+    <string name="weather_provider">fonte dati meteo - OpenWeather</string>
+    <string name="toast_location_permission_denied">Autorizzazione alla posizione negata.</string>
+    <string name="toast_location_disabled">La posizione è disabilitata.</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">天氣</string>
+    <string name="toast_empty_search">城市不能為空。</string>
+    <string name="search_city">搜索城市...</string>
+    <string name="search_city_icon">搜索位置圖片</string>
+    <string name="weather_icon">天氣圖標</string>
+    <string name="weather">天氣：</string>
+    <string name="temperature">溫度：</string>
+    <string name="temperature_feels_like">感覺像：</string>
+    <string name="temperature_max">最高溫度</string>
+    <string name="temperature_min">最低溫度：</string>
+    <string name="wind_speed">風速：</string>
+    <string name="air_pressure">空氣壓力：</string>
+    <string name="humidity">濕度：</string>
+    <string name="visibility">能見度：</string>
+    <string name="cloudness">渾濁：</string>
+    <string name="toast_cannot_fetch_weather">無法獲取天氣。</string>
+    <string name="weather_provider">天氣數據源- OpenWeather</string>
+    <string name="toast_location_permission_denied">位置權限被拒絕。</string>
+    <string name="toast_location_disabled">位置被禁用。</string>
+</resources>

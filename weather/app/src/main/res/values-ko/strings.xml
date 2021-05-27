@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">날씨</string>
+    <string name="toast_empty_search">도시는 비워 둘 수 없습니다.</string>
+    <string name="search_city">도시 검색…</string>
+    <string name="search_city_icon">위치 이미지 검색</string>
+    <string name="weather_icon">날씨 아이콘</string>
+    <string name="weather">날씨:</string>
+    <string name="temperature">온도:</string>
+    <string name="temperature_feels_like">같은 느낌:</string>
+    <string name="temperature_max">최대 온도 :</string>
+    <string name="temperature_min">최소 온도 :</string>
+    <string name="wind_speed">풍속:</string>
+    <string name="air_pressure">기압 :</string>
+    <string name="humidity">습기:</string>
+    <string name="visibility">시계:</string>
+    <string name="cloudness">흐림 :</string>
+    <string name="toast_cannot_fetch_weather">날씨를 가져올 수 없습니다.</string>
+    <string name="weather_provider">날씨 데이터 소스- OpenWeather</string>
+    <string name="toast_location_permission_denied">위치 권한이 거부되었습니다.</string>
+    <string name="toast_location_disabled">위치가 비활성화되었습니다.</string>
+</resources>

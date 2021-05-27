@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cuaca</string>
+    <string name="toast_empty_search">Kota tidak boleh kosong.</string>
+    <string name="search_city">Telusuri kota ...</string>
+    <string name="search_city_icon">Cari gambar lokasi</string>
+    <string name="weather_icon">Ikon cuaca</string>
+    <string name="weather">Cuaca:</string>
+    <string name="temperature">Suhu:</string>
+    <string name="temperature_feels_like">Terasa seperti:</string>
+    <string name="temperature_max">Suhu Maks:</string>
+    <string name="temperature_min">Suhu Min:</string>
+    <string name="wind_speed">Kecepatan angin:</string>
+    <string name="air_pressure">Tekanan udara:</string>
+    <string name="humidity">Kelembaban:</string>
+    <string name="visibility">Visibilitas:</string>
+    <string name="cloudness">Cloudness:</string>
+    <string name="toast_cannot_fetch_weather">Tidak dapat melihat cuaca.</string>
+    <string name="weather_provider">sumber data cuaca - OpenWeather</string>
+    <string name="toast_location_permission_denied">Izin lokasi ditolak.</string>
+    <string name="toast_location_disabled">Lokasi dinonaktifkan.</string>
+</resources>

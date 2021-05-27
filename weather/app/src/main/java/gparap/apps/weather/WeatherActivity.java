@@ -21,6 +21,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -150,13 +151,15 @@ public class WeatherActivity extends AppCompatActivity {
         textViewWindSpeed.setText(model.getWindSpeed() + WeatherUtils.getWindSpeedUnit());
         textViewAirPressure.setText(model.getAirPressure() + WeatherUtils.SUFFIX_AIR_PRESSURE);
         textViewHumidity.setText(model.getHumidity() + WeatherUtils.SUFFIX_HUMIDITY_CLOUDNESS);
-        if (units.equals(WeatherUtils.UNIT_METRIC)) {
-            textViewVisibility.setText(model.getVisibility() + WeatherUtils.SUFFIX_VISIBILITY_METRIC);
-        } else {
-            textViewVisibility.setText(WeatherUtils.convertMetersToMiles(model.getVisibility())
-                    + WeatherUtils.SUFFIX_VISIBILITY_IMPERIAL);
+        if (isTablet()) {
+            if (units.equals(WeatherUtils.UNIT_METRIC)) {
+                textViewVisibility.setText(model.getVisibility() + WeatherUtils.SUFFIX_VISIBILITY_METRIC);
+            } else {
+                textViewVisibility.setText(WeatherUtils.convertMetersToMiles(model.getVisibility())
+                        + WeatherUtils.SUFFIX_VISIBILITY_IMPERIAL);
+            }
+            textViewCloudness.setText(model.getCloudness() + WeatherUtils.SUFFIX_HUMIDITY_CLOUDNESS);
         }
-        textViewCloudness.setText(model.getCloudness() + WeatherUtils.SUFFIX_HUMIDITY_CLOUDNESS);
     }
 
     /**
@@ -245,8 +248,10 @@ public class WeatherActivity extends AppCompatActivity {
         labelWindSpeed.setVisibility(VISIBLE);
         labelAirPressure.setVisibility(VISIBLE);
         labelHumidity.setVisibility(VISIBLE);
-        labelVisibility.setVisibility(VISIBLE);
-        labelCloudness.setVisibility(VISIBLE);
+        if (isTablet()) {
+            labelVisibility.setVisibility(VISIBLE);
+            labelCloudness.setVisibility(VISIBLE);
+        }
     }
 
     private void getWidgets() {
@@ -261,8 +266,6 @@ public class WeatherActivity extends AppCompatActivity {
         labelWindSpeed = findViewById(R.id.labelWindSpeed);
         labelAirPressure = findViewById(R.id.labelAirPressure);
         labelHumidity = findViewById(R.id.labelHumidity);
-        labelVisibility = findViewById(R.id.labelVisibility);
-        labelCloudness = findViewById(R.id.labelCloudness);
         textViewWeather = findViewById(R.id.textViewWeather);
         textViewTemperature = findViewById(R.id.textViewTemperature);
         textViewTemperatureFeelsLike = findViewById(R.id.textViewTemperatureFeelsLike);
@@ -271,7 +274,21 @@ public class WeatherActivity extends AppCompatActivity {
         textViewWindSpeed = findViewById(R.id.textViewWindSpeed);
         textViewAirPressure = findViewById(R.id.textViewAirPressure);
         textViewHumidity = findViewById(R.id.textViewHumidity);
-        textViewVisibility = findViewById(R.id.textViewVisibility);
-        textViewCloudness = findViewById(R.id.textViewCloudness);
+        if (isTablet()) {
+            labelVisibility = findViewById(R.id.labelVisibility);
+            labelCloudness = findViewById(R.id.labelCloudness);
+            textViewVisibility = findViewById(R.id.textViewVisibility);
+            textViewCloudness = findViewById(R.id.textViewCloudness);
+        }
+    }
+
+    //Checks if the smallest screen width is equal/bigger than 600dp (tablet)
+    private boolean isTablet() {
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+        float width = metrics.widthPixels / metrics.density;
+        float height = metrics.heightPixels / metrics.density;
+        float smallestScreenWidth = (Math.min(width, height));
+        return smallestScreenWidth >= 600.0f;
     }
 }
