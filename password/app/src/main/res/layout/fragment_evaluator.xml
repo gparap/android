@@ -101,6 +101,7 @@
 
     <!--User tips for a safe password-->
     <TextView
+        android:padding="8dp"
         android:id="@+id/passwordEvaluationUserTips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
