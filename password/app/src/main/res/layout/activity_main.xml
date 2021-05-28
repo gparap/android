@@ -4,7 +4,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="?attr/actionBarSize">
+    android:paddingTop="@dimen/activity_padding_top">
 
     <!--container for Fragments-->
     <androidx.fragment.app.FragmentContainerView

@@ -2,4 +2,14 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_padding_top">@dimen/mtrl_toolbar_default_height</dimen>
+    <!-- cardview_password -->
+    <dimen name="cardview_margin_start">8dp</dimen>
+    <dimen name="cardview_margin_bottom">32dp</dimen>
+    <!-- fragments -->
+    <dimen name="fab_margin_end">8dp</dimen>
+    <dimen name="fab_margin_start">8dp</dimen>
+    <dimen name="layout_margin_end">8dp</dimen>
+    <dimen name="layout_margin_bottom">8dp</dimen>
+    <!-- TODO: text sizes -->
 </resources>
