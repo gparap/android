@@ -22,6 +22,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -61,6 +62,15 @@ class EvaluatorFragment : Fragment() {
 
                 //evaluate password
                 viewModel.setPasswordStrength(Evaluator(context!!).evaluatePassword(s.toString()))
+
+                //show tick if the password is strongest
+                val imageTick = rootView.findViewById<ImageView>(R.id.imageViewPasswordEvaluationPassed)
+                val tick:String = Evaluator(context!!).evaluatePassword(s.toString())
+                if (tick == getString(R.string.password_evaluation_strongest)){
+                    imageTick.visibility = View.VISIBLE
+                }else{
+                    imageTick.visibility = View.INVISIBLE
+                }
 
                 //keep track of password length
                 if (s != null) {
