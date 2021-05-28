@@ -144,4 +144,17 @@ class EvaluatorFragmentInstrumentedTest {
         // !!! when we test more than one toasts
         Thread.sleep(2000)
     }
+
+    @Test
+    fun evaluatingPassword_showTickWhenPasswordIsStrongest() {
+        //clear password first
+        onView(withId(R.id.editTextEvaluatedPassword)).perform(clearText())
+
+        //type the strong password possible
+        onView(withId(R.id.editTextEvaluatedPassword))
+            .perform(typeText("aaaaAAAA!@#$1234"))
+        closeSoftKeyboard()
+
+        onView(withId(R.id.imageViewPasswordEvaluationPassed)).check(matches(isDisplayed()))
+    }
 }
