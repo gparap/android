@@ -8,6 +8,7 @@
 
     <!--Generated password title-->
     <EditText
+        android:textSize="@dimen/text_normal"
         android:id="@+id/editTextGeneratedPasswordTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,13 +24,13 @@
 
     <!--Text containing generated password-->
     <TextView
+        android:textSize="@dimen/text_normal"
         android:id="@+id/textViewPasswordGenerated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:hint="@string/hint_password_generated"
         android:textAlignment="center"
-        android:textSize="20sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/buttonGeneratePassword"
         app:layout_constraintEnd_toEndOf="@+id/buttonGeneratePassword"
@@ -37,6 +38,7 @@
 
     <!--Button that generates password-->
     <Button
+        android:textSize="@dimen/button_text"
         android:id="@+id/buttonGeneratePassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -59,6 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonGeneratePassword">
 
         <RadioButton
+            android:textSize="@dimen/radio_text"
             android:id="@+id/radioButton08CharsLengthPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,12 +69,14 @@
             android:text="@string/radio_08_chars" />
 
         <RadioButton
+            android:textSize="@dimen/radio_text"
             android:id="@+id/radioButton16CharsLengthPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/radio_16_chars" />
 
         <RadioButton
+            android:textSize="@dimen/radio_text"
             android:id="@+id/radioButtonCustomLengthPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,6 +85,7 @@
 
     <!--Custom length input for generating password-->
     <EditText
+        android:textSize="@dimen/text_normal"
         android:id="@+id/editTextCustomLengthPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

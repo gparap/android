@@ -14,13 +14,14 @@
         android:autofillHints="false"
         android:hint="@string/hint_password_title"
         android:inputType="text"
+        android:textSize="@dimen/text_normal"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/editTextEvaluatedPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="visible"
-        tools:ignore="TextFields" />
+        tools:ignore="TextFields"
+        tools:visibility="visible" />
 
     <!--Evaluated password-->
     <EditText
@@ -34,7 +35,7 @@
         android:hint="@string/hint_type_password"
         android:inputType="text"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="@dimen/text_normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/label_evaluated_password_length"
-        android:textSize="20sp"
+        android:textSize="@dimen/text_big"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextEvaluatedPassword" />
@@ -59,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/value_zero"
-        android:textSize="20sp"
+        android:textSize="@dimen/text_big"
         app:layout_constraintStart_toEndOf="@+id/textViewEvaluatedPasswordLengthLabel"
         app:layout_constraintTop_toBottomOf="@+id/editTextEvaluatedPassword" />
 
@@ -69,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/password_evaluation_weakest"
-        android:textSize="20sp"
+        android:textSize="@dimen/text_big"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewEvaluatedPasswordLengthLabel" />
@@ -101,11 +102,12 @@
 
     <!--User tips for a safe password-->
     <TextView
-        android:padding="8dp"
         android:id="@+id/passwordEvaluationUserTips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="8dp"
         android:text="@string/user_tip_evaluate_password"
+        android:textSize="@dimen/text_normal"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
