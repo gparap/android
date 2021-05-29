@@ -11,5 +11,9 @@
     <dimen name="fab_margin_start">8dp</dimen>
     <dimen name="layout_margin_end">8dp</dimen>
     <dimen name="layout_margin_bottom">8dp</dimen>
-    <!-- TODO: text sizes -->
+    <!-- text sizes -->
+    <dimen name="text_normal">18sp</dimen>
+    <dimen name="text_big">20sp</dimen>
+    <dimen name="button_text">14sp</dimen>
+    <dimen name="radio_text">14sp</dimen>
 </resources>
