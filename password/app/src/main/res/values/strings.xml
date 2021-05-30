@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">Password</string>
-    <string name="title_generator">Generate</string>
-    <string name="title_evaluator">Evaluate</string>
-    <string name="title_manager">Manage</string>
+    <string name="title_generator">Generate Password</string>
+    <string name="title_evaluator">Evaluate Password</string>
+    <string name="title_manager">Manage Passwords</string>
+    <string name="title_generator_short">Generate</string>
+    <string name="title_evaluator_short">Evaluate</string>
+    <string name="title_manager_short">Manage</string>
     <string name="button_generate_password">Generate Password</string>
     <string name="button_save_evaluated_password">save</string>
     <string name="radio_08_chars">08 chars length</string>
