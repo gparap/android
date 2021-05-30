@@ -11,6 +11,7 @@
     <dimen name="fab_margin_start">8dp</dimen>
     <dimen name="fab_margin_bottom">8dp</dimen>
     <!-- layout margins -->
+    <dimen name="margin_top">8dp</dimen>
     <dimen name="margin_end">8dp</dimen>
     <dimen name="margin_start">8dp</dimen>
     <dimen name="margin_bottom">8dp</dimen>

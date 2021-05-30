@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.evaluator.EvaluatorFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fadeScrollbars="false"
+        android:scrollbarFadeDuration="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--Evaluated password title-->
+            <EditText
+                android:id="@+id/editTextEvaluatedPasswordTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints="false"
+                android:hint="@string/hint_password_title"
+                android:inputType="text"
+                android:textSize="@dimen/text_normal"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/editTextEvaluatedPassword"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="TextFields"
+                tools:visibility="visible" />
+
+            <!--Evaluated password-->
+            <EditText
+                android:id="@+id/editTextEvaluatedPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/layout_margin_start"
+                android:layout_marginEnd="@dimen/layout_margin_end"
+                android:autofillHints="false"
+                android:gravity="center_horizontal"
+                android:hint="@string/hint_type_password"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.25"
+                tools:ignore="TextFields" />
+
+            <!--Evaluated password length label-->
+            <TextView
+                android:id="@+id/textViewEvaluatedPasswordLengthLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_evaluated_password_length"
+                android:textSize="@dimen/text_big"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextEvaluatedPassword" />
+
+            <!--Evaluated password length-->
+            <TextView
+                android:id="@+id/textViewEvaluatedPasswordLength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/value_zero"
+                android:textSize="@dimen/text_big"
+                android:textStyle="italic"
+                app:layout_constraintStart_toEndOf="@+id/textViewEvaluatedPasswordLengthLabel"
+                app:layout_constraintTop_toBottomOf="@+id/editTextEvaluatedPassword" />
+
+            <!--Evaluated password strength feedback-->
+            <TextView
+                android:id="@+id/textViewEvaluatedPasswordStrength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/password_evaluation_weakest"
+                android:textSize="@dimen/text_big"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewEvaluatedPasswordLengthLabel" />
+
+            <!--Evaluation passed icon-->
+            <ImageView
+                android:id="@+id/imageViewPasswordEvaluationPassed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/description_password_evaluation_passed"
+                android:src="@drawable/ic_baseline_check_24"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewEvaluatedPasswordStrength"
+                app:layout_constraintStart_toEndOf="@+id/textViewEvaluatedPasswordStrength"
+                app:layout_constraintTop_toBottomOf="@+id/textViewEvaluatedPasswordLengthLabel"
+                tools:visibility="visible" />
+
+            <!--User tips for a safe password-->
+            <TextView
+                android:id="@+id/passwordEvaluationUserTips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top"
+                android:padding="@dimen/text_padding"
+                android:text="@string/user_tip_evaluate_password"
+                android:textSize="@dimen/text_normal"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewEvaluatedPasswordStrength" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <!--Button that saves generated password to database-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/buttonSaveEvaluatedPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/fab_margin_end"
+        android:layout_marginBottom="@dimen/fab_margin_bottom"
+        android:contentDescription="@string/description_save_password"
+        android:src="@drawable/ic_save_black_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
