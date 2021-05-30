@@ -8,13 +8,13 @@
 
     <!--Generated password title-->
     <EditText
-        android:textSize="@dimen/text_normal"
         android:id="@+id/editTextGeneratedPasswordTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:autofillHints="false"
         android:hint="@string/hint_password_title"
         android:inputType="text"
+        android:textSize="@dimen/text_normal"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/textViewPasswordGenerated"
         app:layout_constraintEnd_toEndOf="@+id/buttonGeneratePassword"
@@ -24,13 +24,13 @@
 
     <!--Text containing generated password-->
     <TextView
-        android:textSize="@dimen/text_normal"
         android:id="@+id/textViewPasswordGenerated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:hint="@string/hint_password_generated"
         android:textAlignment="center"
+        android:textSize="@dimen/text_normal"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/buttonGeneratePassword"
         app:layout_constraintEnd_toEndOf="@+id/buttonGeneratePassword"
@@ -38,11 +38,11 @@
 
     <!--Button that generates password-->
     <Button
-        android:textSize="@dimen/button_text"
         android:id="@+id/buttonGeneratePassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_generate_password"
+        android:textSize="@dimen/button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -61,31 +61,30 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonGeneratePassword">
 
         <RadioButton
-            android:textSize="@dimen/radio_text"
             android:id="@+id/radioButton08CharsLengthPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="@string/radio_08_chars" />
+            android:text="@string/radio_08_chars"
+            android:textSize="@dimen/radio_text" />
 
         <RadioButton
-            android:textSize="@dimen/radio_text"
             android:id="@+id/radioButton16CharsLengthPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/radio_16_chars" />
+            android:text="@string/radio_16_chars"
+            android:textSize="@dimen/radio_text" />
 
         <RadioButton
-            android:textSize="@dimen/radio_text"
             android:id="@+id/radioButtonCustomLengthPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/radio_custom_chars" />
+            android:text="@string/radio_custom_chars"
+            android:textSize="@dimen/radio_text" />
     </RadioGroup>
 
     <!--Custom length input for generating password-->
     <EditText
-        android:textSize="@dimen/text_normal"
         android:id="@+id/editTextCustomLengthPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -93,6 +92,7 @@
         android:hint="@string/hint_00"
         android:importantForAutofill="no"
         android:inputType="number"
+        android:textSize="@dimen/text_normal"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/radioGroupPasswordLength"
         app:layout_constraintStart_toEndOf="@+id/radioGroupPasswordLength"
@@ -103,8 +103,8 @@
         android:id="@+id/fabSaveGeneratedPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="@dimen/fab_margin_end"
+        android:layout_marginBottom="@dimen/fab_margin_bottom"
         android:contentDescription="@string/description_save_password"
         android:src="@drawable/ic_save_black_24"
         app:layout_constraintBottom_toBottomOf="parent"
