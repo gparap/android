@@ -4,16 +4,16 @@
     <item
         android:id="@+id/navigation_generator"
         android:icon="@drawable/ic_generator_black_24dp"
-        android:title="@string/title_generator" />
+        android:title="@string/title_generator_short" />
 
     <item
         android:id="@+id/navigation_evaluator"
         android:icon="@drawable/ic_evaluator_black_24dp"
-        android:title="@string/title_evaluator" />
+        android:title="@string/title_evaluator_short" />
 
     <item
         android:id="@+id/navigation_manager"
         android:icon="@drawable/ic_manager_black_24dp"
-        android:title="@string/title_manager" />
+        android:title="@string/title_manager_short" />
 
 </menu>
