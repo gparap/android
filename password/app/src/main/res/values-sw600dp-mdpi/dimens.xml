@@ -7,9 +7,9 @@
     <dimen name="cardview_margin_start">8dp</dimen>
     <dimen name="cardview_margin_bottom">32dp</dimen>
     <!-- floating action buttons -->
-    <dimen name="fab_margin_end">2dp</dimen>
-    <dimen name="fab_margin_start">2dp</dimen>
-    <dimen name="fab_margin_bottom">2dp</dimen>
+    <dimen name="fab_margin_end">16dp</dimen>
+    <dimen name="fab_margin_start">16dp</dimen>
+    <dimen name="fab_margin_bottom">16dp</dimen>
     <!-- layout margins -->
     <dimen name="margin_top">8dp</dimen>
     <dimen name="layout_margin_end">8dp</dimen>
