@@ -106,7 +106,7 @@
         android:layout_marginEnd="@dimen/fab_margin_end"
         android:layout_marginBottom="@dimen/fab_margin_bottom"
         android:contentDescription="@string/description_save_password"
-        android:src="@drawable/ic_save_black_24"
+        android:src="@drawable/ic_save_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
