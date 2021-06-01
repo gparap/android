@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gestore creatore di password Password</string>
+    <string name="title_generator">Genera password</string>
+    <string name="title_evaluator">Valuta password</string>
+    <string name="title_manager">Gestisci password</string>
+    <string name="title_generator_short">creare</string>
+    <string name="title_evaluator_short">Valutare</string>
+    <string name="title_manager_short">Gestire</string>
+    <string name="button_generate_password">Genera password</string>
+    <string name="button_save_evaluated_password">Salva</string>
+    <string name="radio_08_chars">Lunghezza 08 caratteri</string>
+    <string name="radio_16_chars">16 caratteri di lunghezza</string>
+    <string name="radio_custom_chars">lunghezza personalizzata</string>
+    <string name="hint_password_generated">password generata</string>
+    <string name="hint_password_title">inserisci il titolo per la password</string>
+    <string name="hint_type_password">Inserisci password</string>
+    <string name="description_save_password">Salva la password</string>
+    <string name="description_delete_password">Elimina password</string>
+    <string name="description_password_evaluation_passed">Valutazione password superata</string>
+    <string name="label_evaluated_password_length">Lunghezza:</string>
+    <string name="password_evaluation_weakest">PI DEBOLE</string>
+    <string name="password_evaluation_weak">DEBOLE</string>
+    <string name="password_evaluation_medium">MEDIO</string>
+    <string name="password_evaluation_strong">FORTE</string>
+    <string name="password_evaluation_strongest">PI FORTE</string>
+    <string name="user_tip_evaluate_password">Le password più sicure devono contenere lettere MAIUSCOLE e minuscole, cifre, caratteri speciali (come \'!\', \'@\', ecc.) e non devono essere troppo brevi.</string>
+    <string name="toast_empty_password">La password è vuota!</string>
+    <string name="toast_empty_title">Il titolo è vuoto!</string>
+    <string name="toast_password_saved">Password salvata.</string>
+</resources>

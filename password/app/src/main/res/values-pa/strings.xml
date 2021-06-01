@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ਪਾਸਵਰਡ ਨਿਰਮਾਤਾ ਮੈਨੇਜਰ</string>
+    <string name="title_generator">ਪਾਸਵਰਡ ਤਿਆਰ ਕਰੋ</string>
+    <string name="title_evaluator">ਪਾਸਵਰਡ ਦਾ ਮੁਲਾਂਕਣ ਕਰੋ</string>
+    <string name="title_manager">ਪਾਸਵਰਡ ਪ੍ਰਬੰਧਿਤ ਕਰੋ</string>
+    <string name="title_generator_short">ਤਿਆਰ ਕਰੋ</string>
+    <string name="title_evaluator_short">ਪੜਤਾਲ</string>
+    <string name="title_manager_short">ਪ੍ਰਬੰਧ ਕਰਨਾ, ਕਾਬੂ ਕਰਨਾ</string>
+    <string name="button_generate_password">ਪਾਸਵਰਡ ਤਿਆਰ ਕਰੋ</string>
+    <string name="button_save_evaluated_password">ਸੇਵ</string>
+    <string name="radio_08_chars">08 ਅੱਖਰਾਂ ਦੀ ਲੰਬਾਈ</string>
+    <string name="radio_16_chars">16 ਅੱਖਰਾਂ ਦੀ ਲੰਬਾਈ</string>
+    <string name="radio_custom_chars">ਕਸਟਮ ਲੰਬਾਈ</string>
+    <string name="hint_password_generated">ਪਾਸਵਰਡ ਤਿਆਰ</string>
+    <string name="hint_password_title">ਪਾਸਵਰਡ ਲਈ ਸਿਰਲੇਖ ਦਿਓ</string>
+    <string name="hint_type_password">ਪਾਸਵਰਡ ਟਾਈਪ ਕਰੋ</string>
+    <string name="description_save_password">ਪਾਸਵਰਡ ਸੁਰੱਖਿਅਤ ਕਰੋ</string>
+    <string name="description_delete_password">ਪਾਸਵਰਡ ਮਿਟਾਓ</string>
+    <string name="description_password_evaluation_passed">ਪਾਸਵਰਡ ਮੁਲਾਂਕਣ ਪਾਸ ਹੋ ਗਿਆ</string>
+    <string name="label_evaluated_password_length">ਲੰਬਾਈ:</string>
+    <string name="password_evaluation_weakest">ਹਫਤਾ</string>
+    <string name="password_evaluation_weak">ਹਫਤਾ</string>
+    <string name="password_evaluation_medium">ਮੀਡੀਅਮ</string>
+    <string name="password_evaluation_strong">ਮਜ਼ਬੂਤ</string>
+    <string name="password_evaluation_strongest">ਸਭ ਤੋਂ ਮਜ਼ਬੂਤ</string>
+    <string name="user_tip_evaluate_password">ਸਭ ਤੋਂ ਸੁਰੱਖਿਅਤ ਪਾਸਵਰਡਾਂ ਵਿੱਚ UPPERCASE ਅਤੇ ਛੋਟੇ ਅੱਖਰ, ਅੰਕ, ਵਿਸ਼ੇਸ਼ ਅੱਖਰ (ਜਿਵੇਂ \'!\', \'@\', ਆਦਿ) ਹੋਣੇ ਚਾਹੀਦੇ ਹਨ ਅਤੇ ਬਹੁਤ ਛੋਟਾ ਨਹੀਂ ਹੋਣਾ ਚਾਹੀਦਾ.</string>
+    <string name="toast_empty_password">ਪਾਸਵਰਡ ਖਾਲੀ ਹੈ!</string>
+    <string name="toast_empty_title">ਸਿਰਲੇਖ ਖਾਲੀ ਹੈ!</string>
+    <string name="toast_password_saved">ਪਾਸਵਰਡ ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ</string>
+</resources>

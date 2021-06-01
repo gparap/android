@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Δημιουργος Διαχειριστής κωδικού πρόσβασης</string>
+    <string name="title_generator">Δημιουργία κωδικού πρόσβασης</string>
+    <string name="title_evaluator">Αξιολόγηση κωδικού πρόσβασης</string>
+    <string name="title_manager">Διαχείριση κωδικών πρόσβασης</string>
+    <string name="title_generator_short">Δημιούργησε</string>
+    <string name="title_evaluator_short">Αξιολόγησε</string>
+    <string name="title_manager_short">Διαχειρίσου</string>
+    <string name="button_generate_password">Δημιουργία κωδικού πρόσβασης</string>
+    <string name="button_save_evaluated_password">αποθήκευση</string>
+    <string name="radio_08_chars">08 χαρακτήρες</string>
+    <string name="radio_16_chars">16 χαρακτήρες</string>
+    <string name="radio_custom_chars">προσαρμοσμένο μήκος</string>
+    <string name="hint_password_generated">δημιουργημένος κωδικός πρόσβασης</string>
+    <string name="hint_password_title">εισάγετε τίτλο για κωδικό πρόσβασης</string>
+    <string name="hint_type_password">Πληκτρολογήστε τον κωδικό πρόσβασης</string>
+    <string name="description_save_password">Αποθήκευση κωδικού πρόσβασης</string>
+    <string name="description_delete_password">Διαγραφή κωδικού πρόσβασης</string>
+    <string name="description_password_evaluation_passed">Η αξιολόγηση κωδικού πρόσβασης πέρασε</string>
+    <string name="label_evaluated_password_length">Μήκος:</string>
+    <string name="password_evaluation_weakest">ΥΠΕΡΒΟΛΙΚΑ ΑΔΥΝΑΜΟ</string>
+    <string name="password_evaluation_weak">ΑΔΥΝΑΜΟ</string>
+    <string name="password_evaluation_medium">ΜΕΣΑΙΟ</string>
+    <string name="password_evaluation_strong">ΙΣΧΥΡΟ</string>
+    <string name="password_evaluation_strongest">ΙΣΧΥΡΟΤΑΤΟ</string>
+    <string name="user_tip_evaluate_password">Οι ασφαλέστεροι κωδικοί πρόσβασης θα πρέπει να περιέχουν ΚΕΦΑΛΑΙΑ και πεζά γράμματα, ψηφία, ειδικούς χαρακτήρες (όπως \'!\', \'@\' κ.λπ.) και δεν πρέπει να είναι πολύ σύντομοι.</string>
+    <string name="toast_empty_password">Ο κωδικός πρόσβασης είναι κενός!</string>
+    <string name="toast_empty_title">Ο τίτλος είναι κενός!</string>
+    <string name="toast_password_saved">Ο κωδικός πρόσβασης αποθηκεύτηκε.</string>
+</resources>

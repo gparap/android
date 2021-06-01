@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Password</string>
+    <string name="app_name">Password Creator Manager</string>
     <string name="title_generator">Generate Password</string>
     <string name="title_evaluator">Evaluate Password</string>
     <string name="title_manager">Manage Passwords</string>
@@ -12,14 +12,14 @@
     <string name="radio_16_chars">16 chars length</string>
     <string name="radio_custom_chars">custom length</string>
     <string name="hint_password_generated">password generated</string>
-    <string name="hint_00">00</string>
+    <string name="hint_00" translatable="false">00</string>
     <string name="hint_password_title">enter title for password</string>
     <string name="hint_type_password">Type password</string>
     <string name="description_save_password">Save Password</string>
     <string name="description_delete_password">Delete Password</string>
     <string name="description_password_evaluation_passed">Password Evaluation Passed</string>
     <string name="label_evaluated_password_length">Length:</string>
-    <string name="value_zero">0</string>
+    <string name="value_zero" translatable="false">0</string>
     <string name="password_evaluation_weakest">WEAKEST</string>
     <string name="password_evaluation_weak">WEAK</string>
     <string name="password_evaluation_medium">MEDIUM</string>

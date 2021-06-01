@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">비밀번호 생성기 관리자</string>
+    <string name="title_generator">비밀번호 생성</string>
+    <string name="title_evaluator">암호 평가</string>
+    <string name="title_manager">비밀번호 관리</string>
+    <string name="title_generator_short">일으키다</string>
+    <string name="title_evaluator_short">평가</string>
+    <string name="title_manager_short">꾸리다</string>
+    <string name="button_generate_password">비밀번호 생성</string>
+    <string name="button_save_evaluated_password">저장</string>
+    <string name="radio_08_chars">08 자 길이</string>
+    <string name="radio_16_chars">16 자 길이</string>
+    <string name="radio_custom_chars">맞춤 길이</string>
+    <string name="hint_password_generated">비밀번호 생성</string>
+    <string name="hint_password_title">비밀번호 제목 입력</string>
+    <string name="hint_type_password">비밀번호 입력</string>
+    <string name="description_save_password">비밀번호 저장</string>
+    <string name="description_delete_password">비밀번호 삭제</string>
+    <string name="description_password_evaluation_passed">암호 평가 통과</string>
+    <string name="label_evaluated_password_length">길이:</string>
+    <string name="password_evaluation_weakest">약함</string>
+    <string name="password_evaluation_weak">약한</string>
+    <string name="password_evaluation_medium">매질</string>
+    <string name="password_evaluation_strong">강한</string>
+    <string name="password_evaluation_strongest">최강</string>
+    <string name="user_tip_evaluate_password">가장 안전한 비밀번호는 대문자와 소문자, 숫자, 특수 문자 (예 : \'!\', \'@\'등)를 포함해야하며 너무 짧지 않아야합니다.</string>
+    <string name="toast_empty_password">비밀번호가 비어 있습니다!</string>
+    <string name="toast_empty_title">제목이 비어 있습니다!</string>
+    <string name="toast_password_saved">비밀번호가 저장되었습니다.</string>
+</resources>

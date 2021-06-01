@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Administrador de creadores de contraseñas</string>
+    <string name="title_generator">Generar contraseña</string>
+    <string name="title_evaluator">Evaluar contraseña</string>
+    <string name="title_manager">Administrar contraseñas</string>
+    <string name="title_generator_short">Generar</string>
+    <string name="title_evaluator_short">Evaluar</string>
+    <string name="title_manager_short">Gestionar</string>
+    <string name="button_generate_password">Generar contraseña</string>
+    <string name="button_save_evaluated_password">ahorrar</string>
+    <string name="radio_08_chars">08 caracteres de longitud</string>
+    <string name="radio_16_chars">16 caracteres de longitud</string>
+    <string name="radio_custom_chars">longitud personalizada</string>
+    <string name="hint_password_generated">contraseña generada</string>
+    <string name="hint_password_title">ingrese el título para la contraseña</string>
+    <string name="hint_type_password">Escriba contraseña</string>
+    <string name="description_save_password">Guardar contraseña</string>
+    <string name="description_delete_password">Eliminar contraseña</string>
+    <string name="description_password_evaluation_passed">Evaluación de contraseña aprobada</string>
+    <string name="label_evaluated_password_length">Largo:</string>
+    <string name="password_evaluation_weakest">Más débil</string>
+    <string name="password_evaluation_weak">DÉBIL</string>
+    <string name="password_evaluation_medium">MEDIO</string>
+    <string name="password_evaluation_strong">FUERTE</string>
+    <string name="password_evaluation_strongest">MAS FUERTE</string>
+    <string name="user_tip_evaluate_password">Las contraseñas más seguras deben contener MAYÚSCULAS y minúsculas, dígitos, caracteres especiales (como \'!\', \'@\', Etc.) y no deben ser demasiado cortas.</string>
+    <string name="toast_empty_password">¡La contraseña está vacía!</string>
+    <string name="toast_empty_title">¡El título está vacío!</string>
+    <string name="toast_password_saved">Contraseña guardada.</string>
+</resources>

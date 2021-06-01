@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pangatur Pencipta Sandhi</string>
+    <string name="title_generator">Gawe Sandhi</string>
+    <string name="title_evaluator">Priksa Sandi</string>
+    <string name="title_manager">Atur Sandhi</string>
+    <string name="title_generator_short">Ngasilake</string>
+    <string name="title_evaluator_short">Ngira-ngira</string>
+    <string name="title_manager_short">Ngatur</string>
+    <string name="button_generate_password">Gawe Sandhi</string>
+    <string name="button_save_evaluated_password">ngirit</string>
+    <string name="radio_08_chars">Dawane 08 chars</string>
+    <string name="radio_16_chars">Dawane 16 chars</string>
+    <string name="radio_custom_chars">dawa adat</string>
+    <string name="hint_password_generated">sandi digawe</string>
+    <string name="hint_password_title">ketik judhul sandhi</string>
+    <string name="hint_type_password">Ketik sandhi</string>
+    <string name="description_save_password">Simpen Sandi</string>
+    <string name="description_delete_password">Mbusak Sandi</string>
+    <string name="description_password_evaluation_passed">Evaluasi Tembung Sandi Lulus</string>
+    <string name="label_evaluated_password_length">Dawa:</string>
+    <string name="password_evaluation_weakest">Paling ringkih</string>
+    <string name="password_evaluation_weak">Lemah</string>
+    <string name="password_evaluation_medium">MEDIUM</string>
+    <string name="password_evaluation_strong">KUAT</string>
+    <string name="password_evaluation_strongest">Kuwat banget</string>
+    <string name="user_tip_evaluate_password">Sandhi sing paling aman kudu ngemot UPPERCASE lan huruf cilik, digit, karakter khusus (kaya \'!\', \'@\', Lsp) lan ora kudu ringkes banget.</string>
+    <string name="toast_empty_password">Sandi kosong!</string>
+    <string name="toast_empty_title">Judhul kosong!</string>
+    <string name="toast_password_saved">Sandi disimpen</string>
+</resources>
