@@ -15,6 +15,9 @@
  */
 package gparap.apps.password
 
+import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
@@ -25,9 +28,17 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //change the default color of the action bar in dark mode
+        if (android.os.Build.VERSION.SDK_INT >= 29 && baseContext.resources.configuration.isNightModeActive) {
+            val appBar = supportActionBar
+            val colorDrawable = ColorDrawable(Color.parseColor(getString(R.color.grey)))
+            appBar?.setBackgroundDrawable(colorDrawable)
+        }
 
         //retrieve the navigation controller
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
@@ -39,9 +50,11 @@ class MainActivity : AppCompatActivity() {
         bottomNavView.setupWithNavController(navController)
 
         //setup app bar navigation
-        val appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.navigation_generator, R.id.navigation_evaluator, R.id.navigation_manager
-        ))
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_generator, R.id.navigation_evaluator, R.id.navigation_manager
+            )
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
 }
