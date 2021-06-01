@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ผู้จัดการผู้สร้างรหัสผ่าน</string>
+    <string name="title_generator">สร้างรหัสผ่าน</string>
+    <string name="title_evaluator">ประเมินรหัสผ่าน</string>
+    <string name="title_manager">จัดการรหัสผ่าน</string>
+    <string name="title_generator_short">สร้าง</string>
+    <string name="title_evaluator_short">ประเมิน</string>
+    <string name="title_manager_short">จัดการ</string>
+    <string name="button_generate_password">สร้างรหัสผ่าน</string>
+    <string name="button_save_evaluated_password">บันทึก</string>
+    <string name="radio_08_chars">ความยาว 08 ตัวอักษร</string>
+    <string name="radio_16_chars">ความยาว 16 ตัวอักษรchar</string>
+    <string name="radio_custom_chars">ความยาวที่กำหนดเอง</string>
+    <string name="hint_password_generated">สร้างรหัสผ่านแล้ว</string>
+    <string name="hint_password_title">ใส่ชื่อรหัสผ่าน</string>
+    <string name="hint_type_password">พิมพ์รหัสผ่าน</string>
+    <string name="description_save_password">บันทึกรหัสผ่าน</string>
+    <string name="description_delete_password">ลบรหัสผ่าน</string>
+    <string name="description_password_evaluation_passed">ผ่านการประเมินรหัสผ่าน</string>
+    <string name="label_evaluated_password_length">ความยาว:</string>
+    <string name="password_evaluation_weakest">อ่อนแอที่สุด</string>
+    <string name="password_evaluation_weak">อ่อนแอ</string>
+    <string name="password_evaluation_medium">ปานกลาง</string>
+    <string name="password_evaluation_strong">แข็งแรง</string>
+    <string name="password_evaluation_strongest">แข็งแกร่งที่สุด</string>
+    <string name="user_tip_evaluate_password">รหัสผ่านที่ปลอดภัยที่สุดควรประกอบด้วยตัวพิมพ์ใหญ่และตัวพิมพ์เล็ก ตัวเลข อักขระพิเศษ (เช่น \'!\', \'@\' เป็นต้น) และไม่ควรสั้นเกินไป</string>
+    <string name="toast_empty_password">รหัสผ่านว่างเปล่า!</string>
+    <string name="toast_empty_title">ชื่อเรื่องว่างเปล่า!</string>
+    <string name="toast_password_saved">บันทึกรหัสผ่านแล้ว</string>
+</resources>

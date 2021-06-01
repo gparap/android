@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gestionnaire de créateur de mots de passe</string>
+    <string name="title_generator">Créer un mot de passe</string>
+    <string name="title_evaluator">Évaluer le mot de passe</string>
+    <string name="title_manager">Gérer les mots de passe</string>
+    <string name="title_generator_short">produire</string>
+    <string name="title_evaluator_short">Évaluer</string>
+    <string name="title_manager_short">Faire en sorte</string>
+    <string name="button_generate_password">Créer un mot de passe</string>
+    <string name="button_save_evaluated_password">sauvegarder</string>
+    <string name="radio_08_chars">08 caractères longueur</string>
+    <string name="radio_16_chars">Longueur de 16 caractères</string>
+    <string name="radio_custom_chars">longueur personnalisée</string>
+    <string name="hint_password_generated">mot de passe généré</string>
+    <string name="hint_password_title">entrez le titre du mot de passe</string>
+    <string name="hint_type_password">Tapez votre mot de passe</string>
+    <string name="description_save_password">Enregistrer le mot de passe</string>
+    <string name="description_delete_password">Supprimer le mot de passe</string>
+    <string name="description_password_evaluation_passed">Évaluation du mot de passe réussie</string>
+    <string name="label_evaluated_password_length">Longueur:</string>
+    <string name="password_evaluation_weakest">LE PLUS FAIBLE</string>
+    <string name="password_evaluation_weak">FAIBLE</string>
+    <string name="password_evaluation_medium">MOYEN</string>
+    <string name="password_evaluation_strong">FORT</string>
+    <string name="password_evaluation_strongest">LE PLUS FORT</string>
+    <string name="user_tip_evaluate_password">Les mots de passe les plus sûrs doivent contenir des majuscules et des minuscules, des chiffres, des caractères spéciaux (comme «!», «@», Etc.) et ne doivent pas être trop courts.</string>
+    <string name="toast_empty_password">Le mot de passe est vide !</string>
+    <string name="toast_empty_title">Le titre est vide!</string>
+    <string name="toast_password_saved">Mot de passe enregistré.</string>
+</resources>

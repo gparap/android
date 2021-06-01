@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">పాస్వర్డ్ సృష్టికర్త మేనేజర్</string>
+    <string name="title_generator">పాస్‌వర్డ్‌ను రూపొందించండి</string>
+    <string name="title_evaluator">పాస్వర్డ్ను అంచనా వేయండి</string>
+    <string name="title_manager">పాస్‌వర్డ్‌లను నిర్వహించండి</string>
+    <string name="title_generator_short">ఉత్పత్తి</string>
+    <string name="title_evaluator_short">మూల్యాంకనం చేయండి</string>
+    <string name="title_manager_short">నిర్వహించడానికి</string>
+    <string name="button_generate_password">పాస్‌వర్డ్‌ను రూపొందించండి</string>
+    <string name="button_save_evaluated_password">సేవ్ చేయండి</string>
+    <string name="radio_08_chars">08 అక్షరాల పొడవు</string>
+    <string name="radio_16_chars">16 అక్షరాల పొడవు</string>
+    <string name="radio_custom_chars">అనుకూల పొడవు</string>
+    <string name="hint_password_generated">పాస్వర్డ్ సృష్టించబడింది</string>
+    <string name="hint_password_title">పాస్వర్డ్ కోసం శీర్షికను నమోదు చేయండి</string>
+    <string name="hint_type_password">పాస్వర్డ్ టైప్ చేయండి</string>
+    <string name="description_save_password">పాస్వర్డ్ను సేవ్ చేయండి</string>
+    <string name="description_delete_password">పాస్వర్డ్ను తొలగించండి</string>
+    <string name="description_password_evaluation_passed">పాస్వర్డ్ మూల్యాంకనం పాస్</string>
+    <string name="label_evaluated_password_length">పొడవు:</string>
+    <string name="password_evaluation_weakest">వీకెస్ట్</string>
+    <string name="password_evaluation_weak">బలహీనమైన</string>
+    <string name="password_evaluation_medium">MEDIUM</string>
+    <string name="password_evaluation_strong">బలమైన</string>
+    <string name="password_evaluation_strongest">బలమైన</string>
+    <string name="user_tip_evaluate_password">సురక్షితమైన పాస్‌వర్డ్‌లలో UPPERCASE మరియు చిన్న అక్షరాలు, అంకెలు, ప్రత్యేక అక్షరాలు (\'!\', \'@\', మొదలైనవి) ఉండాలి మరియు చాలా తక్కువగా ఉండకూడదు.</string>
+    <string name="toast_empty_password">పాస్వర్డ్ ఖాళీగా ఉంది!</string>
+    <string name="toast_empty_title">శీర్షిక ఖాళీగా ఉంది!</string>
+    <string name="toast_password_saved">పాస్‌వర్డ్ సేవ్ చేయబడింది.</string>
+</resources>

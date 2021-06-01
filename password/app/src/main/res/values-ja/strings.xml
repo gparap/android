@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">パスワード クリエーター マネージャー</string>
+    <string name="title_generator">パスワードを生成</string>
+    <string name="title_evaluator">パスワードを評価する</string>
+    <string name="title_manager">パスワードの管理</string>
+    <string name="title_generator_short">生む</string>
+    <string name="title_evaluator_short">評価する</string>
+    <string name="title_manager_short">管理する</string>
+    <string name="button_generate_password">パスワードを生成</string>
+    <string name="button_save_evaluated_password">セーブ</string>
+    <string name="radio_08_chars">08 文字の長さ</string>
+    <string name="radio_16_chars">16 文字の長さ</string>
+    <string name="radio_custom_chars">カスタムの長さ</string>
+    <string name="hint_password_generated">生成されたパスワード</string>
+    <string name="hint_password_title">パスワードのタイトルを入力</string>
+    <string name="hint_type_password">パスワードをうつ</string>
+    <string name="description_save_password">パスワードを保存する</string>
+    <string name="description_delete_password">パスワードを削除</string>
+    <string name="description_password_evaluation_passed">パスワード評価に合格</string>
+    <string name="label_evaluated_password_length">長さ:</string>
+    <string name="password_evaluation_weakest">弱い</string>
+    <string name="password_evaluation_weak">弱い</string>
+    <string name="password_evaluation_medium">中</string>
+    <string name="password_evaluation_strong">強い</string>
+    <string name="password_evaluation_strongest">最強</string>
+    <string name="user_tip_evaluate_password">最も安全なパスワードには、大文字と小文字、数字、特殊文字 (「!」、「@」など) を含める必要があり、短すぎないでください。</string>
+    <string name="toast_empty_password">パスワードが空です!</string>
+    <string name="toast_empty_title">タイトルが空です！</string>
+    <string name="toast_password_saved">パスワードを保存しました。</string>
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Passwort-Ersteller-Manager</string>
+    <string name="title_generator">Generiere Passwort</string>
+    <string name="title_evaluator">Passwort auswerten</string>
+    <string name="title_manager">Passwörter verwalten</string>
+    <string name="title_generator_short">Generieren</string>
+    <string name="title_evaluator_short">Bewerten</string>
+    <string name="title_manager_short">Verwalten</string>
+    <string name="button_generate_password">Generiere Passwort</string>
+    <string name="button_save_evaluated_password">speichern</string>
+    <string name="radio_08_chars">08 Zeichen Länge</string>
+    <string name="radio_16_chars">16 Zeichen Länge</string>
+    <string name="radio_custom_chars">benutzerdefinierte Länge</string>
+    <string name="hint_password_generated">Passwort generiert</string>
+    <string name="hint_password_title">Geben Sie den Titel für das Passwort ein</string>
+    <string name="hint_type_password">Passwort eingeben</string>
+    <string name="description_save_password">Passwort speichern</string>
+    <string name="description_delete_password">Passwort löschen</string>
+    <string name="description_password_evaluation_passed">Passwortbewertung bestanden</string>
+    <string name="label_evaluated_password_length">Länge:</string>
+    <string name="password_evaluation_weakest">SCHWÄCHSTE</string>
+    <string name="password_evaluation_weak">SCHWACH</string>
+    <string name="password_evaluation_medium">MITTEL</string>
+    <string name="password_evaluation_strong">STARK</string>
+    <string name="password_evaluation_strongest">AM STÄRKSTEN</string>
+    <string name="user_tip_evaluate_password">Die sichersten Passwörter sollten GROSS- und Kleinbuchstaben, Ziffern, Sonderzeichen (wie \'!\', \'@\' usw.) enthalten und nicht zu kurz sein.</string>
+    <string name="toast_empty_password">Passwort ist leer!</string>
+    <string name="toast_empty_title">Titel ist leer!</string>
+    <string name="toast_password_saved">Passwort gespeichert.</string>
+</resources>

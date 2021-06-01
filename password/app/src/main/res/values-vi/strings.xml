@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Trình quản lý trình tạo mật khẩu</string>
+    <string name="title_generator">Tạo mật khẩu</string>
+    <string name="title_evaluator">Đánh giá mật khẩu</string>
+    <string name="title_manager">Quản lý mật khẩu</string>
+    <string name="title_generator_short">Tạo ra</string>
+    <string name="title_evaluator_short">Đánh giá</string>
+    <string name="title_manager_short">Quản lý</string>
+    <string name="button_generate_password">Tạo mật khẩu</string>
+    <string name="button_save_evaluated_password">tiết kiệm</string>
+    <string name="radio_08_chars">Độ dài 08 ký tự</string>
+    <string name="radio_16_chars">Độ dài 16 ký tự</string>
+    <string name="radio_custom_chars">chiều dài tùy chỉnh</string>
+    <string name="hint_password_generated">mật khẩu được tạo</string>
+    <string name="hint_password_title">nhập tiêu đề cho mật khẩu</string>
+    <string name="hint_type_password">Nhập mật khẩu</string>
+    <string name="description_save_password">Lưu mật khẩu</string>
+    <string name="description_delete_password">Xóa mật khẩu</string>
+    <string name="description_password_evaluation_passed">Đánh giá mật khẩu đã vượt qua</string>
+    <string name="label_evaluated_password_length">Chiều dài:</string>
+    <string name="password_evaluation_weakest">ĐIỂM YẾU</string>
+    <string name="password_evaluation_weak">YẾU</string>
+    <string name="password_evaluation_medium">TRUNG BÌNH</string>
+    <string name="password_evaluation_strong">MẠNH</string>
+    <string name="password_evaluation_strongest">MẠNH NHẤT</string>
+    <string name="user_tip_evaluate_password">Mật khẩu an toàn nhất phải chứa UPPERCASE và các chữ cái viết thường, chữ số, ký tự đặc biệt (như \'!\', \'@\', V.v.) và không được quá ngắn.</string>
+    <string name="toast_empty_password">Mật khẩu trống!</string>
+    <string name="toast_empty_title">Tiêu đề trống!</string>
+    <string name="toast_password_saved">Đã lưu mật khẩu.</string>
+</resources>

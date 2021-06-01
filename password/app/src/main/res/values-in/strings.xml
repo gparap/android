@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pengelola Pembuat Kata Sandi</string>
+    <string name="title_generator">Buat Kata Sandi</string>
+    <string name="title_evaluator">Evaluasi Kata Sandi</string>
+    <string name="title_manager">Kelola Kata Sandi</string>
+    <string name="title_generator_short">Menghasilkan</string>
+    <string name="title_evaluator_short">Evaluasi</string>
+    <string name="title_manager_short">Mengelola</string>
+    <string name="button_generate_password">Buat Kata Sandi</string>
+    <string name="button_save_evaluated_password">menyimpan</string>
+    <string name="radio_08_chars">Panjang 08 karakter</string>
+    <string name="radio_16_chars">panjang 16 karakter</string>
+    <string name="radio_custom_chars">panjang khusus</string>
+    <string name="hint_password_generated">kata sandi dihasilkan</string>
+    <string name="hint_password_title">masukkan judul untuk kata sandi</string>
+    <string name="hint_type_password">Ketik kata sandi</string>
+    <string name="description_save_password">Simpan kata sandi</string>
+    <string name="description_delete_password">Hapus Kata Sandi</string>
+    <string name="description_password_evaluation_passed">Evaluasi Kata Sandi Lulus</string>
+    <string name="label_evaluated_password_length">Panjangnya:</string>
+    <string name="password_evaluation_weakest">terlemah</string>
+    <string name="password_evaluation_weak">LEMAH</string>
+    <string name="password_evaluation_medium">MEDIUM</string>
+    <string name="password_evaluation_strong">KUAT</string>
+    <string name="password_evaluation_strongest">TERKUAT</string>
+    <string name="user_tip_evaluate_password">Kata sandi teraman harus berisi huruf besar dan kecil, angka, karakter khusus (seperti \'!\', \'@\', dll.) dan tidak boleh terlalu pendek.</string>
+    <string name="toast_empty_password">Kata sandi kosong!</string>
+    <string name="toast_empty_title">Judulnya kosong!</string>
+    <string name="toast_password_saved">Kata sandi disimpan.</string>
+</resources>

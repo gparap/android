@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">密碼創建器管理器</string>
+    <string name="title_generator">生成密碼</string>
+    <string name="title_evaluator">評估密碼</string>
+    <string name="title_manager">管理密碼</string>
+    <string name="title_generator_short">產生</string>
+    <string name="title_evaluator_short">評估</string>
+    <string name="title_manager_short">管理</string>
+    <string name="button_generate_password">生成密碼</string>
+    <string name="button_save_evaluated_password">保存</string>
+    <string name="radio_08_chars">08個字符的長度</string>
+    <string name="radio_16_chars">16 個字符長度</string>
+    <string name="radio_custom_chars">自定義長度</string>
+    <string name="hint_password_generated">密碼生成</string>
+    <string name="hint_00" translatable="false">輸入密碼標題</string>
+    <string name="hint_password_title">輸入密碼標題</string>
+    <string name="hint_type_password">輸入密碼</string>
+    <string name="description_save_password">保存密碼</string>
+    <string name="description_delete_password">刪除密碼</string>
+    <string name="description_password_evaluation_passed">密碼評估通過</string>
+    <string name="label_evaluated_password_length">長度：</string>
+    <string name="value_zero" translatable="false">虛弱的</string>
+    <string name="password_evaluation_weakest">最弱</string>
+    <string name="password_evaluation_weak">虛弱的</string>
+    <string name="password_evaluation_medium">中等的</string>
+    <string name="password_evaluation_strong">強的</string>
+    <string name="password_evaluation_strongest">最強</string>
+    <string name="user_tip_evaluate_password">最安全的密碼應包含大寫和小寫字母、數字、特殊字符（如“！”、“@”等），並且不應太短。</string>
+    <string name="toast_empty_password">密碼為空！</string>
+    <string name="toast_empty_title">標題為空！</string>
+    <string name="toast_password_saved">密碼已保存。</string>
+</resources>

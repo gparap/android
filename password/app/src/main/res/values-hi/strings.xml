@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">पासवर्ड निर्माता प्रबंधक</string>
+    <string name="title_generator">पासवर्ड उत्पन्न करें</string>
+    <string name="title_evaluator">पासवर्ड का मूल्यांकन करें</string>
+    <string name="title_manager">पासवर्ड प्रबंधित करें</string>
+    <string name="title_generator_short">उत्पन्न</string>
+    <string name="title_evaluator_short">मूल्यांकन करना</string>
+    <string name="title_manager_short">प्रबंधित</string>
+    <string name="button_generate_password">पासवर्ड उत्पन्न करें</string>
+    <string name="button_save_evaluated_password">बचा ले</string>
+    <string name="radio_08_chars">08 वर्ण लंबाई</string>
+    <string name="radio_16_chars">16 वर्ण लंबाई</string>
+    <string name="radio_custom_chars">कस्टम लंबाई</string>
+    <string name="hint_password_generated">पासवर्ड उत्पन्न</string>
+    <string name="hint_password_title">पासवर्ड के लिए शीर्षक दर्ज करें</string>
+    <string name="hint_type_password">पासवर्ड लिखें</string>
+    <string name="description_save_password">पासवर्ड सहेजें</string>
+    <string name="description_delete_password">पासवर्ड हटाएं</string>
+    <string name="description_password_evaluation_passed">पासवर्ड मूल्यांकन उत्तीर्ण</string>
+    <string name="label_evaluated_password_length">लंबाई:</string>
+    <string name="password_evaluation_weakest">सबसे कमजोर</string>
+    <string name="password_evaluation_weak">कमजोर</string>
+    <string name="password_evaluation_medium">मध्यम</string>
+    <string name="password_evaluation_strong">मजबूत</string>
+    <string name="password_evaluation_strongest">सबसे मजबूत</string>
+    <string name="user_tip_evaluate_password">सबसे सुरक्षित पासवर्ड में अपरकेस और लोअरकेस अक्षर, अंक, विशेष वर्ण (जैसे \'!\', \'@\', आदि) होने चाहिए और यह बहुत छोटा नहीं होना चाहिए।</string>
+    <string name="toast_empty_password">पासवर्ड खाली है!</string>
+    <string name="toast_empty_title">शीर्षक खाली है!</string>
+    <string name="toast_password_saved">पासवर्ड सहेजा गया।</string>
+</resources>

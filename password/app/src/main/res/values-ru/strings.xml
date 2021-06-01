@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Менеджер по созданию паролей</string>
+    <string name="title_generator">Сгенерировать пароль</string>
+    <string name="title_evaluator">Оценить пароль</string>
+    <string name="title_manager">Управление паролями</string>
+    <string name="title_generator_short">Генерировать</string>
+    <string name="title_evaluator_short">Оценивать</string>
+    <string name="title_manager_short">Управлять</string>
+    <string name="button_generate_password">Сгенерировать пароль</string>
+    <string name="button_save_evaluated_password">спасти</string>
+    <string name="radio_08_chars">Длина 08 символов</string>
+    <string name="radio_16_chars">Длина 16 символов</string>
+    <string name="radio_custom_chars">нестандартная длина</string>
+    <string name="hint_password_generated">пароль сгенерирован</string>
+    <string name="hint_password_title">введите заголовок для пароля</string>
+    <string name="hint_type_password">Введите пароль</string>
+    <string name="description_save_password">Сохраните пароль</string>
+    <string name="description_delete_password">Удалить пароль</string>
+    <string name="description_password_evaluation_passed">Оценка пароля пройдена</string>
+    <string name="label_evaluated_password_length">Длина:</string>
+    <string name="password_evaluation_weakest">САМЫЙ СЛАБЫЙ</string>
+    <string name="password_evaluation_weak">СЛАБЫЙ</string>
+    <string name="password_evaluation_medium">СРЕДНЯЯ</string>
+    <string name="password_evaluation_strong">СИЛЬНЫЙ</string>
+    <string name="password_evaluation_strongest">САМЫЙ СИЛЬНЫЙ</string>
+    <string name="user_tip_evaluate_password">Самые безопасные пароли должны содержать заглавные и строчные буквы, цифры, специальные символы (например, «!», «@» И т. Д.) И не должны быть слишком короткими.</string>
+    <string name="toast_empty_password">Пароль пуст!</string>
+    <string name="toast_empty_title">Заголовок пуст!</string>
+    <string name="toast_password_saved">Пароль сохранен.</string>
+</resources>

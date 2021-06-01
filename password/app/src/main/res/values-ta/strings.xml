@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">கடவுச்சொல் உருவாக்கியவர் மேலாளர்</string>
+    <string name="title_generator">கடவுச்சொல்லை உருவாக்கவும்</string>
+    <string name="title_evaluator">கடவுச்சொல்லை மதிப்பிடுங்கள்</string>
+    <string name="title_manager">கடவுச்சொற்களை நிர்வகிக்கவும்</string>
+    <string name="title_generator_short">உருவாக்கு</string>
+    <string name="title_evaluator_short">மதிப்பீடு செய்யுங்கள்</string>
+    <string name="title_manager_short">நிர்வகி</string>
+    <string name="button_generate_password">கடவுச்சொல்லை உருவாக்கவும்</string>
+    <string name="button_save_evaluated_password">சேமி</string>
+    <string name="radio_08_chars">08 எழுத்துகள் நீளம்</string>
+    <string name="radio_16_chars">16 எழுத்துகள் நீளம்</string>
+    <string name="radio_custom_chars">தனிப்பயன் நீளம்</string>
+    <string name="hint_password_generated">கடவுச்சொல் உருவாக்கப்பட்டது</string>
+    <string name="hint_password_title">கடவுச்சொல்லுக்கு தலைப்பை உள்ளிடவும்</string>
+    <string name="hint_type_password">கடவுச்சொல்லை தட்டச்சு செய்க</string>
+    <string name="description_save_password">கடவுச்சொல்லை சேமிக்கவும்</string>
+    <string name="description_delete_password">கடவுச்சொல்லை நீக்கு</string>
+    <string name="description_password_evaluation_passed">கடவுச்சொல் மதிப்பீடு கடந்துவிட்டது</string>
+    <string name="label_evaluated_password_length">நீளம்:</string>
+    <string name="password_evaluation_weakest">வீக்கஸ்ட்</string>
+    <string name="password_evaluation_weak">வீக்</string>
+    <string name="password_evaluation_medium">மீடியம்</string>
+    <string name="password_evaluation_strong">வலுவான</string>
+    <string name="password_evaluation_strongest">வலுவான</string>
+    <string name="user_tip_evaluate_password">பாதுகாப்பான கடவுச்சொற்களில் UPPERCASE மற்றும் சிறிய எழுத்துக்கள், இலக்கங்கள், சிறப்பு எழுத்துக்கள் (\'!\', \'@\' போன்றவை) இருக்க வேண்டும், மேலும் அவை குறுகியதாக இருக்கக்கூடாது.</string>
+    <string name="toast_empty_password">கடவுச்சொல் காலியாக உள்ளது!</string>
+    <string name="toast_empty_title">தலைப்பு காலியாக உள்ளது!</string>
+    <string name="toast_password_saved">கடவுச்சொல் சேமிக்கப்பட்டது.</string>
+</resources>
