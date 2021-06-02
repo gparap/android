@@ -6,4 +6,91 @@
     <string name="label_is_fixed_date_holiday">Fixed Date:</string>
     <string name="label_is_global_holiday">Global Holiday:</string>
     <string name="label_holiday_launch_year">Launch Year:</string>
+
+    <!--spinner-->
+    <array name="countries">
+        <item>Albania</item>
+        <item>Argentina</item>
+        <item>Austria</item>
+        <item>Australia</item>
+        <item>Belgium</item>
+        <item>Bulgaria</item>
+        <item>Bolivia</item>
+        <item>Brazil</item>
+        <item>Botswana</item>
+        <item>Belarus</item>
+        <item>Canada</item>
+        <item>Switzerland</item>
+        <item>Chile</item>
+        <item>China</item>
+        <item>Colombia</item>
+        <item>Costa Rica</item>
+        <item>Cuba</item>
+        <item>Cyprus</item>
+        <item>Czechia</item>
+        <item>Germany</item>
+        <item>Denmark</item>
+        <item>Dominican Republic</item>
+        <item>Ecuador</item>
+        <item>Estonia</item>
+        <item>Egypt</item>
+        <item>Spain</item>
+        <item>Finland</item>
+        <item>France</item>
+        <item>Gabon</item>
+        <item>United Kingdom</item>
+        <item>Greenland</item>
+        <item>Gambia</item>
+        <item>Greece</item>
+        <item>Guatemala</item>
+        <item>Croatia</item>
+        <item>Haiti</item>
+        <item>Hungary</item>
+        <item>Indonesia</item>
+        <item>Ireland</item>
+        <item>Iceland</item>
+        <item>Italy</item>
+        <item>Jamaica</item>
+        <item>Japan</item>
+        <item>South Korea</item>
+        <item>Lithuania</item>
+        <item>Luxembourg</item>
+        <item>Latvia</item>
+        <item>Morocco</item>
+        <item>Moldova</item>
+        <item>Montenegro</item>
+        <item>Madagascar</item>
+        <item>Mongolia</item>
+        <item>Malta</item>
+        <item>Mexico</item>
+        <item>Mozambique</item>
+        <item>Namibia</item>
+        <item>Niger</item>
+        <item>Nigeria</item>
+        <item>Nicaragua</item>
+        <item>Netherlands</item>
+        <item>Norway</item>
+        <item>New Zealand</item>
+        <item>Panama</item>
+        <item>Peru</item>
+        <item>Papua New Guinea</item>
+        <item>Poland</item>
+        <item>Puerto Rico</item>
+        <item>Portugal</item>
+        <item>Paraguay</item>
+        <item>Romania</item>
+        <item>Serbia</item>
+        <item>Russia</item>
+        <item>Sweden</item>
+        <item>Slovenia</item>
+        <item>Slovakia</item>
+        <item>Tunisia</item>
+        <item>Ukraine</item>
+        <item>United States</item>
+        <item>Uruguay</item>
+        <item>Venezuela</item>
+        <item>Vietnam</item>
+        <item>South Africa</item>
+        <item>Zimbabwe</item>
+    </array>
 </resources>

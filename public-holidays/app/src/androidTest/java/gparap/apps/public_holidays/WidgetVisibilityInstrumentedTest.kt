@@ -22,6 +22,11 @@ class WidgetVisibilityInstrumentedTest {
     }
 
     @Test
+    fun isVisible_spinnerCountries() {
+        onView(withId(R.id.spinnerCountries)).check(matches(isDisplayed()))
+    }
+
+    @Test
     fun isVisible_recyclerViewHolidays() {
         onView(withId(R.id.recyclerViewHolidays)).check(matches(isDisplayed()))
     }
