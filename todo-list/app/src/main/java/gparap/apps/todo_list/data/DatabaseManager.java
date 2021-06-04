@@ -1,4 +1,4 @@
-package gparap.apps.todo_list;
+package gparap.apps.todo_list.data;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,6 +11,8 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.FutureTask;
+
+import gparap.apps.todo_list.model.ToDoModel;
 
 /**
  * Created by gparap on 2020-10-16.

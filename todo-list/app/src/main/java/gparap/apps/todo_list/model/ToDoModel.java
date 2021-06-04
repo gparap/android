@@ -1,4 +1,4 @@
-package gparap.apps.todo_list;
+package gparap.apps.todo_list.model;
 
 /**
  * Model of a To_Do.
