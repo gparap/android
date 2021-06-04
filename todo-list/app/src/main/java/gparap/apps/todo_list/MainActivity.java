@@ -16,6 +16,11 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import gparap.apps.todo_list.adapter.ToDoAdapter;
+import gparap.apps.todo_list.data.DatabaseManager;
+import gparap.apps.todo_list.model.ToDoModel;
+import gparap.apps.todo_list.utils.TouchManager;
+
 /**
  * Created by gparap on 2020-10-16.
  */

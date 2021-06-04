@@ -1,4 +1,4 @@
-package gparap.apps.todo_list;
+package gparap.apps.todo_list.adapter;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -13,6 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import gparap.apps.todo_list.R;
+import gparap.apps.todo_list.model.ToDoModel;
+import gparap.apps.todo_list.data.DatabaseManager;
 
 /**
  * Created by gparap on 2020-10-16.

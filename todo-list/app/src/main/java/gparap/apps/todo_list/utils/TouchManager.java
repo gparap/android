@@ -1,4 +1,4 @@
-package gparap.apps.todo_list;
+package gparap.apps.todo_list.utils;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -15,6 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
+
+import gparap.apps.todo_list.R;
+import gparap.apps.todo_list.adapter.ToDoAdapter;
 
 /**
  * Helper for swipe to the left and delete To_Do.

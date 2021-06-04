@@ -1,17 +1,31 @@
+/*
+ * Copyright 2021 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.todo_list;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.Handler;
-
 import java.util.Objects;
 
-/**
- * Created by gparap on 2020-10-12.
- */
 public class SplashActivity extends AppCompatActivity {
 
     @Override
@@ -20,24 +34,22 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         //hide action bar
-        try{
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                Objects.requireNonNull(this.getSupportActionBar()).hide();
-            }else {
-                this.getSupportActionBar().hide();
-            }
-        }catch (NullPointerException e){
+        try {
+            Objects.requireNonNull(this.getSupportActionBar()).hide();
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
 
+        //create animation
+        ImageView logo = findViewById(R.id.imageViewLogo);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.logo_animation);
+        logo.setAnimation(animation);
+
         //splash
-        new Handler(getMainLooper()).postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                //goto main activity
-                startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                finish();
-            }
+        new Handler(getMainLooper()).postDelayed(() -> {
+            //goto main activity
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            finish();
         }, 1667);
     }
 }
