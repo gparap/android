@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Design dimensions -->
+    <dimen name="todo_view_layout_padding">8dp</dimen>
+    <dimen name="todo_title_text_size">20sp</dimen>
+    <dimen name="todo_datetime_text_size">16sp</dimen>
+    <dimen name="checkbox_done_text_size">16sp</dimen>
+    <dimen name="layout_marginStart">8dp</dimen>
+    <dimen name="layout_marginEnd">8dp</dimen>
+    <dimen name="layout_marginTop">8dp</dimen>
+</resources>

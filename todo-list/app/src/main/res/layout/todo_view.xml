@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:padding="@dimen/todo_view_layout_padding">
 
     <!-- To-do title-->
     <TextView
         android:id="@+id/textViewTodo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:ems="10"
+        android:layout_marginStart="@dimen/layout_marginStart"
         android:maxLines="2"
+        android:textSize="@dimen/todo_title_text_size"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/checkBoxDone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,10 +25,11 @@
         android:id="@+id/checkBoxDone"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="@dimen/layout_marginEnd"
         android:minWidth="0dp"
         android:minHeight="0dp"
         android:text="@string/done"
+        android:textSize="@dimen/checkbox_done_text_size"
         app:layout_constraintBottom_toBottomOf="@+id/textViewTodo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewTodo" />
@@ -37,7 +39,8 @@
         android:id="@+id/textViewByTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/layout_marginTop"
+        android:textSize="@dimen/todo_datetime_text_size"
         app:layout_constraintStart_toStartOf="@+id/textViewTodo"
         app:layout_constraintTop_toBottomOf="@+id/textViewTodo"
         tools:text="Time" />
@@ -47,8 +50,9 @@
         android:id="@+id/textViewOnDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="@dimen/layout_marginStart"
+        android:layout_marginTop="@dimen/layout_marginTop"
+        android:textSize="@dimen/todo_datetime_text_size"
         app:layout_constraintStart_toEndOf="@+id/textViewByTime"
         app:layout_constraintTop_toBottomOf="@+id/textViewTodo"
         tools:text="Date" />
