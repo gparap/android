@@ -1,84 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cardViewTodo"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <!-- To-do title-->
+    <TextView
+        android:id="@+id/textViewTodo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:maxLines="2"
+        app:layout_constraintEnd_toStartOf="@+id/checkBoxDone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="todo" />
 
-        <Button
-            android:id="@+id/buttonAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClickToDo"
-            android:text="@string/add"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <!-- To-do "done" status-->
+    <CheckBox
+        android:id="@+id/checkBoxDone"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:text="@string/done"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewTodo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewTodo" />
 
-        <Button
-            android:id="@+id/buttonCancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClickToDo"
-            android:text="@string/cancel"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonAdd" />
+    <!-- To-do date that must be done -->
+    <TextView
+        android:id="@+id/textViewByTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewTodo"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTodo"
+        tools:text="Time" />
 
-        <Button
-            android:id="@+id/buttonClear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onClickToDo"
-            android:text="@string/clear"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonCancel" />
+    <!-- To-do date that must be done -->
+    <TextView
+        android:id="@+id/textViewOnDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/textViewByTime"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTodo"
+        tools:text="Date" />
 
-        <!--TO-DO-->
-        <EditText
-            android:id="@+id/editTextTodo"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@null"
-            android:ems="10"
-            android:gravity="start|top"
-            android:hint="@string/enter_your_todo_here"
-            android:inputType="textMultiLine"
-            android:maxLength="105"
-            app:layout_constraintStart_toEndOf="@+id/buttonAdd"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPickTodoTime"
-            tools:ignore="Autofill"
-            android:layout_marginLeft="8dp" />
-
-        <!--Pick Time-->
-        <TextView
-            android:id="@+id/textViewPickTodoTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:hint="@string/pick_todo_time"
-            app:layout_constraintStart_toEndOf="@+id/buttonAdd"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginLeft="8dp" />
-
-        <!--Pick Date-->
-        <TextView
-            android:id="@+id/textViewPickTodoDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:hint="@string/pick_todo_date"
-            app:layout_constraintStart_toEndOf="@+id/textViewPickTodoTime"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginLeft="8dp" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
