@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">ToDo List</string>
-    <string name="i_have_to">I have to…</string>
     <string name="done">Done</string>
     <string name="enter_your_todo_here">Enter your TODO here</string>
     <string name="add">Add</string>
@@ -11,4 +10,5 @@
     <string name="set_time">Set Time</string>
     <string name="set_date">Set Date</string>
     <string name="logo">logo</string>
+    <string name="description_add_todo">Add ToDo</string>
 </resources>
