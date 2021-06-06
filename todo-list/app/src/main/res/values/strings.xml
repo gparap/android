@@ -11,4 +11,5 @@
     <string name="set_date">Set Date</string>
     <string name="logo">logo</string>
     <string name="description_add_todo">Add ToDo</string>
+    <string name="fragment_todo_list_title">My To-Do List</string>
 </resources>
