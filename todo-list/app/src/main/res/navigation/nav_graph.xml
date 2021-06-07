@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/toDoListFragment">
 
     <fragment
         android:id="@+id/toDoListFragment"
         android:name="gparap.apps.todo_list.ui.ToDoListFragment"
-        android:label="ToDoListFragment" />
+        android:label="ToDoListFragment" >
+        <action
+            android:id="@+id/action_toDoListFragment_to_addToDoFragment"
+            app:destination="@id/addToDoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addToDoFragment"
+        android:name="gparap.apps.todo_list.ui.AddToDoFragment"
+        android:label="fragment_add_todo"
+        tools:layout="@layout/fragment_add_todo" />
 </navigation>

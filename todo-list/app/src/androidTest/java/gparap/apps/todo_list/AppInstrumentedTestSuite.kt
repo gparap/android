@@ -15,6 +15,8 @@
  */
 package gparap.apps.todo_list
 
+import gparap.apps.todo_list.ui.AddToDoFragmentInstrumentedTest
+import gparap.apps.todo_list.ui.ToDoListFragmentInstrumentedTest
 import org.junit.runner.RunWith
 import org.junit.runners.Suite
 
@@ -22,5 +24,7 @@ import org.junit.runners.Suite
 @Suite.SuiteClasses(
         SplashActivityInstrumentedTest::class,
         MainActivityInstrumentedTest::class,
+        ToDoListFragmentInstrumentedTest::class,
+        AddToDoFragmentInstrumentedTest::class,
 )
 class AppInstrumentedTestSuite

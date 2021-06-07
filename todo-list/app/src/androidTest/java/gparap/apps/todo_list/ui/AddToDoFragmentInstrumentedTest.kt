@@ -18,23 +18,32 @@ package gparap.apps.todo_list.ui
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.espresso.matcher.ViewMatchers.*
 import gparap.apps.todo_list.R
 import org.junit.Before
 import org.junit.Test
 
-class ToDoListFragmentTest {
+class AddToDoFragmentInstrumentedTest {
 
     @Before
     fun setUp() {
         launchFragmentInContainer(null, R.style.Theme_MaterialComponents) {
-            ToDoListFragment()
+            AddToDoFragment()
         }
     }
 
     @Test
     fun onViewCreated_isFragmentVisible() {
-        onView(withText(R.string.fragment_todo_list_title)).check(matches(isDisplayed()))
+        onView(withText(R.string.fragment_add_todo)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isVisible_editTextAddToDo() {
+        onView(withId(R.id.editTextAddToDo)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isVisible_fabSaveToDo() {
+        onView(withId(R.id.fabSaveToDo)).check(matches(isDisplayed()))
     }
 }
