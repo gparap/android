@@ -1,43 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_todo_list_layout"
+    android:id="@+id/fragment_add_todo_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ui.ToDoListFragment">
+    tools:context=".ui.AddToDoFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="ui.ToDoListFragment">
+        android:layout_height="match_parent">
 
         <!-- Action bar -->
         <include
             android:id="@+id/toolbar"
             layout="@layout/toolbar_view" />
 
-        <!-- To-do list -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewToDo"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <!-- Input for adding a new to-do -->
+        <EditText
+            android:id="@+id/editTextAddToDo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autofillHints="false"
+            android:hint="@string/hint_add_todo"
+            android:inputType="textMultiLine"
+            android:textSize="@dimen/editText_text_size"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:text="Add a new to-do here" />
 
-        <!-- Add to-do button -->
+        <!-- Save to-do button -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabAddToDo"
+            android:id="@+id/fabSaveToDo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_layout_margin"
             android:contentDescription="@string/description_add_todo"
-            android:src="@drawable/ic_add_black_24"
+            android:src="@drawable/ic_save_black_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</FrameLayout>

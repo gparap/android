@@ -20,13 +20,22 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.todo_list.R
 
 class ToDoListFragment : Fragment(R.layout.fragment_todo_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupActionBar()
+
+        //add a new to-do
+        val fabAddToDo = view.findViewById<FloatingActionButton>(R.id.fabAddToDo)
+        fabAddToDo.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_toDoListFragment_to_addToDoFragment)
+        }
     }
 
     private fun setupActionBar() {
