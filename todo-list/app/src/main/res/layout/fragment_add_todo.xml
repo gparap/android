@@ -35,42 +35,68 @@
 
         <!-- to-do time set (label) -->
         <TextView
-            android:id="@+id/labelToDoTime"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:id="@+id/labelDeadlineToDo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/layout_marginStart"
-            android:gravity="center"
-            android:text="@string/label_todo_time"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/layout_marginEnd"
+            android:gravity="start"
+            android:text="@string/label_deadline_todo"
             android:textSize="@dimen/editText_text_size"
-            app:layout_constraintBottom_toBottomOf="@+id/buttonShowTimePickerDialog"
-            app:layout_constraintEnd_toStartOf="@+id/textViewToDoTimeSet"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/buttonShowTimePickerDialog" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextAddToDo" />
 
-        <!-- to-do time set -->
+        <!-- To-Do time set -->
         <TextView
             android:id="@+id/textViewToDoTimeSet"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/layout_marginStart"
+            android:layout_marginStart="8dp"
             android:gravity="center"
             android:textSize="@dimen/editText_text_size"
             app:layout_constraintBottom_toBottomOf="@+id/buttonShowTimePickerDialog"
-            app:layout_constraintStart_toEndOf="@+id/labelToDoTime"
+            app:layout_constraintStart_toEndOf="@+id/buttonShowTimePickerDialog"
             app:layout_constraintTop_toTopOf="@+id/buttonShowTimePickerDialog"
             tools:text="00:00" />
 
-        <!-- to-do time set -->
+        <!-- To-Do time set button -->
         <Button
             android:id="@+id/buttonShowTimePickerDialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/layout_marginTop"
-            android:layout_marginEnd="@dimen/layout_marginEnd"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:text="@string/set_time"
             android:textSize="@dimen/button_text_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextAddToDo" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/labelDeadlineToDo" />
+
+        <!-- To-Do date set button -->
+        <Button
+            android:id="@+id/buttonShowDatePickerDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/set_date"
+            android:textSize="@dimen/button_text_size"
+            app:layout_constraintStart_toStartOf="@+id/buttonShowTimePickerDialog"
+            app:layout_constraintTop_toBottomOf="@+id/buttonShowTimePickerDialog" />
+
+        <!-- To-Do time set -->
+        <TextView
+            android:id="@+id/textViewToDoDateSet"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:gravity="center"
+            android:textSize="@dimen/editText_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonShowDatePickerDialog"
+            app:layout_constraintStart_toEndOf="@+id/buttonShowDatePickerDialog"
+            app:layout_constraintTop_toTopOf="@+id/buttonShowDatePickerDialog"
+            tools:text="05/05/2021" />
 
         <!-- Save to-do button -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton

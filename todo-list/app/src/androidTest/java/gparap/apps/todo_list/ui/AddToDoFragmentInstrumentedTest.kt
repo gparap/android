@@ -54,7 +54,7 @@ class AddToDoFragmentInstrumentedTest {
 
     @Test
     fun isVisible_labelToDoTime() {
-        onView(withId(R.id.labelToDoTime)).check(matches(isDisplayed()))
+        onView(withId(R.id.labelDeadlineToDo)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -65,6 +65,16 @@ class AddToDoFragmentInstrumentedTest {
     @Test
     fun isVisible_buttonShowTimePickerDialog() {
         onView(withId(R.id.buttonShowTimePickerDialog)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isInvisible_textViewToDoDateSet() {
+        onView(withId(R.id.textViewToDoDateSet)).check(matches(not(isDisplayed())))
+    }
+
+    @Test
+    fun isVisible_buttonShowDatePickerDialog() {
+        onView(withId(R.id.buttonShowDatePickerDialog)).check(matches(isDisplayed()))
     }
 
     @Test
