@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.todo_list.ui.time_picker
+package gparap.apps.todo_list.ui.pickers
 
 import android.app.Dialog
 import android.app.TimePickerDialog

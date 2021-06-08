@@ -15,7 +15,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.appbar.MaterialToolbar
 import gparap.apps.todo_list.R
-import gparap.apps.todo_list.ui.time_picker.TimePickerFragment
+import gparap.apps.todo_list.ui.pickers.TimePickerFragment
+import gparap.apps.todo_list.utils.Utils
 
 
 class AddToDoFragment : Fragment() {
@@ -47,7 +48,12 @@ class AddToDoFragment : Fragment() {
         val timeSetListener = OnTimeSetListener { _, hourOfDay, minute ->
             //handle
             val textViewToDoTimeSet = view.findViewById<TextView>(R.id.textViewToDoTimeSet)
-            textViewToDoTimeSet.text = "$hourOfDay:$minute"
+            textViewToDoTimeSet.text =
+                Utils.fillInZeroInFront(hourOfDay).plus(
+                    ":"
+                ).plus(
+                    Utils.fillInZeroInFront(minute)
+                )
         }
 
         //display time picker and set time for the to-do
