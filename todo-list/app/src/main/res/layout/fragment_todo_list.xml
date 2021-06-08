@@ -5,12 +5,12 @@
     android:id="@+id/fragment_todo_list_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ui.ToDoListFragment">
+    tools:context=".ui.todo_list.ToDoListFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="ui.ToDoListFragment">
+        tools:context=".ui.todo_list.ToDoListFragment">
 
         <!-- Action bar -->
         <include

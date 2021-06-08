@@ -1,4 +1,4 @@
-package gparap.apps.todo_list.ui
+package gparap.apps.todo_list.ui.add_todo
 
 import androidx.lifecycle.ViewModel
 

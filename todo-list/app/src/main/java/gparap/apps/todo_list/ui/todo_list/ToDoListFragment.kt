@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.todo_list.ui
+package gparap.apps.todo_list.ui.todo_list
 
 import android.graphics.Color
 import android.os.Build
