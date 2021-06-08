@@ -5,7 +5,7 @@
     android:id="@+id/fragment_add_todo_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AddToDoFragment">
+    tools:context=".ui.add_todo.AddToDoFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -21,6 +21,8 @@
             android:id="@+id/editTextAddToDo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/layout_marginStart"
+            android:layout_marginEnd="@dimen/layout_marginEnd"
             android:autofillHints="false"
             android:hint="@string/hint_add_todo"
             android:inputType="textMultiLine"
@@ -30,6 +32,45 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
             tools:text="Add a new to-do here" />
+
+        <!-- to-do time set (label) -->
+        <TextView
+            android:id="@+id/labelToDoTime"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/layout_marginStart"
+            android:gravity="center"
+            android:text="@string/label_todo_time"
+            android:textSize="@dimen/editText_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonShowTimePickerDialog"
+            app:layout_constraintEnd_toStartOf="@+id/textViewToDoTimeSet"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/buttonShowTimePickerDialog" />
+
+        <!-- to-do time set -->
+        <TextView
+            android:id="@+id/textViewToDoTimeSet"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/layout_marginStart"
+            android:gravity="center"
+            android:textSize="@dimen/editText_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonShowTimePickerDialog"
+            app:layout_constraintStart_toEndOf="@+id/labelToDoTime"
+            app:layout_constraintTop_toTopOf="@+id/buttonShowTimePickerDialog"
+            tools:text="00:00" />
+
+        <!-- to-do time set -->
+        <Button
+            android:id="@+id/buttonShowTimePickerDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_marginTop"
+            android:layout_marginEnd="@dimen/layout_marginEnd"
+            android:text="@string/set_time"
+            android:textSize="@dimen/button_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextAddToDo" />
 
         <!-- Save to-do button -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton

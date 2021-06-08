@@ -15,16 +15,21 @@
  */
 package gparap.apps.todo_list.ui
 
+import android.widget.TimePicker
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.PickerActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import gparap.apps.todo_list.R
+import gparap.apps.todo_list.ui.add_todo.AddToDoFragment
+import org.hamcrest.Matchers.equalTo
+import org.hamcrest.core.IsNot.not
 import org.junit.Before
 import org.junit.Test
 
 class AddToDoFragmentInstrumentedTest {
-
     @Before
     fun setUp() {
         launchFragmentInContainer(null, R.style.Theme_MaterialComponents) {
@@ -45,5 +50,43 @@ class AddToDoFragmentInstrumentedTest {
     @Test
     fun isVisible_fabSaveToDo() {
         onView(withId(R.id.fabSaveToDo)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isVisible_labelToDoTime() {
+        onView(withId(R.id.labelToDoTime)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isInvisible_textViewToDoTimeSet() {
+        onView(withId(R.id.textViewToDoTimeSet)).check(matches(not(isDisplayed())))
+    }
+
+    @Test
+    fun isVisible_buttonShowTimePickerDialog() {
+        onView(withId(R.id.buttonShowTimePickerDialog)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun showDialog_timePicker() {
+        onView(withId(R.id.buttonShowTimePickerDialog)).perform(click())
+        onView(withClassName(equalTo(TimePicker::class.java.name))).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun textViewToDoTimeSet_displayTimePicked() {
+        val hours = 10
+        val minutes = 10
+
+        //show time picker dialog
+        onView(withId(R.id.buttonShowTimePickerDialog)).perform(click())
+
+        //pick time
+        onView(withClassName(equalTo(TimePicker::class.java.name)))
+            .perform(PickerActions.setTime(hours, minutes))
+        onView(withId(android.R.id.button1)).perform(click())
+
+        //test
+        onView(withId(R.id.textViewToDoTimeSet)).check(matches(withText("$hours:$minutes")))
     }
 }

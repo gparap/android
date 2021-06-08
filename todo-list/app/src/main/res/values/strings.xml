@@ -14,4 +14,5 @@
     <string name="fragment_todo_list_title">My To-Do List</string>
     <string name="fragment_add_todo">Add new to-do</string>
     <string name="hint_add_todo">enter your to-do here</string>
+    <string name="label_todo_time">I must do it by</string>
 </resources>
