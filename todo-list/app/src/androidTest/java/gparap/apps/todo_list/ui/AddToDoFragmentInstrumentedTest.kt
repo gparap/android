@@ -19,12 +19,17 @@ import android.widget.DatePicker
 import android.widget.TimePicker
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.PickerActions
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.uiautomator.UiDevice
 import gparap.apps.todo_list.R
 import gparap.apps.todo_list.ui.add_todo.AddToDoFragment
+import org.hamcrest.Matchers
 import org.hamcrest.Matchers.equalTo
 import org.hamcrest.core.IsNot.not
 import org.junit.Before
@@ -45,7 +50,7 @@ class AddToDoFragmentInstrumentedTest {
 
     @Test
     fun isVisible_editTextAddToDo() {
-        onView(withId(R.id.editTextAddToDo)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextToDo)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -94,7 +99,53 @@ class AddToDoFragmentInstrumentedTest {
     fun textViewToDoTimeSet_displayTimePicked() {
         val hours = 10
         val minutes = 10
+        pickTime(hours, minutes)
 
+        //test
+        onView(withId(R.id.textViewToDoTimeSet)).check(matches(withText("$hours:$minutes")))
+    }
+
+    @Test
+    fun textViewToDoDateSet_displayDatePicked() {
+        val year = 2021
+        val month = 1
+        val day = 1
+        pickDate(year, month, day)
+
+        //test
+        onView(withId(R.id.textViewToDoDateSet)).check(matches(withText("$day/$month/$year")))
+    }
+
+    @Test
+    fun doesValuePersistOrientationChanges_ToDoTimeSet() {
+        val hours = 15
+        val minutes = 15
+        pickTime(hours, minutes)
+
+        //change screen orientation
+        val uiDevice: UiDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+        uiDevice.setOrientationLeft()
+        Thread.sleep(667)
+
+        onView(withId(R.id.textViewToDoTimeSet)).check(matches(withText("$hours:$minutes")))
+    }
+
+    @Test
+    fun doesValuePersistOrientationChanges_ToDoDateSet() {
+        val year = 2022
+        val month = 2
+        val day = 2
+        pickDate(year, month, day)
+
+        //change screen orientation
+        val uiDevice: UiDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+        uiDevice.setOrientationLeft()
+        Thread.sleep(667)
+
+        onView(withId(R.id.textViewToDoDateSet)).check(matches(withText("$day/$month/$year")))
+    }
+
+    private fun pickTime(hours: Int, minutes: Int) {
         //show time picker dialog
         onView(withId(R.id.buttonShowTimePickerDialog)).perform(click())
 
@@ -102,15 +153,9 @@ class AddToDoFragmentInstrumentedTest {
         onView(withClassName(equalTo(TimePicker::class.java.name)))
             .perform(PickerActions.setTime(hours, minutes))
         onView(withId(android.R.id.button1)).perform(click())
-
-        //test
-        onView(withId(R.id.textViewToDoTimeSet)).check(matches(withText("$hours:$minutes")))
     }
 
-    @Test
-    fun textViewToDoTimeSet_displayDatePicked() {
-        val year = 2021; val month = 1; val day = 1
-
+    private fun pickDate(year: Int, month: Int, day: Int) {
         //show date picker dialog
         onView(withId(R.id.buttonShowDatePickerDialog)).perform(click())
 
@@ -118,8 +163,5 @@ class AddToDoFragmentInstrumentedTest {
         onView(withClassName(equalTo(DatePicker::class.java.name)))
             .perform(PickerActions.setDate(year, month, day))
         onView(withId(android.R.id.button1)).perform(click())
-
-        //test
-        onView(withId(R.id.textViewToDoDateSet)).check(matches(withText("$day/$month/$year")))
     }
 }

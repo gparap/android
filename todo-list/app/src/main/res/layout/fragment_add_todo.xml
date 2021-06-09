@@ -18,7 +18,7 @@
 
         <!-- Input for adding a new to-do -->
         <EditText
-            android:id="@+id/editTextAddToDo"
+            android:id="@+id/editTextToDo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/layout_marginStart"
@@ -47,7 +47,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextAddToDo" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextToDo" />
 
         <!-- To-Do time set -->
         <TextView
