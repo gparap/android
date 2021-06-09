@@ -16,20 +16,20 @@
 package gparap.apps.todo_list.ui.pickers
 
 import android.app.Dialog
-import android.app.TimePickerDialog
-import android.app.TimePickerDialog.OnTimeSetListener
+import android.app.DatePickerDialog
+import android.app.DatePickerDialog.OnDateSetListener
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import java.util.*
 
-class TimePickerFragment(private val listener: OnTimeSetListener) : DialogFragment() {
+class DatePickerFragment(private val listener: OnDateSetListener) : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        //use the current time as the default value for the picker
-        val c: Calendar = Calendar.getInstance()
-        val hour: Int = c.get(Calendar.HOUR_OF_DAY)
-        val minute: Int = c.get(Calendar.MINUTE)
+        //use the current date as the default value for the picker
+        val year = Calendar.getInstance().get(Calendar.YEAR)
+        val month = Calendar.getInstance().get(Calendar.MONTH)
+        val day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
 
-        //return a new instance of TimePickerDialog
-        return TimePickerDialog(activity, listener, hour, minute, true)
+        //return a new instance of DatePickerDialog
+        return DatePickerDialog(requireActivity(), listener, year, month, day)
     }
 }

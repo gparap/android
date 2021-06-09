@@ -15,6 +15,7 @@
  */
 package gparap.apps.todo_list.ui
 
+import android.widget.DatePicker
 import android.widget.TimePicker
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.espresso.Espresso.onView
@@ -84,6 +85,12 @@ class AddToDoFragmentInstrumentedTest {
     }
 
     @Test
+    fun showDialog_datePicker() {
+        onView(withId(R.id.buttonShowDatePickerDialog)).perform(click())
+        onView(withClassName(equalTo(DatePicker::class.java.name))).check(matches(isDisplayed()))
+    }
+
+    @Test
     fun textViewToDoTimeSet_displayTimePicked() {
         val hours = 10
         val minutes = 10
@@ -98,5 +105,21 @@ class AddToDoFragmentInstrumentedTest {
 
         //test
         onView(withId(R.id.textViewToDoTimeSet)).check(matches(withText("$hours:$minutes")))
+    }
+
+    @Test
+    fun textViewToDoTimeSet_displayDatePicked() {
+        val year = 2021; val month = 1; val day = 1
+
+        //show date picker dialog
+        onView(withId(R.id.buttonShowDatePickerDialog)).perform(click())
+
+        //pick date
+        onView(withClassName(equalTo(DatePicker::class.java.name)))
+            .perform(PickerActions.setDate(year, month, day))
+        onView(withId(android.R.id.button1)).perform(click())
+
+        //test
+        onView(withId(R.id.textViewToDoDateSet)).check(matches(withText("$day/$month/$year")))
     }
 }
