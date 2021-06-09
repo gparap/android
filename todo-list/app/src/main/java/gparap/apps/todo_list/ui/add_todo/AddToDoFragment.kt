@@ -6,9 +6,6 @@ import android.app.TimePickerDialog.OnTimeSetListener
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.text.format.Time
-import android.util.Log
-import android.util.Log.INFO
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,9 +19,6 @@ import gparap.apps.todo_list.R
 import gparap.apps.todo_list.ui.pickers.DatePickerFragment
 import gparap.apps.todo_list.ui.pickers.TimePickerFragment
 import gparap.apps.todo_list.utils.Utils
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.util.*
 
 class AddToDoFragment : Fragment() {
     private lateinit var viewModel: AddToDoViewModel
@@ -49,16 +43,26 @@ class AddToDoFragment : Fragment() {
         //display dialogs to set the time and date for to-do
         setTimeForToDo(view)
         setDateForToDo(view)
+
+        //observe to-do time set
+        textViewToDoTimeSet = view.findViewById(R.id.textViewToDoTimeSet)
+        viewModel.getToDoTime().observe(viewLifecycleOwner, {
+            textViewToDoTimeSet.text = it
+        })
+
+        //observe to-do date set
+        textViewToDoDateSet = view.findViewById(R.id.textViewToDoDateSet)
+        viewModel.getToDoDate().observe(viewLifecycleOwner, {
+            textViewToDoDateSet.text = it
+        })
     }
 
     @SuppressLint("SetTextI18n")
     private fun setDateForToDo(view: View) {
         //callback for handling the date set for a to-do
         val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, month, day ->
-            //handle date
-            textViewToDoDateSet = view.findViewById<TextView>(R.id.textViewToDoDateSet)
             @Suppress("NAME_SHADOWING") val month = month + 1
-            textViewToDoDateSet.text = "$day/$month/$year"
+            viewModel.setToDoDate("$day/$month/$year")
         }
 
         //display date picker and set date for the to-do
@@ -73,14 +77,9 @@ class AddToDoFragment : Fragment() {
     private fun setTimeForToDo(view: View) {
         //callback for handling the time set for a to-do
         val timeSetListener = OnTimeSetListener { _, hourOfDay, minute ->
-            //handle time
-            textViewToDoTimeSet = view.findViewById<TextView>(R.id.textViewToDoTimeSet)
-            textViewToDoTimeSet.text =
-                Utils.fillInZeroInFront(hourOfDay).plus(
-                    ":"
-                ).plus(
-                    Utils.fillInZeroInFront(minute)
-                )
+            viewModel.setToDoTime(
+                Utils.fillInZeroInFront(hourOfDay).plus(":").plus(Utils.fillInZeroInFront(minute))
+            )
         }
 
         //display time picker and set time for the to-do
