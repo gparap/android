@@ -18,6 +18,7 @@ package gparap.apps.todo_list.utils
 import org.junit.Test
 
 import org.junit.Assert.*
+import java.util.*
 
 class UtilsUnitTest {
 
@@ -26,6 +27,24 @@ class UtilsUnitTest {
         val number = 9
         val expectedString = "09"
         val actualString = Utils.fillInZeroInFront(number)
+        assertEquals(expectedString, actualString)
+    }
+
+    @Test
+    fun convertTimeAndDateAsString_testLocaleUS() {
+        val time = "14:32"
+        val date = "9/6/2021"
+
+        //test Locale.US
+        Locale.setDefault(Locale.US)//09/06/21 14:32
+        var expectedString = "6/9/21 2:32 PM"
+        var actualString = Utils.convertTimeAndDateAsString(time, date)
+        assertEquals(expectedString, actualString)
+
+        //test Locale.US
+        Locale.setDefault(Locale.UK)
+        expectedString = "09/06/21 14:32"
+        actualString = Utils.convertTimeAndDateAsString(time, date)
         assertEquals(expectedString, actualString)
     }
 }
