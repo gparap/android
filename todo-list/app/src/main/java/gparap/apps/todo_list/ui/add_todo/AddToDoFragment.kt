@@ -6,6 +6,9 @@ import android.app.TimePickerDialog.OnTimeSetListener
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.text.format.Time
+import android.util.Log
+import android.util.Log.INFO
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,9 +22,14 @@ import gparap.apps.todo_list.R
 import gparap.apps.todo_list.ui.pickers.DatePickerFragment
 import gparap.apps.todo_list.ui.pickers.TimePickerFragment
 import gparap.apps.todo_list.utils.Utils
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AddToDoFragment : Fragment() {
     private lateinit var viewModel: AddToDoViewModel
+    private lateinit var textViewToDoTimeSet: TextView
+    private lateinit var textViewToDoDateSet: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,7 +56,7 @@ class AddToDoFragment : Fragment() {
         //callback for handling the date set for a to-do
         val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, month, day ->
             //handle date
-            val textViewToDoDateSet = view.findViewById<TextView>(R.id.textViewToDoDateSet)
+            textViewToDoDateSet = view.findViewById<TextView>(R.id.textViewToDoDateSet)
             @Suppress("NAME_SHADOWING") val month = month + 1
             textViewToDoDateSet.text = "$day/$month/$year"
         }
@@ -66,7 +74,7 @@ class AddToDoFragment : Fragment() {
         //callback for handling the time set for a to-do
         val timeSetListener = OnTimeSetListener { _, hourOfDay, minute ->
             //handle time
-            val textViewToDoTimeSet = view.findViewById<TextView>(R.id.textViewToDoTimeSet)
+            textViewToDoTimeSet = view.findViewById<TextView>(R.id.textViewToDoTimeSet)
             textViewToDoTimeSet.text =
                 Utils.fillInZeroInFront(hourOfDay).plus(
                     ":"

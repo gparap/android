@@ -15,7 +15,25 @@
  */
 package gparap.apps.todo_list.utils
 
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
+
 object Utils {
+    /**
+     * Accepts a time string and a date string
+     * and returns a formatted string considering user locale.
+     * ie:  input = time -> "02:06",
+     *              date -> "9/1/2021"
+     *      ouput = "9/1/21 2:06 pm"
+    */
+    fun convertTimeAndDateAsString(time: String, date: String) : String {
+        val timedateString = "$time $date"
+        val simpleDateFormat = SimpleDateFormat("hh:mm dd/MM/yyyy", Locale.getDefault())
+        val dateParsed: Date = simpleDateFormat.parse(timedateString)!!
+        return DateFormat.getInstance().format(dateParsed)
+    }
+
     /**
      * Accepts an integer and fills in zeros in front, if it is less than 10.
      * Returns integer as string.
