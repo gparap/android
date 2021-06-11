@@ -35,7 +35,7 @@ public class ToDoModel {
     private String deadlineTimeStamp;
 
     @ColumnInfo(name = "creation")
-    private final Long creationTimeStamp;
+    private Long creationTimeStamp;
 
     public long getId() {
         return id;
@@ -73,12 +73,22 @@ public class ToDoModel {
         this.deadlineTimeStamp = deadlineTimeStamp;
     }
 
+    public Long getCreationTimeStamp() {
+        return creationTimeStamp;
+    }
+
+    public void setCreationTimeStamp(Long creationTimeStamp) {
+        this.creationTimeStamp = creationTimeStamp;
+    }
+
     public String getCreationTimeStampFormatted() {
         //autoformat the to-do creation timestamp to the default locale
         return DateFormat.getDateTimeInstance().format(creationTimeStamp);
     }
 
     public ToDoModel() {
+        isDone = false;
+        deadlineTimeStamp = "";
         creationTimeStamp = System.currentTimeMillis();
     }
 }
