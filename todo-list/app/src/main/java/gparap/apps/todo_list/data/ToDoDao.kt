@@ -27,8 +27,8 @@ interface ToDoDao {
     fun getToDoList(): LiveData<List<ToDoModel>>
 
     @Update
-    suspend fun updateToDo()
+    suspend fun updateToDo(todo: ToDoModel)
 
     @Delete
-    suspend fun deleteToDo()
+    suspend fun deleteToDo(todo: ToDoModel)
 }

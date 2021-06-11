@@ -15,4 +15,6 @@
     <string name="fragment_add_todo">Add new to-do</string>
     <string name="hint_add_todo">enter your to-do here</string>
     <string name="label_deadline_todo">I have to do it by..</string>
+    <string name="toast_todo_empty">TODO cannot be empty!</string>
+    <string name="toast_todo_saved">TODO saved.</string>
 </resources>
