@@ -15,19 +15,36 @@
  */
 package gparap.apps.todo_list
 
+import android.view.View
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso
+import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.RootMatchers.withDecorView
+import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.ext.junit.rules.ActivityScenarioRule
+import org.hamcrest.CoreMatchers.`is`
+import org.hamcrest.CoreMatchers.not
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
 class MainActivityInstrumentedTest {
+    private lateinit var rootView: View
+
+    @get:Rule
+    val activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
+
     @Before
     fun setUp() {
+        activityScenarioRule.scenario.onActivity { activity ->
+            //get the root view
+            rootView = activity.window.decorView
+        }
+
+        //launch activity
         ActivityScenario.launch(MainActivity::class.java)
     }
 
@@ -51,5 +68,22 @@ class MainActivityInstrumentedTest {
         onView(withId(R.id.fabAddToDo)).perform(click())
         Espresso.pressBack()
         onView(withId(R.id.fragment_todo_list_layout)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun onFragmentAddToDo_showToastMessageIfToDoTextIsEmpty() {
+        //goto AddToDoFragment
+        onView(withId(R.id.fabAddToDo)).perform(click())
+
+        //make sure edit text is empty
+        onView(withId(R.id.editTextToDo)).perform(clearText())
+        closeSoftKeyboard()
+
+        //save empty to-do
+        onView(withId(R.id.fabSaveToDo)).perform(click())
+
+        onView(withText(R.string.toast_todo_empty))
+            .inRoot(withDecorView(not(`is`(rootView))))
+            .check(matches(isDisplayed()))
     }
 }
