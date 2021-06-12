@@ -16,7 +16,9 @@
 package gparap.apps.todo_list
 
 import androidx.test.core.app.ActivityScenario
+import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -28,16 +30,26 @@ class MainActivityInstrumentedTest {
     fun setUp() {
         ActivityScenario.launch(MainActivity::class.java)
     }
+
     @Test
-    fun isWidgetVisible_customActionBar(){
+    fun isWidgetVisible_customActionBar() {
         onView(withId(R.id.toolbar)).check(matches(isDisplayed()))
     }
+
     @Test
-    fun isWidgetVisible_recyclerView(){
+    fun isWidgetVisible_recyclerView() {
         onView(withId(R.id.recyclerViewToDo)).check(matches(isDisplayed()))
     }
+
     @Test
-    fun isWidgetVisible_floatingActionButton(){
+    fun isWidgetVisible_floatingActionButton() {
         onView(withId(R.id.fabAddToDo)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun navigateUp_fromAddToDoFragment_toToDoListFragment() {
+        onView(withId(R.id.fabAddToDo)).perform(click())
+        Espresso.pressBack()
+        onView(withId(R.id.fragment_todo_list_layout)).check(matches(isDisplayed()))
     }
 }
