@@ -17,6 +17,9 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.todo_list.R
@@ -123,6 +126,11 @@ class AddToDoFragment : Fragment() {
     private fun setupActionBar() {
         val toolbar = view?.findViewById<MaterialToolbar>(R.id.toolbar)
         if (toolbar != null) {
+            //setup action bar back button with navigation component
+            val navController = Navigation.findNavController(requireView())
+            val appBarConfiguration = AppBarConfiguration(navController.graph)
+            toolbar.setupWithNavController(navController, appBarConfiguration)
+
             toolbar.title = resources.getString(R.string.fragment_add_todo)
 
             //TODO: handle light/dark themes (later in polishing)
