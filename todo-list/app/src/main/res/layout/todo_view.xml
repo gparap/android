@@ -36,25 +36,27 @@
 
     <!-- To-do date that must be done -->
     <TextView
-        android:id="@+id/textViewByTime"
-        android:layout_width="wrap_content"
+        android:id="@+id/textViewDeadline"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/layout_marginTop"
         android:textSize="@dimen/todo_datetime_text_size"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/textViewTodo"
         app:layout_constraintStart_toStartOf="@+id/textViewTodo"
         app:layout_constraintTop_toBottomOf="@+id/textViewTodo"
-        tools:text="Time" />
+        tools:text="deadline for todo" />
 
-    <!-- To-do date that must be done -->
-    <TextView
-        android:id="@+id/textViewOnDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/layout_marginStart"
+    <!-- Divider for to-do list -->
+    <View
+        android:id="@+id/dividerBar"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
         android:layout_marginTop="@dimen/layout_marginTop"
-        android:textSize="@dimen/todo_datetime_text_size"
-        app:layout_constraintStart_toEndOf="@+id/textViewByTime"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTodo"
-        tools:text="Date" />
+        android:layout_marginBottom="@dimen/layout_marginBottom"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="@+id/checkBoxDone"
+        app:layout_constraintStart_toStartOf="@+id/textViewTodo"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDeadline" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

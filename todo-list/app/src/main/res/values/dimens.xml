@@ -8,6 +8,7 @@
     <dimen name="layout_marginStart">8dp</dimen>
     <dimen name="layout_marginEnd">8dp</dimen>
     <dimen name="layout_marginTop">8dp</dimen>
+    <dimen name="layout_marginBottom">8dp</dimen>
     <dimen name="fab_layout_margin">16dp</dimen>
     <dimen name="editText_text_size">18sp</dimen>
     <dimen name="button_text_size">14sp</dimen>

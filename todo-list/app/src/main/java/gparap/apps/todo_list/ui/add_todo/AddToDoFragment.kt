@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.todo_list.ui.add_todo
 
 import android.annotation.SuppressLint
@@ -78,16 +93,21 @@ class AddToDoFragment : Fragment() {
             return
         }
 
-        //create aand init a new to-do
+        //create and init a new to-do
         val todo = ToDoModel()
         todo.todo = todoText.text.toString()
-        todo.deadlineTimeStamp = Utils.convertTimeAndDateAsString(
-            textViewToDoTimeSet.text.toString(), textViewToDoDateSet.text.toString()
-        )
+        //TODO: if only one (time or date) is set, set the other to default (now or today)
+        if (textViewToDoTimeSet.text.toString().isNotEmpty() &&
+            textViewToDoDateSet.text.toString().isNotEmpty()){
+            todo.deadlineTimeStamp = Utils.convertTimeAndDateAsString(
+                textViewToDoTimeSet.text.toString(), textViewToDoDateSet.text.toString()
+            )
+        }
 
-        //save to-do to database
+        //save to-do to database and return to list
         viewModel.addToDo(todo)
         Toast.makeText(requireContext(), R.string.toast_todo_saved, Toast.LENGTH_SHORT).show()
+        Navigation.findNavController(view).navigate(R.id.action_addToDoFragment_to_toDoListFragment)
     }
 
     @SuppressLint("SetTextI18n")
@@ -128,7 +148,7 @@ class AddToDoFragment : Fragment() {
         if (toolbar != null) {
 
             //!!! do not remove try..catch block
-            //!!!   (MainActivity is not setup with navController and tests fail)
+            //!!!   ('cause of an espresso bug, instrumented tests fail)
             try{
                 //setup action bar back button with navigation component
                 val navController = Navigation.findNavController(requireView())

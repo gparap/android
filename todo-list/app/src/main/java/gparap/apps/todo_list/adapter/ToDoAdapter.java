@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.todo_list.adapter;
 
 import android.annotation.SuppressLint;
@@ -5,7 +20,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,54 +29,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gparap.apps.todo_list.R;
-import gparap.apps.todo_list.model.ToDoModel;
-import gparap.apps.todo_list.data.DatabaseManager;
+import gparap.apps.todo_list.data.ToDoModel;
 
-/**
- * Created by gparap on 2020-10-16.
- */
 public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ToDoViewHolder> {
     private List<ToDoModel> todosList;
-    private final DatabaseManager databaseManager;
-    private long id;
 
     public void setTodosList(List<ToDoModel> todosList) {
         this.todosList = todosList;
+        notifyDataSetChanged();
     }
 
-    public ToDoAdapter(DatabaseManager databaseManager) {
-        this.databaseManager = databaseManager;
+    public ToDoAdapter() {
         this.todosList = new ArrayList<>();
-    }
-
-    /**
-     * Adds a new To_Do to list.
-     *
-     * @param toDoModel To_Do object
-     */
-    public void addToDo(ToDoModel toDoModel) {
-        todosList.add(toDoModel);
-        notifyItemInserted(this.todosList.size());
-    }
-
-    /**
-     * Deletes a To_Do from list and database.
-     *
-     * @param position element's position
-     */
-    public void deleteTodo(int position) {
-        //delete from database
-        if (databaseManager.deleteToDo(todosList.get(position).getId())) {
-            //delete from list
-            todosList.remove(position);
-            notifyItemRemoved(position);
-        }
     }
 
     @NonNull
     @Override
     public ToDoAdapter.ToDoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //create new todos view
+        //create new to-do list view
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.todo_view, parent, false);
         return new ToDoViewHolder(view);
     }
@@ -72,30 +56,8 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ToDoViewHolder
     public void onBindViewHolder(@NonNull final ToDoAdapter.ToDoViewHolder holder, final int position) {
         //bind ViewHolder contents with list elements
         holder.textViewToDo.setText(todosList.get(position).getTodo());
-        holder.textViewByTime.setText(todosList.get(position).getTime());
-        holder.textViewOnDate.setText(todosList.get(position).getDate());
+        holder.textViewDeadline.setText(todosList.get(position).getDeadlineTimeStamp());
         holder.checkBoxDone.setChecked(todosList.get(position).isDone());
-
-        //update database with the To_Do's "isDone" checkbox value
-        holder.checkBoxDone.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                try {
-                    //get the (database) id of the item from its position on the recycler view
-                    id = todosList.get(position).getId();
-
-                    //update database
-                    databaseManager.updateToDo(id, isChecked);
-
-                    //update list
-                    todosList.get(position).setDone(isChecked);
-                }
-                //database deletion delay and element is nonexistent
-                catch (IndexOutOfBoundsException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
     }
 
     @Override
@@ -108,9 +70,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ToDoViewHolder
      * Describes the view (and its widgets) inside the RecyclerView.
      */
     public static class ToDoViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewToDo,
-                textViewByTime,
-                textViewOnDate;
+        TextView textViewToDo, textViewDeadline;
         CheckBox checkBoxDone;
 
         public ToDoViewHolder(@NonNull View itemView) {
@@ -118,8 +78,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ToDoViewHolder
 
             //get view widgets
             textViewToDo = itemView.findViewById(R.id.textViewTodo);
-            textViewByTime = itemView.findViewById(R.id.textViewByTime);
-            textViewOnDate = itemView.findViewById(R.id.textViewOnDate);
+            textViewDeadline = itemView.findViewById(R.id.textViewDeadline);
             checkBoxDone = itemView.findViewById(R.id.checkBoxDone);
         }
     }

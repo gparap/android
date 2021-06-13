@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.todo_list.ui.add_todo
 
 import android.app.Application
@@ -19,16 +34,10 @@ class AddToDoViewModel(application: Application) : AndroidViewModel(application)
         repository = ToDoRepository(dao)
     }
 
-    //add new to-do
     fun addToDo(todo: ToDoModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addToDo(todo)
         }
-    }
-
-    //get to-do list
-    fun getToDoList(): LiveData<List<ToDoModel>> {
-        return repository.getToDoList
     }
 
     //store and manage time set for a to-do
@@ -36,6 +45,7 @@ class AddToDoViewModel(application: Application) : AndroidViewModel(application)
     fun getToDoTime(): LiveData<String> {
         return todoTime
     }
+
     fun setToDoTime(time: String) {
         todoTime.value = time
     }
@@ -45,6 +55,7 @@ class AddToDoViewModel(application: Application) : AndroidViewModel(application)
     fun getToDoDate(): LiveData<String> {
         return todoDate
     }
+
     fun setToDoDate(date: String) {
         todoDate.value = date
     }
