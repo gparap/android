@@ -20,22 +20,43 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.todo_list.R
+import gparap.apps.todo_list.adapter.ToDoAdapter
+import gparap.apps.todo_list.data.ToDoModel
+import gparap.apps.todo_list.ui.add_todo.AddToDoViewModel
 
 class ToDoListFragment : Fragment(R.layout.fragment_todo_list) {
+    lateinit var viewModel: ToDoListViewModel
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupActionBar()
+        viewModel = ViewModelProvider(this).get(ToDoListViewModel::class.java)
 
-        //add a new to-do
+        //navigate to add a new to-do
         val fabAddToDo = view.findViewById<FloatingActionButton>(R.id.fabAddToDo)
         fabAddToDo.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_toDoListFragment_to_addToDoFragment)
         }
+
+        //setup RecyclerView with adapter
+        val adapter = ToDoAdapter()
+        val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewToDo)
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        //observe to-do list
+        viewModel.getToDoList().observe(viewLifecycleOwner, Observer {
+            adapter.setTodosList(it)
+        })
     }
 
     private fun setupActionBar() {

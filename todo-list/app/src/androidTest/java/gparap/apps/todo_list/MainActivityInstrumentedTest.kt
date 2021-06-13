@@ -22,9 +22,11 @@ import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.RootMatchers.withDecorView
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
+import gparap.apps.todo_list.adapter.ToDoAdapter
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.not
 import org.junit.Before
@@ -33,6 +35,7 @@ import org.junit.Test
 
 class MainActivityInstrumentedTest {
     private lateinit var rootView: View
+    private lateinit var activityScenario: ActivityScenario<MainActivity>
 
     @get:Rule
     val activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
@@ -45,7 +48,7 @@ class MainActivityInstrumentedTest {
         }
 
         //launch activity
-        ActivityScenario.launch(MainActivity::class.java)
+        activityScenario = ActivityScenario.launch(MainActivity::class.java)
     }
 
     @Test
@@ -85,5 +88,21 @@ class MainActivityInstrumentedTest {
         onView(withText(R.string.toast_todo_empty))
             .inRoot(withDecorView(not(`is`(rootView))))
             .check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun addToDo_isToDoAddedInRecyclerView() {
+        val todoAdded = "adding a new to-do..."
+
+        //create and save a new to-do
+        onView(withId(R.id.fabAddToDo)).perform(click())
+        onView(withId(R.id.editTextToDo)).perform(typeText(todoAdded))
+        closeSoftKeyboard()
+        onView(withId(R.id.fabSaveToDo)).perform(click())
+
+        Thread.sleep(667)
+        onView(withId(R.id.recyclerViewToDo)).perform(
+            RecyclerViewActions.scrollTo<ToDoAdapter.ToDoViewHolder>(hasDescendant(withText(todoAdded)))
+        )
     }
 }
