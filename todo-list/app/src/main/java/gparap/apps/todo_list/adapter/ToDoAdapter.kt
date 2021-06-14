@@ -79,7 +79,7 @@ class ToDoAdapter : RecyclerView.Adapter<ToDoViewHolder>() {
             }
         }
 
-        //navigate to edit fragment TODO: and pass existing to-do
+        //navigate to edit fragment and pass existing to-do
         holder.itemView.setOnClickListener {
             val navAction = ToDoListFragmentDirections.actionToDoListFragmentToEditToDoFragment(
                 todosList[position]

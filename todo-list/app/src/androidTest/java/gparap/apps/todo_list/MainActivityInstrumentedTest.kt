@@ -114,4 +114,18 @@ class MainActivityInstrumentedTest {
             RecyclerViewActions.scrollTo<ToDoAdapter.ToDoViewHolder>(hasDescendant(withText(todoAdded)))
         )
     }
+
+    @Test
+    fun editToDo_isPickedToDoDisplayedInEditToDo() {
+        //!!! if database is empty add manually a to-do ,
+        //!!!   don't do it here.
+        val firstToDoText = "todo1"
+
+        //pick first to-do in the list
+        onView(withId(R.id.recyclerViewToDo)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<ToDoAdapter.ToDoViewHolder>(0, click())
+        )
+
+        onView(withId(R.id.editTextToDoUpdating)).check(matches(withText(firstToDoText)))
+    }
 }
