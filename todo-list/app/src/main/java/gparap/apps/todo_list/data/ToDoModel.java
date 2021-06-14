@@ -31,6 +31,12 @@ public class ToDoModel {
 
     private String todo;
 
+    @ColumnInfo(name = "time_set")
+    private String deadlineTime;
+
+    @ColumnInfo(name = "date_set")
+    private String deadlineDate;
+
     @ColumnInfo(name = "deadline")
     private String deadlineTimeStamp;
 
@@ -63,6 +69,22 @@ public class ToDoModel {
 
     public void setTodo(String todo) {
         this.todo = todo;
+    }
+
+    public String getDeadlineTime() {
+        return deadlineTime;
+    }
+
+    public void setDeadlineTime(String deadlineTime) {
+        this.deadlineTime = deadlineTime;
+    }
+
+    public String getDeadlineDate() {
+        return deadlineDate;
+    }
+
+    public void setDeadlineDate(String deadlineDate) {
+        this.deadlineDate = deadlineDate;
     }
 
     public String getDeadlineTimeStamp() {
