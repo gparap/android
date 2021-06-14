@@ -67,12 +67,6 @@ class EditToDoFragmentInstrumentedTest {
     }
 
     @Test
-    fun isVisible_textViewToDoDeadlineUpdating() {
-        Espresso.onView(ViewMatchers.withId(R.id.textViewToDoDeadlineUpdating))
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-    }
-
-    @Test
     fun isInvisible_textViewToDoTimeSetUpdating() {
         Espresso.onView(ViewMatchers.withId(R.id.textViewToDoTimeSetUpdating))
             .check(ViewAssertions.matches(IsNot.not(ViewMatchers.isDisplayed())))

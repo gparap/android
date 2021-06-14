@@ -96,11 +96,12 @@ class AddToDoFragment : Fragment() {
         //create and init a new to-do
         val todo = ToDoModel()
         todo.todo = todoText.text.toString()
+        todo.deadlineTime = textViewToDoTimeSet.text.toString()
+        todo.deadlineDate = textViewToDoDateSet.text.toString()
         //TODO: if only one (time or date) is set, set the other to default (now or today)
-        if (textViewToDoTimeSet.text.toString().isNotEmpty() &&
-            textViewToDoDateSet.text.toString().isNotEmpty()){
+        if (todo.deadlineTime.isNotEmpty() && todo.deadlineDate.isNotEmpty()){
             todo.deadlineTimeStamp = Utils.convertTimeAndDateAsString(
-                textViewToDoTimeSet.text.toString(), textViewToDoDateSet.text.toString()
+                todo.deadlineTime, todo.deadlineDate
             )
         }
 
