@@ -74,15 +74,6 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
-    fun navigateUp_fromEditToDoFragment_toToDoListFragment() {
-        onView(withId(R.id.recyclerViewToDo)).perform(
-            RecyclerViewActions.actionOnItemAtPosition<ToDoAdapter.ToDoViewHolder>(0, click())
-        )
-        Espresso.pressBack()
-        onView(withId(R.id.fragment_todo_list_layout)).check(matches(isDisplayed()))
-    }
-
-    @Test
     fun onFragmentAddToDo_showToastMessageIfToDoTextIsEmpty() {
         //goto AddToDoFragment
         onView(withId(R.id.fabAddToDo)).perform(click())
@@ -116,8 +107,17 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
+    fun navigateUp_fromEditToDoFragment_toToDoListFragment() {
+        onView(withId(R.id.recyclerViewToDo)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<ToDoAdapter.ToDoViewHolder>(0, click())
+        )
+        Espresso.pressBack()
+        onView(withId(R.id.fragment_todo_list_layout)).check(matches(isDisplayed()))
+    }
+
+    @Test
     fun editToDo_isPickedToDoDisplayedInEditToDo() {
-        //!!! if database is empty add manually a to-do ,
+        //!!! if database is empty add manually a to-do with text "todo1",
         //!!!   don't do it here.
         val firstToDoText = "todo1"
 
@@ -127,5 +127,46 @@ class MainActivityInstrumentedTest {
         )
 
         onView(withId(R.id.editTextToDoUpdating)).check(matches(withText(firstToDoText)))
+    }
+
+    @Test
+    fun onFragmentEditToDo_showToastMessageIfToDoTextIsEmpty() {
+        //!!! if database is empty add manually a to-do with text "todo1",
+        //!!!   don't do it here.
+        //pick first to-do in the list
+        onView(withId(R.id.recyclerViewToDo)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<ToDoAdapter.ToDoViewHolder>(0, click())
+        )
+
+        //make sure edit text is empty
+        onView(withId(R.id.editTextToDoUpdating)).perform(clearText())
+        closeSoftKeyboard()
+
+        //save empty to-do
+        onView(withId(R.id.fabUpdateToDo)).perform(click())
+
+        onView(withText(R.string.toast_todo_empty))
+            .inRoot(withDecorView(not(`is`(rootView))))
+            .check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun editToDo_isToDoEditedInRecyclerView() {
+        //!!! if database is empty add manually a to-do with text "todo1",
+        //!!!   don't do it here.
+        val editedToDoText = "todo11"
+
+        //pick first to-do in the list
+        onView(withId(R.id.recyclerViewToDo)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<ToDoAdapter.ToDoViewHolder>(0, click())
+        )
+
+        //edit the to-do text and update
+        onView(withId(R.id.editTextToDoUpdating)).perform(clearText())
+        onView(withId(R.id.editTextToDoUpdating)).perform(typeText(editedToDoText))
+        closeSoftKeyboard()
+        onView(withId(R.id.fabUpdateToDo)).perform(click())
+
+        onView(withText(editedToDoText)).check(matches(isDisplayed()))
     }
 }
