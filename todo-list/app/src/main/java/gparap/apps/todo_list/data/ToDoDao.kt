@@ -26,6 +26,9 @@ interface ToDoDao {
     @Query("SELECT * FROM todos")
     fun getToDoList(): LiveData<List<ToDoModel>>
 
+    @Query("UPDATE todos SET done = :isDone WHERE id = :id")
+    suspend fun updateToDo(id: Long, isDone: Boolean)
+
     @Update
     suspend fun updateToDo(todo: ToDoModel)
 
