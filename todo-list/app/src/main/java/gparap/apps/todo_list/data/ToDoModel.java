@@ -15,6 +15,9 @@
  */
 package gparap.apps.todo_list.data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -22,7 +25,7 @@ import androidx.room.PrimaryKey;
 import java.text.DateFormat;
 
 @Entity(tableName = "todos")
-public class ToDoModel {
+public class ToDoModel implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private long id;
 
@@ -112,5 +115,52 @@ public class ToDoModel {
         isDone = false;
         deadlineTimeStamp = "";
         creationTimeStamp = System.currentTimeMillis();
+    }
+
+    protected ToDoModel(Parcel in) {
+        id = in.readLong();
+        isDone = in.readByte() != 0;
+        todo = in.readString();
+        deadlineTime = in.readString();
+        deadlineDate = in.readString();
+        deadlineTimeStamp = in.readString();
+        if (in.readByte() == 0) {
+            creationTimeStamp = null;
+        } else {
+            creationTimeStamp = in.readLong();
+        }
+    }
+
+    public static final Creator<ToDoModel> CREATOR = new Creator<ToDoModel>() {
+        @Override
+        public ToDoModel createFromParcel(Parcel in) {
+            return new ToDoModel(in);
+        }
+
+        @Override
+        public ToDoModel[] newArray(int size) {
+            return new ToDoModel[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(id);
+        dest.writeByte((byte) (isDone ? 1 : 0));
+        dest.writeString(todo);
+        dest.writeString(deadlineTime);
+        dest.writeString(deadlineDate);
+        dest.writeString(deadlineTimeStamp);
+        if (creationTimeStamp == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(creationTimeStamp);
+        }
     }
 }

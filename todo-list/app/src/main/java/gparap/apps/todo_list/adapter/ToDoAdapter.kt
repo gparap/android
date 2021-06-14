@@ -22,12 +22,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.todo_list.R
 import gparap.apps.todo_list.adapter.ToDoAdapter.ToDoViewHolder
 import gparap.apps.todo_list.data.ToDoDatabase.Companion.getInstance
 import gparap.apps.todo_list.data.ToDoModel
 import gparap.apps.todo_list.data.ToDoRepository
+import gparap.apps.todo_list.ui.todo_list.ToDoListFragmentDirections
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -75,6 +77,14 @@ class ToDoAdapter : RecyclerView.Adapter<ToDoViewHolder>() {
             } catch (e: IndexOutOfBoundsException) {
                 e.printStackTrace()
             }
+        }
+
+        //navigate to edit fragment TODO: and pass existing to-do
+        holder.itemView.setOnClickListener {
+            val navAction = ToDoListFragmentDirections.actionToDoListFragmentToEditToDoFragment(
+                todosList[position]
+            )
+            Navigation.findNavController(it).navigate(navAction)
         }
     }
 

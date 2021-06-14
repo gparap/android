@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.todo_list.ui.edit_todo
+package gparap.apps.todo_list.ui
 
 import android.widget.DatePicker
 import android.widget.TimePicker
@@ -26,7 +26,7 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.UiDevice
 import gparap.apps.todo_list.R
-import gparap.apps.todo_list.ui.add_todo.AddToDoFragment
+import gparap.apps.todo_list.ui.edit_todo.EditToDoFragment
 import org.hamcrest.Matchers
 import org.hamcrest.core.IsNot
 import org.junit.Before
