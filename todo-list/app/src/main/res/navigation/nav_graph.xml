@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_toDoListFragment_to_addToDoFragment"
             app:destination="@id/addToDoFragment" />
+        <action
+            android:id="@+id/action_toDoListFragment_to_editToDoFragment"
+            app:destination="@id/editToDoFragment" />
     </fragment>
     <fragment
         android:id="@+id/addToDoFragment"
@@ -21,5 +24,17 @@
         <action
             android:id="@+id/action_addToDoFragment_to_toDoListFragment"
             app:destination="@id/toDoListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editToDoFragment"
+        android:name="gparap.apps.todo_list.ui.edit_todo.EditToDoFragment"
+        android:label="fragment_edit_todo"
+        tools:layout="@layout/fragment_edit_todo">
+        <action
+            android:id="@+id/action_editToDoFragment_to_toDoListFragment"
+            app:destination="@id/toDoListFragment" />
+        <argument
+            android:name="existingToDo"
+            app:argType="gparap.apps.todo_list.data.ToDoModel" />
     </fragment>
 </navigation>

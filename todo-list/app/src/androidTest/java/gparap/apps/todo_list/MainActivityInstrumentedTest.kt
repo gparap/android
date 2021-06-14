@@ -74,6 +74,15 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
+    fun navigateUp_fromEditToDoFragment_toToDoListFragment() {
+        onView(withId(R.id.recyclerViewToDo)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<ToDoAdapter.ToDoViewHolder>(0, click())
+        )
+        Espresso.pressBack()
+        onView(withId(R.id.fragment_todo_list_layout)).check(matches(isDisplayed()))
+    }
+
+    @Test
     fun onFragmentAddToDo_showToastMessageIfToDoTextIsEmpty() {
         //goto AddToDoFragment
         onView(withId(R.id.fabAddToDo)).perform(click())

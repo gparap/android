@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/todo_view_layout_padding">
+    android:padding="@dimen/todo_view_layout_padding"
+    android:id="@+id/todo_view_layout">
 
     <!-- To-do title-->
     <TextView
