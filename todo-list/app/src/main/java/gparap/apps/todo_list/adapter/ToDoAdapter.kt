@@ -13,73 +13,83 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.todo_list.adapter;
+package gparap.apps.todo_list.adapter
 
-import android.annotation.SuppressLint;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.TextView;
+import android.annotation.SuppressLint
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.CheckBox
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import gparap.apps.todo_list.R
+import gparap.apps.todo_list.adapter.ToDoAdapter.ToDoViewHolder
+import gparap.apps.todo_list.data.ToDoDatabase.Companion.getInstance
+import gparap.apps.todo_list.data.ToDoModel
+import gparap.apps.todo_list.data.ToDoRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.util.*
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+class ToDoAdapter : RecyclerView.Adapter<ToDoViewHolder>() {
+    private var todosList: List<ToDoModel>
+    private var context: Context? = null
 
-import java.util.ArrayList;
-import java.util.List;
-
-import gparap.apps.todo_list.R;
-import gparap.apps.todo_list.data.ToDoModel;
-
-public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ToDoViewHolder> {
-    private List<ToDoModel> todosList;
-
-    public void setTodosList(List<ToDoModel> todosList) {
-        this.todosList = todosList;
-        notifyDataSetChanged();
+    init {
+        todosList = ArrayList()
     }
 
-    public ToDoAdapter() {
-        this.todosList = new ArrayList<>();
+    fun setTodosList(todosList: List<ToDoModel>) {
+        this.todosList = todosList
+        notifyDataSetChanged()
     }
 
-    @NonNull
-    @Override
-    public ToDoAdapter.ToDoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ToDoViewHolder {
+        context = parent.context
+
         //create new to-do list view
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.todo_view, parent, false);
-        return new ToDoViewHolder(view);
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.todo_view, parent, false)
+        return ToDoViewHolder(view)
     }
 
     @SuppressLint("SetTextI18n")
-    @Override
-    public void onBindViewHolder(@NonNull final ToDoAdapter.ToDoViewHolder holder, final int position) {
+    override fun onBindViewHolder(holder: ToDoViewHolder, position: Int) {
         //bind ViewHolder contents with list elements
-        holder.textViewToDo.setText(todosList.get(position).getTodo());
-        holder.textViewDeadline.setText(todosList.get(position).getDeadlineTimeStamp());
-        holder.checkBoxDone.setChecked(todosList.get(position).isDone());
+        holder.textViewToDo.text = todosList[position].todo
+        holder.textViewDeadline.text = todosList[position].deadlineTimeStamp
+        holder.checkBoxDone.isChecked = todosList[position].isDone
+
+        //update database with the To_Do's "isDone" checkbox value
+        val database = getInstance(context!!)
+        val dao = database.ToDoDao()
+        val repository = ToDoRepository(dao)
+        holder.checkBoxDone.setOnClickListener {
+            try {
+                //update database
+                GlobalScope.launch(Dispatchers.IO) {
+                    val isChecked = todosList[position].isDone
+                    repository.editToDo(todosList[position].id, !isChecked)
+                }
+            } catch (e: IndexOutOfBoundsException) {
+                e.printStackTrace()
+            }
+        }
     }
 
-    @Override
-    public int getItemCount() {
+    override fun getItemCount(): Int {
         //get number of todos
-        return todosList.size();
+        return todosList.size
     }
 
     /**
      * Describes the view (and its widgets) inside the RecyclerView.
      */
-    public static class ToDoViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewToDo, textViewDeadline;
-        CheckBox checkBoxDone;
-
-        public ToDoViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            //get view widgets
-            textViewToDo = itemView.findViewById(R.id.textViewTodo);
-            textViewDeadline = itemView.findViewById(R.id.textViewDeadline);
-            checkBoxDone = itemView.findViewById(R.id.checkBoxDone);
-        }
+    class ToDoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        //get view widgets
+        var textViewToDo: TextView = itemView.findViewById(R.id.textViewTodo)
+        var textViewDeadline: TextView = itemView.findViewById(R.id.textViewDeadline)
+        var checkBoxDone: CheckBox = itemView.findViewById(R.id.checkBoxDone)
     }
 }

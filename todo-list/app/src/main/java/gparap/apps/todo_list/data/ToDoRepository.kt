@@ -26,4 +26,9 @@ class ToDoRepository(private val dao: ToDoDao) {
 
     //get to-do list
     val getToDoList: LiveData<List<ToDoModel>> = dao.getToDoList()
+
+    //edit to-do to be done or not (checked/unchecked)
+    suspend fun editToDo(id: Long, isDone: Boolean) {
+        dao.updateToDo(id, isDone)
+    }
 }
