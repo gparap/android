@@ -19,5 +19,6 @@
     <string name="label_deadline_todo">I have to do it by: </string>
     <string name="toast_todo_empty">TODO cannot be empty!</string>
     <string name="toast_todo_saved">TODO saved.</string>
+    <string name="toast_todo_deleted">TODO deleted.</string>
     <string name="dialog_delete_todo">"The requested TODO will be deleted. Are you sure?"</string>
 </resources>

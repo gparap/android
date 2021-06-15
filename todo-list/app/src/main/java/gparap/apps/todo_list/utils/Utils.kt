@@ -15,19 +15,32 @@
  */
 package gparap.apps.todo_list.utils
 
+import android.content.Context
+import gparap.apps.todo_list.data.ToDoDatabase
+import gparap.apps.todo_list.data.ToDoRepository
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
 object Utils {
     /**
+     * Initializes the database using application environment.
+     * Returns the repository.
+     */
+    fun getRepository(context: Context): ToDoRepository {
+        val database = ToDoDatabase.getInstance(context)
+        val dao = database.ToDoDao()
+        return ToDoRepository(dao)
+    }
+
+    /**
      * Accepts a time string and a date string
      * and returns a formatted string considering user locale.
      * ie:  input = time -> "02:06",
      *              date -> "9/1/2021"
      *      ouput = "9/1/21 2:06 pm"
-    */
-    fun convertTimeAndDateAsString(time: String, date: String) : String {
+     */
+    fun convertTimeAndDateAsString(time: String, date: String): String {
         val timedateString = "$time $date"
         val simpleDateFormat = SimpleDateFormat("hh:mm dd/MM/yyyy", Locale.getDefault())
         val dateParsed: Date = simpleDateFormat.parse(timedateString)!!
@@ -39,7 +52,7 @@ object Utils {
      * Returns integer as string.
      * ie: 1 -> "01", 9 -> "09", etc.
      */
-    fun fillInZeroInFront(number: Int) : String {
+    fun fillInZeroInFront(number: Int): String {
         if (number < 10) {
             return "0$number"
         }
