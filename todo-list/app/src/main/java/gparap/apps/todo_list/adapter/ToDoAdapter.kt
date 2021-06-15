@@ -48,6 +48,10 @@ class ToDoAdapter : RecyclerView.Adapter<ToDoViewHolder>() {
         notifyDataSetChanged()
     }
 
+    fun getToDoAtPosition(position: Int) : ToDoModel {
+        return todosList[position]
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ToDoViewHolder {
         context = parent.context
 

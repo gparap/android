@@ -27,11 +27,11 @@ import androidx.test.espresso.matcher.RootMatchers.withDecorView
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import gparap.apps.todo_list.adapter.ToDoAdapter
-import org.hamcrest.CoreMatchers.`is`
-import org.hamcrest.CoreMatchers.not
+import org.hamcrest.CoreMatchers.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+
 
 class MainActivityInstrumentedTest {
     private lateinit var rootView: View
@@ -102,7 +102,13 @@ class MainActivityInstrumentedTest {
 
         Thread.sleep(667)
         onView(withId(R.id.recyclerViewToDo)).perform(
-            RecyclerViewActions.scrollTo<ToDoAdapter.ToDoViewHolder>(hasDescendant(withText(todoAdded)))
+            RecyclerViewActions.scrollTo<ToDoAdapter.ToDoViewHolder>(
+                hasDescendant(
+                    withText(
+                        todoAdded
+                    )
+                )
+            )
         )
     }
 
@@ -168,5 +174,23 @@ class MainActivityInstrumentedTest {
         onView(withId(R.id.fabUpdateToDo)).perform(click())
 
         onView(withText(editedToDoText)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun swipeLeftAToDo_isDeleteConfirmationDialogDisplayed() {
+        onView(withId(R.id.recyclerViewToDo)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<ToDoAdapter.ToDoViewHolder>(0, swipeLeft())
+        )
+
+        onView(withText(R.string.dialog_delete_todo)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun swipeRightAToDo_isDeleteConfirmationDialogDisplayed() {
+        onView(withId(R.id.recyclerViewToDo)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<ToDoAdapter.ToDoViewHolder>(0, swipeRight())
+        )
+
+        onView(withText(R.string.dialog_delete_todo)).check(matches(isDisplayed()))
     }
 }
