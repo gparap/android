@@ -20,21 +20,19 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.todo_list.R
 import gparap.apps.todo_list.adapter.ToDoAdapter
-import gparap.apps.todo_list.data.ToDoModel
-import gparap.apps.todo_list.ui.add_todo.AddToDoViewModel
+import gparap.apps.todo_list.utils.SwipeHelperCallback
 
 class ToDoListFragment : Fragment(R.layout.fragment_todo_list) {
-    lateinit var viewModel: ToDoListViewModel
+    private lateinit var viewModel: ToDoListViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,7 +42,8 @@ class ToDoListFragment : Fragment(R.layout.fragment_todo_list) {
         //navigate to add a new to-do
         val fabAddToDo = view.findViewById<FloatingActionButton>(R.id.fabAddToDo)
         fabAddToDo.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_toDoListFragment_to_addToDoFragment)
+            Navigation.findNavController(view)
+                .navigate(R.id.action_toDoListFragment_to_addToDoFragment)
         }
 
         //setup RecyclerView with adapter
@@ -53,8 +52,19 @@ class ToDoListFragment : Fragment(R.layout.fragment_todo_list) {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
+        //setup RecyclerView with swipe-to-delete functionality
+        val swipeHelperCallback: ItemTouchHelper.Callback =
+            SwipeHelperCallback(
+                ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT,
+                ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT,
+                adapter,
+                requireContext()
+            )
+        val itemTouchHelper = ItemTouchHelper(swipeHelperCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
+
         //observe to-do list
-        viewModel.getToDoList().observe(viewLifecycleOwner, Observer {
+        viewModel.getToDoList().observe(viewLifecycleOwner, {
             adapter.setTodosList(it)
         })
     }
