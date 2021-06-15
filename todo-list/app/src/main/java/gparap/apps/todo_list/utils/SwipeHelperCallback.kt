@@ -23,6 +23,9 @@ import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.todo_list.R
 import gparap.apps.todo_list.adapter.ToDoAdapter
 import gparap.apps.todo_list.data.ToDoModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 /**
  * Callback for swiping (left or right) to delete a to-do.
@@ -30,6 +33,7 @@ import gparap.apps.todo_list.data.ToDoModel
 class SwipeHelperCallback(
     dragDirs: Int, swipeDirs: Int, private var adapter: ToDoAdapter, var context: Context
 ) : ItemTouchHelper.SimpleCallback(dragDirs, swipeDirs) {
+
     override fun onMove(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder,
@@ -46,8 +50,10 @@ class SwipeHelperCallback(
             .setTitle(todo.todo)
             .setMessage(R.string.dialog_delete_todo)
             .setPositiveButton(R.string.delete) { _, _ ->
-                //TODO: delete to_do from database
-                Toast.makeText(context, todo.todo, Toast.LENGTH_SHORT).show()
+                GlobalScope.launch(Dispatchers.IO) {
+                    Utils.getRepository(context).deleteToDo(todo)
+                }
+                Toast.makeText(context, R.string.toast_todo_deleted, Toast.LENGTH_SHORT).show()
                 adapter.notifyItemChanged(viewHolder.bindingAdapterPosition)
             }
             .setNegativeButton(R.string.cancel) { dialog, _ ->

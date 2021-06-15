@@ -23,6 +23,7 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.matcher.RootMatchers.isDialog
 import androidx.test.espresso.matcher.RootMatchers.withDecorView
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
@@ -192,5 +193,110 @@ class MainActivityInstrumentedTest {
         )
 
         onView(withText(R.string.dialog_delete_todo)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun swipeLeftAToDo_deleteToDo() {
+        //!!! if database is not empty, database should be empty.
+        val testingToDo = "todo1"
+        createToDoForTesting(testingToDo)
+
+        //swipe to delete
+        onView(withId(R.id.recyclerViewToDo)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<ToDoAdapter.ToDoViewHolder>(0, swipeLeft())
+        )
+
+        //confirm deletion
+        onView(withText(R.string.delete)).inRoot(isDialog()).perform(click())
+        Thread.sleep(667)
+
+        //test
+        onView(withId(R.id.recyclerViewToDo)).check(matches(not(hasDescendant(withText(testingToDo)))))
+    }
+
+    @Test
+    fun swipRightAToDo_deleteToDo() {
+        //!!! if database is not empty, database should be empty.
+        val testingToDo = "todo2"
+        createToDoForTesting(testingToDo)
+
+        //swipe to delete
+        onView(withId(R.id.recyclerViewToDo)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<ToDoAdapter.ToDoViewHolder>(0, swipeRight())
+        )
+
+        //confirm deletion
+        onView(withText(R.string.delete)).inRoot(isDialog()).perform(click())
+        Thread.sleep(667)
+
+        //test
+        onView(withId(R.id.recyclerViewToDo)).check(matches(not(hasDescendant(withText(testingToDo)))))
+    }
+
+    @Test
+    fun swipeLeftAToDo_cancelToDoDeleting() {
+        //!!! if database is not empty, database should be empty.
+        val testingToDo = "todo3"
+        createToDoForTesting(testingToDo)
+
+        onView(withId(R.id.recyclerViewToDo)).perform(
+            RecyclerViewActions.actionOnItem<ToDoAdapter.ToDoViewHolder>(
+                hasDescendant(withText(testingToDo)), swipeLeft()
+            )
+        )
+
+        //confirm deletion
+        onView(withText(R.string.cancel)).inRoot(isDialog()).perform(click())
+        Thread.sleep(667)
+
+        //test
+        try {
+            onView(withId(R.id.recyclerViewToDo)).check(matches(hasDescendant(withText(testingToDo))))
+        } catch (e: Exception) {
+            assert(false)
+        } finally {
+            deleteTestingToDo(testingToDo)
+        }
+    }
+
+    @Test
+    fun swipRightAToDo_cancelToDoDeleting() {
+        //!!! if database is not empty, database should be empty.
+        val testingToDo = "todo4"
+        createToDoForTesting(testingToDo)
+
+        onView(withId(R.id.recyclerViewToDo)).perform(
+            RecyclerViewActions.actionOnItem<ToDoAdapter.ToDoViewHolder>(
+                hasDescendant(withText(testingToDo)), swipeRight()
+            )
+        )
+
+        //confirm deletion
+        onView(withText(R.string.cancel)).inRoot(isDialog()).perform(click())
+        Thread.sleep(667)
+
+        //test
+        try {
+            onView(withId(R.id.recyclerViewToDo)).check(matches(hasDescendant(withText(testingToDo))))
+        } catch (e: Exception) {
+            assert(false)
+        } finally {
+            deleteTestingToDo(testingToDo)
+        }
+    }
+
+    private fun createToDoForTesting(todo: String) {
+        onView(withId(R.id.fabAddToDo)).perform(click())
+        onView(withId(R.id.editTextToDo)).perform(typeText(todo))
+        closeSoftKeyboard()
+        onView(withId(R.id.fabSaveToDo)).perform(click())
+    }
+
+    private fun deleteTestingToDo(todo: String) {
+        onView(withId(R.id.recyclerViewToDo)).perform(
+            RecyclerViewActions.actionOnItem<ToDoAdapter.ToDoViewHolder>(
+                hasDescendant(withText(todo)), swipeLeft()
+            )
+        )
     }
 }
