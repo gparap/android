@@ -18,9 +18,12 @@ package gparap.apps.todo_list.ui.todo_list
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import gparap.apps.todo_list.data.ToDoDatabase
 import gparap.apps.todo_list.data.ToDoModel
 import gparap.apps.todo_list.data.ToDoRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class ToDoListViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: ToDoRepository
@@ -35,5 +38,11 @@ class ToDoListViewModel(application: Application) : AndroidViewModel(application
 
     fun getToDoList() : LiveData<List<ToDoModel>> {
         return repository.getToDoList
+    }
+
+    fun deleteToDoList(toDoList: List<ToDoModel>) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteToDoList(toDoList)
+        }
     }
 }

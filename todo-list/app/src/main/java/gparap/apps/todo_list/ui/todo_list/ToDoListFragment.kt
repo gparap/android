@@ -15,10 +15,12 @@
  */
 package gparap.apps.todo_list.ui.todo_list
 
+import android.app.AlertDialog
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -30,13 +32,19 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.todo_list.R
 import gparap.apps.todo_list.adapter.ToDoAdapter
 import gparap.apps.todo_list.utils.SwipeHelperCallback
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class ToDoListFragment : Fragment(R.layout.fragment_todo_list) {
     private lateinit var viewModel: ToDoListViewModel
+    private lateinit var toolbar: MaterialToolbar
+    private lateinit var adapter: ToDoAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupActionBar()
+        setupActionBarOptionsMenu()
         viewModel = ViewModelProvider(this).get(ToDoListViewModel::class.java)
 
         //navigate to add a new to-do
@@ -47,7 +55,7 @@ class ToDoListFragment : Fragment(R.layout.fragment_todo_list) {
         }
 
         //setup RecyclerView with adapter
-        val adapter = ToDoAdapter()
+        adapter = ToDoAdapter()
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewToDo)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -70,15 +78,53 @@ class ToDoListFragment : Fragment(R.layout.fragment_todo_list) {
     }
 
     private fun setupActionBar() {
-        val toolbar = view?.findViewById<MaterialToolbar>(R.id.toolbar)
-        if (toolbar != null) {
-            toolbar.title = resources.getString(R.string.fragment_todo_list_title)
+        toolbar = view?.findViewById(R.id.toolbar)!!
+        toolbar.title = resources.getString(R.string.fragment_todo_list_title)
 
-            //TODO: handle light/dark themes (later in polishing)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                toolbar.setTitleTextColor(resources.getColor(R.color.colorWhite, null))
-            } else {
-                toolbar.setTitleTextColor(Color.WHITE)
+        //TODO: handle light/dark themes (later in polishing)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            toolbar.setTitleTextColor(resources.getColor(R.color.colorWhite, null))
+        } else {
+            toolbar.setTitleTextColor(Color.WHITE)
+        }
+    }
+
+    private fun setupActionBarOptionsMenu() {
+        //inflate menu resource (with option to delete to-do list) into this toolbar
+        toolbar.inflateMenu(R.menu.toolbar_menu)
+
+        //handle the deletion of all todos in the list
+        toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.action_menu_delete -> {
+                    val todoList = adapter.getToDoList()
+
+                    if (todoList.isNotEmpty()) {
+                        //create confirmation dialog to delete to-do list
+                        val builder = AlertDialog.Builder(requireContext())
+                            .setTitle(R.string.dialog_delete_attention)
+                            .setMessage(R.string.dialog_delete_todos)
+                            .setPositiveButton(R.string.delete) { _, _ ->
+                                GlobalScope.launch(Dispatchers.IO) {
+                                    viewModel.deleteToDoList(todoList)
+                                }
+                                Toast.makeText(
+                                    requireContext(),
+                                    R.string.toast_todos_deleted,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                            .setNegativeButton(R.string.cancel) { dialog, _ ->
+                                dialog.dismiss()
+                            }
+
+                        //display dialog
+                        val dialog = builder.create()
+                        dialog.show()
+                    }
+                    true
+                }
+                else -> false
             }
         }
     }

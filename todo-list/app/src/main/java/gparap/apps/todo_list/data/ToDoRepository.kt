@@ -41,4 +41,9 @@ class ToDoRepository(private val dao: ToDoDao) {
     suspend fun deleteToDo(toDoModel: ToDoModel) {
         dao.deleteToDo(toDoModel)
     }
+
+    //delete to-do list
+    suspend fun deleteToDoList(toDoModelList: List<ToDoModel>) {
+        dao.deleteToDoList(toDoModelList)
+    }
 }

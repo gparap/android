@@ -16,6 +16,7 @@
 package gparap.apps.todo_list
 
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.closeSoftKeyboard
@@ -300,6 +301,48 @@ class MainActivityInstrumentedTest {
         onView(withId(R.id.action_menu_delete)).perform(click())
 
         onView(withId(R.id.recyclerViewToDo)).check(matches(not(hasDescendant(withText(testingToDo)))))
+    }
+
+    @Test
+    fun actionbarOptionsMenu_deleteToDoList() {
+        //add 2 new todos to list
+        val testingToDo1 = "to-do 1"
+        val testingToDo2 = "to-do 2"
+        createToDoForTesting(testingToDo1)
+        createToDoForTesting(testingToDo2)
+        var todosCount = 2
+
+        //delete to-do list
+        onView(withId(R.id.action_menu_delete)).perform(click())
+        onView(withText(R.string.delete)).inRoot(isDialog()).perform(click())
+
+        //get the total number of todos
+        activityScenario.onActivity {
+            todosCount = it.findViewById<RecyclerView>(R.id.recyclerViewToDo).adapter?.itemCount!!
+        }
+
+        assert(todosCount == 0)
+    }
+
+    @Test
+    fun actionbarOptionsMenu_deleteToDoListCancelation() {
+        //add 2 new todos to list
+        val testingToDo1 = "to-do 1"
+        val testingToDo2 = "to-do 2"
+        createToDoForTesting(testingToDo1)
+        createToDoForTesting(testingToDo2)
+        var todosCount = 2
+
+        //delete to-do list
+        onView(withId(R.id.action_menu_delete)).perform(click())
+        onView(withText(R.string.cancel)).inRoot(isDialog()).perform(click())
+
+        //get the total number of todos
+        activityScenario.onActivity {
+            todosCount = it.findViewById<RecyclerView>(R.id.recyclerViewToDo).adapter?.itemCount!!
+        }
+
+        assert(todosCount == 2)
     }
 
     private fun createToDoForTesting(todo: String) {

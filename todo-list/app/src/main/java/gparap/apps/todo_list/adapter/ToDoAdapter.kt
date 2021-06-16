@@ -43,6 +43,10 @@ class ToDoAdapter : RecyclerView.Adapter<ToDoViewHolder>() {
         todosList = ArrayList()
     }
 
+    fun getToDoList() : List<ToDoModel> {
+        return todosList
+    }
+
     fun setTodosList(todosList: List<ToDoModel>) {
         this.todosList = todosList
         notifyDataSetChanged()
