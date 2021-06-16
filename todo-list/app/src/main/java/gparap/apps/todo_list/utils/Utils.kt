@@ -17,12 +17,29 @@ package gparap.apps.todo_list.utils
 
 import android.content.Context
 import gparap.apps.todo_list.data.ToDoDatabase
+import gparap.apps.todo_list.data.ToDoModel
 import gparap.apps.todo_list.data.ToDoRepository
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
 object Utils {
+    /**
+     * Helper that creates, initializes and returns a to-do model object.
+     */
+    fun getUpdatedToDo(
+        id: Long, todoText: String, timeSet: String, dateSet: String
+    ): ToDoModel {
+        //update to-do model
+        val todo = ToDoModel()
+        todo.id = id
+        todo.todo = todoText
+        todo.deadlineTime = timeSet
+        todo.deadlineDate = dateSet
+
+        return todo
+    }
+
     /**
      * Initializes the database using application environment.
      * Returns the repository.

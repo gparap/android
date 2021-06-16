@@ -20,16 +20,18 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.graphics.Color
 import android.os.Build
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.*
-import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.AppBarConfiguration
@@ -37,7 +39,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.todo_list.R
-import gparap.apps.todo_list.data.ToDoModel
 import gparap.apps.todo_list.ui.pickers.DatePickerFragment
 import gparap.apps.todo_list.ui.pickers.TimePickerFragment
 import gparap.apps.todo_list.utils.Utils
@@ -49,6 +50,7 @@ class EditToDoFragment : Fragment() {
     private lateinit var timeSet: TextView
     private lateinit var dateSet: TextView
     private lateinit var toolbar: MaterialToolbar
+    private lateinit var fragmentViewRef: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,8 +61,9 @@ class EditToDoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        fragmentViewRef = view
         setupActionBar()
-        setupActionBarOptionsMenu(view)
+        setupActionBarOptionsMenu()
         viewModel = ViewModelProvider(this).get(EditToDoViewModel::class.java)
 
         //get widgets
@@ -74,8 +77,8 @@ class EditToDoFragment : Fragment() {
         dateSet.text = fragmentArgs.existingToDo.deadlineDate
 
         //display dialogs to set the time and date for to-do
-        setTimeForToDo(view)
-        setDateForToDo(view)
+        setTimeForToDo()
+        setDateForToDo()
 
         //observe to-do time set
         viewModel.getToDoTime().observe(viewLifecycleOwner, {
@@ -90,11 +93,11 @@ class EditToDoFragment : Fragment() {
         //add a to-do to the database
         val buttonSave = view.findViewById<FloatingActionButton>(R.id.fabUpdateToDo)
         buttonSave.setOnClickListener {
-            saveToDo(view)
+            saveToDo()
         }
     }
 
-    private fun saveToDo(view: View) {
+    private fun saveToDo() {
         //validate to-do text
         if (TextUtils.isEmpty(todoText.text)) {
             Toast.makeText(requireContext(), R.string.toast_todo_empty, Toast.LENGTH_SHORT).show()
@@ -102,7 +105,12 @@ class EditToDoFragment : Fragment() {
         }
 
         //update to-do model
-        val todo = getUpdatedToDo()
+        val todo = Utils.getUpdatedToDo(
+            fragmentArgs.existingToDo.id,
+            todoText.text.toString(),
+            timeSet.text.toString(),
+            dateSet.text.toString()
+        )
         //TODO: if only one (time or date) is set, set the other to default (now or today)
         if (todo.deadlineTime.isNotEmpty() && todo.deadlineDate.isNotEmpty()) {
             todo.deadlineTimeStamp = Utils.convertTimeAndDateAsString(
@@ -113,12 +121,12 @@ class EditToDoFragment : Fragment() {
         //save to-do to database and return to list
         viewModel.saveToDo(todo)
         Toast.makeText(requireContext(), R.string.toast_todo_saved, Toast.LENGTH_SHORT).show()
-        Navigation.findNavController(view)
+        Navigation.findNavController(fragmentViewRef)
             .navigate(R.id.action_editToDoFragment_to_toDoListFragment)
     }
 
     @SuppressLint("SetTextI18n")
-    private fun setDateForToDo(view: View) {
+    private fun setDateForToDo() {
         //callback for handling the date set for a to-do
         val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, month, day ->
             @Suppress("NAME_SHADOWING") val month = month + 1
@@ -127,7 +135,7 @@ class EditToDoFragment : Fragment() {
 
         //display date picker and set date for the to-do
         val buttonShowDatePickerDialog =
-            view.findViewById<Button>(R.id.buttonShowDatePickerDialogUpdating)
+            fragmentViewRef.findViewById<Button>(R.id.buttonShowDatePickerDialogUpdating)
         buttonShowDatePickerDialog.setOnClickListener {
             val datePickerDialogFragment: DialogFragment = DatePickerFragment(dateSetListener)
             datePickerDialogFragment.show(
@@ -138,7 +146,7 @@ class EditToDoFragment : Fragment() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun setTimeForToDo(view: View) {
+    private fun setTimeForToDo() {
         //callback for handling the time set for a to-do
         val timeSetListener = TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
             viewModel.setToDoTime(
@@ -148,7 +156,7 @@ class EditToDoFragment : Fragment() {
 
         //display time picker and set time for the to-do
         val buttonShowTimePickerDialog =
-            view.findViewById<Button>(R.id.buttonShowTimePickerDialogUpdating)
+            fragmentViewRef.findViewById<Button>(R.id.buttonShowTimePickerDialogUpdating)
         buttonShowTimePickerDialog.setOnClickListener {
             val timePickerDialogFragment: DialogFragment = TimePickerFragment(timeSetListener)
             timePickerDialogFragment.show(
@@ -181,7 +189,7 @@ class EditToDoFragment : Fragment() {
         }
     }
 
-    private fun setupActionBarOptionsMenu(view: View) {
+    private fun setupActionBarOptionsMenu() {
         //inflate menu resource (with option to delete a to-do) into this toolbar
         toolbar.inflateMenu(R.menu.toolbar_menu)
 
@@ -190,8 +198,15 @@ class EditToDoFragment : Fragment() {
             when (it.itemId) {
                 R.id.action_menu_delete -> {
                     //delete the to-do and goto to-do list
-                    viewModel.deleteToDo(getUpdatedToDo())
-                    Navigation.findNavController(view).navigate(
+                    viewModel.deleteToDo(Utils.getUpdatedToDo(
+                        fragmentArgs.existingToDo.id,
+                        todoText.text.toString(),
+                        timeSet.text.toString(),
+                        dateSet.text.toString()
+                    ))
+                    Toast.makeText(requireContext(), R.string.toast_todo_deleted, Toast.LENGTH_SHORT)
+                        .show()
+                    Navigation.findNavController(fragmentViewRef).navigate(
                         R.id.action_editToDoFragment_to_toDoListFragment
                     )
                     true
@@ -199,16 +214,5 @@ class EditToDoFragment : Fragment() {
                 else -> false
             }
         }
-    }
-
-    private fun getUpdatedToDo(): ToDoModel {
-        //update to-do model
-        val todo = ToDoModel()
-        todo.id = fragmentArgs.existingToDo.id
-        todo.todo = todoText.text.toString()
-        todo.deadlineTime = timeSet.text.toString()
-        todo.deadlineDate = dateSet.text.toString()
-
-        return todo
     }
 }
