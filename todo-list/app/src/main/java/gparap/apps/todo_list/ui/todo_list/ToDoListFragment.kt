@@ -97,35 +97,39 @@ class ToDoListFragment : Fragment(R.layout.fragment_todo_list) {
         toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.action_menu_delete -> {
-                    val todoList = adapter.getToDoList()
-
-                    if (todoList.isNotEmpty()) {
-                        //create confirmation dialog to delete to-do list
-                        val builder = AlertDialog.Builder(requireContext())
-                            .setTitle(R.string.dialog_delete_attention)
-                            .setMessage(R.string.dialog_delete_todos)
-                            .setPositiveButton(R.string.delete) { _, _ ->
-                                GlobalScope.launch(Dispatchers.IO) {
-                                    viewModel.deleteToDoList(todoList)
-                                }
-                                Toast.makeText(
-                                    requireContext(),
-                                    R.string.toast_todos_deleted,
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                            .setNegativeButton(R.string.cancel) { dialog, _ ->
-                                dialog.dismiss()
-                            }
-
-                        //display dialog
-                        val dialog = builder.create()
-                        dialog.show()
-                    }
+                    deleteToDoList()
                     true
                 }
                 else -> false
             }
+        }
+    }
+
+    private fun deleteToDoList() {
+        val todoList = adapter.getToDoList()
+
+        if (todoList.isNotEmpty()) {
+            //create confirmation dialog to delete to-do list
+            val builder = AlertDialog.Builder(requireContext())
+                .setTitle(R.string.dialog_delete_attention)
+                .setMessage(R.string.dialog_delete_todos)
+                .setPositiveButton(R.string.delete) { _, _ ->
+                    GlobalScope.launch(Dispatchers.IO) {
+                        viewModel.deleteToDoList(todoList)
+                    }
+                    Toast.makeText(
+                        requireContext(),
+                        R.string.toast_todos_deleted,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                .setNegativeButton(R.string.cancel) { dialog, _ ->
+                    dialog.dismiss()
+                }
+
+            //display dialog
+            val dialog = builder.create()
+            dialog.show()
         }
     }
 }

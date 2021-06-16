@@ -16,6 +16,7 @@
 package gparap.apps.todo_list.ui.edit_todo
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.graphics.Color
@@ -42,6 +43,9 @@ import gparap.apps.todo_list.R
 import gparap.apps.todo_list.ui.pickers.DatePickerFragment
 import gparap.apps.todo_list.ui.pickers.TimePickerFragment
 import gparap.apps.todo_list.utils.Utils
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class EditToDoFragment : Fragment() {
     private lateinit var viewModel: EditToDoViewModel
@@ -197,22 +201,46 @@ class EditToDoFragment : Fragment() {
         toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.action_menu_delete -> {
-                    //delete the to-do and goto to-do list
-                    viewModel.deleteToDo(Utils.getUpdatedToDo(
-                        fragmentArgs.existingToDo.id,
-                        todoText.text.toString(),
-                        timeSet.text.toString(),
-                        dateSet.text.toString()
-                    ))
-                    Toast.makeText(requireContext(), R.string.toast_todo_deleted, Toast.LENGTH_SHORT)
-                        .show()
-                    Navigation.findNavController(fragmentViewRef).navigate(
-                        R.id.action_editToDoFragment_to_toDoListFragment
-                    )
+                    deleteToDo()
                     true
                 }
                 else -> false
             }
         }
+    }
+
+    private fun deleteToDo() {
+        //create confirmation dialog to delete to-do
+        val builder = AlertDialog.Builder(requireContext())
+            .setTitle(R.string.dialog_delete_todo)
+            .setMessage(R.string.dialog_delete_todo)
+            .setPositiveButton(R.string.delete) { _, _ ->
+                //delete the to-do
+                GlobalScope.launch(Dispatchers.IO) {
+                    viewModel.deleteToDo(
+                        Utils.getUpdatedToDo(
+                            fragmentArgs.existingToDo.id,
+                            todoText.text.toString(),
+                            timeSet.text.toString(),
+                            dateSet.text.toString()
+                        )
+                    )
+                }
+                //inform user
+                Toast.makeText(requireContext(), R.string.toast_todo_deleted, Toast.LENGTH_SHORT)
+                    .show()
+
+                //goto to-do list
+                Navigation.findNavController(fragmentViewRef).navigate(
+                    R.id.action_editToDoFragment_to_toDoListFragment
+                )
+            }
+            .setNegativeButton(R.string.cancel) { dialog, _ ->
+                dialog.dismiss()
+            }
+
+        //display dialog
+        val dialog = builder.create()
+        dialog.show()
     }
 }
