@@ -33,7 +33,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-
 class MainActivityInstrumentedTest {
     private lateinit var rootView: View
     private lateinit var activityScenario: ActivityScenario<MainActivity>
@@ -260,7 +259,7 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
-    fun swipRightAToDo_cancelToDoDeleting() {
+    fun swipeRightAToDo_cancelToDoDeleting() {
         //!!! if database is not empty, database should be empty.
         val testingToDo = "todo4"
         createToDoForTesting(testingToDo)
@@ -283,6 +282,24 @@ class MainActivityInstrumentedTest {
         } finally {
             deleteTestingToDo(testingToDo)
         }
+    }
+
+    @Test
+    fun actionbarOptionsMenu_deleteToDo() {
+        val testingToDo = "delete me to-do"
+        createToDoForTesting(testingToDo)
+
+        //pick to-do for editing
+        onView(withId(R.id.recyclerViewToDo)).perform(
+            RecyclerViewActions.actionOnItem<ToDoAdapter.ToDoViewHolder>(
+                hasDescendant(withText(testingToDo)), click()
+            )
+        )
+
+        //delete to-do
+        onView(withId(R.id.action_menu_delete)).perform(click())
+
+        onView(withId(R.id.recyclerViewToDo)).check(matches(not(hasDescendant(withText(testingToDo)))))
     }
 
     private fun createToDoForTesting(todo: String) {

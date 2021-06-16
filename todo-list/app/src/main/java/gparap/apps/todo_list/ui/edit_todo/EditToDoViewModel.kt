@@ -40,6 +40,12 @@ class EditToDoViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
+    fun deleteToDo(todo: ToDoModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteToDo(todo)
+        }
+    }
+
     //store and manage time set for a to-do
     private var todoTime: MutableLiveData<String> = MutableLiveData()
     fun getToDoTime(): LiveData<String> {
