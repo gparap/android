@@ -34,4 +34,7 @@ interface ToDoDao {
 
     @Delete
     suspend fun deleteToDo(todo: ToDoModel)
+
+    @Delete
+    suspend fun deleteToDoList(todos: List<ToDoModel>)
 }
