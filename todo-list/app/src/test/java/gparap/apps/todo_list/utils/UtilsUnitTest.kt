@@ -15,9 +15,9 @@
  */
 package gparap.apps.todo_list.utils
 
+import org.junit.Assert.assertEquals
+import org.junit.Ignore
 import org.junit.Test
-
-import org.junit.Assert.*
 import java.util.*
 
 class UtilsUnitTest {
@@ -46,5 +46,43 @@ class UtilsUnitTest {
         expectedString = "09/06/21 14:32"
         actualString = Utils.convertTimeAndDateAsString(time, date)
         assertEquals(expectedString, actualString)
+    }
+
+    @Test
+    @Ignore("Method split in android.text.TextUtils not mocked. See http://g.co/androidstudio/not-mocked for details.")
+    //!!! To run this test:
+    //!!! 1. add package android.text in src/test,
+    //!!! 2. goto "https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/java/android/text/TextUtils.java"
+    //!!! 3. and copy the method "public static String[] split(String text, String expression)" to manually mock TextUtils.
+    //!!! don't forget to remove @Ignore annotation
+    fun convertTimeAsStringLocale_hoursNotStartingWithZero() {
+        val time = "14:02"
+
+        //test Locale.US
+        Locale.setDefault(Locale.US)
+        val expectedTime = "2:02 AM"
+        val actualTime = Utils.convertTimeAsStringLocale(time)
+        assertEquals(expectedTime, actualTime)
+
+        println(actualTime)
+    }
+
+    @Test
+    @Ignore("Method split in android.text.TextUtils not mocked. See http://g.co/androidstudio/not-mocked for details.")
+    //!!! To run this test:
+    //!!! 1. add package android.text in src/test,
+    //!!! 2. goto "https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/java/android/text/TextUtils.java"
+    //!!! 3. and copy the method "public static String[] split(String text, String expression)" to manually mock TextUtils.
+    //!!! don't forget to remove @Ignore annotation
+    fun convertTimeAsStringLocale_hoursStartingWithZero() {
+        val time = "04:02"
+
+        //test Locale.US
+        Locale.setDefault(Locale.US)
+        val expectedTime = "4:02 AM"
+        val actualTime = Utils.convertTimeAsStringLocale(time)
+        assertEquals(expectedTime, actualTime)
+
+        println(actualTime)
     }
 }

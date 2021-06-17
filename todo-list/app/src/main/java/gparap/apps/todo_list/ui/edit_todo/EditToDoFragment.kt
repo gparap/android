@@ -115,12 +115,14 @@ class EditToDoFragment : Fragment() {
             timeSet.text.toString(),
             dateSet.text.toString()
         )
-        //TODO: if only one (time or date) is set, set the other to default (now or today)
+        //set the deadline timestamp for the to-do
         if (todo.deadlineTime.isNotEmpty() && todo.deadlineDate.isNotEmpty()) {
             todo.deadlineTimeStamp = Utils.convertTimeAndDateAsString(
                 todo.deadlineTime, todo.deadlineDate
             )
-        }
+        } else if (todo.deadlineTime.isNotEmpty() && todo.deadlineDate.isEmpty()) {
+            todo.deadlineTimeStamp = Utils.convertTimeAsStringLocale(todo.deadlineTime)
+        } //TODO: only date is set
 
         //save to-do to database and return to list
         viewModel.saveToDo(todo)

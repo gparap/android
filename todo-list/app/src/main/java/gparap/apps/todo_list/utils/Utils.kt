@@ -16,6 +16,7 @@
 package gparap.apps.todo_list.utils
 
 import android.content.Context
+import android.text.TextUtils
 import gparap.apps.todo_list.data.ToDoDatabase
 import gparap.apps.todo_list.data.ToDoModel
 import gparap.apps.todo_list.data.ToDoRepository
@@ -51,13 +52,44 @@ object Utils {
     }
 
     /**
-     * Accepts a time string and a date string
-     * and returns a formatted string considering user locale.
+     * Accepts a time string and returns a formatted string considering user locale.
+     * ie:  input = time -> "14:06"
+     *      ouput = "2:06 PM"
+     */
+    fun convertTimeAsStringLocale(time: String): String {
+        val simpleDateFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
+
+        //split time to hours and minutes
+        val splitter = TextUtils.split(time, ":")
+        val hour = splitter[0]
+        val minute = splitter[1]
+
+        //set helper calender with time
+        val calendar = Calendar.getInstance()
+        calendar.set(Calendar.HOUR_OF_DAY, hour.toInt())
+        calendar.set(Calendar.MINUTE, minute.toInt())
+
+        //format time considering locale
+        var timeFormatted = simpleDateFormat.format(calendar.time)
+
+        //remove first "0" if exists (ie 01:50 AM -> 1:50 AM)
+        if (timeFormatted[0] == '0')
+            timeFormatted = timeFormatted.substring(1)
+
+        return timeFormatted
+    }
+
+    /**
+     * Accepts a time string and a date string and returns a formatted string considering user locale.
      * ie:  input = time -> "02:06",
      *              date -> "9/1/2021"
      *      ouput = "9/1/21 2:06 pm"
+     *
+     *  If the time is missing set now as the current time.
+     *  If the date is missing set today as the current date.
      */
     fun convertTimeAndDateAsString(time: String, date: String): String {
+        //convert timestamp as formatted string
         val timedateString = "$time $date"
         val simpleDateFormat = SimpleDateFormat("hh:mm dd/MM/yyyy", Locale.getDefault())
         val dateParsed: Date = simpleDateFormat.parse(timedateString)!!
