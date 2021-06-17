@@ -43,6 +43,7 @@ import gparap.apps.todo_list.ui.pickers.DatePickerFragment
 import gparap.apps.todo_list.ui.pickers.TimePickerFragment
 import gparap.apps.todo_list.utils.Utils
 
+
 class AddToDoFragment : Fragment() {
     private lateinit var viewModel: AddToDoViewModel
     private lateinit var textViewToDoTimeSet: TextView
@@ -107,7 +108,9 @@ class AddToDoFragment : Fragment() {
             )
         } else if (todo.deadlineTime.isNotEmpty() && todo.deadlineDate.isEmpty()) {
             todo.deadlineTimeStamp = Utils.convertTimeAsStringLocale(todo.deadlineTime)
-        } //TODO: only date is set
+        } else if (todo.deadlineTime.isEmpty() && todo.deadlineDate.isNotEmpty()) {
+            todo.deadlineTimeStamp = Utils.convertDateAsStringLocale(todo.deadlineDate)
+        }
 
         //save to-do to database and return to list
         viewModel.addToDo(todo)

@@ -52,9 +52,23 @@ object Utils {
     }
 
     /**
+     * Accepts a date string and returns a formatted string considering user locale.
+     * ie:  input = date -> "07/06/2021"
+     *      ouput = "6/7/21"     for Locale.US
+     *      ouput = "07/06/2021" for Locale.UK
+     *      ouput = "2021/6/7"   for Locale.CHINA
+     */
+    fun convertDateAsStringLocale(date: String): String {
+        val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val dateParsed: Date = simpleDateFormat.parse(date)!!
+        return DateFormat.getDateInstance(DateFormat.DATE_FIELD, Locale.getDefault()).format(dateParsed)
+    }
+
+    /**
      * Accepts a time string and returns a formatted string considering user locale.
      * ie:  input = time -> "14:06"
-     *      ouput = "2:06 PM"
+     *      ouput = "2:06 PM" (US locale)
+     *      ouput = "2:06 pm" (UK locale)
      */
     fun convertTimeAsStringLocale(time: String): String {
         val simpleDateFormat = SimpleDateFormat("hh:mm a", Locale.getDefault())
@@ -81,7 +95,7 @@ object Utils {
 
     /**
      * Accepts a time string and a date string and returns a formatted string considering user locale.
-     * ie:  input = time -> "02:06",
+     * ie:  input = time -> "14:06",
      *              date -> "9/1/2021"
      *      ouput = "9/1/21 2:06 pm"
      *
