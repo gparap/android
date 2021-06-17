@@ -60,11 +60,15 @@ class UtilsUnitTest {
 
         //test Locale.US
         Locale.setDefault(Locale.US)
-        val expectedTime = "2:02 AM"
-        val actualTime = Utils.convertTimeAsStringLocale(time)
+        var expectedTime = "2:02 PM"
+        var actualTime = Utils.convertTimeAsStringLocale(time)
         assertEquals(expectedTime, actualTime)
 
-        println(actualTime)
+        //test Locale.UK
+        Locale.setDefault(Locale.UK)
+        expectedTime = "2:02 pm"
+        actualTime = Utils.convertTimeAsStringLocale(time)
+        assertEquals(expectedTime, actualTime)
     }
 
     @Test
@@ -79,10 +83,36 @@ class UtilsUnitTest {
 
         //test Locale.US
         Locale.setDefault(Locale.US)
-        val expectedTime = "4:02 AM"
-        val actualTime = Utils.convertTimeAsStringLocale(time)
+        var expectedTime = "4:02 AM"
+        var actualTime = Utils.convertTimeAsStringLocale(time)
         assertEquals(expectedTime, actualTime)
 
-        println(actualTime)
+        //test Locale.UK
+        Locale.setDefault(Locale.UK)
+        expectedTime = "4:02 am"
+        actualTime = Utils.convertTimeAsStringLocale(time)
+        assertEquals(expectedTime, actualTime)
+    }
+
+    @Test
+    fun convertDateAsStringLocale() {
+        //test Locale.CHINA
+        Locale.setDefault(Locale.CHINA)
+        val date = "07/06/2021"
+        var expectedDate = "2021/6/7"
+        var actualDate = Utils.convertDateAsStringLocale(date)
+        assertEquals(expectedDate, actualDate)
+
+        //test Locale.US
+        Locale.setDefault(Locale.US)
+        expectedDate = "6/7/21"
+        actualDate = Utils.convertDateAsStringLocale(date)
+        assertEquals(expectedDate, actualDate)
+
+        //test Locale.UK
+        Locale.setDefault(Locale.UK)
+        expectedDate = "07/06/2021"
+        actualDate = Utils.convertDateAsStringLocale(date)
+        assertEquals(expectedDate, actualDate)
     }
 }
