@@ -30,6 +30,7 @@ import gparap.apps.todo_list.data.ToDoDatabase.Companion.getInstance
 import gparap.apps.todo_list.data.ToDoModel
 import gparap.apps.todo_list.data.ToDoRepository
 import gparap.apps.todo_list.ui.todo_list.ToDoListFragmentDirections
+import gparap.apps.todo_list.utils.Utils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -43,7 +44,7 @@ class ToDoAdapter : RecyclerView.Adapter<ToDoViewHolder>() {
         todosList = ArrayList()
     }
 
-    fun getToDoList() : List<ToDoModel> {
+    fun getToDoList(): List<ToDoModel> {
         return todosList
     }
 
@@ -52,7 +53,7 @@ class ToDoAdapter : RecyclerView.Adapter<ToDoViewHolder>() {
         notifyDataSetChanged()
     }
 
-    fun getToDoAtPosition(position: Int) : ToDoModel {
+    fun getToDoAtPosition(position: Int): ToDoModel {
         return todosList[position]
     }
 
@@ -71,6 +72,11 @@ class ToDoAdapter : RecyclerView.Adapter<ToDoViewHolder>() {
         holder.textViewDeadline.text = todosList[position].deadlineTimeStamp
         holder.checkBoxDone.isChecked = todosList[position].isDone
 
+        //helper for brevity
+        var isDone = holder.checkBoxDone.isChecked
+
+        strikeThroughToDoTextIfDone(holder, isDone)
+
         //update database with the To_Do's "isDone" checkbox value
         val database = getInstance(context!!)
         val dao = database.ToDoDao()
@@ -79,9 +85,11 @@ class ToDoAdapter : RecyclerView.Adapter<ToDoViewHolder>() {
             try {
                 //update database
                 GlobalScope.launch(Dispatchers.IO) {
-                    val isChecked = todosList[position].isDone
-                    repository.editToDo(todosList[position].id, !isChecked)
+                    isDone = todosList[position].isDone
+                    repository.editToDo(todosList[position].id, !isDone)
                 }
+                strikeThroughToDoTextIfDone(holder, !isDone)
+
             } catch (e: IndexOutOfBoundsException) {
                 e.printStackTrace()
             }
@@ -99,6 +107,11 @@ class ToDoAdapter : RecyclerView.Adapter<ToDoViewHolder>() {
     override fun getItemCount(): Int {
         //get number of todos
         return todosList.size
+    }
+
+    private fun strikeThroughToDoTextIfDone(holder: ToDoViewHolder, isDone: Boolean) {
+        Utils.strikeText(holder.textViewToDo, isDone)
+        Utils.strikeText(holder.textViewDeadline, isDone)
     }
 
     /**

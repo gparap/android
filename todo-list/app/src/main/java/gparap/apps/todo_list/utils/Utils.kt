@@ -16,7 +16,9 @@
 package gparap.apps.todo_list.utils
 
 import android.content.Context
+import android.graphics.Paint
 import android.text.TextUtils
+import android.widget.TextView
 import gparap.apps.todo_list.data.ToDoDatabase
 import gparap.apps.todo_list.data.ToDoModel
 import gparap.apps.todo_list.data.ToDoRepository
@@ -25,6 +27,17 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 object Utils {
+    /**
+     * Strikes and unstrikes through the text of a TextView.
+     */
+    fun strikeText(view: TextView, isToBeStrikedThrough: Boolean) {
+        if (isToBeStrikedThrough) {
+            view.paintFlags = view.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+        }else {
+            view.paintFlags = 0
+        }
+    }
+
     /**
      * Helper that creates, initializes and returns a to-do model object.
      */
