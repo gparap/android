@@ -19,17 +19,48 @@ import android.app.Dialog
 import android.app.TimePickerDialog
 import android.app.TimePickerDialog.OnTimeSetListener
 import android.os.Bundle
+import androidx.annotation.Nullable
 import androidx.fragment.app.DialogFragment
-import java.util.*
 
-class TimePickerFragment(private val listener: OnTimeSetListener) : DialogFragment() {
+class TimePickerDialogFragment : DialogFragment() {
+    private var listener: OnTimeSetListener? = null
+    private var hourOfDay = 0
+    private var minute = 0
+    private var is24Hours = false
+
+    fun setListener(listener: OnTimeSetListener?) {
+        this.listener = listener
+    }
+
+    override fun onCreate(@Nullable savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        //get fragment arguments
+        val fragmentArgs = arguments
+        if (fragmentArgs != null) {
+            hourOfDay = fragmentArgs.getInt("hourOfDay")
+            minute = fragmentArgs.getInt("minute")
+            is24Hours = fragmentArgs.getBoolean("is24hours")
+        }
+    }
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        //use the current time as the default value for the picker
-        val c: Calendar = Calendar.getInstance()
-        val hour: Int = c.get(Calendar.HOUR_OF_DAY)
-        val minute: Int = c.get(Calendar.MINUTE)
+        return TimePickerDialog(context, listener, hourOfDay, minute, is24Hours)
+    }
 
-        //return a new instance of TimePickerDialog
-        return TimePickerDialog(activity, listener, hour, minute, true)
+    companion object {
+        //initialize time picker dialog fragment
+        fun getInstance(hourOfDay: Int, minute: Int, is24Hours: Boolean): TimePickerDialogFragment {
+            val timePickerDialogFragment = TimePickerDialogFragment()
+
+            //create a bundle with the arguments of this fragment
+            val bundle = Bundle()
+            bundle.putInt("hourOfDay", hourOfDay)
+            bundle.putInt("minute", minute)
+            bundle.putBoolean("is24hours", is24Hours)
+            timePickerDialogFragment.arguments = bundle
+
+            return timePickerDialogFragment
+        }
     }
 }

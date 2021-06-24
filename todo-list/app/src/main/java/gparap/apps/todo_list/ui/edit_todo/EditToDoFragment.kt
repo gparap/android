@@ -41,11 +41,12 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.todo_list.R
 import gparap.apps.todo_list.ui.pickers.DatePickerFragment
-import gparap.apps.todo_list.ui.pickers.TimePickerFragment
+import gparap.apps.todo_list.ui.pickers.TimePickerDialogFragment
 import gparap.apps.todo_list.utils.Utils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.util.*
 
 class EditToDoFragment : Fragment() {
     private lateinit var viewModel: EditToDoViewModel
@@ -166,11 +167,13 @@ class EditToDoFragment : Fragment() {
         val buttonShowTimePickerDialog =
             fragmentViewRef.findViewById<Button>(R.id.buttonShowTimePickerDialogUpdating)
         buttonShowTimePickerDialog.setOnClickListener {
-            val timePickerDialogFragment: DialogFragment = TimePickerFragment(timeSetListener)
-            timePickerDialogFragment.show(
-                activity?.supportFragmentManager!!,
-                "TimePickerDialogUpdating"
+            val timePicker: TimePickerDialogFragment = TimePickerDialogFragment.getInstance(
+                Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
+                Calendar.getInstance().get(Calendar.MINUTE),
+                true
             )
+            timePicker.setListener(timeSetListener)
+            timePicker.showNow(childFragmentManager, null)
         }
     }
 
