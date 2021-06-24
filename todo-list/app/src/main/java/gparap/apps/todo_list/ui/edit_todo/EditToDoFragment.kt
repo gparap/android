@@ -30,7 +30,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -40,7 +39,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.todo_list.R
-import gparap.apps.todo_list.ui.pickers.DatePickerFragment
+import gparap.apps.todo_list.ui.pickers.DatePickerDialogFragment
 import gparap.apps.todo_list.ui.pickers.TimePickerDialogFragment
 import gparap.apps.todo_list.utils.Utils
 import kotlinx.coroutines.Dispatchers
@@ -146,11 +145,13 @@ class EditToDoFragment : Fragment() {
         val buttonShowDatePickerDialog =
             fragmentViewRef.findViewById<Button>(R.id.buttonShowDatePickerDialogUpdating)
         buttonShowDatePickerDialog.setOnClickListener {
-            val datePickerDialogFragment: DialogFragment = DatePickerFragment(dateSetListener)
-            datePickerDialogFragment.show(
-                activity?.supportFragmentManager!!,
-                "DatePickerDialogUpdating"
+            val datePicker: DatePickerDialogFragment = DatePickerDialogFragment.getInstance(
+                Calendar.getInstance().get(Calendar.YEAR),
+                Calendar.getInstance().get(Calendar.MONTH),
+                Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
             )
+            datePicker.setListener(dateSetListener)
+            datePicker.showNow(childFragmentManager, null)
         }
     }
 
