@@ -12,4 +12,5 @@
     <dimen name="fab_layout_margin">16dp</dimen>
     <dimen name="editText_text_size">18sp</dimen>
     <dimen name="button_text_size">14sp</dimen>
+    <dimen name="divider_layout_height">2dp</dimen>
 </resources>
