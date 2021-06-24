@@ -17,6 +17,7 @@ package gparap.apps.todo_list.ui
 
 import android.widget.DatePicker
 import android.widget.TimePicker
+import androidx.core.os.bundleOf
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.action.ViewActions
@@ -26,6 +27,7 @@ import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.UiDevice
 import gparap.apps.todo_list.R
+import gparap.apps.todo_list.data.ToDoModel
 import gparap.apps.todo_list.ui.edit_todo.EditToDoFragment
 import org.hamcrest.Matchers
 import org.hamcrest.core.IsNot
@@ -37,7 +39,7 @@ class EditToDoFragmentInstrumentedTest {
 
     @Before
     fun setUp() {
-        launchFragmentInContainer(null, R.style.Theme_MaterialComponents) {
+        launchFragmentInContainer(bundleOf(Pair("existingToDo", ToDoModel())), R.style.Theme_MaterialComponents) {
             EditToDoFragment()
         }
     }
