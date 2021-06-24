@@ -40,8 +40,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.todo_list.R
 import gparap.apps.todo_list.data.ToDoModel
 import gparap.apps.todo_list.ui.pickers.DatePickerFragment
-import gparap.apps.todo_list.ui.pickers.TimePickerFragment
+import gparap.apps.todo_list.ui.pickers.TimePickerDialogFragment
 import gparap.apps.todo_list.utils.Utils
+import java.util.*
 
 
 class AddToDoFragment : Fragment() {
@@ -149,8 +150,13 @@ class AddToDoFragment : Fragment() {
         val buttonShowTimePickerDialog =
             fragmentViewRef.findViewById<Button>(R.id.buttonShowTimePickerDialog)
         buttonShowTimePickerDialog.setOnClickListener {
-            val timePickerDialogFragment: DialogFragment = TimePickerFragment(timeSetListener)
-            timePickerDialogFragment.show(activity?.supportFragmentManager!!, "TimePickerDialog")
+            val timePicker: TimePickerDialogFragment = TimePickerDialogFragment.getInstance(
+                Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
+                Calendar.getInstance().get(Calendar.MINUTE),
+                true
+            )
+            timePicker.setListener(timeSetListener)
+            timePicker.showNow(childFragmentManager, null)
         }
     }
 
