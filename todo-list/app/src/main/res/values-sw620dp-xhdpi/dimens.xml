@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="todo_view_layout_padding">12dp</dimen>
+    <dimen name="todo_title_text_size">24sp</dimen>
+    <dimen name="todo_datetime_text_size">20sp</dimen>
+    <dimen name="checkbox_done_text_size">20sp</dimen>
+    <dimen name="layout_marginStart">12dp</dimen>
+    <dimen name="layout_marginEnd">12dp</dimen>
+    <dimen name="layout_marginTop">12dp</dimen>
+    <dimen name="layout_marginBottom">12dp</dimen>
+    <dimen name="fab_layout_margin">24dp</dimen>
+    <dimen name="editText_text_size">24sp</dimen>
+    <dimen name="button_text_size">18sp</dimen>
+    <dimen name="divider_layout_height">4dp</dimen>
+</resources>
