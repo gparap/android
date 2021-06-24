@@ -29,7 +29,8 @@ import androidx.test.espresso.matcher.RootMatchers.withDecorView
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import gparap.apps.todo_list.adapter.ToDoAdapter
-import org.hamcrest.CoreMatchers.*
+import org.hamcrest.CoreMatchers.`is`
+import org.hamcrest.CoreMatchers.not
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -124,9 +125,10 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun editToDo_isPickedToDoDisplayedInEditToDo() {
-        //!!! if database is empty add manually a to-do with text "todo1",
-        //!!!   don't do it here.
+        createToDoForTesting("todo0")
+        deleteToDoList()
         val firstToDoText = "todo1"
+        createToDoForTesting(firstToDoText)
 
         //pick first to-do in the list
         onView(withId(R.id.recyclerViewToDo)).perform(
@@ -138,8 +140,12 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun onFragmentEditToDo_showToastMessageIfToDoTextIsEmpty() {
-        //!!! if database is empty add manually a to-do with text "todo1",
-        //!!!   don't do it here.
+        val firstToDoText = "todo1"
+        createToDoForTesting(firstToDoText)
+
+        //wait to clear toast message
+        Thread.sleep(1667)
+
         //pick first to-do in the list
         onView(withId(R.id.recyclerViewToDo)).perform(
             RecyclerViewActions.actionOnItemAtPosition<ToDoAdapter.ToDoViewHolder>(0, click())
@@ -148,6 +154,9 @@ class MainActivityInstrumentedTest {
         //make sure edit text is empty
         onView(withId(R.id.editTextToDoUpdating)).perform(clearText())
         closeSoftKeyboard()
+
+        //wait to clear toast message
+        Thread.sleep(1667)
 
         //save empty to-do
         onView(withId(R.id.fabUpdateToDo)).perform(click())
@@ -159,9 +168,11 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun editToDo_isToDoEditedInRecyclerView() {
-        //!!! if database is empty add manually a to-do with text "todo1",
-        //!!!   don't do it here.
+        createToDoForTesting("todo0")
+        deleteToDoList()
+        val firstToDoText = "todo1"
         val editedToDoText = "todo11"
+        createToDoForTesting(firstToDoText)
 
         //pick first to-do in the list
         onView(withId(R.id.recyclerViewToDo)).perform(
@@ -179,6 +190,8 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun swipeLeftAToDo_isDeleteConfirmationDialogDisplayed() {
+        createToDoForTesting("todo1")
+
         onView(withId(R.id.recyclerViewToDo)).perform(
             RecyclerViewActions.actionOnItemAtPosition<ToDoAdapter.ToDoViewHolder>(0, swipeLeft())
         )
@@ -188,6 +201,8 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun swipeRightAToDo_isDeleteConfirmationDialogDisplayed() {
+        createToDoForTesting("todo1")
+
         onView(withId(R.id.recyclerViewToDo)).perform(
             RecyclerViewActions.actionOnItemAtPosition<ToDoAdapter.ToDoViewHolder>(0, swipeRight())
         )
@@ -197,7 +212,7 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun swipeLeftAToDo_deleteToDo() {
-        //!!! if database is not empty, database should be empty.
+        deleteToDoList()
         val testingToDo = "todo1"
         createToDoForTesting(testingToDo)
 
@@ -215,8 +230,8 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
-    fun swipRightAToDo_deleteToDo() {
-        //!!! if database is not empty, database should be empty.
+    fun swipeRightAToDo_deleteToDo() {
+        deleteToDoList()
         val testingToDo = "todo2"
         createToDoForTesting(testingToDo)
 
@@ -235,7 +250,6 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun swipeLeftAToDo_cancelToDoDeleting() {
-        //!!! if database is not empty, database should be empty.
         val testingToDo = "todo3"
         createToDoForTesting(testingToDo)
 
@@ -261,7 +275,6 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun swipeRightAToDo_cancelToDoDeleting() {
-        //!!! if database is not empty, database should be empty.
         val testingToDo = "todo4"
         createToDoForTesting(testingToDo)
 
@@ -287,6 +300,8 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun actionbarOptionsMenu_deleteToDo() {
+        createToDoForTesting("todo0")
+        deleteToDoList()
         val testingToDo = "delete me to-do"
         createToDoForTesting(testingToDo)
 
@@ -299,12 +314,15 @@ class MainActivityInstrumentedTest {
 
         //delete to-do
         onView(withId(R.id.action_menu_delete)).perform(click())
+        onView(withText(R.string.delete)).inRoot(isDialog()).perform(click())
 
         onView(withId(R.id.recyclerViewToDo)).check(matches(not(hasDescendant(withText(testingToDo)))))
     }
 
     @Test
     fun actionbarOptionsMenu_deleteToDoList() {
+        createToDoForTesting("todo0")
+        deleteToDoList()
         //add 2 new todos to list
         val testingToDo1 = "to-do 1"
         val testingToDo2 = "to-do 2"
@@ -312,9 +330,7 @@ class MainActivityInstrumentedTest {
         createToDoForTesting(testingToDo2)
         var todosCount = 2
 
-        //delete to-do list
-        onView(withId(R.id.action_menu_delete)).perform(click())
-        onView(withText(R.string.delete)).inRoot(isDialog()).perform(click())
+        deleteToDoList()
 
         //get the total number of todos
         activityScenario.onActivity {
@@ -326,6 +342,9 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun actionbarOptionsMenu_deleteToDoListCancelation() {
+        createToDoForTesting("todo0")
+        deleteToDoList()
+
         //add 2 new todos to list
         val testingToDo1 = "to-do 1"
         val testingToDo2 = "to-do 2"
@@ -343,6 +362,11 @@ class MainActivityInstrumentedTest {
         }
 
         assert(todosCount == 2)
+    }
+
+    private fun deleteToDoList() {
+        onView(withId(R.id.action_menu_delete)).perform(click())
+        onView(withText(R.string.delete)).inRoot(isDialog()).perform(click())
     }
 
     private fun createToDoForTesting(todo: String) {

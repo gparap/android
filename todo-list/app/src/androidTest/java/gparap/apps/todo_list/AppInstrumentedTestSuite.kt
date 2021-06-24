@@ -23,10 +23,10 @@ import org.junit.runners.Suite
 
 @RunWith(Suite::class)
 @Suite.SuiteClasses(
-        SplashActivityInstrumentedTest::class,
-        MainActivityInstrumentedTest::class,
-        ToDoListFragmentInstrumentedTest::class,
-        AddToDoFragmentInstrumentedTest::class,
-        EditToDoFragmentInstrumentedTest::class,
+    SplashActivityInstrumentedTest::class,
+    MainActivityInstrumentedTest::class,
+    ToDoListFragmentInstrumentedTest::class,
+    AddToDoFragmentInstrumentedTest::class,
+    EditToDoFragmentInstrumentedTest::class,
 )
 class AppInstrumentedTestSuite

@@ -16,7 +16,6 @@
 package gparap.apps.todo_list.utils
 
 import org.junit.Assert.assertEquals
-import org.junit.Ignore
 import org.junit.Test
 import java.util.*
 
@@ -49,12 +48,11 @@ class UtilsUnitTest {
     }
 
     @Test
-    @Ignore("Method split in android.text.TextUtils not mocked. See http://g.co/androidstudio/not-mocked for details.")
     //!!! To run this test:
     //!!! 1. add package android.text in src/test,
     //!!! 2. goto "https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/java/android/text/TextUtils.java"
     //!!! 3. and copy the method "public static String[] split(String text, String expression)" to manually mock TextUtils.
-    //!!! don't forget to remove @Ignore annotation
+    //!!! cause: "Method split in android.text.TextUtils not mocked. See http://g.co/androidstudio/not-mocked for details."
     fun convertTimeAsStringLocale_hoursNotStartingWithZero() {
         val time = "14:02"
 
@@ -64,20 +62,19 @@ class UtilsUnitTest {
         var actualTime = Utils.convertTimeAsStringLocale(time)
         assertEquals(expectedTime, actualTime)
 
-        //test Locale.UK
-        Locale.setDefault(Locale.UK)
-        expectedTime = "2:02 pm"
+        //test Locale.CHINA
+        Locale.setDefault(Locale.CHINA)
+        expectedTime = "2:02 下午"
         actualTime = Utils.convertTimeAsStringLocale(time)
         assertEquals(expectedTime, actualTime)
     }
 
     @Test
-    @Ignore("Method split in android.text.TextUtils not mocked. See http://g.co/androidstudio/not-mocked for details.")
     //!!! To run this test:
     //!!! 1. add package android.text in src/test,
     //!!! 2. goto "https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/core/java/android/text/TextUtils.java"
     //!!! 3. and copy the method "public static String[] split(String text, String expression)" to manually mock TextUtils.
-    //!!! don't forget to remove @Ignore annotation
+    //!!! cause: "Method split in android.text.TextUtils not mocked. See http://g.co/androidstudio/not-mocked for details."
     fun convertTimeAsStringLocale_hoursStartingWithZero() {
         val time = "04:02"
 
@@ -87,9 +84,9 @@ class UtilsUnitTest {
         var actualTime = Utils.convertTimeAsStringLocale(time)
         assertEquals(expectedTime, actualTime)
 
-        //test Locale.UK
-        Locale.setDefault(Locale.UK)
-        expectedTime = "4:02 am"
+        //test Locale.JAPANESE
+        Locale.setDefault(Locale.JAPANESE)
+        expectedTime = "4:02 午前"
         actualTime = Utils.convertTimeAsStringLocale(time)
         assertEquals(expectedTime, actualTime)
     }
@@ -99,7 +96,7 @@ class UtilsUnitTest {
         //test Locale.CHINA
         Locale.setDefault(Locale.CHINA)
         val date = "07/06/2021"
-        var expectedDate = "2021/6/7"
+        var expectedDate = "21-6-7"
         var actualDate = Utils.convertDateAsStringLocale(date)
         assertEquals(expectedDate, actualDate)
 
@@ -111,7 +108,7 @@ class UtilsUnitTest {
 
         //test Locale.UK
         Locale.setDefault(Locale.UK)
-        expectedDate = "07/06/2021"
+        expectedDate = "07/06/21"
         actualDate = Utils.convertDateAsStringLocale(date)
         assertEquals(expectedDate, actualDate)
     }
