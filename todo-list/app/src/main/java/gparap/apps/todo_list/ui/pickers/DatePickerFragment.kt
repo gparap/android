@@ -19,17 +19,48 @@ import android.app.Dialog
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.os.Bundle
+import androidx.annotation.Nullable
 import androidx.fragment.app.DialogFragment
-import java.util.*
 
-class DatePickerFragment(private val listener: OnDateSetListener) : DialogFragment() {
+class DatePickerDialogFragment : DialogFragment() {
+    private var listener: OnDateSetListener? = null
+    private var year = 0
+    private var month = 0
+    private var dayOfMonth = 0
+
+    fun setListener(listener: OnDateSetListener?) {
+        this.listener = listener
+    }
+
+    override fun onCreate(@Nullable savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        //get fragment arguments
+        val fragmentArgs = arguments
+        if (fragmentArgs != null) {
+            year = fragmentArgs.getInt("year")
+            month = fragmentArgs.getInt("month")
+            dayOfMonth = fragmentArgs.getInt("dayOfMonth")
+        }
+    }
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        //use the current date as the default value for the picker
-        val year = Calendar.getInstance().get(Calendar.YEAR)
-        val month = Calendar.getInstance().get(Calendar.MONTH)
-        val day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+        return DatePickerDialog(requireContext(), listener, year, month, dayOfMonth)
+    }
 
-        //return a new instance of DatePickerDialog
-        return DatePickerDialog(requireActivity(), listener, year, month, day)
+    companion object {
+        //initialize date picker dialog fragment
+        fun getInstance(year: Int, month: Int, dayOfMonth: Int): DatePickerDialogFragment {
+            val datePickerDialogFragment = DatePickerDialogFragment()
+
+            //create a bundle with the arguments of this fragment
+            val bundle = Bundle()
+            bundle.putInt("year", year)
+            bundle.putInt("month", month)
+            bundle.putInt("dayOfMonth", dayOfMonth)
+            datePickerDialogFragment.arguments = bundle
+
+            return datePickerDialogFragment
+        }
     }
 }
