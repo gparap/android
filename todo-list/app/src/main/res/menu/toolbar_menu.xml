@@ -6,7 +6,7 @@
     <!-- delete to-do -->
     <item
         android:id="@+id/action_menu_delete"
-        android:icon="@drawable/ic_baseline_delete_24"
+        android:icon="@drawable/ic_delete_black_24"
         android:title="@string/delete"
         app:showAsAction="ifRoom"/>
 
