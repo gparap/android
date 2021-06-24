@@ -72,6 +72,16 @@ class ToDoAdapter : RecyclerView.Adapter<ToDoViewHolder>() {
         holder.textViewDeadline.text = todosList[position].deadlineTimeStamp
         holder.checkBoxDone.isChecked = todosList[position].isDone
 
+        //handle visibility of "deadline" timestamp and label
+        // (based on if there is a date and/or time stamp)
+        if (holder.textViewDeadline.text.isNotEmpty()){
+            holder.textViewDeadline.visibility = View.VISIBLE
+            holder.textViewDeadlineLabel.visibility = View.VISIBLE
+        }else{
+            holder.textViewDeadline.visibility = View.GONE
+            holder.textViewDeadlineLabel.visibility = View.GONE
+        }
+
         //helper for brevity
         var isDone = holder.checkBoxDone.isChecked
 
@@ -112,6 +122,7 @@ class ToDoAdapter : RecyclerView.Adapter<ToDoViewHolder>() {
     private fun strikeThroughToDoTextIfDone(holder: ToDoViewHolder, isDone: Boolean) {
         Utils.strikeText(holder.textViewToDo, isDone)
         Utils.strikeText(holder.textViewDeadline, isDone)
+        Utils.strikeText(holder.textViewDeadlineLabel, isDone)
     }
 
     /**
@@ -121,6 +132,7 @@ class ToDoAdapter : RecyclerView.Adapter<ToDoViewHolder>() {
         //get view widgets
         var textViewToDo: TextView = itemView.findViewById(R.id.textViewTodo)
         var textViewDeadline: TextView = itemView.findViewById(R.id.textViewDeadline)
+        var textViewDeadlineLabel: TextView = itemView.findViewById(R.id.textViewDeadlineLabel)
         var checkBoxDone: CheckBox = itemView.findViewById(R.id.checkBoxDone)
     }
 }

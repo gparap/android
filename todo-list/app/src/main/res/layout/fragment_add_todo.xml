@@ -42,7 +42,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="@dimen/layout_marginEnd"
             android:gravity="start"
-            android:text="@string/label_deadline_todo"
+            android:text="@string/label_deadline_long"
             android:textSize="@dimen/editText_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
