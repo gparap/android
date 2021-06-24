@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/layout_marginStart"
-        android:maxLines="2"
+        android:maxLines="3"
         android:textSize="@dimen/todo_title_text_size"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/checkBoxDone"
@@ -37,8 +37,6 @@
 
     <!-- Deadline label -->
     <TextView
-        android:visibility="gone"
-        tools:visibility="visible"
         android:id="@+id/textViewDeadlineLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,14 +44,14 @@
         android:text="@string/label_deadline_short"
         android:textSize="@dimen/todo_datetime_text_size"
         android:textStyle="italic"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/textViewTodo"
         app:layout_constraintTop_toBottomOf="@+id/textViewTodo"
-        tools:text="deadline: " />
+        tools:text="deadline: "
+        tools:visibility="visible" />
 
     <!-- To-do timestamp that must be done -->
     <TextView
-        android:visibility="gone"
-        tools:visibility="visible"
         android:id="@+id/textViewDeadline"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -61,16 +59,18 @@
         android:layout_marginTop="@dimen/layout_marginTop"
         android:textSize="@dimen/todo_datetime_text_size"
         android:textStyle="italic"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/textViewTodo"
         app:layout_constraintStart_toEndOf="@+id/textViewDeadlineLabel"
         app:layout_constraintTop_toBottomOf="@+id/textViewTodo"
-        tools:text="deadline for todo" />
+        tools:text="deadline for todo"
+        tools:visibility="visible" />
 
     <!-- Divider for to-do list -->
     <View
         android:id="@+id/dividerBar"
         android:layout_width="0dp"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/divider_layout_height"
         android:layout_marginTop="@dimen/layout_marginTop"
         android:layout_marginBottom="@dimen/layout_marginBottom"
         android:background="?android:attr/listDivider"
