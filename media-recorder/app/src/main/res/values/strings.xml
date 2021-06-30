@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Media Recorder</string>
+    <string name="description_logo_placeholder">Logo Placeholder</string>
+    <string name="record">Record</string>
+    <string name="stop">Stop</string>
+    <string name="play">Play</string>
+    <string name="menu_title_settings">Settings</string>
+</resources>
