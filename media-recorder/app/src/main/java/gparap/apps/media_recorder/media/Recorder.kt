@@ -20,20 +20,17 @@ import android.media.MediaRecorder
 import java.io.File
 
 class Recorder(private val context: Context) {
-    private var mediaRecorder: MediaRecorder = MediaRecorder()
+    private lateinit var mediaRecorder: MediaRecorder
     private lateinit var outputFile: File
-    private var isInitialized: Boolean = false
     private var isRecording: Boolean = false
-
-    fun isInitialized(): Boolean {
-        return isInitialized
-    }
 
     fun isRecording(): Boolean {
         return isRecording
     }
 
     fun init() {
+        mediaRecorder = MediaRecorder()
+
         //set the audio source to be used for recording
         mediaRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT)
 
@@ -47,22 +44,19 @@ class Recorder(private val context: Context) {
         //set the audio encoder to be used for recording
         mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
 
-        isInitialized = true
+        mediaRecorder.prepare()
     }
 
     fun start() {
         if (!isRecording) {
-            mediaRecorder.prepare()
             mediaRecorder.start()
             isRecording = true
         }
     }
 
     fun stop() {
-        if (isRecording) {
-            mediaRecorder.stop()
-            mediaRecorder.release()
-            isRecording = false
-        }
+        mediaRecorder.stop()
+        isRecording = false
+        mediaRecorder.release()
     }
 }
