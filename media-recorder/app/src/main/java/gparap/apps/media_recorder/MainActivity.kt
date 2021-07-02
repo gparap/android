@@ -30,13 +30,13 @@ import java.io.File
 import java.io.IOException
 import java.lang.Exception
 
-@Suppress("BooleanLiteralArgument")
 class MainActivity : AppCompatActivity() {
     private lateinit var recorder: Recorder
     private lateinit var player: Player
-    private lateinit var start: Button
+    private lateinit var record: Button
     private lateinit var stop: Button
     private lateinit var play: Button
+
     @Suppress("PrivatePropertyName")
     private val REQUEST_PERMISSION_RECORD_AUDIO = 999
     private var permission: Array<String> = arrayOf(Manifest.permission.RECORD_AUDIO)
@@ -46,68 +46,53 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         getWidgets()
 
-        //create media recorder instance
+        //create media objects
         recorder = Recorder(this)
+        player = Player()
 
         //request permission to use media recorder
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
             != PackageManager.PERMISSION_GRANTED
         ) {
             ActivityCompat.requestPermissions(this, permission, 999)
-        } else {
-            try {
-                if (!recorder.isInitialized()) {
-                    recorder.init()
-                }
-            } catch (e: IOException) {
-                Log.i("GPARAP_MEDIA_RECORDER", e.toString())
-            }
         }
 
         //start recording audio
-        start.setOnClickListener {
+        record.setOnClickListener {
+            //if media player is active shut it down
+            if (player.isPlaying()) {
+                player.stop()
+            }
+
             try {
-                if (!recorder.isInitialized()) {
-                    recorder.init()
-                }
+                recorder.init()
                 recorder.start()
             } catch (e: IOException) {
                 Log.i("GPARAP_MEDIA_RECORDER", e.toString())
             }
-            handleButtonEnablement(false, false)
             Toast.makeText(this, "Recording started..", Toast.LENGTH_SHORT).show()
         }
 
         //stop recording/playing audio
         stop.setOnClickListener {
-            @Suppress("CascadeIf")
             if (recorder.isRecording()) {
                 recorder.stop()
-                handleButtonEnablement(true,true)
                 Toast.makeText(this, "Recording saved..", Toast.LENGTH_SHORT).show()
-            }
-
-            else if (player.isPlaying()) {
+            } else if (player.isPlaying()) {
                 player.stop()
-                handleButtonEnablement(true,true)
-                Toast.makeText(this, "Player stopped..", Toast.LENGTH_SHORT).show()
             }
-
-             else{
-                handleButtonEnablement(true,true)
-            }
-
         }
-
-        //create media player instance
-        player = Player()
 
         //start playing the recording
         play.setOnClickListener {
+            //if media recorder is active shut it down
+            if (recorder.isRecording()) {
+                recorder.stop()
+            }
+
             val inputFile = File(this.getExternalFilesDir(null), "/recording.3gp")
             player.init(inputFile.absolutePath)
             player.start()
-            handleButtonEnablement(false, false)
             Toast.makeText(this, "Player started..", Toast.LENGTH_SHORT).show()
         }
     }
@@ -119,7 +104,8 @@ class MainActivity : AppCompatActivity() {
         try {
             recorder.stop()
             player.stop()
-        }catch (e:Exception){}
+        } catch (e: Exception) {
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -134,23 +120,16 @@ class MainActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        //handle permissions check result
+        //handle record permission check result
         if (requestCode == REQUEST_PERMISSION_RECORD_AUDIO) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                recorder.init()
-            } else {
+            if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                 finish()
             }
         }
     }
 
-    private fun handleButtonEnablement(isRecordingEnabled: Boolean, isPlayingEnabled: Boolean) {
-        start.isEnabled = isRecordingEnabled
-        play.isEnabled = isPlayingEnabled
-    }
-
     private fun getWidgets() {
-        start = findViewById(R.id.buttonRecord)
+        record = findViewById(R.id.buttonRecord)
         stop = findViewById(R.id.buttonStop)
         play = findViewById(R.id.buttonPlay)
     }

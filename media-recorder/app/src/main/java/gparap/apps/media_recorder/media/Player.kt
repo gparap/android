@@ -44,13 +44,13 @@ class Player {
         if (!isPlaying) {
             mediaPlayer.prepare()
             mediaPlayer.start()
+            isPlaying = true
         }
     }
 
     fun stop() {
-        if (isPlaying) {
-            mediaPlayer.stop()
-        }
+        mediaPlayer.stop()
         mediaPlayer.release()
+        isPlaying = false;
     }
 }
