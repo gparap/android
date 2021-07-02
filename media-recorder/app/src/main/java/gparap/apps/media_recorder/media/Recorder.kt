@@ -17,31 +17,37 @@ package gparap.apps.media_recorder.media
 
 import android.content.Context
 import android.media.MediaRecorder
-import android.os.Build
 import java.io.File
 
 class Recorder(private val context: Context) {
     private var mediaRecorder: MediaRecorder = MediaRecorder()
     private lateinit var outputFile: File
+    private var isInitialized: Boolean = false
     private var isRecording: Boolean = false
+
+    fun isInitialized(): Boolean {
+        return isInitialized
+    }
+
+    fun isRecording(): Boolean {
+        return isRecording
+    }
 
     fun init() {
         //set the audio source to be used for recording
-        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC)
+        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT)
 
         //set the format of the output file produced during recording
         mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
 
         //set the output file of the recording
-        outputFile = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            File(context.getExternalFilesDir(null), "/recording.3gp")
-        } else {
-            File(context.getExternalFilesDir(null).toString().plus("/recording.3gp"))
-        }
+        outputFile = File(context.getExternalFilesDir(null), "/recording.3gp")
         mediaRecorder.setOutputFile(outputFile.absolutePath)
 
         //set the audio encoder to be used for recording
         mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
+
+        isInitialized = true
     }
 
     fun start() {
