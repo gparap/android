@@ -110,7 +110,7 @@ class ToDoListFragment : Fragment(R.layout.fragment_todo_list) {
 
         if (todoList.isNotEmpty()) {
             //create confirmation dialog to delete to-do list
-            val builder = AlertDialog.Builder(requireContext())
+            val builder = AlertDialog.Builder(requireContext(), R.style.AlertDialogTheme)
                 .setTitle(R.string.dialog_delete_attention)
                 .setMessage(R.string.dialog_delete_todos)
                 .setPositiveButton(R.string.delete) { _, _ ->

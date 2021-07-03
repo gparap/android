@@ -46,7 +46,7 @@ class SwipeHelperCallback(
         val todo: ToDoModel = adapter.getToDoAtPosition(viewHolder.bindingAdapterPosition)
 
         //create delete confirmation dialog
-        val builder = AlertDialog.Builder(context)
+        val builder = AlertDialog.Builder(context, R.style.AlertDialogTheme)
             .setTitle(todo.todo)
             .setMessage(R.string.dialog_delete_todo)
             .setPositiveButton(R.string.delete) { _, _ ->

@@ -219,7 +219,7 @@ class EditToDoFragment : Fragment() {
 
     private fun deleteToDo() {
         //create confirmation dialog to delete to-do
-        val builder = AlertDialog.Builder(requireContext())
+        val builder = AlertDialog.Builder(requireContext(), R.style.AlertDialogTheme)
             .setTitle(fragmentArgs.existingToDo.todo)
             .setMessage(R.string.dialog_delete_todo)
             .setPositiveButton(R.string.delete) { _, _ ->
