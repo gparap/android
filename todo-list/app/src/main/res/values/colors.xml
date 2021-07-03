@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#27408b</color><!--RoyalBlue4-->
+    <color name="colorPrimaryDark">#001a5e</color>
+    <color name="colorSecondary">#8b7227</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorBlackVariant">#121212</color>
 </resources>
+    <!--    <color name="colorPrimaryLight">#5c6abd</color>-->
+<!--<color name="secondaryColor">#8b7227</color>-->
+<!--<color name="secondaryLightColor">#bea054</color>-->
+<!--<color name="secondaryDarkColor">#5b4700</color>-->
+<!--<color name="primaryTextColor">#ffffff</color>-->
+<!--<color name="secondaryTextColor">#ffffff</color>-->
