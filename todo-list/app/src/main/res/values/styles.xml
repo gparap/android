@@ -8,9 +8,20 @@
         <item name="colorSecondary">@color/colorSecondary</item>
         <item name="android:textColorSecondary">@color/colorBlack</item>
         <item name="materialAlertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="materialThemeOverlay">@style/FloatingActionButtonThemeOverlay</item>
     </style>
 
-    <!--Alert dialog theme -->
+    <!-- FloatingActionButton theme. -->
+    <style name="FloatingActionButtonTheme" parent="@style/Widget.MaterialComponents.FloatingActionButton">
+        <item name="materialThemeOverlay">@style/FloatingActionButtonThemeOverlay</item>
+    </style>
+
+    <!-- FloatingActionButton theme overlay. -->
+    <style name="FloatingActionButtonThemeOverlay">
+        <item name="colorOnSecondary">@color/colorWhite</item>
+    </style>
+
+    <!--Alert dialog theme placeholder. -->
     <style name="AlertDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert" />
 
     <!--Action bar theme. -->

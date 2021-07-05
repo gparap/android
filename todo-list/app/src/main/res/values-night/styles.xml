@@ -7,7 +7,11 @@
         <item name="colorSecondary">@color/colorSecondary</item>
         <item name="android:textColorSecondary">@color/colorWhite</item>
         <item name="materialAlertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="materialThemeOverlay">@style/FloatingActionButtonThemeOverlay</item>
     </style>
+
+    <!-- FloatingActionButton theme overlay placeholder. -->
+    <style name="FloatingActionButtonThemeOverlay" />
 
     <!--Alert dialogs theme. -->
     <style name="AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
