@@ -193,7 +193,6 @@ class EditToDoFragment : Fragment() {
 
         toolbar.title = resources.getString(R.string.fragment_edit_todo)
 
-        //TODO: handle light/dark themes (later in polishing)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             toolbar.setTitleTextColor(resources.getColor(R.color.colorWhite, null))
         } else {
