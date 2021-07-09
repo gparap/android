@@ -81,7 +81,6 @@ class ToDoListFragment : Fragment(R.layout.fragment_todo_list) {
         toolbar = view?.findViewById(R.id.toolbar)!!
         toolbar.title = resources.getString(R.string.fragment_todo_list_title)
 
-        //TODO: handle light/dark themes (later in polishing)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             toolbar.setTitleTextColor(resources.getColor(R.color.colorWhite, null))
         } else {
