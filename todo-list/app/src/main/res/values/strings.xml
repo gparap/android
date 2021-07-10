@@ -18,7 +18,7 @@
     <string name="toast_todo_saved">To-Do saved.</string>
     <string name="toast_todo_deleted">To-Do deleted.</string>
     <string name="toast_todos_deleted">To-Do list is deleted.</string>
-    <string name="dialog_delete_todo">"The requested To-Do will be deleted. Are you sure?"</string>
-    <string name="dialog_delete_todos">"To-Do list will be deleted. Are you sure?"</string>
-    <string name="dialog_delete_attention">"Attention!"</string>
+    <string name="dialog_delete_todo">The requested To-Do will be deleted. Are you sure?</string>
+    <string name="dialog_delete_todos">To-Do list will be deleted. Are you sure?</string>
+    <string name="dialog_delete_attention">Attention!</string>
 </resources>

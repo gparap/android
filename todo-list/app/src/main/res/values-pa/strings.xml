@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ਮੇਰੀ ਕਰਨ ਦੀ ਸੂਚੀ</string>
+    <string name="add">ਸ਼ਾਮਲ ਕਰੋ</string>
+    <string name="delete">ਮਿਟਾਓ</string>
+    <string name="cancel">ਰੱਦ ਕਰੋ</string>
+    <string name="set_time">ਸਮਾਂ ਨਿਰਧਾਰਤ ਕਰੋ</string>
+    <string name="set_date">ਤਾਰੀਖ ਨਿਰਧਾਰਤ ਕਰੋ</string>
+    <string name="logo">ਲੋਗੋ</string>
+    <string name="description_add_todo">ਕਰਨ ਲਈ ਸ਼ਾਮਲ ਕਰੋ</string>
+    <string name="description_todo_icon">ਕਰਨ ਲਈ ਆਈਕਾਨ</string>
+    <string name="fragment_todo_list_title">ਮੇਰੀ ਕਰਨ ਦੀ ਸੂਚੀ</string>
+    <string name="fragment_add_todo">ਕਰਨ ਲਈ ਨਵਾਂ ਕਰੋ</string>
+    <string name="fragment_edit_todo">ਕਰਨ ਲਈ ਸੋਧ</string>
+    <string name="hint_add_todo">ਇਥੇ ਆਪਣਾ ਕੰਮ ਕਰੋ</string>
+    <string name="label_deadline_long">ਮੈਨੂੰ ਇਹ ਕਰਨਾ ਪੈਂਦਾ ਹੈ:</string>
+    <string name="label_deadline_short">ਅੰਤਮ ਤਾਰੀਖ:</string>
+    <string name="toast_todo_empty">ਕਰਨਾ ਖਾਲੀ ਨਹੀਂ ਹੋ ਸਕਦਾ!</string>
+    <string name="toast_todo_saved">ਟੂ-ਡੂ ਸੇਵ</string>
+    <string name="toast_todo_deleted">ਟੂ-ਡੂ ਮਿਟਾਇਆ ਗਿਆ.</string>
+    <string name="toast_todos_deleted">ਕਰਨ ਦੀ ਸੂਚੀ ਨੂੰ ਮਿਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ.</string>
+    <string name="dialog_delete_todo">ਬੇਨਤੀ ਕੀਤੀ ਟੂ ਨੂੰ ਮਿਟਾ ਦਿੱਤਾ ਜਾਏਗਾ. ਤੁਹਾਨੂੰ ਪੂਰਾ ਵਿਸ਼ਵਾਸ ਹੈ?</string>
+    <string name="dialog_delete_todos">ਕਰਨ ਦੀ ਸੂਚੀ ਨੂੰ ਮਿਟਾ ਦਿੱਤਾ ਜਾਵੇਗਾ. ਤੁਹਾਨੂੰ ਪੂਰਾ ਵਿਸ਼ਵਾਸ ਹੈ?</string>
+    <string name="dialog_delete_attention">ਧਿਆਨ ਦਿਓ!</string>
+</resources>

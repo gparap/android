@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">私のやることリスト</string>
+    <string name="add">追加</string>
+    <string name="delete">削除</string>
+    <string name="cancel">キャンセル</string>
+    <string name="set_time">設定時間</string>
+    <string name="set_date">日付を設定</string>
+    <string name="logo">ロゴ</string>
+    <string name="description_add_todo">追加 -  Todo</string>
+    <string name="description_todo_icon">To-Doアイコン</string>
+    <string name="fragment_todo_list_title">私のやることリスト</string>
+    <string name="fragment_add_todo">新しいTo-Doを追加する</string>
+    <string name="fragment_edit_todo">To-Doの編集</string>
+    <string name="hint_add_todo">ここにTo-Doを入力してください</string>
+    <string name="label_deadline_long">私はそれをしなければなりません：</string>
+    <string name="label_deadline_short">締め切り：</string>
+    <string name="toast_todo_empty">To-Doを空にすることはできません！</string>
+    <string name="toast_todo_saved">To-Doが保存されました。</string>
+    <string name="toast_todo_deleted">To-Doが削除されました。</string>
+    <string name="toast_todos_deleted">To-Doリストが削除されます。</string>
+    <string name="dialog_delete_todo">要求されたTo-Doは削除されます。 本気ですか？</string>
+    <string name="dialog_delete_todos">To-Doリストが削除されます。 本気ですか？</string>
+    <string name="dialog_delete_attention">注意！</string>
+</resources>

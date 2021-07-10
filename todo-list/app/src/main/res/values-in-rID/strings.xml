@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Daftar Tugas Saya</string>
+    <string name="add">Menambahkan</string>
+    <string name="delete">Menghapus</string>
+    <string name="cancel">Membatalkan</string>
+    <string name="set_time">Atur waktu</string>
+    <string name="set_date">Atur tanggal</string>
+    <string name="logo">logo</string>
+    <string name="description_add_todo">Tambahkan To-Do</string>
+    <string name="description_todo_icon">Ikon Yang Harus Dilakukan</string>
+    <string name="fragment_todo_list_title">Daftar Tugas Saya</string>
+    <string name="fragment_add_todo">Tambahkan To-Do Baru</string>
+    <string name="fragment_edit_todo">Edit Agenda</string>
+    <string name="hint_add_todo">masukkan To-Do Anda di sini</string>
+    <string name="label_deadline_long">Saya harus melakukannya dengan:</string>
+    <string name="label_deadline_short">batas waktu:</string>
+    <string name="toast_todo_empty">To-Do tidak boleh kosong!</string>
+    <string name="toast_todo_saved">Agenda disimpan.</string>
+    <string name="toast_todo_deleted">Agenda dihapus.</string>
+    <string name="toast_todos_deleted">Daftar Tugas dihapus.</string>
+    <string name="dialog_delete_todo">To-Do yang diminta akan dihapus. Apakah Anda yakin?</string>
+    <string name="dialog_delete_todos">Daftar To-Do akan dihapus. Apakah Anda yakin?</string>
+    <string name="dialog_delete_attention">Perhatian!</string>
+</resources>

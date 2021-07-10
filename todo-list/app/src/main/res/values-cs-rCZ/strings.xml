@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Můj seznam úkolů</string>
+    <string name="add">Přidat</string>
+    <string name="delete">Vymazat</string>
+    <string name="cancel">zrušení</string>
+    <string name="set_time">Nastavit čas</string>
+    <string name="set_date">Nastavit datum</string>
+    <string name="logo">logo</string>
+    <string name="description_add_todo">Přidat úkol</string>
+    <string name="description_todo_icon">Ikona úkolů</string>
+    <string name="fragment_todo_list_title">Můj seznam úkolů</string>
+    <string name="fragment_add_todo">Přidat nový úkol</string>
+    <string name="fragment_edit_todo">Upravit úkoly</string>
+    <string name="hint_add_todo">zde zadejte své úkoly</string>
+    <string name="label_deadline_long">Musím to udělat:</string>
+    <string name="label_deadline_short">Uzávěrka:</string>
+    <string name="toast_todo_empty">Úkoly nemohou být prázdné!</string>
+    <string name="toast_todo_saved">Úkoly byly uloženy.</string>
+    <string name="toast_todo_deleted">Úkoly byly smazány.</string>
+    <string name="toast_todos_deleted">Seznam úkolů je smazán.</string>
+    <string name="dialog_delete_todo">Požadovaný úkol bude smazán. Jsi si jistá?</string>
+    <string name="dialog_delete_todos">Seznam úkolů bude smazán. Jsi si jistá?</string>
+    <string name="dialog_delete_attention">Pozornost!</string>
+</resources>

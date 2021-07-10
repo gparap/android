@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">मेरी टू-डू सूची</string>
+    <string name="add">जोड़ना</string>
+    <string name="delete">हटाएं</string>
+    <string name="cancel">रद्द करना</string>
+    <string name="set_time">निर्धारित समय</string>
+    <string name="set_date">तारीख सेट करें</string>
+    <string name="logo">प्रतीक चिन्ह</string>
+    <string name="description_add_todo">करने के लिए जोड़ें</string>
+    <string name="description_todo_icon">टू-डू आइकन</string>
+    <string name="fragment_todo_list_title">मेरी टू-डू सूची</string>
+    <string name="fragment_add_todo">नया टू-डू जोड़ें</string>
+    <string name="fragment_edit_todo">करने के लिए संपादित करें</string>
+    <string name="hint_add_todo">अपना टू-डू यहां दर्ज करें</string>
+    <string name="label_deadline_long">मुझे इसे इसके द्वारा करना है:</string>
+    <string name="label_deadline_short">समयसीमा:</string>
+    <string name="toast_todo_empty">टू-डू खाली नहीं हो सकता!</string>
+    <string name="toast_todo_saved">टू-डू सहेजा गया।</string>
+    <string name="toast_todo_deleted">टू-डू हटा दिया गया।</string>
+    <string name="toast_todos_deleted">टू-डू सूची हटा दी जाती है।</string>
+    <string name="dialog_delete_todo">अनुरोधित टू-डू हटा दिया जाएगा। क्या आपको यकीन है?</string>
+    <string name="dialog_delete_todos">टू-डू सूची हटा दी जाएगी। क्या आपको यकीन है?</string>
+    <string name="dialog_delete_attention">ध्यान!</string>
+</resources>

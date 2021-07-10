@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mi lista de tareas pendientes</string>
+    <string name="add">Agregar</string>
+    <string name="delete">Borrar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="set_time">Fijar tiempo</string>
+    <string name="set_date">Define la fecha</string>
+    <string name="logo">logo</string>
+    <string name="description_add_todo">Agregar tarea</string>
+    <string name="description_todo_icon">Icono de tareas pendientes</string>
+    <string name="fragment_todo_list_title">Mi lista de tareas pendientes</string>
+    <string name="fragment_add_todo">Agregar nueva tarea pendiente</string>
+    <string name="fragment_edit_todo">Editar tareas pendientes</string>
+    <string name="hint_add_todo">ingrese su tarea pendiente aquí</string>
+    <string name="label_deadline_long">Tengo que hacerlo por:</string>
+    <string name="label_deadline_short">plazo:</string>
+    <string name="toast_todo_empty">¡Las tareas pendientes no pueden estar vacías!</string>
+    <string name="toast_todo_saved">Tareas pendientes guardadas.</string>
+    <string name="toast_todo_deleted">Tarea eliminada.</string>
+    <string name="toast_todos_deleted">Se elimina la lista de tareas pendientes.</string>
+    <string name="dialog_delete_todo">Se eliminará la tarea pendiente solicitada. ¿Está seguro?</string>
+    <string name="dialog_delete_todos">Se eliminará la lista de tareas pendientes. ¿Está seguro?</string>
+    <string name="dialog_delete_attention">¡Atención!</string>
+</resources>

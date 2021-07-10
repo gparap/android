@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">รายการสิ่งที่ต้องทำของฉัน</string>
+    <string name="add">เพิ่ม</string>
+    <string name="delete">ลบ</string>
+    <string name="cancel">ยกเลิก</string>
+    <string name="set_time">ตั้งเวลา</string>
+    <string name="set_date">ตั้งวันที่</string>
+    <string name="logo">โลโก้</string>
+    <string name="description_add_todo">เพิ่มสิ่งที่ต้องทำ</string>
+    <string name="description_todo_icon">ไอคอนสิ่งที่ต้องทำ</string>
+    <string name="fragment_todo_list_title">รายการสิ่งที่ต้องทำของฉัน</string>
+    <string name="fragment_add_todo">เพิ่มสิ่งที่ต้องทำใหม่</string>
+    <string name="fragment_edit_todo">แก้ไขสิ่งที่ต้องทำ</string>
+    <string name="hint_add_todo">ใส่สิ่งที่ต้องทำของคุณที่นี่</string>
+    <string name="label_deadline_long">ฉันต้องทำโดย:</string>
+    <string name="label_deadline_short">วันกำหนดส่ง:</string>
+    <string name="toast_todo_empty">สิ่งที่ต้องทำต้องไม่ว่างเปล่า!</string>
+    <string name="toast_todo_saved">บันทึกสิ่งที่ต้องทำแล้ว</string>
+    <string name="toast_todo_deleted">ลบสิ่งที่ต้องทำแล้ว</string>
+    <string name="toast_todos_deleted">รายการที่ต้องทำจะถูกลบ</string>
+    <string name="dialog_delete_todo">สิ่งที่ต้องทำที่ร้องขอจะถูกลบ คุณแน่ใจไหม?</string>
+    <string name="dialog_delete_todos">รายการที่ต้องทำจะถูกลบ คุณแน่ใจไหม?</string>
+    <string name="dialog_delete_attention">ความสนใจ!</string>
+</resources>

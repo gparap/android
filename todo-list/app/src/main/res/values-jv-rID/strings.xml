@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dhaptar sing kudu ditindakake</string>
+    <string name="add">Tambah</string>
+    <string name="delete">Mbusak</string>
+    <string name="cancel">Batal</string>
+    <string name="set_time">Setel Wektu</string>
+    <string name="set_date">Tanggal Setel</string>
+    <string name="logo">logo</string>
+    <string name="description_add_todo">Tambah To-Do</string>
+    <string name="description_todo_icon">Ikon sing kudu ditindakake</string>
+    <string name="fragment_todo_list_title">Dhaptar sing kudu ditindakake</string>
+    <string name="fragment_add_todo">Tambah To-Do Anyar</string>
+    <string name="fragment_edit_todo">Sunting Kanggo Nggawe</string>
+    <string name="hint_add_todo">ketik To-Do kene</string>
+    <string name="label_deadline_long">Aku kudu nindakake kanthi:</string>
+    <string name="label_deadline_short">deadline:</string>
+    <string name="toast_todo_empty">To-Do ora bisa kosong!</string>
+    <string name="toast_todo_saved">Disimpen Kanggo disimpen</string>
+    <string name="toast_todo_deleted">To-Do dibusak</string>
+    <string name="toast_todos_deleted">Dhaptar To-Do dibusak</string>
+    <string name="dialog_delete_todo">To-Do sing dijaluk bakal dibusak. Apa sampeyan yakin?</string>
+    <string name="dialog_delete_todos">Dhaptar To-Do bakal dibusak. Apa sampeyan yakin?</string>
+    <string name="dialog_delete_attention">Manungsa waé!</string>
+</resources>
