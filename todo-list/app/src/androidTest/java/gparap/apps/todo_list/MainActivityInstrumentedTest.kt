@@ -94,7 +94,7 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun addToDo_isToDoAddedInRecyclerView() {
-        val todoAdded = "adding a new to-do..."
+        val todoAdded = "Adding a new to-do..."
 
         //create and save a new to-do
         onView(withId(R.id.fabAddToDo)).perform(click())
@@ -125,9 +125,9 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun editToDo_isPickedToDoDisplayedInEditToDo() {
-        createToDoForTesting("todo0")
+        createToDoForTesting("Todo0")
         deleteToDoList()
-        val firstToDoText = "todo1"
+        val firstToDoText = "Todo1"
         createToDoForTesting(firstToDoText)
 
         //pick first to-do in the list
@@ -140,7 +140,7 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun onFragmentEditToDo_showToastMessageIfToDoTextIsEmpty() {
-        val firstToDoText = "todo1"
+        val firstToDoText = "Todo1"
         createToDoForTesting(firstToDoText)
 
         //wait to clear toast message
@@ -168,10 +168,10 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun editToDo_isToDoEditedInRecyclerView() {
-        createToDoForTesting("todo0")
+        createToDoForTesting("Todo0")
         deleteToDoList()
-        val firstToDoText = "todo1"
-        val editedToDoText = "todo11"
+        val firstToDoText = "Todo1"
+        val editedToDoText = "Todo11"
         createToDoForTesting(firstToDoText)
 
         //pick first to-do in the list
@@ -190,7 +190,7 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun swipeLeftAToDo_isDeleteConfirmationDialogDisplayed() {
-        createToDoForTesting("todo1")
+        createToDoForTesting("Todo1")
 
         onView(withId(R.id.recyclerViewToDo)).perform(
             RecyclerViewActions.actionOnItemAtPosition<ToDoAdapter.ToDoViewHolder>(0, swipeLeft())
@@ -201,7 +201,7 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun swipeRightAToDo_isDeleteConfirmationDialogDisplayed() {
-        createToDoForTesting("todo1")
+        createToDoForTesting("Todo1")
 
         onView(withId(R.id.recyclerViewToDo)).perform(
             RecyclerViewActions.actionOnItemAtPosition<ToDoAdapter.ToDoViewHolder>(0, swipeRight())
@@ -213,7 +213,7 @@ class MainActivityInstrumentedTest {
     @Test
     fun swipeLeftAToDo_deleteToDo() {
         deleteToDoList()
-        val testingToDo = "todo1"
+        val testingToDo = "Todo1"
         createToDoForTesting(testingToDo)
 
         //swipe to delete
@@ -232,7 +232,7 @@ class MainActivityInstrumentedTest {
     @Test
     fun swipeRightAToDo_deleteToDo() {
         deleteToDoList()
-        val testingToDo = "todo2"
+        val testingToDo = "Todo2"
         createToDoForTesting(testingToDo)
 
         //swipe to delete
@@ -250,7 +250,7 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun swipeLeftAToDo_cancelToDoDeleting() {
-        val testingToDo = "todo3"
+        val testingToDo = "Todo3"
         createToDoForTesting(testingToDo)
 
         onView(withId(R.id.recyclerViewToDo)).perform(
@@ -275,7 +275,7 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun swipeRightAToDo_cancelToDoDeleting() {
-        val testingToDo = "todo4"
+        val testingToDo = "Todo4"
         createToDoForTesting(testingToDo)
 
         onView(withId(R.id.recyclerViewToDo)).perform(
@@ -300,9 +300,9 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun actionbarOptionsMenu_deleteToDo() {
-        createToDoForTesting("todo0")
+        createToDoForTesting("Todo0")
         deleteToDoList()
-        val testingToDo = "delete me to-do"
+        val testingToDo = "Delete me to-do"
         createToDoForTesting(testingToDo)
 
         //pick to-do for editing
@@ -321,11 +321,11 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun actionbarOptionsMenu_deleteToDoList() {
-        createToDoForTesting("todo0")
+        createToDoForTesting("Todo0")
         deleteToDoList()
         //add 2 new todos to list
-        val testingToDo1 = "to-do 1"
-        val testingToDo2 = "to-do 2"
+        val testingToDo1 = "To-do 1"
+        val testingToDo2 = "To-do 2"
         createToDoForTesting(testingToDo1)
         createToDoForTesting(testingToDo2)
         var todosCount = 2
@@ -342,12 +342,12 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun actionbarOptionsMenu_deleteToDoListCancelation() {
-        createToDoForTesting("todo0")
+        createToDoForTesting("Todo0")
         deleteToDoList()
 
         //add 2 new todos to list
-        val testingToDo1 = "to-do 1"
-        val testingToDo2 = "to-do 2"
+        val testingToDo1 = "To-do 1"
+        val testingToDo2 = "To-do 2"
         createToDoForTesting(testingToDo1)
         createToDoForTesting(testingToDo2)
         var todosCount = 2
