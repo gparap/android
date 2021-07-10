@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Meine To-Do-Liste</string>
+    <string name="add">Hinzufügen</string>
+    <string name="delete">Löschen</string>
+    <string name="cancel">Stornieren</string>
+    <string name="set_time">Zeit einstellen</string>
+    <string name="set_date">Datum einstellen</string>
+    <string name="logo">Logo</string>
+    <string name="description_add_todo">Aufgaben hinzufügen</string>
+    <string name="description_todo_icon">To-Do-Symbol</string>
+    <string name="fragment_todo_list_title">Meine To-Do-Liste</string>
+    <string name="fragment_add_todo">Neue Aufgaben hinzufügen</string>
+    <string name="fragment_edit_todo">Aufgaben bearbeiten</string>
+    <string name="hint_add_todo">geben Sie hier Ihre To-Do ein</string>
+    <string name="label_deadline_long">Ich muss es tun durch:</string>
+    <string name="label_deadline_short">Frist:</string>
+    <string name="toast_todo_empty">To-Do darf nicht leer sein!</string>
+    <string name="toast_todo_saved">To-Do gespeichert.</string>
+    <string name="toast_todo_deleted">Aufgaben gelöscht.</string>
+    <string name="toast_todos_deleted">To-Do-Liste wird gelöscht.</string>
+    <string name="dialog_delete_todo">Das angeforderte To-Do wird gelöscht. Bist du sicher?</string>
+    <string name="dialog_delete_todos">Die To-Do-Liste wird gelöscht. Bist du sicher?</string>
+    <string name="dialog_delete_attention">Beachtung!</string>
+</resources>

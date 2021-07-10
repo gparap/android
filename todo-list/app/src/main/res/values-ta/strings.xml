@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">எனது செய்ய வேண்டிய பட்டியல்</string>
+    <string name="add">கூட்டு</string>
+    <string name="delete">அழி</string>
+    <string name="cancel">ரத்துசெய்</string>
+    <string name="set_time">நேரத்தை அமைக்கவும்</string>
+    <string name="set_date">தேதி அமைக்கவும்</string>
+    <string name="logo">லோகோ</string>
+    <string name="description_add_todo">செய்ய வேண்டியதைச் சேர்க்கவும்</string>
+    <string name="description_todo_icon">செய்ய வேண்டிய ஐகான்</string>
+    <string name="fragment_todo_list_title">எனது செய்ய வேண்டிய பட்டியல்</string>
+    <string name="fragment_add_todo">செய்ய வேண்டியதைச் சேர்க்கவும்</string>
+    <string name="fragment_edit_todo">செய்யத் திருத்து</string>
+    <string name="hint_add_todo">செய்ய வேண்டியதை இங்கே உள்ளிடவும்</string>
+    <string name="label_deadline_long">நான் இதை செய்ய வேண்டும்:</string>
+    <string name="label_deadline_short">காலக்கெடுவை:</string>
+    <string name="toast_todo_empty">செய்ய வேண்டியது காலியாக இருக்க முடியாது!</string>
+    <string name="toast_todo_saved">செய்ய வேண்டியது சேமிக்கப்பட்டது.</string>
+    <string name="toast_todo_deleted">செய்ய வேண்டியது நீக்கப்பட்டது.</string>
+    <string name="toast_todos_deleted">செய்ய வேண்டிய பட்டியல் நீக்கப்பட்டது.</string>
+    <string name="dialog_delete_todo">செய்ய வேண்டியவை நீக்கப்படும். நீ சொல்வது உறுதியா?</string>
+    <string name="dialog_delete_todos">செய்ய வேண்டிய பட்டியல் நீக்கப்படும். நீ சொல்வது உறுதியா?</string>
+    <string name="dialog_delete_attention">கவனம்!</string>
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">내 할 일 목록</string>
+    <string name="add">더하다</string>
+    <string name="delete">지우다</string>
+    <string name="cancel">취소</string>
+    <string name="set_time">시간 설정</string>
+    <string name="set_date">날짜 설정</string>
+    <string name="logo">심벌 마크</string>
+    <string name="description_add_todo">할 일 추가</string>
+    <string name="description_todo_icon">할 일 아이콘</string>
+    <string name="fragment_todo_list_title">내 할 일 목록</string>
+    <string name="fragment_add_todo">새 할 일 추가</string>
+    <string name="fragment_edit_todo">할 일 편집</string>
+    <string name="hint_add_todo">여기에 할 일을 입력하세요.</string>
+    <string name="label_deadline_long">다음과 같이 해야 합니다.</string>
+    <string name="label_deadline_short">마감 시간:</string>
+    <string name="toast_todo_empty">할 일을 비워둘 수 없습니다!</string>
+    <string name="toast_todo_saved">할일이 저장되었습니다.</string>
+    <string name="toast_todo_deleted">할 일이 삭제되었습니다.</string>
+    <string name="toast_todos_deleted">할 일 목록이 삭제됩니다.</string>
+    <string name="dialog_delete_todo">요청한 할 일을 삭제합니다. 확실합니까?</string>
+    <string name="dialog_delete_todos">할 일 목록이 삭제됩니다. 확실합니까?</string>
+    <string name="dialog_delete_attention">주의!</string>
+</resources>

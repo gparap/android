@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ma liste de choses à faire</string>
+    <string name="add">Ajouter</string>
+    <string name="delete">Effacer</string>
+    <string name="cancel">Annuler</string>
+    <string name="set_time">Régler le temps</string>
+    <string name="set_date">Régler la date</string>
+    <string name="logo">logo</string>
+    <string name="description_add_todo">Ajouter une tâche</string>
+    <string name="description_todo_icon">Icône à faire</string>
+    <string name="fragment_todo_list_title">Ma liste de choses à faire</string>
+    <string name="fragment_add_todo">Ajouter une nouvelle tâche</string>
+    <string name="fragment_edit_todo">Modifier la tâche</string>
+    <string name="hint_add_todo">entrez votre tâche ici</string>
+    <string name="label_deadline_long">Je dois le faire par :</string>
+    <string name="label_deadline_short">date limite:</string>
+    <string name="toast_todo_empty">To-Do ne peut pas être vide !</string>
+    <string name="toast_todo_saved">À faire enregistré.</string>
+    <string name="toast_todo_deleted">À faire supprimé.</string>
+    <string name="toast_todos_deleted">La liste des tâches est supprimée.</string>
+    <string name="dialog_delete_todo">La tâche demandée sera supprimée. Êtes-vous sûr?</string>
+    <string name="dialog_delete_todos">La liste des tâches sera supprimée. Êtes-vous sûr?</string>
+    <string name="dialog_delete_attention">Attention!</string>
+</resources>

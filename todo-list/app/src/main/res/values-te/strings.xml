@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">నా చేయవలసిన జాబితా</string>
+    <string name="add">జోడించు</string>
+    <string name="delete">తొలగించు</string>
+    <string name="cancel">రద్దు చేయండి</string>
+    <string name="set_time">సమయం సరిచేయి</string>
+    <string name="set_date">తేదీని సెట్ చేయండి</string>
+    <string name="logo">లోగో</string>
+    <string name="description_add_todo">చేయవలసిన పనిని జోడించండి</string>
+    <string name="description_todo_icon">చేయవలసిన చిహ్నం</string>
+    <string name="fragment_todo_list_title">నా చేయవలసిన జాబితా</string>
+    <string name="fragment_add_todo">చేయవలసిన క్రొత్తదాన్ని జోడించండి</string>
+    <string name="fragment_edit_todo">చేయవలసిన పనిని సవరించండి</string>
+    <string name="hint_add_todo">మీ చేయవలసిన పనిని ఇక్కడ నమోదు చేయండి</string>
+    <string name="label_deadline_long">నేను దీన్ని చేయాలి:</string>
+    <string name="label_deadline_short">గడువు:</string>
+    <string name="toast_todo_empty">చేయవలసినవి ఖాళీగా ఉండకూడదు!</string>
+    <string name="toast_todo_saved">చేయవలసినవి సేవ్ చేయబడ్డాయి.</string>
+    <string name="toast_todo_deleted">చేయవలసినవి తొలగించబడ్డాయి.</string>
+    <string name="toast_todos_deleted">చేయవలసిన జాబితా తొలగించబడింది.</string>
+    <string name="dialog_delete_todo">అభ్యర్థించిన చేయవలసినవి తొలగించబడతాయి. మీరు చెప్పేది నిజమా?</string>
+    <string name="dialog_delete_todos">చేయవలసిన జాబితా తొలగించబడుతుంది. మీరు చెప్పేది నిజమా?</string>
+    <string name="dialog_delete_attention">శ్రద్ధ!</string>
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Мой список дел</string>
+    <string name="add">Добавлять</string>
+    <string name="delete">Удалить</string>
+    <string name="cancel">Отмена</string>
+    <string name="set_time">Установленное время</string>
+    <string name="set_date">Установить дату</string>
+    <string name="logo">логотип</string>
+    <string name="description_add_todo">Добавить задачу</string>
+    <string name="description_todo_icon">Значок списка дел</string>
+    <string name="fragment_todo_list_title">Мой список дел</string>
+    <string name="fragment_add_todo">Добавить новую задачу</string>
+    <string name="fragment_edit_todo">Редактировать To-Do</string>
+    <string name="hint_add_todo">введите здесь свои дела</string>
+    <string name="label_deadline_long">Я должен сделать это:</string>
+    <string name="label_deadline_short">срок:</string>
+    <string name="toast_todo_empty">To-Do не может быть пустым!</string>
+    <string name="toast_todo_saved">Задачи сохранены.</string>
+    <string name="toast_todo_deleted">Список дел удален.</string>
+    <string name="toast_todos_deleted">Список дел удален.</string>
+    <string name="dialog_delete_todo">Запрошенная задача будет удалена. Уверены ли вы?</string>
+    <string name="dialog_delete_todos">Список дел будет удален. Уверены ли вы?</string>
+    <string name="dialog_delete_attention">Внимание!</string>
+</resources>

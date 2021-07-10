@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="add">Idagdag pa</string>
+    <string name="delete">Tanggalin</string>
+    <string name="cancel">Kanselahin</string>
+    <string name="set_time">Itakda ang Oras</string>
+    <string name="set_date">Nakatakdang petsa</string>
+    <string name="logo">logo</string>
+    <string name="description_add_todo">Idagdag sa Gagawin</string>
+    <string name="description_todo_icon">I-Do Icon</string>
+    <string name="fragment_todo_list_title">Listahan ng Aking Gagawin</string>
+    <string name="fragment_add_todo">Magdagdag ng Bagong Gagawin</string>
+    <string name="fragment_edit_todo">I-edit ang Dapat Gawin</string>
+    <string name="hint_add_todo">ipasok ang iyong Gagawin dito</string>
+    <string name="label_deadline_long">Kailangan kong gawin ito sa pamamagitan ng:</string>
+    <string name="label_deadline_short">deadline:</string>
+    <string name="toast_todo_empty">Ang To-Do ay hindi maaaring walang laman!</string>
+    <string name="toast_todo_saved">Nai-save na To-Do.</string>
+    <string name="toast_todo_deleted">Tinanggal ang To-Do.</string>
+    <string name="toast_todos_deleted">Ang listahan ng Gagawin ay tinanggal.</string>
+    <string name="dialog_delete_todo">Tatanggalin ang hiniling na Gagawin. Sigurado ka ba?</string>
+    <string name="dialog_delete_todos">Ang listahan ng Gagawin ay tatanggalin. Sigurado ka ba?</string>
+    <string name="dialog_delete_attention">Pansin!</string>
+</resources>

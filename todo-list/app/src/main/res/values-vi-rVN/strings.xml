@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Danh sách việc cần làm của tôi</string>
+    <string name="add">Thêm vào</string>
+    <string name="delete">Xóa bỏ</string>
+    <string name="cancel">Huỷ bỏ</string>
+    <string name="set_time">Cài đặt thời gian</string>
+    <string name="set_date">Đặt ngày</string>
+    <string name="logo">Logo</string>
+    <string name="description_add_todo">Thêm việc cần làm</string>
+    <string name="description_todo_icon">Biểu tượng việc cần làm</string>
+    <string name="fragment_todo_list_title">Danh sách việc cần làm của tôi</string>
+    <string name="fragment_add_todo">Thêm việc cần làm mới</string>
+    <string name="fragment_edit_todo">Chỉnh sửa việc cần làm</string>
+    <string name="hint_add_todo">nhập Việc cần làm của bạn tại đây</string>
+    <string name="label_deadline_long">Tôi phải làm điều đó bằng cách:</string>
+    <string name="label_deadline_short">hạn chót:</string>
+    <string name="toast_todo_empty">Việc cần làm không được để trống!</string>
+    <string name="toast_todo_saved">Việc cần làm đã được lưu.</string>
+    <string name="toast_todo_deleted">Việc cần làm đã bị xóa.</string>
+    <string name="toast_todos_deleted">Danh sách việc cần làm bị xóa.</string>
+    <string name="dialog_delete_todo">Việc cần làm được yêu cầu sẽ bị xóa. Bạn có chắc không?</string>
+    <string name="dialog_delete_todos">Danh sách việc cần làm sẽ bị xóa. Bạn có chắc không?</string>
+    <string name="dialog_delete_attention">Chú ý!</string>
+</resources>
