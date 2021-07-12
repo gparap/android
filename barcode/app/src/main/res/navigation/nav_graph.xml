@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_scanner">
+
+    <fragment
+        android:id="@+id/navigation_scanner"
+        android:name="gparap.apps.barcode.ui.scanner.ScannerFragment"
+        android:label="@string/title_scanner"
+        tools:layout="@layout/fragment_scanner" />
+
+    <fragment
+        android:id="@+id/navigation_generator"
+        android:name="gparap.apps.barcode.ui.generator.GeneratorFragment"
+        android:label="@string/title_generator"
+        tools:layout="@layout/fragment_generator" />
+
+</navigation>
