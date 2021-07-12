@@ -19,40 +19,38 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import gparap.apps.barcode.databinding.FragmentGeneratorBinding
 
 class GeneratorFragment : Fragment() {
-
     private lateinit var generatorViewModel: GeneratorViewModel
-    private var _binding: FragmentGeneratorBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private var fragmentGeneratorBinding: FragmentGeneratorBinding? = null
+    private val binding get() = fragmentGeneratorBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        generatorViewModel =
-            ViewModelProvider(this).get(GeneratorViewModel::class.java)
+        //create (or return existing) ViewModel for this fragment
+        generatorViewModel = ViewModelProvider(this).get(GeneratorViewModel::class.java)
 
-        _binding = FragmentGeneratorBinding.inflate(inflater, container, false)
+        //return the root View associated with this Fragment layout
+        fragmentGeneratorBinding = FragmentGeneratorBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textCreator
-        generatorViewModel.text.observe(viewLifecycleOwner, {
-            textView.text = it
+        //observe text for generating a barcode
+        val editTextGenerateBarcode: EditText = binding.editTextGenerateBarcode
+        generatorViewModel.barcodeText.observe(viewLifecycleOwner, {
+            editTextGenerateBarcode.setText(it)
         })
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        fragmentGeneratorBinding = null
     }
 }

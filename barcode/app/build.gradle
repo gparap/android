@@ -9,12 +9,19 @@ android {
 
     defaultConfig {
         applicationId "gparap.apps.barcode"
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        /*workaround for multiple declarations of 'androidx.test.internal.platform.ServiceLoaderWrapper'*/
+        configurations.all {
+            resolutionStrategy {
+                force 'androidx.test:monitor:1.4.0-alpha06'
+            }
+        }
     }
 
     buildTypes {
@@ -53,4 +60,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation 'androidx.navigation:navigation-testing:2.3.5'
+    debugImplementation 'androidx.fragment:fragment-testing:1.3.5'
+
+    //barcode generator
+    implementation 'com.journeyapps:zxing-android-embedded:4.2.0'
 }
