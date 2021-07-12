@@ -12,7 +12,7 @@
         android:id="@+id/frameGeneratedBarcode"
         android:layout_width="@dimen/frame_layout_width"
         android:layout_height="@dimen/frame_layout_height"
-        android:layout_marginTop="@dimen/frame_layout_layout_marginTop"
+        android:layout_marginTop="@dimen/frame_layout_marginTop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

@@ -21,8 +21,6 @@ import androidx.lifecycle.ViewModel
 
 class ScannerViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is scanner Fragment"
-    }
-    val text: LiveData<String> = _text
+    private val barcodeScanResultTextLivedata = MutableLiveData<String>()
+    val barcodeScanResultText: LiveData<String> = barcodeScanResultTextLivedata
 }

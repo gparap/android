@@ -27,25 +27,24 @@ import gparap.apps.barcode.databinding.FragmentScannerBinding
 class ScannerFragment : Fragment() {
 
     private lateinit var scannerViewModel: ScannerViewModel
-    private var _binding: FragmentScannerBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private var fragmentScannerBinding: FragmentScannerBinding? = null
+    private val binding get() = fragmentScannerBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        scannerViewModel =
-            ViewModelProvider(this).get(ScannerViewModel::class.java)
+        //create (or return existing) ViewModel for this fragment
+        scannerViewModel = ViewModelProvider(this).get(ScannerViewModel::class.java)
 
-        _binding = FragmentScannerBinding.inflate(inflater, container, false)
+        //return the root View associated with this Fragment layout
+        fragmentScannerBinding = FragmentScannerBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textScanner
-        scannerViewModel.text.observe(viewLifecycleOwner, {
+        //observe text for generating a barcode
+        val textView: TextView = binding.textViewScanResult
+        scannerViewModel.barcodeScanResultText.observe(viewLifecycleOwner, {
             textView.text = it
         })
         return root
@@ -53,6 +52,6 @@ class ScannerFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        fragmentScannerBinding = null
     }
 }
