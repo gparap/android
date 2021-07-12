@@ -6,7 +6,9 @@
     <!-- Design dimensions. -->
     <dimen name="frame_layout_width">192dp</dimen>
     <dimen name="frame_layout_height">192dp</dimen>
-    <dimen name="frame_layout_layout_marginTop">32dp</dimen>
+    <dimen name="frame_layout_marginTop">32dp</dimen>
+    <dimen name="surfaceView_layout_margin">8dp</dimen>
+    <dimen name="textView_layout_marginTop">16dp</dimen>
 
     <!-- Text. -->
     <dimen name="textView_elevation">2dp</dimen>elevation

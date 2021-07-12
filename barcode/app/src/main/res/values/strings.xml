@@ -6,4 +6,5 @@
     <string name="text_generated_barcode">Generated QR Code</string>
     <string name="hint_enter_text_to_generate_barcode">Enter text to generate QR Code</string>
     <string name="button_generate_barcode">Generate</string>
+    <string name="button_scan_barcode">Scan</string>
 </resources>
