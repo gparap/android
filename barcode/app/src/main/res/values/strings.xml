@@ -2,4 +2,8 @@
     <string name="app_name">Barcode</string>
     <string name="title_scanner">Scan QR code</string>
     <string name="title_generator">Generate QR code</string>
+    <string name="description_generated_barcode">Generated QR Code</string>
+    <string name="text_generated_barcode">Generated QR Code</string>
+    <string name="hint_enter_text_to_generate_barcode">Enter text to generate QR Code</string>
+    <string name="button_generate_barcode">Generate</string>
 </resources>
