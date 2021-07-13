@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Daftar Tugas Saya</string>
-    <string name="add">Menambahkan</string>
     <string name="delete">Menghapus</string>
     <string name="cancel">Membatalkan</string>
     <string name="set_time">Atur waktu</string>
     <string name="set_date">Atur tanggal</string>
-    <string name="logo">logo</string>
     <string name="description_add_todo">Tambahkan To-Do</string>
     <string name="description_todo_icon">Ikon Yang Harus Dilakukan</string>
     <string name="fragment_todo_list_title">Daftar Tugas Saya</string>

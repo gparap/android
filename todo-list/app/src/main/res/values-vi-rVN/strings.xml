@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Danh sách việc cần làm của tôi</string>
-    <string name="add">Thêm vào</string>
     <string name="delete">Xóa bỏ</string>
     <string name="cancel">Huỷ bỏ</string>
     <string name="set_time">Cài đặt thời gian</string>
     <string name="set_date">Đặt ngày</string>
-    <string name="logo">Logo</string>
     <string name="description_add_todo">Thêm việc cần làm</string>
     <string name="description_todo_icon">Biểu tượng việc cần làm</string>
     <string name="fragment_todo_list_title">Danh sách việc cần làm của tôi</string>

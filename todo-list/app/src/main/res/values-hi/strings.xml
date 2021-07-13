@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">मेरी टू-डू सूची</string>
-    <string name="add">जोड़ना</string>
     <string name="delete">हटाएं</string>
     <string name="cancel">रद्द करना</string>
     <string name="set_time">निर्धारित समय</string>
     <string name="set_date">तारीख सेट करें</string>
-    <string name="logo">प्रतीक चिन्ह</string>
     <string name="description_add_todo">करने के लिए जोड़ें</string>
     <string name="description_todo_icon">टू-डू आइकन</string>
     <string name="fragment_todo_list_title">मेरी टू-डू सूची</string>

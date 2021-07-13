@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">எனது செய்ய வேண்டிய பட்டியல்</string>
-    <string name="add">கூட்டு</string>
     <string name="delete">அழி</string>
     <string name="cancel">ரத்துசெய்</string>
     <string name="set_time">நேரத்தை அமைக்கவும்</string>
     <string name="set_date">தேதி அமைக்கவும்</string>
-    <string name="logo">லோகோ</string>
     <string name="description_add_todo">செய்ய வேண்டியதைச் சேர்க்கவும்</string>
     <string name="description_todo_icon">செய்ய வேண்டிய ஐகான்</string>
     <string name="fragment_todo_list_title">எனது செய்ய வேண்டிய பட்டியல்</string>

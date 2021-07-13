@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">నా చేయవలసిన జాబితా</string>
-    <string name="add">జోడించు</string>
     <string name="delete">తొలగించు</string>
     <string name="cancel">రద్దు చేయండి</string>
     <string name="set_time">సమయం సరిచేయి</string>
     <string name="set_date">తేదీని సెట్ చేయండి</string>
-    <string name="logo">లోగో</string>
     <string name="description_add_todo">చేయవలసిన పనిని జోడించండి</string>
     <string name="description_todo_icon">చేయవలసిన చిహ్నం</string>
     <string name="fragment_todo_list_title">నా చేయవలసిన జాబితా</string>

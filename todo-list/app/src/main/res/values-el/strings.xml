@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Η λίστα εκκρεμοτήτων μου</string>
-    <string name="add">Προσθήκη</string>
     <string name="delete">Διαγραφή</string>
     <string name="cancel">Ακύρωση</string>
     <string name="set_time">Ρύθμιση ώρας</string>
     <string name="set_date">Ρύθμιση ημερομηνίας</string>
-    <string name="logo">λογότυπο</string>
     <string name="description_add_todo">Προσθήκη εκκρεμότητας</string>
     <string name="description_todo_icon">Εικονίδιο εκκρεμότητας</string>
     <string name="fragment_todo_list_title">Η λίστα εκκρεμοτήτων μου</string>

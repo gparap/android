@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="add">Idagdag pa</string>
     <string name="delete">Tanggalin</string>
     <string name="cancel">Kanselahin</string>
     <string name="set_time">Itakda ang Oras</string>
     <string name="set_date">Nakatakdang petsa</string>
-    <string name="logo">logo</string>
     <string name="description_add_todo">Idagdag sa Gagawin</string>
     <string name="description_todo_icon">I-Do Icon</string>
     <string name="fragment_todo_list_title">Listahan ng Aking Gagawin</string>

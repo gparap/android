@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">我的待辦事項清單</string>
-    <string name="add">添加</string>
     <string name="delete">刪除</string>
     <string name="cancel">取消</string>
     <string name="set_time">設置時間</string>
     <string name="set_date">設置日期</string>
-    <string name="logo">商標</string>
     <string name="description_add_todo">添加待辦事項</string>
     <string name="description_todo_icon">待辦事項圖標</string>
     <string name="fragment_todo_list_title">我的待辦事項清單</string>

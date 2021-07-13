@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Mi lista de tareas pendientes</string>
-    <string name="add">Agregar</string>
     <string name="delete">Borrar</string>
     <string name="cancel">Cancelar</string>
     <string name="set_time">Fijar tiempo</string>
     <string name="set_date">Define la fecha</string>
-    <string name="logo">logo</string>
     <string name="description_add_todo">Agregar tarea</string>
     <string name="description_todo_icon">Icono de tareas pendientes</string>
     <string name="fragment_todo_list_title">Mi lista de tareas pendientes</string>

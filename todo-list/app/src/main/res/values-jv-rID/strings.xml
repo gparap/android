@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Dhaptar sing kudu ditindakake</string>
-    <string name="add">Tambah</string>
     <string name="delete">Mbusak</string>
     <string name="cancel">Batal</string>
     <string name="set_time">Setel Wektu</string>
     <string name="set_date">Tanggal Setel</string>
-    <string name="logo">logo</string>
     <string name="description_add_todo">Tambah To-Do</string>
     <string name="description_todo_icon">Ikon sing kudu ditindakake</string>
     <string name="fragment_todo_list_title">Dhaptar sing kudu ditindakake</string>

@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/todo_view_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/todo_view_layout_padding">
@@ -78,7 +77,6 @@
 
     <!-- Divider for to-do list -->
     <View
-        android:id="@+id/dividerBar"
         android:layout_width="0dp"
         android:layout_height="@dimen/divider_layout_height"
         android:layout_marginTop="@dimen/layout_marginTop"

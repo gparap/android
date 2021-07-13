@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">আমার করণীয় তালিকা</string>
-    <string name="add">অ্যাড</string>
     <string name="delete">মুছে ফেলা</string>
     <string name="cancel">বাতিল</string>
     <string name="set_time">সেট সময়</string>
     <string name="set_date">তারিখ ঠিক করা</string>
-    <string name="logo">লোগো</string>
     <string name="description_add_todo">করণীয় যুক্ত করুন</string>
     <string name="description_todo_icon">করণীয় আইকন</string>
     <string name="fragment_todo_list_title">আমার করণীয় তালিকা</string>
