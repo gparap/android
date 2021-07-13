@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Мой список дел</string>
-    <string name="add">Добавлять</string>
     <string name="delete">Удалить</string>
     <string name="cancel">Отмена</string>
     <string name="set_time">Установленное время</string>
     <string name="set_date">Установить дату</string>
-    <string name="logo">логотип</string>
     <string name="description_add_todo">Добавить задачу</string>
     <string name="description_todo_icon">Значок списка дел</string>
     <string name="fragment_todo_list_title">Мой список дел</string>

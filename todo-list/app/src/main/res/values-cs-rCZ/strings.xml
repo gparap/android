@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Můj seznam úkolů</string>
-    <string name="add">Přidat</string>
     <string name="delete">Vymazat</string>
     <string name="cancel">zrušení</string>
     <string name="set_time">Nastavit čas</string>
     <string name="set_date">Nastavit datum</string>
-    <string name="logo">logo</string>
     <string name="description_add_todo">Přidat úkol</string>
     <string name="description_todo_icon">Ikona úkolů</string>
     <string name="fragment_todo_list_title">Můj seznam úkolů</string>

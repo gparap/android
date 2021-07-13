@@ -12,9 +12,6 @@
     </style>
 
     <!-- FloatingActionButton theme. -->
-    <style name="FloatingActionButtonTheme" parent="@style/Widget.MaterialComponents.FloatingActionButton">
-        <item name="materialThemeOverlay">@style/FloatingActionButtonThemeOverlay</item>
-    </style>
 
     <!-- FloatingActionButton theme overlay. -->
     <style name="FloatingActionButtonThemeOverlay">

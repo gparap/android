@@ -2,7 +2,6 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
     app:startDestination="@id/toDoListFragment">
 
     <fragment
@@ -20,7 +19,7 @@
         android:id="@+id/addToDoFragment"
         android:name="gparap.apps.todo_list.ui.add_todo.AddToDoFragment"
         android:label="fragment_add_todo"
-        tools:layout="@layout/fragment_add_todo" >
+        tools:layout="@layout/fragment_add_todo">
         <action
             android:id="@+id/action_addToDoFragment_to_toDoListFragment"
             app:destination="@id/toDoListFragment" />

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Meine To-Do-Liste</string>
-    <string name="add">Hinzufügen</string>
     <string name="delete">Löschen</string>
     <string name="cancel">Stornieren</string>
     <string name="set_time">Zeit einstellen</string>
     <string name="set_date">Datum einstellen</string>
-    <string name="logo">Logo</string>
     <string name="description_add_todo">Aufgaben hinzufügen</string>
     <string name="description_todo_icon">To-Do-Symbol</string>
     <string name="fragment_todo_list_title">Meine To-Do-Liste</string>

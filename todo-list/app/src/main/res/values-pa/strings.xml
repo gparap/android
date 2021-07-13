@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ਮੇਰੀ ਕਰਨ ਦੀ ਸੂਚੀ</string>
-    <string name="add">ਸ਼ਾਮਲ ਕਰੋ</string>
     <string name="delete">ਮਿਟਾਓ</string>
     <string name="cancel">ਰੱਦ ਕਰੋ</string>
     <string name="set_time">ਸਮਾਂ ਨਿਰਧਾਰਤ ਕਰੋ</string>
     <string name="set_date">ਤਾਰੀਖ ਨਿਰਧਾਰਤ ਕਰੋ</string>
-    <string name="logo">ਲੋਗੋ</string>
     <string name="description_add_todo">ਕਰਨ ਲਈ ਸ਼ਾਮਲ ਕਰੋ</string>
     <string name="description_todo_icon">ਕਰਨ ਲਈ ਆਈਕਾਨ</string>
     <string name="fragment_todo_list_title">ਮੇਰੀ ਕਰਨ ਦੀ ਸੂਚੀ</string>

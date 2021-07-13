@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">私のやることリスト</string>
-    <string name="add">追加</string>
     <string name="delete">削除</string>
     <string name="cancel">キャンセル</string>
     <string name="set_time">設定時間</string>
     <string name="set_date">日付を設定</string>
-    <string name="logo">ロゴ</string>
     <string name="description_add_todo">追加 -  Todo</string>
     <string name="description_todo_icon">To-Doアイコン</string>
     <string name="fragment_todo_list_title">私のやることリスト</string>
