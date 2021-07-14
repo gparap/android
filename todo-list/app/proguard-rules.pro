@@ -20,6 +20,3 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
-# Error inflating class androidx.fragment.app.FragmentContainerView
--keepnames class androidx.navigation.fragment.NavHostFragment
--keep class * extends androidx.fragment.app.Fragment{}
