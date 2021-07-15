@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Hangman</string>
+    <string name="description_gallows">Gallows</string>
+    <string name="button_start">Start</string>
+
+    <!-- Alphabet letters (placeholders at the end) -->
+    <string name="letter01">A</string>
+    <string name="letter02">B</string>
+    <string name="letter03">C</string>
+    <string name="letter04">D</string>
+    <string name="letter05">E</string>
+    <string name="letter06">F</string>
+    <string name="letter07">G</string>
+    <string name="letter08">H</string>
+    <string name="letter09">I</string>
+    <string name="letter10">J</string>
+    <string name="letter11">K</string>
+    <string name="letter12">L</string>
+    <string name="letter13">M</string>
+    <string name="letter14">N</string>
+    <string name="letter15">O</string>
+    <string name="letter16">P</string>
+    <string name="letter17">Q</string>
+    <string name="letter18">R</string>
+    <string name="letter19">S</string>
+    <string name="letter20">T</string>
+    <string name="letter21">U</string>
+    <string name="letter22">V</string>
+    <string name="letter23">W</string>
+    <string name="letter24">X</string>
+    <string name="letter25">Y</string>
+    <string name="letter26">Z</string>
+    <string name="letter27" />
+    <string name="letter28" />
+    <string name="letter29" />
+    <string name="letter30" />
+    <string name="letter31" />
+    <string name="letter32" />
+</resources>

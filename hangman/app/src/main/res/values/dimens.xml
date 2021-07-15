@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Design dimensions -->
+    <dimen name="imageView_layout_marginTop">16dp</dimen>
+    <dimen name="constraintlayout_paddingStart">8dp</dimen>
+    <dimen name="constraintlayout_paddingEnd">8dp</dimen>
+    <dimen name="textViewLetter_layout_width">32dp</dimen>
+    <dimen name="textViewLetter_textSize">18sp</dimen>
+</resources>
