@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Placeholder for TextViews containing all alphabet textViewLetters -->
+    <!-- TODO: it will be finalized (alphabet with max textViewLetters) during the app translation -->
+    <androidx.constraintlayout.helper.widget.Flow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/constraintlayout_paddingStart"
+        android:paddingEnd="@dimen/constraintlayout_paddingEnd"
+        app:constraint_referenced_ids="textViewLetter01, textViewLetter02, textViewLetter03,
+        textViewLetter04, textViewLetter05, textViewLetter06, textViewLetter07, textViewLetter08,
+        textViewLetter09, textViewLetter10, textViewLetter11, textViewLetter12, textViewLetter13,
+        textViewLetter14, textViewLetter15, textViewLetter16, textViewLetter17, textViewLetter18,
+        textViewLetter19, textViewLetter20, textViewLetter21, textViewLetter22, textViewLetter23,
+        textViewLetter24, textViewLetter25, textViewLetter26, textViewLetter27, textViewLetter28,
+        textViewLetter29, textViewLetter30, textViewLetter31, textViewLetter32"
+        app:flow_wrapMode="aligned"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewLetter01"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter01" />
+
+    <TextView
+        android:id="@+id/textViewLetter02"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter02"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter03"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter03"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter04"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter04"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter05"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter05"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter06"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter06"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter07"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter07"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter08"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter08"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter09"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter09"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter10"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter10"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter11"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter11"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter12"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter12"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter13"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter13"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter14"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter14"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter15"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter15"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter16"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter16"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter17"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter17"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter18"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter18"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter19"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter19"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter20"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter20"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter21"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter21"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter22"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter22"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter23"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter23"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter24"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter24"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter25"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter25"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter26"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter26"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter27"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter27"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter28"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter28"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter29"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter29"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter30"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter30"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter31"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter31"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewLetter32"
+        style="@style/ThemeTextViewLetter"
+        android:text="@string/letter32"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

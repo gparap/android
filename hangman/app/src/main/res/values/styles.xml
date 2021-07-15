@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Custom style for a TextView that holds an alphabet letter -->
+    <style name="ThemeTextViewLetter">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">@dimen/textViewLetter_layout_width</item>
+        <item name="android:background">@color/design_default_color_primary</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/textViewLetter_textSize</item>
+        <item name="android:gravity">center</item>
+    </style>
+</resources>
