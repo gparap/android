@@ -8,6 +8,7 @@
     <!-- Placeholder for TextViews containing all alphabet textViewLetters -->
     <!-- TODO: it will be finalized (alphabet with max textViewLetters) during the app translation -->
     <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flowAlphabet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/constraintlayout_paddingStart"
