@@ -24,6 +24,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import gparap.apps.hangman.utils.Utils
 import java.lang.StringBuilder
 
 class MainActivity : AppCompatActivity() {
@@ -33,10 +34,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var wordToFind: TextView
     private var currentLetter: Char? = null
     private var underscoredWord = StringBuilder()
-
-    //DEBUG
-    @Suppress("MemberVisibilityCanBePrivate")
-    val wordToTest = "HELLO HANGMAN WORLD"
+    private lateinit var wordToTest: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         //setup the word(s) to find
-        //TODO: randomize word
+        wordToTest = Utils.getRandomWord()
         createUnderscoredWords()
     }
 
