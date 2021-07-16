@@ -6,4 +6,5 @@
     <dimen name="constraintlayout_paddingEnd">8dp</dimen>
     <dimen name="textViewLetter_layout_width">32dp</dimen>
     <dimen name="textViewLetter_textSize">18sp</dimen>
+    <dimen name="letterSpacing">0.25</dimen>
 </resources>

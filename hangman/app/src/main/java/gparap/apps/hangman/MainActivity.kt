@@ -24,11 +24,19 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import java.lang.StringBuilder
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainActivityViewModel
     private var letters: ArrayList<TextView> = ArrayList()
     private lateinit var alphabetLayout: ConstraintLayout
+    private lateinit var wordToFind: TextView
+    private var currentLetter: Char? = null
+    private var underscoredWord = StringBuilder()
+
+    //DEBUG
+    @Suppress("MemberVisibilityCanBePrivate")
+    val wordToTest = "HELLO HANGMAN WORLD"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +57,10 @@ class MainActivity : AppCompatActivity() {
         viewModel.getLetters().observe(this, {
             letters = it
         })
+
+        //setup the word(s) to find
+        //TODO: randomize word
+        createUnderscoredWords()
     }
 
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
@@ -58,11 +70,49 @@ class MainActivity : AppCompatActivity() {
         outState.putString("placeholder", "placeholder")
     }
 
-    //remove used letter from visible (available) letters
+    //update the requested word with selected letters (if exist)
+    private fun searchLetter() {
+        wordToFind.text = underscoredWord
+        val indices = mutableListOf<Int>()
+
+        wordToTest.toCharArray().forEach {
+            //letter exists in requested word
+            if (it == currentLetter) {
+                //get all indices inside the requested word
+                wordToTest.toCharArray().forEachIndexed { index, char ->
+                    if (char.equals(it, true)) {
+                        indices.add(index)
+                    }
+                }
+
+                //set the found position inside the requested word
+                for (i in indices) {
+                    underscoredWord[i] = it
+                    wordToFind.text = underscoredWord
+                }
+            }
+        }
+    }
+
+    //fill-in with "_" all letters of the word
+    private fun createUnderscoredWords() {
+        for (i in wordToTest) {
+            if (i == ' ') {
+                underscoredWord.append(' ')
+            } else {
+                underscoredWord.append('_')
+            }
+        }
+        wordToFind.text = underscoredWord
+    }
+
+    //remove used letter from visible (available) letters and
+    //  set current letter to find
     private fun setLetterAsUsed(letter: TextView) {
         letter.visibility = View.GONE
         letters.remove(letter)
         viewModel.setLetters(letters)
+        currentLetter = letter.text.toString().single()
     }
 
     //persist visible letters during orientation changes
@@ -81,6 +131,7 @@ class MainActivity : AppCompatActivity() {
                     ) {
                         it.setOnClickListener {
                             setLetterAsUsed(it as TextView)
+                            searchLetter()
                         }
                         it.visibility = View.VISIBLE
                         tempList.add(it)
@@ -102,6 +153,7 @@ class MainActivity : AppCompatActivity() {
                 if (it.text.toString().isNotEmpty() && it.isVisible) {
                     it.setOnClickListener {
                         setLetterAsUsed(it as TextView)
+                        searchLetter()
                     }
                 } else {
                     it.visibility = View.GONE
@@ -112,5 +164,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun getWidgets() {
         alphabetLayout = findViewById(R.id.layoutAlphabet)
+        wordToFind = findViewById(R.id.textViewWordToFind)
     }
 }

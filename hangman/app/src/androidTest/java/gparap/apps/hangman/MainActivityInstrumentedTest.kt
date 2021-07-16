@@ -37,7 +37,7 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun isVisible_textViewUsedLetters() {
-        onView(withId(R.id.textViewUsedLetters)).check(matches(isDisplayed()))
+        onView(withId(R.id.textViewWordToFind)).check(matches(isDisplayed()))
     }
 
     @Test
