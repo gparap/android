@@ -16,6 +16,7 @@
 package gparap.apps.hangman.utils
 
 import gparap.apps.hangman.words.Colors
+import java.lang.StringBuilder
 import java.util.*
 import kotlin.random.Random
 
@@ -25,12 +26,22 @@ object Utils {
      */
     fun getRandomWord(): String {
         val index = Random.nextInt(Colors.colors.size)
-        println(Colors.colors[index])
-        println(Colors.colors[index])
-        println(Colors.colors[index])
-        println(Colors.colors[index])
-        println(Colors.colors[index])
-        println(Colors.colors[index])
         return Colors.colors[index].uppercase(Locale.getDefault())
+    }
+
+    /**
+     * Returns underscored word(s) ("_") filled-in with all letters of the word(s) under search,
+     * appending spaces between words.
+     */
+    fun getUnderscoredWords(word: String): StringBuilder {
+        val underscoredWord = StringBuilder()
+        for (w in word) {
+            if (w == ' ') {
+                underscoredWord.append(' ')
+            } else {
+                underscoredWord.append('_')
+            }
+        }
+        return underscoredWord
     }
 }
