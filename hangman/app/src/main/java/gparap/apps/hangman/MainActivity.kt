@@ -31,10 +31,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainActivityViewModel
     private var letters: ArrayList<TextView> = ArrayList()
     private lateinit var alphabetLayout: ConstraintLayout
-    private lateinit var wordToFind: TextView
-    private var currentLetter: Char? = null
+    private lateinit var textViewWordToFind: TextView
+    private lateinit var wordToFind: String
     private var underscoredWord = StringBuilder()
-    private lateinit var wordToTest: String
+    private var currentLetter: Char? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,8 +57,9 @@ class MainActivity : AppCompatActivity() {
         })
 
         //setup the word(s) to find
-        wordToTest = Utils.getRandomWord()
-        createUnderscoredWords()
+        wordToFind = Utils.getRandomWord()
+        underscoredWord = Utils.getUnderscoredWords(wordToFind)
+        textViewWordToFind.text = underscoredWord
     }
 
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
@@ -70,14 +71,14 @@ class MainActivity : AppCompatActivity() {
 
     //update the requested word with selected letters (if exist)
     private fun searchLetter() {
-        wordToFind.text = underscoredWord
+        textViewWordToFind.text = underscoredWord
         val indices = mutableListOf<Int>()
 
-        wordToTest.toCharArray().forEach {
+        wordToFind.toCharArray().forEach {
             //letter exists in requested word
             if (it == currentLetter) {
                 //get all indices inside the requested word
-                wordToTest.toCharArray().forEachIndexed { index, char ->
+                wordToFind.toCharArray().forEachIndexed { index, char ->
                     if (char.equals(it, true)) {
                         indices.add(index)
                     }
@@ -86,22 +87,10 @@ class MainActivity : AppCompatActivity() {
                 //set the found position inside the requested word
                 for (i in indices) {
                     underscoredWord[i] = it
-                    wordToFind.text = underscoredWord
+                    textViewWordToFind.text = underscoredWord
                 }
             }
         }
-    }
-
-    //fill-in with "_" all letters of the word
-    private fun createUnderscoredWords() {
-        for (i in wordToTest) {
-            if (i == ' ') {
-                underscoredWord.append(' ')
-            } else {
-                underscoredWord.append('_')
-            }
-        }
-        wordToFind.text = underscoredWord
     }
 
     //remove used letter from visible (available) letters and
@@ -162,6 +151,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun getWidgets() {
         alphabetLayout = findViewById(R.id.layoutAlphabet)
-        wordToFind = findViewById(R.id.textViewWordToFind)
+        textViewWordToFind = findViewById(R.id.textViewWordToFind)
     }
 }
