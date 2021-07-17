@@ -9,15 +9,15 @@
     <!-- Gallows -->
     <ImageView
         android:id="@+id/imageViewGallows"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/imageView_layout_width"
+        android:layout_height="@dimen/imageView_layout_height"
         android:layout_marginTop="@dimen/imageView_layout_marginTop"
         android:contentDescription="@string/description_gallows"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/hangman1" />
 
     <!-- Word to find -->
     <TextView
