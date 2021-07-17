@@ -16,7 +16,6 @@
 package gparap.apps.hangman
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -26,7 +25,6 @@ import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import gparap.apps.hangman.utils.Utils
-import java.lang.StringBuilder
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainActivityViewModel
@@ -46,10 +44,12 @@ class MainActivity : AppCompatActivity() {
         //create or retrieve the ViewModel of this Activity
         viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
-        //initialize the letters of the alphabet
+        //initialize hangman or retrieve state on orientation changes
         if (savedInstanceState == null) {
             initLettersByAlphabet()
+            initWordsToFindState()
         } else {
+            restoreWordsToFindState(savedInstanceState)
             initLetters()
         }
 
@@ -58,8 +58,10 @@ class MainActivity : AppCompatActivity() {
             letters = it
         })
 
-        //perform initial setup
-        setupWordsToFind()
+        //observe word to find TextView
+        viewModel.getWordToFind().observe(this, {
+            textViewWordToFind.text = it
+        })
 
         //starts a new round of hangman
         buttonStart.setOnClickListener {
@@ -67,11 +69,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
-        super.onSaveInstanceState(outState, outPersistentState)
-
-        //!!! we just need outState to be not null
-        outState.putString("placeholder", "placeholder")
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("wordToFind", wordToFind)
+        outState.putString("underscoredWord", underscoredWord.toString())
+        super.onSaveInstanceState(outState)
     }
 
     private fun startNewHangman() {
@@ -90,19 +91,26 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        setupWordsToFind()
+        initWordsToFindState()
+    }
+
+    //restore initial setup
+    private fun restoreWordsToFindState(savedInstanceState: Bundle) {
+        wordToFind = savedInstanceState.getString("wordToFind").toString()
+        underscoredWord.append(savedInstanceState.getString("underscoredWord"))
+        viewModel.setWordToFind(underscoredWord.toString())
     }
 
     //perform initial setup
-    private fun setupWordsToFind() {
+    private fun initWordsToFindState() {
         wordToFind = Utils.getRandomWord()
         underscoredWord = Utils.getUnderscoredWords(wordToFind)
-        textViewWordToFind.text = underscoredWord
+        viewModel.setWordToFind(underscoredWord.toString())
     }
 
     //update the requested word with selected letters (if exist)
     private fun searchLetter() {
-        textViewWordToFind.text = underscoredWord
+        viewModel.setWordToFind(underscoredWord.toString())
         val indices = mutableListOf<Int>()
 
         wordToFind.toCharArray().forEach {
@@ -118,7 +126,7 @@ class MainActivity : AppCompatActivity() {
                 //set the found position inside the requested word
                 for (i in indices) {
                     underscoredWord[i] = it
-                    textViewWordToFind.text = underscoredWord
+                    viewModel.setWordToFind(underscoredWord.toString())
                 }
             }
         }

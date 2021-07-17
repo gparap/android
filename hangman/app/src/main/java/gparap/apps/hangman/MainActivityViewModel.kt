@@ -28,4 +28,13 @@ class MainActivityViewModel : ViewModel() {
     fun setLetters(letters: ArrayList<TextView>) {
         letterLiveData.value = letters
     }
+
+    //word to find
+    private var wordLiveData: MutableLiveData<String> = MutableLiveData()
+    fun getWordToFind(): MutableLiveData<String> {
+        return wordLiveData
+    }
+    fun setWordToFind(word: String) {
+        wordLiveData.value = word
+    }
 }
