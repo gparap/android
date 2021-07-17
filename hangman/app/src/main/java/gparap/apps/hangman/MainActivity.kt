@@ -18,6 +18,7 @@ package gparap.apps.hangman
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainActivityViewModel
     private var letters: ArrayList<TextView> = ArrayList()
     private lateinit var alphabetLayout: ConstraintLayout
+    private lateinit var buttonStart: Button
     private lateinit var textViewWordToFind: TextView
     private lateinit var wordToFind: String
     private var underscoredWord = StringBuilder()
@@ -56,10 +58,13 @@ class MainActivity : AppCompatActivity() {
             letters = it
         })
 
-        //setup the word(s) to find
-        wordToFind = Utils.getRandomWord()
-        underscoredWord = Utils.getUnderscoredWords(wordToFind)
-        textViewWordToFind.text = underscoredWord
+        //perform initial setup
+        setupWordsToFind()
+
+        //starts a new round of hangman
+        buttonStart.setOnClickListener {
+            startNewHangman()
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
@@ -67,6 +72,32 @@ class MainActivity : AppCompatActivity() {
 
         //!!! we just need outState to be not null
         outState.putString("placeholder", "placeholder")
+    }
+
+    private fun startNewHangman() {
+        letters.clear()
+        alphabetLayout.children.forEach { it ->
+            if (it is TextView) {
+                letters.add(it)
+                if (it.text.toString().isNotEmpty()) {
+                    it.visibility = View.VISIBLE
+                    it.setOnClickListener {
+                        setLetterAsUsed(it as TextView)
+                        searchLetter()
+                    }
+                } else {
+                    it.visibility = View.GONE
+                }
+            }
+        }
+        setupWordsToFind()
+    }
+
+    //perform initial setup
+    private fun setupWordsToFind() {
+        wordToFind = Utils.getRandomWord()
+        underscoredWord = Utils.getUnderscoredWords(wordToFind)
+        textViewWordToFind.text = underscoredWord
     }
 
     //update the requested word with selected letters (if exist)
@@ -152,5 +183,6 @@ class MainActivity : AppCompatActivity() {
     private fun getWidgets() {
         alphabetLayout = findViewById(R.id.layoutAlphabet)
         textViewWordToFind = findViewById(R.id.textViewWordToFind)
+        buttonStart = findViewById(R.id.buttonStart)
     }
 }
