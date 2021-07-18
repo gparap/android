@@ -3,6 +3,9 @@
     <string name="app_name">Κρεμάλα</string>
     <string name="description_gallows">Κρεμάλα</string>
     <string name="button_start">Ξεκίνα</string>
+    <string name="text_guesses_left">Προσπάθειες Ακόμη: \u0020</string>
+    <string name="text_winner">ΚΕΡΔΙΣΕΣ!!!</string>
+    <string name="text_loser" >Έχασες..</string>
     <string name="letter01">Α</string>
     <string name="letter02">Β</string>
     <string name="letter03">Γ</string>
