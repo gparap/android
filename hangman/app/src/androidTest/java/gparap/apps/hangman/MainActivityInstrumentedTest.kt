@@ -49,4 +49,14 @@ class MainActivityInstrumentedTest {
     fun isVisible_buttonStart() {
         onView(withId(R.id.buttonStart)).check(matches(isDisplayed()))
     }
+
+    @Test
+    fun isVisible_textViewGuessesLeft() {
+        onView(withId(R.id.textViewGuessesLeft)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isNotVisible_textViewWinLose() {
+        onView(withId(R.id.textViewWinLose)).check(matches(isDisplayed()))
+    }
 }

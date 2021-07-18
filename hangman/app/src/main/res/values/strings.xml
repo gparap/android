@@ -2,6 +2,9 @@
     <string name="app_name">Hangman</string>
     <string name="description_gallows">Gallows</string>
     <string name="button_start">Start</string>
+    <string name="text_guesses_left">Guesses Left: \u0020</string>
+    <string name="text_winner">YOU WON!!!</string>
+    <string name="text_loser" >You Lost..</string>
 
     <!-- Alphabet letters (placeholders at the end) -->
     <string name="letter01">A</string>

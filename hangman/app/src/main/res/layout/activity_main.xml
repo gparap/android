@@ -13,18 +13,50 @@
         android:layout_height="@dimen/imageView_layout_height"
         android:layout_marginTop="@dimen/imageView_layout_marginTop"
         android:contentDescription="@string/description_gallows"
+        android:src="@drawable/hangman1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/hangman1" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Guesses left till hanging -->
+    <TextView
+        android:id="@+id/textViewGuessesLeft"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/text_guesses_left"
+        android:textSize="@dimen/textSize_normal"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewGallows"
+        app:layout_constraintStart_toStartOf="@+id/imageViewGallows"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewGallows"
+        tools:text="Guesses Left: 7" />
+
+    <!-- Win/Lose message -->
+    <TextView
+        android:id="@+id/textViewWinLose"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/text_guesses_left"
+        android:textSize="@dimen/textSize_big"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewGallows"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageViewGallows"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGuessesLeft"
+        tools:text="YOU WIN/LOSE"
+        tools:visibility="visible" />
 
     <!-- Word to find -->
     <TextView
-        android:letterSpacing="@dimen/letterSpacing"
         android:id="@+id/textViewWordToFind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:letterSpacing="@dimen/letterSpacing"
+        android:textSize="@dimen/textSize_normal"
         app:layout_constraintBottom_toTopOf="@+id/layoutAlphabet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

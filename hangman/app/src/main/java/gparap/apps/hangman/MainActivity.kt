@@ -32,9 +32,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var alphabetLayout: ConstraintLayout
     private lateinit var buttonStart: Button
     private lateinit var textViewWordToFind: TextView
+    private lateinit var textViewGuessesLeft: TextView
+    private lateinit var textViewWinLose: TextView
     private lateinit var wordToFind: String
     private var underscoredWord = StringBuilder()
     private var currentLetter: Char? = null
+    private var guessesLeft = 7
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,9 +50,9 @@ class MainActivity : AppCompatActivity() {
         //initialize hangman or retrieve state on orientation changes
         if (savedInstanceState == null) {
             initLettersByAlphabet()
-            initWordsToFindState()
+            initHangmanState()
         } else {
-            restoreWordsToFindState(savedInstanceState)
+            restoreHangmanState(savedInstanceState)
             initLetters()
         }
 
@@ -72,6 +75,7 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString("wordToFind", wordToFind)
         outState.putString("underscoredWord", underscoredWord.toString())
+        outState.putInt("guessesLeft", guessesLeft)
         super.onSaveInstanceState(outState)
     }
 
@@ -91,21 +95,25 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        initWordsToFindState()
+        initHangmanState()
     }
 
-    //restore initial setup
-    private fun restoreWordsToFindState(savedInstanceState: Bundle) {
+    private fun restoreHangmanState(savedInstanceState: Bundle) {
         wordToFind = savedInstanceState.getString("wordToFind").toString()
         underscoredWord.append(savedInstanceState.getString("underscoredWord"))
+        textViewGuessesLeft.text = getString(R.string.text_guesses_left).plus(
+            savedInstanceState.getInt(("guessesLeft")).toString()
+        )
         viewModel.setWordToFind(underscoredWord.toString())
     }
 
-    //perform initial setup
-    private fun initWordsToFindState() {
+    private fun initHangmanState() {
         wordToFind = Utils.getRandomWord()
         underscoredWord = Utils.getUnderscoredWords(wordToFind)
         viewModel.setWordToFind(underscoredWord.toString())
+        textViewGuessesLeft.text = getString(R.string.text_guesses_left).plus(
+            guessesLeft.toString()
+        )
     }
 
     //update the requested word with selected letters (if exist)
@@ -192,5 +200,7 @@ class MainActivity : AppCompatActivity() {
         alphabetLayout = findViewById(R.id.layoutAlphabet)
         textViewWordToFind = findViewById(R.id.textViewWordToFind)
         buttonStart = findViewById(R.id.buttonStart)
+        textViewGuessesLeft = findViewById(R.id.textViewGuessesLeft)
+        textViewWinLose = findViewById(R.id.textViewWinLose)
     }
 }
