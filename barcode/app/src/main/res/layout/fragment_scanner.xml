@@ -9,7 +9,7 @@
 
     <!--Barcode scanning surface-->
     <SurfaceView
-        android:id="@+id/surfaceViewScanSurface"
+        android:id="@+id/surfaceViewScanResult"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/surfaceView_layout_margin"
@@ -42,5 +42,6 @@
         android:textSize="@dimen/textSize_normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewScanResult" />
 </androidx.constraintlayout.widget.ConstraintLayout>

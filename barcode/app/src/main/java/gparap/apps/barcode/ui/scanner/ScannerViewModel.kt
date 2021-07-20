@@ -20,7 +20,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class ScannerViewModel : ViewModel() {
-
+    //barcode scan result text
     private val barcodeScanResultTextLivedata = MutableLiveData<String>()
     val barcodeScanResultText: LiveData<String> = barcodeScanResultTextLivedata
+    fun setBarcodeText(barcodeText: String){
+        barcodeScanResultTextLivedata.value = barcodeText
+    }
+
+    //barcode scan result image
+    private val barcodeScanResultImageLivedata = MutableLiveData<String>()
+    val barcodeScanResultImage: LiveData<String> = barcodeScanResultImageLivedata
+    fun setBarcodeImage(barcodeImage: String){
+        barcodeScanResultImageLivedata.value = barcodeImage
+    }
 }
