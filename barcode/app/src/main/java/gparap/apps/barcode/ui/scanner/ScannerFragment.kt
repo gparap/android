@@ -15,17 +15,21 @@
  */
 package gparap.apps.barcode.ui.scanner
 
+import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.zxing.integration.android.IntentIntegrator
+import gparap.apps.barcode.R
 import gparap.apps.barcode.databinding.FragmentScannerBinding
 
 class ScannerFragment : Fragment() {
-
     private lateinit var scannerViewModel: ScannerViewModel
     private var fragmentScannerBinding: FragmentScannerBinding? = null
     private val binding get() = fragmentScannerBinding!!
@@ -42,16 +46,56 @@ class ScannerFragment : Fragment() {
         fragmentScannerBinding = FragmentScannerBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        //observe text for generating a barcode
-        val textView: TextView = binding.textViewScanResult
+        //observe barcode scan result text
+        val textViewScanResult: TextView = binding.textViewScanResult
         scannerViewModel.barcodeScanResultText.observe(viewLifecycleOwner, {
-            textView.text = it
+            textViewScanResult.text = it
         })
+
+        //observe barcode scan result image
+        val surfaceViewScanResult = binding.surfaceViewScanResult
+        scannerViewModel.barcodeScanResultImage.observe(viewLifecycleOwner, {
+            surfaceViewScanResult.background = Drawable.createFromPath(it)
+        })
+
+        //scan for barcodes
+        val buttonScanBarcode: Button = binding.buttonScanBarcode
+        buttonScanBarcode.setOnClickListener {
+            startBarcodeScanner()
+        }
+
         return root
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        //get the result of the scan
+        val intentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+        if (intentResult != null && intentResult.contents != null) {
+            //display the raw content of barcode
+            scannerViewModel.setBarcodeText(intentResult.contents)
+
+            //display the barcode image
+            scannerViewModel.setBarcodeImage(intentResult.barcodeImagePath)
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         fragmentScannerBinding = null
+    }
+
+    private fun startBarcodeScanner() {
+        //create an integrator for the scanning intent
+        val intentIntegrator = IntentIntegrator.forSupportFragment(this)
+
+        //set scanning options
+        intentIntegrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES)
+        intentIntegrator.setPrompt(getString(R.string.text_scan_barcode))
+        intentIntegrator.setBeepEnabled(true)
+        intentIntegrator.setBarcodeImageEnabled(true)
+        intentIntegrator.setOrientationLocked(false)
+
+        //start scanning
+        intentIntegrator.initiateScan()
     }
 }
