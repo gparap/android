@@ -15,12 +15,23 @@
  */
 package gparap.apps.barcode.ui.generator
 
+import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class GeneratorViewModel : ViewModel() {
-
+    //generated barcode text
     private val barcodeTextLivedata = MutableLiveData<String>()
     val barcodeText: LiveData<String> = barcodeTextLivedata
+    fun setBarcodeText(text: String) {
+        barcodeTextLivedata.value = text
+    }
+
+    //generated barcode image
+    private val barcodeImageLivedata = MutableLiveData<Bitmap>()
+    val barcodeImage: LiveData<Bitmap> = barcodeImageLivedata
+    fun setBarcodeImage(image: Bitmap) {
+        barcodeImageLivedata.value = image
+    }
 }

@@ -25,22 +25,6 @@
             android:layout_height="match_parent"
             android:background="@color/grey"
             android:contentDescription="@string/description_generated_barcode" />
-
-        <!--Generated barcode text info-->
-        <TextView
-            android:id="@+id/textViewGeneratedBarcodeInfo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:elevation="@dimen/textView_elevation"
-            android:gravity="center"
-            android:text="@string/text_generated_barcode"
-            android:textAlignment="center"
-            android:textSize="@dimen/textSize_normal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
     </FrameLayout>
 
     <!--Text input for generating barcode-->
@@ -49,10 +33,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:autofillHints="false"
-        android:inputType="textMultiLine"
         android:hint="@string/hint_enter_text_to_generate_barcode"
+        android:inputType="textMultiLine"
         android:textSize="@dimen/textSize_normal"
-        app:layout_constraintBottom_toTopOf="@+id/buttonGenerateBarcode"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,5 +51,6 @@
         android:textSize="@dimen/textSize_normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextGenerateBarcode" />
 </androidx.constraintlayout.widget.ConstraintLayout>
