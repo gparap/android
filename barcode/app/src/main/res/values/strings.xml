@@ -8,4 +8,5 @@
     <string name="button_generate_barcode">Generate</string>
     <string name="button_scan_barcode">Scan</string>
     <string name="text_scan_barcode">scan any barcode..</string>
+    <string name="toast_empty_text_generator">Please, enter text to generate QR Code..</string>
 </resources>

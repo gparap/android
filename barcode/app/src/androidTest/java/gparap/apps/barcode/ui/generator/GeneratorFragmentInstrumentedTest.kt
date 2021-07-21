@@ -39,12 +39,6 @@ class GeneratorFragmentInstrumentedTest {
     }
 
     @Test
-    fun isVisible_textViewGeneratedBarcodeInfo() {
-        onView(withId(R.id.textViewGeneratedBarcodeInfo)).check(matches(isDisplayed()))
-
-    }
-
-    @Test
     fun isVisible_editTextGenerateBarcode() {
         onView(withId(R.id.editTextGenerateBarcode)).check(matches(isDisplayed()))
 
