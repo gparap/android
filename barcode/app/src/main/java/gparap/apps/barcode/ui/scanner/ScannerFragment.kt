@@ -53,9 +53,9 @@ class ScannerFragment : Fragment() {
         })
 
         //observe barcode scan result image
-        val surfaceViewScanResult = binding.surfaceViewScanResult
+        val imageViewScanResult = binding.imageViewScanResult
         scannerViewModel.barcodeScanResultImage.observe(viewLifecycleOwner, {
-            surfaceViewScanResult.background = Drawable.createFromPath(it)
+            imageViewScanResult.background = Drawable.createFromPath(it)
         })
 
         //scan for barcodes
