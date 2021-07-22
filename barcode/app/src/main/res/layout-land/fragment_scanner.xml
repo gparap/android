@@ -4,21 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="?attr/actionBarSize"
-    tools:context=".ui.generator.GeneratorFragment">
+    tools:context=".ui.scanner.ScannerFragment">
 
-    <!--Generated barcode layout-->
+    <!--Scanned barcode layout-->
     <FrameLayout
-        android:id="@+id/frameGeneratedBarcode"
+        android:id="@+id/imageViewScanResult"
         android:layout_width="@dimen/frame_layout_width"
         android:layout_height="@dimen/frame_layout_height"
-        android:layout_marginTop="@dimen/frame_layout_marginTop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginStart="@dimen/frame_layout_marginStart"
+        app:layout_constraintBottom_toTopOf="@+id/buttonScanBarcode"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!--Generated barcode-->
+        <!--Scanned barcode-->
         <ImageView
             android:id="@+id/imageViewGeneratedBarcode"
             android:layout_width="match_parent"
@@ -27,30 +25,27 @@
             android:contentDescription="@string/description_generated_barcode" />
     </FrameLayout>
 
-    <!--Text input for generating barcode-->
-    <EditText
-        android:id="@+id/editTextGenerateBarcode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/text_layout_marginTop"
-        android:autofillHints="false"
-        android:background="@null"
+    <!--Barcode scanning result-->
+    <TextView
+        android:id="@+id/textViewScanResult"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/text_layout_marginStart"
+        android:layout_marginEnd="@dimen/text_layout_marginEnd"
         android:gravity="center"
-        android:hint="@string/hint_enter_text_to_generate_barcode"
-        android:inputType="textMultiLine"
         android:textSize="@dimen/textSize_normal"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewScanResult"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameGeneratedBarcode"
-        tools:ignore="LabelFor" />
+        app:layout_constraintStart_toEndOf="@+id/imageViewScanResult"
+        app:layout_constraintTop_toTopOf="@+id/imageViewScanResult"
+        tools:text="Scan Result Here" />
 
-    <!--Button for generating barcode-->
+    <!--Barcode scanning button-->
     <Button
-        android:id="@+id/buttonGenerateBarcode"
+        android:id="@+id/buttonScanBarcode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_generate_barcode"
+        android:text="@string/button_scan_barcode"
         android:textSize="@dimen/textSize_normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

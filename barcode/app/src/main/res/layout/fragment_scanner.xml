@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="?attr/actionBarSize"
     tools:context=".ui.scanner.ScannerFragment">
 
     <!--Scanned barcode layout-->
@@ -28,10 +29,10 @@
 
     <!--Barcode scanning result-->
     <TextView
-        android:layout_marginTop="@dimen/text_layout_marginTop"
         android:id="@+id/textViewScanResult"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_layout_marginTop"
         android:gravity="center"
         android:textSize="@dimen/textSize_normal"
         app:layout_constraintEnd_toEndOf="parent"
