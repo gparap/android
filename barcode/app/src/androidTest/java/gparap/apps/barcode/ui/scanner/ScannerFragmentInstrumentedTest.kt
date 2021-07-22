@@ -35,7 +35,7 @@ class ScannerFragmentInstrumentedTest {
 
     @Test
     fun isVisible_surfaceViewScanSurface() {
-        onView(withId(R.id.surfaceViewScanResult)).check(matches(isDisplayed()))
+        onView(withId(R.id.imageViewScanResult)).check(matches(isDisplayed()))
     }
 
     @Test

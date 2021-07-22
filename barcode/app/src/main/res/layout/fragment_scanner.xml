@@ -2,35 +2,42 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_fragment_scanner"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.scanner.ScannerFragment">
 
-    <!--Barcode scanning surface-->
-    <SurfaceView
-        android:id="@+id/surfaceViewScanResult"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="@dimen/surfaceView_layout_margin"
-        app:layout_constraintBottom_toTopOf="@+id/textViewScanResult"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!--Barcode scanning result-->
-    <TextView
-        android:id="@+id/textViewScanResult"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/textView_layout_marginTop"
-        android:gravity="center"
-        android:textSize="@dimen/textSize_normal"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <!--Scanned barcode layout-->
+    <FrameLayout
+        android:id="@+id/imageViewScanResult"
+        android:layout_width="@dimen/frame_layout_width"
+        android:layout_height="@dimen/frame_layout_height"
+        android:layout_marginTop="@dimen/frame_layout_marginTop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!--Generated barcode-->
+        <ImageView
+            android:id="@+id/imageViewGeneratedBarcode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/grey"
+            android:contentDescription="@string/description_generated_barcode" />
+    </FrameLayout>
+
+    <!--Barcode scanning result-->
+    <TextView
+        android:layout_marginTop="@dimen/text_layout_marginTop"
+        android:id="@+id/textViewScanResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/textSize_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewScanResult"
         tools:text="Scan Result Here" />
 
     <!--Barcode scanning button-->
