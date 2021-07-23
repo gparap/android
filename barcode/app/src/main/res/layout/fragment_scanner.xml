@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="?attr/actionBarSize"
+    android:paddingTop="@dimen/layout_paddingTop"
     tools:context=".ui.scanner.ScannerFragment">
 
     <!--Scanned barcode layout-->

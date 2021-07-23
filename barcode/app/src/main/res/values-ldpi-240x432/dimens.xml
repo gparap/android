@@ -1,14 +1,14 @@
 <resources>
-    <!-- Design dimensions. -->
-    <dimen name="layout_paddingTop">?attr/actionBarSize</dimen>
+    <!-- ldpi dimensions. -->
+    <dimen name="layout_paddingTop">48dp</dimen>
     <dimen name="frame_layout_width">192dp</dimen>
     <dimen name="frame_layout_height">192dp</dimen>
-    <dimen name="frame_layout_marginTop">32dp</dimen>
+    <dimen name="frame_layout_marginTop">8dp</dimen>
     <dimen name="frame_layout_marginStart">32dp</dimen>
-    <dimen name="text_layout_marginTop">16dp</dimen>
+    <dimen name="text_layout_marginTop">24dp</dimen>
     <dimen name="text_layout_marginStart">32dp</dimen>
     <dimen name="text_layout_marginEnd">32dp</dimen>
 
     <!-- Text. -->
-    <dimen name="textSize_normal">20sp</dimen>elevation
+    <dimen name="textSize_normal">16sp</dimen>elevation
 </resources>
