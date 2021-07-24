@@ -1,6 +1,6 @@
 <resources>
     <!-- Design dimensions. -->
-    <dimen name="layout_paddingTop">?attr/actionBarSize</dimen>
+    <dimen name="layout_paddingTop">56dp</dimen>
     <dimen name="frame_layout_width">192dp</dimen>
     <dimen name="frame_layout_height">192dp</dimen>
     <dimen name="frame_layout_marginTop">32dp</dimen>
