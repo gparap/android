@@ -1,0 +1,14 @@
+<resources>
+    <!-- mdpi dimensions. -->
+    <dimen name="layout_paddingTop">14dp</dimen>
+    <dimen name="frame_layout_width">144dp</dimen>
+    <dimen name="frame_layout_height">144dp</dimen>
+    <dimen name="frame_layout_marginTop">8dp</dimen>
+    <dimen name="frame_layout_marginStart">32dp</dimen>
+    <dimen name="text_layout_marginTop">16dp</dimen>
+    <dimen name="text_layout_marginStart">16dp</dimen>
+    <dimen name="text_layout_marginEnd">16dp</dimen>
+
+    <!-- Text. -->
+    <dimen name="textSize_normal">16sp</dimen>elevation
+</resources>
