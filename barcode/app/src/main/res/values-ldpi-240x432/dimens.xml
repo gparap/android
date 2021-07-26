@@ -10,5 +10,5 @@
     <dimen name="text_layout_marginEnd">32dp</dimen>
 
     <!-- Text. -->
-    <dimen name="textSize_normal">16sp</dimen>elevation
+    <dimen name="textSize_normal">16sp</dimen>
 </resources>
