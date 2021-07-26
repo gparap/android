@@ -1,0 +1,14 @@
+<resources>
+    <!-- xxxdpi dimensions . -->
+    <dimen name="layout_paddingTop">56dp</dimen>
+    <dimen name="frame_layout_width">188dp</dimen>
+    <dimen name="frame_layout_height">188dp</dimen>
+    <dimen name="frame_layout_marginTop">32dp</dimen>
+    <dimen name="frame_layout_marginStart">32dp</dimen>
+    <dimen name="text_layout_marginTop">16dp</dimen>
+    <dimen name="text_layout_marginStart">32dp</dimen>
+    <dimen name="text_layout_marginEnd">32dp</dimen>
+
+    <!-- Text. -->
+    <dimen name="textSize_normal">20sp</dimen>elevation
+</resources>
