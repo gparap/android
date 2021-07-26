@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- 7" Tablet dimensions . -->
     <dimen name="layout_paddingTop">56dp</dimen>
     <dimen name="frame_layout_width">208dp</dimen>
@@ -10,5 +10,6 @@
     <dimen name="text_layout_marginEnd">32dp</dimen>
 
     <!-- Text. -->
-    <dimen name="textSize_normal">22sp</dimen>elevation
+    <dimen name="textSize_normal">22sp</dimen>
+    <dimen name="design_bottom_navigation_icon_size" tools:override="true">28sp</dimen>
 </resources>

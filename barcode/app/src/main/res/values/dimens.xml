@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Design dimensions. -->
     <dimen name="layout_paddingTop">56dp</dimen>
     <dimen name="frame_layout_width">192dp</dimen>
@@ -10,5 +10,6 @@
     <dimen name="text_layout_marginEnd">32dp</dimen>
 
     <!-- Text. -->
-    <dimen name="textSize_normal">20sp</dimen>elevation
+    <dimen name="textSize_normal">20sp</dimen>
+    <dimen name="design_bottom_navigation_icon_size" tools:override="true">24sp</dimen>
 </resources>
