@@ -11,5 +11,4 @@
 
     <!-- Text. -->
     <dimen name="textSize_normal">22sp</dimen>
-    <dimen name="design_bottom_navigation_icon_size" tools:override="true">28sp</dimen>
 </resources>
