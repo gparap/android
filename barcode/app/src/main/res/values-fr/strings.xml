@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">code à barre</string>
+    <string name="title_scanner">Scanner le code-barres</string>
+    <string name="title_generator">Générer un code QR</string>
+    <string name="description_generated_barcode">Code QR généré</string>
+    <string name="hint_enter_text_to_generate_barcode">Entrez le texte pour générer le code QR</string>
+    <string name="button_generate_barcode">produire</string>
+    <string name="button_scan_barcode">Analyse</string>
+    <string name="text_scan_barcode">scannez n\'importe quel code-barres.</string>
+    <string name="toast_empty_text_generator">Veuillez saisir du texte pour générer le code QR.</string>
+</resources>

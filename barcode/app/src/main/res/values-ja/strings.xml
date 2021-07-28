@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">バーコード</string>
+    <string name="title_scanner">バーコードをスキャンする</string>
+    <string name="title_generator">QRコードを生成する</string>
+    <string name="description_generated_barcode">生成されたQRコード</string>
+    <string name="hint_enter_text_to_generate_barcode">テキストを入力してQRコードを生成します</string>
+    <string name="button_generate_barcode">生む</string>
+    <string name="button_scan_barcode">スキャン</string>
+    <string name="text_scan_barcode">バーコードをスキャンします。</string>
+    <string name="toast_empty_text_generator">テキストを入力してQRコードを生成してください。</string>
+</resources>

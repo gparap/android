@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">条码</string>
+    <string name="title_scanner">扫描条码</string>
+    <string name="title_generator">生成二维码</string>
+    <string name="description_generated_barcode">生成的二维码</string>
+    <string name="hint_enter_text_to_generate_barcode">输入文字生成二维码</string>
+    <string name="button_generate_barcode">产生</string>
+    <string name="button_scan_barcode">扫描</string>
+    <string name="text_scan_barcode">扫描任何条码..</string>
+    <string name="toast_empty_text_generator">请输入文本以生成二维码..</string>
+</resources>

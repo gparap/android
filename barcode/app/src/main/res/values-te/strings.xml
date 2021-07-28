@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">బార్‌కోడ్</string>
+    <string name="title_scanner">బార్‌కోడ్‌ను స్కాన్ చేయండి</string>
+    <string name="title_generator">QR కోడ్‌ని రూపొందించండి</string>
+    <string name="description_generated_barcode">QR కోడ్ రూపొందించబడింది</string>
+    <string name="hint_enter_text_to_generate_barcode">QR కోడ్‌ను రూపొందించడానికి వచనాన్ని నమోదు చేయండి</string>
+    <string name="button_generate_barcode">ఉత్పత్తి</string>
+    <string name="button_scan_barcode">స్కాన్</string>
+    <string name="text_scan_barcode">ఏదైనా బార్‌కోడ్‌ను స్కాన్ చేయండి ..</string>
+    <string name="toast_empty_text_generator">దయచేసి, QR కోడ్‌ను రూపొందించడానికి వచనాన్ని నమోదు చేయండి ..</string>
+</resources>

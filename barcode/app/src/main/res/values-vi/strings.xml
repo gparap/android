@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mã vạch</string>
+    <string name="title_scanner">Quét mã vạch</string>
+    <string name="title_generator">Tạo mã QR</string>
+    <string name="description_generated_barcode">Mã QR đã tạo</string>
+    <string name="hint_enter_text_to_generate_barcode">Nhập văn bản để tạo Mã QR</string>
+    <string name="button_generate_barcode">Phát ra</string>
+    <string name="button_scan_barcode">Quét</string>
+    <string name="text_scan_barcode">quét bất kỳ mã vạch nào ..</string>
+    <string name="toast_empty_text_generator">Vui lòng nhập văn bản để tạo Mã QR ..</string>
+</resources>

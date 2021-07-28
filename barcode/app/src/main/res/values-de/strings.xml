@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Strichcode</string>
+    <string name="title_scanner">Barcode scannen</string>
+    <string name="title_generator">QR-Code generieren</string>
+    <string name="description_generated_barcode">Generierter QR-Code</string>
+    <string name="hint_enter_text_to_generate_barcode">Geben Sie Text ein, um QR-Code zu generieren</string>
+    <string name="button_generate_barcode">Generieren</string>
+    <string name="button_scan_barcode">Scan</string>
+    <string name="text_scan_barcode">scannen Sie jeden Barcode..</string>
+    <string name="toast_empty_text_generator">Bitte geben Sie Text ein, um QR-Code zu generieren.</string>
+</resources>
