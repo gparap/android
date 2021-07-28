@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_scanner">I-scan ang Barcode</string>
+    <string name="title_generator">Bumuo ng QR Code</string>
+    <string name="description_generated_barcode">Binuo ang QR Code</string>
+    <string name="hint_enter_text_to_generate_barcode">Ipasok ang teksto upang makabuo ng QR Code</string>
+    <string name="button_generate_barcode">Bumuo</string>
+    <string name="button_scan_barcode">Scan</string>
+    <string name="text_scan_barcode">i-scan ang anumang barcode ..</string>
+    <string name="toast_empty_text_generator">Mangyaring, maglagay ng teksto upang makabuo ng QR Code ..</string>
+</resources>

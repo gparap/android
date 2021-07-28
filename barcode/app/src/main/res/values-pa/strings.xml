@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ਬਾਰਕੋਡ</string>
+    <string name="title_scanner">ਸਕੈਨ ਬਾਰਕੋਡ</string>
+    <string name="title_generator">QR ਕੋਡ ਤਿਆਰ ਕਰੋ</string>
+    <string name="description_generated_barcode">ਤਿਆਰ ਕੀਤਾ QR ਕੋਡ</string>
+    <string name="hint_enter_text_to_generate_barcode">QR ਕੋਡ ਬਣਾਉਣ ਲਈ ਟੈਕਸਟ ਦਾਖਲ ਕਰੋ</string>
+    <string name="button_generate_barcode">ਪੈਦਾ ਕਰੋ</string>
+    <string name="button_scan_barcode">ਸਕੈਨ</string>
+    <string name="text_scan_barcode">ਕੋਈ ਵੀ ਬਾਰਕੋਡ ਸਕੈਨ ਕਰੋ ..</string>
+    <string name="toast_empty_text_generator">ਕਿਰਪਾ ਕਰਕੇ QR ਕੋਡ ਤਿਆਰ ਕਰਨ ਲਈ ਟੈਕਸਟ ਦਰਜ ਕਰੋ ..</string>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">बारकोड</string>
+    <string name="title_scanner">बारकोड स्कैन करें</string>
+    <string name="title_generator">क्यूआर कोड जनरेट करें</string>
+    <string name="description_generated_barcode">जनरेट किया गया क्यूआर कोड</string>
+    <string name="hint_enter_text_to_generate_barcode">क्यूआर कोड जनरेट करने के लिए टेक्स्ट दर्ज करें</string>
+    <string name="button_generate_barcode">उत्पन्न</string>
+    <string name="button_scan_barcode">स्कैन</string>
+    <string name="text_scan_barcode">किसी भी बारकोड को स्कैन करें..</string>
+    <string name="toast_empty_text_generator">कृपया, क्यूआर कोड जनरेट करने के लिए टेक्स्ट दर्ज करें..</string>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">บาร์โค้ด</string>
+    <string name="title_scanner">สแกนบาร์โค้ด</string>
+    <string name="title_generator">สร้างรหัส QR</string>
+    <string name="description_generated_barcode">QR Code ที่สร้าง</string>
+    <string name="hint_enter_text_to_generate_barcode">ป้อนข้อความเพื่อสร้าง QR Code</string>
+    <string name="button_generate_barcode">สร้าง</string>
+    <string name="button_scan_barcode">สแกน</string>
+    <string name="text_scan_barcode">สแกนบาร์โค้ดใดๆ..</string>
+    <string name="toast_empty_text_generator">กรุณากรอกข้อความเพื่อสร้าง QR Code..</string>
+</resources>

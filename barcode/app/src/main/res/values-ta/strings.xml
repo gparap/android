@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">பார்கோடு</string>
+    <string name="title_scanner">பார்கோடு ஸ்கேன்</string>
+    <string name="title_generator">QR குறியீட்டை உருவாக்கவும்</string>
+    <string name="description_generated_barcode">QR குறியீடு உருவாக்கப்பட்டது</string>
+    <string name="hint_enter_text_to_generate_barcode">QR குறியீட்டை உருவாக்க உரையை உள்ளிடவும்</string>
+    <string name="button_generate_barcode">உருவாக்கு</string>
+    <string name="button_scan_barcode">ஊடுகதிர்</string>
+    <string name="text_scan_barcode">எந்த பார்கோடு ஸ்கேன் ..</string>
+    <string name="toast_empty_text_generator">தயவுசெய்து, QR குறியீட்டை உருவாக்க உரையை உள்ளிடவும் ..</string>
+</resources>

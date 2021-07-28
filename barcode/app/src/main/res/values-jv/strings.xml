@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kode Barcode</string>
+    <string name="title_scanner">Scan Barcode</string>
+    <string name="title_generator">Gawe Kode QR</string>
+    <string name="description_generated_barcode">Kode QR Generated</string>
+    <string name="hint_enter_text_to_generate_barcode">Ketik teks kanggo ngasilake QR Code</string>
+    <string name="button_generate_barcode">Ngasilake</string>
+    <string name="button_scan_barcode">Pindai</string>
+    <string name="text_scan_barcode">pindai barcode wae ..</string>
+    <string name="toast_empty_text_generator">Mangga ketik teks kanggo ngasilake QR Code ..</string>
+</resources>

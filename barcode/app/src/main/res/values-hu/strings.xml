@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vonalkód</string>
+    <string name="title_scanner">Vonalkód beolvasása</string>
+    <string name="title_generator">QR-kód generálása</string>
+    <string name="description_generated_barcode">Generált QR -kód</string>
+    <string name="hint_enter_text_to_generate_barcode">Írjon be szöveget a QR-kód előállításához</string>
+    <string name="button_generate_barcode">generál</string>
+    <string name="button_scan_barcode">Letapogatás</string>
+    <string name="text_scan_barcode">beolvasni bármilyen vonalkódot ..</string>
+    <string name="toast_empty_text_generator">Kérjük, írja be a szöveget a QR-kód létrehozásához.</string>
+</resources>

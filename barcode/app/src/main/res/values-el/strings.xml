@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Γραμμωτός κώδικας</string>
+    <string name="title_scanner">Σάρωση γραμμωτού κώδικα</string>
+    <string name="title_generator">Δημιουργία κώδικα QR</string>
+    <string name="description_generated_barcode">Δημιουργήθηκε κωδικός QR</string>
+    <string name="hint_enter_text_to_generate_barcode">Εισαγάγετε κείμενο για δημιουργία κώδικα QR</string>
+    <string name="button_generate_barcode">Δημιούργησε</string>
+    <string name="button_scan_barcode">Σάρωσε</string>
+    <string name="text_scan_barcode">σάρωση γραμμωτού κώδικα ..</string>
+    <string name="toast_empty_text_generator">Παρακαλώ, εισαγάγετε κείμενο για να δημιουργήσετε  κώδικα QR..</string>
+</resources>

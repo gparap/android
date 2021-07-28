@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">바코드</string>
+    <string name="title_scanner">바코드 스캔</string>
+    <string name="title_generator">QR 코드 생성</string>
+    <string name="description_generated_barcode">생성된 QR 코드</string>
+    <string name="hint_enter_text_to_generate_barcode">텍스트를 입력하여 QR 코드 생성</string>
+    <string name="button_generate_barcode">생성하다</string>
+    <string name="button_scan_barcode">주사</string>
+    <string name="text_scan_barcode">모든 바코드를 스캔 ..</string>
+    <string name="toast_empty_text_generator">QR코드 생성을 위해 텍스트를 입력해주세요..</string>
+</resources>
