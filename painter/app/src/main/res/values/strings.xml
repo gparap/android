@@ -3,6 +3,7 @@
 
     <!-- Content descriptions-->
     <string name="desc_color_picker">Color picker</string>
+    <string name="desc_eraser">Eraser</string>
     <string name="desc_clear">Clear canvas</string>
     <string name="desc_save">Save all</string>
 </resources>

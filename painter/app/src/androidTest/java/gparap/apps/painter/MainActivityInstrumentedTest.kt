@@ -31,13 +31,18 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
-    fun isVisible_PainterArea() {
-        onView(withId(R.id.main_view_painter)).check(matches(isDisplayed()))
+    fun isVisible_CanvasArea() {
+        onView(withId(R.id.main_canvas_area)).check(matches(isDisplayed()))
     }
 
     @Test
     fun isVisible_imageViewColorPicker() {
         onView(withId(R.id.imageViewColorPicker)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isVisible_imageViewEraser() {
+        onView(withId(R.id.imageViewEraser)).check(matches(isDisplayed()))
     }
 
     @Test

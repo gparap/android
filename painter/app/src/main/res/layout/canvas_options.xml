@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_canvas_options"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!--Color picker-->
+    <ImageView
+        android:id="@+id/imageViewColorPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/desc_color_picker"
+        android:src="@drawable/ic_palette_black_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--Eraser-->
+    <ImageView
+        android:id="@+id/imageViewEraser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/desc_eraser"
+        android:src="@drawable/ic_eraser_black_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageViewColorPicker"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--Clear canvas-->
+    <ImageView
+        android:id="@+id/imageViewClearCanvas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/desc_clear"
+        android:src="@drawable/ic_clear_black_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageViewEraser" />
+
+    <!--Pen size-->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewSave"
+        app:layout_constraintStart_toEndOf="@+id/imageViewClearCanvas"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!--Pen size draggable-->
+        <SeekBar
+            android:id="@+id/seekBarPenSize"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!--Pen size text-->
+        <TextView
+            android:id="@+id/textViewPenSize"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/seekBarPenSize"
+            tools:text="100 px" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!--Save-->
+    <ImageView
+        android:id="@+id/imageViewSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/desc_save"
+        android:src="@drawable/ic_save_black_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
