@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Painter"
         tools:ignore="AllowBackup">
-        <activity
-            android:name=".ui.CanvasView"
-            android:exported="true" />
         <activity android:name=".MainActivity"
             tools:ignore="IntentFilterExportedReceiver">
             <intent-filter>
