@@ -13,20 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.painter
+package gparap.apps.painter.canvas
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.util.DisplayMetrics
 import android.view.MotionEvent
 import android.view.View
+import gparap.apps.painter.utils.Utils
 
 class CanvasView : View {
+    private val PAINT_DITHER_FLAG = android.graphics.Paint.DITHER_FLAG
+    private val BITMAP_POSITION_LEFT = 0.0f
+    private val BITMAP_POSITION_TOP = 0.0f
     private var paint = Paint()
-    private var paintWithFlag = Paint(Paint.DITHER_FLAG)
     private var path = Path()
     private var paths: ArrayList<Path> = ArrayList()
     private lateinit var bitmap: Bitmap
@@ -36,21 +37,12 @@ class CanvasView : View {
 
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        //create a new paint and initialize it with default values
-        paint = Paint()
-        paint.isAntiAlias = true
-        paint.style = Paint.Style.STROKE
-        paint.color = Color.WHITE
-        paint.strokeWidth = 5f
-
-        //get display metrics that describe the size and density of this display
-        val displayMetrics = DisplayMetrics()
-        (context as Activity).windowManager.defaultDisplay.getMetrics(displayMetrics)
-        val width = displayMetrics.widthPixels
-        val height = displayMetrics.heightPixels
-
         //create a canvas and a mutable bitmap to draw into
-        bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        bitmap = Bitmap.createBitmap(
+            Utils.getDeviceWidth(context),
+            Utils.getDeviceHeight(context),
+            Bitmap.Config.ARGB_8888
+        )
         canvasWithBitmap = Canvas(bitmap)
         canvasWithBitmap.drawColor(Color.BLACK)
     }
@@ -61,6 +53,9 @@ class CanvasView : View {
         //save canvas before drawing
         canvas?.save()
 
+        //clear canvas' bitmap with white color
+        canvasWithBitmap.drawColor(Color.WHITE)
+
         //draw all paths
         for (p in paths) {
             paint.maskFilter = null
@@ -68,7 +63,12 @@ class CanvasView : View {
         }
 
         //draw the specified bitmap to canvas
-        canvas?.drawBitmap(bitmap, 0.0f, 0.0f, paintWithFlag)
+        canvas?.drawBitmap(
+            bitmap,
+            BITMAP_POSITION_LEFT,
+            BITMAP_POSITION_TOP,
+            paint.getFlag(PAINT_DITHER_FLAG)
+        )
 
         //restore canvas after drawing
         canvas?.restore()
@@ -76,7 +76,7 @@ class CanvasView : View {
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        when(event?.action){
+        when (event?.action) {
             MotionEvent.ACTION_DOWN -> startDrawingPath(event.x, event.y)
             MotionEvent.ACTION_MOVE -> moveDrawingPath(event.x, event.y)
             MotionEvent.ACTION_UP -> stopDrawingPath()
@@ -85,21 +85,21 @@ class CanvasView : View {
         return true
     }
 
-    private fun startDrawingPath(x: Float, y:Float) {
+    private fun startDrawingPath(x: Float, y: Float) {
         //create and add path to list
         path = Path()
         path.reset()
-        path.moveTo(x,y)
+        path.moveTo(x, y)
         paths.add(path)
 
-        updateCurrentPath(x,y)
+        updateCurrentPath(x, y)
     }
 
-    private fun moveDrawingPath(x: Float, y:Float) {
+    private fun moveDrawingPath(x: Float, y: Float) {
         //TODO: tolerance
-        path.quadTo(currentPathX, currentPathY, (x+currentPathX)/2, (y+currentPathY)/2)
+        path.quadTo(currentPathX, currentPathY, (x + currentPathX) / 2, (y + currentPathY) / 2)
 
-        updateCurrentPath(x,y)
+        updateCurrentPath(x, y)
     }
 
     private fun stopDrawingPath() {
@@ -107,8 +107,13 @@ class CanvasView : View {
         path.lineTo(currentPathX, currentPathY)
     }
 
-    private fun updateCurrentPath(x: Float, y:Float) {
+    private fun updateCurrentPath(x: Float, y: Float) {
         currentPathX = x
         currentPathY = y
+    }
+
+    fun clearCanvas() {
+        paths.clear()
+        invalidate()
     }
 }
