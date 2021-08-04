@@ -28,12 +28,13 @@ class CanvasView : View {
     private val BITMAP_POSITION_LEFT = 0.0f
     private val BITMAP_POSITION_TOP = 0.0f
     private var paint = Paint()
-    private var path = Path()
-    private var paths: ArrayList<Path> = ArrayList()
+    private lateinit var path: Path
+    private var paths: ArrayList<PaintPath> = ArrayList()
     private lateinit var bitmap: Bitmap
     private lateinit var canvasWithBitmap: Canvas
     private var currentPathX: Float = 0.0f
     private var currentPathY: Float = 0.0f
+    private var currentColor: Int = Color.BLACK
 
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
@@ -44,7 +45,6 @@ class CanvasView : View {
             Bitmap.Config.ARGB_8888
         )
         canvasWithBitmap = Canvas(bitmap)
-        canvasWithBitmap.drawColor(Color.BLACK)
     }
 
     override fun onDraw(canvas: Canvas?) {
@@ -59,7 +59,8 @@ class CanvasView : View {
         //draw all paths
         for (p in paths) {
             paint.maskFilter = null
-            canvasWithBitmap.drawPath(p, paint)
+            paint.color = p.color
+            canvasWithBitmap.drawPath(p.path, paint)
         }
 
         //draw the specified bitmap to canvas
@@ -86,11 +87,14 @@ class CanvasView : View {
     }
 
     private fun startDrawingPath(x: Float, y: Float) {
-        //create and add path to list
+        //create a default path
         path = Path()
         path.reset()
         path.moveTo(x, y)
-        paths.add(path)
+
+        //create and setup a PaintPath
+        val paintPath = PaintPath(path, currentColor)
+        paths.add(paintPath)
 
         updateCurrentPath(x, y)
     }
@@ -114,6 +118,11 @@ class CanvasView : View {
 
     fun clearCanvas() {
         paths.clear()
+        currentColor = Color.BLACK
         invalidate()
+    }
+
+    fun erase() {
+        currentColor = Color.WHITE
     }
 }
