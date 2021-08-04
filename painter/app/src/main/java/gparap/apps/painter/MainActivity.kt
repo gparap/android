@@ -21,5 +21,11 @@ class MainActivity : AppCompatActivity() {
         imageButtonClear.setOnClickListener {
             canvasView.clearCanvas()
         }
+
+        //provide erasing functionality
+        val imageButtonErase = findViewById<ImageView>(R.id.imageViewEraser)
+        imageButtonErase.setOnClickListener {
+            canvasView.erase()
+        }
     }
 }
