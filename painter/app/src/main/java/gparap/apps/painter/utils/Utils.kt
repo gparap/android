@@ -17,25 +17,47 @@ package gparap.apps.painter.utils
 
 import android.app.Activity
 import android.content.Context
+import android.graphics.Insets
+import android.os.Build
 import android.util.DisplayMetrics
+import android.view.WindowInsets
+
+import android.view.WindowMetrics
 
 object Utils {
-    //get display metrics that describe the size and density of this display
-    private val displayMetrics = DisplayMetrics()
-
     /**
      * Returns the absolute width of the display in pixels
      */
     fun getDeviceWidth(context: Context?): Int {
-        (context as Activity).windowManager.defaultDisplay.getMetrics(displayMetrics)
-        return displayMetrics.widthPixels
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            val windowMetrics: WindowMetrics =
+                (context as Activity).windowManager.currentWindowMetrics
+            val insets: Insets = windowMetrics.windowInsets
+                .getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())
+            windowMetrics.bounds.width() - insets.left - insets.right
+
+        } else {
+            val displayMetrics = DisplayMetrics()
+            (context as Activity).windowManager.defaultDisplay.getMetrics(displayMetrics)
+            displayMetrics.widthPixels
+        }
     }
 
     /**
      * Returns the absolute height of the display in pixels
      */
     fun getDeviceHeight(context: Context?): Int {
-        (context as Activity).windowManager.defaultDisplay.getMetrics(displayMetrics)
-        return displayMetrics.widthPixels
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            val windowMetrics: WindowMetrics =
+                (context as Activity).windowManager.currentWindowMetrics
+            val insets: Insets = windowMetrics.windowInsets
+                .getInsetsIgnoringVisibility(WindowInsets.Type.systemBars())
+            windowMetrics.bounds.height() - insets.top - insets.bottom
+
+        } else {
+            val displayMetrics = DisplayMetrics()
+            (context as Activity).windowManager.defaultDisplay.getMetrics(displayMetrics)
+            displayMetrics.heightPixels
+        }
     }
 }
