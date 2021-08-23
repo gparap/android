@@ -1,8 +1,5 @@
 package gparap.apps.calendar;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.ContentValues;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +7,8 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashMap;
 
@@ -48,18 +47,14 @@ public class MainActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this, "calendarDB", null, 1);
 
         //notify when date change
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                //get date of event
-                eventDate = String.format("%s%s%s", year, month, dayOfMonth);
+        calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
+            //get date of event
+            eventDate = String.format("%s%s%s", year, month, dayOfMonth);
 
-                //display event with details
-                HashMap<String, String> hashMap = dbHelper.dbSelect(eventDate);
-                editTextAddEventName.setText(hashMap.get("event_name"));
-                editTextAddEventDetails.setText(hashMap.get("event_details"));
-            }
-
+            //display event with details
+            HashMap<String, String> hashMap = dbHelper.dbSelect(eventDate);
+            editTextAddEventName.setText(hashMap.get("event_name"));
+            editTextAddEventDetails.setText(hashMap.get("event_details"));
         });
     }
 
