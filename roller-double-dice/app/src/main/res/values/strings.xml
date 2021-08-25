@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">Double Dice Roller</string>
-    <string name="button_roll">Roll</string>
-    <string name="image_view_dice_left">imageViewDiceLeft</string>
-    <string name="image_view_dice_right">imageViewDiceRight</string>
-</resources>
