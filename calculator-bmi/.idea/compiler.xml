@@ -1,4 +1,6 @@
-<component name="libraryTable">
-  <library name="Gradle: com.google.code.findbugs:jsr305:2.0.1@jar">
-    <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/module />
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="11" />
+  </component>
+</project>
