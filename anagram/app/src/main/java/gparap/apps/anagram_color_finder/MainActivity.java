@@ -42,20 +42,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //restore color value
-        color = null;
-        if (savedInstanceState != null) {
-            color = savedInstanceState.getString(getString(R.string.key_color));
-        }
-
         //get widgets
         textViewAnagram = findViewById(R.id.textViewAnagram);
         editTextAnswer = findViewById(R.id.editTextAnswer);
         buttonSubmit = findViewById(R.id.buttonSubmit);
 
+        //restore color value
+        color = null;
+        if (savedInstanceState != null) {
+            color = savedInstanceState.getString(getString(R.string.key_color));
+            textViewAnagram.setText(savedInstanceState.getString(getString(R.string.key_anagram)));
+        }
+
         //form color anagram
         if (color == null) {
-            displayAnagram();
+            init();
         }
 
         //check answer
@@ -73,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     createDialog(false, color);
                 }
+                //reset color and anagram
+                init();
             }
         });
     }
@@ -81,8 +84,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        //save color value
+        //save color and anagram value
         outState.putString(getString(R.string.key_color), color);
+        outState.putString(getString(R.string.key_anagram), textViewAnagram.getText().toString());
+    }
+
+    /**
+     * Initializes picked color and its anagram.
+     */
+    private void init() {
+        color = Utils.getInstance().getColorAtRandom();
+        displayAnagram();
     }
 
     /**
@@ -93,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         editTextAnswer.setText("");
 
         //display anagram
-        textViewAnagram.setText(Utils.getInstance().formAnagram());
+        textViewAnagram.setText(Utils.getInstance().formAnagram(color));
     }
 
     /**

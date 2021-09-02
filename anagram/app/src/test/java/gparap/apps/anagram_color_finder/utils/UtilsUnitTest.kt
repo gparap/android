@@ -16,14 +16,29 @@
 package gparap.apps.anagram_color_finder.utils
 
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotEquals
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
 internal class UtilsUnitTest {
+    @Suppress("UsePropertyAccessSyntax")
+    @Test
+    @DisplayName("Should pick a random color")
+    fun getColorAtRandom() {
+        val color: String? = Utils.getInstance().getColorAtRandom()
+        Assertions.assertNotNull(color)
+    }
+
     @Test
     @DisplayName("Should form an anagram")
     fun formAnagram() {
-        val anagram: String? = Utils.getInstance().formAnagram()
-        Assertions.assertNotNull(anagram)
+        val color = "Titanium yellow"
+        val anagram: String? = Utils.getInstance().formAnagram(color)
+
+        org.junit.jupiter.api.assertAll(color,
+            { assertEquals(color.length, anagram!!.length) },   //color length equals anagram length
+            { assertNotEquals(color, anagram) }                 //color is not equal to anagram
+        )
     }
 }

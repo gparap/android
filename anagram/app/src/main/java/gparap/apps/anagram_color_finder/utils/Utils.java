@@ -36,14 +36,20 @@ public class Utils {
     }
 
     /**
-     * Forms anagram for a random picked color.
+     * Picks a color from the list of colors at random.
+     *
+     * @return random color
+     */
+    public String getColorAtRandom() {
+        return Colors.colors[new Random().nextInt(Colors.colors.length)];
+    }
+
+    /**
+     * Forms anagram for a given color.
      *
      * @return anagram
      */
-    public String formAnagram() {
-        //choose random color
-        String color = Colors.colors[new Random().nextInt(Colors.colors.length)];
-
+    public String formAnagram(String color) {
         //check if color is more than one word
         StringBuilder stringBuilder = new StringBuilder();
         String[] colorWords = color.split(" ");
@@ -60,7 +66,7 @@ public class Utils {
             stringBuilder.append(" ");
         }
         //trim last space
-        stringBuilder.trimToSize();
+        stringBuilder = stringBuilder.deleteCharAt(stringBuilder.length() - 1);
 
         //return anagram
         return stringBuilder.toString();
