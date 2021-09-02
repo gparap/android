@@ -29,10 +29,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import gparap.apps.anagram_color_finder.utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
     TextView textViewAnagram;   //displays color value as an anagram
@@ -48,13 +45,8 @@ public class MainActivity extends AppCompatActivity {
         //restore color value
         color = null;
         if (savedInstanceState != null) {
-            color = savedInstanceState.getString("color");
+            color = savedInstanceState.getString(getString(R.string.key_color));
         }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
 
         //get widgets
         textViewAnagram = findViewById(R.id.textViewAnagram);
@@ -70,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         buttonSubmit.setOnClickListener(v -> {
             //check if answer is empty
             if (editTextAnswer.getText().toString().isEmpty()) {
-                Toast.makeText(MainActivity.this, "Please enter your answer.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, getString(R.string.toast_enter_answer), Toast.LENGTH_SHORT).show();
             } else {
                 //hide virtual keyboard
                 InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
@@ -90,38 +82,7 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
 
         //save color value
-        outState.putString("color", color);
-    }
-
-    /**
-     * Forms anagram for a random picked color.
-     *
-     * @return anagram
-     */
-    private String formAnagram() {
-        //choose random color
-        color = Colors.colors[new Random().nextInt(Colors.colors.length)];
-
-        //check if color is more than one word
-        StringBuilder stringBuilder = new StringBuilder();
-        String[] colorWords = color.split(" ");
-
-        //form anagram for every color word
-        for (String colorWord : colorWords) {
-            List<String> anagram = Arrays.asList(colorWord.split(""));
-            Collections.shuffle(anagram);
-
-            //form anagram
-            for (String s : anagram) {
-                stringBuilder.append(s);
-            }
-            stringBuilder.append(" ");
-        }
-        //trim last space
-        stringBuilder.trimToSize();
-
-        //return anagram
-        return stringBuilder.toString();
+        outState.putString(getString(R.string.key_color), color);
     }
 
     /**
@@ -132,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         editTextAnswer.setText("");
 
         //display anagram
-        textViewAnagram.setText(formAnagram());
+        textViewAnagram.setText(Utils.getInstance().formAnagram());
     }
 
     /**
