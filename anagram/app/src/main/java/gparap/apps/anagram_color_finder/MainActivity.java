@@ -1,12 +1,22 @@
+/*
+ * Copyright 2021 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.anagram_color_finder;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -15,14 +25,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Created by gparap on 2020-10-12.
- */
 public class MainActivity extends AppCompatActivity {
     TextView textViewAnagram;   //displays color value as an anagram
     EditText editTextAnswer;    //for user input
@@ -36,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         //restore color value
         color = null;
-        if (savedInstanceState != null){
+        if (savedInstanceState != null) {
             color = savedInstanceState.getString("color");
         }
     }
@@ -54,24 +65,21 @@ public class MainActivity extends AppCompatActivity {
         if (color == null) {
             displayAnagram();
         }
-        
-       //check answer
-       buttonSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //check if answer is empty
-                if (editTextAnswer.getText().toString().isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Please enter your answer.", Toast.LENGTH_SHORT).show();
+
+        //check answer
+        buttonSubmit.setOnClickListener(v -> {
+            //check if answer is empty
+            if (editTextAnswer.getText().toString().isEmpty()) {
+                Toast.makeText(MainActivity.this, "Please enter your answer.", Toast.LENGTH_SHORT).show();
+            } else {
+                //hide virtual keyboard
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(editTextAnswer.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                //check answer
+                if (editTextAnswer.getText().toString().equalsIgnoreCase(color)) {
+                    createDialog(true, null);
                 } else {
-                    //hide virtual keyboard
-                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                    inputMethodManager.hideSoftInputFromWindow(editTextAnswer.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-                    //check answer
-                    if (editTextAnswer.getText().toString().equalsIgnoreCase(color)) {
-                        createDialog(true, null);
-                    } else {
-                        createDialog(false, color);
-                    }
+                    createDialog(false, color);
                 }
             }
         });
@@ -138,15 +146,12 @@ public class MainActivity extends AppCompatActivity {
         @SuppressLint("InflateParams") AlertDialog dialog = new AlertDialog.Builder(MainActivity.this)
                 //.setTitle("Checking your Answer...")
                 .setView(getLayoutInflater().inflate(R.layout.dialog_main, null))
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //return to main
-                        dialog.dismiss();
+                .setPositiveButton("OK", (dialog1, which) -> {
+                    //return to main
+                    dialog1.dismiss();
 
-                        //reset anagram
-                        displayAnagram();
-                    }
+                    //reset anagram
+                    displayAnagram();
                 }).create();
         dialog.show();
         //get dialog widgets
@@ -169,7 +174,5 @@ public class MainActivity extends AppCompatActivity {
             textViewLabelAnswerCorrect.setVisibility(View.VISIBLE);
             textViewAnswerCorrect.setVisibility(View.VISIBLE);
         }
-
-
     }
 }
