@@ -16,7 +16,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCategoryLabel"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintVertical_bias="0.26"
+        tools:ignore="UsingOnClickInXml" />
 
     <Button
         android:id="@+id/buttonClearFields"
@@ -26,7 +27,8 @@
         android:text="@string/buttonClearFields"
         app:layout_constraintEnd_toEndOf="@+id/buttonFindBMI"
         app:layout_constraintStart_toStartOf="@+id/buttonFindBMI"
-        app:layout_constraintTop_toBottomOf="@+id/buttonFindBMI" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonFindBMI"
+        tools:ignore="UsingOnClickInXml" />
 
     <EditText
         android:id="@+id/editTextHeight"
