@@ -13,4 +13,8 @@
     <string name="categoryNormal">Normal</string>
     <string name="categoryOverweight">Overweight</string>
     <string name="categoryObese">Obese</string>
+    <string name="toast_enter_height">Enter Height!</string>
+    <string name="toast_enter_weight">Enter Weight!</string>
+    <string name="toast_enter_correct_height">Enter Correct Height!</string>
+    <string name="toast_enter_correct_weight">Enter Correct Weight!</string>
 </resources>

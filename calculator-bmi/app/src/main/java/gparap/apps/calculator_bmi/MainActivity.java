@@ -56,23 +56,28 @@ public class MainActivity extends AppCompatActivity {
     public void FindBMI(View view) {
         boolean isValidated = true;
 
-        //check height for dot (".")
-        if (!editTextHeight.getText().toString().contains(".")) {
-            Toast.makeText(editTextHeight.getContext(), "Enter Correct Height!", Toast.LENGTH_SHORT).show();
-            isValidated = false;
-        }
-        //check if user input height and weight
+        //validate user input
         try {
             //get height and weight
             height = Float.parseFloat(editTextHeight.getText().toString());
             weight = Float.parseFloat(editTextWeight.getText().toString());
 
+            //check the correctness based on guinness max/min values for height/weight
+            if (height > 2.72 || height < 0.57) {
+                isValidated = false;
+                Toast.makeText(editTextHeight.getContext(), getString(R.string.toast_enter_correct_height), Toast.LENGTH_SHORT).show();
+            }
+            if (isValidated && (weight > 635 || weight < 2.1)) {
+                isValidated = false;
+                Toast.makeText(editTextWeight.getContext(), getString(R.string.toast_enter_correct_weight), Toast.LENGTH_SHORT).show();
+            }
+
         } catch (Exception e) {
             isValidated = false;
             if (editTextHeight.getText().toString().isEmpty()) {
-                Toast.makeText(editTextHeight.getContext(), "Enter Height!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(editTextHeight.getContext(), getString(R.string.toast_enter_height), Toast.LENGTH_SHORT).show();
             } else if (editTextWeight.getText().toString().isEmpty()) {
-                Toast.makeText(editTextHeight.getContext(), "Enter Weight!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(editTextHeight.getContext(), getString(R.string.toast_enter_weight), Toast.LENGTH_SHORT).show();
             }
         }
 
