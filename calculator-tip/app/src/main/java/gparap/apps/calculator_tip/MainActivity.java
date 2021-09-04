@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.calculator_tip;
 
 import android.os.Bundle;
@@ -13,13 +28,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-/**
- * Created by gparap on 2020-09-11.
- */
+import gparap.apps.calculator_tip.utils.Utils;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher {
     Button buttonMinusFive, buttonPlusFive, buttonMinusOne, buttonPlusOne;
     TextView textViewTipPercentage, textViewAmountTip, textViewAmountTotal,
-             textViewPersonsToSplit, textViewAmountPerPerson;
+            textViewPersonsToSplit, textViewAmountPerPerson;
     EditText editTextBill;
     String helperWithZeros; //to help with no zeros at the start of a number
 
@@ -27,57 +41,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        init();
-
+        getWidgets();
+        addListeners();
     }
 
     /**
-     * Initialization
-     */
-    private void init() {
-        //get widgets
-        buttonMinusFive = findViewById(R.id.buttonMinusFive);
-        buttonPlusFive = findViewById(R.id.buttonPlusFive);
-        buttonMinusOne = findViewById(R.id.buttonMinusOne);
-        buttonPlusOne = findViewById(R.id.buttonPlusOne);
-        textViewTipPercentage = findViewById(R.id.textViewTipPercentage);
-        editTextBill = findViewById(R.id.editTextBill);
-        textViewAmountTip = findViewById(R.id.textViewAmountTip);
-        textViewAmountTotal = findViewById(R.id.textViewAmountTotal);
-        textViewPersonsToSplit = findViewById(R.id.textViewPersonsToSplit);
-        textViewAmountPerPerson = findViewById(R.id.textViewAmountPerPerson);
-
-        //add listeners
-        buttonMinusFive.setOnClickListener(this);
-        buttonPlusFive.setOnClickListener(this);
-        buttonMinusOne.setOnClickListener(this);
-        buttonPlusOne.setOnClickListener(this);
-        editTextBill.addTextChangedListener(this);
-    }
-
-    /**
-     * Compute tip amount, total bill amount and amount split per persons
+     * Computes tip amount, total bill amount and amount split per persons and
+     * updates text fields with currency formatted amounts
      */
     private void computeAmounts() {
-        int tipPercentage = 0;
-        float bill = 0, amountTip, amountTotal, personsToSplit = 1, amountPerPerson;
-
-        //get initial bill, tip percentage and persons to split
+        //compute amounts
+        float amountTip = 0, amountTotal = 0, amountPerPerson = 0;
         try {
-            bill = Float.parseFloat(editTextBill.getText().toString());
-            tipPercentage = Integer.parseInt(textViewTipPercentage.getText().toString());
-            personsToSplit = Integer.parseInt(textViewPersonsToSplit.getText().toString());
+            amountTip = Utils.getInstance().getTip(editTextBill.getText().toString(), textViewTipPercentage.getText().toString());
+            amountTotal = Utils.getInstance().getBill(editTextBill.getText().toString(), amountTip);
+            amountPerPerson = Utils.getInstance().getSplit(amountTotal, textViewPersonsToSplit.getText().toString());
         } catch (Exception ignored) {
         }
 
-        //compute tip amount and total amount
-        amountTip = bill * tipPercentage / 100;
-        amountTotal = bill + amountTip;
-
-        //compute how the total amount will be split among people
-        amountPerPerson = amountTotal / personsToSplit;
-
-        //update text fields with currency formatted amounts
+        //update text fields
         NumberFormat currencyInstance = NumberFormat.getCurrencyInstance(Locale.getDefault());
         textViewAmountTip.setText(currencyInstance.format(amountTip));
         textViewAmountTotal.setText(currencyInstance.format(amountTotal));
@@ -85,8 +67,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * Updates the tip percentage based on the button pressed
-     * Updates the persons to split based on the button pressed
+     * Updates the tip percentage based on the button pressed and
+     * updates the persons to split based on the button pressed
      *
      * @param v the button pressed
      */
@@ -132,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textViewTipPercentage.setText(String.valueOf(tipPercentage));
         textViewPersonsToSplit.setText(String.valueOf(personsToSplit));
 
-        //compute tip and total amount
+        //get total amounts
         computeAmounts();
     }
 
@@ -146,21 +128,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onTextChanged(CharSequence s, int start, int before, int count) {
         //remove zero(s) from the start
         if (editTextBill.getText().toString().startsWith("0")) {
-            if (helperWithZeros.equals("") || helperWithZeros.equals("0") || helperWithZeros.endsWith("0")){
+            if (helperWithZeros.equals("") || helperWithZeros.equals("0") || helperWithZeros.endsWith("0")) {
                 editTextBill.setText("");
-            }
-            else if (helperWithZeros.contains("0.")){
+            } else if (helperWithZeros.contains("0.")) {
                 helperWithZeros = helperWithZeros.substring(1);
                 editTextBill.setText(helperWithZeros);
-            }
-            else
+            } else
                 editTextBill.setText(helperWithZeros);
         }
-        //compute tip and total amount
+        //get total amounts
         computeAmounts();
     }
 
     @Override
     public void afterTextChanged(Editable s) {
+    }
+
+    private void addListeners() {
+        buttonMinusFive.setOnClickListener(this);
+        buttonPlusFive.setOnClickListener(this);
+        buttonMinusOne.setOnClickListener(this);
+        buttonPlusOne.setOnClickListener(this);
+        editTextBill.addTextChangedListener(this);
+    }
+
+    private void getWidgets() {
+        buttonMinusFive = findViewById(R.id.buttonMinusFive);
+        buttonPlusFive = findViewById(R.id.buttonPlusFive);
+        buttonMinusOne = findViewById(R.id.buttonMinusOne);
+        buttonPlusOne = findViewById(R.id.buttonPlusOne);
+        textViewTipPercentage = findViewById(R.id.textViewTipPercentage);
+        editTextBill = findViewById(R.id.editTextBill);
+        textViewAmountTip = findViewById(R.id.textViewAmountTip);
+        textViewAmountTotal = findViewById(R.id.textViewAmountTotal);
+        textViewPersonsToSplit = findViewById(R.id.textViewPersonsToSplit);
+        textViewAmountPerPerson = findViewById(R.id.textViewAmountPerPerson);
     }
 }
