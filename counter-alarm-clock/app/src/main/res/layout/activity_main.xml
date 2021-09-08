@@ -38,8 +38,7 @@
         android:text="@string/time_now"
         app:layout_constraintBottom_toBottomOf="@+id/textViewTimer"
         app:layout_constraintEnd_toStartOf="@+id/textViewTimer"
-        app:layout_constraintTop_toTopOf="@+id/textViewTimer"
-        android:layout_marginRight="16dp" /><!--To support older versions than API 17-->
+        app:layout_constraintTop_toTopOf="@+id/textViewTimer" />
 
     <TextView
         android:id="@+id/textViewAlarmLabel"
@@ -61,7 +60,8 @@
         android:text="@string/set_alarm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAlarm" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewAlarm"
+        tools:ignore="UsingOnClickInXml" />
 
     <TimePicker
         android:id="@+id/timePicker"
