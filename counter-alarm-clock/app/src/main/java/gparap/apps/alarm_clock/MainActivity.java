@@ -1,5 +1,21 @@
+/*
+ * Copyright 2021 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.alarm_clock;
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -17,10 +33,8 @@ import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-/**
- * Alarm Clock
- * Created by gparap on 2020-09-16
- */
+import gparap.apps.alarm_clock.utils.Utils;
+
 public class MainActivity extends AppCompatActivity {
     TextView textViewTimer;
     DateFormat dateFormat;  //helper to format system time to default locale
@@ -62,12 +76,9 @@ public class MainActivity extends AppCompatActivity {
                         sleep(1000);
 
                         //run on the UI thread
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                //update current time
-                                textViewTimer.setText(dateFormat.format(System.currentTimeMillis()));
-                            }
+                        runOnUiThread(() -> {
+                            //update current time
+                            textViewTimer.setText(dateFormat.format(System.currentTimeMillis()));
                         });
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -79,65 +90,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //set alarm
-    public void OnClickSetAlarm(View view){
+    public void OnClickSetAlarm(View view) {
         //display alarm in field
-        displayAlarmTime();
+        textViewAlarm.setText(Utils.getInstance().getAlarmTime(timePicker));
 
-        //register an intent to be broadcasted by the alarm receiver
+        //register an intent to be broadcast by the alarm receiver
         Intent intent = new Intent(MainActivity.this, AlarmReceiver.class);
+        @SuppressLint("UnspecifiedImmutableFlag")
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, 0);
 
         //get the time in milliseconds that the alarm should go off
-        long triggerAtMillis =  getTriggerAtMillis();
+        long triggerAtMillis = getTriggerAtMillis();
 
         //schedule an alarm if set correctly
-        if (isAlarmSet){
+        if (isAlarmSet) {
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + triggerAtMillis, pendingIntent);
         }
     }
 
-    //display time picked (as alarm) in a 12-hour format
-    private void displayAlarmTime(){
-        boolean isPM = false;
-        int hour;
-        int minute;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            hour = timePicker.getHour();
-            minute = timePicker.getMinute();
-        }else{
-            hour = timePicker.getCurrentHour();
-            minute = timePicker.getCurrentMinute();
-        }
-        StringBuilder stringBuilder = new StringBuilder();
-        //hours
-        if (hour > 12){
-            isPM = true;
-            hour %= 12;
-
-        }
-        stringBuilder.append(hour).append(":");
-
-        //minutes
-        if (minute < 10){
-            stringBuilder.append("0");
-
-        }
-        stringBuilder.append(minute);
-
-        //AM or PM
-        if (isPM){
-            stringBuilder.append(" PM");
-        }else{
-            stringBuilder.append(" AM");
-        }
-
-        //update alarm display field
-        textViewAlarm.setText(stringBuilder);
-    }
-
     //get how many milliseconds is the difference between current time and alarm
-    private long getTriggerAtMillis(){
+    private long getTriggerAtMillis() {
         //get current time hours and minutes
         int hourNow;
         int minuteNow;
@@ -157,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             hourAlarm = timePicker.getHour();
             minuteAlarm = timePicker.getMinute();
-        }else{
+        } else {
             hourAlarm = timePicker.getCurrentHour();
             minuteAlarm = timePicker.getCurrentMinute();
         }
@@ -167,20 +140,20 @@ public class MainActivity extends AppCompatActivity {
         //hour
         int hour = hourAlarm - hourNow;
         //check if hour set is correct
-        if (hour < 0){
-            Toast.makeText(getApplicationContext(), "Error in setting alarm hours", Toast.LENGTH_SHORT).show();
+        if (hour < 0) {
+            Toast.makeText(getApplicationContext(), getString(R.string.toast_error_setting_hours), Toast.LENGTH_SHORT).show();
             isAlarmSet = false;
         }
 
         //minute
         int minute = minuteAlarm - minuteNow;
         //check if minute set is correct
-        if (hour == 0 && minute < 0){
-            Toast.makeText(getApplicationContext(), "Error in setting alarm minutes", Toast.LENGTH_SHORT).show();
+        if (hour == 0 && minute < 0) {
+            Toast.makeText(getApplicationContext(), getString(R.string.toast_error_setting_minutes), Toast.LENGTH_SHORT).show();
             isAlarmSet = false;
         }
 
         //convert to milliseconds and return
-        return (hour * 60 * 60 * 1000) + (minute * 60 * 1000);
+        return Utils.getInstance().convertHoursToMillis(hour) + Utils.getInstance().convertMinutesToMillis(minute);
     }
 }
