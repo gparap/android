@@ -1,5 +1,21 @@
+/*
+ * Copyright 2021 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.countdown_timer;
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -16,9 +32,8 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-/**
- * Created by gparap on 2020-09-18.
- */
+import gparap.apps.countdown_timer.utils.Utils;
+
 public class MainActivity extends AppCompatActivity {
     EditText editTextHours, editTextMinutes, editTextSeconds;
     int hours, minutes, seconds;
@@ -52,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             editTextHours.setTextColor(getResources().getColor(R.color.colorInputDisabled, null));
             editTextMinutes.setTextColor(getResources().getColor(R.color.colorInputDisabled, null));
             editTextSeconds.setTextColor(getResources().getColor(R.color.colorInputDisabled, null));
-        }else{
+        } else {
             editTextHours.setTextColor(getResources().getColor(R.color.colorInputDisabled));
             editTextMinutes.setTextColor(getResources().getColor(R.color.colorInputDisabled));
             editTextSeconds.setTextColor(getResources().getColor(R.color.colorInputDisabled));
@@ -69,10 +84,12 @@ public class MainActivity extends AppCompatActivity {
         isTimeCorrect = true;
         editTextHours.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -95,7 +112,8 @@ public class MainActivity extends AppCompatActivity {
                                 editTextHours.setText(R.string.value_23);
                             }
                         }
-                    } catch (Exception ignored) { }
+                    } catch (Exception ignored) {
+                    }
                 }
             }
         });
@@ -104,10 +122,12 @@ public class MainActivity extends AppCompatActivity {
         isTimeCorrect = true;
         editTextMinutes.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -140,10 +160,12 @@ public class MainActivity extends AppCompatActivity {
         isTimeCorrect = true;
         editTextSeconds.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -192,9 +214,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
             //compute the total number of milliseconds in the future until the countdown is done
-            millisInFuture = seconds * 1000;
-            millisInFuture += (minutes * 60 * 1000);
-            millisInFuture += (hours * 60 * 60 * 1000);
+            millisInFuture = Utils.getInstance().convertSecondsToMillis(seconds);
+            millisInFuture += Utils.getInstance().convertMinutesToMillis(minutes);
+            millisInFuture += Utils.getInstance().convertHoursToMillis(hours);
 
             //start the countdown
             countDownTimer = new CountDownTimer(millisInFuture, 1000) {
@@ -227,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
 
                     //register an intent to be broadcast by the receiver
                     Intent intent = new Intent(MainActivity.this, CountdownReceiver.class);
-                    PendingIntent pendingIntent = PendingIntent
+                    @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent = PendingIntent
                             .getBroadcast(getApplicationContext(), 0, intent, 0);
 
                     //create an alarm manager to schedule the broadcast
@@ -237,16 +259,16 @@ public class MainActivity extends AppCompatActivity {
             };
 
             //check if not all fields are zero
-            if ((!editTextHours.getText().toString().isEmpty() && !editTextHours.getText().toString().equals("0"))     ||
-                (!editTextMinutes.getText().toString().isEmpty() && !editTextMinutes.getText().toString().equals("0")) ||
-                (!editTextSeconds.getText().toString().isEmpty() && !editTextSeconds.getText().toString().equals("0"))) {
+            if ((!editTextHours.getText().toString().isEmpty() && !editTextHours.getText().toString().equals("0")) ||
+                    (!editTextMinutes.getText().toString().isEmpty() && !editTextMinutes.getText().toString().equals("0")) ||
+                    (!editTextSeconds.getText().toString().isEmpty() && !editTextSeconds.getText().toString().equals("0"))) {
 
                 //start countdown
                 countDownTimer.start();
                 isCounting = true;
 
                 //close virtual keyboard if start button is pressed
-                if (editTextView != null){
+                if (editTextView != null) {
                     InputMethodManager inputMethodManager = (InputMethodManager) this.getSystemService(INPUT_METHOD_SERVICE);
                     inputMethodManager.hideSoftInputFromWindow(editTextView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                 }
@@ -260,7 +282,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Reset the counter
-    public void OnClickButtonReset(View view){
+    public void OnClickButtonReset(View view) {
         //stop countdown
         if (countDownTimer != null)
             countDownTimer.cancel();
@@ -308,7 +330,7 @@ public class MainActivity extends AppCompatActivity {
 
         //there was an orientation change
         //and the timer was counting
-        if (isCounting){
+        if (isCounting) {
             //restart the counter
             isCounting = false;
             startCounter();
