@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.chronometer;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,9 +22,6 @@ import android.os.SystemClock;
 import android.view.View;
 import android.widget.Chronometer;
 
-/**
- * Created by gparap on 2020-09-15.
- */
 public class MainActivity extends AppCompatActivity {
     Chronometer chronometer;
     long stoppedTime;
@@ -24,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //initialization
-    private void init(){
+    private void init() {
         chronometer = findViewById(R.id.chronometer);
         stoppedTime = 0L;
         isRunning = false;
@@ -32,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //start chronometer
-    private void start(){
+    private void start() {
         if (!isRunning) {
             //start clock from now on (not app boot) minus any stopped time
             chronometer.setBase(SystemClock.elapsedRealtime() - stoppedTime);
@@ -42,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //stop chronometer
-    private void stop(){
+    private void stop() {
         if (isRunning) {
             //hold time that passed since the start of the counting and stop
             stoppedTime = SystemClock.elapsedRealtime() - chronometer.getBase();
@@ -52,17 +64,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Start the chronometer with START button
-    public void OnClickStart(View view){
+    public void OnClickStart(View view) {
         start();
     }
 
     //Stop the chronometer with STOP button
-    public void OnClickStop(View view){
+    public void OnClickStop(View view) {
         stop();
     }
 
     //Clear the chronometer with CLEAR button
-    public void OnClickClear(View view){
+    public void OnClickClear(View view) {
         //clear time and reset variables
         chronometer.setBase(SystemClock.elapsedRealtime());
         stoppedTime = 0L;
@@ -85,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         //resume only if chronometer has been started running before losing focus
-        if (isStarted){
+        if (isStarted) {
             start();
         }
     }
