@@ -1,19 +1,30 @@
+/*
+ * Copyright 2021 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.countdown_timer;
 
-import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+
 import androidx.core.app.NotificationCompat;
 
-/**
- * Created by gparap on 2020-09-18.
- */
 public class CountdownReceiver extends BroadcastReceiver {
-    @SuppressLint("ObsoleteSdkInt")
     @Override
     public void onReceive(Context context, Intent intent) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -21,11 +32,8 @@ public class CountdownReceiver extends BroadcastReceiver {
 
         //create a notification channel (needed for Android 8.0 or higher)
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            CharSequence channelName = "channel name";
-            String channelDescription = "channel description";
-            int notificationImportance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel notificationChannel = new NotificationChannel(channelId, channelName, notificationImportance);
-            notificationChannel.setDescription(channelDescription);
+            NotificationChannel notificationChannel = new NotificationChannel(channelId, "channel name", NotificationManager.IMPORTANCE_DEFAULT);
+            notificationChannel.setDescription("channel description");
             notificationManager.createNotificationChannel(notificationChannel);
         }
 
