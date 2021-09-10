@@ -1,32 +1,41 @@
+/*
+ * Copyright 2021 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.flashlight;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
-import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Switch;
 import android.widget.Toast;
 
-/**
- * Created by gparap on 2020-09-14.
- */
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
+import androidx.core.content.ContextCompat;
+
 public class MainActivity extends AppCompatActivity {
-    @SuppressLint("UseSwitchCompatOrMaterialCode")
-    private Switch switcher;                //an on/off switch
+    private SwitchCompat switcher;          //an on/off switch
     private boolean isSwitchOn;
     private boolean hasFlashlight;
     private CameraManager cameraManager;
     private String cameraId;                //which camera to use
-    private boolean isPermissionGranted;   //permission to use camera feature
+    private boolean isPermissionGranted;    //permission to use camera feature
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,19 +70,14 @@ public class MainActivity extends AppCompatActivity {
             builder.setTitle("Camera Permission");
             builder.setMessage("Application requests permission to use camera.");
             builder.setPositiveButton("OK", null);
-            builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                @Override
-                public void onDismiss(DialogInterface dialog) {
-                    requestPermissions(new String[]{Manifest.permission.CAMERA}, 1);
-                }
-            });
+            builder.setOnDismissListener(dialog -> requestPermissions(new String[]{Manifest.permission.CAMERA}, 1));
             //show dialog
             builder.show();
         }
     }
 
     public void OnClickSwitcher(View view) {
-       if (hasFlashlight) {
+        if (hasFlashlight) {
             //turn switch off
             if (isSwitchOn) {
                 switcher.setText(R.string.turn_light_on);
@@ -97,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         }
         //device don't support feature
         else {
-            Toast.makeText(this, "Flashlight unsupported by device", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.toast_unsupported_device), Toast.LENGTH_SHORT).show();
             switcher.setChecked(false);
         }
     }
