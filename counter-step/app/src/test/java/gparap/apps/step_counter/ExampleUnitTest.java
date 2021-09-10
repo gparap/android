@@ -1,4 +1,4 @@
-package com.example.step_counter;
+package gparap.apps.step_counter;
 
 import org.junit.Test;
 
