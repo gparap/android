@@ -2,4 +2,5 @@
     <string name="app_name">Flashlight</string>
     <string name="turn_light_off">Turn Off</string>
     <string name="turn_light_on">Turn On</string>
+    <string name="toast_unsupported_device">Flashlight unsupported by device</string>
 </resources>
