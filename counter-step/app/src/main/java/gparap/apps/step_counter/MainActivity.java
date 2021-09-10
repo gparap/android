@@ -1,26 +1,35 @@
-package com.example.step_counter;
-
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
+/*
+ * Copyright 2021 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package gparap.apps.step_counter;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/**
- * Created by gparap on 2020-09-12.
- */
+import androidx.appcompat.app.AppCompatActivity;
+
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
     SensorManager sensorManager;
     Sensor sensorStepCounter;
     TextView textViewSteps;
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,13 +37,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         init();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void init() {
         sensorManager = (SensorManager) getApplicationContext().getSystemService(SENSOR_SERVICE);
         sensorStepCounter = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         //sensor unsupported by device
-        if (sensorStepCounter != null){
-            Toast.makeText(getApplicationContext(),"Device doesn't support Step Counter", Toast.LENGTH_SHORT).show();
+        if (sensorStepCounter != null) {
+            Toast.makeText(getApplicationContext(), getString(R.string.error_device_support), Toast.LENGTH_SHORT).show();
         }
         textViewSteps = findViewById(R.id.textViewSteps);
     }
@@ -42,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     public void onSensorChanged(SensorEvent event) {
         //update steps field from sensor input
-        if (sensorStepCounter != null){
+        if (sensorStepCounter != null) {
             textViewSteps.setText(String.valueOf(event.values[0]));
         }
     }
