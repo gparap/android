@@ -23,7 +23,6 @@
         android:layout_weight="1"
         android:insetLeft="2dp"
         android:insetRight="2dp"
-        android:onClick="onButtonClick"
         android:text="@string/load_more_stories"
         app:layout_constraintBottom_toBottomOf="parent" />
 
