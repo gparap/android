@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         initArrayLists();
 
         //init list view with adapter
-        ListView listView = findViewById(R.id.listView);
+        ListView listView = findViewById(R.id.listViewStories);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, storiesTitles);
         listView.setAdapter(adapter);
 

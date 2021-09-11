@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/listViewStories"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonLoadMoreStories"
