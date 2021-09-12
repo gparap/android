@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.notebook;
 
 import androidx.annotation.NonNull;
@@ -16,13 +31,11 @@ import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
-/**
- * Created by gparap on 2020-10-21.
- */
+import java.util.Objects;
+
 public class NoteActivity extends AppCompatActivity {
     MaterialToolbar toolbar;
-    EditText editTextNoteTitle,
-             editTextNoteDetails;
+    EditText editTextNoteTitle, editTextNoteDetails;
     long noteID = -1;   //helper to choose if to update existing note or insert a new one
 
     @Override
@@ -36,11 +49,11 @@ public class NoteActivity extends AppCompatActivity {
         super.onStart();
 
         //get toolbar as ActionBar
-        toolbar = findViewById(R.id.include_toolbar);
+        toolbar = findViewById(R.id.toolbar_note_add);
         setSupportActionBar(toolbar);
 
         //enable "Home" button to goto main activity
-        getSupportActionBar().setHomeButtonEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //get widgets

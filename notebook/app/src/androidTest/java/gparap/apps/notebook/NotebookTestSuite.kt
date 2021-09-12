@@ -13,37 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.notebook;
+package gparap.apps.notebook
 
-public class Note {
-    private Long id;
-    private String title,
-                   details;
+import org.junit.runner.RunWith
+import org.junit.runners.Suite
 
-    public Note() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDetails() {
-        return details;
-    }
-
-    public void setDetails(String details) {
-        this.details = details;
-    }
-}
+@RunWith(Suite::class)
+@Suite.SuiteClasses(
+    MainActivityInstrumentedTest::class,
+    NoteActivityInstrumentedTest::class
+)
+class NotebookTestSuite
