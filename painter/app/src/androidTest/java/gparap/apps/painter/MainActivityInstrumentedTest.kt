@@ -15,19 +15,27 @@
  */
 package gparap.apps.painter
 
+import android.view.View
+import android.widget.SeekBar
+import android.widget.TextView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.UiController
+import androidx.test.espresso.ViewAction
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import org.hamcrest.Matcher
 import org.junit.Before
 import org.junit.Test
 
 class MainActivityInstrumentedTest {
+    private lateinit var activityScenario: ActivityScenario<MainActivity>
 
     @Before
     fun setUp() {
-        ActivityScenario.launch(MainActivity::class.java)
+        activityScenario = ActivityScenario.launch(MainActivity::class.java)
     }
 
     @Test
@@ -56,6 +64,11 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
+    fun isVisible_imageViewPenSize() {
+        onView(withId(R.id.imageViewPenSize)).check(matches(isDisplayed()))
+    }
+
+    @Test
     fun isVisible_textViewPenSize() {
         onView(withId(R.id.textViewPenSize)).check(matches(isDisplayed()))
     }
@@ -63,5 +76,42 @@ class MainActivityInstrumentedTest {
     @Test
     fun isVisible_imageViewSave() {
         onView(withId(R.id.imageViewSave)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun onSeekBarChange_showChangedPenSizeValue() {
+        //init the SeekBar progress to 0
+        onView(withId(R.id.seekBarPenSize)).perform(setProgress(0))
+
+        //change the SeekBar progress
+        val progress = 39
+        onView(withId(R.id.seekBarPenSize)).perform(setProgress(progress))
+
+        //get the pen size value
+        var penSize = 0
+        activityScenario.onActivity {
+            val textView = it.findViewById<TextView>(R.id.textViewPenSize)
+            penSize = textView.text.toString().toInt()
+        }
+
+        assert(penSize == progress)
+    }
+
+    //ViewAction for changing the SeekBar progress
+    private fun setProgress(progress: Int): ViewAction {
+        return object : ViewAction {
+            override fun getConstraints(): Matcher<View> {
+                return ViewMatchers.isAssignableFrom(SeekBar::class.java)
+            }
+
+            override fun getDescription(): String {
+                return "change the SeekBar progress"
+            }
+
+            override fun perform(uiController: UiController?, view: View?) {
+                val seekBar = view?.findViewById<SeekBar>(R.id.seekBarPenSize)
+                seekBar?.progress = progress
+            }
+        }
     }
 }

@@ -2,6 +2,8 @@ package gparap.apps.painter
 
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.SeekBar
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import gparap.apps.painter.canvas.CanvasView
@@ -27,5 +29,21 @@ class MainActivity : AppCompatActivity() {
         imageButtonErase.setOnClickListener {
             canvasView.erase()
         }
+
+        //provide changing the pen size functionality
+        val textViewPenSize = findViewById<TextView>(R.id.textViewPenSize)
+        val seekBarPenSize = findViewById<SeekBar>(R.id.seekBarPenSize)
+        seekBarPenSize.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
+                textViewPenSize.text = p1.toString()
+                canvasView.strokeWidth = p1
+            }
+
+            override fun onStartTrackingTouch(p0: SeekBar?) {
+            }
+
+            override fun onStopTrackingTouch(p0: SeekBar?) {
+            }
+        })
     }
 }

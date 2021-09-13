@@ -34,7 +34,8 @@ class CanvasView : View {
     private lateinit var canvasWithBitmap: Canvas
     private var currentPathX: Float = 0.0f
     private var currentPathY: Float = 0.0f
-    private var currentColor: Int = Color.BLACK
+    private var currentColor: Int = Color.BLACK //default
+    var strokeWidth: Int = 5
 
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
@@ -60,6 +61,7 @@ class CanvasView : View {
         for (p in paths) {
             paint.maskFilter = null
             paint.color = p.color
+            paint.strokeWidth = p.width.toFloat()   //TODO: pen scale x10, x0.1 as option
             canvasWithBitmap.drawPath(p.path, paint)
         }
 
@@ -93,7 +95,7 @@ class CanvasView : View {
         path.moveTo(x, y)
 
         //create and setup a PaintPath
-        val paintPath = PaintPath(path, currentColor)
+        val paintPath = PaintPath(path, currentColor, strokeWidth)
         paths.add(paintPath)
 
         updateCurrentPath(x, y)
