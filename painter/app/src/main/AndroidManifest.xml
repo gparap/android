@@ -10,7 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Painter"
         tools:ignore="AllowBackup">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
             tools:ignore="IntentFilterExportedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
