@@ -17,4 +17,4 @@ package gparap.apps.painter.canvas
 
 import android.graphics.Path
 
-data class PaintPath(val path: Path, val color: Int)
+data class PaintPath(val path: Path, val color: Int, val width: Int)
