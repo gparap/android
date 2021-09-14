@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Design dimensions-->
+    <dimen name="view_color_picked">160dp</dimen>
+    <dimen name="seekBar_layout_marginTop">8dp</dimen>
+    <dimen name="button_layout_marginTop">32dp</dimen>
+</resources>

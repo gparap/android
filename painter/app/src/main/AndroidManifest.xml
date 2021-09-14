@@ -11,6 +11,9 @@
         android:theme="@style/Theme.Painter"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".color_picker.ColorPickerActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             tools:ignore="IntentFilterExportedReceiver">
