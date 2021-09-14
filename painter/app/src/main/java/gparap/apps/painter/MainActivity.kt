@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         //provide erasing functionality
         val imageButtonErase = findViewById<ImageView>(R.id.imageViewEraser)
         imageButtonErase.setOnClickListener {
-            canvasView.erase()
+            canvasView.setEraseMode()
         }
 
         //provide changing the pen size functionality
@@ -45,5 +45,11 @@ class MainActivity : AppCompatActivity() {
             override fun onStopTrackingTouch(p0: SeekBar?) {
             }
         })
+
+        //restore paint mode with previous color
+        val imageViewPenSize = findViewById<ImageView>(R.id.imageViewPenSize)
+        imageViewPenSize.setOnClickListener{
+            canvasView.setPaintMode()
+        }
     }
 }
