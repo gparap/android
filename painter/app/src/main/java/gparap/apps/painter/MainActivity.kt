@@ -51,5 +51,10 @@ class MainActivity : AppCompatActivity() {
         imageViewPenSize.setOnClickListener{
             canvasView.setPaintMode()
         }
+
+        //open color picker fragment
+        val imageViewColorPicker = findViewById<ImageView>(R.id.imageViewColorPicker)
+        imageViewColorPicker.setOnClickListener {
+        }
     }
 }

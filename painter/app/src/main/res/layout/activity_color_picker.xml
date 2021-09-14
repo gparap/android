@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".color_picker.ColorPickerActivity">
+
+    <!--Color picked-->
+    <View
+        android:id="@+id/viewColorPicked"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_color_picked"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@color/grey" />
+
+    <!--Red color value-->
+    <SeekBar
+        android:id="@+id/seekBarRedValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/seekBar_layout_marginTop"
+        android:layout_weight="0.5"
+        android:thumbTint="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewColorPicked" />
+
+    <!--Green color value-->
+    <SeekBar
+        android:id="@+id/seekBarGreenValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/seekBar_layout_marginTop"
+        android:layout_weight="0.5"
+        android:thumbTint="@color/green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarRedValue" />
+
+    <!--Blue color value-->
+    <SeekBar
+        android:id="@+id/seekBarBlueValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/seekBar_layout_marginTop"
+        android:layout_weight="0.5"
+        android:thumbTint="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarGreenValue" />
+
+    <!--Pick color button-->
+    <Button
+        android:id="@+id/buttonPickColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/button_layout_marginTop"
+        android:text="@string/button_pick_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarBlueValue" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
