@@ -124,7 +124,11 @@ class CanvasView : View {
         invalidate()
     }
 
-    fun erase() {
+    fun setEraseMode() {
         currentColor = Color.WHITE
+    }
+
+    fun setPaintMode() {
+        currentColor = Color.BLACK //default
     }
 }
