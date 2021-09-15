@@ -17,7 +17,10 @@ package gparap.apps.painter.canvas
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.*
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Path
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
@@ -34,7 +37,7 @@ class CanvasView : View {
     private lateinit var canvasWithBitmap: Canvas
     private var currentPathX: Float = 0.0f
     private var currentPathY: Float = 0.0f
-    private var currentColor: Int = Color.BLACK //default
+    var currentColor: Int = Color.BLACK //default
     var strokeWidth: Int = 5
 
     constructor(context: Context?) : super(context)
