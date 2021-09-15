@@ -22,6 +22,7 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.UiController
 import androidx.test.espresso.ViewAction
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
@@ -95,6 +96,33 @@ class MainActivityInstrumentedTest {
         }
 
         assert(penSize == progress)
+    }
+
+    @Test
+    fun onClickButtonColorPicker_openDialog() {
+        onView(withId(R.id.imageViewColorPicker)).perform(click())
+        onView(withId(R.id.viewColorPicked)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun onClickButtonColorPicker_isVisible_seekBarRedValue() {
+        onView(withId(R.id.imageViewColorPicker)).perform(click())
+        onView(withId(R.id.seekBarRedValue)).check(matches(isDisplayed()))
+    }
+    @Test
+    fun onClickButtonColorPicker_isVisible_seekBarGreenValue() {
+        onView(withId(R.id.imageViewColorPicker)).perform(click())
+        onView(withId(R.id.seekBarGreenValue)).check(matches(isDisplayed()))
+    }
+    @Test
+    fun onClickButtonColorPicker_isVisible_seekBarBlueValue() {
+        onView(withId(R.id.imageViewColorPicker)).perform(click())
+        onView(withId(R.id.seekBarBlueValue)).check(matches(isDisplayed()))
+    }
+    @Test
+    fun onClickButtonColorPicker_isVisible_buttonPickColor() {
+        onView(withId(R.id.imageViewColorPicker)).perform(click())
+        onView(withId(R.id.buttonPickColor)).check(matches(isDisplayed()))
     }
 
     //ViewAction for changing the SeekBar progress
