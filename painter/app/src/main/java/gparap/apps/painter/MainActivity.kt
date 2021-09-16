@@ -1,25 +1,42 @@
+/*
+ * Copyright 2021 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.painter
 
-import android.app.Dialog
+import android.content.pm.ActivityInfo
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.View
-import android.view.Window
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import gparap.apps.painter.canvas.CanvasView
+import gparap.apps.painter.color_picker.ColorPickerDialog
+import gparap.apps.painter.color_picker.ColorPickerListener
 
-class MainActivity : AppCompatActivity() {
-    lateinit var canvasView: CanvasView
+class MainActivity : AppCompatActivity(), ColorPickerListener {
+    private lateinit var canvasView: CanvasView
+    private lateinit var dialog: ColorPickerDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //lock screen orientation to the one existing at app launch time
+        this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LOCKED
 
         //create canvas area
         canvasView = CanvasView(this, null)
@@ -68,77 +85,15 @@ class MainActivity : AppCompatActivity() {
         //open color picker dialog
         val imageViewColorPicker = findViewById<ImageView>(R.id.imageViewColorPicker)
         imageViewColorPicker.setOnClickListener {
-            var colorRed = 0F
-            var colorGreen = 0F
-            var colorBlue = 0F
-
-            //create a dialog
-            val dialog = Dialog(this)
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-            dialog.setCancelable(false)
-            dialog.setContentView(R.layout.activity_color_picker)
-
-            //get the view that displays the color
-            val view = dialog.findViewById<View>(R.id.viewColorPicked)
-
-            //handle red color value from changes to the SeekBar's progress level
-            val seekBarRed = dialog.findViewById<SeekBar>(R.id.seekBarRedValue)
-            seekBarRed.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-                override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                    colorRed = p1 * 2.55F
-                    view.setBackgroundColor(
-                        Color.rgb(colorRed.toInt(), colorGreen.toInt(), colorBlue.toInt())
-                    )
-                }
-
-                override fun onStartTrackingTouch(p0: SeekBar?) {
-                }
-
-                override fun onStopTrackingTouch(p0: SeekBar?) {
-                }
-            })
-
-            //handle green color value from changes to the SeekBar's progress level
-            val seekBarGreen = dialog.findViewById<SeekBar>(R.id.seekBarGreenValue)
-            seekBarGreen.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-                override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                    colorGreen = p1 * 2.55F
-                    view.setBackgroundColor(
-                        Color.rgb(colorRed.toInt(), colorGreen.toInt(), colorBlue.toInt())
-                    )
-                }
-
-                override fun onStartTrackingTouch(p0: SeekBar?) {
-                }
-
-                override fun onStopTrackingTouch(p0: SeekBar?) {
-                }
-            })
-
-            //handle blue color value from changes to the SeekBar's progress level
-            val seekBarBlue = dialog.findViewById<SeekBar>(R.id.seekBarBlueValue)
-            seekBarBlue.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-                override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                    colorBlue = p1 * 2.55F
-                    view.setBackgroundColor(
-                        Color.rgb(colorRed.toInt(), colorGreen.toInt(), colorBlue.toInt())
-                    )
-                }
-
-                override fun onStartTrackingTouch(p0: SeekBar?) {
-                }
-
-                override fun onStopTrackingTouch(p0: SeekBar?) {
-                }
-            })
-
-            //dismiss dialog and return color value
-            val buttonPickColor = dialog.findViewById<Button>(R.id.buttonPickColor)
-            buttonPickColor.setOnClickListener {
-                canvasView.currentColor = (view.background as ColorDrawable).color
-                dialog.dismiss()
-            }
+            dialog = ColorPickerDialog(this)
+            dialog.setColorPickerListener(this)
             dialog.show()
+
         }
+    }
+
+    //pick a color as the current color
+    override fun onPickColorButtonClick() {
+        canvasView.currentColor = dialog.getPickedColor()
     }
 }
