@@ -33,7 +33,7 @@ class CanvasView : View {
     private var paint = Paint()
     private lateinit var path: Path
     private var paths: ArrayList<PaintPath> = ArrayList()
-    private lateinit var bitmap: Bitmap
+    lateinit var bitmap: Bitmap
     private lateinit var canvasWithBitmap: Canvas
     private var currentPathX: Float = 0.0f
     private var currentPathY: Float = 0.0f

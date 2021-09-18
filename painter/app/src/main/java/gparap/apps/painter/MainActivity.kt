@@ -16,21 +16,31 @@
 package gparap.apps.painter
 
 import android.content.pm.ActivityInfo
+import android.graphics.Bitmap
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import gparap.apps.painter.canvas.CanvasView
 import gparap.apps.painter.color_picker.ColorPickerDialog
 import gparap.apps.painter.color_picker.ColorPickerListener
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity : AppCompatActivity(), ColorPickerListener {
     private lateinit var canvasView: CanvasView
     private lateinit var dialog: ColorPickerDialog
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -89,6 +99,31 @@ class MainActivity : AppCompatActivity(), ColorPickerListener {
             dialog.setColorPickerListener(this)
             dialog.show()
 
+        }
+
+        //save painting
+        val imageViewSave = findViewById<ImageView>(R.id.imageViewSave)
+        imageViewSave.setOnClickListener {
+            //generate a formatted datetime string to append as a suffix to painting's filename
+            val simpleDateFormat = SimpleDateFormat("yyMMddHHmmss")
+            val suffix: String = simpleDateFormat.format(Date())
+
+            //create a new file on external storage
+            val directoryPath: String = this.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!.absolutePath
+            val filePath: String = "$directoryPath/painting$suffix.png"
+            val file = File(filePath)
+
+            //get the contents of the painting as a byte array
+            val bitmap = canvasView.bitmap
+            val byteArrayOutputStream = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.PNG, 0, byteArrayOutputStream)
+            val byteArray = byteArrayOutputStream.toByteArray()
+
+            //write byte array data to a file
+            val fileOutputStream = FileOutputStream(file)
+            fileOutputStream.write(byteArray)
+            fileOutputStream.flush()
+            fileOutputStream.close()
         }
     }
 
