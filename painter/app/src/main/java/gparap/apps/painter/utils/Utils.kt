@@ -15,14 +15,20 @@
  */
 package gparap.apps.painter.utils
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.Insets
 import android.os.Build
 import android.util.DisplayMetrics
 import android.view.WindowInsets
-
 import android.view.WindowMetrics
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 object Utils {
     /**
@@ -59,5 +65,41 @@ object Utils {
             (context as Activity).windowManager.defaultDisplay.getMetrics(displayMetrics)
             displayMetrics.heightPixels
         }
+    }
+
+    /**
+     * Generates a formatted datetime string to append as a suffix to painting's filename.
+     */
+    @SuppressLint("SimpleDateFormat")
+    fun generateFilenameSuffix(pattern: String): String {
+        val simpleDateFormat = SimpleDateFormat(pattern)
+        return simpleDateFormat.format(Date())
+    }
+
+    /**
+     * Create a new image file (.png) on the primary external filesystem.
+     */
+    fun createNewFile(directoryPath: String, suffix: String): File {
+        val filePath = "$directoryPath/painting$suffix.png"
+        return File(filePath)
+    }
+
+    /**
+     * Returns the contents of a bitmap as a byte array
+     */
+    fun getByteArray(bitmap: Bitmap): ByteArray {
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 0, byteArrayOutputStream)
+        return byteArrayOutputStream.toByteArray()
+    }
+
+    /**
+     * Writes byte array data to a file.
+     */
+    fun writeDataToFile(file: File, byteArray: ByteArray) {
+        val fileOutputStream = FileOutputStream(file)
+        fileOutputStream.write(byteArray)
+        fileOutputStream.flush()
+        fileOutputStream.close()
     }
 }

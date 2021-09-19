@@ -16,7 +16,6 @@
 package gparap.apps.painter
 
 import android.content.pm.ActivityInfo
-import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -30,11 +29,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import gparap.apps.painter.canvas.CanvasView
 import gparap.apps.painter.color_picker.ColorPickerDialog
 import gparap.apps.painter.color_picker.ColorPickerListener
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileOutputStream
-import java.text.SimpleDateFormat
-import java.util.*
+import gparap.apps.painter.utils.Utils
 
 class MainActivity : AppCompatActivity(), ColorPickerListener {
     private lateinit var canvasView: CanvasView
@@ -101,29 +96,15 @@ class MainActivity : AppCompatActivity(), ColorPickerListener {
 
         }
 
-        //save painting
+        //save painting to a .png file on the primary external filesystem
         val imageViewSave = findViewById<ImageView>(R.id.imageViewSave)
         imageViewSave.setOnClickListener {
-            //generate a formatted datetime string to append as a suffix to painting's filename
-            val simpleDateFormat = SimpleDateFormat("yyMMddHHmmss")
-            val suffix: String = simpleDateFormat.format(Date())
-
-            //create a new file on external storage
-            val directoryPath: String = this.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!.absolutePath
-            val filePath: String = "$directoryPath/painting$suffix.png"
-            val file = File(filePath)
-
-            //get the contents of the painting as a byte array
-            val bitmap = canvasView.bitmap
-            val byteArrayOutputStream = ByteArrayOutputStream()
-            bitmap.compress(Bitmap.CompressFormat.PNG, 0, byteArrayOutputStream)
-            val byteArray = byteArrayOutputStream.toByteArray()
-
-            //write byte array data to a file
-            val fileOutputStream = FileOutputStream(file)
-            fileOutputStream.write(byteArray)
-            fileOutputStream.flush()
-            fileOutputStream.close()
+            Utils.writeDataToFile(
+                Utils.createNewFile(
+                    this.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!.absolutePath,
+                    Utils.generateFilenameSuffix("yyMMddHHmmss")
+                ), Utils.getByteArray(canvasView.bitmap)
+            )
         }
     }
 
