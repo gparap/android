@@ -56,4 +56,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <!--Button for saving the barcode-->
+    <Button
+        android:visibility="invisible"
+        android:id="@+id/buttonSaveGenerateBarcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_save_generated_barcode"
+        app:layout_constraintEnd_toEndOf="@+id/frameGeneratedBarcode"
+        app:layout_constraintStart_toStartOf="@+id/frameGeneratedBarcode"
+        app:layout_constraintTop_toBottomOf="@+id/editTextGenerateBarcode"
+        tools:visibility="visible"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

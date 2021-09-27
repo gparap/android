@@ -17,6 +17,7 @@ package gparap.apps.barcode.ui.generator
 
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,12 +31,14 @@ import com.google.zxing.BarcodeFormat
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import gparap.apps.barcode.R
 import gparap.apps.barcode.databinding.FragmentGeneratorBinding
+import gparap.apps.barcode.utils.Utils
 
 class GeneratorFragment : Fragment() {
     private lateinit var generatorViewModel: GeneratorViewModel
     private var fragmentGeneratorBinding: FragmentGeneratorBinding? = null
     private val binding get() = fragmentGeneratorBinding!!
     private lateinit var editTextGenerateBarcode: EditText
+    private var bitmap: Bitmap? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,9 +65,24 @@ class GeneratorFragment : Fragment() {
         })
 
         //generate barcode
+        val buttonSaveGenerateBarcode = binding.buttonSaveGenerateBarcode
         val buttonGenerateBarcode: Button = binding.buttonGenerateBarcode
         buttonGenerateBarcode.setOnClickListener {
-            generateBarcode()
+            val isGenerated = generateBarcode()
+
+            //unhide save button
+            if (isGenerated){
+                buttonSaveGenerateBarcode?.visibility = View.VISIBLE
+            }
+        }
+
+        //save generated barcode to device
+        buttonSaveGenerateBarcode?.setOnClickListener {
+            Utils.saveBarcode(
+                context?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!.absolutePath,
+                editTextGenerateBarcode.text.toString(),
+                bitmap!!
+            )
         }
 
         return root
@@ -75,12 +93,13 @@ class GeneratorFragment : Fragment() {
         fragmentGeneratorBinding = null
     }
 
-    private fun generateBarcode() {
+    private fun generateBarcode() : Boolean {
         val barcodeEncoder = BarcodeEncoder()
+        val isGenerated: Boolean
 
         //generate barcode from user content
         if (editTextGenerateBarcode.text.toString().isNotEmpty()) {
-            val bitmap: Bitmap? = barcodeEncoder.encodeBitmap(
+            bitmap = barcodeEncoder.encodeBitmap(
                 editTextGenerateBarcode.text.toString(),
                 BarcodeFormat.QR_CODE,
                 1024, 1024  //set as default quality
@@ -88,17 +107,33 @@ class GeneratorFragment : Fragment() {
 
             //update barcode image
             if (bitmap != null){
-                generatorViewModel.setBarcodeImage(bitmap)
+                generatorViewModel.setBarcodeImage(bitmap!!)
             }
 
             //update ViewModel with barcode text
             generatorViewModel.setBarcodeText(editTextGenerateBarcode.text.toString())
+
+            isGenerated = true
         }
 
         //display error message (empty user content to generate barcode)
         else {
             Toast.makeText(context, getString(R.string.toast_empty_text_generator), Toast.LENGTH_SHORT)
                 .show()
+            isGenerated = false
         }
+
+        return isGenerated
+    }
+
+    private fun saveGeneratedBarcode() {
+//        Utils.writeDataToFile(
+//            Utils.createNewFile(
+//                context?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!.absolutePath,
+//                editTextGenerateBarcode.text.toString()
+//            ), Utils.getByteArray(bitmap!!)
+//        )
+
+
     }
 }

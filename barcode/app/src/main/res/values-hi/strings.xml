@@ -9,4 +9,5 @@
     <string name="button_scan_barcode">स्कैन</string>
     <string name="text_scan_barcode">किसी भी बारकोड को स्कैन करें..</string>
     <string name="toast_empty_text_generator">कृपया, क्यूआर कोड जनरेट करने के लिए टेक्स्ट दर्ज करें..</string>
+    <string name="button_save_generated_barcode">बचा ले</string>
 </resources>

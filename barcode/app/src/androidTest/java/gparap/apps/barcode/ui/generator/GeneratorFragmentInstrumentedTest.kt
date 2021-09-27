@@ -16,11 +16,15 @@
 package gparap.apps.barcode.ui.generator
 
 import androidx.fragment.app.testing.FragmentScenario
+import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import gparap.apps.barcode.R
+import org.hamcrest.core.IsNot.not
 import org.junit.Before
 import org.junit.Test
 
@@ -48,5 +52,21 @@ class GeneratorFragmentInstrumentedTest {
     fun isVisible_buttonGenerateBarcode() {
         onView(withId(R.id.buttonGenerateBarcode)).check(matches(isDisplayed()))
 
+    }
+
+    @Test
+    fun isNotVisible_buttonSaveGeneratedBarcode() {
+        onView(withId(R.id.buttonSaveGenerateBarcode)).check(matches(not(isDisplayed())))
+    }
+
+    @Test
+    fun isVisible_buttonSaveGeneratedBarcode_whenBarcodeIsGenerated() {
+        //generate a test qrcode
+        onView(withId(R.id.editTextGenerateBarcode)).perform(typeText("generated.."))
+        Espresso.closeSoftKeyboard()
+        onView(withId(R.id.buttonGenerateBarcode)).perform(click())
+        Thread.sleep(667)   //wait to generate
+
+        onView(withId(R.id.buttonSaveGenerateBarcode)).check(matches(isDisplayed()))
     }
 }

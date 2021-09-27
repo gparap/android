@@ -9,4 +9,5 @@
     <string name="button_scan_barcode">สแกน</string>
     <string name="text_scan_barcode">สแกนบาร์โค้ดใดๆ..</string>
     <string name="toast_empty_text_generator">กรุณากรอกข้อความเพื่อสร้าง QR Code..</string>
+    <string name="button_save_generated_barcode">บันทึก</string>
 </resources>

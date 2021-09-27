@@ -9,4 +9,5 @@
     <string name="button_scan_barcode">주사</string>
     <string name="text_scan_barcode">모든 바코드를 스캔 ..</string>
     <string name="toast_empty_text_generator">QR코드 생성을 위해 텍스트를 입력해주세요..</string>
+    <string name="button_save_generated_barcode">저장</string>
 </resources>

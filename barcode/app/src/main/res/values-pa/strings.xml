@@ -9,4 +9,5 @@
     <string name="button_scan_barcode">ਸਕੈਨ</string>
     <string name="text_scan_barcode">ਕੋਈ ਵੀ ਬਾਰਕੋਡ ਸਕੈਨ ਕਰੋ ..</string>
     <string name="toast_empty_text_generator">ਕਿਰਪਾ ਕਰਕੇ QR ਕੋਡ ਤਿਆਰ ਕਰਨ ਲਈ ਟੈਕਸਟ ਦਰਜ ਕਰੋ ..</string>
+    <string name="button_save_generated_barcode">ਬਚਾਉ</string>
 </resources>
