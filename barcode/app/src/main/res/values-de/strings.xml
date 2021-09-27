@@ -9,4 +9,5 @@
     <string name="button_scan_barcode">Scan</string>
     <string name="text_scan_barcode">scannen Sie jeden Barcode..</string>
     <string name="toast_empty_text_generator">Bitte geben Sie Text ein, um QR-Code zu generieren.</string>
+    <string name="button_save_generated_barcode">speichern</string>
 </resources>

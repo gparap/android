@@ -9,4 +9,5 @@
     <string name="button_scan_barcode">స్కాన్</string>
     <string name="text_scan_barcode">ఏదైనా బార్‌కోడ్‌ను స్కాన్ చేయండి ..</string>
     <string name="toast_empty_text_generator">దయచేసి, QR కోడ్‌ను రూపొందించడానికి వచనాన్ని నమోదు చేయండి ..</string>
+    <string name="button_save_generated_barcode">సేవ్</string>
 </resources>

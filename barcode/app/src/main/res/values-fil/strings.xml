@@ -8,4 +8,5 @@
     <string name="button_scan_barcode">Scan</string>
     <string name="text_scan_barcode">i-scan ang anumang barcode ..</string>
     <string name="toast_empty_text_generator">Mangyaring, maglagay ng teksto upang makabuo ng QR Code ..</string>
+    <string name="button_save_generated_barcode">magtipid</string>
 </resources>

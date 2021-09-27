@@ -9,4 +9,5 @@
     <string name="button_scan_barcode">スキャン</string>
     <string name="text_scan_barcode">バーコードをスキャンします。</string>
     <string name="toast_empty_text_generator">テキストを入力してQRコードを生成してください。</string>
+    <string name="button_save_generated_barcode">保存する</string>
 </resources>

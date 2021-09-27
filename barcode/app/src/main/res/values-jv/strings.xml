@@ -9,4 +9,5 @@
     <string name="button_scan_barcode">Pindai</string>
     <string name="text_scan_barcode">pindai barcode wae ..</string>
     <string name="toast_empty_text_generator">Mangga ketik teks kanggo ngasilake QR Code ..</string>
+    <string name="button_save_generated_barcode">ngirit</string>
 </resources>

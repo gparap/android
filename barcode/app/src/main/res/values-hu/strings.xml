@@ -9,4 +9,5 @@
     <string name="button_scan_barcode">Letapogatás</string>
     <string name="text_scan_barcode">beolvasni bármilyen vonalkódot ..</string>
     <string name="toast_empty_text_generator">Kérjük, írja be a szöveget a QR-kód létrehozásához.</string>
+    <string name="button_save_generated_barcode">megment</string>
 </resources>

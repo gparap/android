@@ -9,4 +9,5 @@
     <string name="button_scan_barcode">Quét</string>
     <string name="text_scan_barcode">quét bất kỳ mã vạch nào ..</string>
     <string name="toast_empty_text_generator">Vui lòng nhập văn bản để tạo Mã QR ..</string>
+    <string name="button_save_generated_barcode">cứu</string>
 </resources>
