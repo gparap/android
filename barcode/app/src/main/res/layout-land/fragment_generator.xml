@@ -23,6 +23,7 @@
             android:layout_height="match_parent"
             android:background="@color/secondary_500_A45"
             android:contentDescription="@string/description_generated_barcode" />
+
     </FrameLayout>
 
     <!--Text input for generating barcode-->
@@ -55,4 +56,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <!--Button for saving the barcode-->
+    <Button
+        android:id="@+id/buttonSaveGenerateBarcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_save_generated_barcode"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextGenerateBarcode"
+        app:layout_constraintStart_toStartOf="@+id/editTextGenerateBarcode"
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

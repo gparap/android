@@ -31,7 +31,16 @@ class GeneratorViewModel : ViewModel() {
     //generated barcode image
     private val barcodeImageLivedata = MutableLiveData<Bitmap>()
     val barcodeImage: LiveData<Bitmap> = barcodeImageLivedata
-    fun setBarcodeImage(image: Bitmap) {
+    fun getbarcodeImage() : Bitmap? {
+        return barcodeImageLivedata.value
+    }fun setBarcodeImage(image: Bitmap) {
         barcodeImageLivedata.value = image
+    }
+
+    //generated barcode save button
+    private val saveButtonLivedata = MutableLiveData<Int>()
+    val saveButton: LiveData<Int> = saveButtonLivedata
+    fun setSaveButtonVisibility(visibility: Int) {
+        saveButtonLivedata.value = visibility
     }
 }
