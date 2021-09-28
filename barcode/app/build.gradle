@@ -58,4 +58,7 @@ dependencies {
 
     //barcodes
     implementation 'com.journeyapps:zxing-android-embedded:4.2.0'
+
+    //Mobile Ads SDK
+    implementation 'com.google.android.gms:play-services-ads:20.4.0'
 }

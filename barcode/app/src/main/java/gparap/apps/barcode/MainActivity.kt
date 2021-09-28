@@ -21,8 +21,11 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import gparap.apps.barcode.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,8 +44,8 @@ class MainActivity : AppCompatActivity() {
                 as NavHostFragment
         val navController = navHostFragment.navController
 
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations
+        //passing each menu ID as a set of ids because each
+        //menu should be considered as top level destinations
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_scanner, R.id.navigation_generator
@@ -50,6 +53,16 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNavView.setupWithNavController(navController)
+
+        //initialize the Mobile Ads SDK
+        MobileAds.initialize(this) {}
+
+        //create an ad request
+        val adRequest = AdRequest.Builder().build()
+
+        //place ad banner
+        val adView = binding.adView
+        adView.loadAd(adRequest)
     }
 
 }
