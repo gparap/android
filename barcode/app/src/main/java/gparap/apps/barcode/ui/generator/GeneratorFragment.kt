@@ -64,24 +64,29 @@ class GeneratorFragment : Fragment() {
             barcodeImage.setImageBitmap(it)
         })
 
-        //generate barcode
+        //observe generated barcode button visibility
         val buttonSaveGenerateBarcode = binding.buttonSaveGenerateBarcode
+        generatorViewModel.saveButton.observe(viewLifecycleOwner, {
+            buttonSaveGenerateBarcode.visibility = it
+        })
+
+        //generate barcode
         val buttonGenerateBarcode: Button = binding.buttonGenerateBarcode
         buttonGenerateBarcode.setOnClickListener {
             val isGenerated = generateBarcode()
 
             //unhide save button
-            if (isGenerated){
-                buttonSaveGenerateBarcode?.visibility = View.VISIBLE
+            if (isGenerated) {
+                generatorViewModel.setSaveButtonVisibility(View.VISIBLE)
             }
         }
 
         //save generated barcode to device
-        buttonSaveGenerateBarcode?.setOnClickListener {
+        buttonSaveGenerateBarcode.setOnClickListener {
             Utils.saveBarcode(
                 context?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!.absolutePath,
                 editTextGenerateBarcode.text.toString(),
-                bitmap!!
+                generatorViewModel.getbarcodeImage()!!
             )
         }
 
@@ -93,7 +98,7 @@ class GeneratorFragment : Fragment() {
         fragmentGeneratorBinding = null
     }
 
-    private fun generateBarcode() : Boolean {
+    private fun generateBarcode(): Boolean {
         val barcodeEncoder = BarcodeEncoder()
         val isGenerated: Boolean
 
@@ -106,7 +111,7 @@ class GeneratorFragment : Fragment() {
             )
 
             //update barcode image
-            if (bitmap != null){
+            if (bitmap != null) {
                 generatorViewModel.setBarcodeImage(bitmap!!)
             }
 
@@ -118,22 +123,15 @@ class GeneratorFragment : Fragment() {
 
         //display error message (empty user content to generate barcode)
         else {
-            Toast.makeText(context, getString(R.string.toast_empty_text_generator), Toast.LENGTH_SHORT)
+            Toast.makeText(
+                context,
+                getString(R.string.toast_empty_text_generator),
+                Toast.LENGTH_SHORT
+            )
                 .show()
             isGenerated = false
         }
 
         return isGenerated
-    }
-
-    private fun saveGeneratedBarcode() {
-//        Utils.writeDataToFile(
-//            Utils.createNewFile(
-//                context?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!.absolutePath,
-//                editTextGenerateBarcode.text.toString()
-//            ), Utils.getByteArray(bitmap!!)
-//        )
-
-
     }
 }
