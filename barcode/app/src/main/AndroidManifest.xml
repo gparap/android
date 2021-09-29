@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="gparap.apps.barcode">
 
+    <!--Merge multiple manifest files (3rd party libs permissions)-->
+    <uses-permission android:name="android.permission.CAMERA" tools:node="remove" />
+
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
