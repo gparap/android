@@ -17,8 +17,10 @@ package gparap.apps.painter
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -34,12 +36,15 @@ import gparap.apps.painter.canvas.CanvasView
 import gparap.apps.painter.color_picker.ColorPickerDialog
 import gparap.apps.painter.color_picker.ColorPickerListener
 import gparap.apps.painter.utils.Utils
+import java.io.InputStream
 
 @Suppress("PrivatePropertyName")
 class MainActivity : AppCompatActivity(), ColorPickerListener {
+    private lateinit var canvasLayout: ConstraintLayout
     private lateinit var canvasView: CanvasView
     private lateinit var dialog: ColorPickerDialog
     private val REQUEST_CODE_WRITE_EXTERNAL_STORAGE = 111
+    private val REQUEST_CODE_ACTION_GET_CONTENT = 222
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,9 +54,9 @@ class MainActivity : AppCompatActivity(), ColorPickerListener {
         //lock screen orientation to the one existing at app launch time
         this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LOCKED
 
-        //create canvas area
-        canvasView = CanvasView(this, null)
-        val canvasLayout: ConstraintLayout = findViewById(R.id.main_canvas_area)
+        //create canvas area and add it to layout
+        canvasView = CanvasView(this, null, null, false)
+        canvasLayout = findViewById(R.id.main_canvas_area)
         canvasLayout.addView(canvasView)
 
         //get the color value from intent
@@ -102,7 +107,7 @@ class MainActivity : AppCompatActivity(), ColorPickerListener {
 
         }
 
-        //save painting to a .png file on the primary external filesystem
+        //save painting to a .png file on a top-level shared storage directory
         val imageViewSave = findViewById<ImageView>(R.id.imageViewSave)
         imageViewSave.setOnClickListener {
             //we should always request permissions if we encounter a legacy API
@@ -112,10 +117,45 @@ class MainActivity : AppCompatActivity(), ColorPickerListener {
                         arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
                         REQUEST_CODE_WRITE_EXTERNAL_STORAGE
                     )
+
+                } else {
+                    savePainting()  //permission granted
                 }
+
             } else {
-                savePainting()
+                savePainting()  //not a legacy API
             }
+        }
+
+        //open existing painting from filesystem
+        val imageViewOpen = findViewById<ImageView>(R.id.imageViewOpen)
+        imageViewOpen.setOnClickListener {
+            //create an action to open image files
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "image/*"
+            startActivityForResult(
+                Intent.createChooser(intent, resources.getString(R.string.title_file_picker)),
+                REQUEST_CODE_ACTION_GET_CONTENT
+            )
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
+        super.onActivityResult(requestCode, resultCode, intentData)
+        if (resultCode != RESULT_OK) {
+            return
+        }
+        if (requestCode == REQUEST_CODE_ACTION_GET_CONTENT) {
+            //get file path and decode file to bitmap
+            val uri = intentData?.data
+            val inputStream: InputStream? = contentResolver.openInputStream(uri!!)
+            val mBitmap = BitmapFactory.decodeStream(inputStream)
+            inputStream?.close()
+
+            //create canvas area and add it to layout
+            canvasView = CanvasView(this, null, mBitmap!!, true)
+            canvasLayout.removeAllViews()
+            canvasLayout.addView(canvasView)
         }
     }
 

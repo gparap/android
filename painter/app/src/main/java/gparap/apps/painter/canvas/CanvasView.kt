@@ -26,6 +26,8 @@ import android.view.MotionEvent
 import android.view.View
 import gparap.apps.painter.utils.Utils
 
+
+@Suppress("PrivatePropertyName")
 class CanvasView : View {
     private val PAINT_DITHER_FLAG = android.graphics.Paint.DITHER_FLAG
     private val BITMAP_POSITION_LEFT = 0.0f
@@ -41,14 +43,24 @@ class CanvasView : View {
     var strokeWidth: Int = 5
 
     constructor(context: Context?) : super(context)
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
+    constructor(
+        context: Context?,
+        attrs: AttributeSet?,
+        bmap: Bitmap?,
+        isBitmapLoaded: Boolean
+    ) : super(context, attrs) {
         //create a canvas and a mutable bitmap to draw into
-        bitmap = Bitmap.createBitmap(
-            Utils.getDeviceWidth(context),
-            Utils.getDeviceHeight(context),
-            Bitmap.Config.ARGB_8888
-        )
-        canvasWithBitmap = Canvas(bitmap)
+        if (!isBitmapLoaded) {
+            bitmap = Bitmap.createBitmap(
+                Utils.getDeviceWidth(context),
+                Utils.getDeviceHeight(context),
+                Bitmap.Config.ARGB_8888
+            )
+            canvasWithBitmap = Canvas(bitmap)
+        } else {
+            bitmap = bmap!!.copy(Bitmap.Config.ARGB_8888, true)
+            canvasWithBitmap = Canvas(bitmap)
+        }
     }
 
     override fun onDraw(canvas: Canvas?) {
@@ -56,9 +68,6 @@ class CanvasView : View {
 
         //save canvas before drawing
         canvas?.save()
-
-        //clear canvas' bitmap with white color
-        canvasWithBitmap.drawColor(Color.WHITE)
 
         //draw all paths
         for (p in paths) {
@@ -122,8 +131,8 @@ class CanvasView : View {
     }
 
     fun clearCanvas() {
+        canvasWithBitmap.drawColor(Color.WHITE)
         paths.clear()
-        currentColor = Color.BLACK
         invalidate()
     }
 
