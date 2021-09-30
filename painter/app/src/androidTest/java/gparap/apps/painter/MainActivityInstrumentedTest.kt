@@ -75,6 +75,11 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
+    fun isVisible_imageViewOpen() {
+        onView(withId(R.id.imageViewOpen)).check(matches(isDisplayed()))
+    }
+
+    @Test
     fun isVisible_imageViewSave() {
         onView(withId(R.id.imageViewSave)).check(matches(isDisplayed()))
     }
