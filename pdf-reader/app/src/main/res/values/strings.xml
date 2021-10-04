@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PDF Reader</string>
+    <string name="desc_pdf_file_image_logo">PDF file image logo</string>
 </resources>
