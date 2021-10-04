@@ -13,14 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.pdf_reader
+package gparap.apps.pdf_reader.model
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.ImageView
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
-}
+class Book(val image: ImageView?, val title: String, path: String)
