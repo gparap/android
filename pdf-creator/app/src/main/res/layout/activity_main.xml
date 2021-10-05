@@ -11,7 +11,7 @@
         android:id="@+id/editTextInputPDF"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="null"
+        android:background="@null"
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/hint_pdf_input_area"
