@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PDF Creator</string>
+    <string name="button_create_pdf">CREATE</string>
+    <string name="hint_pdf_input_area">type your PDF here</string>
+</resources>
