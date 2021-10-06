@@ -27,8 +27,8 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import gparap.apps.pdf_creator.utils.Utils
 
+@Suppress("PrivatePropertyName")
 class MainActivity : AppCompatActivity() {
-    @Suppress("PrivatePropertyName")
     private val REQUEST_CODE_WRITE_EXTERNAL_STORAGE = 999
     private lateinit var editTextInputPDF: EditText
     private lateinit var viewModel: MainActivityViewModel
@@ -61,13 +61,13 @@ class MainActivity : AppCompatActivity() {
 
                 //permission granted
                 else {
-                    savePDF()
+                    Utils.savePDF(editTextInputPDF.text.toString())
                 }
             }
 
             //(SDK < 23 && SDK >= 30)
             else {
-                savePDF()
+                Utils.savePDF(editTextInputPDF.text.toString())
             }
         }
     }
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
 
         //permission granted
         if (requestCode == REQUEST_CODE_WRITE_EXTERNAL_STORAGE) {
-            savePDF()
+            Utils.savePDF(editTextInputPDF.text.toString())
         }
     }
 
@@ -96,10 +96,5 @@ class MainActivity : AppCompatActivity() {
             return false
         }
         return true
-    }
-
-    private fun savePDF() {
-        //create PDF document
-        val pdfDocument = Utils.createPDF(viewModel.getInputPDF().toString())
     }
 }

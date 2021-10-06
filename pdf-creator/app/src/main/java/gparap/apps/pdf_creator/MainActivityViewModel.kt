@@ -25,8 +25,4 @@ class MainActivityViewModel : ViewModel() {
     fun getInputPDF(): LiveData<String> {
         return pdfInputLiveData
     }
-
-    fun setInputPDF(_value: String) {
-        pdfInputLiveData.value = _value
-    }
 }
