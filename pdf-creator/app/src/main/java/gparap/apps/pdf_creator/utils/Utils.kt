@@ -15,24 +15,47 @@
  */
 package gparap.apps.pdf_creator.utils
 
+import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.pdf.PdfDocument
+import android.os.Environment
+import java.io.File
+import java.io.FileOutputStream
 
 object Utils {
-    /** Creates and returns a PDF document with one page. */
-    fun createPDF(pdfInput: String) : PdfDocument {
+    /** Creates a PDF document with one page and saves it to the device. */
+    fun savePDF(pdfInput: String) {
         val pdfDocument = PdfDocument()
 
-        //create a page description
-        val pageInfo = PdfDocument.PageInfo.Builder(100, 100, 1).create()
-
-        //create and write a page
+        //setup and write to page
+        val pageInfo = PdfDocument.PageInfo.Builder(480, 800, 1)
+            .create()
         val page = pdfDocument.startPage(pageInfo)
         val canvas = page.canvas
-        canvas.drawText(pdfInput, 10F, 10F, Paint())
+        val paint = Paint()
+        paint.textSize = 24F
+        paint.color = Color.BLACK
+        canvas.drawText(pdfInput, paint.textSize,paint.textSize, paint)
         pdfDocument.finishPage(page)
 
-        //return the PDF
-        return pdfDocument
+        //set file path (based on API version)
+        val filename = "temp.pdf"
+        val path = if (android.os.Build.VERSION.SDK_INT <= 29) {
+            File(Environment.getExternalStorageDirectory(), filename)
+        } else {
+            File(
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
+                filename
+            )
+        }
+
+        //save PDF to device
+        try {
+            pdfDocument.writeTo(FileOutputStream(path))
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            pdfDocument.close()
+        }
     }
 }
