@@ -16,6 +16,7 @@
         android:gravity="start|top"
         android:hint="@string/hint_pdf_input_area"
         android:inputType="textMultiLine"
+        android:maxLength="595"
         app:layout_constraintBottom_toTopOf="@+id/buttonCreatePDF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
