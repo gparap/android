@@ -19,6 +19,9 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.pdf.PdfDocument
 import android.os.Environment
+import android.text.Layout
+import android.text.StaticLayout
+import android.text.TextPaint
 import java.io.File
 import java.io.FileOutputStream
 
@@ -27,15 +30,34 @@ object Utils {
     fun savePDF(pdfInput: String) {
         val pdfDocument = PdfDocument()
 
-        //setup and write to page
-        val pageInfo = PdfDocument.PageInfo.Builder(480, 800, 1)
+        //setup meta-data that describes a PDF page
+        val pageInfo = PdfDocument.PageInfo.Builder(595, 842, 1)
             .create()
+
+        //start a PDF page for drawing
         val page = pdfDocument.startPage(pageInfo)
-        val canvas = page.canvas
-        val paint = Paint()
-        paint.textSize = 24F
-        paint.color = Color.BLACK
-        canvas.drawText(pdfInput, paint.textSize,paint.textSize, paint)
+
+        //setup data for text measuring and drawing
+        val textPaint = TextPaint()
+        textPaint.color = Color.BLACK
+        textPaint.textAlign = Paint.Align.LEFT
+        textPaint.textSize = 24F
+
+        //create a Layout for text
+        val textLayout = StaticLayout.Builder.obtain(
+            pdfInput,
+            0,
+            page.canvas.width,
+            textPaint,
+            page.canvas.width
+        )
+            .setAlignment(Layout.Alignment.ALIGN_NORMAL)
+            .setLineSpacing(0F, 1F)
+            .setIncludePad(false)
+            .build()
+
+        //draw the page
+        textLayout.draw(page.canvas)
         pdfDocument.finishPage(page)
 
         //set file path (based on API version)
@@ -50,11 +72,15 @@ object Utils {
         }
 
         //save PDF to device
+        val fileOutputStream = FileOutputStream(path)
         try {
-            pdfDocument.writeTo(FileOutputStream(path))
+            pdfDocument.writeTo(fileOutputStream)
+            fileOutputStream.flush()
         } catch (e: Exception) {
             e.printStackTrace()
         } finally {
+            //!!! release resources
+            fileOutputStream.close()
             pdfDocument.close()
         }
     }
