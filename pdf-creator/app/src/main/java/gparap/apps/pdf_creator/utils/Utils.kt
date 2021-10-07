@@ -38,38 +38,17 @@ object Utils {
         val page = pdfDocument.startPage(pageInfo)
 
         //setup data for text measuring and drawing
-        val textPaint = TextPaint()
-        textPaint.color = Color.BLACK
-        textPaint.textAlign = Paint.Align.LEFT
-        textPaint.textSize = 24F
+        val textPaint = createTextPaint(24f)
 
-        //create a Layout for text
-        val textLayout = StaticLayout.Builder.obtain(
-            pdfInput,
-            0,
-            page.canvas.width,
-            textPaint,
-            page.canvas.width
-        )
-            .setAlignment(Layout.Alignment.ALIGN_NORMAL)
-            .setLineSpacing(0F, 1F)
-            .setIncludePad(false)
-            .build()
+        //create a Layout for the page
+        val textLayout = createTextLayout(pdfInput, textPaint, page)
 
         //draw the page
         textLayout.draw(page.canvas)
         pdfDocument.finishPage(page)
 
-        //set file path (based on API version)
-        val filename = "temp.pdf"
-        val path = if (android.os.Build.VERSION.SDK_INT <= 29) {
-            File(Environment.getExternalStorageDirectory(), filename)
-        } else {
-            File(
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
-                filename
-            )
-        }
+        //set file path
+        val path = getFilePath()
 
         //save PDF to device
         val fileOutputStream = FileOutputStream(path)
@@ -83,5 +62,49 @@ object Utils {
             fileOutputStream.close()
             pdfDocument.close()
         }
+    }
+
+    //setup data for text measuring and drawing
+    fun createTextPaint(textSize: Float): TextPaint {
+        val textPaint = TextPaint()
+
+        textPaint.color = Color.BLACK
+        textPaint.textAlign = Paint.Align.LEFT
+        textPaint.textSize = textSize
+
+        return textPaint
+    }
+
+    //create a layout for the text of the PDF's page
+    fun createTextLayout(
+        pdfInput: String,
+        textPaint: TextPaint,
+        page: PdfDocument.Page
+    ): StaticLayout {
+        return StaticLayout.Builder.obtain(
+            pdfInput,
+            0,
+            pdfInput.length,
+            textPaint,
+            page.canvas.width
+        )
+            .setAlignment(Layout.Alignment.ALIGN_NORMAL)
+            .setLineSpacing(0F, 1F)
+            .setIncludePad(false)
+            .build()
+    }
+
+    //get the file path based on API version
+    //TODO: filename will be given by user
+    fun getFilePath(filename: String = "temp.pdf"): File {
+        val path = if (android.os.Build.VERSION.SDK_INT <= 29) {
+            File(Environment.getExternalStorageDirectory(), filename)
+        } else {
+            File(
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
+                filename
+            )
+        }
+        return path
     }
 }
