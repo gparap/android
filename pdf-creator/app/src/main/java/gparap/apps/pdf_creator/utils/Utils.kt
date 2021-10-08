@@ -26,26 +26,36 @@ import java.io.File
 import java.io.FileOutputStream
 
 object Utils {
-    /** Creates a PDF document with one page and saves it to the device. */
+    private const val PAGE_WIDTH = 595  //A4 page width
+    private const val PAGE_HEIGHT = 842 //A4 page height
+    private const val PAGE_MAX_LENGTH = 1024
+
+    /** Creates a PDF document and saves it to the device. */
     fun savePDF(pdfInput: String) {
+        val pagesCount = getPagesCount(pdfInput)
+        val pages = getPages(pdfInput)
+
+        //create PDF document
         val pdfDocument = PdfDocument()
 
-        //setup meta-data that describes a PDF page
-        val pageInfo = PdfDocument.PageInfo.Builder(595, 842, 1)
-            .create()
-
-        //start a PDF page for drawing
-        val page = pdfDocument.startPage(pageInfo)
-
         //setup data for text measuring and drawing
-        val textPaint = createTextPaint(24f)
+        val textPaint = createTextPaint(24F)
 
-        //create a Layout for the page
-        val textLayout = createTextLayout(pdfInput, textPaint, page)
+        //create pages
+        for (i in 0 until pagesCount) {
+            //setup meta-data that describes a PDF page
+            val pageInfo = PdfDocument.PageInfo.Builder(PAGE_WIDTH, PAGE_HEIGHT, i + 1).create()
 
-        //draw the page
-        textLayout.draw(page.canvas)
-        pdfDocument.finishPage(page)
+            //start a PDF page for drawing
+            val page = pdfDocument.startPage(pageInfo)
+
+            //create a Layout for the page
+            val textLayout = createTextLayout(pages[i], textPaint, page)
+
+            //draw the page
+            textLayout.draw(page.canvas)
+            pdfDocument.finishPage(page)
+        }
 
         //set file path
         val path = getFilePath()
@@ -106,5 +116,37 @@ object Utils {
             )
         }
         return path
+    }
+
+    //returns the total number of pages of the pdf input
+    fun getPagesCount(pdfInput: String): Int {
+        var pages = pdfInput.length / PAGE_MAX_LENGTH
+
+        //check for an extra page
+        if (pdfInput.length.mod(PAGE_MAX_LENGTH) > 0) pages++
+
+        return pages
+    }
+
+    //breaks the pdf input into multiple pages and returns them as an ArrayList
+    fun getPages(pdfInput: String): ArrayList<String> {
+        val pagesList = ArrayList<String>()
+        val pagesCount = getPagesCount(pdfInput)
+
+        //break input in multiple pages
+        for (i in 0 until pagesCount) {
+            //we are in the last page
+            if (i == pagesCount - 1) {
+                pagesList.add(i, pdfInput.substring(i * PAGE_MAX_LENGTH, pdfInput.length))
+                break
+            }
+            //add page to list
+            pagesList.add(
+                i,
+                pdfInput.substring(i * PAGE_MAX_LENGTH, i * PAGE_MAX_LENGTH + PAGE_MAX_LENGTH)
+            )
+        }
+
+        return pagesList
     }
 }
