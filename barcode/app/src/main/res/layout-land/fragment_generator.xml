@@ -38,6 +38,7 @@
         android:gravity="center"
         android:hint="@string/hint_enter_text_to_generate_barcode"
         android:inputType="textMultiLine"
+        android:minHeight="48dp"
         android:textSize="@dimen/textSize_normal"
         app:layout_constraintBottom_toBottomOf="@+id/frameGeneratedBarcode"
         app:layout_constraintEnd_toEndOf="parent"
