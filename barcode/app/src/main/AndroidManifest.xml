@@ -3,9 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="gparap.apps.barcode">
 
-    <!--Merge multiple manifest files (3rd party libs permissions)-->
-    <uses-permission android:name="android.permission.CAMERA" tools:node="remove" />
-
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
@@ -17,7 +14,8 @@
         tools:ignore="AllowBackup">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
