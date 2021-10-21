@@ -11,3 +11,7 @@ Generates QR codes from text.
 View on Google Play:
 --------------------
 https://play.google.com/store/apps/details?id=gparap.apps.barcode
+
+View on Amazon:
+--------------------
+https://www.amazon.com/gp/product/B09HPPTN7C
