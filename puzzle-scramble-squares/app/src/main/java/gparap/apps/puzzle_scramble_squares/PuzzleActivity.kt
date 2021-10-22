@@ -16,9 +16,11 @@
 package gparap.apps.puzzle_scramble_squares
 
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
+import gparap.apps.puzzle_scramble_squares.utils.Utils
 
 class PuzzleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +34,19 @@ class PuzzleActivity : AppCompatActivity() {
             uri = Uri.parse(strUri)
         }
 
-        //display the picked image
+        //get the real display area of the device
+        val defaultDisplay = this.windowManager.defaultDisplay
+        val defaultDisplayWidth = defaultDisplay.width
+        val defaultDisplayHeight = defaultDisplay.height
+
+        //get bitmap from uri
+        val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, uri)
+
+        //scale bitmap to fit the screen
+        val scaledBitmap = Utils.getScaledBitmap(bitmap, defaultDisplayWidth, defaultDisplayHeight)
+
+        //display the picked image and scale it to fit the screen
         val image = findViewById<ImageView>(R.id.image_view_scrambled_squares)
-        image.setImageURI(uri)
+        image.setImageBitmap(scaledBitmap)
     }
 }
