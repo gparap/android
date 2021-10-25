@@ -2,4 +2,5 @@
 <resources>
     <!--Design dimensions-->
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="android_minHeight">48dp</dimen>
 </resources>
