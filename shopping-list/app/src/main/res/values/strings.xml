@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">My Shopping List</string>
     <string name="desc_app_logo">Splash screen application logo</string>
+    <string name="desc_fab_add_category">Add shopping list category</string>
 </resources>
