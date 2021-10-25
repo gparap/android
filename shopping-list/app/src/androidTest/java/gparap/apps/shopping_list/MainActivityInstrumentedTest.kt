@@ -17,6 +17,7 @@ package gparap.apps.shopping_list
 
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -40,12 +41,18 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
-    fun isVisible_recycler_view_categories() {
+    fun isVisible_recyclerViewCategories() {
         onView(withId(R.id.recycler_view_categories)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun isVisible_fab_add_category() {
-        onView(withId(R.id.fab_add_category)).check(matches(isDisplayed()))
+    fun isVisible_fabAddCategory() {
+        onView(withId(R.id.fab_add_shopping_category)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun onClickFabAddCategory_openDialogForAddingNew() {
+        onView(withId(R.id.fab_add_shopping_category)).perform(click())
+        onView(withId(R.id.layout_add_category)).check(matches(isDisplayed()))
     }
 }

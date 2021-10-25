@@ -2,4 +2,8 @@
     <string name="app_name">My Shopping List</string>
     <string name="desc_app_logo">Splash screen application logo</string>
     <string name="desc_fab_add_category">Add shopping list category</string>
+    <string name="text_add_shopping_category">Add a new shopping category</string>
+    <string name="hint_enter_category_name">enter category name</string>
+    <string name="button_add_category_ok">Add</string>
+    <string name="button_add_category_cancel">Cancel</string>
 </resources>
