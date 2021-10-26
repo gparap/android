@@ -18,8 +18,6 @@ package gparap.apps.shopping_list
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.shopping_list.utils.DialogUtils
@@ -49,9 +47,6 @@ class MainActivity : AppCompatActivity(), DialogUtils.DialogCallback {
     }
 
     override fun onPositiveButtonClickListener() {
-        val editTextCategory = dialog.findViewById<EditText>(R.id.edit_text_add_category_name)
-        //debug
-        Toast.makeText(this, editTextCategory?.text.toString(), Toast.LENGTH_SHORT).show()
     }
 
     override fun onNegativeButtonClickListener() {
