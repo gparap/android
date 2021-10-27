@@ -16,18 +16,30 @@
 package gparap.apps.shopping_list
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import gparap.apps.shopping_list.adapters.CategoryAdapter
+import gparap.apps.shopping_list.data.CategoryModel
 import gparap.apps.shopping_list.utils.DialogUtils
 
-class MainActivity : AppCompatActivity(), DialogUtils.DialogCallback {
+class MainActivity : AppCompatActivity(), DialogUtils.DialogCallback,
+    CategoryAdapter.CategoryAdapterCallback {
     private lateinit var dialog: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //setup RecyclerView with adapter for shopping categories
+        val categoryRecyclerView = findViewById<RecyclerView>(R.id.recycler_view_categories)
+        categoryRecyclerView.layoutManager = LinearLayoutManager(this)
+        val categoryAdapter = CategoryAdapter(this)
+        categoryRecyclerView.adapter = categoryAdapter
+        //TODO categoryAdapter.categories from database
 
         //add shopping category
         val fabAddCategory = findViewById<FloatingActionButton>(R.id.fab_add_shopping_category)
@@ -46,9 +58,28 @@ class MainActivity : AppCompatActivity(), DialogUtils.DialogCallback {
         ).apply { show() }
     }
 
+    //Dialog callback
     override fun onPositiveButtonClickListener() {
+        TODO("Not yet implemented")
     }
 
+    //Dialog callback
     override fun onNegativeButtonClickListener() {
+        TODO("Not yet implemented")
+    }
+
+    //RecyclerView callback
+    override fun onItemViewClickListener(category: CategoryModel) {
+        TODO("Not yet implemented")
+    }
+
+    //RecyclerView callback
+    override fun onEditCategoryButtonClickListener(category: CategoryModel) {
+        TODO("Not yet implemented")
+    }
+
+    //RecyclerView callback
+    override fun onDeleteCategoryButtonViewClickListener(category: CategoryModel) {
+        TODO("Not yet implemented")
     }
 }
