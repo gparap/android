@@ -6,4 +6,7 @@
     <string name="hint_enter_category_name">enter category name</string>
     <string name="button_add_category_ok">Add</string>
     <string name="button_add_category_cancel">Cancel</string>
+    <string name="desc_add_category_item">Add category item</string>
+    <string name="desc_edit_category">Edit category</string>
+    <string name="desc_delete_category">Delete category</string>
 </resources>

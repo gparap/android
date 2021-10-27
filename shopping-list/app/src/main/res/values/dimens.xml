@@ -3,4 +3,10 @@
     <!--Design dimensions-->
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="android_minHeight">48dp</dimen>
+    <dimen name="cardview_layout_margin">8dp</dimen>
+    <dimen name="cardview_cardCornerRadius">8dp</dimen>
+    <dimen name="textview_layout_margin">8dp</dimen>
+    <dimen name="textview_layout_marginTop">8dp</dimen>
+    <dimen name="textview_layout_marginBottom">8dp</dimen>
+    <dimen name="imageview_layout_margin">8dp</dimen>
 </resources>
