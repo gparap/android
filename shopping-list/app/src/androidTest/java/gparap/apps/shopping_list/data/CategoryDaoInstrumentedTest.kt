@@ -51,7 +51,7 @@ class CategoryDaoInstrumentedTest {
     @Test
     fun addNewCategory() = runBlockingTest {
         //add a new category
-        val category = CategoryModel(1, "one")
+        val category = CategoryModel("one")
         dao.addNewCategory(category)
 
         //select all categories
@@ -71,8 +71,8 @@ class CategoryDaoInstrumentedTest {
     fun getAllCategories() = runBlockingTest {
         //add 2 new categories to database
         val categoriesCount = 2
-        val category1 = CategoryModel(1, "one")
-        val category2 = CategoryModel(2, "two")
+        val category1 = CategoryModel("one")
+        val category2 = CategoryModel("two")
         dao.addNewCategory(category1)
         dao.addNewCategory(category2)
 
@@ -92,7 +92,8 @@ class CategoryDaoInstrumentedTest {
         val expectedCategoryName = "updated"
 
         //add a new category to database and update it
-        val category = CategoryModel(1, "one")
+        val category = CategoryModel("one")
+        category.setId(1)
         dao.addNewCategory(category)
         category.name = "updated"
         dao.editCategory(category)
@@ -112,7 +113,8 @@ class CategoryDaoInstrumentedTest {
     @Test
     fun removeCategoryById() = runBlockingTest {
         //add a new category to database and delete it
-        val category = CategoryModel(1, "one")
+        val category = CategoryModel("one")
+        category.setId(1)
         dao.addNewCategory(category)
         dao.removeCategory(category)
 
@@ -130,4 +132,10 @@ class CategoryDaoInstrumentedTest {
     fun tearDown() {
         db.close()
     }
+}
+
+//!!! This is very important because the "id" field is auto-increment
+//!!!   and we must not be able to set it from the app
+private fun CategoryModel.setId(id: Int) {
+    this.id = id
 }
