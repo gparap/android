@@ -16,6 +16,7 @@
 package gparap.apps.shopping_list
 
 import android.annotation.SuppressLint
+import android.content.DialogInterface
 import android.os.Bundle
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
@@ -57,12 +58,12 @@ class MainActivity : AppCompatActivity(), DialogUtils.DialogCallback,
         //add shopping category
         val fabAddCategory = findViewById<FloatingActionButton>(R.id.fab_add_shopping_category)
         fabAddCategory.setOnClickListener {
-            addShoppingCategory()
+            openAddShoppingCategoryDialog()
         }
     }
 
     @SuppressLint("InflateParams")
-    private fun addShoppingCategory() {
+    private fun openAddShoppingCategoryDialog() {
         //open dialog for adding a new shopping category
         dialog = DialogUtils(this).createDialog(
             this.resources.getString(R.string.text_add_shopping_category),
@@ -71,15 +72,14 @@ class MainActivity : AppCompatActivity(), DialogUtils.DialogCallback,
         ).apply { show() }
     }
 
-    //Dialog callback (add a new shopping category)
+    //Add a new shopping category dialog callback
     override fun onPositiveButtonClickListener() {
         viewModel.addShoppingCategory(
             dialog.findViewById<EditText>(R.id.edit_text_add_category_name)?.text.toString()
         )
-
     }
 
-    //Dialog callback (cancel adding shopping category)
+    //Cancel adding shopping category dialog callback
     override fun onNegativeButtonClickListener() {
         return
     }
@@ -94,8 +94,17 @@ class MainActivity : AppCompatActivity(), DialogUtils.DialogCallback,
         TODO("Not yet implemented")
     }
 
-    //RecyclerView callback
+    //RecyclerView callback - delete a shopping category
     override fun onDeleteCategoryButtonViewClickListener(category: CategoryModel) {
-        TODO("Not yet implemented")
+        AlertDialog.Builder(this)
+            .setTitle("Delete Shopping Category")
+            .setMessage("This action will delete the selected shopping category. Are you sure?")
+            .setPositiveButton("OK") { _, _ -> viewModel.deleteShoppingCategory(category) }
+            .setNegativeButton(
+                "Cancel",
+                DialogInterface.OnClickListener { _, _ -> return@OnClickListener })
+            .create().also {
+                it.show()
+            }
     }
 }
