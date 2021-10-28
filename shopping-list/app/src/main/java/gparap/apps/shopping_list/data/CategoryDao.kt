@@ -17,6 +17,7 @@ package gparap.apps.shopping_list.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CategoryDao {
