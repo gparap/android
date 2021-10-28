@@ -17,29 +17,42 @@ package gparap.apps.shopping_list
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.shopping_list.adapters.CategoryAdapter
 import gparap.apps.shopping_list.data.CategoryModel
 import gparap.apps.shopping_list.utils.DialogUtils
+import gparap.apps.shopping_list.viewmodels.MainActivityViewModel
 
 class MainActivity : AppCompatActivity(), DialogUtils.DialogCallback,
     CategoryAdapter.CategoryAdapterCallback {
     private lateinit var dialog: AlertDialog
+    private lateinit var viewModel: MainActivityViewModel
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //create the ViewModel of the activity
+        viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
 
         //setup RecyclerView with adapter for shopping categories
         val categoryRecyclerView = findViewById<RecyclerView>(R.id.recycler_view_categories)
         categoryRecyclerView.layoutManager = LinearLayoutManager(this)
         val categoryAdapter = CategoryAdapter(this)
         categoryRecyclerView.adapter = categoryAdapter
-        //TODO categoryAdapter.categories from database
+
+        //observe shopping categories
+        viewModel.getShoppingCategories().observe(this, {
+            categoryAdapter.categories = it as ArrayList<CategoryModel>
+            categoryAdapter.notifyDataSetChanged()
+        })
 
         //add shopping category
         val fabAddCategory = findViewById<FloatingActionButton>(R.id.fab_add_shopping_category)
@@ -58,14 +71,17 @@ class MainActivity : AppCompatActivity(), DialogUtils.DialogCallback,
         ).apply { show() }
     }
 
-    //Dialog callback
+    //Dialog callback (add a new shopping category)
     override fun onPositiveButtonClickListener() {
-        TODO("Not yet implemented")
+        viewModel.addShoppingCategory(
+            dialog.findViewById<EditText>(R.id.edit_text_add_category_name)?.text.toString()
+        )
+
     }
 
-    //Dialog callback
+    //Dialog callback (cancel adding shopping category)
     override fun onNegativeButtonClickListener() {
-        TODO("Not yet implemented")
+        return
     }
 
     //RecyclerView callback

@@ -30,7 +30,7 @@ abstract class ShoppingListDatabase : RoomDatabase() {
 
         fun getInstance(context: Context): ShoppingListDatabase? {
             if (instance == null) {
-                Room.databaseBuilder(
+                instance = Room.databaseBuilder(
                     context,
                     ShoppingListDatabase::class.java,
                     "shopping_list_db"
