@@ -18,18 +18,33 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
         categoryDao = database?.getCategoryDao()!!
     }
 
-    /** Display all shopping categories */
-    fun getShoppingCategories(): LiveData<List<CategoryModel>> {
-        categoryLiveData = categoryDao.getAllCategories()
-        return categoryLiveData
-    }
-
     /** Adds a new shopping category */
     fun addShoppingCategory(categoryName: String) {
         val category = CategoryModel(categoryName)
 
         viewModelScope.launch(Dispatchers.IO) {
             categoryDao.addNewCategory(category)
+        }.apply {
+            //refresh categories on the RecyclerView
+            categoryLiveData = categoryDao.getAllCategories()
+        }
+    }
+
+    /** Display all shopping categories */
+    fun getShoppingCategories(): LiveData<List<CategoryModel>> {
+        categoryLiveData = categoryDao.getAllCategories()
+        return categoryLiveData
+    }
+
+    /** Edit a shopping category */
+    fun editShoppingCategory(category: CategoryModel) {
+        TODO("Not yet implemented")
+    }
+
+    /** Delete a shopping category */
+    fun deleteShoppingCategory(category: CategoryModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            categoryDao.removeCategory(category)
         }.apply {
             //refresh categories on the RecyclerView
             categoryLiveData = categoryDao.getAllCategories()
