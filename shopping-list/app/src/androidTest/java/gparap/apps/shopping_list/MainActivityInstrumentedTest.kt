@@ -15,44 +15,151 @@
  */
 package gparap.apps.shopping_list
 
+import android.view.View
+import androidx.core.view.size
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
+import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.UiController
+import androidx.test.espresso.ViewAction
+import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.filters.MediumTest
+import androidx.test.filters.SmallTest
 import androidx.test.platform.app.InstrumentationRegistry
-import org.junit.Assert.*
-
+import org.hamcrest.Matcher
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
+
 class MainActivityInstrumentedTest {
+    private lateinit var activityScenario: ActivityScenario<MainActivity>
 
     @Before
     fun setUp() {
-        ActivityScenario.launch(MainActivity::class.java)
+        activityScenario = ActivityScenario.launch(MainActivity::class.java)
     }
 
     @Test
+    @SmallTest
     fun useAppContext() {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("gparap.apps.shopping_list", appContext.packageName)
     }
 
     @Test
+    @SmallTest
     fun isVisible_recyclerViewCategories() {
         onView(withId(R.id.recycler_view_categories)).check(matches(isDisplayed()))
     }
 
     @Test
+    @SmallTest
     fun isVisible_fabAddCategory() {
         onView(withId(R.id.fab_add_shopping_category)).check(matches(isDisplayed()))
     }
 
     @Test
+    @SmallTest
     fun onClickFabAddCategory_openDialogForAddingNew() {
         onView(withId(R.id.fab_add_shopping_category)).perform(click())
         onView(withId(R.id.layout_add_category)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    @MediumTest
+    fun onClickFabAddCategory_addNewCategory() {
+        val testCategory = "add a test category"
+
+        //add a test category
+        onView(withId(R.id.fab_add_shopping_category)).perform(click())
+        onView(withId(R.id.edit_text_add_category_name)).perform(typeText(testCategory))
+        closeSoftKeyboard()
+        onView(withText(R.string.dialog_button_ok)).perform(click())
+
+        //test here
+        onView(withText(testCategory)).check(matches(isDisplayed()))
+
+        //!!!   important (don't mess up the database)
+        deleteTestCategory()
+    }
+
+    @Test
+    @MediumTest
+    fun onClickImageViewEditCategoryOnRecyclerViewItem_updateExistingCategory() {
+        val testCategory = "test category"
+        val testCategoryEdited = "test category edited"
+
+        //add a test category
+        onView(withId(R.id.fab_add_shopping_category)).perform(click())
+        onView(withId(R.id.edit_text_add_category_name)).perform(typeText(testCategory))
+        closeSoftKeyboard()
+        onView(withText(R.string.dialog_button_ok)).perform(click())
+
+        //edit the test category
+        onView(withId(R.id.recycler_view_categories)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                getRecyclerViewItemsCount() - 1,
+                getImageViewClickAction(R.id.image_view_edit_category)
+            )
+        )
+        onView(withId(R.id.edit_text_edit_category_name)).perform(clearText())
+        onView(withId(R.id.edit_text_edit_category_name)).perform(typeText(testCategoryEdited))
+        closeSoftKeyboard()
+        onView(withText(R.string.dialog_button_ok)).perform(click())
+
+        //test here
+        onView(withText(testCategoryEdited)).check(matches(isDisplayed()))
+
+        //!!!   important (don't mess up the database)
+        deleteTestCategory()
+    }
+
+    private fun deleteTestCategory() {
+        //get the position of the last item on the RecyclerView
+        val position = getRecyclerViewItemsCount() - 1
+
+        //press delete test category button
+        onView(withId(R.id.recycler_view_categories)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                position,
+                getImageViewClickAction(R.id.image_view_delete_category)
+            )
+        )
+
+        //delete test category
+        onView(withText(R.string.dialog_button_ok)).perform(click())
+    }
+
+    private fun getImageViewClickAction(viewId: Int): ViewAction {
+        return ImageViewClickAction(viewId)
+    }
+
+    private fun getRecyclerViewItemsCount(): Int {
+        var items = 0
+        activityScenario.onActivity {
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recycler_view_categories)
+            items = recyclerView.size
+        }
+        return items
+    }
+}
+
+/** Perform a click action on the delete category ImageView. */
+class ImageViewClickAction(private val viewId: Int) : ViewAction {
+    override fun getConstraints(): Matcher<View> {
+        return click().constraints
+    }
+
+    override fun getDescription(): String {
+        return "click delete category ImageView"
+    }
+
+    override fun perform(uiController: UiController?, view: View?) {
+        click().perform(uiController, view?.findViewById(viewId))
     }
 }
