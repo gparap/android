@@ -2,10 +2,13 @@
     <string name="app_name">My Shopping List</string>
     <string name="desc_app_logo">Splash screen application logo</string>
     <string name="desc_fab_add_category">Add shopping list category</string>
-    <string name="text_add_shopping_category">Add a new shopping category</string>
+    <string name="title_add_shopping_category">Add a new shopping category</string>
+    <string name="title_edit_shopping_category">Edit shopping category</string>
+    <string name="title_delete_shopping_category">Delete Shopping Category</string>
+    <string name="text_delete_shopping_category">This action will delete the selected shopping category. Are you sure?</string>
     <string name="hint_enter_category_name">enter category name</string>
-    <string name="button_add_category_ok">Add</string>
-    <string name="button_add_category_cancel">Cancel</string>
+    <string name="dialog_button_ok">OK</string>
+    <string name="dialog_button_cancel">Cancel</string>
     <string name="desc_add_category_item">Add category item</string>
     <string name="desc_edit_category">Edit category</string>
     <string name="desc_delete_category">Delete category</string>

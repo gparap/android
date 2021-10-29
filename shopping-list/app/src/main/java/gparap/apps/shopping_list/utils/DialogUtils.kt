@@ -19,17 +19,34 @@ import android.content.Context
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import gparap.apps.shopping_list.R
+import gparap.apps.shopping_list.data.CategoryModel
 
 class DialogUtils(private val context: Context) {
 
-    /** Creates a custom alert dialog */
-    fun createDialog(title: String, view: View, callback: DialogCallback): AlertDialog {
+    /** Creates a custom alert dialog for adding a new category */
+    fun createAddCategoryDialog(title: String, view: View, callback: DialogCallback): AlertDialog {
         return AlertDialog.Builder(context)
             .setTitle(title)
-            .setPositiveButton(context.resources.getString(R.string.button_add_category_ok)) { _, _ ->
-                callback.onPositiveButtonClickListener()
+            .setPositiveButton(context.resources.getString(R.string.dialog_button_ok)) { _, _ ->
+                callback.onAddCategoryPositiveButtonClickListener()
             }
-            .setNegativeButton(context.resources.getString(R.string.button_add_category_cancel)) { _, _ ->
+            .setNegativeButton(context.resources.getString(R.string.dialog_button_cancel)) { _, _ ->
+                callback.onNegativeButtonClickListener()
+            }
+            .setView(view)
+            .create()
+    }
+
+    /** Creates a custom alert dialog for editing an existing category */
+    fun createAddCategoryDialog(
+        title: String, view: View, callback: DialogCallback, category: CategoryModel
+    ): AlertDialog {
+        return AlertDialog.Builder(context)
+            .setTitle(title)
+            .setPositiveButton(context.resources.getString(R.string.dialog_button_ok)) { _, _ ->
+                callback.onEditCategoryPositiveButtonClickListener(category)
+            }
+            .setNegativeButton(context.resources.getString(R.string.dialog_button_cancel)) { _, _ ->
                 callback.onNegativeButtonClickListener()
             }
             .setView(view)
@@ -38,7 +55,8 @@ class DialogUtils(private val context: Context) {
 
     /** Callback for listening to button dialog clicks */
     interface DialogCallback {
-        fun onPositiveButtonClickListener()
+        fun onAddCategoryPositiveButtonClickListener()
+        fun onEditCategoryPositiveButtonClickListener(category: CategoryModel)
         fun onNegativeButtonClickListener()
     }
 }

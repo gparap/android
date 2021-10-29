@@ -62,24 +62,31 @@ class MainActivity : AppCompatActivity(), DialogUtils.DialogCallback,
         }
     }
 
+    //Open dialog for adding a new shopping category
     @SuppressLint("InflateParams")
     private fun openAddShoppingCategoryDialog() {
-        //open dialog for adding a new shopping category
-        dialog = DialogUtils(this).createDialog(
-            this.resources.getString(R.string.text_add_shopping_category),
+        dialog = DialogUtils(this).createAddCategoryDialog(
+            this.resources.getString(R.string.title_add_shopping_category),
             layoutInflater.inflate(R.layout.dialog_add_category, null),
             this
         ).apply { show() }
     }
 
-    //Add a new shopping category dialog callback
-    override fun onPositiveButtonClickListener() {
+    //Dialog callback for adding a new shopping category
+    override fun onAddCategoryPositiveButtonClickListener() {
         viewModel.addShoppingCategory(
             dialog.findViewById<EditText>(R.id.edit_text_add_category_name)?.text.toString()
         )
     }
 
-    //Cancel adding shopping category dialog callback
+    //Dialog callback for editing an existing shopping category
+    override fun onEditCategoryPositiveButtonClickListener(category: CategoryModel) {
+        val editText = dialog.findViewById<EditText>(R.id.edit_text_edit_category_name)
+        category.name = editText?.text.toString()
+        viewModel.editShoppingCategory(category)
+    }
+
+    //Dialog callback for canceling action
     override fun onNegativeButtonClickListener() {
         return
     }
@@ -89,17 +96,31 @@ class MainActivity : AppCompatActivity(), DialogUtils.DialogCallback,
         TODO("Not yet implemented")
     }
 
-    //RecyclerView callback
+    //RecyclerView callback for opening dialog to edit an existing shopping category
+    @SuppressLint("InflateParams")
     override fun onEditCategoryButtonClickListener(category: CategoryModel) {
-        TODO("Not yet implemented")
+        dialog = DialogUtils(this).createAddCategoryDialog(
+            this.resources.getString(R.string.title_edit_shopping_category),
+            layoutInflater.inflate(R.layout.dialog_edit_category, null),
+            this,
+            category
+        ).apply {
+            show()
+        }.also {
+            //display the category info
+            val editText = it.findViewById<EditText>(R.id.edit_text_edit_category_name)
+            editText?.setText(category.name)
+        }
     }
 
-    //RecyclerView callback - delete a shopping category
+    //RecyclerView callback for opening dialog to delete a shopping category
     override fun onDeleteCategoryButtonViewClickListener(category: CategoryModel) {
         AlertDialog.Builder(this)
-            .setTitle("Delete Shopping Category")
-            .setMessage("This action will delete the selected shopping category. Are you sure?")
-            .setPositiveButton("OK") { _, _ -> viewModel.deleteShoppingCategory(category) }
+            .setTitle(this.resources.getString(R.string.title_delete_shopping_category))
+            .setMessage(this.resources.getString(R.string.text_delete_shopping_category))
+            .setPositiveButton(this.resources.getString(R.string.dialog_button_ok)) { _, _ ->
+                viewModel.deleteShoppingCategory(category)
+            }
             .setNegativeButton(
                 "Cancel",
                 DialogInterface.OnClickListener { _, _ -> return@OnClickListener })
