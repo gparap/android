@@ -38,7 +38,12 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
 
     /** Edit a shopping category */
     fun editShoppingCategory(category: CategoryModel) {
-        TODO("Not yet implemented")
+        viewModelScope.launch(Dispatchers.IO) {
+            categoryDao.editCategory(category)
+        }.apply {
+            //refresh categories on the RecyclerView
+            categoryLiveData = categoryDao.getAllCategories()
+        }
     }
 
     /** Delete a shopping category */
