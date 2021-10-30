@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">화가</string>
+    <string name="text_file_saved">그림이 성공적으로 저장되었습니다.</string>
+    <string name="title_file_picker">이미지 파일 선택</string>
+    <string name="desc_color_picker">색상 선택기</string>
+    <string name="desc_eraser">지우개</string>
+    <string name="desc_clear">캔버스 지우기</string>
+    <string name="desc_save">모두 저장</string>
+    <string name="desc_pen_size">펜 크기</string>
+    <string name="button_pick_color">색상 선택</string>
+</resources>

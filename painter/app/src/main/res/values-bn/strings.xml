@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">চিত্রকর</string>
+    <string name="text_file_saved">পেন্টিং সফলভাবে সংরক্ষণ করা হয়েছে</string>
+    <string name="title_file_picker">একটি ইমেজ ফাইল চয়ন করুন</string>
+    <string name="desc_color_picker">রঙ চয়নকারী</string>
+    <string name="desc_eraser">ইরেজার</string>
+    <string name="desc_clear">পরিষ্কার ক্যানভাস</string>
+    <string name="desc_save">সবাইকে বাচাও</string>
+    <string name="desc_pen_size">কলমের আকার</string>
+    <string name="button_pick_color">রং বাছাই</string>
+</resources>

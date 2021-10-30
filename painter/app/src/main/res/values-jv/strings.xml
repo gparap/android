@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pelukis</string>
+    <string name="text_file_saved">Lukisan kasil disimpen</string>
+    <string name="title_file_picker">Pilih file gambar</string>
+    <string name="desc_color_picker">Pemilih warna</string>
+    <string name="desc_eraser">Pambupus</string>
+    <string name="desc_clear">Kanvas sing cetha</string>
+    <string name="desc_save">Simpen kabeh</string>
+    <string name="desc_pen_size">Ukuran Pen</string>
+    <string name="button_pick_color">Pilih Warna</string>
+</resources>

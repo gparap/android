@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">चित्रकार</string>
+    <string name="text_file_saved">पेंटिंग यशस्वीरित्या जतन केले</string>
+    <string name="title_file_picker">प्रतिमा फाइल निवडा</string>
+    <string name="desc_color_picker">रंग निवडक</string>
+    <string name="desc_eraser">खोडरबर</string>
+    <string name="desc_clear">कॅनव्हास साफ करा</string>
+    <string name="desc_save">सगळ साठवून ठेवा</string>
+    <string name="desc_pen_size">पेन आकार</string>
+    <string name="button_pick_color">रंग निवडा</string>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">จิตรกร</string>
+    <string name="text_file_saved">บันทึกภาพวาดเรียบร้อยแล้ว</string>
+    <string name="title_file_picker">เลือกไฟล์ภาพ</string>
+    <string name="desc_color_picker">ตัวเลือกสี</string>
+    <string name="desc_eraser">ยางลบ</string>
+    <string name="desc_clear">ผ้าใบใส</string>
+    <string name="desc_save">บันทึกทั้งหมด</string>
+    <string name="desc_pen_size">ขนาดปากกา</string>
+    <string name="button_pick_color">เลือกสี</string>
+</resources>

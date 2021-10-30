@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Slikar</string>
+    <string name="text_file_saved">Slika je uspješno spremljena</string>
+    <string name="title_file_picker">Odaberite slikovnu datoteku</string>
+    <string name="desc_color_picker">Birač boja</string>
+    <string name="desc_eraser">Gumica za brisanje</string>
+    <string name="desc_clear">Jasno platno</string>
+    <string name="desc_save">Spremi sve</string>
+    <string name="desc_pen_size">Veličina olovke</string>
+    <string name="button_pick_color">Odaberite boju</string>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pintor</string>
+    <string name="text_file_saved">Matagumpay na na-save ang pagpipinta</string>
+    <string name="title_file_picker">Pumili ng file ng imahe</string>
+    <string name="desc_color_picker">Tagapili ng kulay</string>
+    <string name="desc_eraser">Pambura</string>
+    <string name="desc_clear">Maaliwalas na canvas</string>
+    <string name="desc_save">Iligtas lahat</string>
+    <string name="desc_pen_size">Laki ng Panulat</string>
+    <string name="button_pick_color">Pumili ng Kulay</string>
+</resources>
