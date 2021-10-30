@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pintor</string>
+    <string name="text_file_saved">Pintura salva com sucesso</string>
+    <string name="title_file_picker">Escolha um arquivo de imagem</string>
+    <string name="desc_color_picker">Seletor de cores</string>
+    <string name="desc_eraser">Apagador</string>
+    <string name="desc_clear">Tela transparente</string>
+    <string name="desc_save">Salvar tudo</string>
+    <string name="desc_pen_size">Tamanho da Caneta</string>
+    <string name="button_pick_color">Escolha a cor</string>
+</resources>

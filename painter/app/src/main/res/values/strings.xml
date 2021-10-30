@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Painter</string>
-    <string name="text_zero">0</string>
+    <string name="text_zero" translatable="false">0</string>
+    <string name="text_file_saved">Painting saved successfully..</string>
     <string name="title_file_picker">Pick an image file</string>
 
     <!-- Content descriptions-->

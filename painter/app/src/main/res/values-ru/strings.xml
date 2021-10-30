@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Художник</string>
+    <string name="text_file_saved">Картина успешно сохранена</string>
+    <string name="title_file_picker">Выберите файл изображения</string>
+    <string name="desc_color_picker">Палитра цветов</string>
+    <string name="desc_eraser">Ластик</string>
+    <string name="desc_clear">Очистить холст</string>
+    <string name="desc_save">Сохранить все</string>
+    <string name="desc_pen_size">Размер пера</string>
+    <string name="button_pick_color">Выбрать цвет</string>
+</resources>

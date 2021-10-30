@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">畫家</string>
+    <string name="text_file_saved">繪畫保存成功</string>
+    <string name="title_file_picker">選擇一個圖像文件</string>
+    <string name="desc_color_picker">顏色選擇器</string>
+    <string name="desc_eraser">橡皮</string>
+    <string name="desc_clear">清除畫布</string>
+    <string name="desc_save">保存全部</string>
+    <string name="desc_pen_size">筆尺寸</string>
+    <string name="button_pick_color">選擇顏色</string>
+</resources>

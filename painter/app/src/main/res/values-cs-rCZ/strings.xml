@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Malíř</string>
+    <string name="text_file_saved">Malba byla úspěšně uložena</string>
+    <string name="title_file_picker">Vyberte soubor obrázku</string>
+    <string name="desc_color_picker">Výběr barvy</string>
+    <string name="desc_eraser">Guma</string>
+    <string name="desc_clear">Průhledné plátno</string>
+    <string name="desc_save">Uložit vše</string>
+    <string name="desc_pen_size">Velikost pera</string>
+    <string name="button_pick_color">Vyberte barvu</string>
+</resources>

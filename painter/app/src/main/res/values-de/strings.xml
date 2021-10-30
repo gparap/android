@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Maler</string>
+    <string name="text_file_saved">Gemälde erfolgreich gespeichert</string>
+    <string name="title_file_picker">Wählen Sie eine Bilddatei aus</string>
+    <string name="desc_color_picker">Farbwähler</string>
+    <string name="desc_eraser">Radiergummi</string>
+    <string name="desc_clear">Klare Leinwand</string>
+    <string name="desc_save">Rette alle</string>
+    <string name="desc_pen_size">Stiftgröße</string>
+    <string name="button_pick_color">Farbe wählen</string>
+</resources>

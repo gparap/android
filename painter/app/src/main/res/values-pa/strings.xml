@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ਪੇਂਟਰ</string>
+    <string name="text_file_saved">ਪੇਂਟਿੰਗ ਸਫਲਤਾਪੂਰਵਕ ਸੁਰੱਖਿਅਤ ਕੀਤੀ ਗਈ</string>
+    <string name="title_file_picker">ਇੱਕ ਚਿੱਤਰ ਫਾਈਲ ਚੁਣੋ</string>
+    <string name="desc_color_picker">ਰੰਗ ਚੋਣਕਾਰ</string>
+    <string name="desc_eraser">ਇਰੇਜ਼ਰ</string>
+    <string name="desc_clear">ਕੈਨਵਸ ਸਾਫ਼ ਕਰੋ</string>
+    <string name="desc_save">ਸਭ ਨੂੰ ਸੰਭਾਲੋ</string>
+    <string name="desc_pen_size">ਪੈੱਨ ਦਾ ਆਕਾਰ</string>
+    <string name="button_pick_color">ਰੰਗ ਚੁਣੋ</string>
+</resources>

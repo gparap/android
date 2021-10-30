@@ -26,7 +26,6 @@ import android.view.MotionEvent
 import android.view.View
 import gparap.apps.painter.utils.Utils
 
-
 @Suppress("PrivatePropertyName")
 class CanvasView : View {
     private val PAINT_DITHER_FLAG = android.graphics.Paint.DITHER_FLAG
@@ -46,20 +45,20 @@ class CanvasView : View {
     constructor(
         context: Context?,
         attrs: AttributeSet?,
-        bmap: Bitmap?,
+        bitmap: Bitmap?,
         isBitmapLoaded: Boolean
     ) : super(context, attrs) {
         //create a canvas and a mutable bitmap to draw into
         if (!isBitmapLoaded) {
-            bitmap = Bitmap.createBitmap(
+            this.bitmap = Bitmap.createBitmap(
                 Utils.getDeviceWidth(context),
                 Utils.getDeviceHeight(context),
                 Bitmap.Config.ARGB_8888
             )
-            canvasWithBitmap = Canvas(bitmap)
+            canvasWithBitmap = Canvas(this.bitmap)
         } else {
-            bitmap = bmap!!.copy(Bitmap.Config.ARGB_8888, true)
-            canvasWithBitmap = Canvas(bitmap)
+            this.bitmap = bitmap!!.copy(Bitmap.Config.ARGB_8888, true)
+            canvasWithBitmap = Canvas(this.bitmap)
         }
     }
 

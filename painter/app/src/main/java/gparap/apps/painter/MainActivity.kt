@@ -28,6 +28,7 @@ import android.os.Environment
 import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -200,6 +201,8 @@ class MainActivity : AppCompatActivity(), ColorPickerListener {
                 Utils.generateFilenameSuffix("yyMMddHHmmss")
             ), Utils.getByteArray(canvasView.bitmap)
         )
+        Toast.makeText(this, resources.getString(R.string.text_file_saved), Toast.LENGTH_SHORT)
+            .show()
     }
 
     //pick a color as the current color

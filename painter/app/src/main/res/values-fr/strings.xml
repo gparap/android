@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Peintre</string>
+    <string name="text_file_saved">Peinture enregistrée avec succès</string>
+    <string name="title_file_picker">Choisissez un fichier image</string>
+    <string name="desc_color_picker">Pipette à couleurs</string>
+    <string name="desc_eraser">La gomme</string>
+    <string name="desc_clear">Toile transparente</string>
+    <string name="desc_save">Sauver tous</string>
+    <string name="desc_pen_size">Taille du stylo</string>
+    <string name="button_pick_color">Choisir la couleur</string>
+</resources>

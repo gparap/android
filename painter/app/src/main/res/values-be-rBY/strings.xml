@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Жывапісец</string>
+    <string name="text_file_saved">Карціна паспяхова захавана</string>
+    <string name="title_file_picker">Выберыце файл выявы</string>
+    <string name="desc_color_picker">Выбар колеру</string>
+    <string name="desc_eraser">Гумка</string>
+    <string name="desc_clear">Чыстае палатно</string>
+    <string name="desc_save">Захаваць усё</string>
+    <string name="desc_pen_size">Памер ручкі</string>
+    <string name="button_pick_color">Выберыце колер</string>
+</resources>
