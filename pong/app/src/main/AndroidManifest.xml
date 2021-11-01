@@ -11,8 +11,17 @@
         android:theme="@style/Theme.Pong"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".PongActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="sensorLandscape">
+
+        </activity>
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="sensorLandscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
