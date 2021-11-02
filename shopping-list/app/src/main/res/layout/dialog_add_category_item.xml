@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_add_category_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--Category name-->
+    <EditText
+        android:id="@+id/edit_text_add_category_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="true"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/hint_enter_category_item_name"
+        android:inputType="textPersonName"
+        android:minHeight="@dimen/android_minHeight"
+        android:textColorHint="@color/design_default_text_color_contrast_ratio"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
