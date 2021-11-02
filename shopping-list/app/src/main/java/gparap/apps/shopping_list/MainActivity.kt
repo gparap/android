@@ -17,6 +17,7 @@ package gparap.apps.shopping_list
 
 import android.annotation.SuppressLint
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
@@ -27,6 +28,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.shopping_list.adapters.CategoryAdapter
 import gparap.apps.shopping_list.data.CategoryModel
+import gparap.apps.shopping_list.ui.ItemActivity
+import gparap.apps.shopping_list.utils.AppConstants
 import gparap.apps.shopping_list.utils.DialogUtils
 import gparap.apps.shopping_list.viewmodels.MainActivityViewModel
 
@@ -91,9 +94,12 @@ class MainActivity : AppCompatActivity(), DialogUtils.DialogCallback,
         return
     }
 
-    //RecyclerView callback
+    //RecyclerView callback for showing the items of a category
     override fun onItemViewClickListener(category: CategoryModel) {
-        TODO("Not yet implemented")
+        val intent = Intent(this, ItemActivity::class.java)
+        intent.putExtra(AppConstants.categoryId, category.id)
+        intent.putExtra(AppConstants.categoryName, category.name)
+        startActivity(intent)
     }
 
     //RecyclerView callback for opening dialog to edit an existing shopping category

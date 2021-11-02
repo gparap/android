@@ -19,6 +19,7 @@ import android.view.View
 import androidx.core.view.size
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
+import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.UiController
@@ -116,6 +117,35 @@ class MainActivityInstrumentedTest {
         onView(withText(testCategoryEdited)).check(matches(isDisplayed()))
 
         //!!!   important (don't mess up the database)
+        deleteTestCategory()
+    }
+
+    @Test
+    @MediumTest
+    fun onClickRecyclerViewCategory_openCategoryItemDetails() {
+        val testCategory = "test category"
+
+        //add a test category
+        onView(withId(R.id.fab_add_shopping_category)).perform(click())
+        onView(withId(R.id.edit_text_add_category_name)).perform(typeText(testCategory))
+        closeSoftKeyboard()
+        onView(withText(R.string.dialog_button_ok)).perform(click())
+
+        //click on test category to see its items
+        val position = getRecyclerViewItemsCount() - 1
+        onView(withId(R.id.recycler_view_categories)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                position,
+                click()
+            )
+        )
+
+        //test here
+        onView(withId(R.id.layout_activity_item)).check(matches(isDisplayed()))
+        onView(withText(testCategory)).check(matches(isDisplayed()))
+
+        //!!!   important (don't mess up the database)
+        Espresso.pressBackUnconditionally()
         deleteTestCategory()
     }
 
