@@ -11,6 +11,9 @@
         android:theme="@style/Theme.MyShoppingList"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".ui.ItemActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.SplashActivity"
             android:exported="true">
             <intent-filter>

@@ -19,4 +19,7 @@ object AppConstants {
 
     /**  The delay (in milliseconds) until the Splash activity will be executed. */
     const val delayMills = 1667L
+
+    const val categoryId = "category_id"
+    const val categoryName = "category_name"
 }
