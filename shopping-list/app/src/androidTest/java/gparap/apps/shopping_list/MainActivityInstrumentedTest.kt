@@ -16,6 +16,7 @@
 package gparap.apps.shopping_list
 
 import android.view.View
+import android.widget.TextView
 import androidx.core.view.size
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
@@ -27,6 +28,7 @@ import androidx.test.espresso.ViewAction
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.matcher.BoundedMatcher
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.filters.MediumTest
 import androidx.test.filters.SmallTest
@@ -35,6 +37,8 @@ import org.hamcrest.Matcher
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
+import org.hamcrest.Description
+import java.lang.Exception
 
 
 class MainActivityInstrumentedTest {
@@ -82,11 +86,14 @@ class MainActivityInstrumentedTest {
         closeSoftKeyboard()
         onView(withText(R.string.dialog_button_ok)).perform(click())
 
-        //test here
-        onView(withText(testCategory)).check(matches(isDisplayed()))
-
-        //!!!   important (don't mess up the database)
-        deleteTestCategory()
+        try {
+            //test here
+            onView(withText(testCategory)).check(matches(isDisplayed()))
+        } catch (e: Exception) {
+        } finally {
+            //!!!   important (don't mess up the database)
+            deleteTestCategory()
+        }
     }
 
     @Test
@@ -113,11 +120,14 @@ class MainActivityInstrumentedTest {
         closeSoftKeyboard()
         onView(withText(R.string.dialog_button_ok)).perform(click())
 
-        //test here
-        onView(withText(testCategoryEdited)).check(matches(isDisplayed()))
-
-        //!!!   important (don't mess up the database)
-        deleteTestCategory()
+        try {
+            //test here
+            onView(withText(testCategoryEdited)).check(matches(isDisplayed()))
+        } catch (e: Exception) {
+        } finally {
+            //!!!   important (don't mess up the database)
+            deleteTestCategory()
+        }
     }
 
     @Test
@@ -140,13 +150,125 @@ class MainActivityInstrumentedTest {
             )
         )
 
-        //test here
-        onView(withId(R.id.layout_activity_item)).check(matches(isDisplayed()))
-        onView(withText(testCategory)).check(matches(isDisplayed()))
+        try {
+            //test here
+            onView(withId(R.id.layout_activity_item)).check(matches(isDisplayed()))
+            onView(withText(testCategory)).check(matches(isDisplayed()))
+        } catch (e: Exception) {
+        } finally {
+            //!!!   important (don't mess up the database)
+            Espresso.pressBackUnconditionally()
+            deleteTestCategory()
+        }
+    }
 
-        //!!!   important (don't mess up the database)
+    @Test
+    @MediumTest
+    fun onClickFabAddCategoryItem_addNewCategoryItem() {
+        val testCategory = "test category"
+        val testCategoryItem = "test category item"
+
+        //add a test category
+        onView(withId(R.id.fab_add_shopping_category)).perform(click())
+        onView(withId(R.id.edit_text_add_category_name)).perform(typeText(testCategory))
+        closeSoftKeyboard()
+        onView(withText(R.string.dialog_button_ok)).perform(click())
+
+        //click on test category to see its items
+        val position = getRecyclerViewItemsCount() - 1
+        onView(withId(R.id.recycler_view_categories)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                position,
+                click()
+            )
+        )
+
+        //add a test category item
+        onView(withId(R.id.fab_add_category_item)).perform(click())
+        onView(withId(R.id.edit_text_add_category_item_name)).perform(typeText(testCategoryItem))
+        closeSoftKeyboard()
+        onView(withText(R.string.dialog_button_ok)).perform(click())
+
+        try {
+            //test here
+            onView(withText(testCategoryItem)).check(matches(isDisplayed()))
+        } catch (e: Exception) {
+        } finally {
+            //!!!   important (don't mess up the database)
+            Espresso.pressBackUnconditionally()
+            deleteTestCategory()
+        }
+    }
+
+    @Test
+    @MediumTest
+    fun onClickFabAddCategoryItem_updateCategoryItemsCount() {
+        val testCategory = "test category"
+        val testCategoryItem1 = "test category item 1"
+        val testCategoryItem2 = "test category item 2"
+        val categoryItemsCountExpected =
+            InstrumentationRegistry.getInstrumentation().targetContext.resources.getString(R.string.text_items_count) + "2"
+
+        //add a test category
+        onView(withId(R.id.fab_add_shopping_category)).perform(click())
+        onView(withId(R.id.edit_text_add_category_name)).perform(typeText(testCategory))
+        closeSoftKeyboard()
+        onView(withText(R.string.dialog_button_ok)).perform(click())
+
+        //click on test category to see its items
+        val position = getRecyclerViewItemsCount() - 1
+        onView(withId(R.id.recycler_view_categories)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                position,
+                click()
+            )
+        )
+
+        //add two test category items and goto categories
+        onView(withId(R.id.fab_add_category_item)).perform(click())
+        onView(withId(R.id.edit_text_add_category_item_name)).perform(typeText(testCategoryItem1))
+        closeSoftKeyboard()
+        onView(withText(R.string.dialog_button_ok)).perform(click())
+        onView(withId(R.id.fab_add_category_item)).perform(click())
+        onView(withId(R.id.edit_text_add_category_item_name)).perform(typeText(testCategoryItem2))
+        closeSoftKeyboard()
+        onView(withText(R.string.dialog_button_ok)).perform(click())
         Espresso.pressBackUnconditionally()
-        deleteTestCategory()
+
+        try {
+            //test here
+            onView(withId(R.id.recycler_view_categories)).check(
+                matches(
+                    withRecyclerViewItemsCountTextViewAtPosition(
+                        position,
+                        categoryItemsCountExpected
+                    )
+                )
+            )
+        } catch (e: Exception) {
+        } finally {
+            //!!!   important (don't mess up the database)
+            deleteTestCategory()
+        }
+    }
+
+    /** Matcher over RecyclerView's items count values */
+    private fun withRecyclerViewItemsCountTextViewAtPosition(
+        position: Int,
+        itemsCount: String
+    ): Matcher<View?> {
+        return object : BoundedMatcher<View?, RecyclerView>(RecyclerView::class.java) {
+            override fun describeTo(description: Description) {
+                description.appendText("category items count at position $position")
+            }
+
+            override fun matchesSafely(recyclerView: RecyclerView): Boolean {
+                val viewHolder = recyclerView.findViewHolderForAdapterPosition(position)
+                val editTextView =
+                    viewHolder!!.itemView.findViewById<TextView>(R.id.text_view_category_items_count)
+                return itemsCount == editTextView.text.toString()
+            }
+        }
     }
 
     private fun deleteTestCategory() {
