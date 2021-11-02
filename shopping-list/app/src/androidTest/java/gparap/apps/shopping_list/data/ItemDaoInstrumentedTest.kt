@@ -51,7 +51,7 @@ class ItemDaoInstrumentedTest {
     @Test
     fun addNewItem() = runBlockingTest {
         //add a new item
-        val item = ItemModel(1, 1, "one")
+        val item = ItemModel(1, "one")
         dao.addNewItem(item)
 
         //select all items
@@ -71,8 +71,8 @@ class ItemDaoInstrumentedTest {
     fun getAllCategoryItems() = runBlockingTest {
         //add 2 new items to database
         val itemsCount = 2
-        val item1 = ItemModel(1, 1, "one")
-        val item2 = ItemModel(2, 1, "two")
+        val item1 = ItemModel(1, "one")
+        val item2 = ItemModel(2, "two")
         dao.addNewItem(item1)
         dao.addNewItem(item2)
 
@@ -92,7 +92,7 @@ class ItemDaoInstrumentedTest {
         val expectedItemName = "updated"
 
         //add a new item to database and update it
-        val item = ItemModel(1, 1, "one")
+        val item = ItemModel(1, "one")
         dao.addNewItem(item)
         item.name = "updated"
         dao.editItem(item)
@@ -112,7 +112,7 @@ class ItemDaoInstrumentedTest {
     @Test
     fun removeItem() = runBlockingTest {
         //add a new item to database and delete it
-        val item = ItemModel(1, 1, "one")
+        val item = ItemModel(1, "one")
         dao.addNewItem(item)
         dao.removeItem(item)
 
