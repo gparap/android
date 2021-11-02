@@ -17,7 +17,6 @@ package gparap.apps.shopping_list.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CategoryDao {
@@ -27,8 +26,17 @@ interface CategoryDao {
     @Query("SELECT * FROM category")
     fun getAllCategories(): LiveData<List<CategoryModel>>
 
+    @Query("SELECT * FROM category WHERE category_id= :categoryId")
+    suspend fun getCategory(categoryId: Int) : CategoryModel
+
+    @Query("SELECT COUNT(*) FROM item WHERE category_id= :categoryId")
+    suspend fun getCategoryItemsCount(categoryId: Int) :Int
+
     @Update
     suspend fun editCategory(category: CategoryModel)
+
+    @Update
+    suspend fun updateItemsCount(category: CategoryModel)
 
     @Delete
     suspend fun removeCategory(category: CategoryModel)

@@ -22,7 +22,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/textview_layout_margin"
-            app:layout_constraintBottom_toTopOf="@+id/text_view_category_items"
+            app:layout_constraintBottom_toTopOf="@+id/text_view_category_items_count"
             app:layout_constraintEnd_toStartOf="@+id/image_view_edit_category"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -30,7 +30,7 @@
 
         <!--Category items count-->
         <TextView
-            android:id="@+id/text_view_category_items"
+            android:id="@+id/text_view_category_items_count"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/textview_layout_marginTop"
