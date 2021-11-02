@@ -45,7 +45,7 @@ class CategoryAdapter(private val callback: CategoryAdapterCallback) :
 
         //handle itemView clicks
         holder.itemView.setOnClickListener {
-            callback.onItemViewClickListener(categories[position])
+            callback.onCategoryViewClickListener(categories[position])
         }
 
         //handle edit button clicks
@@ -72,7 +72,7 @@ class CategoryAdapter(private val callback: CategoryAdapterCallback) :
 
     /** Callback for listening to RecyclerView's item clicks */
     interface CategoryAdapterCallback {
-        fun onItemViewClickListener(category: CategoryModel)
+        fun onCategoryViewClickListener(category: CategoryModel)
         fun onEditCategoryButtonClickListener(category: CategoryModel)
         fun onDeleteCategoryButtonViewClickListener(category: CategoryModel)
     }

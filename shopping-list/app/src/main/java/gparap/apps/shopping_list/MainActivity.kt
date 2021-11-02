@@ -30,10 +30,10 @@ import gparap.apps.shopping_list.adapters.CategoryAdapter
 import gparap.apps.shopping_list.data.CategoryModel
 import gparap.apps.shopping_list.ui.ItemActivity
 import gparap.apps.shopping_list.utils.AppConstants
-import gparap.apps.shopping_list.utils.DialogUtils
+import gparap.apps.shopping_list.utils.CategoryDialogUtils
 import gparap.apps.shopping_list.viewmodels.MainActivityViewModel
 
-class MainActivity : AppCompatActivity(), DialogUtils.DialogCallback,
+class MainActivity : AppCompatActivity(), CategoryDialogUtils.DialogCallback,
     CategoryAdapter.CategoryAdapterCallback {
     private lateinit var dialog: AlertDialog
     private lateinit var viewModel: MainActivityViewModel
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity(), DialogUtils.DialogCallback,
     //Open dialog for adding a new shopping category
     @SuppressLint("InflateParams")
     private fun openAddShoppingCategoryDialog() {
-        dialog = DialogUtils(this).createAddCategoryDialog(
+        dialog = CategoryDialogUtils(this).createAddCategoryDialog(
             this.resources.getString(R.string.title_add_shopping_category),
             layoutInflater.inflate(R.layout.dialog_add_category, null),
             this
@@ -90,12 +90,12 @@ class MainActivity : AppCompatActivity(), DialogUtils.DialogCallback,
     }
 
     //Dialog callback for canceling action
-    override fun onNegativeButtonClickListener() {
+    override fun onCategoryNegativeButtonClickListener() {
         return
     }
 
     //RecyclerView callback for showing the items of a category
-    override fun onItemViewClickListener(category: CategoryModel) {
+    override fun onCategoryViewClickListener(category: CategoryModel) {
         val intent = Intent(this, ItemActivity::class.java)
         intent.putExtra(AppConstants.categoryId, category.id)
         intent.putExtra(AppConstants.categoryName, category.name)
@@ -105,7 +105,7 @@ class MainActivity : AppCompatActivity(), DialogUtils.DialogCallback,
     //RecyclerView callback for opening dialog to edit an existing shopping category
     @SuppressLint("InflateParams")
     override fun onEditCategoryButtonClickListener(category: CategoryModel) {
-        dialog = DialogUtils(this).createAddCategoryDialog(
+        dialog = CategoryDialogUtils(this).createAddCategoryDialog(
             this.resources.getString(R.string.title_edit_shopping_category),
             layoutInflater.inflate(R.layout.dialog_edit_category, null),
             this,
