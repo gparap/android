@@ -23,8 +23,11 @@ import androidx.room.PrimaryKey
 data class CategoryModel(
     @ColumnInfo(name = "category_name")
     var name: String?
-){
+) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "category_id")
     var id: Int = 0
+
+    @ColumnInfo(name = "category_items_count")
+    var itemsCount: Int = 0
 }

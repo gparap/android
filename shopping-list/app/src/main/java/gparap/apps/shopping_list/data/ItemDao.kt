@@ -23,7 +23,7 @@ interface ItemDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addNewItem(item: ItemModel)
 
-    @Query("SELECT * FROM item WHERE :categoryId")
+    @Query("SELECT * FROM item WHERE category_id= :categoryId")
     fun getAllCategoryItems(categoryId: Int): LiveData<List<ItemModel>>
 
     @Update

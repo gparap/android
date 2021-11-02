@@ -25,20 +25,29 @@ import kotlinx.coroutines.launch
 
 class ItemActivityViewModel(application: Application) : AndroidViewModel(application) {
     private var itemDao: ItemDao
+    private var categoryDao: CategoryDao
     private lateinit var itemLiveData: LiveData<List<ItemModel>>
 
     init {
         //initialize the app database and its data access objects
         val database = ShoppingListDatabase.getInstance(application.applicationContext)
         itemDao = database?.getItemDao()!!
+        categoryDao = database.getCategoryDao()
     }
 
     /** Adds a new item to a shopping category */
     fun addShoppingCategoryItem(categoryId: Int, itemName: String) {
         val item = ItemModel(categoryId, itemName)
 
+        //add category item
         viewModelScope.launch(Dispatchers.IO) {
             itemDao.addNewItem(item)
+
+            //update category items count
+            val category = categoryDao.getCategory(categoryId)
+            category.itemsCount = categoryDao.getCategoryItemsCount(categoryId)
+            categoryDao.updateItemsCount(category)
+
         }.apply {
             //refresh items on the RecyclerView
             itemLiveData = itemDao.getAllCategoryItems(categoryId)
