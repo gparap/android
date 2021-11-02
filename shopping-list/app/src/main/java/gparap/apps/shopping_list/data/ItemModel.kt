@@ -21,13 +21,13 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "item")
 data class ItemModel(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "item_id")
-    val id: Int,
-
     @ColumnInfo(name = "category_id")
     val c_id: Int,
 
     @ColumnInfo(name = "item_name")
     var name: String
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "item_id")
+    var id: Int = 0
+}
