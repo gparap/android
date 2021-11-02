@@ -21,7 +21,7 @@ import androidx.appcompat.app.AlertDialog
 import gparap.apps.shopping_list.R
 import gparap.apps.shopping_list.data.CategoryModel
 
-class DialogUtils(private val context: Context) {
+class CategoryDialogUtils(private val context: Context) {
 
     /** Creates a custom alert dialog for adding a new category */
     fun createAddCategoryDialog(title: String, view: View, callback: DialogCallback): AlertDialog {
@@ -31,7 +31,7 @@ class DialogUtils(private val context: Context) {
                 callback.onAddCategoryPositiveButtonClickListener()
             }
             .setNegativeButton(context.resources.getString(R.string.dialog_button_cancel)) { _, _ ->
-                callback.onNegativeButtonClickListener()
+                callback.onCategoryNegativeButtonClickListener()
             }
             .setView(view)
             .create()
@@ -47,7 +47,7 @@ class DialogUtils(private val context: Context) {
                 callback.onEditCategoryPositiveButtonClickListener(category)
             }
             .setNegativeButton(context.resources.getString(R.string.dialog_button_cancel)) { _, _ ->
-                callback.onNegativeButtonClickListener()
+                callback.onCategoryNegativeButtonClickListener()
             }
             .setView(view)
             .create()
@@ -57,7 +57,6 @@ class DialogUtils(private val context: Context) {
     interface DialogCallback {
         fun onAddCategoryPositiveButtonClickListener()
         fun onEditCategoryPositiveButtonClickListener(category: CategoryModel)
-        fun onNegativeButtonClickListener()
+        fun onCategoryNegativeButtonClickListener()
     }
 }
-
