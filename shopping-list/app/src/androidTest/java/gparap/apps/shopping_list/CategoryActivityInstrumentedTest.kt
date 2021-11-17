@@ -33,6 +33,7 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.filters.MediumTest
 import androidx.test.filters.SmallTest
 import androidx.test.platform.app.InstrumentationRegistry
+import gparap.apps.shopping_list.ui.CategoryActivity
 import org.hamcrest.Matcher
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -41,12 +42,12 @@ import org.hamcrest.Description
 import java.lang.Exception
 
 
-class MainActivityInstrumentedTest {
-    private lateinit var activityScenario: ActivityScenario<MainActivity>
+class CategoryActivityInstrumentedTest {
+    private lateinit var activityScenario: ActivityScenario<CategoryActivity>
 
     @Before
     fun setUp() {
-        activityScenario = ActivityScenario.launch(MainActivity::class.java)
+        activityScenario = ActivityScenario.launch(CategoryActivity::class.java)
     }
 
     @Test

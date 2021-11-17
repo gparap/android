@@ -23,7 +23,7 @@ import org.junit.runners.Suite
 @RunWith(Suite::class)
 @Suite.SuiteClasses(
     SplashActivityInstrumentedTest::class,
-    MainActivityInstrumentedTest::class,
+    CategoryActivityInstrumentedTest::class,
     CategoryDaoInstrumentedTest::class
 )
 class AppTestSuite

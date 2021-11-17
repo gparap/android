@@ -8,7 +8,7 @@ import gparap.apps.shopping_list.data.ShoppingListDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MainActivityViewModel(application: Application) : AndroidViewModel(application) {
+class CategoryActivityViewModel(application: Application) : AndroidViewModel(application) {
     private var categoryDao: CategoryDao
     private lateinit var categoryLiveData: LiveData<List<CategoryModel>>
 

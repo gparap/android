@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.shopping_list
+package gparap.apps.shopping_list.ui
 
 import android.annotation.SuppressLint
 import android.content.DialogInterface
@@ -26,25 +26,25 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import gparap.apps.shopping_list.R
 import gparap.apps.shopping_list.adapters.CategoryAdapter
 import gparap.apps.shopping_list.data.CategoryModel
-import gparap.apps.shopping_list.ui.ItemActivity
 import gparap.apps.shopping_list.utils.AppConstants
 import gparap.apps.shopping_list.utils.CategoryDialogUtils
-import gparap.apps.shopping_list.viewmodels.MainActivityViewModel
+import gparap.apps.shopping_list.viewmodels.CategoryActivityViewModel
 
-class MainActivity : AppCompatActivity(), CategoryDialogUtils.DialogCallback,
+class CategoryActivity : AppCompatActivity(), CategoryDialogUtils.DialogCallback,
     CategoryAdapter.CategoryAdapterCallback {
     private lateinit var dialog: AlertDialog
-    private lateinit var viewModel: MainActivityViewModel
+    private lateinit var viewModel: CategoryActivityViewModel
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_category)
 
         //create the ViewModel of the activity
-        viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
+        viewModel = ViewModelProvider(this)[CategoryActivityViewModel::class.java]
 
         //setup RecyclerView with adapter for shopping categories
         val categoryRecyclerView = findViewById<RecyclerView>(R.id.recycler_view_categories)
