@@ -26,8 +26,8 @@ interface ItemDao {
     @Query("SELECT * FROM item WHERE category_id= :categoryId")
     fun getAllCategoryItems(categoryId: Int): LiveData<List<ItemModel>>
 
-    @Update
-    suspend fun editItem(item: ItemModel)
+    @Query("UPDATE item SET item_name= :itemName WHERE item_id = :itemId")
+    suspend fun editItem(itemId: Int, itemName: String)
 
     @Delete
     suspend fun removeItem(item: ItemModel)
