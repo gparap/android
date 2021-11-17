@@ -5,7 +5,9 @@
     <string name="title_add_shopping_category">Add a new shopping category</string>
     <string name="title_edit_shopping_category">Edit shopping category</string>
     <string name="title_delete_shopping_category">Delete Shopping Category</string>
+    <string name="title_delete_shopping_category_item">Delete shopping category item</string>
     <string name="text_delete_shopping_category">This action will delete the selected shopping category. Are you sure?</string>
+    <string name="text_delete_shopping_category_item">This action will delete the selected shopping category item. Are you sure?</string>
     <string name="text_items_count">items: </string>
     <string name="hint_enter_category_name">enter category name</string>
     <string name="hint_enter_category_item_name">enter item name</string>

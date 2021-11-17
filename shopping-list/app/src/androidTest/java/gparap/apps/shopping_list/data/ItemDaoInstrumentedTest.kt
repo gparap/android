@@ -95,7 +95,7 @@ class ItemDaoInstrumentedTest {
         val item = ItemModel(1, "one")
         dao.addNewItem(item)
         item.name = "updated"
-        dao.editItem(item)
+        dao.editItem(item.id, item.name)
 
         //select the updated item
         val items = dao.getAllCategoryItems(1).getOrAwaitValue()

@@ -16,6 +16,7 @@
 package gparap.apps.shopping_list.ui
 
 import android.annotation.SuppressLint
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.EditText
@@ -133,6 +134,17 @@ class ItemActivity :
 
     //RecyclerView callback
     override fun onDeleteItemButtonViewClickListener(item: ItemModel) {
-        TODO("Not yet implemented")
+        AlertDialog.Builder(this)
+            .setTitle(this.resources.getString(R.string.title_delete_shopping_category_item))
+            .setMessage(this.resources.getString(R.string.text_delete_shopping_category_item))
+            .setPositiveButton(this.resources.getString(R.string.dialog_button_ok)) { _, _ ->
+                viewModel.deleteShoppingCategoryItem(item, categoryId)
+            }
+            .setNegativeButton(
+                this.resources.getString(R.string.dialog_button_cancel),
+                DialogInterface.OnClickListener { _, _ -> return@OnClickListener })
+            .create().also {
+                it.show()
+            }
     }
 }
