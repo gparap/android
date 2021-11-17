@@ -70,4 +70,20 @@ class ItemActivityViewModel(application: Application) : AndroidViewModel(applica
             itemLiveData = itemDao.getAllCategoryItems(categoryId)
         }
     }
+
+    fun deleteShoppingCategoryItem(item: ItemModel, categoryId: Int) {
+        //delete category item
+        viewModelScope.launch(Dispatchers.IO) {
+            itemDao.removeItem(item)
+
+            //update category items count
+            val category = categoryDao.getCategory(categoryId)
+            category.itemsCount = categoryDao.getCategoryItemsCount(categoryId)
+            categoryDao.updateItemsCount(category)
+
+        }.apply {
+            //refresh items on the RecyclerView
+            itemLiveData = itemDao.getAllCategoryItems(categoryId)
+        }
+    }
 }

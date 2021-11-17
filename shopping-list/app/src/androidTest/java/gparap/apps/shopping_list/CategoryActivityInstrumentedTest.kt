@@ -39,6 +39,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.hamcrest.Description
+import org.hamcrest.core.IsNot.not
 import java.lang.Exception
 
 
@@ -249,6 +250,80 @@ class CategoryActivityInstrumentedTest {
         } catch (e: Exception) {
         } finally {
             //!!!   important (don't mess up the database)
+            deleteTestCategory()
+        }
+    }
+
+    @Test
+    @MediumTest
+    fun onClickImageViewEditCategoryItemOnRecyclerViewItem_updateExistingCategoryItemName() {
+        val testCategory = "test category"
+        val testCategoryItem = "test item"
+        val testItemEdited = "test item edited"
+
+        //add a test category and enter in it
+        onView(withId(R.id.fab_add_shopping_category)).perform(click())
+        onView(withId(R.id.edit_text_add_category_name)).perform(typeText(testCategory))
+        closeSoftKeyboard()
+        onView(withText(R.string.dialog_button_ok)).perform(click())
+        onView(withText(testCategory)).perform(click())
+
+        //add a test item on test category and goto categories
+        onView(withId(R.id.fab_add_category_item)).perform(click())
+        onView(withId(R.id.edit_text_add_category_item_name)).perform(typeText(testCategoryItem))
+        closeSoftKeyboard()
+        onView(withText(R.string.dialog_button_ok)).perform(click())
+        Espresso.pressBackUnconditionally()
+
+        //open test category item for editing
+        onView(withText(testCategory)).perform(click())
+        onView(withId(R.id.image_view_edit_item)).perform(click())
+        onView(withId(R.id.edit_text_edit_category_item_name)).perform(clearText())
+        onView(withId(R.id.edit_text_edit_category_item_name)).perform(typeText(testItemEdited))
+        closeSoftKeyboard()
+        onView(withText(R.string.dialog_button_ok)).perform(click())
+
+        try {
+            //test here
+            onView(withText(testItemEdited)).check(matches(isDisplayed()))
+        } catch (e: Exception) {
+        } finally {
+            //!!!   important (don't mess up the database)
+            Espresso.pressBackUnconditionally()
+            deleteTestCategory()
+        }
+    }
+
+    @Test
+    @MediumTest
+    fun onClickImageViewDeleteCategoryItemOnRecyclerViewItem_deleteCategoryItem() {
+        val testCategory = "test category"
+        val testCategoryItem = "test item"
+
+        //add a test category and enter in it
+        onView(withId(R.id.fab_add_shopping_category)).perform(click())
+        onView(withId(R.id.edit_text_add_category_name)).perform(typeText(testCategory))
+        closeSoftKeyboard()
+        onView(withText(R.string.dialog_button_ok)).perform(click())
+        onView(withText(testCategory)).perform(click())
+
+        //add a test item on test category
+        onView(withId(R.id.fab_add_category_item)).perform(click())
+        onView(withId(R.id.edit_text_add_category_item_name)).perform(typeText(testCategoryItem))
+        closeSoftKeyboard()
+        onView(withText(R.string.dialog_button_ok)).perform(click())
+
+        //delete test category item
+        onView(withId(R.id.image_view_delete_item)).perform(click())
+        onView(withText(R.string.dialog_button_ok)).perform(click())
+
+        try {
+            //test here
+            onView(withText(testCategoryItem)).check(matches(not(isDisplayed())))
+        } catch (e: Exception) {
+        } finally {
+            //!!!   important (don't mess up the database)
+            Espresso.pressBackUnconditionally()
             deleteTestCategory()
         }
     }
