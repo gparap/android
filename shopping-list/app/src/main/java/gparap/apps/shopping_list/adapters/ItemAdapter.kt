@@ -40,12 +40,7 @@ class ItemAdapter(private val callback: ItemAdapterCallback) :
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         //display item info
-        holder.itemName.text = items[position].name.toString()
-
-        //handle itemView clicks
-        holder.itemView.setOnClickListener {
-            callback.onItemViewClickListener(items[position])
-        }
+        holder.itemName.text = items[position].name
 
         //handle edit button clicks
         holder.editCategory.setOnClickListener {
@@ -70,7 +65,6 @@ class ItemAdapter(private val callback: ItemAdapterCallback) :
 
     /** Callback for listening to RecyclerView's item clicks */
     interface ItemAdapterCallback {
-        fun onItemViewClickListener(item: ItemModel)
         fun onEditItemButtonClickListener(item: ItemModel)
         fun onDeleteItemButtonViewClickListener(item: ItemModel)
     }

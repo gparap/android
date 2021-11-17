@@ -99,9 +99,14 @@ class ItemActivity :
         )
     }
 
-    //Dialog callback
+    //Dialog callback for editing an existing shopping category item
     override fun onEditItemPositiveButtonClickListener(item: ItemModel) {
-        TODO("Not yet implemented")
+        //get the edited item name
+        val editText = dialog.findViewById<EditText>(R.id.edit_text_edit_category_item_name)
+        item.name = editText?.text.toString()
+
+        //update the item
+        viewModel.editShoppingCategoryItem(item, categoryId)
     }
 
     //Dialog callback for canceling action
@@ -109,14 +114,21 @@ class ItemActivity :
         return
     }
 
-    //RecyclerView callback
-    override fun onItemViewClickListener(item: ItemModel) {
-        TODO("Not yet implemented")
-    }
-
-    //RecyclerView callback
+    //RecyclerView callback for editing an existing shopping category item
+    @SuppressLint("InflateParams")
     override fun onEditItemButtonClickListener(item: ItemModel) {
-        TODO("Not yet implemented")
+        dialog = ItemDialogUtils(this).createEditItemDialog(
+            "Edit Item",
+            layoutInflater.inflate(R.layout.dialog_edit_category_item, null),
+            this,
+            item
+        ).apply {
+            show()
+        }.also {
+            //display the item info
+            val editText = it.findViewById<EditText>(R.id.edit_text_edit_category_item_name)
+            editText?.setText(item.name)
+        }
     }
 
     //RecyclerView callback

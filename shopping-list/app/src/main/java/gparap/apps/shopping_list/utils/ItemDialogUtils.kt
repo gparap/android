@@ -38,9 +38,7 @@ class ItemDialogUtils(private val context: Context) {
     }
 
     /** Creates a custom alert dialog for editing an existing item */
-    fun createEditItemDialog(
-        title: String, view: View, callback: DialogCallback, item: ItemModel
-    ): AlertDialog {
+    fun createEditItemDialog(title: String, view: View, callback: DialogCallback, item: ItemModel): AlertDialog {
         return AlertDialog.Builder(context)
             .setTitle(title)
             .setPositiveButton(context.resources.getString(R.string.dialog_button_ok)) { _, _ ->

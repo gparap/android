@@ -60,4 +60,14 @@ class ItemActivityViewModel(application: Application) : AndroidViewModel(applica
         return itemLiveData
     }
 
+    /** Edits a shopping category item */
+    fun editShoppingCategoryItem(item: ItemModel, categoryId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            itemDao.editItem(item.id, item.name)
+
+        }.apply {
+            //refresh items on the RecyclerView
+            itemLiveData = itemDao.getAllCategoryItems(categoryId)
+        }
+    }
 }
