@@ -21,7 +21,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import gparap.apps.shopping_list.MainActivity
 import gparap.apps.shopping_list.R
 import gparap.apps.shopping_list.utils.AppConstants
 
@@ -34,9 +33,9 @@ class SplashActivity : AppCompatActivity() {
         //hide the ActionBar if it is currently showing
         supportActionBar?.hide()
 
-        //splash and goto main activity
+        //splash and goto category activity
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, CategoryActivity::class.java))
             finish()
         }, AppConstants.delayMills)
     }

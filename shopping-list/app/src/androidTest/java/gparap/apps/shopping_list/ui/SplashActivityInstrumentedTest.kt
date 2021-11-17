@@ -47,8 +47,8 @@ class SplashActivityInstrumentedTest {
     }
 
     @Test
-    fun gotoMainActivityAfterSplashing() {
+    fun gotoCategoryActivityAfterSplashing() {
         Thread.sleep(AppConstants.delayMills)
-        onView(withId(R.id.layout_activity_main)).check(matches(isDisplayed()))
+        onView(withId(R.id.layout_activity_category)).check(matches(isDisplayed()))
     }
 }
