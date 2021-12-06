@@ -17,14 +17,14 @@ package gparap.apps.painter
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.os.Build
-import android.os.Bundle
-import android.os.Environment
+import android.os.*
+import android.util.Log
 import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
@@ -33,11 +33,15 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import gparap.apps.painter.canvas.CanvasView
 import gparap.apps.painter.color_picker.ColorPickerDialog
 import gparap.apps.painter.color_picker.ColorPickerListener
 import gparap.apps.painter.utils.Utils
 import java.io.InputStream
+
 
 @Suppress("PrivatePropertyName")
 class MainActivity : AppCompatActivity(), ColorPickerListener {
@@ -46,6 +50,7 @@ class MainActivity : AppCompatActivity(), ColorPickerListener {
     private lateinit var dialog: ColorPickerDialog
     private val REQUEST_CODE_WRITE_EXTERNAL_STORAGE = 111
     private val REQUEST_CODE_ACTION_GET_CONTENT = 222
+    private var interstitialAd: InterstitialAd? = null
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -139,6 +144,34 @@ class MainActivity : AppCompatActivity(), ColorPickerListener {
                 REQUEST_CODE_ACTION_GET_CONTENT
             )
         }
+
+        //initialize the Google Mobile Ads SDK
+        MobileAds.initialize(this) { }
+
+        //load an interstitial ad
+        InterstitialAd.load(
+            this,
+            "ca-app-pub-4227032191105066/6370721282",
+            AdRequest.Builder().build(),
+            object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    Log.d(TAG, adError.message)
+                    interstitialAd = null
+                }
+
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    Log.d(TAG, "Ad was loaded.")
+                    this@MainActivity.interstitialAd = interstitialAd
+
+                    //show the ad
+                    if (this@MainActivity.interstitialAd != null) {
+                        this@MainActivity.interstitialAd?.show(this@MainActivity)
+
+                    } else {
+                        Log.d("TAG", "The interstitial ad wasn't ready yet.")
+                    }
+                }
+            })
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
