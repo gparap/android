@@ -52,4 +52,9 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    //Google Mobile Ads SDK
+    dependencies {
+        implementation 'com.google.android.gms:play-services-ads:20.5.0'
+    }
 }
