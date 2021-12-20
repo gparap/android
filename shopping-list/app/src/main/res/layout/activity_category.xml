@@ -26,6 +26,7 @@
         android:layout_marginBottom="@dimen/fab_margin"
         android:contentDescription="@string/fab_add_category"
         android:src="@drawable/ic_add_24"
+        app:fabSize="auto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

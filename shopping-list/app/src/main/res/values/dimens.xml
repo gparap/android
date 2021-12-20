@@ -9,4 +9,5 @@
     <dimen name="textview_layout_marginTop">8dp</dimen>
     <dimen name="textview_layout_marginBottom">8dp</dimen>
     <dimen name="imageview_layout_margin">8dp</dimen>
+    <dimen name="text_size">14sp</dimen>
 </resources>
