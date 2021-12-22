@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lista mea de cumpărături</string>
+    <string name="fab_add_category">Adăugați categoria listei de cumpărături</string>
+    <string name="fab_add_category_item">Adăugați element de categorie</string>
+    <string name="title_add_shopping_category">Adăugați o nouă categorie de cumpărături</string>
+    <string name="title_edit_shopping_category">Editați categoria de cumpărături</string>
+    <string name="title_delete_shopping_category">Ștergeți categoria de cumpărături</string>
+    <string name="title_delete_shopping_category_item">Ștergeți articolul din categoria de cumpărături</string>
+    <string name="text_delete_shopping_category">Această acțiune va șterge categoria de cumpărături selectată. Esti sigur?</string>
+    <string name="text_delete_shopping_category_item">Această acțiune va șterge articolul selectat din categoria de cumpărături. Esti sigur?</string>
+    <string name="text_items_count">articole:</string>
+    <string name="hint_enter_category_name">introduceți numele categoriei</string>
+    <string name="hint_enter_category_item_name">introduceți numele articolului</string>
+    <string name="dialog_button_ok">O.K</string>
+    <string name="dialog_button_cancel">Anulare</string>
+    <string name="desc_app_logo">Ecranul de splash logo-ul aplicației</string>
+    <string name="desc_edit_category">Editați categoria</string>
+    <string name="desc_delete_category">Șterge categoria</string>
+    <string name="desc_edit_item">Editați elementul</string>
+    <string name="desc_delete_item">Sterge articolul</string>
+</resources>

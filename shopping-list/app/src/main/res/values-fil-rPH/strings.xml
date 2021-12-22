@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Aking Shopping List</string>
+    <string name="fab_add_category">Magdagdag ng kategorya ng listahan ng pamimili</string>
+    <string name="fab_add_category_item">Magdagdag ng item ng kategorya</string>
+    <string name="title_add_shopping_category">Magdagdag ng bagong kategorya ng pamimili</string>
+    <string name="title_edit_shopping_category">I-edit ang kategorya ng pamimili</string>
+    <string name="title_delete_shopping_category">Tanggalin ang kategorya ng pamimili</string>
+    <string name="title_delete_shopping_category_item">Tanggalin ang item sa kategorya ng pamimili</string>
+    <string name="text_delete_shopping_category">Tatanggalin ng pagkilos na ito ang napiling kategorya ng pamimili. Sigurado ka ba?</string>
+    <string name="text_delete_shopping_category_item">Tatanggalin ng pagkilos na ito ang napiling item sa kategorya ng pamimili. Sigurado ka ba?</string>
+    <string name="text_items_count">aytem:</string>
+    <string name="hint_enter_category_name">ipasok ang pangalan ng kategorya</string>
+    <string name="hint_enter_category_item_name">ilagay ang pangalan ng item</string>
+    <string name="dialog_button_ok">OK</string>
+    <string name="dialog_button_cancel">Kanselahin</string>
+    <string name="desc_app_logo">Logo ng application ng</string>
+    <string name="desc_edit_category">I-edit ang kategorya</string>
+    <string name="desc_delete_category">Tanggalin ang kategorya</string>
+    <string name="desc_edit_item">I-edit ang Item</string>
+    <string name="desc_delete_item">Tanggalin ang Item</string>
+</resources>

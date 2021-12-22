@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ma liste de courses</string>
+    <string name="fab_add_category">Ajouter une catégorie de liste de courses</string>
+    <string name="fab_add_category_item">Ajouter un élément de catégorie</string>
+    <string name="title_add_shopping_category">Ajouter une nouvelle catégorie d\'achats</string>
+    <string name="title_edit_shopping_category">Modifier la catégorie d\'achat</string>
+    <string name="title_delete_shopping_category">Supprimer la catégorie d\'achats</string>
+    <string name="title_delete_shopping_category_item">Supprimer l\'article de la catégorie d\'achats</string>
+    <string name="text_delete_shopping_category">Cette action supprimera la catégorie d\'achats sélectionnée. Es-tu sûr?</string>
+    <string name="text_delete_shopping_category_item">Cette action supprimera l\'article de la catégorie d\'achats sélectionné. Es-tu sûr?</string>
+    <string name="text_items_count">éléments:</string>
+    <string name="hint_enter_category_name">saisir le nom de la catégorie</string>
+    <string name="hint_enter_category_item_name">entrer le nom de l\'article</string>
+    <string name="dialog_button_ok">d\'accord</string>
+    <string name="dialog_button_cancel">Annuler</string>
+    <string name="desc_app_logo">Logo de l\'application de l\'écran de démarrage</string>
+    <string name="desc_edit_category">Modifier la catégorie</string>
+    <string name="desc_delete_category">Supprimer la catégorie</string>
+    <string name="desc_edit_item">Modifier l\'article</string>
+    <string name="desc_delete_item">Effacer l\'article</string>
+</resources>

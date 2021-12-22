@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Minha Lista de Compras</string>
+    <string name="fab_add_category">Adicionar categoria de lista de compras</string>
+    <string name="fab_add_category_item">Adicionar item de categoria</string>
+    <string name="title_add_shopping_category">Adicionar uma nova categoria de compras</string>
+    <string name="title_edit_shopping_category">Editar categoria de compras</string>
+    <string name="title_delete_shopping_category">Excluir categoria de compras</string>
+    <string name="title_delete_shopping_category_item">Excluir item da categoria de compras</string>
+    <string name="text_delete_shopping_category">Esta ação excluirá a categoria de compras selecionada. Tem certeza?</string>
+    <string name="text_delete_shopping_category_item">Esta ação excluirá o item da categoria de compras selecionada. Tem certeza?</string>
+    <string name="text_items_count">Unid:</string>
+    <string name="hint_enter_category_name">insira o nome da categoria</string>
+    <string name="hint_enter_category_item_name">insira o nome do item</string>
+    <string name="dialog_button_ok">OK</string>
+    <string name="dialog_button_cancel">Cancelar</string>
+    <string name="desc_app_logo">Logotipo do aplicativo</string>
+    <string name="desc_edit_category">Editar categoria</string>
+    <string name="desc_delete_category">Apagar categoria</string>
+    <string name="desc_edit_item">Editar item</string>
+    <string name="desc_delete_item">Excluir item</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Η λίστα αγορών μου</string>
+    <string name="fab_add_category">Προσθήκη κατηγορίας αγορών</string>
+    <string name="fab_add_category_item">Προσθέστε ένα προϊόν</string>
+    <string name="title_add_shopping_category">Προσθέστε μια νέα κατηγορία αγορών</string>
+    <string name="title_edit_shopping_category">Επεξεργασία κατηγορίας αγορών</string>
+    <string name="title_delete_shopping_category">Διαγραφή κατηγορίας αγορών</string>
+    <string name="title_delete_shopping_category_item">Διαγραφή προϊόντος</string>
+    <string name="text_delete_shopping_category">Αυτό θα διαγράψει την επιλεγμένη κατηγορία αγορών. Είστε σίγουροι?</string>
+    <string name="text_delete_shopping_category_item">Αυτό θα διαγράψει το επιλεγμένο προϊόν. Είστε σίγουροι?</string>
+    <string name="text_items_count">προϊόντα:</string>
+    <string name="hint_enter_category_name">εισάγετε το όνομα της κατηγορίας</string>
+    <string name="hint_enter_category_item_name">εισάγετε το όνομα του προϊόντος</string>
+    <string name="dialog_button_ok">ΟΚ</string>
+    <string name="dialog_button_cancel">Ακύρωση</string>
+    <string name="desc_app_logo">Λογότυπο εφαρμογής</string>
+    <string name="desc_edit_category">Επεξεργασία κατηγορίας αγορών</string>
+    <string name="desc_delete_category">Διαγραφή κατηγορίας αγορών</string>
+    <string name="desc_edit_item">Επεξεργασία προϊόντος</string>
+    <string name="desc_delete_item">Διαγραφή προϊόντος</string>
+</resources>

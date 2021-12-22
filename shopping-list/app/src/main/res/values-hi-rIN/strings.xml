@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">मेरी खरीदारी सूची</string>
+    <string name="fab_add_category">खरीदारी सूची श्रेणी जोड़ें</string>
+    <string name="fab_add_category_item">श्रेणी आइटम जोड़ें</string>
+    <string name="title_add_shopping_category">एक नई खरीदारी श्रेणी जोड़ें</string>
+    <string name="title_edit_shopping_category">खरीदारी श्रेणी संपादित करें</string>
+    <string name="title_delete_shopping_category">खरीदारी श्रेणी हटाएं</string>
+    <string name="title_delete_shopping_category_item">खरीदारी श्रेणी आइटम हटाएं</string>
+    <string name="text_delete_shopping_category">यह क्रिया चयनित खरीदारी श्रेणी को हटा देगी। क्या आपको यकीन है?</string>
+    <string name="text_delete_shopping_category_item">यह क्रिया चयनित शॉपिंग श्रेणी आइटम को हटा देगी। क्या आपको यकीन है?</string>
+    <string name="text_items_count">आइटम:</string>
+    <string name="hint_enter_category_name">श्रेणी का नाम दर्ज करें</string>
+    <string name="hint_enter_category_item_name">आइटम का नाम दर्ज करें</string>
+    <string name="dialog_button_ok">ठीक है</string>
+    <string name="dialog_button_cancel">रद्द करें</string>
+    <string name="desc_app_logo">स्पलैश स्क्रीन एप्लिकेशन लोगो</string>
+    <string name="desc_edit_category">श्रेणी संपादित करें</string>
+    <string name="desc_delete_category">श्रेणी हटाएं</string>
+    <string name="desc_edit_item">संपादित आइटम</string>
+    <string name="desc_delete_item">चीज़ें हटाएं</string>
+</resources>

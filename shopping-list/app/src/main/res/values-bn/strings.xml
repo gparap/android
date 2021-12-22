@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">আমার কেনাকাটা তালিকা</string>
+    <string name="fab_add_category">কেনাকাটার তালিকা বিভাগ যোগ করুন</string>
+    <string name="fab_add_category_item">বিভাগ আইটেম যোগ করুন</string>
+    <string name="title_add_shopping_category">একটি নতুন কেনাকাটা বিভাগ যোগ করুন</string>
+    <string name="title_edit_shopping_category">কেনাকাটা বিভাগ সম্পাদনা করুন</string>
+    <string name="title_delete_shopping_category">কেনাকাটার বিভাগ মুছুন</string>
+    <string name="title_delete_shopping_category_item">শপিং বিভাগ আইটেম মুছুন</string>
+    <string name="text_delete_shopping_category">এই ক্রিয়াটি নির্বাচিত কেনাকাটা বিভাগ মুছে ফেলবে। তুমি কি নিশ্চিত?</string>
+    <string name="text_delete_shopping_category_item">এই ক্রিয়াটি নির্বাচিত শপিং বিভাগের আইটেমটি মুছে ফেলবে৷ তুমি কি নিশ্চিত?</string>
+    <string name="text_items_count">আইটেম:</string>
+    <string name="hint_enter_category_name">বিভাগের নাম লিখুন</string>
+    <string name="hint_enter_category_item_name">আইটেম নাম লিখুন</string>
+    <string name="dialog_button_ok">ঠিক আছে</string>
+    <string name="dialog_button_cancel">বাতিল করুন</string>
+    <string name="desc_app_logo">স্প্ল্যাশ স্ক্রিন অ্যাপ্লিকেশন লোগো</string>
+    <string name="desc_edit_category">বিভাগ সম্পাদনা করুন</string>
+    <string name="desc_delete_category">বিভাগ মুছুন</string>
+    <string name="desc_edit_item">আইটেম সম্পাদনা করুন</string>
+    <string name="desc_delete_item">আইটেম মুছুন</string>
+</resources>

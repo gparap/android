@@ -86,7 +86,7 @@ class ItemActivity :
     @SuppressLint("InflateParams")
     private fun openAddShoppingCategoryItemDialog() {
         dialog = ItemDialogUtils(this).createAddItemDialog(
-            "Add Item",
+            this.resources.getString(R.string.fab_add_category_item),
             layoutInflater.inflate(R.layout.dialog_add_category_item, null),
             this
         ).apply { show() }
@@ -119,7 +119,7 @@ class ItemActivity :
     @SuppressLint("InflateParams")
     override fun onEditItemButtonClickListener(item: ItemModel) {
         dialog = ItemDialogUtils(this).createEditItemDialog(
-            "Edit Item",
+            this.resources.getString(R.string.desc_edit_item),
             layoutInflater.inflate(R.layout.dialog_edit_category_item, null),
             this,
             item

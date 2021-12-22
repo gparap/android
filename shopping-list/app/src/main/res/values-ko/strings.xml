@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">내 쇼핑 목록</string>
+    <string name="fab_add_category">쇼핑 목록 카테고리 추가</string>
+    <string name="fab_add_category_item">카테고리 항목 추가</string>
+    <string name="title_add_shopping_category">새 쇼핑 카테고리 추가</string>
+    <string name="title_edit_shopping_category">쇼핑 카테고리 수정</string>
+    <string name="title_delete_shopping_category">쇼핑 카테고리 삭제</string>
+    <string name="title_delete_shopping_category_item">쇼핑 카테고리 항목 삭제</string>
+    <string name="text_delete_shopping_category">이 작업은 선택한 쇼핑 카테고리를 삭제합니다. 확실합니까?</string>
+    <string name="text_delete_shopping_category_item">이 작업은 선택한 쇼핑 카테고리 항목을 삭제합니다. 확실합니까?</string>
+    <string name="text_items_count">항목:</string>
+    <string name="hint_enter_category_name">카테고리 이름 입력</string>
+    <string name="hint_enter_category_item_name">항목 이름을 입력</string>
+    <string name="dialog_button_ok">확인</string>
+    <string name="dialog_button_cancel">취소</string>
+    <string name="desc_app_logo">시작 화면 응용 프로그램 로고</string>
+    <string name="desc_edit_category">카테고리 수정</string>
+    <string name="desc_delete_category">카테고리 삭제</string>
+    <string name="desc_edit_item">항목 편집</string>
+    <string name="desc_delete_item">항목 삭제</string>
+</resources>

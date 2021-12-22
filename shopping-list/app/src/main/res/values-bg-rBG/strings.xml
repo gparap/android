@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Моят списък за пазаруване</string>
+    <string name="fab_add_category">Добавете категория списък за пазаруване</string>
+    <string name="fab_add_category_item">Добавете елемент от категорията</string>
+    <string name="title_add_shopping_category">Добавете нова категория за пазаруване</string>
+    <string name="title_edit_shopping_category">Редактиране на категорията за пазаруване</string>
+    <string name="title_delete_shopping_category">Изтрийте категорията за пазаруване</string>
+    <string name="title_delete_shopping_category_item">Изтриване на артикул от категорията за пазаруване</string>
+    <string name="text_delete_shopping_category">Това действие ще изтрие избраната категория за пазаруване. Сигурен ли си?</string>
+    <string name="text_delete_shopping_category_item">Това действие ще изтрие избрания артикул от категорията за пазаруване. Сигурен ли си?</string>
+    <string name="text_items_count">елементи:</string>
+    <string name="hint_enter_category_name">въведете име на категория</string>
+    <string name="hint_enter_category_item_name">въведете името на артикула</string>
+    <string name="dialog_button_ok">Добре</string>
+    <string name="dialog_button_cancel">Отмяна</string>
+    <string name="desc_app_logo">Лого на приложението за начален екран</string>
+    <string name="desc_edit_category">Редактиране на категория</string>
+    <string name="desc_delete_category">Изтриване на категория</string>
+    <string name="desc_edit_item">Редактиране на елемент</string>
+    <string name="desc_delete_item">Изтриване на елемент</string>
+</resources>

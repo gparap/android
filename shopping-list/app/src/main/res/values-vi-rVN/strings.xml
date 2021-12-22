@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Danh sách mua sắm của tôi</string>
+    <string name="fab_add_category">Thêm danh mục danh sách mua sắm</string>
+    <string name="fab_add_category_item">Thêm mục danh mục</string>
+    <string name="title_add_shopping_category">Thêm một danh mục mua sắm mới</string>
+    <string name="title_edit_shopping_category">Chỉnh sửa danh mục mua sắm</string>
+    <string name="title_delete_shopping_category">Xóa danh mục mua sắm</string>
+    <string name="title_delete_shopping_category_item">Xóa mục danh mục mua sắm</string>
+    <string name="text_delete_shopping_category">Hành động này sẽ xóa danh mục mua sắm đã chọn. Bạn có chắc không?</string>
+    <string name="text_delete_shopping_category_item">Hành động này sẽ xóa mục danh mục mua sắm đã chọn. Bạn có chắc không?</string>
+    <string name="text_items_count">mặt hàng:</string>
+    <string name="hint_enter_category_name">nhập tên danh mục</string>
+    <string name="hint_enter_category_item_name">nhập tên mặt hàng</string>
+    <string name="dialog_button_ok">VÂNG</string>
+    <string name="dialog_button_cancel">Hủy bỏ</string>
+    <string name="desc_app_logo">Logo ứng dụng màn hình giật gân</string>
+    <string name="desc_edit_category">Chỉnh sửa danh mục</string>
+    <string name="desc_delete_category">Xóa danh mục</string>
+    <string name="desc_edit_item">Chỉnh sửa mục</string>
+    <string name="desc_delete_item">Xóa mục</string>
+</resources>

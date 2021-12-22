@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Min inköpslista</string>
+    <string name="fab_add_category">Lägg till inköpslistakategori</string>
+    <string name="fab_add_category_item">Lägg till kategoriobjekt</string>
+    <string name="title_add_shopping_category">Lägg till en ny shoppingkategori</string>
+    <string name="title_edit_shopping_category">Redigera shoppingkategori</string>
+    <string name="title_delete_shopping_category">Ta bort shoppingkategori</string>
+    <string name="title_delete_shopping_category_item">Ta bort shoppingkategoriobjekt</string>
+    <string name="text_delete_shopping_category">Denna åtgärd tar bort den valda shoppingkategorin. Är du säker?</string>
+    <string name="text_delete_shopping_category_item">Denna åtgärd kommer att ta bort den valda shoppingkategorivaran. Är du säker?</string>
+    <string name="text_items_count">föremål:</string>
+    <string name="hint_enter_category_name">ange kategorinamn</string>
+    <string name="hint_enter_category_item_name">ange objektets namn</string>
+    <string name="dialog_button_ok">OK</string>
+    <string name="dialog_button_cancel">Annullera</string>
+    <string name="desc_app_logo">Stänkskärmsapplikationslogotyp</string>
+    <string name="desc_edit_category">Redigera kategori</string>
+    <string name="desc_delete_category">Ta bort kategori</string>
+    <string name="desc_edit_item">Redigera objekt</string>
+    <string name="desc_delete_item">Radera sak</string>
+</resources>

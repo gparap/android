@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">私の買い物リスト</string>
+    <string name="fab_add_category">ショッピングリストカテゴリを追加</string>
+    <string name="fab_add_category_item">カテゴリアイテムを追加</string>
+    <string name="title_add_shopping_category">新しいショッピングカテゴリを追加する</string>
+    <string name="title_edit_shopping_category">ショッピングカテゴリを編集する</string>
+    <string name="title_delete_shopping_category">ショッピングカテゴリを削除する</string>
+    <string name="title_delete_shopping_category_item">ショッピングカテゴリアイテムを削除する</string>
+    <string name="text_delete_shopping_category">このアクションにより、選択したショッピングカテゴリが削除されます。 本気ですか？</string>
+    <string name="text_delete_shopping_category_item">このアクションにより、選択したショッピングカテゴリアイテムが削除されます。 本気ですか？</string>
+    <string name="text_items_count">アイテム：</string>
+    <string name="hint_enter_category_name">カテゴリ名を入力してください</string>
+    <string name="hint_enter_category_item_name">アイテム名を入力してください</string>
+    <string name="dialog_button_ok">わかった</string>
+    <string name="dialog_button_cancel">キャンセル</string>
+    <string name="desc_app_logo">スプラッシュスクリーンアプリケーションのロゴ</string>
+    <string name="desc_edit_category">カテゴリを編集</string>
+    <string name="desc_delete_category">カテゴリを削除</string>
+    <string name="desc_edit_item">アイテムの編集</string>
+    <string name="desc_delete_item">アイテムを削除</string>
+</resources>

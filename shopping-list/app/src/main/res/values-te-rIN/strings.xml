@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">నా షాపింగ్ జాబితా</string>
+    <string name="fab_add_category">షాపింగ్ జాబితా వర్గాన్ని జోడించండి</string>
+    <string name="fab_add_category_item">వర్గం అంశాన్ని జోడించండి</string>
+    <string name="title_add_shopping_category">కొత్త షాపింగ్ వర్గాన్ని జోడించండి</string>
+    <string name="title_edit_shopping_category">షాపింగ్ వర్గాన్ని సవరించండి</string>
+    <string name="title_delete_shopping_category">షాపింగ్ వర్గాన్ని తొలగించండి</string>
+    <string name="title_delete_shopping_category_item">షాపింగ్ కేటగిరీ ఐటెమ్‌ను తొలగించండి</string>
+    <string name="text_delete_shopping_category">ఈ చర్య ఎంచుకున్న షాపింగ్ వర్గాన్ని తొలగిస్తుంది. మీరు చెప్పేది నిజమా?</string>
+    <string name="text_delete_shopping_category_item">ఈ చర్య ఎంచుకున్న షాపింగ్ కేటగిరీ ఐటెమ్‌ని తొలగిస్తుంది. మీరు చెప్పేది నిజమా?</string>
+    <string name="text_items_count">అంశాలు:</string>
+    <string name="hint_enter_category_name">వర్గం పేరు నమోదు చేయండి</string>
+    <string name="hint_enter_category_item_name">అంశం పేరును నమోదు చేయండి</string>
+    <string name="dialog_button_ok">అలాగే</string>
+    <string name="dialog_button_cancel">రద్దు చేయండి</string>
+    <string name="desc_app_logo">స్ప్లాష్ స్క్రీన్ అప్లికేషన్ లోగో</string>
+    <string name="desc_edit_category">వర్గాన్ని సవరించండి</string>
+    <string name="desc_delete_category">వర్గాన్ని తొలగించండి</string>
+    <string name="desc_edit_item">అంశాన్ని సవరించండి</string>
+    <string name="desc_delete_item">అంశాన్ని తొలగించండి</string>
+</resources>
