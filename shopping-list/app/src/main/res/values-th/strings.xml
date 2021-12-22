@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">รายการช้อปปิ้งของฉัน</string>
+    <string name="fab_add_category">เพิ่มหมวดหมู่รายการช้อปปิ้ง</string>
+    <string name="fab_add_category_item">เพิ่มรายการหมวดหมู่</string>
+    <string name="title_add_shopping_category">เพิ่มหมวดช้อปปิ้งใหม่</string>
+    <string name="title_edit_shopping_category">แก้ไขหมวดช้อปปิ้ง</string>
+    <string name="title_delete_shopping_category">ลบหมวดช้อปปิ้ง</string>
+    <string name="title_delete_shopping_category_item">ลบรายการในหมวดช้อปปิ้ง</string>
+    <string name="text_delete_shopping_category">การดำเนินการนี้จะลบหมวดหมู่การช็อปปิ้งที่เลือก คุณแน่ใจไหม?</string>
+    <string name="text_delete_shopping_category_item">การดำเนินการนี้จะลบรายการหมวดหมู่การช็อปปิ้งที่เลือก คุณแน่ใจไหม?</string>
+    <string name="text_items_count">รายการ:</string>
+    <string name="hint_enter_category_name">ใส่ชื่อหมวดหมู่</string>
+    <string name="hint_enter_category_item_name">ใส่ชื่อรายการ</string>
+    <string name="dialog_button_ok">ตกลง</string>
+    <string name="dialog_button_cancel">ยกเลิก</string>
+    <string name="desc_app_logo">โลโก้แอปพลิเคชันหน้าจอเริ่มต้น</string>
+    <string name="desc_edit_category">แก้ไขหมวดหมู่</string>
+    <string name="desc_delete_category">ลบหมวดหมู่</string>
+    <string name="desc_edit_item">แก้ไขรายการ</string>
+    <string name="desc_delete_item">ลบรายการ</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Meine Einkaufsliste</string>
+    <string name="fab_add_category">Einkaufslistenkategorie hinzufügen</string>
+    <string name="fab_add_category_item">Kategorieelement hinzufügen</string>
+    <string name="title_add_shopping_category">Fügen Sie eine neue Einkaufskategorie hinzu</string>
+    <string name="title_edit_shopping_category">Einkaufskategorie bearbeiten</string>
+    <string name="title_delete_shopping_category">Einkaufskategorie löschen</string>
+    <string name="title_delete_shopping_category_item">Artikel der Einkaufskategorie löschen</string>
+    <string name="text_delete_shopping_category">Diese Aktion löscht die ausgewählte Einkaufskategorie. Bist du sicher?</string>
+    <string name="text_delete_shopping_category_item">Diese Aktion löscht den ausgewählten Artikel der Einkaufskategorie. Bist du sicher?</string>
+    <string name="text_items_count">Produkte:</string>
+    <string name="hint_enter_category_name">Kategorienamen eingeben</string>
+    <string name="hint_enter_category_item_name">Artikelnamen eingeben</string>
+    <string name="dialog_button_ok">OK</string>
+    <string name="dialog_button_cancel">Abbrechen</string>
+    <string name="desc_app_logo">Logo der App</string>
+    <string name="desc_edit_category">Kategorie bearbeiten</string>
+    <string name="desc_delete_category">Kategorie löschen</string>
+    <string name="desc_edit_item">Element bearbeiten</string>
+    <string name="desc_delete_item">Item löschen</string>
+</resources>

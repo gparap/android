@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">எனது ஷாப்பிங் பட்டியல்</string>
+    <string name="fab_add_category">ஷாப்பிங் பட்டியல் வகையைச் சேர்க்கவும்</string>
+    <string name="fab_add_category_item">வகை உருப்படியைச் சேர்க்கவும்</string>
+    <string name="title_add_shopping_category">புதிய ஷாப்பிங் வகையைச் சேர்க்கவும்</string>
+    <string name="title_edit_shopping_category">ஷாப்பிங் வகையைத் திருத்தவும்</string>
+    <string name="title_delete_shopping_category">ஷாப்பிங் வகையை நீக்கு</string>
+    <string name="title_delete_shopping_category_item">ஷாப்பிங் வகை உருப்படியை நீக்கவும்</string>
+    <string name="text_delete_shopping_category">இந்தச் செயல் தேர்ந்தெடுக்கப்பட்ட ஷாப்பிங் வகையை நீக்கும். நீ சொல்வது உறுதியா?</string>
+    <string name="text_delete_shopping_category_item">இந்த செயல் தேர்ந்தெடுக்கப்பட்ட ஷாப்பிங் வகை உருப்படியை நீக்கும். நீ சொல்வது உறுதியா?</string>
+    <string name="text_items_count">பொருட்களை:</string>
+    <string name="hint_enter_category_name">வகை பெயரை உள்ளிடவும்</string>
+    <string name="hint_enter_category_item_name">பொருளின் பெயரை உள்ளிடவும்</string>
+    <string name="dialog_button_ok">சரி</string>
+    <string name="dialog_button_cancel">ரத்து செய்</string>
+    <string name="desc_app_logo">ஸ்பிளாஸ் திரை பயன்பாட்டு லோகோ</string>
+    <string name="desc_edit_category">வகையைத் திருத்தவும்</string>
+    <string name="desc_delete_category">வகையை நீக்கு</string>
+    <string name="desc_edit_item">உருப்படியைத் திருத்து</string>
+    <string name="desc_delete_item">உருப்படியை நீக்கு</string>
+</resources>

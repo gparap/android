@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Мой список покупок</string>
+    <string name="fab_add_category">Добавить категорию списка покупок</string>
+    <string name="fab_add_category_item">Добавить элемент категории</string>
+    <string name="title_add_shopping_category">Добавить новую категорию покупок</string>
+    <string name="title_edit_shopping_category">Изменить категорию покупок</string>
+    <string name="title_delete_shopping_category">Удалить категорию покупок</string>
+    <string name="title_delete_shopping_category_item">Удалить элемент категории покупок</string>
+    <string name="text_delete_shopping_category">Это действие удалит выбранную категорию покупок. Уверены ли вы?</string>
+    <string name="text_delete_shopping_category_item">Это действие удалит выбранный элемент категории покупок. Уверены ли вы?</string>
+    <string name="text_items_count">Предметы:</string>
+    <string name="hint_enter_category_name">введите название категории</string>
+    <string name="hint_enter_category_item_name">введите название предмета</string>
+    <string name="dialog_button_ok">В ПОРЯДКЕ</string>
+    <string name="dialog_button_cancel">Отмена</string>
+    <string name="desc_app_logo">Логотип приложения на экране-заставке</string>
+    <string name="desc_edit_category">Изменить категорию</string>
+    <string name="desc_delete_category">Удалить категорию</string>
+    <string name="desc_edit_item">Редактировать элемент</string>
+    <string name="desc_delete_item">Удалить пункт</string>
+</resources>

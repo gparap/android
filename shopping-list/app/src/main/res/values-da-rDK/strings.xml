@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Min indkøbsliste</string>
+    <string name="fab_add_category">Tilføj indkøbslistekategori</string>
+    <string name="fab_add_category_item">Tilføj kategorielement</string>
+    <string name="title_add_shopping_category">Tilføj en ny shoppingkategori</string>
+    <string name="title_edit_shopping_category">Rediger indkøbskategori</string>
+    <string name="title_delete_shopping_category">Slet indkøbskategori</string>
+    <string name="title_delete_shopping_category_item">Slet indkøbskategorivare</string>
+    <string name="text_delete_shopping_category">Denne handling sletter den valgte shoppingkategori. Er du sikker?</string>
+    <string name="text_delete_shopping_category_item">Denne handling vil slette den valgte indkøbskategorivare. Er du sikker?</string>
+    <string name="text_items_count">varer:</string>
+    <string name="hint_enter_category_name">indtast kategorinavn</string>
+    <string name="hint_enter_category_item_name">indtast varens navn</string>
+    <string name="dialog_button_ok">Okay</string>
+    <string name="dialog_button_cancel">Afbestille</string>
+    <string name="desc_app_logo">applikationslogo</string>
+    <string name="desc_edit_category">Rediger kategori</string>
+    <string name="desc_delete_category">Slet kategori</string>
+    <string name="desc_edit_item">Rediger element</string>
+    <string name="desc_delete_item">Slet vare</string>
+</resources>

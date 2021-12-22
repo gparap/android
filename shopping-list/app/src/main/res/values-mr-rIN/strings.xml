@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">माझी खरेदी सूची</string>
+    <string name="fab_add_category">खरेदी सूची श्रेणी जोडा</string>
+    <string name="fab_add_category_item">श्रेणी आयटम जोडा</string>
+    <string name="title_add_shopping_category">नवीन खरेदी श्रेणी जोडा</string>
+    <string name="title_edit_shopping_category">खरेदी श्रेणी संपादित करा</string>
+    <string name="title_delete_shopping_category">खरेदी श्रेणी हटवा</string>
+    <string name="title_delete_shopping_category_item">खरेदी श्रेणी आयटम हटवा</string>
+    <string name="text_delete_shopping_category">ही क्रिया निवडलेली खरेदी श्रेणी हटवेल. तुला खात्री आहे?</string>
+    <string name="text_delete_shopping_category_item">ही क्रिया निवडलेल्या खरेदी श्रेणी आयटम हटवेल. तुला खात्री आहे?</string>
+    <string name="text_items_count">आयटम:</string>
+    <string name="hint_enter_category_name">श्रेणीचे नाव प्रविष्ट करा</string>
+    <string name="hint_enter_category_item_name">आयटमचे नाव प्रविष्ट करा</string>
+    <string name="dialog_button_ok">ठीक आहे</string>
+    <string name="dialog_button_cancel">रद्द करा</string>
+    <string name="desc_app_logo">स्प्लॅश स्क्रीन ऍप्लिकेशन लोगो</string>
+    <string name="desc_edit_category">श्रेणी संपादित करा</string>
+    <string name="desc_delete_category">श्रेणी हटवा</string>
+    <string name="desc_edit_item">आयटम संपादित करा</string>
+    <string name="desc_delete_item">आयटम हटवा</string>
+</resources>

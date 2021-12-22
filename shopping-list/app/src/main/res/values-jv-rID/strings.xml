@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Daftar Belanja Kula</string>
+    <string name="fab_add_category">Tambah kategori dhaptar blanja</string>
+    <string name="fab_add_category_item">Tambah item kategori</string>
+    <string name="title_add_shopping_category">Tambah kategori blanja anyar</string>
+    <string name="title_edit_shopping_category">Sunting kategori blanja</string>
+    <string name="title_delete_shopping_category">Busak kategori blanja</string>
+    <string name="title_delete_shopping_category_item">Mbusak item kategori blanja</string>
+    <string name="text_delete_shopping_category">Tindakan iki bakal mbusak kategori blanja sing dipilih. Apa sampeyan yakin?</string>
+    <string name="text_delete_shopping_category_item">Tindakan iki bakal mbusak item kategori blanja sing dipilih. Apa sampeyan yakin?</string>
+    <string name="text_items_count">item:</string>
+    <string name="hint_enter_category_name">ketik jeneng kategori</string>
+    <string name="hint_enter_category_item_name">ketik jeneng item</string>
+    <string name="dialog_button_ok">OK</string>
+    <string name="dialog_button_cancel">Batal</string>
+    <string name="desc_app_logo">Logo aplikasi</string>
+    <string name="desc_edit_category">Sunting kategori</string>
+    <string name="desc_delete_category">Busak kategori</string>
+    <string name="desc_edit_item">Sunting Item</string>
+    <string name="desc_delete_item">Mbusak Item</string>
+</resources>

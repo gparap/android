@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">La mia lista della spesa</string>
+    <string name="fab_add_category">Aggiungi la categoria della lista della spesa</string>
+    <string name="fab_add_category_item">Aggiungi elemento di categoria</string>
+    <string name="title_add_shopping_category">Aggiungi una nuova categoria di acquisto</string>
+    <string name="title_edit_shopping_category">Modifica categoria di acquisto</string>
+    <string name="title_delete_shopping_category">Elimina la categoria di acquisto</string>
+    <string name="title_delete_shopping_category_item">Elimina l\'articolo della categoria di acquisto</string>
+    <string name="text_delete_shopping_category">Questa azione eliminerà la categoria di acquisto selezionata. Sei sicuro?</string>
+    <string name="text_delete_shopping_category_item">Questa azione eliminerà l\'articolo della categoria di acquisto selezionato. Sei sicuro?</string>
+    <string name="text_items_count">Oggetti:</string>
+    <string name="hint_enter_category_name">inserisci il nome della categoria</string>
+    <string name="hint_enter_category_item_name">inserisci il nome dell\'oggetto</string>
+    <string name="dialog_button_ok">ok</string>
+    <string name="dialog_button_cancel">Annulla</string>
+    <string name="desc_app_logo">Logo applicazione</string>
+    <string name="desc_edit_category">Modifica categoria</string>
+    <string name="desc_delete_category">Elimina categoria</string>
+    <string name="desc_edit_item">Modifica elemento</string>
+    <string name="desc_delete_item">Cancellare l\'oggetto</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">我的购物清单</string>
+    <string name="fab_add_category">添加购物清单类别</string>
+    <string name="fab_add_category_item">添加分类项目</string>
+    <string name="title_add_shopping_category">添加新的购物类别</string>
+    <string name="title_edit_shopping_category">编辑购物类别</string>
+    <string name="title_delete_shopping_category">删除购物类别</string>
+    <string name="title_delete_shopping_category_item">删除购物分类项目</string>
+    <string name="text_delete_shopping_category">此操作将删除所选的购物类别。 你确定吗？</string>
+    <string name="text_delete_shopping_category_item">此操作将删除选定的购物类别项目。 你确定吗？</string>
+    <string name="text_items_count">项目：</string>
+    <string name="hint_enter_category_name">输入类别名称</string>
+    <string name="hint_enter_category_item_name">输入项目名称</string>
+    <string name="dialog_button_ok">行</string>
+    <string name="dialog_button_cancel">取消</string>
+    <string name="desc_app_logo">启动画面应用程序徽标</string>
+    <string name="desc_edit_category">编辑类别</string>
+    <string name="desc_delete_category">删除类别</string>
+    <string name="desc_edit_item">编辑项目</string>
+    <string name="desc_delete_item">删除项目</string>
+</resources>

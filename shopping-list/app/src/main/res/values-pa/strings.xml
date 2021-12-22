@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ਮੇਰੀ ਖਰੀਦਦਾਰੀ ਸੂਚੀ</string>
+    <string name="fab_add_category">ਖਰੀਦਦਾਰੀ ਸੂਚੀ ਸ਼੍ਰੇਣੀ ਸ਼ਾਮਲ ਕਰੋ</string>
+    <string name="fab_add_category_item">ਸ਼੍ਰੇਣੀ ਆਈਟਮ ਸ਼ਾਮਲ ਕਰੋ</string>
+    <string name="title_add_shopping_category">ਇੱਕ ਨਵੀਂ ਖਰੀਦਦਾਰੀ ਸ਼੍ਰੇਣੀ ਸ਼ਾਮਲ ਕਰੋ</string>
+    <string name="title_edit_shopping_category">ਖਰੀਦਦਾਰੀ ਸ਼੍ਰੇਣੀ ਦਾ ਸੰਪਾਦਨ ਕਰੋ</string>
+    <string name="title_delete_shopping_category">ਖਰੀਦਦਾਰੀ ਸ਼੍ਰੇਣੀ ਮਿਟਾਓ</string>
+    <string name="title_delete_shopping_category_item">ਖਰੀਦਦਾਰੀ ਸ਼੍ਰੇਣੀ ਆਈਟਮ ਨੂੰ ਮਿਟਾਓ</string>
+    <string name="text_delete_shopping_category">ਇਹ ਕਾਰਵਾਈ ਚੁਣੀ ਗਈ ਖਰੀਦਦਾਰੀ ਸ਼੍ਰੇਣੀ ਨੂੰ ਮਿਟਾ ਦੇਵੇਗੀ। ਤੁਹਾਨੂੰ ਪੂਰਾ ਵਿਸ਼ਵਾਸ ਹੈ?</string>
+    <string name="text_delete_shopping_category_item">ਇਹ ਕਾਰਵਾਈ ਚੁਣੀ ਗਈ ਖਰੀਦਦਾਰੀ ਸ਼੍ਰੇਣੀ ਆਈਟਮ ਨੂੰ ਮਿਟਾ ਦੇਵੇਗੀ। ਤੁਹਾਨੂੰ ਪੂਰਾ ਵਿਸ਼ਵਾਸ ਹੈ?</string>
+    <string name="text_items_count">ਇਕਾਈ:</string>
+    <string name="hint_enter_category_name">ਸ਼੍ਰੇਣੀ ਦਾ ਨਾਮ ਦਰਜ ਕਰੋ</string>
+    <string name="hint_enter_category_item_name">ਆਈਟਮ ਦਾ ਨਾਮ ਦਰਜ ਕਰੋ</string>
+    <string name="dialog_button_ok">ਠੀਕ ਹੈ</string>
+    <string name="dialog_button_cancel">ਰੱਦ ਕਰੋ</string>
+    <string name="desc_app_logo">ਸਪਲੈਸ਼ ਸਕ੍ਰੀਨ ਐਪਲੀਕੇਸ਼ਨ ਲੋਗੋ</string>
+    <string name="desc_edit_category">ਸ਼੍ਰੇਣੀ ਦਾ ਸੰਪਾਦਨ ਕਰੋ</string>
+    <string name="desc_delete_category">ਸ਼੍ਰੇਣੀ ਮਿਟਾਓ</string>
+    <string name="desc_edit_item">ਆਈਟਮ ਦਾ ਸੰਪਾਦਨ ਕਰੋ</string>
+    <string name="desc_delete_item">ਆਈਟਮ ਮਿਟਾਓ</string>
+</resources>

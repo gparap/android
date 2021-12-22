@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Můj nákupní seznam</string>
+    <string name="fab_add_category">Přidat kategorii nákupního seznamu</string>
+    <string name="fab_add_category_item">Přidat položku kategorie</string>
+    <string name="title_add_shopping_category">Přidat novou nákupní kategorii</string>
+    <string name="title_edit_shopping_category">Upravit nákupní kategorii</string>
+    <string name="title_delete_shopping_category">Smazat nákupní kategorii</string>
+    <string name="title_delete_shopping_category_item">Smazat položku nákupní kategorie</string>
+    <string name="text_delete_shopping_category">Tato akce smaže vybranou nákupní kategorii. Jsi si jistá?</string>
+    <string name="text_delete_shopping_category_item">Tato akce smaže vybranou položku nákupní kategorie. Jsi si jistá?</string>
+    <string name="text_items_count">položky:</string>
+    <string name="hint_enter_category_name">zadejte název kategorie</string>
+    <string name="hint_enter_category_item_name">zadejte název položky</string>
+    <string name="dialog_button_ok">OK</string>
+    <string name="dialog_button_cancel">zrušení</string>
+    <string name="desc_app_logo">Logo aplikace úvodní obrazovky</string>
+    <string name="desc_edit_category">Upravit kategorii</string>
+    <string name="desc_delete_category">Smazat kategorii</string>
+    <string name="desc_edit_item">Upravit položku</string>
+    <string name="desc_delete_item">Smazat položku</string>
+</resources>

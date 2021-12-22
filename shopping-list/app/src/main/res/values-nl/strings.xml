@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mijn boodschappenlijstje</string>
+    <string name="fab_add_category">Categorie boodschappenlijst toevoegen</string>
+    <string name="fab_add_category_item">Categorie-item toevoegen</string>
+    <string name="title_add_shopping_category">Een nieuwe winkelcategorie toevoegen</string>
+    <string name="title_edit_shopping_category">Winkelcategorie bewerken</string>
+    <string name="title_delete_shopping_category">Winkelcategorie verwijderen</string>
+    <string name="title_delete_shopping_category_item">Winkelcategorie-item verwijderen</string>
+    <string name="text_delete_shopping_category">Met deze actie wordt de geselecteerde winkelcategorie verwijderd. Weet je zeker dat?</string>
+    <string name="text_delete_shopping_category_item">Met deze actie wordt het geselecteerde winkelcategorie-item verwijderd. Weet je zeker dat?</string>
+    <string name="text_items_count">artikelen:</string>
+    <string name="hint_enter_category_name">voer categorienaam in</string>
+    <string name="hint_enter_category_item_name">voer itemnaam in</string>
+    <string name="dialog_button_ok">oke</string>
+    <string name="dialog_button_cancel">Annuleren</string>
+    <string name="desc_app_logo">Logo van de applicatie op het welkomstscherm</string>
+    <string name="desc_edit_category">Categorie bewerken</string>
+    <string name="desc_delete_category">Categorie verwijderen</string>
+    <string name="desc_edit_item">Item bewerken</string>
+    <string name="desc_delete_item">Verwijder item</string>
+</resources>
