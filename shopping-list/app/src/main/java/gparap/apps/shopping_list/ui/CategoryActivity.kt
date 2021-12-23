@@ -128,7 +128,7 @@ class CategoryActivity : AppCompatActivity(), CategoryDialogUtils.DialogCallback
                 viewModel.deleteShoppingCategory(category)
             }
             .setNegativeButton(
-                "Cancel",
+                this.resources.getString(R.string.dialog_button_cancel),
                 DialogInterface.OnClickListener { _, _ -> return@OnClickListener })
             .create().also {
                 it.show()

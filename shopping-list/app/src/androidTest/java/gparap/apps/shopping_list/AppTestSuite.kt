@@ -16,6 +16,7 @@
 package gparap.apps.shopping_list
 
 import gparap.apps.shopping_list.data.CategoryDaoInstrumentedTest
+import gparap.apps.shopping_list.data.ItemDaoInstrumentedTest
 import gparap.apps.shopping_list.ui.SplashActivityInstrumentedTest
 import org.junit.runner.RunWith
 import org.junit.runners.Suite
@@ -24,6 +25,7 @@ import org.junit.runners.Suite
 @Suite.SuiteClasses(
     SplashActivityInstrumentedTest::class,
     CategoryActivityInstrumentedTest::class,
-    CategoryDaoInstrumentedTest::class
+    CategoryDaoInstrumentedTest::class,
+    ItemDaoInstrumentedTest::class
 )
 class AppTestSuite
