@@ -25,6 +25,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.shopping_list.R
 import gparap.apps.shopping_list.adapters.CategoryAdapter
@@ -63,6 +66,16 @@ class CategoryActivity : AppCompatActivity(), CategoryDialogUtils.DialogCallback
         fabAddCategory.setOnClickListener {
             openAddShoppingCategoryDialog()
         }
+
+        //initialize the Mobile Ads SDK
+        MobileAds.initialize(this) {}
+
+        //create an ad request
+        val adRequest = AdRequest.Builder().build()
+
+        //load and place banner ad
+        val adView = findViewById<AdView>(R.id.ad_view_category)
+        adView.loadAd(adRequest)
     }
 
     //Open dialog for adding a new shopping category

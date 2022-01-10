@@ -25,6 +25,10 @@
         <activity
             android:name=".ui.CategoryActivity"
             android:exported="true" />
+        <!-- AdMob app ID -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-4227032191105066~1877009712"/>
     </application>
 
 </manifest>
