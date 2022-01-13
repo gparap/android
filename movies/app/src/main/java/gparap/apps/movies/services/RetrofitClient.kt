@@ -13,11 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.movies.model
+package gparap.apps.movies.services
+
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 /**
- * Model for the initial JSON response of the web service.
+ * A type-safe HTTP client for Android and Java.
  */
-data class MovieResponseModel(
-    val movies: List<MovieModel>
-)
+class RetrofitClient {
+    /**
+     * Creates the Retrofit HTTP client instance using the configured values.
+     */
+    fun build(baseUrl: String): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+}

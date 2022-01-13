@@ -15,13 +15,57 @@
  */
 package gparap.apps.movies.model
 
+import com.google.gson.annotations.SerializedName
+
 /**
  * Model for a movie which is included in the "movies" of the web service's response.
  */
 data class MovieModel(
+    @SerializedName("title")
     val title: String,
-    val plotSummary: String,
-    val releaseDate: String,
+
+    @SerializedName("image")
     val imageUrl: String,
-    val directedBy: String
+
+    @SerializedName("plot")
+    val plotSummary: String,
+
+    @SerializedName("cast")
+    val cast: String,
+
+    @SerializedName("director")
+    val directedBy: String,
+
+    @SerializedName("script")
+    val writtenBy: String,
+
+    @SerializedName("producer")
+    val producedBy: String,
+
+    @SerializedName("photo")
+    val cinematography: String,
+
+    @SerializedName("editor")
+    val editedBy: String,
+
+    @SerializedName("music")
+    val musicBy: String,
+
+    @SerializedName("studio")
+    val productionCompany: String,
+
+    @SerializedName("distro")
+    val distributedBy: String,
+
+    @SerializedName("date")
+    val releaseDate: String,
+
+    @SerializedName("time")
+    val filmTime: String,
+
+    @SerializedName("country")
+    val releaseCountry: String,
+
+    @SerializedName("lang")
+    val language: String,
 )

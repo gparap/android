@@ -13,11 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.movies.model
+package gparap.apps.movies.services
+
+import gparap.apps.movies.model.MovieResponseModel
+import retrofit2.Call
+import retrofit2.http.GET
 
 /**
- * Model for the initial JSON response of the web service.
+ * A web service for receiving movie, serial and cast information.
+ * APIs results are in JSON format.
  */
-data class MovieResponseModel(
-    val movies: List<MovieModel>
-)
+interface MovieService {
+    /**
+     * Gets all the movies.
+     */
+    @get:GET("/movies.php")
+    val getMovies: Call<MovieResponseModel?>?
+}
