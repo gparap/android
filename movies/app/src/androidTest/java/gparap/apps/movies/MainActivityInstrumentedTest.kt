@@ -15,31 +15,49 @@
  */
 package gparap.apps.movies
 
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.filters.LargeTest
+import androidx.test.filters.SmallTest
 import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
 class MainActivityInstrumentedTest {
+    private var activityScenario: ActivityScenario<MainActivity>? = null
 
     @Before
     fun setUp() {
-        ActivityScenario.launch(MainActivity::class.java)
+        activityScenario = ActivityScenario.launch(MainActivity::class.java)
     }
 
     @Test
+    @SmallTest
     fun useAppContext() {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("gparap.apps.movies", appContext.packageName)
     }
 
     @Test
+    @SmallTest
     fun isVisible_recyclerViewMovies() {
         onView(withId(R.id.recycler_view_movies)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    @LargeTest
+    fun onLoad_recyclerViewIsNotEmpty() {
+        //!!! maximum time to wait for the web service response
+        Thread.sleep(5000)
+
+        activityScenario?.onActivity {
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recycler_view_movies)
+            assert(recyclerView.adapter?.itemCount!! > 0)
+        }
     }
 }
