@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.movies.adapters.MovieAdapter
+import gparap.apps.movies.model.MovieModel
 import gparap.apps.movies.model.MovieResponseModel
 import gparap.apps.movies.services.MovieService
 import gparap.apps.movies.services.RetrofitClient
@@ -29,14 +30,18 @@ class MainActivity : AppCompatActivity() {
             .build(AppConstants.BASE_URL)
             .create(MovieService::class.java)
 
-        //consume the web service (get all movies)
+        //consume the web service (get all movies) and update UI
         val response: Call<MovieResponseModel?>? = retrofit.getMovies
         response?.enqueue(object : Callback<MovieResponseModel?> {
             override fun onResponse(
                 call: Call<MovieResponseModel?>,
                 response: Response<MovieResponseModel?>
             ) {
-                println(response.body()?.movies.toString())
+                //get all movies
+                val movies: List<MovieModel>? = response.body()?.movies
+
+                //update adapter with movies
+                moviesAdapter.movies = movies as ArrayList<MovieModel>
             }
 
             override fun onFailure(call: Call<MovieResponseModel?>, t: Throwable) {

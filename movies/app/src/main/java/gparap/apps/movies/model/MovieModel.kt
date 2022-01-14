@@ -28,39 +28,36 @@ data class MovieModel(
     val imageUrl: String,
 
     @SerializedName("plot")
-    val plotSummary: String,
+    val summary: String,
 
     @SerializedName("cast")
     val cast: String,
 
     @SerializedName("director")
-    val directedBy: String,
+    val director: String,
 
     @SerializedName("script")
-    val writtenBy: String,
+    val writer: String,
 
     @SerializedName("producer")
-    val producedBy: String,
+    val producer: String,
 
     @SerializedName("photo")
-    val cinematography: String,
+    val photography: String,
 
     @SerializedName("editor")
-    val editedBy: String,
+    val editor: String,
 
     @SerializedName("music")
-    val musicBy: String,
+    val music: String,
 
-    @SerializedName("studio")
-    val productionCompany: String,
+    @SerializedName("publisher")
+    val publisher: String,
 
-    @SerializedName("distro")
-    val distributedBy: String,
+    @SerializedName("year")
+    val releaseYear: String,
 
-    @SerializedName("date")
-    val releaseDate: String,
-
-    @SerializedName("time")
+    @SerializedName("duration")
     val filmTime: String,
 
     @SerializedName("country")
