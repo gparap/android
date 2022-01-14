@@ -24,10 +24,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import gparap.apps.movies.R
 import gparap.apps.movies.model.MovieModel
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MoviesViewHolder>() {
+    private var context: Context? = null
     var movies = ArrayList<MovieModel>()
         @SuppressLint("NotifyDataSetChanged")
         set(value) {
@@ -39,21 +41,21 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MoviesViewHolder>() {
             }
         }
 
-    //only use for placeholder image
-    private var context: Context? = null
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
-        //only use for placeholder image
         context = parent.context
 
+        //create view
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.cardview_details, parent, false)
         return MoviesViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
-        //placeholder
-        holder.image?.setImageDrawable(context?.resources?.getDrawable(R.drawable.placeholder))
+        //display movie image
+        Glide.with(context!!)
+            .load(movies[position].imageUrl)
+            .into(holder.image!!)
+            .waitForLayout()
     }
 
     override fun getItemCount(): Int {
