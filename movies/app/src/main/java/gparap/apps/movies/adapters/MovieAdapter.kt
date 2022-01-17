@@ -17,6 +17,7 @@ package gparap.apps.movies.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
@@ -28,6 +29,7 @@ import com.bumptech.glide.Glide
 import gparap.apps.movies.R
 import gparap.apps.movies.model.MovieModel
 import com.bumptech.glide.request.RequestOptions
+import gparap.apps.movies.ui.MovieDetailsActivity
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MoviesViewHolder>() {
     private var context: Context? = null
@@ -63,6 +65,13 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MoviesViewHolder>() {
             .applyDefaultRequestOptions(requestOptions)
             .load(movies[position].imageUrl)
             .into(holder.image!!)
+
+        // open movie details activity
+        holder.image.setOnClickListener {
+            val intent = Intent(context!!, MovieDetailsActivity::class.java)
+            intent.putExtra("movie", movies[position])
+            context!!.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

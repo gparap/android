@@ -15,11 +15,14 @@
  */
 package gparap.apps.movies.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 /**
  * Model for a movie which is included in the "movies" of the web service's response.
  */
+@Parcelize
 data class MovieModel(
     @SerializedName("title")
     val title: String,
@@ -65,4 +68,4 @@ data class MovieModel(
 
     @SerializedName("lang")
     val language: String,
-)
+) : Parcelable

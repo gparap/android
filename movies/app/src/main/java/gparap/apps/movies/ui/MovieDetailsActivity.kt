@@ -17,11 +17,80 @@ package gparap.apps.movies.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
+import com.bumptech.glide.Glide
 import gparap.apps.movies.R
+import gparap.apps.movies.model.MovieModel
 
 class MovieDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
+
+        //get movie from intent
+        val movie = intent.extras?.get("movie") as MovieModel
+
+        //display movie image
+        val image = findViewById<ImageView>(R.id.image_view_movie_details)
+        Glide.with(this)
+            .load(movie.imageUrl)
+            .into(image)
+
+        //display movie title
+        val title = findViewById<TextView>(R.id.text_view_movie_title)
+        title.text = movie.title
+
+        //display movie summary
+        val summary = findViewById<TextView>(R.id.text_view_movie_summary)
+        summary.text = movie.summary
+
+        //display movie director
+        val director = findViewById<TextView>(R.id.text_view_movie_director)
+        director.text = movie.director
+
+        //display movie cast
+        val cast = findViewById<TextView>(R.id.text_view_movie_cast)
+        cast.text = movie.cast
+
+        //display movie writer
+        val writer = findViewById<TextView>(R.id.text_view_movie_writer)
+        writer.text = movie.writer
+
+        //display movie producer
+        val producer = findViewById<TextView>(R.id.text_view_movie_producer)
+        producer.text = movie.producer
+
+        //display movie photography
+        val photography = findViewById<TextView>(R.id.text_view_movie_photography)
+        photography.text = movie.photography
+
+        //display movie editor
+        val editor = findViewById<TextView>(R.id.text_view_movie_editor)
+        editor.text = movie.editor
+
+        //display movie music
+        val music = findViewById<TextView>(R.id.text_view_movie_music)
+        music.text = movie.music
+
+        //display movie publisher
+        val publisher = findViewById<TextView>(R.id.text_view_movie_publisher)
+        publisher.text = movie.publisher
+
+        //display movie release year
+        val year = findViewById<TextView>(R.id.text_view_movie_release_year)
+        year.text = movie.releaseYear
+
+        //display movie release country
+        val country = findViewById<TextView>(R.id.text_view_movie_release_country)
+        country.text = movie.releaseCountry
+
+        //display movie language
+        val lang = findViewById<TextView>(R.id.text_view_movie_language)
+        lang.text = movie.language
+
+        //display movie duration
+        val duration = findViewById<TextView>(R.id.text_view_movie_film_time)
+        duration.text = movie.filmTime
     }
 }
