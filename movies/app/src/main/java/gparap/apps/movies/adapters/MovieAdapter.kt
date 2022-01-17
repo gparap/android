@@ -27,6 +27,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import gparap.apps.movies.R
 import gparap.apps.movies.model.MovieModel
+import com.bumptech.glide.request.RequestOptions
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MoviesViewHolder>() {
     private var context: Context? = null
@@ -46,16 +47,22 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MoviesViewHolder>() {
 
         //create view
         val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.cardview_details, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.cardview_movies, parent, false)
         return MoviesViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
+        //customize loading with placeholder
+        val requestOptions = RequestOptions()
+            .placeholder(R.drawable.ic_baseline_image_24)
+            .fitCenter()
+            .centerCrop()
+
         //display movie image
         Glide.with(context!!)
+            .applyDefaultRequestOptions(requestOptions)
             .load(movies[position].imageUrl)
             .into(holder.image!!)
-            .waitForLayout()
     }
 
     override fun getItemCount(): Int {
