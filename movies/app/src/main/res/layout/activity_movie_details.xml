@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.MovieDetailsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--Movie poster-->
+        <ImageView
+            android:id="@+id/image_view_movie_details"
+            android:layout_width="192dp"
+            android:layout_height="192dp"
+            android:contentDescription="@string/desc_movie_image"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_baseline_image_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--Movie title-->
+        <TextView
+            android:id="@+id/text_view_movie_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_view_movie_details"
+            tools:text="Movie Title" />
+
+        <!--Movie plot summary-->
+        <TextView
+            android:id="@+id/text_view_movie_summary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_title"
+            tools:text="Lorem ipsum." />
+
+        <!--Movie details label-->
+        <TextView
+            android:id="@+id/text_view_movie_details_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/label_movie_details"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_summary" />
+
+        <!--Director label-->
+        <TextView
+            android:id="@+id/text_view_movie_director_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/label_director"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_details_label" />
+
+        <!--Director-->
+        <TextView
+            android:id="@+id/text_view_movie_director"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@+id/text_view_movie_director_label"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_details_label"
+            tools:text="director" />
+
+        <!--Cast label-->
+        <TextView
+            android:id="@+id/text_view_movie_cast_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/label_cast"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_director" />
+
+        <!--Cast-->
+        <TextView
+            android:id="@+id/text_view_movie_cast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@+id/text_view_movie_cast_label"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_director"
+            tools:text="cast" />
+
+        <!--Script writer label-->
+        <TextView
+            android:id="@+id/text_view_movie_writer_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/label_script"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_cast" />
+
+        <!--Script writer-->
+        <TextView
+            android:id="@+id/text_view_movie_writer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@+id/text_view_movie_writer_label"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_cast"
+            tools:text="writer" />
+
+        <!--Producer writer label-->
+        <TextView
+            android:id="@+id/text_view_movie_producer_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/label_producer"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_writer" />
+
+        <!--Producer-->
+        <TextView
+            android:id="@+id/text_view_movie_producer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@+id/text_view_movie_producer_label"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_writer"
+            tools:text="producer" />
+
+        <!--Photography label-->
+        <TextView
+            android:id="@+id/text_view_movie_photography_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/label_photography"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_producer" />
+
+        <!--Photography-->
+        <TextView
+            android:id="@+id/text_view_movie_photography"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@+id/text_view_movie_photography_label"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_producer"
+            tools:text="photography" />
+
+        <!--Editor label-->
+        <TextView
+            android:id="@+id/text_view_movie_editor_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/label_editor"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_photography" />
+
+        <!--Editor-->
+        <TextView
+            android:id="@+id/text_view_movie_editor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@+id/text_view_movie_editor_label"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_photography"
+            tools:text="editor" />
+
+        <!--Music composer label-->
+        <TextView
+            android:id="@+id/text_view_movie_music_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/label_music"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_editor" />
+
+        <!--Music composer-->
+        <TextView
+            android:id="@+id/text_view_movie_music"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@+id/text_view_movie_music_label"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_editor"
+            tools:text="music" />
+
+        <!--Publishing studio label-->
+        <TextView
+            android:id="@+id/text_view_movie_publisher_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/label_publisher"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_music" />
+
+        <!--Publishing studio-->
+        <TextView
+            android:id="@+id/text_view_movie_publisher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@+id/text_view_movie_publisher_label"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_music"
+            tools:text="publisher" />
+
+        <!--Movie release year label-->
+        <TextView
+            android:id="@+id/text_view_movie_release_year_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/label_release_year"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_publisher" />
+
+        <!--Movie release year-->
+        <TextView
+            android:id="@+id/text_view_movie_release_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@+id/text_view_movie_release_year_label"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_publisher"
+            tools:text="release year" />
+
+        <!--Movie release country label-->
+        <TextView
+            android:id="@+id/text_view_movie_release_country_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/label_release_country"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_release_year_label" />
+
+        <!--Movie release country-->
+        <TextView
+            android:id="@+id/text_view_movie_release_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@+id/text_view_movie_release_country_label"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_release_year"
+            tools:text="release country" />
+
+        <!--Movie release country label-->
+        <TextView
+            android:id="@+id/text_view_movie_language_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/label_language"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_release_country" />
+
+        <!--Language-->
+        <TextView
+            android:id="@+id/text_view_movie_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@+id/text_view_movie_language_label"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_release_country"
+            tools:text="language" />
+
+        <!--Film time label-->
+        <TextView
+            android:id="@+id/text_view_movie_film_time_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/label_film_time"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_language" />
+
+        <!--Film time-->
+        <TextView
+            android:id="@+id/text_view_movie_film_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@+id/text_view_movie_film_time_label"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_movie_language"
+            tools:text="film time" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

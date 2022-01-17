@@ -1,4 +1,19 @@
 <resources>
     <string name="app_name">Movies</string>
     <string name="desc_movie_image">Movie Image</string>
+
+    <!--Label for movie details-->
+    <string name="label_movie_details">Movie details:</string>
+    <string name="label_director">Director: </string>
+    <string name="label_cast">Cast: </string>
+    <string name="label_script">Script: </string>
+    <string name="label_producer">Producer: </string>
+    <string name="label_photography">Photography: </string>
+    <string name="label_editor">Editor: </string>
+    <string name="label_music">Music: </string>
+    <string name="label_publisher">Publisher: </string>
+    <string name="label_release_year">Release Year: </string>
+    <string name="label_release_country">Country: </string>
+    <string name="label_language">Language: </string>
+    <string name="label_film_time">Film time: </string>
 </resources>
