@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         app:cardCornerRadius="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -36,8 +37,7 @@
                     android:layout_height="match_parent"
                     android:contentDescription="@string/desc_movie_image"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/placeholder"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    tools:src="@drawable/ic_baseline_image_24" />
 
             </androidx.cardview.widget.CardView>
 
