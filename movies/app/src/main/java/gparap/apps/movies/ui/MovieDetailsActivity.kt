@@ -17,6 +17,7 @@ package gparap.apps.movies.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
@@ -27,6 +28,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         //get movie from intent
         val movie = intent.extras?.get("movie") as MovieModel
@@ -92,5 +94,13 @@ class MovieDetailsActivity : AppCompatActivity() {
         //display movie duration
         val duration = findViewById<TextView>(R.id.text_view_movie_film_time)
         duration.text = movie.filmTime
+    }
+
+    //close this activity and return home
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            this.finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
