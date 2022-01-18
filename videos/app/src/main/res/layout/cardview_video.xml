@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--Video image-->
+        <ImageView
+            android:id="@+id/image_view_video"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_height_image_view_video"
+            android:contentDescription="@string/desc_video_image"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <!--Video creator image-->
+        <ImageView
+            android:id="@+id/image_view_creator"
+            android:layout_width="@dimen/layout_side_image_view_video_creator"
+            android:layout_height="@dimen/layout_side_image_view_video_creator"
+            android:contentDescription="@string/desc_video_creator"
+            android:src="@mipmap/ic_launcher_round"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_view_video"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <!--Video title-->
+        <TextView
+            android:id="@+id/text_view_video_title"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="start|center_vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/image_view_creator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/image_view_creator"
+            app:layout_constraintTop_toTopOf="@+id/image_view_creator"
+            tools:text="Video title" />
+
+        <!--Video creator channel-->
+        <TextView
+            android:id="@+id/text_view_video_creator_channel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/image_view_creator"
+            app:layout_constraintTop_toBottomOf="@+id/image_view_creator"
+            tools:text="Video creator channel" />
+
+        <!--Video date created-->
+        <TextView
+            android:id="@+id/text_view_video_date_created"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/image_view_creator"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_video_creator_channel"
+            tools:text="Video date created" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
+
