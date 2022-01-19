@@ -15,6 +15,7 @@
  */
 package gparap.apps.videos.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,13 +23,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.bumptech.glide.Glide
 import gparap.apps.videos.R
 import gparap.apps.videos.models.SadApiVideoModel
 
 class VideoAdapter : Adapter<VideoAdapter.VideoViewHolder>() {
     var videos: ArrayList<SadApiVideoModel> = ArrayList()
+    private var context: Context? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
+        //get context for Glide
+        context = parent.context
+
         //inflate view
         val view = LayoutInflater.from(parent.context).inflate(
             parent.context.resources.getLayout(R.layout.cardview_video), parent, false
@@ -39,8 +45,12 @@ class VideoAdapter : Adapter<VideoAdapter.VideoViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
-        //TODO: glide for images
+        //load video thumbnail
+        Glide.with(context!!)
+            .load(videos[position].thumbnails[0].url)
+            .into(holder.imageViewVideo)
 
+        //display video details
         holder.title.text = videos[position].title
         holder.channel.text = videos[position].channel
         holder.date.text = videos[position].date
