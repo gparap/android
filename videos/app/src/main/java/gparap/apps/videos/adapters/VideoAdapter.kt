@@ -26,11 +26,7 @@ import gparap.apps.videos.R
 import gparap.apps.videos.models.SadApiVideoModel
 
 class VideoAdapter : Adapter<VideoAdapter.VideoViewHolder>() {
-    var sadApiVideos: List<SadApiVideoModel> = ArrayList()
-        set(value) {
-            field = value
-            notifyItemChanged(0)
-        }
+    var videos: ArrayList<SadApiVideoModel> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
         //inflate view
@@ -45,13 +41,13 @@ class VideoAdapter : Adapter<VideoAdapter.VideoViewHolder>() {
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
         //TODO: glide for images
 
-        holder.title.text = sadApiVideos[position].title
-        holder.channel.text = sadApiVideos[position].channel
-        holder.date.text = sadApiVideos[position].date
+        holder.title.text = videos[position].title
+        holder.channel.text = videos[position].channel
+        holder.date.text = videos[position].date
     }
 
     override fun getItemCount(): Int {
-        return sadApiVideos.size
+        return videos.size
     }
 
     class VideoViewHolder(itemView: View) : ViewHolder(itemView) {

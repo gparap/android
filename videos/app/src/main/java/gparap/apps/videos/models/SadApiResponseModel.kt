@@ -7,5 +7,5 @@ import com.google.gson.annotations.SerializedName
  */
 data class SadApiResponseModel(
     @SerializedName("contents")
-    val contents: List<SadApiVideoModel>,
+    val contents: List<SadApiVideoContainerModel>,
 )
