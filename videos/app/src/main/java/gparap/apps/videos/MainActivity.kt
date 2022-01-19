@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.videos.adapters.VideoAdapter
-//import gparap.apps.videos.adapters.VideoAdapter
 import gparap.apps.videos.models.SadApiResponseModel
 import gparap.apps.videos.services.RetrofitClient
 import gparap.apps.videos.services.SadApiService
@@ -32,13 +31,16 @@ class MainActivity : AppCompatActivity() {
 
         //get trending videos from the web service
         val response: Call<SadApiResponseModel?>? = retrofit.getTrendingVideos
-        response?.enqueue(object : Callback<SadApiResponseModel?>{
+        response?.enqueue(object : Callback<SadApiResponseModel?> {
             override fun onResponse(
                 call: Call<SadApiResponseModel?>,
                 response: Response<SadApiResponseModel?>,
             ) {
-                //DEBUG
-                println(response.body().toString())
+                //update adapter with videos
+                response.body()?.contents?.forEach {
+                    adapter.videos.add(adapter.videos.size, it.video)
+                    adapter.notifyItemInserted(adapter.videos.size)
+                }
             }
 
             override fun onFailure(call: Call<SadApiResponseModel?>, t: Throwable) {
