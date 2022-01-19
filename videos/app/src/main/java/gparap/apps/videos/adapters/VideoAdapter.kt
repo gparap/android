@@ -23,10 +23,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import gparap.apps.videos.R
-import gparap.apps.videos.models.VideoModel
+import gparap.apps.videos.models.SadApiVideoModel
 
 class VideoAdapter : Adapter<VideoAdapter.VideoViewHolder>() {
-    var videos: List<VideoModel> = ArrayList()
+    var sadApiVideos: List<SadApiVideoModel> = ArrayList()
         set(value) {
             field = value
             notifyItemChanged(0)
@@ -45,13 +45,13 @@ class VideoAdapter : Adapter<VideoAdapter.VideoViewHolder>() {
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
         //TODO: glide for images
 
-        holder.title.text = videos.get(position).title
-        holder.channel.text = videos.get(position).channel
-        holder.date.text = videos.get(position).date
+        holder.title.text = sadApiVideos[position].title
+        holder.channel.text = sadApiVideos[position].channel
+        holder.date.text = sadApiVideos[position].date
     }
 
     override fun getItemCount(): Int {
-        return videos.size
+        return sadApiVideos.size
     }
 
     class VideoViewHolder(itemView: View) : ViewHolder(itemView) {

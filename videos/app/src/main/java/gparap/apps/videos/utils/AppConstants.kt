@@ -13,12 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.videos.models
+package gparap.apps.videos.utils
 
-data class VideoModel(
-    val imageUrlVideo: String,
-    val imageUrlCreator: String,
-    val title: String,
-    val channel: String,
-    val date: String
-)
+object AppConstants {
+    /*Youtube Search and Download API*/
+    const val BASE_URL_YTSaD = "https://youtube-search-and-download.p.rapidapi.com"
+}
