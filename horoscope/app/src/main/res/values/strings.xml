@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Horoscope</string>
+    <string name="app_name">Everyday Horoscope</string>
+    <string name="desc_zodiac_signs_image">Zodiac signs image</string>
+    <string name="desc_logo">Logo</string>
 </resources>
