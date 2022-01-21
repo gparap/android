@@ -2,4 +2,22 @@
     <string name="app_name">Everyday Horoscope</string>
     <string name="desc_zodiac_signs_image">Zodiac signs image</string>
     <string name="desc_logo">Logo</string>
+    <string name="button_set_zodiac">Set as my zodiac sign</string>
+    <string name="desc_zodiac_sign">Zodiac Sign</string>
+    <string name="button_show_horoscope">Show my horoscope</string>
+    <string name="text_prompt_select">Please, select a zodiac &#8230;</string>
+    <array name="zodiac_signs">
+        <item>Aries</item>
+        <item>Taurus</item>
+        <item>Gemini</item>
+        <item>Cancer</item>
+        <item>Leo</item>
+        <item>Virgo</item>
+        <item>Libra</item>
+        <item>Scorpio</item>
+        <item>Sagittarius</item>
+        <item>Capricorn</item>
+        <item>Aquarius</item>
+        <item>Pisces</item>
+    </array>
 </resources>

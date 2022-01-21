@@ -24,7 +24,6 @@ import android.view.animation.AnimationUtils
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import gparap.apps.horoscope.MainActivity
 import gparap.apps.horoscope.R
 import gparap.apps.horoscope.utils.AppConstants
 
