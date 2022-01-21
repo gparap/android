@@ -46,14 +46,36 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:visibility="visible" />
 
+    <!--Zodiac sign-->
+    <ImageView
+        android:id="@+id/image_view_zodiac_sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/desc_zodiac_sign"
+        android:src="@drawable/aries"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_zodiac_signs" />
+
+    <!--Zodiac date range-->
+    <TextView
+        android:id="@+id/text_view_date_range"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_view_zodiac_sign"
+        tools:text="Mar 21 - Apr 20" />
+
     <ScrollView
         android:id="@+id/scroll_view_horoscope"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/scrollView_layout_marginTop"
         android:layout_marginBottom="@dimen/scrollView_layout_marginBottom"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/button_set_zodiac"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_view_date_range"
         app:layout_constraintTop_toBottomOf="@+id/spinner_zodiac_signs"
         tools:visibility="visible">
 
@@ -65,38 +87,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner_zodiac_signs">
 
-            <!--Zodiac sign-->
-            <ImageView
-                android:id="@+id/image_view_zodiac_sign"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/desc_zodiac_sign"
-                android:src="@drawable/aries"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <!--Zodiac date range-->
-            <TextView
-                android:id="@+id/text_view_date_range"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="italic"
-                app:layout_constraintEnd_toEndOf="@+id/image_view_zodiac_sign"
-                app:layout_constraintStart_toStartOf="@+id/image_view_zodiac_sign"
-                app:layout_constraintTop_toBottomOf="@+id/image_view_zodiac_sign"
-                tools:text="Mar 21 - Apr 20" />
-
             <!--Label for horoscope-->
             <TextView
                 android:id="@+id/label_horoscope"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/label_layout_marginTop"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/text_view_date_range"
-                app:layout_constraintStart_toStartOf="@+id/text_view_date_range"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_date_range"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="HOROSCOPE" />
 
             <!--Horoscope's date-->
@@ -115,6 +114,8 @@
                 android:id="@+id/text_view_horoscope"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingStart="@dimen/text_view_horoscope_paddingStart_land"
+                android:paddingEnd="@dimen/text_view_horoscope_paddingEnd_land"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_date"
@@ -125,10 +126,9 @@
                 android:id="@+id/label_luck"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/label_layout_marginTop"
+                android:layout_marginTop="@dimen/label_layout_marginTop_land"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/image_view_zodiac_sign"
-                app:layout_constraintStart_toStartOf="@+id/image_view_zodiac_sign"
+                app:layout_constraintEnd_toStartOf="@+id/label_horoscope"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_horoscope"
                 tools:text="LUCK" />
 
@@ -137,7 +137,7 @@
                 android:id="@+id/label_lucky_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toStartOf="@+id/label_luck"
+                app:layout_constraintEnd_toStartOf="@+id/label_horoscope"
                 app:layout_constraintTop_toBottomOf="@+id/label_luck"
                 tools:text="number: " />
 
@@ -146,7 +146,7 @@
                 android:id="@+id/text_view_lucky_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@+id/label_lucky_number"
+                app:layout_constraintStart_toEndOf="@+id/label_luck"
                 app:layout_constraintTop_toBottomOf="@+id/label_luck"
                 tools:text="56" />
 
@@ -155,7 +155,7 @@
                 android:id="@+id/label_lucky_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toStartOf="@+id/label_luck"
+                app:layout_constraintEnd_toStartOf="@+id/label_horoscope"
                 app:layout_constraintTop_toBottomOf="@+id/label_lucky_number"
                 tools:text="time: " />
 
@@ -164,7 +164,7 @@
                 android:id="@+id/text_view_lucky_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@+id/label_lucky_time"
+                app:layout_constraintStart_toEndOf="@+id/label_luck"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_lucky_number"
                 tools:text="9pm" />
 
@@ -173,7 +173,7 @@
                 android:id="@+id/label_lucky_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toStartOf="@+id/label_luck"
+                app:layout_constraintEnd_toStartOf="@+id/label_horoscope"
                 app:layout_constraintTop_toBottomOf="@+id/label_lucky_time"
                 tools:text="color: " />
 
@@ -182,7 +182,7 @@
                 android:id="@+id/text_view_lucky_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@+id/label_lucky_color"
+                app:layout_constraintStart_toEndOf="@+id/label_luck"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_lucky_time"
                 tools:text="BLue" />
 
@@ -193,9 +193,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/label_layout_marginTop"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/label_lucky_color"
+                app:layout_constraintStart_toEndOf="@+id/label_horoscope"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_horoscope"
                 tools:text="PAIR" />
 
             <!--Pair sign-->
@@ -203,8 +202,8 @@
                 android:id="@+id/text_view_pair_sign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/label_pair_sign"
+                app:layout_constraintStart_toStartOf="@+id/label_pair_sign"
                 app:layout_constraintTop_toBottomOf="@+id/label_pair_sign"
                 tools:text="Cancer" />
 

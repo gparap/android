@@ -20,4 +20,7 @@
         <item>Aquarius</item>
         <item>Pisces</item>
     </array>
+
+    <!--placeholder (do NOT translate)-->
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fringilla vel magna scelerisque finibus. Aliquam erat volutpat. In in quam aliquet, finibus leo a, rutrum enim.</string>
 </resources>
