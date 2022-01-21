@@ -6,4 +6,8 @@
     <dimen name="textViewAppName_layout_height">144dp</dimen>
     <dimen name="textViewAppName_layout_height_land">72dp</dimen>
     <dimen name="textViewAppName_textSize">36sp</dimen>
+    <dimen name="spinner_minHeight">48dp</dimen>
+    <dimen name="scrollView_layout_marginTop">8dp</dimen>
+    <dimen name="scrollView_layout_marginBottom">8dp</dimen>
+    <dimen name="label_layout_marginTop">32dp</dimen>
 </resources>
