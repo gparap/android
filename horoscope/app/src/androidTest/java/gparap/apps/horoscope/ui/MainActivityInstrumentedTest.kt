@@ -1,42 +1,56 @@
 package gparap.apps.horoscope.ui
 
+import android.content.Context
 import androidx.test.core.app.ActivityScenario
+import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.filters.SmallTest
 import androidx.test.platform.app.InstrumentationRegistry
 import gparap.apps.horoscope.R
+import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.core.IsNot.not
-import org.junit.Assert.*
-
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
 class MainActivityInstrumentedTest {
+    private lateinit var activityScenario: ActivityScenario<MainActivity>
+    private lateinit var context: Context
 
     @Before
     fun setUp() {
-        ActivityScenario.launch(MainActivity::class.java)
+        activityScenario = ActivityScenario.launch(MainActivity::class.java)
+
+        //get context
+        activityScenario.onActivity {
+            context = it.baseContext
+        }
     }
 
     @Test
+    @SmallTest
     fun useAppContext() {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("gparap.apps.horoscope", appContext.packageName)
     }
 
     @Test
+    @SmallTest
     fun isVisible_spinner_zodiac_signs() {
         onView(withId(R.id.spinner_zodiac_signs)).check(matches(isDisplayed()))
     }
 
     @Test
+    @SmallTest
     fun isVisible_text_view_prompt_select_sign() {
         onView(withId(R.id.text_view_prompt_select_sign)).check(matches(isDisplayed()))
     }
 
     @Test
+    @SmallTest
     fun isNotVisible_scroll_view_horoscope() {
         onView(withId(R.id.scroll_view_horoscope)).check(matches(not(isDisplayed())))
 
@@ -58,7 +72,61 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
+    @SmallTest
     fun isNotVisible_button_set_zodiac() {
         onView(withId(R.id.button_set_zodiac)).check(matches(not(isDisplayed())))
+    }
+
+    @Test
+    @SmallTest
+    fun spinnerSelectZodiacSign_correctSelected() {
+        //Aries
+        onView(withId(R.id.spinner_zodiac_signs)).perform(click())
+        onData(`is`(context.resources.getString(R.string.text_zodiac_Aries))).perform(click())
+        onView(withText(R.string.date_range_Aries)).check(matches(isDisplayed()))
+        //Taurus
+        onView(withId(R.id.spinner_zodiac_signs)).perform(click())
+        onData(`is`(context.resources.getString(R.string.text_zodiac_Taurus))).perform(click())
+        onView(withText(R.string.date_range_Taurus)).check(matches(isDisplayed()))
+        //Gemini
+        onView(withId(R.id.spinner_zodiac_signs)).perform(click())
+        onData(`is`(context.resources.getString(R.string.text_zodiac_Gemini))).perform(click())
+        onView(withText(R.string.date_range_Gemini)).check(matches(isDisplayed()))
+        //Cancer
+        onView(withId(R.id.spinner_zodiac_signs)).perform(click())
+        onData(`is`(context.resources.getString(R.string.text_zodiac_Cancer))).perform(click())
+        onView(withText(R.string.date_range_Cancer)).check(matches(isDisplayed()))
+        //Leo
+        onView(withId(R.id.spinner_zodiac_signs)).perform(click())
+        onData(`is`(context.resources.getString(R.string.text_zodiac_Leo))).perform(click())
+        onView(withText(R.string.date_range_Leo)).check(matches(isDisplayed()))
+        //Virgo
+        onView(withId(R.id.spinner_zodiac_signs)).perform(click())
+        onData(`is`(context.resources.getString(R.string.text_zodiac_Virgo))).perform(click())
+        onView(withText(R.string.date_range_Virgo)).check(matches(isDisplayed()))
+        //Libra
+        onView(withId(R.id.spinner_zodiac_signs)).perform(click())
+        onData(`is`(context.resources.getString(R.string.text_zodiac_Libra))).perform(click())
+        onView(withText(R.string.date_range_Libra)).check(matches(isDisplayed()))
+        //Scorpio
+        onView(withId(R.id.spinner_zodiac_signs)).perform(click())
+        onData(`is`(context.resources.getString(R.string.text_zodiac_Scorpio))).perform(click())
+        onView(withText(R.string.date_range_Scorpio)).check(matches(isDisplayed()))
+        //Sagittarius
+        onView(withId(R.id.spinner_zodiac_signs)).perform(click())
+        onData(`is`(context.resources.getString(R.string.text_zodiac_Sagittarius))).perform(click())
+        onView(withText(R.string.date_range_Sagittarius)).check(matches(isDisplayed()))
+        //Capricorn
+        onView(withId(R.id.spinner_zodiac_signs)).perform(click())
+        onData(`is`(context.resources.getString(R.string.text_zodiac_Capricorn))).perform(click())
+        onView(withText(R.string.date_range_Capricorn)).check(matches(isDisplayed()))
+        //Aquarius
+        onView(withId(R.id.spinner_zodiac_signs)).perform(click())
+        onData(`is`(context.resources.getString(R.string.text_zodiac_Aquarius))).perform(click())
+        onView(withText(R.string.date_range_Aquarius)).check(matches(isDisplayed()))
+        //Pisces
+        onView(withId(R.id.spinner_zodiac_signs)).perform(click())
+        onData(`is`(context.resources.getString(R.string.text_zodiac_Pisces))).perform(click())
+        onView(withText(R.string.date_range_Pisces)).check(matches(isDisplayed()))
     }
 }

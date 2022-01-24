@@ -21,6 +21,34 @@
         <item>Pisces</item>
     </array>
 
+    <!--names of zodiac signs-->
+    <string name="text_zodiac_Aries">Aries</string>
+    <string name="text_zodiac_Taurus">Taurus</string>
+    <string name="text_zodiac_Gemini">Gemini</string>
+    <string name="text_zodiac_Cancer">Cancer</string>
+    <string name="text_zodiac_Leo">Leo</string>
+    <string name="text_zodiac_Virgo">Virgo</string>
+    <string name="text_zodiac_Libra">Libra</string>
+    <string name="text_zodiac_Scorpio">Scorpio</string>
+    <string name="text_zodiac_Sagittarius">Sagittarius</string>
+    <string name="text_zodiac_Capricorn">Capricorn</string>
+    <string name="text_zodiac_Aquarius">Aquarius</string>
+    <string name="text_zodiac_Pisces">Pisces</string>
+
+    <!--date ranges of zodiac signs-->
+    <string name="date_range_Aries">Mar 21 - Apr 20</string>
+    <string name="date_range_Taurus">Apr 21 - May 20</string>
+    <string name="date_range_Gemini">May 21 - Jun 21</string>
+    <string name="date_range_Cancer">Jun 22 - Jul 22</string>
+    <string name="date_range_Leo">Jul 23 - Aug 22</string>
+    <string name="date_range_Virgo">Aug 23 - Sep 22</string>
+    <string name="date_range_Libra">Sep 23 - Oct 22</string>
+    <string name="date_range_Scorpio">Oct 23 - Nov 22</string>
+    <string name="date_range_Sagittarius">Nov 23 - Dec 21</string>
+    <string name="date_range_Capricorn">Dec 22 - Jan 19</string>
+    <string name="date_range_Aquarius">Jan 20 - Feb 18</string>
+    <string name="date_range_Pisces">Feb 19 - Mar 20</string>
+
     <!--placeholder (do NOT translate)-->
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fringilla vel magna scelerisque finibus. Aliquam erat volutpat. In in quam aliquet, finibus leo a, rutrum enim.</string>
 </resources>
