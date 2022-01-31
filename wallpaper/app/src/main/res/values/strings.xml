@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">My Wallpaper App</string>
+    <string name="desc_wallpaper_image">Wallpaper image</string>
+    <string name="text_set_as_wallpaper">SET AS WALLPAPER</string>
+    <string name="desc_download_wallpaper_button">Download wallpaper image button</string>
 </resources>

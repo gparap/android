@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="gparap.apps.wallpaper">
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-sdk
         android:maxSdkVersion="31"
         android:minSdkVersion="21"
-        tools:ignore="GradleOverrides" /><!--required for Amazon Appstore-->
+        tools:ignore="GradleOverrides" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -15,6 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyWallpaperApp">
+        <activity
+            android:name=".WallpaperActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
