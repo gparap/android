@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.wallpaper
+package gparap.apps.wallpaper.ui
 
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
@@ -21,6 +21,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.filters.SmallTest
+import gparap.apps.wallpaper.R
 import org.hamcrest.core.IsNot.not
 import org.junit.Before
 import org.junit.Test

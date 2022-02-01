@@ -17,10 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyWallpaperApp">
         <activity
-            android:name=".WallpaperActivity"
+            android:name=".ui.WallpaperActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
