@@ -13,15 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.wallpaper.ui
+package gparap.apps.wallpaper.services
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import gparap.apps.wallpaper.R
+import gparap.apps.wallpaper.utils.AppConstants
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-class WallpaperActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_wallpaper)
+object RetrofitClient {
+    /**
+     * Creates the Retrofit instance using the configured values
+     */
+    fun build(): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(AppConstants.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
     }
 }

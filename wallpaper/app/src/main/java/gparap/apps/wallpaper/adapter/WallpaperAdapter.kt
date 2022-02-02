@@ -15,6 +15,7 @@
  */
 package gparap.apps.wallpaper.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -24,11 +25,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import gparap.apps.wallpaper.R
 import gparap.apps.wallpaper.data.WallpaperModel
-import java.lang.Exception
 
 class WallpaperAdapter : RecyclerView.Adapter<WallpaperAdapter.WallpaperViewHolder>() {
     private lateinit var context: Context
-    lateinit var wallpapers: ArrayList<WallpaperModel>
+    var wallpapers = ArrayList<WallpaperModel>()
+        @SuppressLint("NotifyDataSetChanged")
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WallpaperViewHolder {
         //get context

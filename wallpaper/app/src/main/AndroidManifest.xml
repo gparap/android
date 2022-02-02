@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="gparap.apps.wallpaper">
 
+    <!--Needed for Amazon Appstore-->
     <uses-sdk
         android:maxSdkVersion="31"
         android:minSdkVersion="23"

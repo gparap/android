@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Design dimensions-->
-    <dimen name="cardview_wallpaper_side">144dp</dimen>
+    <dimen name="cardview_wallpaper_side">192dp</dimen>
 </resources>

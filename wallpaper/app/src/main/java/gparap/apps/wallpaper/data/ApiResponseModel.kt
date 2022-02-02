@@ -13,15 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.wallpaper.ui
+package gparap.apps.wallpaper.data
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import gparap.apps.wallpaper.R
+import com.google.gson.annotations.SerializedName
 
-class WallpaperActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_wallpaper)
-    }
-}
+/**
+ * Model class that holds the body of the http response.
+ */
+data class ApiResponseModel(
+    @SerializedName("image")
+    val data: List<WallpaperModel>,
+)

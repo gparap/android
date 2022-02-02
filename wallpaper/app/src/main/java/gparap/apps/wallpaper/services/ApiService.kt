@@ -13,15 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.wallpaper.ui
+package gparap.apps.wallpaper.services
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import gparap.apps.wallpaper.R
+import gparap.apps.wallpaper.data.ApiResponseModel
+import retrofit2.Call
+import retrofit2.http.GET
 
-class WallpaperActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_wallpaper)
-    }
+interface ApiService {
+    @GET("/wallpapers.php")
+    fun getAll(): Call<ApiResponseModel>
 }

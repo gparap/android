@@ -11,6 +11,8 @@
         android:layout_height="@dimen/cardview_wallpaper_side"
         android:contentDescription="@string/desc_wallpaper_image"
         android:elevation="@dimen/cardview_default_elevation"
+        android:padding="0dp"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
