@@ -13,15 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.wallpaper.ui
+package gparap.apps.wallpaper.utils
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import gparap.apps.wallpaper.R
-
-class WallpaperActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_wallpaper)
-    }
+object AppConstants {
+    const val SPAN_COUNT_PORTRAIT   = 2
+    const val SPAN_COUNT_LANDSCAPE  = 4
+    const val BASE_URL  = "http://gparap.com"
 }

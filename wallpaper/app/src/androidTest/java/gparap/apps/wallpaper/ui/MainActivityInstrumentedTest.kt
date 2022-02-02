@@ -15,11 +15,13 @@
  */
 package gparap.apps.wallpaper.ui
 
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.filters.LargeTest
 import androidx.test.filters.SmallTest
 import androidx.test.platform.app.InstrumentationRegistry
 import gparap.apps.wallpaper.R
@@ -30,10 +32,11 @@ import org.junit.Before
 import org.junit.Test
 
 class MainActivityInstrumentedTest {
+    private lateinit var activityScenario: ActivityScenario<MainActivity>
 
     @Before
     fun setUp() {
-        ActivityScenario.launch(MainActivity::class.java)
+        activityScenario = ActivityScenario.launch(MainActivity::class.java)
     }
 
     @Test
@@ -53,5 +56,15 @@ class MainActivityInstrumentedTest {
     @SmallTest
     fun isNotVisible_progress_main() {
         onView(withId(R.id.progress_main)).check(matches(not(isDisplayed())))
+    }
+
+    @Test
+    @LargeTest
+    fun onAppLoad_recyclerViewIsPopulated() {
+        Thread.sleep(1667)
+        activityScenario.onActivity {
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recycler_view_main)
+            assert(recyclerView.childCount > 0)
+        }
     }
 }
