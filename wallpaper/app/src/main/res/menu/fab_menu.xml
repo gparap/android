@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="AlwaysShowAction">
+
+    <!--Set as wallpaper option-->
+    <item
+        android:id="@+id/fab_menu_item_set_wallpaper"
+        android:icon="@drawable/ic_wallpaper_24"
+        android:title="@string/text_set_wallpaper"
+        app:showAsAction="always" />
+
+    <!--Save wallpaper option-->
+    <item
+        android:id="@+id/fab_menu_item_save_wallpaper"
+        android:icon="@drawable/ic_download_24"
+        android:title="@string/text_save_wallpaper"
+        app:showAsAction="always" />
+
+    <!--View wallpaper details option-->
+    <item
+        android:id="@+id/fab_menu_item_wallpaper_details"
+        android:icon="@drawable/ic_info_24"
+        android:title="@string/text_wallpaper_details"
+        app:showAsAction="always" />
+
+</menu>

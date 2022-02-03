@@ -14,33 +14,20 @@
         android:contentDescription="@string/desc_wallpaper_image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <!--Download wallpaper-->
-    <ImageButton
-        android:id="@+id/button_download_wallpaper"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/desc_download_wallpaper_button"
+    <!--Floating action button that opens menu-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_menu"
+        android:layout_width="@dimen/fab_size"
+        android:layout_height="@dimen/fab_size"
+        android:layout_marginEnd="@dimen/fab_layout_margin"
+        android:layout_marginBottom="@dimen/fab_layout_margin"
+        android:contentDescription="@string/desc_fab_menu"
+        android:src="@drawable/ic_menu_open_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75"
-        app:srcCompat="@drawable/ic_download_24" />
-
-    <!--Set wallpaper for device home screen-->
-    <Button
-        android:id="@+id/button_set_wallpaper"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/text_set_as_wallpaper"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
