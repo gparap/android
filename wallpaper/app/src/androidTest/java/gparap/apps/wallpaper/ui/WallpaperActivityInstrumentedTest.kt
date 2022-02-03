@@ -41,13 +41,7 @@ class WallpaperActivityInstrumentedTest {
 
     @Test
     @SmallTest
-    fun isVisible_button_download_wallpaper() {
-        onView(withId(R.id.button_download_wallpaper)).check(matches(isDisplayed()))
-    }
-
-    @Test
-    @SmallTest
-    fun isVisible_button_set_wallpaper() {
-        onView(withId(R.id.button_set_wallpaper)).check(matches(isDisplayed()))
+    fun isVisible_floatingActionButton() {
+        onView(withId(R.id.fab_menu)).check(matches(isDisplayed()))
     }
 }

@@ -19,16 +19,31 @@ import android.os.Build
 import android.os.Bundle
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.wallpaper.R
+import gparap.apps.wallpaper.data.WallpaperModel
 
 class WallpaperActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
+    private lateinit var wallpaperObj: WallpaperModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wallpaper)
+        supportActionBar?.hide()
+
+        //get parcelable from bundle
+        wallpaperObj = intent.getParcelableExtra("wallpaper")!!
+
+        //display the wallpaper image
+        val wallpaperImg = findViewById<ImageView>(R.id.image_view_wallpaper)
+        Glide.with(this)
+            .load(wallpaperObj.imageUrl)
+            .into(wallpaperImg)
 
         //create a popup menu
         val fabMenu = findViewById<FloatingActionButton>(R.id.fab_menu)

@@ -15,11 +15,15 @@
  */
 package gparap.apps.wallpaper.data
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
 /**
  * Model class for a wallpaper (includes Creator and Tag models).
  */
+@Parcelize
 data class WallpaperModel(
     @SerializedName("id")
     val id: String,
@@ -37,8 +41,8 @@ data class WallpaperModel(
     val category: String,
 
     @SerializedName("tags")
-    val filterTags: List<TagModel>,
+    val filterTags: @RawValue List<TagModel>,
 
     @SerializedName("artist")
-    val creator: List<CreatorModel>,
-)
+    val creator: @RawValue List<CreatorModel>,
+) : Parcelable
