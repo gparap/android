@@ -2,4 +2,6 @@
 <resources>
     <!--Design dimensions-->
     <dimen name="cardview_wallpaper_side">192dp</dimen>
+    <dimen name="fab_size">56dp</dimen>
+    <dimen name="fab_layout_margin">16dp</dimen>
 </resources>

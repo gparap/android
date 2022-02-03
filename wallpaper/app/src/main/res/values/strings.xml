@@ -3,4 +3,8 @@
     <string name="desc_wallpaper_image">Wallpaper image</string>
     <string name="text_set_as_wallpaper">SET AS WALLPAPER</string>
     <string name="desc_download_wallpaper_button">Download wallpaper image button</string>
+    <string name="desc_fab_menu">Floating Action Button with Menu</string>
+    <string name="text_set_wallpaper">Set Wallpaper</string>
+    <string name="text_save_wallpaper">Download</string>
+    <string name="text_wallpaper_details">Info</string>
 </resources>
