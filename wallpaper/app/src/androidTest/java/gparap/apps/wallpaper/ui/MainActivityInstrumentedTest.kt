@@ -26,10 +26,10 @@ import androidx.test.filters.SmallTest
 import androidx.test.platform.app.InstrumentationRegistry
 import gparap.apps.wallpaper.R
 import org.hamcrest.core.IsNot.not
-import org.junit.Assert.*
-
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
+
 
 class MainActivityInstrumentedTest {
     private lateinit var activityScenario: ActivityScenario<MainActivity>

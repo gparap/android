@@ -15,15 +15,18 @@
  */
 package gparap.apps.wallpaper.data
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 /**
  * Model class for the creator of the wallpaper image.
  */
+@Parcelize
 data class CreatorModel(
     @SerializedName("name")
     val name: String,
 
     @SerializedName("link")
     val website: String,
-)
+) : Parcelable

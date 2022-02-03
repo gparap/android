@@ -13,23 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.wallpaper.data
+package gparap.apps.wallpaper.ui
 
-import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
+import org.junit.runner.RunWith
+import org.junit.runners.Suite
 
-/**
- * Model class for a search filter tag.
- */
-@Parcelize
-data class TagModel(
-    @SerializedName("base")
-    val base: String,
-
-    @SerializedName("info")
-    val info: String,
-
-    @SerializedName("extra")
-    val extra: String,
-) : Parcelable
+@RunWith(Suite::class)
+@Suite.SuiteClasses(
+    MainActivityInstrumentedTest::class,
+    WallpaperActivityInstrumentedTest::class
+)
+class AppSuite

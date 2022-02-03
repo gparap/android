@@ -17,6 +17,7 @@ package gparap.apps.wallpaper.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import gparap.apps.wallpaper.R
 import gparap.apps.wallpaper.data.WallpaperModel
+import gparap.apps.wallpaper.ui.WallpaperActivity
 
 class WallpaperAdapter : RecyclerView.Adapter<WallpaperAdapter.WallpaperViewHolder>() {
     private lateinit var context: Context
@@ -53,6 +55,12 @@ class WallpaperAdapter : RecyclerView.Adapter<WallpaperAdapter.WallpaperViewHold
         } catch (e: Exception) {
         }
 
+        //open wallpaper object in activity
+        holder.wallpaper.setOnClickListener {
+            val intent = Intent(context, WallpaperActivity::class.java)
+            intent.putExtra("wallpaper", wallpapers[position])
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
