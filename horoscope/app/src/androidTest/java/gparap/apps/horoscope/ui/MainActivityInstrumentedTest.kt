@@ -129,4 +129,12 @@ class MainActivityInstrumentedTest {
         onData(`is`(context.resources.getString(R.string.text_zodiac_Pisces))).perform(click())
         onView(withText(R.string.date_range_Pisces)).check(matches(isDisplayed()))
     }
+
+    @Test
+    @SmallTest
+    fun spinnerNothingSelected_doNothing() {
+        onView(withId(R.id.spinner_zodiac_signs)).perform(click())
+        onData(`is`(context.resources.getString(R.string.text_prompt_select_spinner))).perform(click())
+        onView(withText(R.string.text_prompt_select)).check(matches(isDisplayed()))
+    }
 }

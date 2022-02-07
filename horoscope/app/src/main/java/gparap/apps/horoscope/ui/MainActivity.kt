@@ -32,9 +32,17 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val spinner = findViewById<Spinner>(R.id.spinner_zodiac_signs)
         spinner.adapter = SpinnerAdapter.create(this, R.array.zodiac_signs)
         spinner.onItemSelectedListener = this
+        spinner.setSelection(0)
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        //do nothing if nothing is selected
+        if (parent?.getItemAtPosition(position).toString()
+            == this.resources.getString(R.string.text_prompt_select_spinner)
+        ) {
+            return
+        }
+
         //hide prompt text and show the horoscope view
         findViewById<TextView>(R.id.text_view_prompt_select_sign).apply {
             visibility = View.GONE
