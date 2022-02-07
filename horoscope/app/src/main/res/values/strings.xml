@@ -6,7 +6,9 @@
     <string name="desc_zodiac_sign">Zodiac Sign</string>
     <string name="button_show_horoscope">Show my horoscope</string>
     <string name="text_prompt_select">Please, select a zodiac &#8230;</string>
+    <string name="text_prompt_select_spinner">select a zodiac sign</string>
     <array name="zodiac_signs">
+        <item>select a zodiac sign</item>
         <item>Aries</item>
         <item>Taurus</item>
         <item>Gemini</item>
