@@ -1,12 +1,14 @@
 package gparap.apps.horoscope.ui
 
 import android.content.Context
+import android.widget.TextView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.filters.LargeTest
 import androidx.test.filters.SmallTest
 import androidx.test.platform.app.InstrumentationRegistry
 import gparap.apps.horoscope.R
@@ -136,5 +138,30 @@ class MainActivityInstrumentedTest {
         onView(withId(R.id.spinner_zodiac_signs)).perform(click())
         onData(`is`(context.resources.getString(R.string.text_prompt_select_spinner))).perform(click())
         onView(withText(R.string.text_prompt_select)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    @LargeTest
+    fun spinnerSelectZodiacSign_horoscopeDetailsAreNotNull() {
+        //choose whatever zodiac sign
+        onView(withId(R.id.spinner_zodiac_signs)).perform(click())
+        onData(`is`(context.resources.getString(R.string.text_zodiac_Capricorn))).perform(click())
+        Thread.sleep(1667)
+
+        //test if data are fetched from web service
+        activityScenario.onActivity {
+            val date = it.findViewById<TextView>(R.id.text_view_date)
+            assert(!date.text.isNullOrEmpty())
+            val horoscope = it.findViewById<TextView>(R.id.text_view_horoscope)
+            assert(!horoscope.text.isNullOrEmpty())
+            val number = it.findViewById<TextView>(R.id.text_view_lucky_number)
+            assert(!number.text.isNullOrEmpty())
+            val time = it.findViewById<TextView>(R.id.text_view_lucky_time)
+            assert(!time.text.isNullOrEmpty())
+            val color = it.findViewById<TextView>(R.id.text_view_lucky_color)
+            assert(!color.text.isNullOrEmpty())
+            val pair = it.findViewById<TextView>(R.id.text_view_pair_sign)
+            assert(!pair.text.isNullOrEmpty())
+        }
     }
 }

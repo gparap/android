@@ -7,6 +7,14 @@
     <string name="button_show_horoscope">Show my horoscope</string>
     <string name="text_prompt_select">Please, select a zodiac &#8230;</string>
     <string name="text_prompt_select_spinner">select a zodiac sign</string>
+    <string name="text_horoscope">HOROSCOPE</string>
+    <string name="text_luck">LUCK</string>
+    <string name="text_lucky_number">number:</string>
+    <string name="text_lucky_time">time:</string>
+    <string name="text_lucky_color">color:</string>
+    <string name="text_pair">PAIR</string>
+
+    <!--array of zodiac signs-->
     <array name="zodiac_signs">
         <item>select a zodiac sign</item>
         <item>Aries</item>
