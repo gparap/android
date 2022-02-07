@@ -17,8 +17,8 @@ package gparap.apps.horoscope.services
 
 import gparap.apps.horoscope.data.HoroscopeModel
 import retrofit2.Call
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import retrofit2.http.*
+
 
 /**
  * Web service for receiving horoscope based on zodiac sign.
@@ -27,10 +27,10 @@ import retrofit2.http.POST
 interface AztroService {
 
     /** Get the zodiac sign based today's horoscope */
-    @get:Headers(
+    @Headers(
         "x-rapidapi-host: sameer-kumar-aztro-v1.p.rapidapi.com",
         "x-rapidapi-key: MY_API_KEY"
     )
-    @get:POST("/?sign=aries&day=today")
-    val getHoroscopeForToday : Call<HoroscopeModel>
+    @POST("/?day=today")
+    fun getHoroscopeForToday(@Query("sign") sign:String): Call<HoroscopeModel>
 }

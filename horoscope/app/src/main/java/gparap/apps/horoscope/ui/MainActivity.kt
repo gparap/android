@@ -28,8 +28,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+    private lateinit var service: AztroService
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -40,22 +41,8 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         spinner.onItemSelectedListener = this
         spinner.setSelection(0)
 
-        //call web service and get horoscope based on selected zodiac sign
-        val service = RetrofitClient.build().create(AztroService::class.java)
-        val response: Call<HoroscopeModel> = service.getHoroscopeForToday
-        response.enqueue(object: Callback<HoroscopeModel> {
-            override fun onResponse(
-                call: Call<HoroscopeModel>,
-                response: Response<HoroscopeModel>,
-            ) {
-                println(response.body().toString())
-            }
-
-            override fun onFailure(call: Call<HoroscopeModel>, t: Throwable) {
-                println(t.localizedMessage)
-            }
-        })
-
+        //create web service
+        service = RetrofitClient.build().create(AztroService::class.java)
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -65,6 +52,38 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         ) {
             return
         }
+
+        //call web service and get horoscope based on selected zodiac sign
+        service.getHoroscopeForToday(parent?.getItemAtPosition(position).toString())
+            .enqueue(object : Callback<HoroscopeModel> {
+                override fun onResponse(
+                    call: Call<HoroscopeModel>,
+                    response: Response<HoroscopeModel>,
+                ) {
+                    //get horoscope object
+                    val horoscopeObj = response.body() as HoroscopeModel
+
+                    //display horoscope details
+                    val date = findViewById<TextView>(R.id.text_view_date)
+                    date.text = horoscopeObj.date
+                    val horoscope = findViewById<TextView>(R.id.text_view_horoscope)
+                    horoscope.text = horoscopeObj.horoscope
+                    val number = findViewById<TextView>(R.id.text_view_lucky_number)
+                    number.text = horoscopeObj.luckyNumber
+                    val time = findViewById<TextView>(R.id.text_view_lucky_time)
+                    time.text = horoscopeObj.luckyTime
+                    val color = findViewById<TextView>(R.id.text_view_lucky_color)
+                    color.text = horoscopeObj.luckyColor
+                    val pair = findViewById<TextView>(R.id.text_view_pair_sign)
+                    pair.text = horoscopeObj.pair
+                }
+
+                override fun onFailure(call: Call<HoroscopeModel>, t: Throwable) {
+                    //inform the user that something went wrong
+                    Toast.makeText(this@MainActivity, t.localizedMessage, Toast.LENGTH_LONG)
+                        .show()
+                }
+            })
 
         //hide prompt text and show the horoscope view
         findViewById<TextView>(R.id.text_view_prompt_select_sign).apply {
