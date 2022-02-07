@@ -21,6 +21,12 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import gparap.apps.horoscope.R
 import gparap.apps.horoscope.adapters.SpinnerAdapter
+import gparap.apps.horoscope.data.HoroscopeModel
+import gparap.apps.horoscope.services.AztroService
+import gparap.apps.horoscope.services.RetrofitClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -33,6 +39,23 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         spinner.adapter = SpinnerAdapter.create(this, R.array.zodiac_signs)
         spinner.onItemSelectedListener = this
         spinner.setSelection(0)
+
+        //call web service and get horoscope based on selected zodiac sign
+        val service = RetrofitClient.build().create(AztroService::class.java)
+        val response: Call<HoroscopeModel> = service.getHoroscopeForToday
+        response.enqueue(object: Callback<HoroscopeModel> {
+            override fun onResponse(
+                call: Call<HoroscopeModel>,
+                response: Response<HoroscopeModel>,
+            ) {
+                println(response.body().toString())
+            }
+
+            override fun onFailure(call: Call<HoroscopeModel>, t: Throwable) {
+                println(t.localizedMessage)
+            }
+        })
+
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
