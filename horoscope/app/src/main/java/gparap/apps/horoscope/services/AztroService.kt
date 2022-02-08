@@ -19,9 +19,8 @@ import gparap.apps.horoscope.data.HoroscopeModel
 import retrofit2.Call
 import retrofit2.http.*
 
-
 /**
- * Web service for receiving horoscope based on zodiac sign.
+ * Web service for receiving horoscope based on zodiac sign and requested day.
  * Results are in JSON format.
  */
 interface AztroService {
@@ -32,5 +31,21 @@ interface AztroService {
         "x-rapidapi-key: MY_API_KEY"
     )
     @POST("/?day=today")
-    fun getHoroscopeForToday(@Query("sign") sign:String): Call<HoroscopeModel>
+    fun getHoroscopeForToday(@Query("sign") sign: String): Call<HoroscopeModel>
+
+    /** Get the zodiac sign based tomorrow's horoscope */
+    @Headers(
+        "x-rapidapi-host: sameer-kumar-aztro-v1.p.rapidapi.com",
+        "x-rapidapi-key: MY_API_KEY"
+    )
+    @POST("/?day=tomorrow")
+    fun getHoroscopeForTomorrow(@Query("sign") sign: String): Call<HoroscopeModel>
+
+    /** Get the zodiac sign based yesterday's horoscope */
+    @Headers(
+        "x-rapidapi-host: sameer-kumar-aztro-v1.p.rapidapi.com",
+        "x-rapidapi-key: MY_API_KEY"
+    )
+    @POST("/?day=yesterday")
+    fun getHoroscopeForYesterday(@Query("sign") sign: String): Call<HoroscopeModel>
 }
