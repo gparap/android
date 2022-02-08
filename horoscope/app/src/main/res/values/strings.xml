@@ -13,6 +13,9 @@
     <string name="text_lucky_time">time:</string>
     <string name="text_lucky_color">color:</string>
     <string name="text_pair">PAIR</string>
+    <string name="text_today">Today</string>
+    <string name="text_tomorrow">Tomorrow</string>
+    <string name="text_yesterday">Yesterday</string>
 
     <!--array of zodiac signs-->
     <array name="zodiac_signs">
