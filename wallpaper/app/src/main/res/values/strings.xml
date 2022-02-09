@@ -3,8 +3,18 @@
     <string name="desc_wallpaper_image">Wallpaper image</string>
     <string name="text_set_as_wallpaper">SET AS WALLPAPER</string>
     <string name="desc_download_wallpaper_button">Download wallpaper image button</string>
+
+    <!--Wallpaper fab with menu-->
     <string name="desc_fab_menu">Floating Action Button with Menu</string>
     <string name="text_set_wallpaper">Set Wallpaper</string>
     <string name="text_save_wallpaper">Download</string>
     <string name="text_wallpaper_details">Info</string>
+
+    <!--Wallpaper details dialog-->
+    <string name="text_dismiss_dialog">Close</string>
+    <string name="text_title">title: </string>
+    <string name="text_category">category: </string>
+    <string name="text_creator">creator: </string>
+    <string name="text_link">link: </string>
+    <string name="text_new_line_double">"\n\n"</string>
 </resources>

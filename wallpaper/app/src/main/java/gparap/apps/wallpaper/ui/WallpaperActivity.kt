@@ -69,8 +69,10 @@ class WallpaperActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener
                 Toast.makeText(this, "placeholder2", Toast.LENGTH_SHORT).show()
                 return true
             }
+
+            //display the wallpaper details
             R.id.fab_menu_item_wallpaper_details -> {
-                Toast.makeText(this, "placeholder3", Toast.LENGTH_SHORT).show()
+                DetailsDialogFragment(wallpaperObj).show(supportFragmentManager, null)
                 return true
             }
         }
