@@ -3,6 +3,7 @@
     <string name="desc_wallpaper_image">Wallpaper image</string>
     <string name="text_set_as_wallpaper">SET AS WALLPAPER</string>
     <string name="desc_download_wallpaper_button">Download wallpaper image button</string>
+    <string name="toast_wallpaper_set">Wallpaper set successfully</string>
 
     <!--Wallpaper fab with menu-->
     <string name="desc_fab_menu">Floating Action Button with Menu</string>
