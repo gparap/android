@@ -17,6 +17,8 @@ package gparap.apps.wallpaper.utils
 
 import android.content.Context
 import android.content.res.Configuration
+import gparap.apps.wallpaper.R
+import gparap.apps.wallpaper.data.WallpaperModel
 
 object Utils {
     /**
@@ -28,5 +30,42 @@ object Utils {
         } else {
             AppConstants.SPAN_COUNT_LANDSCAPE
         }
+    }
+
+    /**
+     * Constructs and returns the wallpaper details message from a wallpaper model
+     */
+    fun getWallpaperDetailsMessage(wallpaper: WallpaperModel, context: Context): String {
+        var message = ""
+
+        //title
+        message = message
+            .plus(context.resources.getString(R.string.text_title))
+            .plus(' ')
+            .plus(wallpaper.title)
+            .plus(context.resources.getString(R.string.text_new_line_double))
+
+        //category
+        message = message
+            .plus(context.resources.getString(R.string.text_category))
+            .plus(' ')
+            .plus(wallpaper.category)
+            .plus(context.resources.getString(R.string.text_new_line_double))
+
+        //creator
+        message = message
+            .plus(context.resources.getString(R.string.text_creator))
+            .plus(' ')
+            .plus(wallpaper.creator[0].name)
+            .plus(context.resources.getString(R.string.text_new_line_double))
+
+        //creator link
+        message = message
+            .plus(context.resources.getString(R.string.text_link))
+            .plus(' ')
+            .plus(wallpaper.creator[0].website)
+            .plus(context.resources.getString(R.string.text_new_line_double))
+
+        return message
     }
 }
