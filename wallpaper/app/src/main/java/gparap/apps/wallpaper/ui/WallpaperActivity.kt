@@ -28,11 +28,13 @@ import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.wallpaper.R
 import gparap.apps.wallpaper.data.WallpaperModel
+import gparap.apps.wallpaper.utils.PermissionManager
 import gparap.apps.wallpaper.utils.Utils
 
 
 class WallpaperActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
     private lateinit var wallpaperObj: WallpaperModel
+    private lateinit var imageViewWallpaper: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,40 +62,39 @@ class WallpaperActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener
             }
             popup.setOnMenuItemClickListener(this)
         }
+
+        //find wallpaper image view
+        imageViewWallpaper = this.findViewById(R.id.image_view_wallpaper)
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         when (item?.itemId) {
-
             //set the device home screen wallpaper
             R.id.fab_menu_item_set_wallpaper -> {
-                val image = this.findViewById<ImageView>(R.id.image_view_wallpaper)
-
                 //create bitmap from wallpaper image and scale it to device dimensions
                 val bitmap = Utils.createScaledBitmap(
-                    image.drawable,
+                    imageViewWallpaper.drawable,
                     Utils.getScreenWidth(this),
                     Utils.getScreenHeight(this)
                 )
 
                 //set the wallpaper
                 val manager = WallpaperManager.getInstance(this)
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    if (manager.isSetWallpaperAllowed && manager.isWallpaperSupported) {
-                        manager.setBitmap(bitmap)
-                        Toast.makeText(
-                            this,
-                            this.resources.getString(R.string.toast_wallpaper_set),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                } else {
-                    TODO("VERSION.SDK_INT < N")
-                }
+                manager.setBitmap(bitmap)
+                Toast.makeText(
+                    this,
+                    this.resources.getString(R.string.toast_wallpaper_set),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
+            //save the wallpaper image to TODO: location
             R.id.fab_menu_item_save_wallpaper -> {
-                Toast.makeText(this, "placeholder2", Toast.LENGTH_SHORT).show()
+                if (!PermissionManager.hasPermissionToSave(this)) {
+                    PermissionManager.requestPermissionToSave(this)
+                } else {
+                    saveWallpaper()
+                }
                 return true
             }
 
@@ -104,5 +105,46 @@ class WallpaperActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener
             }
         }
         return false
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray,
+    ) {
+        //permission granted
+        if (PermissionManager.isPermissionToSaveGranted(requestCode, grantResults[0])) {
+            saveWallpaper()
+        } else {
+            Toast.makeText(
+                this,
+                this.resources.getString(R.string.toast_permission_denied),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+    private fun saveWallpaper() {
+        //create file path to save the image
+        val file = Utils.createWallpaperFile(wallpaperObj.id)
+
+        //save the image
+        val isSavedSuccessfully = Utils.saveImageToFile(file, imageViewWallpaper, this)
+
+        //give user feedback
+        if (isSavedSuccessfully) {
+            Toast.makeText(
+                this,
+                this.resources.getString(R.string.toast_wallpaper_saved),
+                Toast.LENGTH_SHORT
+            ).show()
+        } else {
+            Toast.makeText(
+                this,
+                this.resources.getString(R.string.toast_cannot_save),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 }

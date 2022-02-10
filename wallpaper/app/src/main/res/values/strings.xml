@@ -3,13 +3,18 @@
     <string name="desc_wallpaper_image">Wallpaper image</string>
     <string name="text_set_as_wallpaper">SET AS WALLPAPER</string>
     <string name="desc_download_wallpaper_button">Download wallpaper image button</string>
-    <string name="toast_wallpaper_set">Wallpaper set successfully</string>
 
     <!--Wallpaper fab with menu-->
     <string name="desc_fab_menu">Floating Action Button with Menu</string>
     <string name="text_set_wallpaper">Set Wallpaper</string>
     <string name="text_save_wallpaper">Download</string>
     <string name="text_wallpaper_details">Info</string>
+
+    <!--Wallpaper fab with menu actions-->
+    <string name="toast_wallpaper_set">Wallpaper set successfully</string>
+    <string name="toast_permission_denied">Permission denied</string>
+    <string name="toast_cannot_save">Cannot save wallpaper</string>
+    <string name="toast_wallpaper_saved">Wallpaper saved successfully</string>
 
     <!--Wallpaper details dialog-->
     <string name="text_dismiss_dialog">Close</string>
