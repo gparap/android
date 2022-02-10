@@ -36,6 +36,7 @@ class UtilsInstrumentedTest {
     }
 
     @Test
+    @SmallTest
     fun getScreenWidth_screenWidthIsCorrect() {
         val expectedWidth = getScreenWidthInPixels()
         var actualWidth = -1
@@ -50,6 +51,7 @@ class UtilsInstrumentedTest {
     }
 
     @Test
+    @SmallTest
     fun getScreenHeight_screenHeightIsCorrect() {
         val expectedHeight = getScreenHeightInPixels()
         var actualHeight = -1
@@ -64,6 +66,7 @@ class UtilsInstrumentedTest {
     }
 
     @Test
+    @SmallTest
     fun createScaledBitmap() {
         val mockImage = context.resources.getDrawable(R.drawable.ic_wallpaper_24, null)
 
@@ -83,6 +86,22 @@ class UtilsInstrumentedTest {
 
         assertEquals(expectedBitmap.width, actualBitmap.width)
         assertEquals(expectedBitmap.height, actualBitmap.height)
+    }
+
+    @Test
+    @SmallTest
+    fun createStorageDirectory_directoryPathIsCorrect() {
+        val expectedDirectoryPath = "/storage/emulated/0/Pictures/wallpapers"
+        val actualDirectoryPath = Utils.createStorageDirectory()
+        assertEquals(expectedDirectoryPath, actualDirectoryPath.toString())
+    }
+
+    @Test
+    @SmallTest
+    fun createWallpaperFile_filePathIsCorrect() {
+        val expectedFilePath = "/storage/emulated/0/Pictures/wallpapers/wallpaper_1.png"
+        val actualFilePath = Utils.createWallpaperFile("1")
+        assertEquals(expectedFilePath, actualFilePath.toString())
     }
 
     private fun getScreenWidthInPixels(): Int {

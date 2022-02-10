@@ -19,4 +19,5 @@ object AppConstants {
     const val SPAN_COUNT_PORTRAIT   = 2
     const val SPAN_COUNT_LANDSCAPE  = 4
     const val BASE_URL  = "http://gparap.com"
+    const val WRITE_EXTERNAL_STORAGE_REQUEST_CODE = 100
 }

@@ -20,10 +20,14 @@ import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.os.Environment
 import android.util.DisplayMetrics
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import gparap.apps.wallpaper.R
 import gparap.apps.wallpaper.data.WallpaperModel
+import java.io.File
+import java.io.FileOutputStream
 
 object Utils {
     /**
@@ -100,9 +104,57 @@ object Utils {
         )
     }
 
+    /**
+     * Create a directory for wallpapers in device's public pictures storage directory
+     */
+    fun createStorageDirectory(): File {
+        val directoryPath =
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString()
+        val directory = File("$directoryPath/wallpapers")
+        if (!directory.exists() && !directory.isDirectory) {
+            directory.mkdir()
+        }
+        return directory
+    }
+
+    /**
+     * Creates a .png file to store the wallpaper image
+     */
+    fun createWallpaperFile(wallpaperID: String): File {
+        return File(createStorageDirectory().absolutePath + "/wallpaper_" + wallpaperID + ".png")
+    }
+
     private fun getDisplayMetrics(activity: AppCompatActivity): DisplayMetrics {
         val displayMetrics = DisplayMetrics()
         activity.window.windowManager.defaultDisplay.getMetrics(displayMetrics)
         return displayMetrics
+    }
+
+    /**
+     * Saves the wallpaper image as a .png file in the "pictures" shared folder of the device
+     */
+    fun saveImageToFile(file: File, wallpaper: ImageView, activity: AppCompatActivity): Boolean {
+        var isSavedSuccessfully = false
+        var fileOutputStream: FileOutputStream? = null
+
+        try {
+            fileOutputStream = FileOutputStream(file)
+            val bitmap = createScaledBitmap(
+                wallpaper.drawable,
+                getScreenWidth(activity),
+                getScreenHeight(activity),
+            )
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream)
+            fileOutputStream.flush()
+            isSavedSuccessfully = true
+
+        } catch (e: Exception) {
+            println(e.localizedMessage)
+            isSavedSuccessfully = false
+        } finally {
+            fileOutputStream?.close()
+        }
+
+        return isSavedSuccessfully
     }
 }
