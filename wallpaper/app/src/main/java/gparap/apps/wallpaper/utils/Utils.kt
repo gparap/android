@@ -17,6 +17,11 @@ package gparap.apps.wallpaper.utils
 
 import android.content.Context
 import android.content.res.Configuration
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
+import android.util.DisplayMetrics
+import androidx.appcompat.app.AppCompatActivity
 import gparap.apps.wallpaper.R
 import gparap.apps.wallpaper.data.WallpaperModel
 
@@ -67,5 +72,37 @@ object Utils {
             .plus(context.resources.getString(R.string.text_new_line_double))
 
         return message
+    }
+
+    /**
+     * Gets device screen width in pixels
+     */
+    fun getScreenWidth(activity: AppCompatActivity): Int {
+        return getDisplayMetrics(activity).widthPixels
+    }
+
+    /**
+     * Gets device screen height in pixels
+     */
+    fun getScreenHeight(activity: AppCompatActivity): Int {
+        return getDisplayMetrics(activity).heightPixels
+    }
+
+    /**
+     * Creates a scaled bitmap from an image drawable
+     */
+    fun createScaledBitmap(drawable: Drawable, width: Int, height: Int): Bitmap {
+        return Bitmap.createScaledBitmap(
+            (drawable as BitmapDrawable).bitmap,
+            width,
+            height,
+            true
+        )
+    }
+
+    private fun getDisplayMetrics(activity: AppCompatActivity): DisplayMetrics {
+        val displayMetrics = DisplayMetrics()
+        activity.window.windowManager.defaultDisplay.getMetrics(displayMetrics)
+        return displayMetrics
     }
 }

@@ -16,11 +16,8 @@
 package gparap.apps.wallpaper.ui
 
 import android.app.WallpaperManager
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.ImageView
@@ -31,6 +28,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.wallpaper.R
 import gparap.apps.wallpaper.data.WallpaperModel
+import gparap.apps.wallpaper.utils.Utils
 
 
 class WallpaperActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
@@ -69,17 +67,14 @@ class WallpaperActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener
 
             //set the device home screen wallpaper
             R.id.fab_menu_item_set_wallpaper -> {
-
-                //get device dimensions
-                val displayMetrics = DisplayMetrics()
-                window.windowManager.defaultDisplay.getMetrics(displayMetrics)
-                val width = displayMetrics.widthPixels
-                val height = displayMetrics.heightPixels
+                val image = this.findViewById<ImageView>(R.id.image_view_wallpaper)
 
                 //create bitmap from wallpaper image and scale it to device dimensions
-                val image = this.findViewById<ImageView>(R.id.image_view_wallpaper)
-                var bitmap = (image.drawable as BitmapDrawable).bitmap
-                bitmap = Bitmap.createScaledBitmap(bitmap, width, height, true)
+                val bitmap = Utils.createScaledBitmap(
+                    image.drawable,
+                    Utils.getScreenWidth(this),
+                    Utils.getScreenHeight(this)
+                )
 
                 //set the wallpaper
                 val manager = WallpaperManager.getInstance(this)
