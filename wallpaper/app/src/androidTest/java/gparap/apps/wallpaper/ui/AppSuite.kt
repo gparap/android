@@ -15,12 +15,14 @@
  */
 package gparap.apps.wallpaper.ui
 
+import gparap.apps.wallpaper.utils.UtilsInstrumentedTest
 import org.junit.runner.RunWith
 import org.junit.runners.Suite
 
 @RunWith(Suite::class)
 @Suite.SuiteClasses(
     MainActivityInstrumentedTest::class,
-    WallpaperActivityInstrumentedTest::class
+    WallpaperActivityInstrumentedTest::class,
+    UtilsInstrumentedTest::class
 )
 class AppSuite
