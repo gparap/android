@@ -24,16 +24,12 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.wallpaper.R
 import gparap.apps.wallpaper.adapter.WallpaperAdapter
-import gparap.apps.wallpaper.data.ApiResponseModel
-import gparap.apps.wallpaper.data.WallpaperModel
-import gparap.apps.wallpaper.services.ApiService
-import gparap.apps.wallpaper.services.RetrofitClient
+import gparap.apps.wallpaper.services.CategoryCallback
 import gparap.apps.wallpaper.utils.Utils
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
+    lateinit var adapter: WallpaperAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -42,27 +38,14 @@ class MainActivity : AppCompatActivity() {
         val recyclerViewWallpapers = findViewById<RecyclerView>(R.id.recycler_view_main)
         recyclerViewWallpapers.layoutManager =
             GridLayoutManager(this, Utils.getGridLayoutSpanCount(this))
-        val adapter = WallpaperAdapter()
+        //val adapter = WallpaperAdapter()
+        adapter = WallpaperAdapter()
         recyclerViewWallpapers.adapter = adapter
 
-        //create web service and fetch all wallpapers
-        RetrofitClient.build().create(ApiService::class.java).getAll()
-            .enqueue(object : Callback<ApiResponseModel> {
-                override fun onResponse(
-                    call: Call<ApiResponseModel>,
-                    response: Response<ApiResponseModel>,
-                ) {
-                    response.apply {
-                        //populate adapter with wallpapers
-                        adapter.wallpapers =
-                            ((this.body() as ApiResponseModel).data) as ArrayList<WallpaperModel>
-                    }
-                }
-
-                override fun onFailure(call: Call<ApiResponseModel>, t: Throwable) {
-                    println(t.localizedMessage)
-                }
-            })
+        //fetch all wallpapers
+        CategoryCallback.getWallpapers(
+            this.resources.getString(R.string.text_category_all), this, adapter
+        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
