@@ -16,6 +16,9 @@
 package gparap.apps.wallpaper.ui
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -60,5 +63,56 @@ class MainActivity : AppCompatActivity() {
                     println(t.localizedMessage)
                 }
             })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.category_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+
+            //TODO: Display all wallpapers
+            R.id.category_menu_all -> {
+                showToastMessageHelper(resources.getString(R.string.text_category_all))
+            }
+
+            //TODO: Display abstract wallpapers
+            R.id.category_menu_abstract -> {
+                showToastMessageHelper(resources.getString(R.string.text_category_abstract))
+            }
+
+            //TODO: Display colorful wallpapers
+            R.id.category_menu_colorful -> {
+                showToastMessageHelper(resources.getString(R.string.text_category_colorful))
+            }
+
+            //TODO: Display mountain wallpapers
+            R.id.category_menu_mountain -> {
+                showToastMessageHelper(resources.getString(R.string.text_category_mountain))
+            }
+
+            //TODO: Display nature wallpapers
+            R.id.category_menu_nature -> {
+                showToastMessageHelper(resources.getString(R.string.text_category_nature))
+            }
+
+            //TODO: Display pattern wallpapers
+            R.id.category_menu_pattern -> {
+                showToastMessageHelper(resources.getString(R.string.text_category_pattern))
+            }
+
+            //TODO: Display texture wallpapers
+            R.id.category_menu_texture -> {
+                showToastMessageHelper(resources.getString(R.string.text_category_texture))
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    //temporary - no need to test
+    private fun showToastMessageHelper(category: String) {
+        Toast.makeText(this, category, Toast.LENGTH_SHORT).show()
     }
 }

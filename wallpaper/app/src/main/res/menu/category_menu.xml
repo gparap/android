@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="@string/text_category_all"
+        app:showAsAction="never"
+        android:id="@+id/category_menu_all"/>
+    <item
+        android:title="@string/text_category_abstract"
+        app:showAsAction="never"
+        android:id="@+id/category_menu_abstract"/>
+    <item
+        android:title="@string/text_category_colorful"
+        app:showAsAction="never"
+        android:id="@+id/category_menu_colorful"/>
+    <item
+        android:title="@string/text_category_mountain"
+        app:showAsAction="never"
+        android:id="@+id/category_menu_mountain"/>
+    <item
+        android:title="@string/text_category_nature"
+        app:showAsAction="never"
+        android:id="@+id/category_menu_nature"/>
+    <item
+        android:title="@string/text_category_pattern"
+        app:showAsAction="never"
+        android:id="@+id/category_menu_pattern"/>
+    <item
+        android:title="@string/text_category_texture"
+        app:showAsAction="never"
+        android:id="@+id/category_menu_texture"/>
+</menu>
