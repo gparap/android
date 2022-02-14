@@ -18,7 +18,6 @@ package gparap.apps.wallpaper.ui
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,7 +27,7 @@ import gparap.apps.wallpaper.services.CategoryCallback
 import gparap.apps.wallpaper.utils.Utils
 
 class MainActivity : AppCompatActivity() {
-    lateinit var adapter: WallpaperAdapter
+    private lateinit var adapter: WallpaperAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,46 +55,48 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
 
-            //TODO: Display all wallpapers
+            //display all wallpapers
             R.id.category_menu_all -> {
-                showToastMessageHelper(resources.getString(R.string.text_category_all))
+                CategoryCallback.getWallpapers(
+                    resources.getString(R.string.text_category_all), this, adapter
+                )
             }
 
-            //TODO: Display abstract wallpapers
+            //display abstract wallpapers
             R.id.category_menu_abstract -> {
-                showToastMessageHelper(resources.getString(R.string.text_category_abstract))
+                CategoryCallback.getWallpapers(
+                    resources.getString(R.string.text_category_abstract), this, adapter
+                )
             }
 
-            //TODO: Display colorful wallpapers
+            //display colorful wallpapers
             R.id.category_menu_colorful -> {
-                showToastMessageHelper(resources.getString(R.string.text_category_colorful))
+                CategoryCallback.getWallpapers(
+                    resources.getString(R.string.text_category_colorful), this, adapter
+                )
             }
 
-            //TODO: Display mountain wallpapers
-            R.id.category_menu_mountain -> {
-                showToastMessageHelper(resources.getString(R.string.text_category_mountain))
-            }
-
-            //TODO: Display nature wallpapers
+            //display nature wallpapers
             R.id.category_menu_nature -> {
-                showToastMessageHelper(resources.getString(R.string.text_category_nature))
+                CategoryCallback.getWallpapers(
+                    resources.getString(R.string.text_category_nature), this, adapter
+                )
             }
 
-            //TODO: Display pattern wallpapers
+            //display pattern wallpapers
             R.id.category_menu_pattern -> {
-                showToastMessageHelper(resources.getString(R.string.text_category_pattern))
+                CategoryCallback.getWallpapers(
+                    resources.getString(R.string.text_category_pattern), this, adapter
+                )
             }
 
-            //TODO: Display texture wallpapers
+            //display texture wallpapers
             R.id.category_menu_texture -> {
-                showToastMessageHelper(resources.getString(R.string.text_category_texture))
+                CategoryCallback.getWallpapers(
+                    resources.getString(R.string.text_category_texture), this, adapter
+                )
             }
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    //temporary - no need to test
-    private fun showToastMessageHelper(category: String) {
-        Toast.makeText(this, category, Toast.LENGTH_SHORT).show()
     }
 }

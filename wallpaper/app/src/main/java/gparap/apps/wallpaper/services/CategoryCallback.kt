@@ -27,32 +27,27 @@ object CategoryCallback {
 
             //fetch abstract wallpapers
             context.resources.getString(R.string.text_category_abstract) -> {
-                TODO("Not implemented yet")
+                apiResponse = webService.getCategoryAbstract()
             }
 
             //fetch colorful wallpapers
             context.resources.getString(R.string.text_category_colorful) -> {
-                TODO("Not implemented yet")
-            }
-
-            //fetch mountain wallpapers
-            context.resources.getString(R.string.text_category_mountain) -> {
-                TODO("Not implemented yet")
+                apiResponse = webService.getCategoryColorful()
             }
 
             //fetch nature wallpapers
             context.resources.getString(R.string.text_category_nature) -> {
-                TODO("Not implemented yet")
+                apiResponse = webService.getCategoryNature()
             }
 
             //fetch pattern wallpapers
             context.resources.getString(R.string.text_category_pattern) -> {
-                TODO("Not implemented yet")
+                apiResponse = webService.getCategoryPattern()
             }
 
             //fetch texture wallpapers
             context.resources.getString(R.string.text_category_texture) -> {
-                TODO("Not implemented yet")
+                apiResponse = webService.getCategoryTexture()
             }
             else -> {}
 

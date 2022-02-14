@@ -20,6 +20,28 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface ApiService {
+
+    /** Fetch all wallpapers */
     @GET("/wallpapers.php")
     fun getAll(): Call<ApiResponseModel>
+
+    /** Fetch abstract wallpapers */
+    @GET("/abstract.php")
+    fun getCategoryAbstract(): Call<ApiResponseModel>
+
+    /** Fetch colorful wallpapers */
+    @GET("/colorful.php")
+    fun getCategoryColorful(): Call<ApiResponseModel>
+
+    /** Fetch nature wallpapers */
+    @GET("/nature.php")
+    fun getCategoryNature(): Call<ApiResponseModel>
+
+    /** Fetch pattern wallpapers */
+    @GET("/pattern.php")
+    fun getCategoryPattern(): Call<ApiResponseModel>
+
+    /** Fetch texture wallpapers */
+    @GET("/texture.php")
+    fun getCategoryTexture(): Call<ApiResponseModel>
 }
