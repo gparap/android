@@ -18,6 +18,8 @@ package gparap.apps.wallpaper.ui
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +30,7 @@ import gparap.apps.wallpaper.utils.Utils
 
 class MainActivity : AppCompatActivity() {
     private lateinit var adapter: WallpaperAdapter
+    private lateinit var progress: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,13 +40,16 @@ class MainActivity : AppCompatActivity() {
         val recyclerViewWallpapers = findViewById<RecyclerView>(R.id.recycler_view_main)
         recyclerViewWallpapers.layoutManager =
             GridLayoutManager(this, Utils.getGridLayoutSpanCount(this))
-        //val adapter = WallpaperAdapter()
         adapter = WallpaperAdapter()
         recyclerViewWallpapers.adapter = adapter
 
+        //enable progress bar
+        progress = findViewById(R.id.progress_main)
+        progress.visibility = View.VISIBLE
+
         //fetch all wallpapers
         CategoryCallback.getWallpapers(
-            this.resources.getString(R.string.text_category_all), this, adapter
+            this.resources.getString(R.string.text_category_all), this, adapter, progress
         )
     }
 
@@ -57,43 +63,49 @@ class MainActivity : AppCompatActivity() {
 
             //display all wallpapers
             R.id.category_menu_all -> {
+                progress.visibility = View.VISIBLE
                 CategoryCallback.getWallpapers(
-                    resources.getString(R.string.text_category_all), this, adapter
+                    resources.getString(R.string.text_category_all), this, adapter, progress
                 )
             }
 
             //display abstract wallpapers
             R.id.category_menu_abstract -> {
+                progress.visibility = View.VISIBLE
                 CategoryCallback.getWallpapers(
-                    resources.getString(R.string.text_category_abstract), this, adapter
+                    resources.getString(R.string.text_category_abstract), this, adapter, progress
                 )
             }
 
             //display colorful wallpapers
             R.id.category_menu_colorful -> {
+                progress.visibility = View.VISIBLE
                 CategoryCallback.getWallpapers(
-                    resources.getString(R.string.text_category_colorful), this, adapter
+                    resources.getString(R.string.text_category_colorful), this, adapter, progress
                 )
             }
 
             //display nature wallpapers
             R.id.category_menu_nature -> {
+                progress.visibility = View.VISIBLE
                 CategoryCallback.getWallpapers(
-                    resources.getString(R.string.text_category_nature), this, adapter
+                    resources.getString(R.string.text_category_nature), this, adapter, progress
                 )
             }
 
             //display pattern wallpapers
             R.id.category_menu_pattern -> {
+                progress.visibility = View.VISIBLE
                 CategoryCallback.getWallpapers(
-                    resources.getString(R.string.text_category_pattern), this, adapter
+                    resources.getString(R.string.text_category_pattern), this, adapter, progress
                 )
             }
 
             //display texture wallpapers
             R.id.category_menu_texture -> {
+                progress.visibility = View.VISIBLE
                 CategoryCallback.getWallpapers(
-                    resources.getString(R.string.text_category_texture), this, adapter
+                    resources.getString(R.string.text_category_texture), this, adapter, progress
                 )
             }
         }
