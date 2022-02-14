@@ -14,10 +14,6 @@
         app:showAsAction="never"
         android:id="@+id/category_menu_colorful"/>
     <item
-        android:title="@string/text_category_mountain"
-        app:showAsAction="never"
-        android:id="@+id/category_menu_mountain"/>
-    <item
         android:title="@string/text_category_nature"
         app:showAsAction="never"
         android:id="@+id/category_menu_nature"/>
