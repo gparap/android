@@ -1,6 +1,8 @@
 package gparap.apps.wallpaper.services
 
 import android.content.Context
+import android.view.View
+import android.widget.ProgressBar
 import gparap.apps.wallpaper.R
 import gparap.apps.wallpaper.adapter.WallpaperAdapter
 import gparap.apps.wallpaper.data.ApiResponseModel
@@ -15,7 +17,12 @@ object CategoryCallback {
     /**
      * Returns all the wallpapers that belong to a specific category
      */
-    fun getWallpapers(category: String, context: Context, adapter: WallpaperAdapter) {
+    fun getWallpapers(
+        category: String,
+        context: Context,
+        adapter: WallpaperAdapter,
+        progress: ProgressBar,
+    ) {
         val webService = RetrofitClient.build().create(ApiService::class.java)
 
         when (category) {
@@ -63,11 +70,13 @@ object CategoryCallback {
                         //populate adapter with wallpapers
                         adapter.wallpapers =
                             ((this.body() as ApiResponseModel).data) as ArrayList<WallpaperModel>
+                        progress.visibility = View.INVISIBLE
                     }
                 }
 
                 override fun onFailure(call: Call<ApiResponseModel>, t: Throwable) {
                     println(t.localizedMessage)
+                    progress.visibility = View.INVISIBLE
                 }
             })
         }
