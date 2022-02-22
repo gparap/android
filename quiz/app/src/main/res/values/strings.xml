@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Quiz</string>
+    <string name="text_start_quiz">Start Quiz</string>
+    <string name="text_welcome">Welcome!</string>
+    <string name="text_choose_category">Please, choose a category and start the quiz.</string>
+
+    <!--Quiz categories-->
+    <string-array name="string_array_categories">
+        <item>categories</item>
+        <item>Animals</item>
+        <item>Geography</item>
+        <item>History</item>
+        <item>Literature</item>
+        <item>Mathematics</item>
+    </string-array>
 </resources>
