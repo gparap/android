@@ -20,4 +20,10 @@ object AppConstants {
      * Character set name used for converting data from an array of bytes to a string
      */
     const val CHARSET_NAME = "UTF-8"
+
+    const val DATABASE_NAME  = "quizDB"
+    const val DATABASE_VERSION  = 1
+    const val DB_TABLE_GEOGRAPHY = "geography"
+
+    const val QUIZ_CATEGORIES = 5
 }
