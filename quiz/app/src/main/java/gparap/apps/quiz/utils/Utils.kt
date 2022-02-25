@@ -35,9 +35,9 @@ object Utils {
     /**
      * Returns from the assets folder the JSON data string of a quiz category
      */
-    fun getJSONDataByCategory(context: Context, category: String): String? {
+    fun getJSONDataByCategory(context: Context, categoryJson: String): String? {
         val json: String? = try {
-            val inputStream: InputStream = context.assets.open(category)
+            val inputStream: InputStream = context.assets.open(categoryJson)
             val size: Int = inputStream.available()
             val buffer = ByteArray(size)
             inputStream.read(buffer)
