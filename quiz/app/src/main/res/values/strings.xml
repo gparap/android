@@ -13,4 +13,9 @@
         <item>Literature</item>
         <item>Mathematics</item>
     </string-array>
+    <string name="category_animals">Animals</string>
+    <string name="category_geography">Geography</string>
+    <string name="category_history">History</string>
+    <string name="category_literature">Literature</string>
+    <string name="category_mathematics">Mathematics</string>
 </resources>

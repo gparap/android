@@ -15,7 +15,9 @@
  */
 package gparap.apps.quiz.data
 
+import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import gparap.apps.quiz.R
@@ -53,5 +55,34 @@ class QuizDatabase(
             .plus(" answer TEXT, ")
             .plus(" choices TEXT);")
         )
+    }
+
+    /**
+     * Queries the specified table and returns a boolean indicating its populated (or not) state
+     */
+    fun isTableEmpty(tableName: String) : Boolean {
+        if (db == null){
+            db = readableDatabase
+        }
+        val query = "SELECT COUNT(*) FROM $tableName"
+        val cursor: Cursor = db!!.rawQuery(query, null)
+        val isEmpty = cursor.count <= 1
+        cursor.close()
+        return isEmpty
+    }
+
+    /**
+     * Populate database table with QuizModel data
+     */
+    fun populateTable(tableName: String, data: QuizModel) {
+        if (db == null){
+            db = writableDatabase
+        }
+        val contentValues = ContentValues()
+        contentValues.put("difficulty", data.difficulty)
+        contentValues.put("question", data.question)
+        contentValues.put("answer", data.rightAnswer)
+        contentValues.put("choices", data.wrongAnswers.toString())
+        db?.insert(tableName, null, contentValues)
     }
 }
