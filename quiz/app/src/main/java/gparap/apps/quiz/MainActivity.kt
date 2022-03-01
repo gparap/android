@@ -20,130 +20,64 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
-import gparap.apps.quiz.data.QuizDatabase
-import gparap.apps.quiz.data.QuizModel
+import androidx.lifecycle.ViewModelProvider
 import gparap.apps.quiz.utils.AppConstants
-import gparap.apps.quiz.utils.Utils
+import gparap.apps.quiz.viewmodels.MainActivityViewModel
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
-    private lateinit var database: QuizDatabase
+    private lateinit var viewModel: MainActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        //create database or open if exists
-        database = QuizDatabase(this, null)
-        database.writableDatabase
-
-        //handle quiz categories
-        val spinner = findViewById<Spinner>(R.id.spinner_categories)
-        spinner.onItemSelectedListener = this
-        spinner.setSelection(0)
+        viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+        viewModel.createOrOpenDatabase()
+        handleQuizCategorySelection()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        database.close()
+        viewModel.closeDatabase()
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         if (position == 0) return
 
-        var quiz: List<QuizModel>? = null
-
         when (parent?.getItemAtPosition(position).toString()) {
-            //Animals category selected
+
+            //animals category selected
             resources.getString(R.string.category_animals) -> {
-                //populate the database table if it is empty
-                if (database.isTableEmpty(AppConstants.DB_TABLE_ANIMALS)) {
-                    val jsonData = Utils.getJSONDataByCategory(this, AppConstants.ANIMALS_JSON)
-                    if (jsonData != null) {
-                        quiz = Utils.getQuizModelFromJSON(jsonData)
-                    }
-
-                    //fill in the database table the first time
-                    if (quiz != null) {
-                        for (q in quiz) {
-                            database.populateTable(AppConstants.DB_TABLE_ANIMALS, q)
-                        }
-                    }
-                }
+                viewModel.populateDatabaseTable(AppConstants.DB_TABLE_ANIMALS)
             }
 
-            //Geography category selected
+            //geography category selected
             resources.getString(R.string.category_geography) -> {
-                //populate the database table if it is empty
-                if (database.isTableEmpty(AppConstants.DB_TABLE_GEOGRAPHY)) {
-                    val jsonData = Utils.getJSONDataByCategory(this, AppConstants.GEOGRAPHY_JSON)
-                    if (jsonData != null) {
-                        quiz = Utils.getQuizModelFromJSON(jsonData)
-                    }
-
-                    //fill in the database table the first time
-                    if (quiz != null) {
-                        for (q in quiz) {
-                            database.populateTable(AppConstants.DB_TABLE_GEOGRAPHY, q)
-                        }
-                    }
-                }
+                viewModel.populateDatabaseTable(AppConstants.DB_TABLE_GEOGRAPHY)
             }
 
-            //History category selected
+            //history category selected
             resources.getString(R.string.category_history) -> {
-                //populate the database table if it is empty
-                if (database.isTableEmpty(AppConstants.DB_TABLE_HISTORY)) {
-                    val jsonData = Utils.getJSONDataByCategory(this, AppConstants.HISTORY_JSON)
-                    if (jsonData != null) {
-                        quiz = Utils.getQuizModelFromJSON(jsonData)
-                    }
-
-                    //fill in the database table the first time
-                    if (quiz != null) {
-                        for (q in quiz) {
-                            database.populateTable(AppConstants.DB_TABLE_HISTORY, q)
-                        }
-                    }
-                }
+                viewModel.populateDatabaseTable(AppConstants.DB_TABLE_HISTORY)
             }
 
-            //Literature category selected
+            //literature category selected
             resources.getString(R.string.category_literature) -> {
-                //populate the database table if it is empty
-                if (database.isTableEmpty(AppConstants.DB_TABLE_LITERATURE)) {
-                    val jsonData = Utils.getJSONDataByCategory(this, AppConstants.LITERATURE_JSON)
-                    if (jsonData != null) {
-                        quiz = Utils.getQuizModelFromJSON(jsonData)
-                    }
-
-                    //fill in the database table the first time
-                    if (quiz != null) {
-                        for (q in quiz) {
-                            database.populateTable(AppConstants.DB_TABLE_LITERATURE, q)
-                        }
-                    }
-                }
+                viewModel.populateDatabaseTable(AppConstants.DB_TABLE_LITERATURE)
             }
 
-            //Mathematics category selected
+            //mathematics category selected
             resources.getString(R.string.category_mathematics) -> {
-                //populate the database table if it is empty
-                if (database.isTableEmpty(AppConstants.DB_TABLE_MATHS)) {
-                    val jsonData = Utils.getJSONDataByCategory(this, AppConstants.MATHS_JSON)
-                    if (jsonData != null) {
-                        quiz = Utils.getQuizModelFromJSON(jsonData)
-                    }
-
-                    //fill in the database table the first time
-                    if (quiz != null) {
-                        for (q in quiz) {
-                            database.populateTable(AppConstants.DB_TABLE_MATHS, q)
-                        }
-                    }
-                }
+                viewModel.populateDatabaseTable(AppConstants.DB_TABLE_MATHS)
             }
         }
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+    /* Registers a callback to be invoked when a quiz category has been selected */
+    private fun handleQuizCategorySelection() {
+        val spinner = findViewById<Spinner>(R.id.spinner_categories)
+        spinner.onItemSelectedListener = this
+        spinner.setSelection(0)
+    }
 }

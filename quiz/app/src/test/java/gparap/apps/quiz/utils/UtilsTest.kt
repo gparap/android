@@ -23,11 +23,20 @@ class UtilsTest {
 
     @Test
     fun getQuizModelFromJSON() {
-        val category = "Geography"
+        val category = "geography"
         val jsonString =
             "{\"results\":[{\"category\":$category,\"type\":\"multiple\",\"difficulty\":\"medium\",\"question\":\"What European country is not a part of the EU?\",\"correct_answer\":\"Norway\",\"incorrect_answers\":[\"Lithuania\",\"Ireland\",\"Czechia\"]}]}"
         val quizModel = Utils.getQuizModelFromJSON(jsonString)
 
         assertEquals(quizModel[0].category, category)
+    }
+
+    @Test
+    fun getJsonFileByCategory() {
+        val category = "history"
+        val expectedFile = "history.json"
+        val actualFile = Utils.getJsonFileByCategory(category)
+
+        assertEquals(actualFile, expectedFile)
     }
 }

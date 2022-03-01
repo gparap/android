@@ -21,20 +21,14 @@ object AppConstants {
      */
     const val CHARSET_NAME = "UTF-8"
 
-    const val DATABASE_NAME  = "quizDB"
-    const val DATABASE_VERSION  = 1
-    const val DB_TABLE_ANIMALS = "Animals"
-    const val DB_TABLE_GEOGRAPHY = "Geography"
-    const val DB_TABLE_HISTORY = "History"
-    const val DB_TABLE_LITERATURE = "Literature"
-    const val DB_TABLE_MATHS = "Mathematics"
-
-    const val QUIZ_CATEGORIES = 5
-
-    //json files
-    const val ANIMALS_JSON = "animals.json"
-    const val GEOGRAPHY_JSON = "geography.json"
-    const val HISTORY_JSON = "history.json"
-    const val LITERATURE_JSON = "literature.json"
-    const val MATHS_JSON = "maths.json"
+    /**
+     * Quiz database and its tables
+     */
+    const val DATABASE_NAME = "quizDB"
+    const val DATABASE_VERSION = 1
+    const val DB_TABLE_ANIMALS = "animals"
+    const val DB_TABLE_GEOGRAPHY = "geography"
+    const val DB_TABLE_HISTORY = "history"
+    const val DB_TABLE_LITERATURE = "literature"
+    const val DB_TABLE_MATHS = "mathematics"
 }
