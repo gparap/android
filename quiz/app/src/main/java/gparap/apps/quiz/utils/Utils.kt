@@ -25,6 +25,13 @@ import java.nio.charset.Charset
 
 object Utils {
     /**
+     * Gets the specific JSON file based on a category name
+     */
+    fun getJsonFileByCategory(categoryName: String) : String {
+        return categoryName.plus(".json")
+    }
+
+    /**
      * Gets the QuizModel collection by deserializing a JSON string
      */
     fun getQuizModelFromJSON(jsonString: String): List<QuizModel> {
@@ -33,7 +40,7 @@ object Utils {
     }
 
     /**
-     * Returns from the assets folder the JSON data string of a quiz category
+     * Gets from the assets folder the JSON data string of a quiz category
      */
     fun getJSONDataByCategory(context: Context, categoryJson: String): String? {
         val json: String? = try {
