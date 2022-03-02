@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Quiz</string>
+
+    <!--App loaded texts-->
     <string name="text_start_quiz">Start Quiz</string>
     <string name="text_welcome">Welcome!</string>
     <string name="text_choose_category">Please, choose a category and start the quiz.</string>
@@ -18,4 +20,9 @@
     <string name="category_history">History</string>
     <string name="category_literature">Literature</string>
     <string name="category_mathematics">Mathematics</string>
+
+    <!--Quiz started texts-->
+    <string name="text_timer_default">00:59</string>
+    <string name="text_question_counter_default">Question 1 of 10</string>
+    <string name="button_next_question">Next</string>
 </resources>

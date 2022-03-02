@@ -17,18 +17,18 @@ package gparap.apps.quiz
 
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.MediumTest
 import androidx.test.filters.SmallTest
-
+import androidx.test.platform.app.InstrumentationRegistry
+import org.hamcrest.core.IsNot.not
+import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
-import org.junit.Before
 
 @RunWith(AndroidJUnit4::class)
 class MainActivityInstrumentedTest {
@@ -53,12 +53,32 @@ class MainActivityInstrumentedTest {
     @Test
     @SmallTest
     fun isVisible_layout_introductory_text() {
-        onView(withId(R.id.layout_introductory_text)).check(matches(isDisplayed()))
+        onView(withId(R.id.main_layout_intro)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    @SmallTest
+    fun isNotVisible_layout_quiz() {
+        onView(withId(R.id.main_layout_quiz)).check(matches(not(isDisplayed())))
     }
 
     @Test
     @SmallTest
     fun isVisible_button_start_quiz() {
         onView(withId(R.id.button_start_quiz)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    @MediumTest
+    fun onQuizStart_swapIntroWithQuizLayout() {
+        //select a category and start the test
+        onView(withId(R.id.spinner_categories)).perform(click())
+        Thread.sleep(300)
+        onView(withText(R.string.category_mathematics)).perform(click())
+        Thread.sleep(300)
+        onView(withId(R.id.button_start_quiz)).perform(click())
+
+        onView(withId(R.id.main_layout_intro)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.main_layout_quiz)).check(matches(isDisplayed()))
     }
 }
