@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_quiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--Timer-->
+    <TextView
+        android:id="@+id/text_view_timer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/text_timer_default"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--Questions counter-->
+    <TextView
+        android:id="@+id/text_view_questions_counter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/text_question_counter_default"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_timer" />
+
+    <!--Question-->
+    <TextView
+        android:id="@+id/text_view_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_questions_counter"
+        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fringilla vel magna scelerisque finibus. Aliquam erat volutpat. In in quam aliquet, finibus leo a, rutrum enim.???" />
+
+    <!--Choices-->
+    <RadioGroup
+        android:id="@+id/radio_group_choices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_question">
+
+        <!--Choice #1-->
+        <RadioButton
+            android:id="@+id/radio_button_choice_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:text="Choice #1" />
+
+        <!--Choice #2-->
+        <RadioButton
+            android:id="@+id/radio_button_choice_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:text="Choice #2" />
+
+        <!--Choice #3-->
+        <RadioButton
+            android:id="@+id/radio_button_choice_three"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:text="Choice #3" />
+
+        <!--Choice #4-->
+        <RadioButton
+            android:id="@+id/radio_button_choice_four"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:text="Choice #4" />
+
+    </RadioGroup>
+
+    <!--Next question button-->
+    <Button
+        android:id="@+id/button_next_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_next_question"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group_choices" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

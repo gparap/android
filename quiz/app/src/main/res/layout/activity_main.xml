@@ -16,36 +16,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--Introductory text-->
-    <LinearLayout
-        android:id="@+id/layout_introductory_text"
+    <!--Introductory text layout-->
+    <include
+        android:id="@+id/main_layout_intro"
+        layout="@layout/layout_intro"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:gravity="center"
-        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/button_start_quiz"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_categories">
+        app:layout_constraintTop_toBottomOf="@+id/spinner_categories"
+        tools:visibility="gone" />
 
-        <!--Welcome text-->
-        <TextView
-            android:id="@+id/text_view_welcome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_welcome"
-            android:textSize="@dimen/textSize_page_title" />
-
-        <!--Instructions text-->
-        <TextView
-            android:id="@+id/text_view_choose_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_choose_category"
-            android:textSize="@dimen/textSize_important"
-            android:textStyle="italic" />
-
-    </LinearLayout>
+    <!--Quiz layout-->
+    <include
+        android:id="@+id/main_layout_quiz"
+        layout="@layout/layout_quiz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/button_start_quiz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_categories"
+        tools:visibility="visible" />
 
     <!--Start quiz button-->
     <Button

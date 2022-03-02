@@ -17,15 +17,20 @@ package gparap.apps.quiz
 
 import android.os.Bundle
 import android.view.View
+import android.view.View.*
 import android.widget.AdapterView
+import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
 import gparap.apps.quiz.utils.AppConstants
 import gparap.apps.quiz.viewmodels.MainActivityViewModel
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var viewModel: MainActivityViewModel
+    private lateinit var spinner: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +38,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         viewModel.createOrOpenDatabase()
         handleQuizCategorySelection()
+        startQuiz()
     }
 
     override fun onDestroy() {
@@ -74,9 +80,31 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     override fun onNothingSelected(parent: AdapterView<*>?) {}
 
+    /* Changes the UI appropriately and starts the quiz */
+    private fun startQuiz() {
+        findViewById<Button>(R.id.button_start_quiz).apply {
+            setOnClickListener {
+                //do nothing if no category is selected
+                if (spinner.selectedItemPosition == 0) return@setOnClickListener
+
+                //hide the current layout
+                spinner.visibility = GONE
+                this.visibility = GONE
+                this@MainActivity.findViewById<LinearLayout>(R.id.main_layout_intro).apply {
+                    visibility = INVISIBLE
+                }
+
+                //display the quiz layout
+                this@MainActivity.findViewById<ConstraintLayout>(R.id.main_layout_quiz).apply {
+                    visibility = VISIBLE
+                }
+            }
+        }
+    }
+
     /* Registers a callback to be invoked when a quiz category has been selected */
     private fun handleQuizCategorySelection() {
-        val spinner = findViewById<Spinner>(R.id.spinner_categories)
+        spinner = findViewById<Spinner>(R.id.spinner_categories)
         spinner.onItemSelectedListener = this
         spinner.setSelection(0)
     }
