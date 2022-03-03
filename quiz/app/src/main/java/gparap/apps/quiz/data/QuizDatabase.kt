@@ -60,8 +60,8 @@ class QuizDatabase(
     /**
      * Queries the specified table and returns a boolean indicating its populated (or not) state
      */
-    fun isTableEmpty(tableName: String) : Boolean {
-        if (db == null){
+    fun isTableEmpty(tableName: String): Boolean {
+        if (db == null) {
             db = readableDatabase
         }
         val query = "SELECT COUNT(*) FROM $tableName"
@@ -75,7 +75,7 @@ class QuizDatabase(
      * Populate database table with QuizModel data
      */
     fun populateTable(tableName: String, data: QuizModel) {
-        if (db == null){
+        if (db == null) {
             db = writableDatabase
         }
         val contentValues = ContentValues()
@@ -84,5 +84,23 @@ class QuizDatabase(
         contentValues.put("answer", data.rightAnswer)
         contentValues.put("choices", data.wrongAnswers.toString())
         db?.insert(tableName, null, contentValues)
+    }
+
+    /**
+     * Query the database and get all questions based on a table name (indifferent of difficulty)
+     */
+    fun getAllQuestions(tableName: String): MutableList<String> {
+        val questions = mutableListOf<String>()
+        db?.query(tableName.lowercase(), arrayOf("question"), null, null, null, null, null)
+            .apply {
+                with(this) {
+                    while (this!!.moveToNext()) {
+                        questions.add(getString(getColumnIndexOrThrow("question")))
+                    }
+                }
+            }.also {
+                it?.close()
+                return questions
+            }
     }
 }

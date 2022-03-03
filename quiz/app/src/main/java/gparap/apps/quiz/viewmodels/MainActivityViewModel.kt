@@ -17,12 +17,23 @@ package gparap.apps.quiz.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import gparap.apps.quiz.data.QuizDatabase
 import gparap.apps.quiz.data.QuizModel
 import gparap.apps.quiz.utils.Utils
 
 class MainActivityViewModel(application: Application) : AndroidViewModel(application) {
     private lateinit var database: QuizDatabase
+    private var selectedCategoryLiveData: MutableLiveData<String> = MutableLiveData()
+
+    fun getSelectedCategory() : LiveData<String>{
+        return selectedCategoryLiveData
+    }
+
+    fun setSelectedCategory(category: String) {
+        selectedCategoryLiveData.value = category
+    }
 
     /**
      * Creates the quiz database or open it if already exists
@@ -32,7 +43,9 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
         database.writableDatabase
     }
 
-    /** Closes any open database object */
+    /**
+     * Closes any open database object
+     */
     fun closeDatabase() {
         database.close()
     }
@@ -59,5 +72,12 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
                 }
             }
         }
+    }
+
+    /**
+     * Fetches all questions from the database based on a quiz category
+     */
+    fun getAllQuestions(category: String): List<String> {
+        return database.getAllQuestions(category)
     }
 }

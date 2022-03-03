@@ -31,12 +31,18 @@ import gparap.apps.quiz.viewmodels.MainActivityViewModel
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var viewModel: MainActivityViewModel
     private lateinit var spinner: Spinner
+    private var selectedCategory = ""
+
+    fun getViewModel() : MainActivityViewModel {
+        return viewModel
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         viewModel.createOrOpenDatabase()
+        observeSelectedCategory()
         handleQuizCategorySelection()
         startQuiz()
     }
@@ -54,26 +60,31 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             //animals category selected
             resources.getString(R.string.category_animals) -> {
                 viewModel.populateDatabaseTable(AppConstants.DB_TABLE_ANIMALS)
+                viewModel.setSelectedCategory(resources.getString(R.string.category_animals))
             }
 
             //geography category selected
             resources.getString(R.string.category_geography) -> {
                 viewModel.populateDatabaseTable(AppConstants.DB_TABLE_GEOGRAPHY)
+                viewModel.setSelectedCategory(resources.getString(R.string.category_geography))
             }
 
             //history category selected
             resources.getString(R.string.category_history) -> {
                 viewModel.populateDatabaseTable(AppConstants.DB_TABLE_HISTORY)
+                viewModel.setSelectedCategory(resources.getString(R.string.category_history))
             }
 
             //literature category selected
             resources.getString(R.string.category_literature) -> {
                 viewModel.populateDatabaseTable(AppConstants.DB_TABLE_LITERATURE)
+                viewModel.setSelectedCategory(resources.getString(R.string.category_literature))
             }
 
             //mathematics category selected
             resources.getString(R.string.category_mathematics) -> {
                 viewModel.populateDatabaseTable(AppConstants.DB_TABLE_MATHS)
+                viewModel.setSelectedCategory(resources.getString(R.string.category_mathematics))
             }
         }
     }
@@ -98,6 +109,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 this@MainActivity.findViewById<ConstraintLayout>(R.id.main_layout_quiz).apply {
                     visibility = VISIBLE
                 }
+
+                //get all questions for the specific category
+                viewModel.getAllQuestions(viewModel.getSelectedCategory().value!!)
             }
         }
     }
@@ -107,5 +121,12 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         spinner = findViewById<Spinner>(R.id.spinner_categories)
         spinner.onItemSelectedListener = this
         spinner.setSelection(0)
+    }
+
+    /* Observes the selected category value */
+    private fun observeSelectedCategory() {
+        viewModel.getSelectedCategory().observe(this) {
+            selectedCategory = it
+        }
     }
 }
