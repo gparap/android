@@ -15,6 +15,7 @@
  */
 package gparap.apps.quiz
 
+import android.content.Context
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -26,15 +27,20 @@ import androidx.test.filters.SmallTest
 import androidx.test.platform.app.InstrumentationRegistry
 import org.hamcrest.core.IsNot.not
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class MainActivityInstrumentedTest {
+    private lateinit var activityScenario: ActivityScenario<MainActivity>
+    private lateinit var context: Context
+
     @Before
     fun setUp() {
-        ActivityScenario.launch(MainActivity::class.java)
+        activityScenario = ActivityScenario.launch(MainActivity::class.java)
+        context = InstrumentationRegistry.getInstrumentation().targetContext
     }
 
     @Test
@@ -71,14 +77,28 @@ class MainActivityInstrumentedTest {
     @Test
     @MediumTest
     fun onQuizStart_swapIntroWithQuizLayout() {
-        //select a category and start the test
-        onView(withId(R.id.spinner_categories)).perform(click())
-        Thread.sleep(300)
-        onView(withText(R.string.category_mathematics)).perform(click())
-        Thread.sleep(300)
-        onView(withId(R.id.button_start_quiz)).perform(click())
-
+        selectCategoryAndStartQuiz(context.resources.getString(R.string.category_mathematics))
         onView(withId(R.id.main_layout_intro)).check(matches(not(isDisplayed())))
         onView(withId(R.id.main_layout_quiz)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    @MediumTest
+    fun onQuizStart_getAllQuestionsOfQuizCategory() {
+        var questions: List<String>? = null
+        val category = context.resources.getString(R.string.category_animals)
+        selectCategoryAndStartQuiz(category)
+        activityScenario.onActivity {
+            questions = it.getViewModel().getAllQuestions(category)
+        }
+        assertNotNull(questions)
+    }
+
+    private fun selectCategoryAndStartQuiz(category: String) {
+        onView(withId(R.id.spinner_categories)).perform(click())
+        Thread.sleep(300)
+        onView(withText(category)).perform(click())
+        Thread.sleep(300)
+        onView(withId(R.id.button_start_quiz)).perform(click())
     }
 }
