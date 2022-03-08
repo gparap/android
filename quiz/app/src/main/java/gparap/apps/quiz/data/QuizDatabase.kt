@@ -17,7 +17,7 @@ package gparap.apps.quiz.data
 
 import android.content.ContentValues
 import android.content.Context
-import android.database.Cursor
+import android.database.DatabaseUtils
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import gparap.apps.quiz.R
@@ -64,11 +64,8 @@ class QuizDatabase(
         if (db == null) {
             db = readableDatabase
         }
-        val query = "SELECT COUNT(*) FROM $tableName"
-        val cursor: Cursor = db!!.rawQuery(query, null)
-        val isEmpty = cursor.count <= 1
-        cursor.close()
-        return isEmpty
+        val entries = DatabaseUtils.queryNumEntries(db, tableName).toInt()
+        return entries == 0
     }
 
     /**
