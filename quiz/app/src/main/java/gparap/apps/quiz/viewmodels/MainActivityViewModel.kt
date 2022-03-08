@@ -19,6 +19,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import gparap.apps.quiz.R
 import gparap.apps.quiz.data.QuizDatabase
 import gparap.apps.quiz.data.QuizModel
 import gparap.apps.quiz.utils.Utils
@@ -26,13 +27,24 @@ import gparap.apps.quiz.utils.Utils
 class MainActivityViewModel(application: Application) : AndroidViewModel(application) {
     private lateinit var database: QuizDatabase
     private var selectedCategoryLiveData: MutableLiveData<String> = MutableLiveData()
+    private var selectedCategoryQuestions: MutableLiveData<List<String>> = MutableLiveData()
+    private var questionsAnimals: MutableLiveData<List<String>> = MutableLiveData()
+    private var questionsGeography: MutableLiveData<List<String>> = MutableLiveData()
+    private var questionsHistory: MutableLiveData<List<String>> = MutableLiveData()
+    private var questionsLiterature: MutableLiveData<List<String>> = MutableLiveData()
+    private var questionsMathematics: MutableLiveData<List<String>> = MutableLiveData()
+    private var questionCounter: Int = 0
 
-    fun getSelectedCategory() : LiveData<String>{
+    fun getSelectedCategory(): LiveData<String> {
         return selectedCategoryLiveData
     }
 
     fun setSelectedCategory(category: String) {
         selectedCategoryLiveData.value = category
+    }
+
+    fun getSelectedCategoryQuestions() : List<String>? {
+        return selectedCategoryQuestions.value
     }
 
     /**
@@ -75,9 +87,71 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
     }
 
     /**
-     * Fetches all questions from the database based on a quiz category
+     * Populates the selected quiz category with all its questions fetched from the database
      */
-    fun getAllQuestions(category: String): List<String> {
-        return database.getAllQuestions(category)
+    fun populateSelectedCategoryQuestions() {
+        when (selectedCategoryLiveData.value) {
+
+            //Animals
+            this.getApplication<Application?>().applicationContext.resources.getString(R.string.category_animals) -> {
+                if (questionsAnimals.value == null) {
+                    questionsAnimals.value =
+                        database.getAllQuestions(selectedCategoryLiveData.value!!)
+                }
+                selectedCategoryQuestions.value = questionsAnimals.value
+            }
+
+            //Geography
+            this.getApplication<Application?>().applicationContext.resources.getString(R.string.category_geography) -> {
+                if (questionsGeography.value == null) {
+                    questionsGeography.value =
+                        database.getAllQuestions(selectedCategoryLiveData.value!!)
+                }
+                selectedCategoryQuestions.value = questionsGeography.value
+            }
+
+            //History
+            this.getApplication<Application?>().applicationContext.resources.getString(R.string.category_history) -> {
+                if (questionsHistory.value == null) {
+                    questionsHistory.value =
+                        database.getAllQuestions(selectedCategoryLiveData.value!!)
+                }
+                selectedCategoryQuestions.value = questionsHistory.value
+            }
+
+            //Literature
+            this.getApplication<Application?>().applicationContext.resources.getString(R.string.category_literature) -> {
+                if (questionsLiterature.value == null) {
+                    questionsLiterature.value =
+                        database.getAllQuestions(selectedCategoryLiveData.value!!)
+                }
+                selectedCategoryQuestions.value = questionsLiterature.value
+            }
+
+            //Mathematics
+            this.getApplication<Application?>().applicationContext.resources.getString(R.string.category_mathematics) -> {
+                if (questionsMathematics.value == null) {
+                    questionsMathematics.value =
+                        database.getAllQuestions(selectedCategoryLiveData.value!!)
+                }
+                selectedCategoryQuestions.value = questionsMathematics.value
+            }
+        }
+    }
+
+    /**
+     * Shuffles the questions of the selected quiz category
+     */
+    fun shuffleSelectedCategoryQuestions() {
+        (selectedCategoryQuestions.value as MutableList<String>?)?.shuffle()
+    }
+
+    /**
+     * Returns the next question of the quiz
+     */
+    fun getSelectedCategoryNextQuestion(): String {
+        val nextQuestion = selectedCategoryQuestions.value!![questionCounter]
+        questionCounter += 1
+        return nextQuestion
     }
 }
