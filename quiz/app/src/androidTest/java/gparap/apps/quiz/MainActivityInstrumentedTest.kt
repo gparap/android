@@ -26,8 +26,7 @@ import androidx.test.filters.MediumTest
 import androidx.test.filters.SmallTest
 import androidx.test.platform.app.InstrumentationRegistry
 import org.hamcrest.core.IsNot.not
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -89,9 +88,32 @@ class MainActivityInstrumentedTest {
         val category = context.resources.getString(R.string.category_animals)
         selectCategoryAndStartQuiz(category)
         activityScenario.onActivity {
-            questions = it.getViewModel().getAllQuestions(category)
+            questions = it.getViewModel().getSelectedCategoryQuestions()
         }
         assertNotNull(questions)
+    }
+
+    @Test
+    @MediumTest
+    fun onNextQuestionButtonClick_getNextQuestion() {
+        var questionPrev: String? = null
+        var questionNext: String? = null
+        val category = context.resources.getString(R.string.category_animals)
+        selectCategoryAndStartQuiz(category)
+
+        //get previous question
+        activityScenario.onActivity {
+            questionPrev = it.getViewModel().getSelectedCategoryNextQuestion()
+        }
+
+        //get next question
+        onView(withId(R.id.button_next_question)).perform(click())
+        Thread.sleep(300)
+        activityScenario.onActivity {
+            questionNext = it.getViewModel().getSelectedCategoryNextQuestion()
+        }
+
+        assertNotEquals(questionNext, questionPrev)
     }
 
     private fun selectCategoryAndStartQuiz(category: String) {

@@ -18,10 +18,7 @@ package gparap.apps.quiz
 import android.os.Bundle
 import android.view.View
 import android.view.View.*
-import android.widget.AdapterView
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.Spinner
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
@@ -33,7 +30,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var spinner: Spinner
     private var selectedCategory = ""
 
-    fun getViewModel() : MainActivityViewModel {
+    fun getViewModel(): MainActivityViewModel {
         return viewModel
     }
 
@@ -43,8 +40,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         viewModel.createOrOpenDatabase()
         observeSelectedCategory()
-        handleQuizCategorySelection()
-        startQuiz()
+        handleQuizCategorySelectionCallback()
     }
 
     override fun onDestroy() {
@@ -87,38 +83,59 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 viewModel.setSelectedCategory(resources.getString(R.string.category_mathematics))
             }
         }
+
+        //hide the current layout
+        spinner.visibility = GONE
+        this@MainActivity.findViewById<LinearLayout>(R.id.main_layout_intro).apply {
+            visibility = INVISIBLE
+        }
+
+        //display the quiz layout
+        this@MainActivity.findViewById<ConstraintLayout>(R.id.main_layout_quiz).apply {
+            visibility = VISIBLE
+        }
+
+        //prepare the questions for the quiz
+        viewModel.populateSelectedCategoryQuestions()
+        viewModel.shuffleSelectedCategoryQuestions()
+
+        //quiz is ready to start now
+        handleStartQuizButtonCallback()
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {}
 
-    /* Changes the UI appropriately and starts the quiz */
-    private fun startQuiz() {
+    /* Registers a callback to be invoked when the start quiz button has been pressed */
+    private fun handleStartQuizButtonCallback() {
         findViewById<Button>(R.id.button_start_quiz).apply {
             setOnClickListener {
-                //do nothing if no category is selected
-                if (spinner.selectedItemPosition == 0) return@setOnClickListener
-
-                //hide the current layout
-                spinner.visibility = GONE
-                this.visibility = GONE
-                this@MainActivity.findViewById<LinearLayout>(R.id.main_layout_intro).apply {
-                    visibility = INVISIBLE
-                }
-
-                //display the quiz layout
-                this@MainActivity.findViewById<ConstraintLayout>(R.id.main_layout_quiz).apply {
-                    visibility = VISIBLE
-                }
-
-                //get all questions for the specific category
-                viewModel.getAllQuestions(viewModel.getSelectedCategory().value!!)
+                visibility = GONE
+                displayNextQuestion()
+                handleNextQuestionButtonCallback()
             }
         }
     }
 
+    /* Registers a callback to be invoked when the next question button has been pressed */
+    private fun handleNextQuestionButtonCallback() {
+        this@MainActivity.findViewById<Button>(R.id.button_next_question).apply {
+            visibility = VISIBLE
+            setOnClickListener {
+                displayNextQuestion()
+            }
+        }
+    }
+
+    /* Displays the next question for the current quiz */
+    private fun displayNextQuestion() {
+        this@MainActivity.findViewById<TextView>(R.id.text_view_question).apply {
+            this.text = viewModel.getSelectedCategoryNextQuestion()
+        }
+    }
+
     /* Registers a callback to be invoked when a quiz category has been selected */
-    private fun handleQuizCategorySelection() {
-        spinner = findViewById<Spinner>(R.id.spinner_categories)
+    private fun handleQuizCategorySelectionCallback() {
+        spinner = findViewById(R.id.spinner_categories)
         spinner.onItemSelectedListener = this
         spinner.setSelection(0)
     }
