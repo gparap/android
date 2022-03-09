@@ -82,15 +82,38 @@
 
     </RadioGroup>
 
-    <!--Next question button-->
+    <!--Submit answer button-->
     <Button
-        android:id="@+id/button_next_question"
+        android:id="@+id/button_submit_answer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_next_question"
-        android:visibility="invisible"
+        android:text="@string/button_submit_answer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radio_group_choices" />
+
+    <!--Next question button-->
+    <ImageButton
+        android:id="@+id/button_next_question"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:contentDescription="@string/desc_next_question_button"
+        android:src="@drawable/ic_next_question_48"
+        app:layout_constraintBottom_toBottomOf="@+id/button_submit_answer"
+        app:layout_constraintStart_toEndOf="@+id/button_submit_answer"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group_choices"
+        tools:ignore="ImageContrastCheck" />
+
+    <!--Previous question button-->
+    <ImageButton
+        android:id="@+id/button_prev_question"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:contentDescription="@string/desc_prev_question_button"
+        android:src="@drawable/ic_prev_question_48"
+        app:layout_constraintBottom_toBottomOf="@+id/button_submit_answer"
+        app:layout_constraintEnd_toStartOf="@+id/button_submit_answer"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group_choices"
+        tools:ignore="ImageContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -84,17 +84,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             }
         }
 
-        //hide the current layout
-        spinner.visibility = GONE
-        this@MainActivity.findViewById<LinearLayout>(R.id.main_layout_intro).apply {
-            visibility = INVISIBLE
-        }
-
-        //display the quiz layout
-        this@MainActivity.findViewById<ConstraintLayout>(R.id.main_layout_quiz).apply {
-            visibility = VISIBLE
-        }
-
         //prepare the questions for the quiz
         viewModel.populateSelectedCategoryQuestions()
         viewModel.shuffleSelectedCategoryQuestions()
@@ -109,7 +98,20 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private fun handleStartQuizButtonCallback() {
         findViewById<Button>(R.id.button_start_quiz).apply {
             setOnClickListener {
-                visibility = GONE
+
+                //hide the current layout
+                this.visibility = GONE
+                spinner.visibility = GONE
+                this@MainActivity.findViewById<LinearLayout>(R.id.main_layout_intro).apply {
+                    visibility = INVISIBLE
+                }
+
+                //display the quiz layout
+                this@MainActivity.findViewById<ConstraintLayout>(R.id.main_layout_quiz).apply {
+                    visibility = VISIBLE
+                }
+
+                //display and handle questions
                 displayNextQuestion()
                 handleNextQuestionButtonCallback()
             }
@@ -118,8 +120,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     /* Registers a callback to be invoked when the next question button has been pressed */
     private fun handleNextQuestionButtonCallback() {
-        this@MainActivity.findViewById<Button>(R.id.button_next_question).apply {
-            visibility = VISIBLE
+        this@MainActivity.findViewById<ImageButton>(R.id.button_next_question).apply {
             setOnClickListener {
                 displayNextQuestion()
             }
