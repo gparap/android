@@ -114,6 +114,17 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 //display and handle questions
                 displayNextQuestion()
                 handleNextQuestionButtonCallback()
+                handlePreviousQuestionButtonCallback()
+            }
+        }
+    }
+
+    /* Registers a callback to be invoked when the previous question button has been pressed */
+    private fun handlePreviousQuestionButtonCallback() {
+        this@MainActivity.findViewById<ImageButton>(R.id.button_prev_question).apply {
+            setOnClickListener {
+                displayPreviousQuestion()
+                updateQuestionCounter()
             }
         }
     }
@@ -123,7 +134,25 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         this@MainActivity.findViewById<ImageButton>(R.id.button_next_question).apply {
             setOnClickListener {
                 displayNextQuestion()
+                updateQuestionCounter()
             }
+        }
+    }
+
+    /* Update the text of the view that displays the questions counter ie. "Question 1..10 of 10" */
+    private fun updateQuestionCounter() {
+        findViewById<TextView>(R.id.text_view_questions_counter).apply {
+            text = this@MainActivity.resources.getString(R.string.text_questions_counter_prefix)
+                .plus(viewModel.getQuestionsCounter())
+                .plus(this@MainActivity.resources.getString(R.string.text_questions_counter_suffix))
+                .plus(AppConstants.QUIZ_QUESTIONS_COUNT)
+        }
+    }
+
+    /* Displays the previous question for the current quiz */
+    private fun displayPreviousQuestion() {
+        this@MainActivity.findViewById<TextView>(R.id.text_view_question).apply {
+            this.text = viewModel.getSelectedCategoryPreviousQuestion()
         }
     }
 

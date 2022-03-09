@@ -16,15 +16,20 @@
 package gparap.apps.quiz
 
 import android.content.Context
+import android.view.View
+import android.widget.Toast
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.RootMatchers.withDecorView
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.LargeTest
 import androidx.test.filters.MediumTest
 import androidx.test.filters.SmallTest
 import androidx.test.platform.app.InstrumentationRegistry
+import gparap.apps.quiz.utils.AppConstants
 import org.hamcrest.core.IsNot.not
 import org.junit.Assert.*
 import org.junit.Before
@@ -35,11 +40,15 @@ import org.junit.runner.RunWith
 class MainActivityInstrumentedTest {
     private lateinit var activityScenario: ActivityScenario<MainActivity>
     private lateinit var context: Context
+    private lateinit var decorView: View
 
     @Before
     fun setUp() {
         activityScenario = ActivityScenario.launch(MainActivity::class.java)
         context = InstrumentationRegistry.getInstrumentation().targetContext
+        activityScenario.onActivity {
+            decorView = it.window.decorView
+        }
     }
 
     @Test
@@ -96,14 +105,14 @@ class MainActivityInstrumentedTest {
     @Test
     @MediumTest
     fun onNextQuestionButtonClick_getNextQuestion() {
-        var questionPrev: String? = null
+        var questionCurr: String? = null
         var questionNext: String? = null
         val category = context.resources.getString(R.string.category_animals)
         selectCategoryAndStartQuiz(category)
 
-        //get previous question
+        //get current question
         activityScenario.onActivity {
-            questionPrev = it.getViewModel().getSelectedCategoryNextQuestion()
+            questionCurr = it.getViewModel().getSelectedCategoryNextQuestion()
         }
 
         //get next question
@@ -113,7 +122,74 @@ class MainActivityInstrumentedTest {
             questionNext = it.getViewModel().getSelectedCategoryNextQuestion()
         }
 
-        assertNotEquals(questionNext, questionPrev)
+        assertNotEquals(questionNext, questionCurr)
+    }
+
+    @Test
+    @MediumTest
+    fun onPreviousQuestionButtonClick_getNextQuestion() {
+        var questionCurr: String? = null
+        var questionNext: String? = null
+        val category = context.resources.getString(R.string.category_animals)
+        selectCategoryAndStartQuiz(category)
+        
+        //go a little forward into questions
+        onView(withId(R.id.button_next_question)).perform(click())
+        onView(withId(R.id.button_next_question)).perform(click())
+        onView(withId(R.id.button_next_question)).perform(click())
+
+        //get current question
+        activityScenario.onActivity {
+            questionCurr = it.getViewModel().getSelectedCategoryPreviousQuestion()
+        }
+
+        //get previous question
+        onView(withId(R.id.button_prev_question)).perform(click())
+        Thread.sleep(300)
+        activityScenario.onActivity {
+            questionNext = it.getViewModel().getSelectedCategoryPreviousQuestion()
+        }
+
+        assertNotEquals(questionNext, questionCurr)
+    }
+
+    @Test
+    @LargeTest
+    fun onNextQuestionButtonClick_showErrorMessageWhenWeReachTheEndOfTheQuiz() {
+        //wait for a possible toast message to fade away
+        Thread.sleep(Toast.LENGTH_LONG.toLong())
+
+        //select category
+        val category = context.resources.getString(R.string.category_animals)
+        selectCategoryAndStartQuiz(category)
+
+        //go forward into the quiz until you pass the end
+        for (i in 1..AppConstants.QUIZ_QUESTIONS_COUNT + 1) {
+            onView(withId(R.id.button_next_question)).perform(click())
+        }
+
+        onView(withText(R.string.toast_next_question_error))
+            .inRoot(withDecorView(not(decorView)))
+            .check(matches(isDisplayed()))
+    }
+
+    @Test
+    @LargeTest
+    fun onPreviousQuestionButtonClick_showMessageWhenWeReachTheStartOfTheQuiz() {
+        //wait for a possible toast message to fade away
+        Thread.sleep(Toast.LENGTH_LONG.toLong())
+
+        //select category
+        val category = context.resources.getString(R.string.category_animals)
+        selectCategoryAndStartQuiz(category)
+
+        //try to go beyond the start of the quiz
+        onView(withId(R.id.button_prev_question)).perform(click())
+
+        onView(withText(R.string.toast_prev_question_error))
+            .inRoot(withDecorView(not(decorView)))
+            .check(matches(isDisplayed()))
+
     }
 
     private fun selectCategoryAndStartQuiz(category: String) {

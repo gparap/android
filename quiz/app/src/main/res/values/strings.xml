@@ -23,9 +23,13 @@
 
     <!--Quiz started texts-->
     <string name="text_timer_default">00:59</string>
-    <string name="text_question_counter_default">Question 1 of 10</string>
+    <string name="text_questions_counter_default">Question 1 of 10</string>
+    <string name="text_questions_counter_prefix">Question &#160;</string>
+    <string name="text_questions_counter_suffix">&#160; of &#160;</string>
     <string name="button_submit_answer">Submit</string>
     <string name="button_next_question">Next</string>
     <string name="desc_next_question_button">Next question</string>
     <string name="desc_prev_question_button">Previous question</string>
+    <string name="toast_next_question_error">No more questions!</string>
+    <string name="toast_prev_question_error">Can\'t go back!</string>
 </resources>
