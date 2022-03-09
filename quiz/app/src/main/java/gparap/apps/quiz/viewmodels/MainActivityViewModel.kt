@@ -16,12 +16,14 @@
 package gparap.apps.quiz.viewmodels
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import gparap.apps.quiz.R
 import gparap.apps.quiz.data.QuizDatabase
 import gparap.apps.quiz.data.QuizModel
+import gparap.apps.quiz.utils.AppConstants
 import gparap.apps.quiz.utils.Utils
 
 class MainActivityViewModel(application: Application) : AndroidViewModel(application) {
@@ -33,7 +35,7 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
     private var questionsHistory: MutableLiveData<List<String>> = MutableLiveData()
     private var questionsLiterature: MutableLiveData<List<String>> = MutableLiveData()
     private var questionsMathematics: MutableLiveData<List<String>> = MutableLiveData()
-    private var questionCounter: Int = 0
+    private var questionsCounter: Int = 0
 
     fun getSelectedCategory(): LiveData<String> {
         return selectedCategoryLiveData
@@ -43,8 +45,12 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
         selectedCategoryLiveData.value = category
     }
 
-    fun getSelectedCategoryQuestions() : List<String>? {
+    fun getSelectedCategoryQuestions(): List<String>? {
         return selectedCategoryQuestions.value
+    }
+
+    fun getQuestionsCounter() : Int {
+        return questionsCounter
     }
 
     /**
@@ -150,8 +156,35 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
      * Returns the next question of the quiz
      */
     fun getSelectedCategoryNextQuestion(): String {
-        val nextQuestion = selectedCategoryQuestions.value!![questionCounter]
-        questionCounter += 1
+        var nextQuestion = selectedCategoryQuestions.value!![questionsCounter]
+        if (questionsCounter < AppConstants.QUIZ_QUESTIONS_COUNT) {
+            questionsCounter += 1
+            nextQuestion = selectedCategoryQuestions.value!![questionsCounter]
+        } else {
+            Toast.makeText(
+                getApplication<Application?>().applicationContext,
+                getApplication<Application?>().applicationContext.resources.getString(R.string.toast_next_question_error),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
         return nextQuestion
+    }
+
+    /**
+     * Returns the previous question of the quiz or a toast if we have reached the start of the quiz
+     */
+    fun getSelectedCategoryPreviousQuestion(): String {
+        var prevQuestion = selectedCategoryQuestions.value!![questionsCounter]
+        if (questionsCounter > 1) {
+            questionsCounter -= 1
+            prevQuestion = selectedCategoryQuestions.value!![questionsCounter]
+        } else {
+            Toast.makeText(
+                getApplication<Application?>().applicationContext,
+                getApplication<Application?>().applicationContext.resources.getString(R.string.toast_prev_question_error),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+        return prevQuestion
     }
 }

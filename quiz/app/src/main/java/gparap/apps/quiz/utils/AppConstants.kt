@@ -31,4 +31,6 @@ object AppConstants {
     const val DB_TABLE_HISTORY = "history"
     const val DB_TABLE_LITERATURE = "literature"
     const val DB_TABLE_MATHS = "mathematics"
+
+    const val QUIZ_QUESTIONS_COUNT = 10
 }
