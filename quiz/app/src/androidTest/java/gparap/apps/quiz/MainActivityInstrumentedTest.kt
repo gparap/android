@@ -17,6 +17,7 @@ package gparap.apps.quiz
 
 import android.content.Context
 import android.view.View
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
@@ -100,6 +101,52 @@ class MainActivityInstrumentedTest {
             questions = it.getViewModel().getSelectedCategoryQuestions()
         }
         assertNotNull(questions)
+    }
+
+    @Test
+    @MediumTest
+    fun onQuizStart_getAllMultipleChoicesOfQuestion() {
+        var choices: List<String>? = null
+        val category = context.resources.getString(R.string.category_animals)
+        selectCategoryAndStartQuiz(category)
+        activityScenario.onActivity {
+            choices = it.getViewModel().getMultipleChoices()
+        }
+        assertNotNull(choices)
+    }
+
+    @Test
+    @MediumTest
+    fun onQuizStart_displayAllMultipleChoicesOfQuestionAsRadioButtonOptions() {
+        //select a category and start the quiz
+        val category = context.resources.getString(R.string.category_animals)
+        selectCategoryAndStartQuiz(category)
+
+        //get radio button option texts
+        var radioButtonOption1: String? = null
+        var radioButtonOption2: String? = null
+        var radioButtonOption3: String? = null
+        var radioButtonOption4: String? = null
+        activityScenario.onActivity {
+            it.findViewById<RadioButton>(R.id.radio_button_choice_one).apply {
+                radioButtonOption1 = this.text.toString()
+            }
+            it.findViewById<RadioButton>(R.id.radio_button_choice_two).apply {
+                radioButtonOption2 = this.text.toString()
+            }
+            it.findViewById<RadioButton>(R.id.radio_button_choice_three).apply {
+                radioButtonOption3 = this.text.toString()
+            }
+            it.findViewById<RadioButton>(R.id.radio_button_choice_four).apply {
+                radioButtonOption4 = this.text.toString()
+            }
+        }
+
+        //test here all 4 radio button's texts
+        assertNotNull(radioButtonOption1)
+        assertNotNull(radioButtonOption2)
+        assertNotNull(radioButtonOption3)
+        assertNotNull(radioButtonOption4)
     }
 
     @Test

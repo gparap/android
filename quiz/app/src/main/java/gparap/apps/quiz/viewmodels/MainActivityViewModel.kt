@@ -36,6 +36,8 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
     private var questionsLiterature: MutableLiveData<List<String>> = MutableLiveData()
     private var questionsMathematics: MutableLiveData<List<String>> = MutableLiveData()
     private var questionsCounter: Int = 0
+    private var selectedCategoryAnswers: MutableLiveData<ArrayList<ArrayList<String>>> =
+        MutableLiveData()
 
     fun getSelectedCategory(): LiveData<String> {
         return selectedCategoryLiveData
@@ -49,7 +51,7 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
         return selectedCategoryQuestions.value
     }
 
-    fun getQuestionsCounter() : Int {
+    fun getQuestionsCounter(): Int {
         return questionsCounter
     }
 
@@ -186,5 +188,48 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
             ).show()
         }
         return prevQuestion
+    }
+
+    /**
+     * Returns 4 multiple choices for the current quiz question with one of them being the right one
+     */
+    fun getMultipleChoices(): List<String> {
+        //initialize the list that holds the lists that hold all multiple choices
+        if (selectedCategoryAnswers.value == null) {
+            selectedCategoryAnswers.value = ArrayList()
+            for (i in 0..AppConstants.QUIZ_QUESTIONS_COUNT) {
+                selectedCategoryAnswers.value!!.add(ArrayList())
+            }
+        }
+
+        //fetch the right answer from the database based on the current category question
+        val answer = database.getRightAnswer(
+            selectedCategoryLiveData.value!!,
+            selectedCategoryQuestions.value!![questionsCounter]
+        )
+
+        //add right answer to the list that holds the lists that hold all multiple choices
+        selectedCategoryAnswers.value?.get(questionsCounter - 1)?.add(answer)
+
+        //fetch the wrongs answers from the database based on the current category question
+        var choices = database.getWrongAnswers(
+            selectedCategoryLiveData.value!!,
+            selectedCategoryQuestions.value!![questionsCounter]
+        )
+
+        //split and cleanup the wrong answers
+        choices = choices.replace("[", "")
+        choices = choices.replace("]", "")
+        choices = choices.replace("\"", "")
+        val choicesSplit = choices.split(",")
+
+        //add wrongs answers to the list that holds the lists that hold all multiple choices
+        for (s in choicesSplit) {
+            selectedCategoryAnswers.value!![questionsCounter - 1].add(s)
+        }
+
+        //shuffle and return the multiple choices
+        selectedCategoryAnswers.value?.get(questionsCounter - 1)?.shuffle()
+        return selectedCategoryAnswers.value?.get(questionsCounter - 1) as List<String>
     }
 }

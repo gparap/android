@@ -100,4 +100,52 @@ class QuizDatabase(
                 return questions
             }
     }
+
+    /**
+     * Query the database and get the right answer based on a category question
+     */
+    fun getRightAnswer(category: String, question: String): String {
+        var answer = ""
+        db?.query(category.lowercase(),
+            arrayOf("answer"),
+            "question='$question'",
+            null,
+            null,
+            null,
+            null)
+            .apply {
+                with(this) {
+                    while (this!!.moveToNext()) {
+                        answer = getString(getColumnIndexOrThrow("answer"))
+                    }
+                }
+            }.also {
+                it?.close()
+                return answer
+            }
+    }
+
+    /**
+     * Query the database and get all the wrong answers based on a category question
+     */
+    fun getWrongAnswers(category: String, question: String): String {
+        var choices = ""
+        db?.query(category.lowercase(),
+            arrayOf("choices"),
+            "question=\"$question\"",
+            null,
+            null,
+            null,
+            null)
+            .apply {
+                with(this) {
+                    while (this!!.moveToNext()) {
+                        choices = getString(getColumnIndexOrThrow("choices"))
+                    }
+                }
+            }.also {
+                it?.close()
+                return choices
+            }
+    }
 }
