@@ -111,8 +111,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     visibility = VISIBLE
                 }
 
-                //display and handle questions
+                //display and handle questions & answers
                 displayNextQuestion()
+                displayMultipleChoices()
                 handleNextQuestionButtonCallback()
                 handlePreviousQuestionButtonCallback()
             }
@@ -124,6 +125,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         this@MainActivity.findViewById<ImageButton>(R.id.button_prev_question).apply {
             setOnClickListener {
                 displayPreviousQuestion()
+                displayMultipleChoices()
                 updateQuestionCounter()
             }
         }
@@ -134,6 +136,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         this@MainActivity.findViewById<ImageButton>(R.id.button_next_question).apply {
             setOnClickListener {
                 displayNextQuestion()
+                displayMultipleChoices()
                 updateQuestionCounter()
             }
         }
@@ -147,6 +150,16 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 .plus(this@MainActivity.resources.getString(R.string.text_questions_counter_suffix))
                 .plus(AppConstants.QUIZ_QUESTIONS_COUNT)
         }
+    }
+
+    /* Displays multiple choices for a question - one of them is the right answer */
+    private fun displayMultipleChoices() {
+        val choices = viewModel.getMultipleChoices()
+
+        findViewById<RadioButton>(R.id.radio_button_choice_one).apply { text = choices[0] }
+        findViewById<RadioButton>(R.id.radio_button_choice_two).apply { text = choices[1] }
+        findViewById<RadioButton>(R.id.radio_button_choice_three).apply { text = choices[2] }
+        findViewById<RadioButton>(R.id.radio_button_choice_four).apply { text = choices[3] }
     }
 
     /* Displays the previous question for the current quiz */
