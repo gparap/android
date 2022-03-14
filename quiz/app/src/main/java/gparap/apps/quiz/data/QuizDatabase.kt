@@ -22,6 +22,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import gparap.apps.quiz.R
 import gparap.apps.quiz.utils.AppConstants
+import gparap.apps.quiz.utils.Utils
 
 class QuizDatabase(
     private val context: Context?,
@@ -105,10 +106,11 @@ class QuizDatabase(
      * Query the database and get the right answer based on a category question
      */
     fun getRightAnswer(category: String, question: String): String {
+        val fixedQuestion = Utils.fixSingleStringQuotes(question)
         var answer = ""
         db?.query(category.lowercase(),
             arrayOf("answer"),
-            "question='$question'",
+            "question='$fixedQuestion'",
             null,
             null,
             null,
@@ -129,10 +131,11 @@ class QuizDatabase(
      * Query the database and get all the wrong answers based on a category question
      */
     fun getWrongAnswers(category: String, question: String): String {
+        val fixedQuestion = Utils.fixSingleStringQuotes(question)
         var choices = ""
         db?.query(category.lowercase(),
             arrayOf("choices"),
-            "question=\"$question\"",
+            "question='$fixedQuestion'",
             null,
             null,
             null,

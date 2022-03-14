@@ -39,4 +39,13 @@ class UtilsTest {
 
         assertEquals(actualFile, expectedFile)
     }
+
+    @Test
+    fun fixSingleStringQuotes_replaceOneSingleQuoteWithTwoSingleQuotes() {
+        val initialString = "Fix this ' single quote"
+        val expectedString = "Fix this '' single quote"
+        val actualString = Utils.fixSingleStringQuotes(initialString)
+
+        assertEquals(expectedString, actualString)
+    }
 }
