@@ -197,9 +197,14 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
         //initialize the list that holds the lists that hold all multiple choices
         if (selectedCategoryAnswers.value == null) {
             selectedCategoryAnswers.value = ArrayList()
-            for (i in 0..AppConstants.QUIZ_QUESTIONS_COUNT) {
+            for (i in 1..AppConstants.QUIZ_QUESTIONS_COUNT) {
                 selectedCategoryAnswers.value!!.add(ArrayList())
             }
+        }
+
+        //return the multiple choices and do not query the database if we already have them
+        if (selectedCategoryAnswers.value!![questionsCounter - 1].isNotEmpty()) {
+            return selectedCategoryAnswers.value?.get(questionsCounter - 1) as List<String>
         }
 
         //fetch the right answer from the database based on the current category question
@@ -228,8 +233,10 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
             selectedCategoryAnswers.value!![questionsCounter - 1].add(s)
         }
 
-        //shuffle and return the multiple choices
+        //shuffle the multiple choices
         selectedCategoryAnswers.value?.get(questionsCounter - 1)?.shuffle()
+
+        //return the multiple choices
         return selectedCategoryAnswers.value?.get(questionsCounter - 1) as List<String>
     }
 }
