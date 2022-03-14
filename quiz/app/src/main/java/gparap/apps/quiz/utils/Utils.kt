@@ -25,6 +25,14 @@ import java.nio.charset.Charset
 
 object Utils {
     /**
+     * Returns a new string by fixing single string quotes (used before querying a database)
+     */
+    fun fixSingleStringQuotes(string: String): String {
+        val singleQuotes = "\'\'"
+        return string.replace("\'", singleQuotes)
+    }
+
+    /**
      * Gets the specific JSON file based on a category name
      */
     fun getJsonFileByCategory(categoryName: String) : String {
