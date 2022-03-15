@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var viewModel: MainActivityViewModel
     private lateinit var spinner: Spinner
     private var selectedCategory = ""
+    private var userQuizAnswers = ArrayList<String>()
 
     fun getViewModel(): MainActivityViewModel {
         return viewModel
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         viewModel.createOrOpenDatabase()
         observeSelectedCategory()
         handleQuizCategorySelectionCallback()
+        observeUserQuizAnswers()
     }
 
     override fun onDestroy() {
@@ -94,6 +96,13 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     override fun onNothingSelected(parent: AdapterView<*>?) {}
 
+    /* Registers a callback to be invoked when the submit answer button has been pressed */
+    private fun handleSubmitAnswerButtonCallback() {
+        findViewById<Button>(R.id.button_submit_answer).setOnClickListener {
+            submitAnswer()
+        }
+    }
+
     /* Registers a callback to be invoked when the start quiz button has been pressed */
     private fun handleStartQuizButtonCallback() {
         findViewById<Button>(R.id.button_start_quiz).apply {
@@ -116,6 +125,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 displayMultipleChoices()
                 handleNextQuestionButtonCallback()
                 handlePreviousQuestionButtonCallback()
+                handleSubmitAnswerButtonCallback()
             }
         }
     }
@@ -140,6 +150,42 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 updateQuestionCounter()
             }
         }
+    }
+
+    /* The user submits an answer for the current quiz question */
+    private fun submitAnswer() {
+        //check if one radio button is selected
+        val radioGroup: RadioGroup? = findViewById<RadioGroup>(R.id.radio_group_choices).apply {
+            if (checkedRadioButtonId == -1) {
+                Toast.makeText(this@MainActivity,
+                    resources.getString(R.string.toast_select_answer_error),
+                    Toast.LENGTH_SHORT)
+                    .show()
+                return
+            }
+        }
+
+        //get the user answer from the radio button text
+        var answer = ""
+        when (radioGroup?.checkedRadioButtonId) {
+            R.id.radio_button_choice_one ->
+                answer = findViewById<RadioButton>(R.id.radio_button_choice_one).text.toString()
+            R.id.radio_button_choice_two ->
+                answer = findViewById<RadioButton>(R.id.radio_button_choice_two).text.toString()
+            R.id.radio_button_choice_three ->
+                answer = findViewById<RadioButton>(R.id.radio_button_choice_three).text.toString()
+            R.id.radio_button_choice_four ->
+                answer = findViewById<RadioButton>(R.id.radio_button_choice_four).text.toString()
+        }
+
+        //get answer and continue the quiz
+        if (viewModel.getQuestionsCounter() != AppConstants.QUIZ_QUESTIONS_COUNT) {
+            radioGroup?.clearCheck()
+        }
+        viewModel.addUserAnswer(answer)
+        displayNextQuestion()
+        displayMultipleChoices()
+        updateQuestionCounter()
     }
 
     /* Update the text of the view that displays the questions counter ie. "Question 1..10 of 10" */
@@ -187,6 +233,13 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private fun observeSelectedCategory() {
         viewModel.getSelectedCategory().observe(this) {
             selectedCategory = it
+        }
+    }
+
+    /* Observes the user's answers */
+    private fun observeUserQuizAnswers() {
+        viewModel.getUserQuizAnswers().observe(this) {
+            userQuizAnswers = it!!
         }
     }
 }

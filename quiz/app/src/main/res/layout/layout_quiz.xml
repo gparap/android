@@ -99,10 +99,12 @@
         android:layout_height="0dp"
         android:contentDescription="@string/desc_next_question_button"
         android:src="@drawable/ic_next_question_48"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/button_submit_answer"
         app:layout_constraintStart_toEndOf="@+id/button_submit_answer"
         app:layout_constraintTop_toBottomOf="@+id/radio_group_choices"
-        tools:ignore="ImageContrastCheck" />
+        tools:ignore="ImageContrastCheck"
+        tools:visibility="visible" />
 
     <!--Previous question button-->
     <ImageButton
@@ -111,9 +113,11 @@
         android:layout_height="0dp"
         android:contentDescription="@string/desc_prev_question_button"
         android:src="@drawable/ic_prev_question_48"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/button_submit_answer"
         app:layout_constraintEnd_toStartOf="@+id/button_submit_answer"
         app:layout_constraintTop_toBottomOf="@+id/radio_group_choices"
-        tools:ignore="ImageContrastCheck" />
+        tools:ignore="ImageContrastCheck"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
