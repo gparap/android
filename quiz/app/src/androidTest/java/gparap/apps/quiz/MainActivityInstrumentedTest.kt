@@ -179,7 +179,7 @@ class MainActivityInstrumentedTest {
         var questionNext: String? = null
         val category = context.resources.getString(R.string.category_animals)
         selectCategoryAndStartQuiz(category)
-        
+
         //go a little forward into questions
         onView(withId(R.id.button_next_question)).perform(click())
         onView(withId(R.id.button_next_question)).perform(click())
@@ -237,6 +237,47 @@ class MainActivityInstrumentedTest {
             .inRoot(withDecorView(not(decorView)))
             .check(matches(isDisplayed()))
 
+    }
+
+    @Test
+    @LargeTest
+    fun onUserAnswerSubmitButton_showMessageWhenTheUserSelectedNothing() {
+        //wait for a possible toast message to fade away
+        Thread.sleep(Toast.LENGTH_LONG.toLong())
+
+        //select category
+        val category = context.resources.getString(R.string.category_animals)
+        selectCategoryAndStartQuiz(category)
+
+        //try to submit without selecting an answer
+        onView(withId(R.id.button_submit_answer)).perform(click())
+
+        onView(withText(R.string.toast_select_answer_error))
+            .inRoot(withDecorView(not(decorView)))
+            .check(matches(isDisplayed()))
+    }
+
+    @Test
+    @LargeTest
+    fun onUserAnswerSubmitButton_userQuizAnswerIsNotEmpty() {
+        //wait for a possible toast message to fade away
+        Thread.sleep(Toast.LENGTH_LONG.toLong())
+
+        //select category
+        val category = context.resources.getString(R.string.category_animals)
+        selectCategoryAndStartQuiz(category)
+
+        //submit the first answer
+        onView(withId(R.id.radio_button_choice_one)).perform(click())
+        onView(withId(R.id.button_submit_answer)).perform(click())
+
+        //get the user first answer
+        var userAnswer: String? = null
+        activityScenario.onActivity {
+            userAnswer = it.getViewModel().getUserQuizAnswers().value?.get(0).toString()
+        }
+
+        assert(!userAnswer.isNullOrEmpty())
     }
 
     private fun selectCategoryAndStartQuiz(category: String) {

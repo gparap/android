@@ -21,7 +21,7 @@
     <string name="category_literature">Literature</string>
     <string name="category_mathematics">Mathematics</string>
 
-    <!--Quiz started texts-->
+    <!--Quiz texts-->
     <string name="text_timer_default">00:59</string>
     <string name="text_questions_counter_default">Question 1 of 10</string>
     <string name="text_questions_counter_prefix">Question &#160;</string>
@@ -32,4 +32,5 @@
     <string name="desc_prev_question_button">Previous question</string>
     <string name="toast_next_question_error">No more questions!</string>
     <string name="toast_prev_question_error">Can\'t go back!</string>
+    <string name="toast_select_answer_error">Please, select an answer!</string>
 </resources>

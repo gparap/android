@@ -38,6 +38,7 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
     private var questionsCounter: Int = 0
     private var selectedCategoryAnswers: MutableLiveData<ArrayList<ArrayList<String>>> =
         MutableLiveData()
+    private var userQuizAnswers: MutableLiveData<ArrayList<String>> = MutableLiveData()
 
     fun getSelectedCategory(): LiveData<String> {
         return selectedCategoryLiveData
@@ -53,6 +54,10 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
 
     fun getQuestionsCounter(): Int {
         return questionsCounter
+    }
+
+    fun getUserQuizAnswers(): LiveData<ArrayList<String>?> {
+        return userQuizAnswers
     }
 
     /**
@@ -238,5 +243,12 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
 
         //return the multiple choices
         return selectedCategoryAnswers.value?.get(questionsCounter - 1) as List<String>
+    }
+
+    fun addUserAnswer(answer: String) {
+        if (userQuizAnswers.value == null) {
+            userQuizAnswers.value = ArrayList()
+        }
+        userQuizAnswers.value?.add(questionsCounter - 1, answer)
     }
 }
