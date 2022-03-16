@@ -3,4 +3,7 @@
     <!--Design dimensions: 411 x 731 dp, 420dpi-->
     <dimen name="textSize_page_title">20sp</dimen>
     <dimen name="textSize_important">16sp</dimen>
+    <dimen name="marginTop_outro_category_label">64dp</dimen>
+    <dimen name="marginTop_button_check_answers">32dp</dimen>
+    <dimen name="paddingStartEnd_button_check_answers">48</dimen>
 </resources>

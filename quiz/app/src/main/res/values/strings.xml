@@ -33,4 +33,14 @@
     <string name="toast_next_question_error">No more questions!</string>
     <string name="toast_prev_question_error">Can\'t go back!</string>
     <string name="toast_select_answer_error">Please, select an answer!</string>
+
+    <!--Quiz results-->
+    <string name="label_category">Category:&#160;</string>
+    <string name="label_average_difficulty">Difficulty (avg):&#160;</string>
+    <string name="label_right_answers">Right Answers:&#160;</string>
+    <string name="label_score">Score:&#160;</string>
+    <string name="label_high_score">High Score:&#160;</string>
+    <string name="button_check_answers">Check Answers</string>
+    <string name="button_restart_quiz">Restart Quiz</string>
+    <string name="button_change_category">Change Category</string>
 </resources>
