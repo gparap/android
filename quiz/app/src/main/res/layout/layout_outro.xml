@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--an invisible helper-->
+    <TextView
+        android:id="@+id/beacon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--Category label-->
+    <TextView
+        android:id="@+id/text_view_outro_category_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop_outro_category_label"
+        android:text="@string/label_category"
+        app:layout_constraintEnd_toStartOf="@+id/beacon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--Category text-->
+    <TextView
+        android:id="@+id/text_view_outro_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_category"
+        app:layout_constraintBottom_toBottomOf="@+id/text_view_outro_category_label"
+        app:layout_constraintStart_toEndOf="@+id/text_view_outro_category_label"
+        app:layout_constraintTop_toTopOf="@+id/text_view_outro_category_label"
+        tools:text="History" />
+
+    <!--Average difficulty label-->
+    <TextView
+        android:id="@+id/text_view_outro_difficulty_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_average_difficulty"
+        app:layout_constraintEnd_toStartOf="@+id/beacon"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_outro_category_label" />
+
+    <!--Average difficulty text-->
+    <TextView
+        android:id="@+id/text_view_outro_difficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/text_view_outro_difficulty_label"
+        app:layout_constraintStart_toEndOf="@+id/text_view_outro_difficulty_label"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_outro_category_label"
+        tools:text="medium" />
+
+    <!--Right answers label-->
+    <TextView
+        android:id="@+id/text_view_outro_answers_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_right_answers"
+        app:layout_constraintEnd_toStartOf="@+id/beacon"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_outro_difficulty_label" />
+
+    <!--Right answers text-->
+    <TextView
+        android:id="@+id/text_view_outro_answers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/text_view_outro_answers_label"
+        app:layout_constraintStart_toEndOf="@+id/text_view_outro_answers_label"
+        app:layout_constraintTop_toTopOf="@+id/text_view_outro_answers_label"
+        tools:text="10/10" />
+
+    <!--Score label-->
+    <TextView
+        android:id="@+id/text_view_outro_score_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_score"
+        app:layout_constraintEnd_toStartOf="@+id/beacon"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_outro_answers_label" />
+
+    <!--Score text-->
+    <TextView
+        android:id="@+id/text_view_outro_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/text_view_outro_score_label"
+        app:layout_constraintStart_toEndOf="@+id/text_view_outro_score_label"
+        app:layout_constraintTop_toTopOf="@+id/text_view_outro_score_label"
+        tools:text="100" />
+
+    <!--High score label-->
+    <TextView
+        android:id="@+id/text_view_outro_high_score_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_high_score"
+        app:layout_constraintEnd_toStartOf="@+id/beacon"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_outro_score" />
+
+    <!--High score text-->
+    <TextView
+        android:id="@+id/text_view_outro_high_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/text_view_outro_high_score_label"
+        app:layout_constraintStart_toEndOf="@+id/text_view_outro_high_score_label"
+        app:layout_constraintTop_toTopOf="@+id/text_view_outro_high_score_label"
+        tools:text="200" />
+
+    <!--Button Check Answers-->
+    <Button
+        android:id="@+id/button_check_answers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop_button_check_answers"
+        android:paddingStart="@dimen/paddingStartEnd_button_check_answers"
+        android:paddingEnd="@dimen/paddingStartEnd_button_check_answers"
+        android:text="@string/button_check_answers"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_outro_high_score_label" />
+
+    <!--Button Restart Quiz-->
+    <Button
+        android:id="@+id/button_restart_quiz"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/button_restart_quiz"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@+id/button_check_answers"
+        app:layout_constraintStart_toStartOf="@+id/button_check_answers"
+        app:layout_constraintTop_toBottomOf="@+id/button_check_answers" />
+
+    <!--Button Change Category-->
+    <Button
+        android:id="@+id/button_change_category"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/button_change_category"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@+id/button_check_answers"
+        app:layout_constraintStart_toStartOf="@+id/button_check_answers"
+        app:layout_constraintTop_toBottomOf="@+id/button_restart_quiz" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
