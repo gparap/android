@@ -36,8 +36,20 @@
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_questions_counter"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_question_difficulty"
         tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fringilla vel magna scelerisque finibus. Aliquam erat volutpat. In in quam aliquet, finibus leo a, rutrum enim.???" />
+
+    <!--Question difficulty-->
+    <TextView
+        android:id="@+id/text_view_question_difficulty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_questions_counter"
+        tools:text="(MEDIUM)" />
 
     <!--Choices-->
     <RadioGroup

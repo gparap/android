@@ -25,6 +25,7 @@ import gparap.apps.quiz.data.QuizDatabase
 import gparap.apps.quiz.data.QuizModel
 import gparap.apps.quiz.utils.AppConstants
 import gparap.apps.quiz.utils.Utils
+import java.lang.Exception
 
 class MainActivityViewModel(application: Application) : AndroidViewModel(application) {
     private lateinit var database: QuizDatabase
@@ -39,6 +40,7 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
     private var selectedCategoryAnswers: MutableLiveData<ArrayList<ArrayList<String>>> =
         MutableLiveData()
     private var userQuizAnswers: MutableLiveData<ArrayList<String>> = MutableLiveData()
+    private var questionsDifficulty: MutableLiveData<ArrayList<String>> = MutableLiveData()
 
     fun getSelectedCategory(): LiveData<String> {
         return selectedCategoryLiveData
@@ -250,5 +252,36 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
             userQuizAnswers.value = ArrayList()
         }
         userQuizAnswers.value?.add(questionsCounter - 1, answer)
+    }
+
+    /**
+     * Returns the difficulty for the current quiz question.
+     *
+     * Difficulty can be: EASY or MEDIUM or HARD
+     */
+    fun getQuestionDifficulty(): String? {
+        var difficulty: String?
+
+        //initialize the list that holds the difficulties
+        if (questionsDifficulty.value == null) {
+            questionsDifficulty.value = ArrayList()
+
+            //get the difficulty from the list (if exists)
+        } else {
+            try {
+                difficulty = questionsDifficulty.value?.get(questionsCounter - 1)
+                return difficulty
+            } catch (e: Exception) {
+            }
+        }
+
+        //get the difficulty from the database and add it to the list
+        difficulty = database.getQuestionDifficulty(
+            selectedCategoryLiveData.value!!,
+            selectedCategoryQuestions.value!![questionsCounter - 1]
+        )
+        questionsDifficulty.value?.add(questionsCounter - 1, difficulty)
+
+        return difficulty
     }
 }
