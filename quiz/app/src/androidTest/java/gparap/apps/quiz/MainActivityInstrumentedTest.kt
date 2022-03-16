@@ -151,6 +151,35 @@ class MainActivityInstrumentedTest {
 
     @Test
     @MediumTest
+    fun onQuizStart_getQuestionDifficulty() {
+        var difficulty: String? = null
+        val category = context.resources.getString(R.string.category_animals)
+        selectCategoryAndStartQuiz(category)
+        activityScenario.onActivity {
+            difficulty = it.getViewModel().getQuestionDifficulty()
+        }
+        assertNotNull(difficulty)
+    }
+
+    @Test
+    @MediumTest
+    fun onSubmitQuestion_getQuestionDifficulty() {
+        var difficulty: String? = null
+        val category = context.resources.getString(R.string.category_animals)
+        selectCategoryAndStartQuiz(category)
+
+        //submit the first answer
+        onView(withId(R.id.radio_button_choice_one)).perform(click())
+        onView(withId(R.id.button_submit_answer)).perform(click())
+
+        activityScenario.onActivity {
+            difficulty = it.getViewModel().getQuestionDifficulty()
+        }
+        assertNotNull(difficulty)
+    }
+
+    @Test
+    @MediumTest
     fun onNextQuestionButtonClick_getNextQuestion() {
         var questionCurr: String? = null
         var questionNext: String? = null

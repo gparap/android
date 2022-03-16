@@ -24,6 +24,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
 import gparap.apps.quiz.utils.AppConstants
 import gparap.apps.quiz.viewmodels.MainActivityViewModel
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var viewModel: MainActivityViewModel
@@ -123,6 +125,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 //display and handle questions & answers
                 displayNextQuestion()
                 displayMultipleChoices()
+                displayDifficulty()
                 handleNextQuestionButtonCallback()
                 handlePreviousQuestionButtonCallback()
                 handleSubmitAnswerButtonCallback()
@@ -185,6 +188,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         viewModel.addUserAnswer(answer)
         displayNextQuestion()
         displayMultipleChoices()
+        displayDifficulty()
         updateQuestionCounter()
     }
 
@@ -195,6 +199,19 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 .plus(viewModel.getQuestionsCounter())
                 .plus(this@MainActivity.resources.getString(R.string.text_questions_counter_suffix))
                 .plus(AppConstants.QUIZ_QUESTIONS_COUNT)
+        }
+    }
+
+    /* Update the text of the view that displays the question's difficulty ie. (EASY) */
+    private fun displayDifficulty() {
+        val difficulty = viewModel.getQuestionDifficulty()
+        findViewById<TextView>(R.id.text_view_question_difficulty).apply {
+            var string =
+                AppConstants.QUESTION_DIFFICULTY_PREFIX
+                    .plus(difficulty)
+                    .plus(AppConstants.QUESTION_DIFFICULTY_SUFFIX)
+            string = string.uppercase(Locale.getDefault())
+            text = string
         }
     }
 

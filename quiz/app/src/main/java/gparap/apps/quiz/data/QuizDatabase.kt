@@ -151,4 +151,29 @@ class QuizDatabase(
                 return choices
             }
     }
+
+    /**
+     * Query the database and get the difficulty of a question based on a category
+     */
+    fun getQuestionDifficulty(category: String, question: String): String {
+        val fixedQuestion = Utils.fixSingleStringQuotes(question)
+        var difficulty = ""
+        db?.query(category.lowercase(),
+            arrayOf("difficulty"),
+            "question='$fixedQuestion'",
+            null,
+            null,
+            null,
+            null)
+            .apply {
+                with(this) {
+                    while (this!!.moveToNext()) {
+                        difficulty = getString(getColumnIndexOrThrow("difficulty"))
+                    }
+                }
+            }.also {
+                it?.close()
+                return difficulty
+            }
+    }
 }

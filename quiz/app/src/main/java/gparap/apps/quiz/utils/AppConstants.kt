@@ -33,4 +33,7 @@ object AppConstants {
     const val DB_TABLE_MATHS = "mathematics"
 
     const val QUIZ_QUESTIONS_COUNT = 10
+
+    const val QUESTION_DIFFICULTY_PREFIX = "("
+    const val QUESTION_DIFFICULTY_SUFFIX = ")"
 }
