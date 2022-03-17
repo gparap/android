@@ -16,14 +16,10 @@
 package gparap.apps.quiz.utils
 
 object AppConstants {
-    /**
-     * Character set name used for converting data from an array of bytes to a string
-     */
+    /* Character set name used for converting data from an array of bytes to a string */
     const val CHARSET_NAME = "UTF-8"
 
-    /**
-     * Quiz database and its tables
-     */
+    /* Quiz database and its tables */
     const val DATABASE_NAME = "quizDB"
     const val DATABASE_VERSION = 1
     const val DB_TABLE_ANIMALS = "animals"
@@ -34,6 +30,10 @@ object AppConstants {
 
     const val QUIZ_QUESTIONS_COUNT = 10
 
+    /* Question difficulty values */
     const val QUESTION_DIFFICULTY_PREFIX = "("
     const val QUESTION_DIFFICULTY_SUFFIX = ")"
+    const val QUESTION_DIFFICULTY_EASY = "easy"
+    const val QUESTION_DIFFICULTY_MEDIUM = "medium"
+    const val QUESTION_DIFFICULTY_HARD = "hard"
 }

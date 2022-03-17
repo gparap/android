@@ -5,5 +5,5 @@
     <dimen name="textSize_important">16sp</dimen>
     <dimen name="marginTop_outro_category_label">64dp</dimen>
     <dimen name="marginTop_button_check_answers">32dp</dimen>
-    <dimen name="paddingStartEnd_button_check_answers">48</dimen>
+    <dimen name="paddingStartEnd_button_check_answers">48dp</dimen>
 </resources>

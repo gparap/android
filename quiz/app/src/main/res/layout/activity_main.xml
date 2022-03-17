@@ -39,6 +39,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_categories"
+        tools:visibility="invisible" />
+
+    <!--Results layout-->
+    <include
+        android:id="@+id/main_layout_results"
+        layout="@layout/layout_outro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_categories"
         tools:visibility="visible" />
 
     <!--Start quiz button-->

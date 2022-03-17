@@ -25,6 +25,37 @@ import java.nio.charset.Charset
 
 object Utils {
     /**
+     * Calculates the difficulty of a completed quiz based on its questions' difficulties.
+     *
+     * Returns the average difficulty as a string ie. "EASY"
+     */
+    fun calculateQuizAverageDifficulty(values: List<String>) : String {
+
+        var difficultyPoints = 0
+
+        //get all difficulties and map them to relative name variables
+        for(i in 0 until AppConstants.QUIZ_QUESTIONS_COUNT){
+            when(values[i]) {
+                AppConstants.QUESTION_DIFFICULTY_EASY -> difficultyPoints += 1
+                AppConstants.QUESTION_DIFFICULTY_MEDIUM -> difficultyPoints += 2
+                AppConstants.QUESTION_DIFFICULTY_HARD ->difficultyPoints += 3
+            }
+        }
+
+        //get the average of the difficulty
+        val average: Float = (difficultyPoints / AppConstants.QUIZ_QUESTIONS_COUNT).toFloat()
+
+        //return the average value as a string describing the difficulty
+        return if (average < 1.5F) {
+            AppConstants.QUESTION_DIFFICULTY_EASY
+        } else if (average >= 1.5F && average < 2.5F) {
+            AppConstants.QUESTION_DIFFICULTY_MEDIUM
+        } else {
+            AppConstants.QUESTION_DIFFICULTY_HARD
+        }
+    }
+
+    /**
      * Returns a new string by fixing single string quotes (used before querying a database)
      */
     fun fixSingleStringQuotes(string: String): String {
