@@ -314,4 +314,18 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
         }
         return rightAnswers
     }
+
+    /**
+     * Returns the user score based on how many questions did they answer right and
+     * what was the difficulty for these questions
+     */
+    fun getUserScore(): Int {
+        var score = 0
+        for (i in 0 until AppConstants.QUIZ_QUESTIONS_COUNT) {
+            if (userQuizAnswers.value!![i] == selectedCategoryRightAnswers.value!![i]) {
+                score += Utils.getScoreByDifficulty(questionsDifficulty.value!![i])
+            }
+        }
+        return score
+    }
 }
