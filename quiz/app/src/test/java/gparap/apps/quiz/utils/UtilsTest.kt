@@ -48,4 +48,62 @@ class UtilsTest {
 
         assertEquals(expectedString, actualString)
     }
+
+    @Test
+    fun calculateQuizAverageDifficulty_easyDifficultyValueIsCorrect() {
+        val difficulties = ArrayList<String>()
+        val expectedDifficulty = AppConstants.QUESTION_DIFFICULTY_EASY
+
+        //add difficulties for an easy quiz
+        for (i in 0 until AppConstants.QUIZ_QUESTIONS_COUNT) {
+            //add some non-easy difficulties
+            if (i == 0 || i == 1 || i == 2) {
+                difficulties.add(AppConstants.QUESTION_DIFFICULTY_HARD)
+            } else {
+                difficulties.add(AppConstants.QUESTION_DIFFICULTY_EASY)
+            }
+        }
+
+        //get the average difficulty
+        val actualDifficulty = Utils.calculateQuizAverageDifficulty(difficulties)
+
+        assertEquals(expectedDifficulty, actualDifficulty)
+    }
+
+    @Test
+    fun calculateQuizAverageDifficulty_mediumDifficultyValueIsCorrect() {
+        val difficulties = ArrayList<String>()
+        val expectedDifficulty = AppConstants.QUESTION_DIFFICULTY_MEDIUM
+
+        //add difficulties for an medium quiz
+        for (i in 0 until AppConstants.QUIZ_QUESTIONS_COUNT) {
+            //add some non-medium difficulties
+            if (i == 0 || i == 1 || i == 2) {
+                difficulties.add(AppConstants.QUESTION_DIFFICULTY_HARD)
+            } else {
+                difficulties.add(AppConstants.QUESTION_DIFFICULTY_MEDIUM)
+            }
+        }
+
+        //get the average difficulty
+        val actualDifficulty = Utils.calculateQuizAverageDifficulty(difficulties)
+
+        assertEquals(expectedDifficulty, actualDifficulty)
+    }
+
+    @Test
+    fun calculateQuizAverageDifficulty_hardDifficultyValueIsCorrect() {
+        val difficulties = ArrayList<String>()
+        val expectedDifficulty = AppConstants.QUESTION_DIFFICULTY_HARD
+
+        //add difficulties for an hard quiz
+        for (i in 0 until AppConstants.QUIZ_QUESTIONS_COUNT) {
+            difficulties.add(AppConstants.QUESTION_DIFFICULTY_HARD)
+        }
+
+        //get the average difficulty
+        val actualDifficulty = Utils.calculateQuizAverageDifficulty(difficulties)
+
+        assertEquals(expectedDifficulty, actualDifficulty)
+    }
 }

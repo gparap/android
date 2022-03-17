@@ -25,7 +25,6 @@ import gparap.apps.quiz.data.QuizDatabase
 import gparap.apps.quiz.data.QuizModel
 import gparap.apps.quiz.utils.AppConstants
 import gparap.apps.quiz.utils.Utils
-import java.lang.Exception
 
 class MainActivityViewModel(application: Application) : AndroidViewModel(application) {
     private lateinit var database: QuizDatabase
@@ -283,5 +282,14 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
         questionsDifficulty.value?.add(questionsCounter - 1, difficulty)
 
         return difficulty
+    }
+
+    /**
+     * Returns the average difficulty for the current quiz.
+     *
+     * Difficulty can be: easy OR medium OR hard
+     */
+    fun getQuizDifficulty(): String {
+        return Utils.calculateQuizAverageDifficulty(questionsDifficulty.value!!)
     }
 }

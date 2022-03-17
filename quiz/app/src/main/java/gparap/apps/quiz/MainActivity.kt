@@ -181,15 +181,34 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 answer = findViewById<RadioButton>(R.id.radio_button_choice_four).text.toString()
         }
 
-        //get answer and continue the quiz
+        //get answer and continue the quiz unless we reach the end
         if (viewModel.getQuestionsCounter() != AppConstants.QUIZ_QUESTIONS_COUNT) {
             radioGroup?.clearCheck()
+            viewModel.addUserAnswer(answer)
+            displayNextQuestion()
+            displayMultipleChoices()
+            displayDifficulty()
+            updateQuestionCounter()
+
+            //when reach the end of the quiz swap its layout with the results one
+        } else {
+            findViewById<ConstraintLayout>(R.id.main_layout_quiz).apply { visibility = GONE }
+            findViewById<ConstraintLayout>(R.id.main_layout_results).apply { visibility = VISIBLE }
+            displayQuizResults()
         }
-        viewModel.addUserAnswer(answer)
-        displayNextQuestion()
-        displayMultipleChoices()
-        displayDifficulty()
-        updateQuestionCounter()
+    }
+
+    /* Displays the results of the current quiz to the user */
+    private fun displayQuizResults() {
+        //update category field
+        findViewById<TextView>(R.id.text_view_outro_category).apply {
+            text = viewModel.getSelectedCategory().value.toString()
+        }
+        //update average difficulty field
+        findViewById<TextView>(R.id.text_view_outro_difficulty).apply {
+            text = viewModel.getQuizDifficulty()
+        }
+        //TODO: the rest of the results
     }
 
     /* Update the text of the view that displays the questions counter ie. "Question 1..10 of 10" */
