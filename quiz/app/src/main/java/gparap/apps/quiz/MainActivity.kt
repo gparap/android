@@ -190,8 +190,13 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             displayDifficulty()
             updateQuestionCounter()
 
-            //when reach the end of the quiz swap its layout with the results one
+            //when reach the end of the quiz get answer and swap its layout with the results one
         } else {
+            //get answer
+            radioGroup?.clearCheck()
+            viewModel.addUserAnswer(answer)
+
+            //swap layouts
             findViewById<ConstraintLayout>(R.id.main_layout_quiz).apply { visibility = GONE }
             findViewById<ConstraintLayout>(R.id.main_layout_results).apply { visibility = VISIBLE }
             displayQuizResults()
@@ -208,6 +213,13 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         findViewById<TextView>(R.id.text_view_outro_difficulty).apply {
             text = viewModel.getQuizDifficulty()
         }
+        //update user right answers field
+        findViewById<TextView>(R.id.text_view_outro_answers).apply {
+            text = viewModel.getUserRightAnswersToQuiz().toString()
+                .plus(resources.getString(R.string.text_questions_counter_suffix))
+                .plus(AppConstants.QUIZ_QUESTIONS_COUNT)
+        }
+
         //TODO: the rest of the results
     }
 

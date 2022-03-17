@@ -36,7 +36,9 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
     private var questionsLiterature: MutableLiveData<List<String>> = MutableLiveData()
     private var questionsMathematics: MutableLiveData<List<String>> = MutableLiveData()
     private var questionsCounter: Int = 0
-    private var selectedCategoryAnswers: MutableLiveData<ArrayList<ArrayList<String>>> =
+    private var selectedCategoryMultipleChoices: MutableLiveData<ArrayList<ArrayList<String>>> =
+        MutableLiveData()
+    private var selectedCategoryRightAnswers: MutableLiveData<ArrayList<String>> =
         MutableLiveData()
     private var userQuizAnswers: MutableLiveData<ArrayList<String>> = MutableLiveData()
     private var questionsDifficulty: MutableLiveData<ArrayList<String>> = MutableLiveData()
@@ -201,26 +203,33 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
      */
     fun getMultipleChoices(): List<String> {
         //initialize the list that holds the lists that hold all multiple choices
-        if (selectedCategoryAnswers.value == null) {
-            selectedCategoryAnswers.value = ArrayList()
+        if (selectedCategoryMultipleChoices.value == null) {
+            selectedCategoryMultipleChoices.value = ArrayList()
             for (i in 1..AppConstants.QUIZ_QUESTIONS_COUNT) {
-                selectedCategoryAnswers.value!!.add(ArrayList())
+                selectedCategoryMultipleChoices.value!!.add(ArrayList())
             }
         }
 
         //return the multiple choices and do not query the database if we already have them
-        if (selectedCategoryAnswers.value!![questionsCounter - 1].isNotEmpty()) {
-            return selectedCategoryAnswers.value?.get(questionsCounter - 1) as List<String>
+        if (selectedCategoryMultipleChoices.value!![questionsCounter - 1].isNotEmpty()) {
+            return selectedCategoryMultipleChoices.value?.get(questionsCounter - 1) as List<String>
         }
 
         //fetch the right answer from the database based on the current category question
         val answer = database.getRightAnswer(
             selectedCategoryLiveData.value!!,
             selectedCategoryQuestions.value!![questionsCounter]
-        )
+        ).also {
+            //initialize the list that holds the right answers
+            if (selectedCategoryRightAnswers.value == null) {
+                selectedCategoryRightAnswers.value = ArrayList()
+            }
+            //add right answer to list
+            selectedCategoryRightAnswers.value!!.add(it)
+        }
 
         //add right answer to the list that holds the lists that hold all multiple choices
-        selectedCategoryAnswers.value?.get(questionsCounter - 1)?.add(answer)
+        selectedCategoryMultipleChoices.value?.get(questionsCounter - 1)?.add(answer)
 
         //fetch the wrongs answers from the database based on the current category question
         var choices = database.getWrongAnswers(
@@ -236,14 +245,14 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
 
         //add wrongs answers to the list that holds the lists that hold all multiple choices
         for (s in choicesSplit) {
-            selectedCategoryAnswers.value!![questionsCounter - 1].add(s)
+            selectedCategoryMultipleChoices.value!![questionsCounter - 1].add(s)
         }
 
         //shuffle the multiple choices
-        selectedCategoryAnswers.value?.get(questionsCounter - 1)?.shuffle()
+        selectedCategoryMultipleChoices.value?.get(questionsCounter - 1)?.shuffle()
 
         //return the multiple choices
-        return selectedCategoryAnswers.value?.get(questionsCounter - 1) as List<String>
+        return selectedCategoryMultipleChoices.value?.get(questionsCounter - 1) as List<String>
     }
 
     fun addUserAnswer(answer: String) {
@@ -291,5 +300,18 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
      */
     fun getQuizDifficulty(): String {
         return Utils.calculateQuizAverageDifficulty(questionsDifficulty.value!!)
+    }
+
+    /**
+     * Returns how many times the user answered right in the quiz
+     */
+    fun getUserRightAnswersToQuiz(): Int {
+        var rightAnswers = 0
+        for (i in 0 until AppConstants.QUIZ_QUESTIONS_COUNT) {
+            if (userQuizAnswers.value!![i] == selectedCategoryRightAnswers.value!![i]) {
+                rightAnswers += 1
+            }
+        }
+        return rightAnswers
     }
 }
