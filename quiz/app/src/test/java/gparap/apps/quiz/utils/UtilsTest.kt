@@ -106,4 +106,13 @@ class UtilsTest {
 
         assertEquals(expectedDifficulty, actualDifficulty)
     }
+
+    @Test
+    fun getScoreByDifficulty() {
+        val difficulty = AppConstants.QUESTION_DIFFICULTY_MEDIUM
+        val expectedScore = AppConstants.SCORE_DIFFICULTY_MEDIUM
+        val actualScore = Utils.getScoreByDifficulty(difficulty)
+
+        assertEquals(expectedScore, actualScore)
+    }
 }

@@ -219,8 +219,12 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 .plus(resources.getString(R.string.text_questions_counter_suffix))
                 .plus(AppConstants.QUIZ_QUESTIONS_COUNT)
         }
+        //update user score field
+        findViewById<TextView>(R.id.text_view_outro_score).apply {
+            text = viewModel.getUserScore().toString()
+        }
 
-        //TODO: the rest of the results
+        //TODO: high score
     }
 
     /* Update the text of the view that displays the questions counter ie. "Question 1..10 of 10" */

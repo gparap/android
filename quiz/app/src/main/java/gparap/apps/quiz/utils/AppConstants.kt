@@ -36,4 +36,11 @@ object AppConstants {
     const val QUESTION_DIFFICULTY_EASY = "easy"
     const val QUESTION_DIFFICULTY_MEDIUM = "medium"
     const val QUESTION_DIFFICULTY_HARD = "hard"
+
+    /**
+     * Score values (based on difficulty)
+     */
+    const val SCORE_DIFFICULTY_EASY = 100
+    const val SCORE_DIFFICULTY_MEDIUM = 200
+    const val SCORE_DIFFICULTY_HARD = 300
 }

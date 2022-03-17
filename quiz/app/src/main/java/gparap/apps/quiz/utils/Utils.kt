@@ -25,6 +25,20 @@ import java.nio.charset.Charset
 
 object Utils {
     /**
+     * Returns the score based on a question's difficulty
+     */
+    fun getScoreByDifficulty(difficulty: String) : Int{
+        return when (difficulty) {
+            AppConstants.QUESTION_DIFFICULTY_EASY -> AppConstants.SCORE_DIFFICULTY_EASY
+            AppConstants.QUESTION_DIFFICULTY_MEDIUM -> AppConstants.SCORE_DIFFICULTY_MEDIUM
+            AppConstants.QUESTION_DIFFICULTY_HARD -> AppConstants.SCORE_DIFFICULTY_HARD
+            else -> {
+                0
+            }
+        }
+    }
+
+    /**
      * Calculates the difficulty of a completed quiz based on its questions' difficulties.
      *
      * Returns the average difficulty as a string ie. "EASY"
