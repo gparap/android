@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_intro"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,5 +23,14 @@
         android:text="@string/text_choose_category"
         android:textSize="@dimen/textSize_important"
         android:textStyle="italic" />
+
+    <!--High score text-->
+    <TextView
+        android:id="@+id/text_view_selected_category_high_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@string/text_selected_category_high_score"
+        android:textSize="@dimen/textSize_page_title"
+        android:textStyle="bold" />
 
 </LinearLayout>

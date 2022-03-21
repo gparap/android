@@ -85,6 +85,14 @@ class MainActivityInstrumentedTest {
 
     @Test
     @MediumTest
+    fun onCategorySelected_highScoreIsDisplayed() {
+        onView(withId(R.id.text_view_selected_category_high_score)).check(matches(not(isDisplayed())))
+        selectCategory("Animals")
+        onView(withId(R.id.text_view_selected_category_high_score)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    @MediumTest
     fun onQuizStart_swapIntroWithQuizLayout() {
         selectCategoryAndStartQuiz(context.resources.getString(R.string.category_mathematics))
         onView(withId(R.id.main_layout_intro)).check(matches(not(isDisplayed())))
@@ -309,11 +317,14 @@ class MainActivityInstrumentedTest {
         assert(!userAnswer.isNullOrEmpty())
     }
 
-    private fun selectCategoryAndStartQuiz(category: String) {
+    private fun selectCategory(category: String) {
         onView(withId(R.id.spinner_categories)).perform(click())
         Thread.sleep(300)
         onView(withText(category)).perform(click())
         Thread.sleep(300)
+    }
+    private fun selectCategoryAndStartQuiz(category: String) {
+        selectCategory(category)
         onView(withId(R.id.button_start_quiz)).perform(click())
     }
 }

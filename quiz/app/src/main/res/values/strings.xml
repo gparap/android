@@ -5,6 +5,7 @@
     <string name="text_start_quiz">Start Quiz</string>
     <string name="text_welcome">Welcome!</string>
     <string name="text_choose_category">Please, choose a category and start the quiz.</string>
+    <string name="text_selected_category_high_score">High Score:&#160;</string>
 
     <!--Quiz categories-->
     <string-array name="string_array_categories">
