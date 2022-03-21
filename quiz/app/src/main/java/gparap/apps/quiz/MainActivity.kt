@@ -88,6 +88,14 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             }
         }
 
+        //remove welcome texts and show the high score for this quiz category
+        findViewById<TextView>(R.id.text_view_welcome).apply { visibility = GONE }
+        findViewById<TextView>(R.id.text_view_choose_category).apply { visibility = GONE }
+        findViewById<TextView>(R.id.text_view_selected_category_high_score).apply {
+            text = resources.getString(R.string.text_selected_category_high_score)
+                .plus(viewModel.getUserHighScore().toString())
+        }
+
         //prepare the questions for the quiz
         viewModel.populateSelectedCategoryQuestions()
         viewModel.shuffleSelectedCategoryQuestions()
