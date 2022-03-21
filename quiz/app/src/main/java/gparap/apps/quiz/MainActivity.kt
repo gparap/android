@@ -223,8 +223,17 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         findViewById<TextView>(R.id.text_view_outro_score).apply {
             text = viewModel.getUserScore().toString()
         }
+        //update user high score field
+        findViewById<TextView>(R.id.text_view_outro_high_score).apply {
+            //check if high score should be updated
+            val score = viewModel.getUserScore()
+            val highScore = viewModel.getUserHighScore()
+            if (highScore < score) {
+                viewModel.setUserHighScore(score)
+            }
 
-        //TODO: high score
+            text = viewModel.getUserHighScore().toString()
+        }
     }
 
     /* Update the text of the view that displays the questions counter ie. "Question 1..10 of 10" */

@@ -16,6 +16,7 @@
 package gparap.apps.quiz.viewmodels
 
 import android.app.Application
+import android.content.Context.MODE_PRIVATE
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -327,5 +328,26 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
             }
         }
         return score
+    }
+
+    /**
+     * Returns the user high score for the selected category from shared preferences
+     */
+    fun getUserHighScore(): Int {
+        getApplication<Application?>().applicationContext.getSharedPreferences(
+            selectedCategoryLiveData.value.toString(), MODE_PRIVATE
+        ).apply {
+            return this.getInt(selectedCategoryLiveData.value.toString(), 0)
+        }
+    }
+
+    /**
+     * Updates the shared preference for the selected category that holds the user high score
+     */
+    fun setUserHighScore(score: Int) {
+        val highScore = getApplication<Application?>().applicationContext.getSharedPreferences(
+            selectedCategoryLiveData.value.toString(), MODE_PRIVATE
+        )
+        highScore.edit().putInt(selectedCategoryLiveData.value.toString(), score).apply()
     }
 }
