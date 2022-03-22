@@ -350,4 +350,15 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
         )
         highScore.edit().putInt(selectedCategoryLiveData.value.toString(), score).apply()
     }
+
+    /**
+     * Makes all appropriate changes so as the user can start a new quiz
+     */
+    fun resetQuiz() {
+        questionsCounter = 0
+        selectedCategoryMultipleChoices.value = null
+        questionsDifficulty.value = null
+        userQuizAnswers.value = null
+        selectedCategoryRightAnswers.value = null
+    }
 }
