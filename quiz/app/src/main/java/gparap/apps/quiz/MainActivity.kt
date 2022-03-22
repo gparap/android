@@ -300,6 +300,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 displayNextQuestion()
                 displayMultipleChoices()
                 displayDifficulty()
+                updateQuestionCounter()
                 handleNextQuestionButtonCallback()
                 handlePreviousQuestionButtonCallback()
                 handleSubmitAnswerButtonCallback()
