@@ -15,6 +15,7 @@
  */
 package gparap.apps.quiz
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.View.*
@@ -162,6 +163,74 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
     }
 
+    /* Apply a red/green color to the radio buttons describing wrong/right answers of a question */
+    private fun highlightQuizAnswers() {
+        //restore the neutral color to the radio button before applying red/green
+        findViewById<RadioGroup>(R.id.radio_group_choices).apply {
+            this.setBackgroundColor(Color.WHITE)
+        }
+
+        //apply a red/green color to the radio buttons describing wrong/right answers
+        when(viewModel.getQuizQuestionRightAnswerIndex()) {
+            0-> {
+                findViewById<RadioButton>(R.id.radio_button_choice_one).apply {
+                    this.setBackgroundColor(Color.GREEN)
+                }
+                findViewById<RadioButton>(R.id.radio_button_choice_two).apply   {
+                    this.setBackgroundColor(Color.RED)
+                }
+                findViewById<RadioButton>(R.id.radio_button_choice_three).apply {
+                    this.setBackgroundColor(Color.RED)
+                }
+                findViewById<RadioButton>(R.id.radio_button_choice_four).apply  {
+                    this.setBackgroundColor(Color.RED)
+                }
+            }
+            1-> {
+                findViewById<RadioButton>(R.id.radio_button_choice_one).apply {
+                    this.setBackgroundColor(Color.RED)
+                }
+                findViewById<RadioButton>(R.id.radio_button_choice_two).apply   {
+                    this.setBackgroundColor(Color.GREEN)
+                }
+                findViewById<RadioButton>(R.id.radio_button_choice_three).apply {
+                    this.setBackgroundColor(Color.RED)
+                }
+                findViewById<RadioButton>(R.id.radio_button_choice_four).apply  {
+                    this.setBackgroundColor(Color.RED)
+                }
+            }
+            2-> {
+                findViewById<RadioButton>(R.id.radio_button_choice_one).apply {
+                    this.setBackgroundColor(Color.RED)
+                }
+                findViewById<RadioButton>(R.id.radio_button_choice_two).apply   {
+                    this.setBackgroundColor(Color.RED)
+                }
+                findViewById<RadioButton>(R.id.radio_button_choice_three).apply {
+                    this.setBackgroundColor(Color.GREEN)
+                }
+                findViewById<RadioButton>(R.id.radio_button_choice_four).apply  {
+                    this.setBackgroundColor(Color.RED)
+                }
+            }
+            3-> {
+                findViewById<RadioButton>(R.id.radio_button_choice_one).apply {
+                    this.setBackgroundColor(Color.RED)
+                }
+                findViewById<RadioButton>(R.id.radio_button_choice_two).apply   {
+                    this.setBackgroundColor(Color.RED)
+                }
+                findViewById<RadioButton>(R.id.radio_button_choice_three).apply {
+                    this.setBackgroundColor(Color.RED)
+                }
+                findViewById<RadioButton>(R.id.radio_button_choice_four).apply  {
+                    this.setBackgroundColor(Color.GREEN)
+                }
+            }
+        }
+    }
+
     /* Displays the results of the current quiz to the user */
     private fun displayQuizResults() {
         //update category field
@@ -239,6 +308,43 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     /* Registers a callback to be invoked when the user presses the button to check their answers */
     private fun handleCheckAnswersCallback() {
+        findViewById<Button>(R.id.button_check_answers).setOnClickListener {
+            //hide current layout
+            findViewById<ConstraintLayout>(R.id.main_layout_results).apply { visibility = GONE }
+
+            //display the quiz layout
+            this@MainActivity.findViewById<ConstraintLayout>(R.id.main_layout_quiz).apply {
+                visibility = VISIBLE
+
+                //deactivate submit button
+                this.findViewById<Button>(R.id.button_submit_answer).apply {
+                    this.isClickable = false
+                    this.setBackgroundColor(Color.LTGRAY)
+                }
+
+                //enable image buttons (arrows)
+                this.findViewById<ImageButton>(R.id.button_next_question).apply {
+                    visibility = VISIBLE
+                }
+                this.findViewById<ImageButton>(R.id.button_prev_question).apply {
+                    visibility = VISIBLE
+                }
+            }
+
+            //reset the counter for questions
+            viewModel.resetQuestionCounter()
+
+            //display questions & answers
+            displayNextQuestion()
+            displayMultipleChoices()
+            highlightQuizAnswers()
+            displayDifficulty()
+            updateQuestionCounter()
+
+            //enable the arrows to go back and forth the quiz questions
+            handleNextQuestionButtonCallback()
+            handlePreviousQuestionButtonCallback()
+        }
     }
 
     /* Registers a callback to be invoked when user presses the button to restart quiz */
@@ -260,8 +366,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             displayMultipleChoices()
             displayDifficulty()
             updateQuestionCounter()
-            handleNextQuestionButtonCallback()
-            handlePreviousQuestionButtonCallback()
             handleSubmitAnswerButtonCallback()
         }
     }
@@ -322,8 +426,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 displayMultipleChoices()
                 displayDifficulty()
                 updateQuestionCounter()
-                handleNextQuestionButtonCallback()
-                handlePreviousQuestionButtonCallback()
                 handleSubmitAnswerButtonCallback()
             }
         }
@@ -335,6 +437,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             setOnClickListener {
                 displayPreviousQuestion()
                 displayMultipleChoices()
+                highlightQuizAnswers()
                 updateQuestionCounter()
             }
         }
@@ -346,6 +449,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             setOnClickListener {
                 displayNextQuestion()
                 displayMultipleChoices()
+                highlightQuizAnswers()
                 updateQuestionCounter()
             }
         }

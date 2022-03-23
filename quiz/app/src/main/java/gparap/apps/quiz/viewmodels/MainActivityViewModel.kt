@@ -368,4 +368,23 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
     fun resetQuestionCounter() {
         questionsCounter = 0
     }
+
+    /* Returns the index among multiple choices of the current quiz question's right answer */
+    fun getQuizQuestionRightAnswerIndex(): Int {
+        var rightAnswerIndex = 0
+
+        val rightAnswer = selectedCategoryRightAnswers.value!![questionsCounter - 1]
+        val choices = selectedCategoryMultipleChoices.value?.get(questionsCounter - 1)
+
+        var index = 0
+        for (choice in choices!!) {
+            if (choice == rightAnswer) {
+                rightAnswerIndex = index
+                break
+            }
+            index++
+        }
+
+        return rightAnswerIndex
+    }
 }
