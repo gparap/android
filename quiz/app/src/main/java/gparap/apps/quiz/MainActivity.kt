@@ -165,66 +165,74 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     /* Apply a red/green color to the radio buttons describing wrong/right answers of a question */
     private fun highlightQuizAnswers() {
-        //restore the neutral color to the radio button before applying red/green
         findViewById<RadioGroup>(R.id.radio_group_choices).apply {
+            //restore the neutral color to the radio button before applying red/green
             this.setBackgroundColor(Color.WHITE)
+
+            //check radio button to indicate the user answer
+            when (viewModel.getQuizQuestionUserAnswerIndex()) {
+                0 -> check(R.id.radio_button_choice_one)
+                1 -> check(R.id.radio_button_choice_two)
+                2 -> check(R.id.radio_button_choice_three)
+                3 -> check(R.id.radio_button_choice_four)
+            }
         }
 
         //apply a red/green color to the radio buttons describing wrong/right answers
-        when(viewModel.getQuizQuestionRightAnswerIndex()) {
-            0-> {
+        when (viewModel.getQuizQuestionRightAnswerIndex()) {
+            0 -> {
                 findViewById<RadioButton>(R.id.radio_button_choice_one).apply {
                     this.setBackgroundColor(Color.GREEN)
                 }
-                findViewById<RadioButton>(R.id.radio_button_choice_two).apply   {
+                findViewById<RadioButton>(R.id.radio_button_choice_two).apply {
                     this.setBackgroundColor(Color.RED)
                 }
                 findViewById<RadioButton>(R.id.radio_button_choice_three).apply {
                     this.setBackgroundColor(Color.RED)
                 }
-                findViewById<RadioButton>(R.id.radio_button_choice_four).apply  {
+                findViewById<RadioButton>(R.id.radio_button_choice_four).apply {
                     this.setBackgroundColor(Color.RED)
                 }
             }
-            1-> {
+            1 -> {
                 findViewById<RadioButton>(R.id.radio_button_choice_one).apply {
                     this.setBackgroundColor(Color.RED)
                 }
-                findViewById<RadioButton>(R.id.radio_button_choice_two).apply   {
+                findViewById<RadioButton>(R.id.radio_button_choice_two).apply {
                     this.setBackgroundColor(Color.GREEN)
                 }
                 findViewById<RadioButton>(R.id.radio_button_choice_three).apply {
                     this.setBackgroundColor(Color.RED)
                 }
-                findViewById<RadioButton>(R.id.radio_button_choice_four).apply  {
+                findViewById<RadioButton>(R.id.radio_button_choice_four).apply {
                     this.setBackgroundColor(Color.RED)
                 }
             }
-            2-> {
+            2 -> {
                 findViewById<RadioButton>(R.id.radio_button_choice_one).apply {
                     this.setBackgroundColor(Color.RED)
                 }
-                findViewById<RadioButton>(R.id.radio_button_choice_two).apply   {
+                findViewById<RadioButton>(R.id.radio_button_choice_two).apply {
                     this.setBackgroundColor(Color.RED)
                 }
                 findViewById<RadioButton>(R.id.radio_button_choice_three).apply {
                     this.setBackgroundColor(Color.GREEN)
                 }
-                findViewById<RadioButton>(R.id.radio_button_choice_four).apply  {
+                findViewById<RadioButton>(R.id.radio_button_choice_four).apply {
                     this.setBackgroundColor(Color.RED)
                 }
             }
-            3-> {
+            3 -> {
                 findViewById<RadioButton>(R.id.radio_button_choice_one).apply {
                     this.setBackgroundColor(Color.RED)
                 }
-                findViewById<RadioButton>(R.id.radio_button_choice_two).apply   {
+                findViewById<RadioButton>(R.id.radio_button_choice_two).apply {
                     this.setBackgroundColor(Color.RED)
                 }
                 findViewById<RadioButton>(R.id.radio_button_choice_three).apply {
                     this.setBackgroundColor(Color.RED)
                 }
-                findViewById<RadioButton>(R.id.radio_button_choice_four).apply  {
+                findViewById<RadioButton>(R.id.radio_button_choice_four).apply {
                     this.setBackgroundColor(Color.GREEN)
                 }
             }

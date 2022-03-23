@@ -387,4 +387,23 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
 
         return rightAnswerIndex
     }
+
+    /* Returns the index among multiple choices of the current quiz question's user answer */
+    fun getQuizQuestionUserAnswerIndex(): Int {
+        var userAnswerIndex = 0
+
+        val userAnswer = userQuizAnswers.value!![questionsCounter - 1]
+        val choices = selectedCategoryMultipleChoices.value?.get(questionsCounter - 1)
+
+        var index = 0
+        for (choice in choices!!) {
+            if (choice == userAnswer) {
+                userAnswerIndex = index
+                break
+            }
+            index++
+        }
+
+        return userAnswerIndex
+    }
 }
