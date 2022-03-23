@@ -361,4 +361,11 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
         userQuizAnswers.value = null
         selectedCategoryRightAnswers.value = null
     }
+
+    /**
+     * Makes the question counter zero
+     */
+    fun resetQuestionCounter() {
+        questionsCounter = 0
+    }
 }

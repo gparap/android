@@ -243,6 +243,27 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     /* Registers a callback to be invoked when user presses the button to restart quiz */
     private fun handleRestartQuizCallback() {
+        findViewById<Button>(R.id.button_restart_quiz).setOnClickListener {
+            //hide current layout
+            findViewById<ConstraintLayout>(R.id.main_layout_results).apply { visibility = GONE }
+
+            //display the quiz layout
+            this@MainActivity.findViewById<ConstraintLayout>(R.id.main_layout_quiz).apply {
+                visibility = VISIBLE
+            }
+
+            //reset the counter for questions
+            viewModel.resetQuestionCounter()
+
+            //display and handle questions & answers
+            displayNextQuestion()
+            displayMultipleChoices()
+            displayDifficulty()
+            updateQuestionCounter()
+            handleNextQuestionButtonCallback()
+            handlePreviousQuestionButtonCallback()
+            handleSubmitAnswerButtonCallback()
+        }
     }
 
     /* Registers a callback to be invoked when user presses the button to change category */
