@@ -314,6 +314,63 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
     }
 
+    /* Registers a callback to be invoked when the user presses the button to return to categories */
+    private fun handleReturnToCategoriesCallback() {
+        findViewById<Button>(R.id.button_back_to_categories).apply {
+            //hide current layout
+            this@MainActivity.findViewById<ConstraintLayout>(R.id.main_layout_quiz)
+                .apply { visibility = GONE }
+            this.visibility = GONE
+            this@MainActivity.findViewById<ImageButton>(R.id.button_next_question)
+                .apply { visibility = GONE }
+            this@MainActivity.findViewById<ImageButton>(R.id.button_prev_question)
+                .apply { visibility = GONE }
+
+            //activate submit button
+            this@MainActivity.findViewById<Button>(R.id.button_submit_answer).apply {
+                isActivated = true
+                setBackgroundColor(resources.getColor(R.color.purple_500))
+            }
+
+            //uncheck and restore the color of radio buttons
+            this@MainActivity.findViewById<RadioGroup>(R.id.radio_group_choices).apply {
+                clearCheck()
+            }
+            this@MainActivity.findViewById<RadioButton>(R.id.radio_button_choice_one).apply {
+                this.setBackgroundColor(Color.WHITE)
+            }
+            this@MainActivity.findViewById<RadioButton>(R.id.radio_button_choice_two).apply {
+                this.setBackgroundColor(Color.WHITE)
+            }
+            this@MainActivity.findViewById<RadioButton>(R.id.radio_button_choice_three).apply {
+                this.setBackgroundColor(Color.WHITE)
+            }
+            this@MainActivity.findViewById<RadioButton>(R.id.radio_button_choice_four).apply {
+                this.setBackgroundColor(Color.WHITE)
+            }
+
+            //display the starting layout
+            this@MainActivity.findViewById<Spinner>(R.id.spinner_categories).apply {
+                visibility = VISIBLE
+                setSelection(0)
+            }
+            this@MainActivity.findViewById<Button>(R.id.button_start_quiz)
+                .apply { visibility = VISIBLE }
+            this@MainActivity.findViewById<LinearLayout>(R.id.main_layout_intro).apply {
+                visibility = VISIBLE
+                this.findViewById<TextView>(R.id.text_view_choose_category).apply {
+                    visibility = VISIBLE
+                }
+                this.findViewById<TextView>(R.id.text_view_selected_category_high_score).apply {
+                    visibility = GONE
+                }
+            }
+
+            //reset the current quiz
+            viewModel.resetQuiz()
+        }
+    }
+
     /* Registers a callback to be invoked when the user presses the button to check their answers */
     private fun handleCheckAnswersCallback() {
         findViewById<Button>(R.id.button_check_answers).setOnClickListener {
@@ -337,6 +394,12 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 this.findViewById<ImageButton>(R.id.button_prev_question).apply {
                     visibility = VISIBLE
                 }
+            }
+
+            //handle the return to categories
+            this@MainActivity.findViewById<Button>(R.id.button_back_to_categories).apply {
+                visibility = VISIBLE
+                setOnClickListener { handleReturnToCategoriesCallback() }
             }
 
             //reset the counter for questions
