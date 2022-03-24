@@ -44,4 +44,5 @@
     <string name="button_check_answers">Check Answers</string>
     <string name="button_restart_quiz">Restart Quiz</string>
     <string name="button_change_category">Change Category</string>
+    <string name="button_back_to_categories">Back to Categories</string>
 </resources>
