@@ -25,11 +25,16 @@ import androidx.lifecycle.ViewModelProvider
 import gparap.apps.horoscope.R
 import gparap.apps.horoscope.adapters.SpinnerAdapter
 import gparap.apps.horoscope.data.HoroscopeModel
+import gparap.apps.horoscope.data.TranslationModel
+import gparap.apps.horoscope.services.MyMemoryService
+import gparap.apps.horoscope.services.RetrofitClient
 import gparap.apps.horoscope.utils.Utils
 import gparap.apps.horoscope.viewmodels.MainActivityViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.net.URLEncoder
+import java.util.*
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var viewModel: MainActivityViewModel
@@ -156,6 +161,32 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         date.text = model.date
         val horoscope = findViewById<TextView>(R.id.text_view_horoscope)
         horoscope.text = model.horoscope
+
+        //TODO: refactor code
+        //prepare a test query
+        val query1 = URLEncoder.encode("Hello World!", "UTF-8")
+        val query2 = Locale.ENGLISH.language +"|"+Locale.GERMAN.language
+
+        val queryData: MutableMap<String, String> = HashMap()
+        queryData["q"] = query1
+        queryData["langpair"] = query2
+
+        //test memory translation service
+        var webService: MyMemoryService? = null
+        webService = RetrofitClient.buildTranslationService().create(MyMemoryService::class.java)
+        webService.getMemoryTranslation(queryData).enqueue(object : Callback<TranslationModel> {
+            override fun onResponse(
+                call: Call<TranslationModel>,
+                response: Response<TranslationModel>,
+            ) {
+                println(response)
+            }
+
+            override fun onFailure(call: Call<TranslationModel>, t: Throwable) {
+                println(t.message)
+            }
+        })
+
         val number = findViewById<TextView>(R.id.text_view_lucky_number)
         number.text = model.luckyNumber
         val time = findViewById<TextView>(R.id.text_view_lucky_time)
