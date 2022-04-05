@@ -18,15 +18,19 @@ package gparap.apps.horoscope.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import gparap.apps.horoscope.data.HoroscopeModel
+import gparap.apps.horoscope.data.TranslationModel
 import gparap.apps.horoscope.services.AztroService
+import gparap.apps.horoscope.services.MyMemoryService
 import gparap.apps.horoscope.services.RetrofitClient
 import retrofit2.Call
 
 class MainActivityViewModel : ViewModel() {
     private val requestedDay: MutableLiveData<String> = MutableLiveData()
     private val zodiacSign: MutableLiveData<String> = MutableLiveData()
-    private var webService: AztroService? = null
-    private var response: Call<HoroscopeModel>? = null
+    private var webServiceAztro: AztroService? = null
+    private var responseAztroApi: Call<HoroscopeModel>? = null
+    private var webServiceMyMemory: MyMemoryService? = null
+    private var responseMyMemoryApi: Call<TranslationModel>? = null
 
     fun getRequestedDay(): String? {
         return requestedDay.value
@@ -44,19 +48,35 @@ class MainActivityViewModel : ViewModel() {
         zodiacSign.value = value
     }
 
-    fun createWebService() {
-        webService = RetrofitClient.build().create(AztroService::class.java)
+    fun createAztroService() {
+        webServiceAztro = RetrofitClient.build().create(AztroService::class.java)
     }
 
-    fun getWebService(): AztroService? {
-        return webService
+    fun getAztroService(): AztroService? {
+        return webServiceAztro
     }
 
-    fun getApiResponse(): Call<HoroscopeModel>? {
-        return response
+    fun getAztroApiResponse(): Call<HoroscopeModel>? {
+        return responseAztroApi
     }
 
-    fun setApiResponse(response: Call<HoroscopeModel>?) {
-        this.response = response
+    fun setAztroApiResponse(response: Call<HoroscopeModel>?) {
+        this.responseAztroApi = response
+    }
+
+    fun createMyMemoryService() {
+        webServiceMyMemory = RetrofitClient.build().create(MyMemoryService::class.java)
+    }
+
+    fun getMyMemoryService(): MyMemoryService? {
+        return webServiceMyMemory
+    }
+
+    fun getMyMemoryApiResponse(): Call<TranslationModel>? {
+        return responseMyMemoryApi
+    }
+
+    fun setMyMemoryApiResponse(response: Call<TranslationModel>?) {
+        this.responseMyMemoryApi = response
     }
 }
