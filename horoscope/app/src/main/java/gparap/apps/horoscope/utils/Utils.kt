@@ -2,6 +2,7 @@ package gparap.apps.horoscope.utils
 
 import android.content.Context
 import gparap.apps.horoscope.R
+import java.util.*
 
 object Utils {
     /**
@@ -114,5 +115,23 @@ object Utils {
                 ""
             }
         }
+    }
+
+    /**
+     * Checks the user's locale and decides if the horoscope should be translated or not
+     *
+     * (default language of horoscope api is "en")
+     */
+    fun isTranslationNeeded() : Boolean {
+        return Locale.getDefault().language != Locale.ENGLISH.language
+    }
+
+    /**
+     * Returns the language pair for translation in the form of "en|<translation_language>"
+     */
+    fun getLanguagePair() : String {
+        return Locale.ENGLISH.language
+            .plus("|")
+            .plus(Locale.getDefault().language)
     }
 }

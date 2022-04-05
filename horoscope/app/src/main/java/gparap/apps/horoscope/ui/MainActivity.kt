@@ -33,8 +33,8 @@ import gparap.apps.horoscope.viewmodels.MainActivityViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.net.URLDecoder
 import java.net.URLEncoder
-import java.util.*
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var viewModel: MainActivityViewModel
@@ -163,29 +163,39 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         horoscope.text = model.horoscope
 
         //TODO: refactor code
-        //prepare a test query
-        val query1 = URLEncoder.encode("Hello World!", "UTF-8")
-        val query2 = Locale.ENGLISH.language +"|"+Locale.GERMAN.language
 
-        val queryData: MutableMap<String, String> = HashMap()
-        queryData["q"] = query1
-        queryData["langpair"] = query2
+        //translate into the language of the user
+        if (Utils.isTranslationNeeded()) {
+            println("TRANLATION IS NEEDED")
 
-        //test memory translation service
-        var webService: MyMemoryService? = null
-        webService = RetrofitClient.buildTranslationService().create(MyMemoryService::class.java)
-        webService.getMemoryTranslation(queryData).enqueue(object : Callback<TranslationModel> {
-            override fun onResponse(
-                call: Call<TranslationModel>,
-                response: Response<TranslationModel>,
-            ) {
-                println(response)
-            }
+            //prepare a test query
+            val query1 = URLEncoder.encode("Hello World!", "UTF-8")
+            val query2 = Utils.getLanguagePair()
 
-            override fun onFailure(call: Call<TranslationModel>, t: Throwable) {
-                println(t.message)
-            }
-        })
+            val queryData: MutableMap<String, String> = HashMap()
+            queryData["q"] = query1
+            queryData["langpair"] = query2
+
+            //test memory translation service
+            var webService: MyMemoryService? = null
+            webService = RetrofitClient.buildTranslationService().create(MyMemoryService::class.java)
+            webService.getMemoryTranslation(queryData).enqueue(object : Callback<TranslationModel> {
+                override fun onResponse(
+                    call: Call<TranslationModel>,
+                    response: Response<TranslationModel>,
+                ) {
+                    val translationObj = response.body() as TranslationModel
+
+                    val translation =
+                        URLDecoder.decode(translationObj.response.translation, "UTF-8")
+                    println(translation)
+                }
+
+                override fun onFailure(call: Call<TranslationModel>, t: Throwable) {
+                    println(t.message)
+                }
+            })
+        }
 
         val number = findViewById<TextView>(R.id.text_view_lucky_number)
         number.text = model.luckyNumber
