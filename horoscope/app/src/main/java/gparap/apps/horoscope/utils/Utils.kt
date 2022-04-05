@@ -2,6 +2,7 @@ package gparap.apps.horoscope.utils
 
 import android.content.Context
 import gparap.apps.horoscope.R
+import java.net.URLEncoder
 import java.util.*
 
 object Utils {
@@ -133,5 +134,21 @@ object Utils {
         return Locale.ENGLISH.language
             .plus("|")
             .plus(Locale.getDefault().language)
+    }
+
+    /**
+     * Returns a query to be passed as a request in the memory translation service.
+     *
+     * (the query must include the string to be translated and the language to translate to)
+     */
+    fun getTranslationRequestQueryData(textToTranslate: String): MutableMap<String, String> {
+        val query1 = URLEncoder.encode(textToTranslate, AppConstants.DEFAULT_CHAR_ENCODING)
+        val query2 = getLanguagePair()
+
+        val queryData: MutableMap<String, String> = HashMap()
+        queryData[AppConstants.MY_MEMORY_QUERY_1] = query1
+        queryData[AppConstants.MY_MEMORY_QUERY_2] = query2
+
+        return queryData
     }
 }

@@ -26,18 +26,17 @@ import gparap.apps.horoscope.R
 import gparap.apps.horoscope.adapters.SpinnerAdapter
 import gparap.apps.horoscope.data.HoroscopeModel
 import gparap.apps.horoscope.data.TranslationModel
-import gparap.apps.horoscope.services.MyMemoryService
-import gparap.apps.horoscope.services.RetrofitClient
+import gparap.apps.horoscope.utils.AppConstants
 import gparap.apps.horoscope.utils.Utils
 import gparap.apps.horoscope.viewmodels.MainActivityViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.net.URLDecoder
-import java.net.URLEncoder
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var viewModel: MainActivityViewModel
+    private lateinit var horoscope: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,13 +46,16 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         viewModel.setRequestedDay(resources.getString(R.string.text_today))
         viewModel.setZodiacSign(this.resources.getString(R.string.text_prompt_select_spinner))
-        viewModel.createWebService()
+        viewModel.createAztroService()
 
         //setup spinner with adapter
         val spinner = findViewById<Spinner>(R.id.spinner_zodiac_signs)
         spinner.adapter = SpinnerAdapter.create(this, R.array.zodiac_signs)
         spinner.onItemSelectedListener = this
         spinner.setSelection(0)
+
+        //get horoscope widget
+        horoscope = findViewById<TextView>(R.id.text_view_horoscope)
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -66,7 +68,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         viewModel.setZodiacSign(parent?.getItemAtPosition(position).toString())
 
         //get the horoscope
-        createWebServiceRequest(viewModel.getRequestedDay(), viewModel.getZodiacSign())
+        createHoroscopeWebServiceRequest(viewModel.getRequestedDay(), viewModel.getZodiacSign())
         requestHoroscopeFromWebService()
 
         //hide prompt text
@@ -113,7 +115,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         //get the horoscope only if a zodiac sign is actually selected
         if (viewModel.getZodiacSign() != this.resources.getString(R.string.text_prompt_select_spinner)) {
-            createWebServiceRequest(viewModel.getRequestedDay(), viewModel.getZodiacSign())
+            createHoroscopeWebServiceRequest(viewModel.getRequestedDay(), viewModel.getZodiacSign())
             requestHoroscopeFromWebService()
         }
 
@@ -121,26 +123,55 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     //create a web service request based on selected day and zodiac sign
-    private fun createWebServiceRequest(day: String?, sign: String?) {
+    private fun createHoroscopeWebServiceRequest(day: String?, sign: String?) {
         when (day) {
             //get today's horoscope
             resources.getString(R.string.text_today) ->
-                viewModel.setApiResponse(viewModel.getWebService()?.getHoroscopeForToday(sign)
+                viewModel.setAztroApiResponse(viewModel.getAztroService()?.getHoroscopeForToday(sign)
                 )
 
             //get tomorrow's horoscope
             resources.getString(R.string.text_tomorrow) ->
-                viewModel.setApiResponse(viewModel.getWebService()?.getHoroscopeForTomorrow(sign))
+                viewModel.setAztroApiResponse(viewModel.getAztroService()?.getHoroscopeForTomorrow(sign))
 
             //get yesterdays's horoscope
             resources.getString(R.string.text_yesterday) ->
-                viewModel.setApiResponse(viewModel.getWebService()?.getHoroscopeForYesterday(sign))
+                viewModel.setAztroApiResponse(viewModel.getAztroService()?.getHoroscopeForYesterday(sign))
         }
+    }
+
+    //translate text to user locale
+    private fun getTranslation() {
+        //prepare query data
+        val queryData = Utils.getTranslationRequestQueryData(horoscope.text.toString())
+
+        //create web service
+        viewModel.createMyMemoryService()
+
+        //get translation
+        viewModel.getMyMemoryService()?.getMemoryTranslation(queryData)?.enqueue(object : Callback<TranslationModel> {
+            override fun onResponse(
+                call: Call<TranslationModel>,
+                response: Response<TranslationModel>,
+            ) {
+                val translation = response.body() as TranslationModel
+                //!!! it is not guaranteed that translation will always work
+                try {
+                    horoscope.text = URLDecoder.decode(
+                        translation.response.translation, AppConstants.DEFAULT_CHAR_ENCODING
+                    )
+                }catch (e:Exception){}
+            }
+
+            override fun onFailure(call: Call<TranslationModel>, t: Throwable) {
+                println(t.message)
+            }
+        })
     }
 
     //call web service and get horoscope
     private fun requestHoroscopeFromWebService() {
-        viewModel.getApiResponse()?.enqueue(object : Callback<HoroscopeModel> {
+        viewModel.getAztroApiResponse()?.enqueue(object : Callback<HoroscopeModel> {
             override fun onResponse(
                 call: Call<HoroscopeModel>,
                 response: Response<HoroscopeModel>,
@@ -159,42 +190,11 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private fun displayHoroscope(model: HoroscopeModel) {
         val date = findViewById<TextView>(R.id.text_view_date)
         date.text = model.date
-        val horoscope = findViewById<TextView>(R.id.text_view_horoscope)
         horoscope.text = model.horoscope
-
-        //TODO: refactor code
 
         //translate into the language of the user
         if (Utils.isTranslationNeeded()) {
-            println("TRANLATION IS NEEDED")
-
-            //prepare a test query
-            val query1 = URLEncoder.encode("Hello World!", "UTF-8")
-            val query2 = Utils.getLanguagePair()
-
-            val queryData: MutableMap<String, String> = HashMap()
-            queryData["q"] = query1
-            queryData["langpair"] = query2
-
-            //test memory translation service
-            var webService: MyMemoryService? = null
-            webService = RetrofitClient.buildTranslationService().create(MyMemoryService::class.java)
-            webService.getMemoryTranslation(queryData).enqueue(object : Callback<TranslationModel> {
-                override fun onResponse(
-                    call: Call<TranslationModel>,
-                    response: Response<TranslationModel>,
-                ) {
-                    val translationObj = response.body() as TranslationModel
-
-                    val translation =
-                        URLDecoder.decode(translationObj.response.translation, "UTF-8")
-                    println(translation)
-                }
-
-                override fun onFailure(call: Call<TranslationModel>, t: Throwable) {
-                    println(t.message)
-                }
-            })
+            getTranslation()
         }
 
         val number = findViewById<TextView>(R.id.text_view_lucky_number)
