@@ -127,16 +127,19 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         when (day) {
             //get today's horoscope
             resources.getString(R.string.text_today) ->
-                viewModel.setAztroApiResponse(viewModel.getAztroService()?.getHoroscopeForToday(sign)
+                viewModel.setAztroApiResponse(viewModel.getAztroService()
+                    ?.getHoroscopeForToday(sign)
                 )
 
             //get tomorrow's horoscope
             resources.getString(R.string.text_tomorrow) ->
-                viewModel.setAztroApiResponse(viewModel.getAztroService()?.getHoroscopeForTomorrow(sign))
+                viewModel.setAztroApiResponse(viewModel.getAztroService()
+                    ?.getHoroscopeForTomorrow(sign))
 
             //get yesterdays's horoscope
             resources.getString(R.string.text_yesterday) ->
-                viewModel.setAztroApiResponse(viewModel.getAztroService()?.getHoroscopeForYesterday(sign))
+                viewModel.setAztroApiResponse(viewModel.getAztroService()
+                    ?.getHoroscopeForYesterday(sign))
         }
     }
 
@@ -149,24 +152,29 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         viewModel.createMyMemoryService()
 
         //get translation
-        viewModel.getMyMemoryService()?.getMemoryTranslation(queryData)?.enqueue(object : Callback<TranslationModel> {
-            override fun onResponse(
-                call: Call<TranslationModel>,
-                response: Response<TranslationModel>,
-            ) {
-                val translation = response.body() as TranslationModel
-                //!!! it is not guaranteed that translation will always work
-                try {
-                    horoscope.text = URLDecoder.decode(
-                        translation.response.translation, AppConstants.DEFAULT_CHAR_ENCODING
-                    )
-                }catch (e:Exception){}
-            }
+        viewModel.getMyMemoryService()?.getMemoryTranslation(queryData)
+            ?.enqueue(object : Callback<TranslationModel> {
+                override fun onResponse(
+                    call: Call<TranslationModel>,
+                    response: Response<TranslationModel>,
+                ) {
+                    //!!! it is not guaranteed that translation will always work
+                    val translation = response.body() as TranslationModel
+                    try {
+                        //!!! this is a known bug in the URLEncoder that screws up the decoder
+                        val textToTranslate = translation.response.translation.replace("% 2", "%2")
 
-            override fun onFailure(call: Call<TranslationModel>, t: Throwable) {
-                println(t.message)
-            }
-        })
+                        //change the text of the horoscope to the translated one
+                        horoscope.text =
+                            URLDecoder.decode(textToTranslate, AppConstants.DEFAULT_CHAR_ENCODING)
+                    } catch (e: Exception) {
+                    }
+                }
+
+                override fun onFailure(call: Call<TranslationModel>, t: Throwable) {
+                    println(t.message)
+                }
+            })
     }
 
     //call web service and get horoscope
@@ -194,7 +202,14 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         //translate into the language of the user
         if (Utils.isTranslationNeeded()) {
-            getTranslation()
+            //display the translation button
+            val buttonTranslate = findViewById<Button>(R.id.button_translate_horoscope)
+            buttonTranslate.visibility = View.VISIBLE
+
+            //translate text to locale
+            buttonTranslate.setOnClickListener {
+                getTranslation()
+            }
         }
 
         val number = findViewById<TextView>(R.id.text_view_lucky_number)
