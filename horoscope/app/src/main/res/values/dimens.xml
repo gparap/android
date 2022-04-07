@@ -10,6 +10,7 @@
     <dimen name="scrollView_layout_marginTop">8dp</dimen>
     <dimen name="scrollView_layout_marginBottom">8dp</dimen>
     <dimen name="label_layout_marginTop">32dp</dimen>
+    <dimen name="label_layout_marginTop_Half">16dp</dimen>
 
     <!--Design dimensions (landscape variation)-->
     <dimen name="text_view_horoscope_paddingStart_land">32dp</dimen>

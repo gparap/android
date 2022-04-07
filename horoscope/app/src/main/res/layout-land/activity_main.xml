@@ -33,28 +33,15 @@
         app:layout_constraintVertical_bias="0.25"
         tools:visibility="gone" />
 
-    <!--Button that sets the current zodiac sign as the user's sign-->
-    <Button
-        android:id="@+id/button_set_zodiac"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/button_set_zodiac"
-        android:textAllCaps="false"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="visible" />
-
     <!--Zodiac sign-->
     <ImageView
         android:id="@+id/image_view_zodiac_sign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/desc_zodiac_sign"
-        tools:src="@drawable/aries"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_zodiac_signs" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_zodiac_signs"
+        tools:src="@drawable/aries" />
 
     <!--Zodiac date range-->
     <TextView
@@ -71,9 +58,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/scrollView_layout_marginTop"
-        android:layout_marginBottom="@dimen/scrollView_layout_marginBottom"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/button_set_zodiac"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/text_view_date_range"
         app:layout_constraintTop_toBottomOf="@+id/spinner_zodiac_signs"
@@ -81,22 +67,18 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/button_set_zodiac"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_zodiac_signs">
+            android:layout_height="wrap_content">
 
             <!--Label for horoscope-->
             <TextView
                 android:id="@+id/label_horoscope"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/text_horoscope"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="@string/text_horoscope" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <!--Horoscope's date-->
             <TextView
@@ -121,25 +103,38 @@
                 app:layout_constraintTop_toBottomOf="@+id/text_view_date"
                 tools:text="@string/lorem_ipsum" />
 
+            <!--Horoscope translation button-->
+            <Button
+                android:id="@+id/button_translate_horoscope"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/label_layout_marginTop_Half"
+                android:text="@string/button_translate_horoscope"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_horoscope"
+                tools:visibility="visible" />
+
             <!--Label for luck-->
             <TextView
                 android:id="@+id/label_luck"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/label_layout_marginTop_land"
+                android:text="@string/text_luck"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/label_horoscope"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_horoscope"
-                android:text="@string/text_luck" />
+                app:layout_constraintTop_toBottomOf="@+id/button_translate_horoscope" />
 
             <!--Label for lucky number-->
             <TextView
                 android:id="@+id/label_lucky_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/text_lucky_number"
                 app:layout_constraintEnd_toStartOf="@+id/label_horoscope"
-                app:layout_constraintTop_toBottomOf="@+id/label_luck"
-                android:text="@string/text_lucky_number" />
+                app:layout_constraintTop_toBottomOf="@+id/label_luck" />
 
             <!--Lucky number-->
             <TextView
@@ -155,9 +150,9 @@
                 android:id="@+id/label_lucky_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/text_lucky_time"
                 app:layout_constraintEnd_toStartOf="@+id/label_horoscope"
-                app:layout_constraintTop_toBottomOf="@+id/label_lucky_number"
-                android:text="@string/text_lucky_time" />
+                app:layout_constraintTop_toBottomOf="@+id/label_lucky_number" />
 
             <!--Lucky time of time-->
             <TextView
@@ -173,9 +168,9 @@
                 android:id="@+id/label_lucky_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/text_lucky_color"
                 app:layout_constraintEnd_toStartOf="@+id/label_horoscope"
-                app:layout_constraintTop_toBottomOf="@+id/label_lucky_time"
-                android:text="@string/text_lucky_color" />
+                app:layout_constraintTop_toBottomOf="@+id/label_lucky_time" />
 
             <!--Lucky color-->
             <TextView
@@ -192,10 +187,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/label_layout_marginTop"
+                android:text="@string/text_pair"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/label_horoscope"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_horoscope"
-                android:text="@string/text_pair" />
+                app:layout_constraintTop_toBottomOf="@+id/button_translate_horoscope" />
 
             <!--Pair sign-->
             <TextView
