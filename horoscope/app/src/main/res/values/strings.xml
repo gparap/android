@@ -16,6 +16,11 @@
     <string name="text_today">Today</string>
     <string name="text_tomorrow">Tomorrow</string>
     <string name="text_yesterday">Yesterday</string>
+    <string name="button_translate_horoscope">Translate</string>
+    <string name="text_translation_warning">Before you translate</string>
+    <string name="text_translation_info">Translation depends on an external service and it is not controlled by this app. As a a result, the quality of the tranlation cannot be guaranted. \nAre you sure you want to translate?</string>
+    <string name="text_translate">Translate</string>
+    <string name="text_cancel">Cancel</string>
 
     <!--array of zodiac signs-->
     <array name="zodiac_signs">
@@ -64,5 +69,4 @@
 
     <!--placeholder (do NOT translate)-->
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fringilla vel magna scelerisque finibus. Aliquam erat volutpat. In in quam aliquet, finibus leo a, rutrum enim.</string>
-    <string name="button_translate_horoscope">Translate</string>
 </resources>

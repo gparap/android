@@ -15,12 +15,15 @@
  */
 package gparap.apps.horoscope.ui
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.lifecycle.ViewModelProvider
 import gparap.apps.horoscope.R
 import gparap.apps.horoscope.adapters.SpinnerAdapter
@@ -55,7 +58,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         spinner.setSelection(0)
 
         //get horoscope widget
-        horoscope = findViewById<TextView>(R.id.text_view_horoscope)
+        horoscope = findViewById(R.id.text_view_horoscope)
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -136,7 +139,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 viewModel.setAztroApiResponse(viewModel.getAztroService()
                     ?.getHoroscopeForTomorrow(sign))
 
-            //get yesterdays's horoscope
+            //get yesterday's horoscope
             resources.getString(R.string.text_yesterday) ->
                 viewModel.setAztroApiResponse(viewModel.getAztroService()
                     ?.getHoroscopeForYesterday(sign))
@@ -167,6 +170,10 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                         //change the text of the horoscope to the translated one
                         horoscope.text =
                             URLDecoder.decode(textToTranslate, AppConstants.DEFAULT_CHAR_ENCODING)
+
+                        //hide the translation button
+                        val buttonTranslate = findViewById<Button>(R.id.button_translate_horoscope)
+                        buttonTranslate.visibility = View.GONE
                     } catch (e: Exception) {
                     }
                 }
@@ -208,7 +215,20 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
             //translate text to locale
             buttonTranslate.setOnClickListener {
-                getTranslation()
+                //inform the user about the quality of translation
+                val dialog = AlertDialog.Builder(this)
+                    .setTitle(resources.getString(R.string.text_translation_warning))
+                    .setIcon(AppCompatResources.getDrawable(this, R.drawable.ic_warning_24))
+                    .setMessage(resources.getString(R.string.text_translation_info))
+                    .setPositiveButton(resources.getString(R.string.text_translate)) { _: DialogInterface, _: Int ->
+                        getTranslation()
+
+                    }
+                    .setNegativeButton(resources.getString(R.string.text_cancel)) { _dialog: DialogInterface, _: Int ->
+                        _dialog.dismiss()
+                    }
+                    .create()
+                dialog.show()
             }
         }
 
