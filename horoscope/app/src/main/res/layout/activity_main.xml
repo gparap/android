@@ -33,37 +33,19 @@
         app:layout_constraintVertical_bias="0.25"
         tools:visibility="gone" />
 
-    <!--Button that sets the current zodiac sign as the user's sign-->
-    <Button
-        android:id="@+id/button_set_zodiac"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/button_set_zodiac"
-        android:textAllCaps="false"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="visible" />
-
     <ScrollView
         android:id="@+id/scroll_view_horoscope"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/scrollView_layout_marginTop"
-        android:layout_marginBottom="@dimen/scrollView_layout_marginBottom"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/button_set_zodiac"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_zodiac_signs"
         tools:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/button_set_zodiac"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_zodiac_signs">
+            android:layout_height="wrap_content">
 
             <!--Zodiac sign-->
             <ImageView
@@ -125,6 +107,7 @@
                 android:id="@+id/button_translate_horoscope"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/label_layout_marginTop_Half"
                 android:text="@string/button_translate_horoscope"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
