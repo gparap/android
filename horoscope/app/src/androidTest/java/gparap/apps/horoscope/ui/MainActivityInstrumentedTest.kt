@@ -164,4 +164,20 @@ class MainActivityInstrumentedTest {
             assert(!pair.text.isNullOrEmpty())
         }
     }
+
+    @Test
+    @LargeTest
+    fun noTranslateButtonClick_displayTranslationAlertDialog() {
+        //choose whatever zodiac sign and try to translate
+        onView(withId(R.id.spinner_zodiac_signs)).perform(click())
+        onData(`is`(context.resources.getString(R.string.text_zodiac_Capricorn))).perform(click())
+        Thread.sleep(1667)
+        onView(withId(R.id.button_translate_horoscope)).perform(click())
+
+        //assert all dialog's text is displayed properly
+        onView(withText(R.string.text_translation_warning)).check(matches(isDisplayed()))
+        onView(withText(R.string.text_translation_info)).check(matches(isDisplayed()))
+        onView(withText(R.string.text_translate)).check(matches(isDisplayed()))
+        onView(withText(R.string.text_cancel)).check(matches(isDisplayed()))
+    }
 }
