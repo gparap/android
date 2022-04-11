@@ -16,6 +16,7 @@
 package gparap.apps.movies.model
 
 import android.os.Parcelable
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
@@ -68,4 +69,8 @@ data class MovieModel(
 
     @SerializedName("lang")
     val language: String,
+
+    @SerializedName("article")
+    @Expose
+    val articleModel: List<ArticleModel>,
 ) : Parcelable
