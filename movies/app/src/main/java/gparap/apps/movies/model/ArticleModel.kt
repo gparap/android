@@ -30,6 +30,9 @@ data class ArticleModel(
     @SerializedName("link")
     val articleLink: String,
 
+    @SerializedName("license")
+    val licenseLink: String,
+
     @SerializedName("authors")
     val authorsLink: String,
 ) : Parcelable
