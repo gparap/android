@@ -24,6 +24,8 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.filters.LargeTest
 import androidx.test.filters.SmallTest
 import androidx.test.platform.app.InstrumentationRegistry
+import gparap.apps.movies.model.ArticleModel
+import gparap.apps.movies.utils.Utils
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test

@@ -15,14 +15,16 @@
  */
 package gparap.apps.movies.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import gparap.apps.movies.R
 import gparap.apps.movies.model.MovieModel
+import gparap.apps.movies.utils.Utils
 
 class MovieDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,6 +96,13 @@ class MovieDetailsActivity : AppCompatActivity() {
         //display movie duration
         val duration = findViewById<TextView>(R.id.text_view_movie_film_time)
         duration.text = movie.filmTime
+
+        //display attribution details
+        val article = movie.articleModel[0]
+        val attribution = findViewById<TextView>(R.id.text_view_attribution)
+        attribution.text = Utils.createAttributionDetails(article)
+        attribution.movementMethod = LinkMovementMethod.getInstance()
+        println(attribution.text)
     }
 
     //close this activity and return home
