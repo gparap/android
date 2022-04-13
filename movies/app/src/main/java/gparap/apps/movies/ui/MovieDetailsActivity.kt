@@ -41,10 +41,6 @@ class MovieDetailsActivity : AppCompatActivity() {
             .load(movie.imageUrl)
             .into(image)
 
-        //display movie title
-        val title = findViewById<TextView>(R.id.text_view_movie_title)
-        title.text = movie.title
-
         //display movie summary
         val summary = findViewById<TextView>(R.id.text_view_movie_summary)
         summary.text = movie.summary
