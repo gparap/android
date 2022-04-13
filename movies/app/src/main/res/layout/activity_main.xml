@@ -5,14 +5,15 @@
     android:id="@+id/mainActivity"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/purple_700"
     tools:context=".MainActivity">
 
     <!--Movies list-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_movies"
-        android:clipToPadding="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
