@@ -4,29 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="2dp">
+    android:elevation="@dimen/cardview_default_elevation">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardCornerRadius="2dp"
+        android:layout_margin="@dimen/cardView_layout_margin"
+        app:cardCornerRadius="@dimen/cardView_cardCornerRadius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:padding="@dimen/cardView_constraintLayout_padding">
 
             <!--Placeholder for movie image-->
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_view_movie_image"
-                android:layout_width="192dp"
-                android:layout_height="192dp"
-                app:cardCornerRadius="2dp"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/cardView_imagePlaceholder_layout_height"
+                android:backgroundTint="@color/purple_200"
+                android:elevation="@dimen/cardview_default_elevation"
+                app:cardCornerRadius="@dimen/cardView_cardCornerRadius"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -36,7 +38,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:contentDescription="@string/desc_movie_image"
-                    android:scaleType="centerCrop"
+                    android:scaleType="fitCenter"
                     tools:src="@drawable/ic_baseline_image_24" />
 
             </androidx.cardview.widget.CardView>

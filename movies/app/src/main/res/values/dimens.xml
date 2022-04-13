@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Design Dimensions using Pixel (411 dp x 731 dp, 720 dpi)-->
+    <dimen name="cardView_layout_margin">8dp</dimen>
+    <dimen name="cardView_cardCornerRadius">8dp</dimen>
+    <dimen name="cardView_constraintLayout_padding">8dp</dimen>
+    <dimen name="cardView_imagePlaceholder_layout_height">192dp</dimen>
+</resources>
