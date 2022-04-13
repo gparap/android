@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Dimensions for tablets-->
+    <dimen name="layout_marginTop">16dp</dimen>
+    <dimen name="layout_marginTop_double">32dp</dimen>
+    <dimen name="layout_marginTop_half">8dp</dimen>
+    <dimen name="cardView_layout_margin">16dp</dimen>
+    <dimen name="cardView_cardCornerRadius">4dp</dimen>
+    <dimen name="cardView_constraintLayout_padding">12dp</dimen>
+    <dimen name="cardView_imagePlaceholder_layout_height">256dp</dimen>
+    <dimen name="textSize_material_body1">26sp</dimen>
+    <dimen name="textSize_material_body2">24sp</dimen>
+    <dimen name="textView_marginStart">12dp</dimen>
+    <dimen name="textView_marginEnd">12dp</dimen>
+    <dimen name="textView_movieDetails_marginStart">12dp</dimen>
+    <dimen name="textView_movieDetails_marginEnd">12dp</dimen>
+    <dimen name="textView_movieSummary_paddingStart">6dp</dimen>
+    <dimen name="textView_movieSummary_paddingEnd">6dp</dimen>
+    <dimen name="textView_padding">4dp</dimen>
+</resources>

@@ -9,6 +9,7 @@
     <dimen name="cardView_constraintLayout_padding">8dp</dimen>
     <dimen name="cardView_imagePlaceholder_layout_height">192dp</dimen>
     <dimen name="textSize_material_body1">16sp</dimen>
+    <dimen name="textSize_material_body2">14sp</dimen>
     <dimen name="textView_marginStart">8dp</dimen>
     <dimen name="textView_marginEnd">8dp</dimen>
     <dimen name="textView_movieDetails_marginStart">8dp</dimen>
