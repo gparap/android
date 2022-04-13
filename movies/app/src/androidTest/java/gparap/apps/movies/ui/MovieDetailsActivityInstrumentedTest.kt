@@ -24,7 +24,7 @@ class MovieDetailsActivityInstrumentedTest {
 
     @Test
     fun isVisible_text_view_movie_title() {
-        onView(withId(R.id.text_view_movie_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.text_view_movie_summary_label)).check(matches(isDisplayed()))
 
     }
 

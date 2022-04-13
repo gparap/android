@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Design Dimensions using Pixel (411 dp x 731 dp, 720 dpi)-->
+    <dimen name="layout_marginTop">8dp</dimen>
+    <dimen name="layout_marginTop_double">16dp</dimen>
+    <dimen name="layout_marginTop_half">4dp</dimen>
     <dimen name="cardView_layout_margin">8dp</dimen>
-    <dimen name="cardView_cardCornerRadius">8dp</dimen>
+    <dimen name="cardView_cardCornerRadius">4dp</dimen>
     <dimen name="cardView_constraintLayout_padding">8dp</dimen>
     <dimen name="cardView_imagePlaceholder_layout_height">192dp</dimen>
+    <dimen name="textSize_material_body1">16sp</dimen>
+    <dimen name="textView_marginStart">8dp</dimen>
+    <dimen name="textView_marginEnd">8dp</dimen>
+    <dimen name="textView_movieDetails_marginStart">8dp</dimen>
+    <dimen name="textView_movieDetails_marginEnd">8dp</dimen>
+    <dimen name="textView_movieSummary_paddingStart">4dp</dimen>
+    <dimen name="textView_movieSummary_paddingEnd">4dp</dimen>
+    <dimen name="textView_padding">4dp</dimen>
 </resources>
