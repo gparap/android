@@ -22,6 +22,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import gparap.apps.movies.R
 import gparap.apps.movies.model.MovieModel
 import gparap.apps.movies.utils.Utils
@@ -109,6 +112,12 @@ class MovieDetailsActivity : AppCompatActivity() {
         val attribution = findViewById<TextView>(R.id.text_view_attribution)
         attribution.text = Utils.createAttributionDetails(article)
         attribution.movementMethod = LinkMovementMethod.getInstance()
+
+        //handle bottom banner ad
+        MobileAds.initialize(this)
+        val adViewBottom: AdView = findViewById(R.id.ad_view_banner_bottom)
+        val adRequest = AdRequest.Builder().build()
+        adViewBottom.loadAd(adRequest)
     }
 
     //close this activity and return home
