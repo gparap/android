@@ -26,7 +26,7 @@
                 android:id="@+id/card_view_movie_image"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/cardView_imagePlaceholder_layout_height"
-                android:backgroundTint="@color/purple_200"
+                android:backgroundTint="@color/primaryLightColor"
                 android:elevation="@dimen/cardview_default_elevation"
                 app:cardCornerRadius="@dimen/cardView_cardCornerRadius"
                 app:layout_constraintEnd_toEndOf="parent"
