@@ -55,4 +55,9 @@ dependencies {
     //Glide image loading framework
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
+
+    //Mobile Ads SDK
+    dependencies {
+        implementation 'com.google.android.gms:play-services-ads:20.6.0'
+    }
 }
