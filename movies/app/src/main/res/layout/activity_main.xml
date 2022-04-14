@@ -5,7 +5,7 @@
     android:id="@+id/mainActivity"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/purple_700"
+    android:background="@color/primaryDarkColor"
     tools:context=".MainActivity">
 
     <!--Movies list-->
