@@ -25,6 +25,9 @@ import kotlinx.parcelize.Parcelize
  */
 @Parcelize
 data class MovieModel(
+    @SerializedName("link")
+    val watchLink: String,
+
     @SerializedName("title")
     val title: String,
 

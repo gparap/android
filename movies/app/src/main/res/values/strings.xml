@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Movies</string>
     <string name="desc_movie_image">Movie Image</string>
+    <string name="text_watch_movie">WATCH MOVIE</string>
 
     <!--Label for movie details-->
     <string name="label_movie_summary">Movie summary:</string>

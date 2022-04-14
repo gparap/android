@@ -21,4 +21,18 @@ class UtilsTest {
 
         assertEquals(expectedAttributionText, actualAttributionText.toString())
     }
+
+    @Test
+    fun createWatchMovieLink_isLinkCorrect() {
+        val linkText = "WATCH MOVIE"
+        val expectedLinkText = ">> $linkText <<"
+
+        //create actual text
+        val actualLinkText = Utils.createWatchMovieLink("", linkText)
+
+        println(expectedLinkText)
+        println(actualLinkText.toString())
+
+        assertEquals(expectedLinkText, actualLinkText.toString())
+    }
 }

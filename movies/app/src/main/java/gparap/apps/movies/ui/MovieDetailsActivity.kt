@@ -35,11 +35,22 @@ class MovieDetailsActivity : AppCompatActivity() {
         //get movie from intent
         val movie = intent.extras?.get("movie") as MovieModel
 
+        //display title to the activity's ActionBar
+        supportActionBar?.title = movie.title
+
         //display movie image
         val image = findViewById<ImageView>(R.id.image_view_movie_details)
         Glide.with(this)
             .load(movie.imageUrl)
             .into(image)
+
+        //create and display link to watch the movie
+        val watchLink = findViewById<TextView>(R.id.text_view_watch_movie_link)
+        watchLink.text = Utils.createWatchMovieLink(
+            movie.watchLink,
+            resources.getString(R.string.text_watch_movie)
+        )
+        watchLink.movementMethod = LinkMovementMethod.getInstance()
 
         //display movie summary
         val summary = findViewById<TextView>(R.id.text_view_movie_summary)
@@ -98,7 +109,6 @@ class MovieDetailsActivity : AppCompatActivity() {
         val attribution = findViewById<TextView>(R.id.text_view_attribution)
         attribution.text = Utils.createAttributionDetails(article)
         attribution.movementMethod = LinkMovementMethod.getInstance()
-        println(attribution.text)
     }
 
     //close this activity and return home

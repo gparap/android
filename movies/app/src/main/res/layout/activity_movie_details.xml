@@ -22,8 +22,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!--Watch movie link-->
+        <TextView
+            android:layout_marginTop="@dimen/layout_marginTop_half"
+            android:id="@+id/text_view_watch_movie_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/textView_marginStart"
+            android:gravity="center"
+            tools:text="WATCH MOVIE LINK"
+            android:textSize="@dimen/textSize_material_body1"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_view_movie_details" />
+
         <!--Movie plot summary label-->
         <TextView
+            android:layout_marginTop="@dimen/layout_marginTop_double"
             android:id="@+id/text_view_movie_summary_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,7 +49,7 @@
             android:textSize="@dimen/textSize_material_body2"
             android:textStyle="bold|italic"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_view_movie_details" />
+            app:layout_constraintTop_toBottomOf="@+id/text_view_watch_movie_link" />
 
         <!--Movie plot summary-->
         <TextView
