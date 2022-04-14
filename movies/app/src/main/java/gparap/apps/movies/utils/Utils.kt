@@ -18,4 +18,17 @@ object Utils {
                     ").", Html.FROM_HTML_MODE_LEGACY
         )
     }
+
+    /**
+     * Returns a text that has markup objects containing the link to watch a movie
+     */
+    fun createWatchMovieLink(linkHref: String, linkText: String): android.text.Spanned {
+        return Html.fromHtml(
+            "&#62;&#62;&#160;" +
+                    "<a href=\"" + linkHref + "\">" +
+                    linkText +
+                    "</a>" +
+                    "&#160;&#60;&#60;", Html.FROM_HTML_MODE_LEGACY
+        )
+    }
 }
