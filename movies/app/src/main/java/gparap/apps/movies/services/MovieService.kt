@@ -16,6 +16,7 @@
 package gparap.apps.movies.services
 
 import gparap.apps.movies.model.MovieResponseModel
+import gparap.apps.movies.utils.AppConstants
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -27,6 +28,6 @@ interface MovieService {
     /**
      * Gets all the movies.
      */
-    @get:GET("/movies.php")
+    @get:GET("/api/movies.php?key=" + AppConstants.API_KEY)
     val getMovies: Call<MovieResponseModel?>?
 }
