@@ -15,27 +15,21 @@
  */
 package gparap.apps.horoscope.ui
 
-import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.lifecycle.ViewModelProvider
 import gparap.apps.horoscope.R
 import gparap.apps.horoscope.adapters.SpinnerAdapter
 import gparap.apps.horoscope.data.HoroscopeModel
-import gparap.apps.horoscope.data.TranslationModel
-import gparap.apps.horoscope.utils.AppConstants
 import gparap.apps.horoscope.utils.Utils
 import gparap.apps.horoscope.viewmodels.MainActivityViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.net.URLDecoder
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var viewModel: MainActivityViewModel
@@ -146,44 +140,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         }
     }
 
-    //translate text to user locale
-    private fun getTranslation() {
-        //prepare query data
-        val queryData = Utils.getTranslationRequestQueryData(horoscope.text.toString())
-
-        //create web service
-        viewModel.createMyMemoryService()
-
-        //get translation
-        viewModel.getMyMemoryService()?.getMemoryTranslation(queryData)
-            ?.enqueue(object : Callback<TranslationModel> {
-                override fun onResponse(
-                    call: Call<TranslationModel>,
-                    response: Response<TranslationModel>,
-                ) {
-                    //!!! it is not guaranteed that translation will always work
-                    val translation = response.body() as TranslationModel
-                    try {
-                        //!!! this is a known bug in the URLEncoder that screws up the decoder
-                        val textToTranslate = translation.response.translation.replace("% 2", "%2")
-
-                        //change the text of the horoscope to the translated one
-                        horoscope.text =
-                            URLDecoder.decode(textToTranslate, AppConstants.DEFAULT_CHAR_ENCODING)
-
-                        //hide the translation button
-                        val buttonTranslate = findViewById<Button>(R.id.button_translate_horoscope)
-                        buttonTranslate.visibility = View.GONE
-                    } catch (e: Exception) {
-                    }
-                }
-
-                override fun onFailure(call: Call<TranslationModel>, t: Throwable) {
-                    println(t.message)
-                }
-            })
-    }
-
     //call web service and get horoscope
     private fun requestHoroscopeFromWebService() {
         viewModel.getAztroApiResponse()?.enqueue(object : Callback<HoroscopeModel> {
@@ -206,32 +162,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val date = findViewById<TextView>(R.id.text_view_date)
         date.text = model.date
         horoscope.text = model.horoscope
-
-        //translate into the language of the user
-        if (Utils.isTranslationNeeded()) {
-            //display the translation button
-            val buttonTranslate = findViewById<Button>(R.id.button_translate_horoscope)
-            buttonTranslate.visibility = View.VISIBLE
-
-            //translate text to locale
-            buttonTranslate.setOnClickListener {
-                //inform the user about the quality of translation
-                val dialog = AlertDialog.Builder(this)
-                    .setTitle(resources.getString(R.string.text_translation_warning))
-                    .setIcon(AppCompatResources.getDrawable(this, R.drawable.ic_warning_24))
-                    .setMessage(resources.getString(R.string.text_translation_info))
-                    .setPositiveButton(resources.getString(R.string.text_translate)) { _: DialogInterface, _: Int ->
-                        getTranslation()
-
-                    }
-                    .setNegativeButton(resources.getString(R.string.text_cancel)) { _dialog: DialogInterface, _: Int ->
-                        _dialog.dismiss()
-                    }
-                    .create()
-                dialog.show()
-            }
-        }
-
         val number = findViewById<TextView>(R.id.text_view_lucky_number)
         number.text = model.luckyNumber
         val time = findViewById<TextView>(R.id.text_view_lucky_time)

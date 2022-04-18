@@ -18,9 +18,7 @@ package gparap.apps.horoscope.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import gparap.apps.horoscope.data.HoroscopeModel
-import gparap.apps.horoscope.data.TranslationModel
 import gparap.apps.horoscope.services.AztroService
-import gparap.apps.horoscope.services.MyMemoryService
 import gparap.apps.horoscope.services.RetrofitClient
 import retrofit2.Call
 
@@ -29,8 +27,6 @@ class MainActivityViewModel : ViewModel() {
     private val zodiacSign: MutableLiveData<String> = MutableLiveData()
     private var webServiceAztro: AztroService? = null
     private var responseAztroApi: Call<HoroscopeModel>? = null
-    private var webServiceMyMemory: MyMemoryService? = null
-    private var responseMyMemoryApi: Call<TranslationModel>? = null
 
     fun getRequestedDay(): String? {
         return requestedDay.value
@@ -62,21 +58,5 @@ class MainActivityViewModel : ViewModel() {
 
     fun setAztroApiResponse(response: Call<HoroscopeModel>?) {
         this.responseAztroApi = response
-    }
-
-    fun createMyMemoryService() {
-        webServiceMyMemory = RetrofitClient.build().create(MyMemoryService::class.java)
-    }
-
-    fun getMyMemoryService(): MyMemoryService? {
-        return webServiceMyMemory
-    }
-
-    fun getMyMemoryApiResponse(): Call<TranslationModel>? {
-        return responseMyMemoryApi
-    }
-
-    fun setMyMemoryApiResponse(response: Call<TranslationModel>?) {
-        this.responseMyMemoryApi = response
     }
 }

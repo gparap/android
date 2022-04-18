@@ -123,14 +123,14 @@ object Utils {
      *
      * (default language of horoscope api is "en")
      */
-    fun isTranslationNeeded() : Boolean {
+    fun isTranslationNeeded(): Boolean {
         return Locale.getDefault().language != Locale.ENGLISH.language
     }
 
     /**
      * Returns the language pair for translation in the form of "en|<translation_language>"
      */
-    fun getLanguagePair() : String {
+    fun getLanguagePair(): String {
         return Locale.ENGLISH.language
             .plus("|")
             .plus(Locale.getDefault().language)
