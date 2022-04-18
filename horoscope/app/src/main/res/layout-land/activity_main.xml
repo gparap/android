@@ -110,20 +110,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/text_view_date"
                 tools:text="@string/lorem_ipsum" />
 
-            <!--Horoscope translation button-->
-            <Button
-                android:id="@+id/button_translate_horoscope"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/label_layout_marginTop_Half"
-                android:text="@string/button_translate_horoscope"
-                android:textSize="@dimen/textSize_Default"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_horoscope"
-                tools:visibility="visible" />
-
             <!--Label for luck-->
             <TextView
                 android:id="@+id/label_luck"
@@ -134,7 +120,7 @@
                 android:textSize="@dimen/textSize_Default"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/label_horoscope"
-                app:layout_constraintTop_toBottomOf="@+id/button_translate_horoscope" />
+                app:layout_constraintTop_toBottomOf="@+id/text_view_horoscope" />
 
             <!--Label for lucky number-->
             <TextView
@@ -206,7 +192,7 @@
                 android:textSize="@dimen/textSize_Default"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/label_horoscope"
-                app:layout_constraintTop_toBottomOf="@+id/button_translate_horoscope" />
+                app:layout_constraintTop_toBottomOf="@+id/text_view_horoscope" />
 
             <!--Pair sign-->
             <TextView
