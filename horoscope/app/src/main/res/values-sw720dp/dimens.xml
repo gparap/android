@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--Design dimensions-->
+    <!--10" Tablet devices dimensions-->
     <dimen name="imageViewLogo_layout_width">144dp</dimen>
     <dimen name="imageViewLogo_layout_height">48dp</dimen>
     <dimen name="textViewAppName_layout_height">144dp</dimen>
@@ -13,9 +13,9 @@
     <dimen name="label_layout_marginTop_Half">16dp</dimen>
     <dimen name="textViewHoroscope_layout_marginStart">8dp</dimen>
     <dimen name="textViewHoroscope_layout_marginEnd">8dp</dimen>
-    <dimen name="textSize_Default">14sp</dimen>
+    <dimen name="textSize_Default">26sp</dimen>
 
-    <!--Design dimensions (landscape variation)-->
+    <!--10" Tablet devices (landscape variation)-->
     <dimen name="textViewHoroscope_paddingStart_land">32dp</dimen>
     <dimen name="textViewHoroscope_paddingEnd_land">32dp</dimen>
     <dimen name="label_layout_marginTop_land">32dp</dimen>

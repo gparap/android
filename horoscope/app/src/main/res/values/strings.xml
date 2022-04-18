@@ -8,16 +8,16 @@
     <string name="text_prompt_select_spinner">select a zodiac sign</string>
     <string name="text_horoscope">HOROSCOPE</string>
     <string name="text_luck">LUCK</string>
-    <string name="text_lucky_number">number:</string>
-    <string name="text_lucky_time">time:</string>
-    <string name="text_lucky_color">color:</string>
+    <string name="text_lucky_number">number:&#160;&#160;</string>
+    <string name="text_lucky_time">time:&#160;&#160;</string>
+    <string name="text_lucky_color">color:&#160;&#160;</string>
     <string name="text_pair">PAIR</string>
     <string name="text_today">Today</string>
     <string name="text_tomorrow">Tomorrow</string>
     <string name="text_yesterday">Yesterday</string>
     <string name="button_translate_horoscope">Translate</string>
     <string name="text_translation_warning">Before you translate</string>
-    <string name="text_translation_info">Translation depends on an external service and it is not controlled by this app. As a a result, the quality of the tranlation cannot be guaranted. \nAre you sure you want to translate?</string>
+    <string name="text_translation_info">Translation depends on an external service and it is not controlled by this app. As a result, the quality of the tranlation cannot be guaranted. \nAre you sure you want to translate?</string>
     <string name="text_translate">Translate</string>
     <string name="text_cancel">Cancel</string>
 
