@@ -2,6 +2,7 @@ package gparap.apps.horoscope.adapters
 
 import android.content.Context
 import android.widget.ArrayAdapter
+import gparap.apps.horoscope.R
 
 object SpinnerAdapter {
     /**
@@ -10,9 +11,9 @@ object SpinnerAdapter {
     fun create(context: Context, textArrayResId: Int)
             : ArrayAdapter<CharSequence> {
         return ArrayAdapter.createFromResource(
-            context, textArrayResId, android.R.layout.simple_spinner_dropdown_item)
+            context, textArrayResId, R.layout.spinner_dropdown_item)
             .also {
-                it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                it.setDropDownViewResource(R.layout.spinner_dropdown_item)
             }
     }
 }
