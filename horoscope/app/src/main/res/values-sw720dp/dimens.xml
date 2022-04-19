@@ -14,6 +14,7 @@
     <dimen name="textViewHoroscope_layout_marginStart">8dp</dimen>
     <dimen name="textViewHoroscope_layout_marginEnd">8dp</dimen>
     <dimen name="textSize_Default">26sp</dimen>
+    <dimen name="imageView_zodiacSign_padding">16dp</dimen>
 
     <!--10" Tablet devices (landscape variation)-->
     <dimen name="textViewHoroscope_paddingStart_land">32dp</dimen>
