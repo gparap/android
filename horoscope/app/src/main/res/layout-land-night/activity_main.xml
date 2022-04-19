@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity">
+
+    <!--Zodiac signs-->
+    <RelativeLayout
+        android:id="@+id/layout_spinner_zodiac_signs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/imageViewZodiacSign_layout_marginStart_land"
+        android:background="@color/primaryDarkColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Spinner
+            android:id="@+id/spinner_zodiac_signs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/zodiac_signs"
+            android:minHeight="@dimen/spinner_minHeight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </RelativeLayout>
+
+    <!--Intro text that prompts the user to choose a sign-->
+    <TextView
+        android:id="@+id/text_view_prompt_select_sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_prompt_select"
+        android:textSize="@dimen/textSize_Default"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25"
+        tools:visibility="gone" />
+
+    <!--Zodiac sign-->
+    <ImageView
+        android:id="@+id/image_view_zodiac_sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/imageViewZodiacSign_layout_marginStart_land"
+        android:layout_marginTop="@dimen/scrollView_layout_marginTop"
+        android:background="@color/cardview_dark_background"
+        android:contentDescription="@string/desc_zodiac_sign"
+        android:padding="@dimen/imageView_zodiacSign_padding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_spinner_zodiac_signs"
+        tools:src="@drawable/aries" />
+
+    <!--Zodiac date range-->
+    <TextView
+        android:id="@+id/text_view_date_range"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSize_Default"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@id/image_view_zodiac_sign"
+        app:layout_constraintTop_toBottomOf="@+id/image_view_zodiac_sign"
+        tools:text="Mar 21 - Apr 20" />
+
+    <ScrollView
+        android:id="@+id/scroll_view_horoscope"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/scrollView_layout_marginTop"
+        android:layout_marginBottom="@dimen/scrollView_layout_marginBottom"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_view_date_range"
+        app:layout_constraintTop_toBottomOf="@+id/layout_spinner_zodiac_signs"
+        tools:visibility="visible">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--Label for horoscope-->
+            <TextView
+                android:id="@+id/label_horoscope"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_horoscope"
+                android:textSize="@dimen/textSize_Default"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--Horoscope's date-->
+            <TextView
+                android:id="@+id/text_view_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSize_Default"
+                android:textStyle="bold|italic"
+                app:layout_constraintEnd_toEndOf="@+id/label_horoscope"
+                app:layout_constraintStart_toStartOf="@+id/label_horoscope"
+                app:layout_constraintTop_toBottomOf="@+id/label_horoscope"
+                tools:text="January 22, 2022" />
+
+            <!--Horoscope-->
+            <TextView
+                android:id="@+id/text_view_horoscope"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/textViewHoroscope_paddingStart_land"
+                android:paddingEnd="@dimen/textViewHoroscope_paddingEnd_land"
+                android:textSize="@dimen/textSize_Default"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_date"
+                tools:text="@string/lorem_ipsum" />
+
+            <!--Label for luck-->
+            <TextView
+                android:id="@+id/label_luck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/label_layout_marginTop_land"
+                android:text="@string/text_luck"
+                android:textSize="@dimen/textSize_Default"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/label_horoscope"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_horoscope" />
+
+            <!--Label for lucky number-->
+            <TextView
+                android:id="@+id/label_lucky_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_lucky_number"
+                android:textSize="@dimen/textSize_Default"
+                app:layout_constraintEnd_toStartOf="@+id/label_horoscope"
+                app:layout_constraintTop_toBottomOf="@+id/label_luck" />
+
+            <!--Lucky number-->
+            <TextView
+                android:id="@+id/text_view_lucky_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSize_Default"
+                app:layout_constraintStart_toEndOf="@+id/label_luck"
+                app:layout_constraintTop_toBottomOf="@+id/label_luck"
+                tools:text="56" />
+
+            <!--Label for lucky time of time-->
+            <TextView
+                android:id="@+id/label_lucky_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_lucky_time"
+                android:textSize="@dimen/textSize_Default"
+                app:layout_constraintEnd_toStartOf="@+id/label_horoscope"
+                app:layout_constraintTop_toBottomOf="@+id/label_lucky_number" />
+
+            <!--Lucky time of time-->
+            <TextView
+                android:id="@+id/text_view_lucky_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSize_Default"
+                app:layout_constraintStart_toEndOf="@+id/label_luck"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_lucky_number"
+                tools:text="9pm" />
+
+            <!--Label for lucky color-->
+            <TextView
+                android:id="@+id/label_lucky_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_lucky_color"
+                android:textSize="@dimen/textSize_Default"
+                app:layout_constraintEnd_toStartOf="@+id/label_horoscope"
+                app:layout_constraintTop_toBottomOf="@+id/label_lucky_time" />
+
+            <!--Lucky color-->
+            <TextView
+                android:id="@+id/text_view_lucky_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSize_Default"
+                app:layout_constraintStart_toEndOf="@+id/label_luck"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_lucky_time"
+                tools:text="BLue" />
+
+            <!--Label for pair sign-->
+            <TextView
+                android:id="@+id/label_pair_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/label_layout_marginTop"
+                android:text="@string/text_pair"
+                android:textSize="@dimen/textSize_Default"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/label_horoscope"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_horoscope" />
+
+            <!--Pair sign-->
+            <TextView
+                android:id="@+id/text_view_pair_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSize_Default"
+                app:layout_constraintEnd_toEndOf="@+id/label_pair_sign"
+                app:layout_constraintStart_toStartOf="@+id/label_pair_sign"
+                app:layout_constraintTop_toBottomOf="@+id/label_pair_sign"
+                tools:text="Cancer" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
