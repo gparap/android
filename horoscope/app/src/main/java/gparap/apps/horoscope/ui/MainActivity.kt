@@ -22,6 +22,9 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import gparap.apps.horoscope.R
 import gparap.apps.horoscope.adapters.SpinnerAdapter
 import gparap.apps.horoscope.data.HoroscopeModel
@@ -53,6 +56,12 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         //get horoscope widget
         horoscope = findViewById(R.id.text_view_horoscope)
+
+        //create bottom banner ad
+        MobileAds.initialize(this) {}
+        val adView: AdView = findViewById(R.id.ad_view_banner_bottom)
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
