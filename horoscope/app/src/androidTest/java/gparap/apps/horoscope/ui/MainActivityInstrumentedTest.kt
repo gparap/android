@@ -75,12 +75,6 @@ class MainActivityInstrumentedTest {
 
     @Test
     @SmallTest
-    fun isNotVisible_button_set_zodiac() {
-        onView(withId(R.id.button_set_zodiac)).check(matches(not(isDisplayed())))
-    }
-
-    @Test
-    @SmallTest
     fun spinnerSelectZodiacSign_correctSelected() {
         //Aries
         onView(withId(R.id.spinner_zodiac_signs)).perform(click())
@@ -163,21 +157,5 @@ class MainActivityInstrumentedTest {
             val pair = it.findViewById<TextView>(R.id.text_view_pair_sign)
             assert(!pair.text.isNullOrEmpty())
         }
-    }
-
-    @Test
-    @LargeTest
-    fun noTranslateButtonClick_displayTranslationAlertDialog() {
-        //choose whatever zodiac sign and try to translate
-        onView(withId(R.id.spinner_zodiac_signs)).perform(click())
-        onData(`is`(context.resources.getString(R.string.text_zodiac_Capricorn))).perform(click())
-        Thread.sleep(1667)
-        onView(withId(R.id.button_translate_horoscope)).perform(click())
-
-        //assert all dialog's text is displayed properly
-        onView(withText(R.string.text_translation_warning)).check(matches(isDisplayed()))
-        onView(withText(R.string.text_translation_info)).check(matches(isDisplayed()))
-        onView(withText(R.string.text_translate)).check(matches(isDisplayed()))
-        onView(withText(R.string.text_cancel)).check(matches(isDisplayed()))
     }
 }
