@@ -160,7 +160,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             }
 
             override fun onFailure(call: Call<HoroscopeModel>, t: Throwable) {
-                Toast.makeText(this@MainActivity, t.localizedMessage, Toast.LENGTH_LONG)
+                Toast.makeText(this@MainActivity,
+                    resources.getString(R.string.toast_internet_connection_required),
+                    Toast.LENGTH_LONG)
                     .show()
             }
         })
