@@ -20,6 +20,7 @@
     <string name="text_translation_info">Translation depends on an external service and it is not controlled by this app. As a result, the quality of the tranlation cannot be guaranted. \nAre you sure you want to translate?</string>
     <string name="text_translate">Translate</string>
     <string name="text_cancel">Cancel</string>
+    <string name="toast_internet_connection_required">Internet connection required!</string>
 
     <!--array of zodiac signs-->
     <array name="zodiac_signs">
