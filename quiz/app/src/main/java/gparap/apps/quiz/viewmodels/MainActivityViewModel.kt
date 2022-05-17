@@ -43,6 +43,7 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
         MutableLiveData()
     private var userQuizAnswers: MutableLiveData<ArrayList<String>> = MutableLiveData()
     private var questionsDifficulty: MutableLiveData<ArrayList<String>> = MutableLiveData()
+    private var spinnerVisibilityLiveData: MutableLiveData<Int> = MutableLiveData()
 
     fun getSelectedCategory(): LiveData<String> {
         return selectedCategoryLiveData
@@ -62,6 +63,14 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
 
     fun getUserQuizAnswers(): LiveData<ArrayList<String>?> {
         return userQuizAnswers
+    }
+
+    fun getSpinnerVisibility(): LiveData<Int> {
+        return spinnerVisibilityLiveData
+    }
+
+    fun setSpinnerVisibility(visibility: Int) {
+        spinnerVisibilityLiveData.value = visibility
     }
 
     /**
@@ -360,6 +369,7 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
         questionsDifficulty.value = null
         userQuizAnswers.value = null
         selectedCategoryRightAnswers.value = null
+        selectedCategoryLiveData.value = ""
     }
 
     /**

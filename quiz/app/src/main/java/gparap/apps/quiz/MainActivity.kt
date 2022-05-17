@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var viewModel: MainActivityViewModel
     private lateinit var spinner: Spinner
     private var selectedCategory = ""
+    private var spinnerVisibility = VISIBLE
 
     fun getViewModel(): MainActivityViewModel {
         return viewModel
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         viewModel.createOrOpenDatabase()
         observeSelectedCategory()
         handleQuizCategorySelectionCallback()
+        observeSpinnerVisibility()
     }
 
     override fun onDestroy() {
@@ -318,8 +320,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private fun handleReturnToCategoriesCallback() {
         findViewById<Button>(R.id.button_back_to_categories).apply {
             //hide current layout
-            this@MainActivity.findViewById<ConstraintLayout>(R.id.main_layout_quiz)
-                .apply { visibility = GONE }
+            this@MainActivity.findViewById<ConstraintLayout>(R.id.main_layout_quiz).apply {
+                visibility = GONE
+            }
             this.visibility = GONE
             this@MainActivity.findViewById<ImageButton>(R.id.button_next_question)
                 .apply { visibility = GONE }
@@ -350,10 +353,8 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             }
 
             //display the starting layout
-            this@MainActivity.findViewById<Spinner>(R.id.spinner_categories).apply {
-                visibility = VISIBLE
-                setSelection(0)
-            }
+            resetSpinner()
+
             this@MainActivity.findViewById<Button>(R.id.button_start_quiz)
                 .apply { visibility = VISIBLE }
             this@MainActivity.findViewById<LinearLayout>(R.id.main_layout_intro).apply {
@@ -448,10 +449,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             findViewById<ConstraintLayout>(R.id.main_layout_results).apply { visibility = GONE }
 
             //display the starting layout
-            findViewById<Spinner>(R.id.spinner_categories).apply {
-                visibility = VISIBLE
-                setSelection(0)
-            }
+            resetSpinner()
             findViewById<Button>(R.id.button_start_quiz).apply { visibility = VISIBLE }
             findViewById<LinearLayout>(R.id.main_layout_intro).apply {
                 visibility = VISIBLE
@@ -480,9 +478,14 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         findViewById<Button>(R.id.button_start_quiz).apply {
             setOnClickListener {
 
+                if (viewModel.getSelectedCategory().value?.isEmpty()!!) return@setOnClickListener
+
                 //hide the current layout
                 this.visibility = GONE
-                spinner.visibility = GONE
+                viewModel.setSpinnerVisibility(GONE).apply {
+                    spinner.visibility = viewModel.getSpinnerVisibility().value!!
+                }
+
                 this@MainActivity.findViewById<LinearLayout>(R.id.main_layout_intro).apply {
                     visibility = INVISIBLE
                 }
@@ -531,12 +534,32 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         spinner = findViewById(R.id.spinner_categories)
         spinner.onItemSelectedListener = this
         spinner.setSelection(0)
+
+        if (viewModel.getSpinnerVisibility().value != null) {
+            spinner.visibility = viewModel.getSpinnerVisibility().value!!
+        }
+
     }
 
     /* Observes the selected category value */
     private fun observeSelectedCategory() {
         viewModel.getSelectedCategory().observe(this) {
             selectedCategory = it
+        }
+    }
+
+    /* Observes the visibility of the spinner */
+    private fun observeSpinnerVisibility() {
+        viewModel.getSpinnerVisibility().observe(this) {
+            spinnerVisibility = it
+        }
+    }
+
+    /* Initializes the spinner */
+    private fun resetSpinner() {
+        viewModel.setSpinnerVisibility(VISIBLE).apply {
+            spinner.visibility = viewModel.getSpinnerVisibility().value!!
+            spinner.setSelection(0)
         }
     }
 }
