@@ -16,12 +16,14 @@
 package gparap.apps.quiz
 
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.View.*
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import gparap.apps.quiz.utils.AppConstants
 import gparap.apps.quiz.viewmodels.MainActivityViewModel
@@ -332,7 +334,12 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             //activate submit button
             this@MainActivity.findViewById<Button>(R.id.button_submit_answer).apply {
                 isActivated = true
-                setBackgroundColor(resources.getColor(R.color.purple_500))
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    setBackgroundColor(resources.getColor(R.color.purple_500, null))
+                } else {
+                    setBackgroundColor(ContextCompat.getColor(this@MainActivity,
+                        R.color.purple_500))
+                }
             }
 
             //uncheck and restore the color of radio buttons
