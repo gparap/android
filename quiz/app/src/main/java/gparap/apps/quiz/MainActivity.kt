@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private var selectedCategory = ""
     private var spinnerVisibility = VISIBLE
     private var buttonStartVisibility = VISIBLE
+    private var layoutIntroVisibility = VISIBLE
 
     fun getViewModel(): MainActivityViewModel {
         return viewModel
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         handleQuizCategorySelectionCallback()
         observeSpinnerVisibility()
         observeButtonStartVisibility()
+        observeLayoutIntroVisibility()
     }
 
     override fun onDestroy() {
@@ -367,7 +369,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 viewModel.setButtonStartVisibility(VISIBLE)
             }
             this@MainActivity.findViewById<LinearLayout>(R.id.main_layout_intro).apply {
-                visibility = VISIBLE
+                viewModel.setLayoutIntroVisibility(VISIBLE)
                 this.findViewById<TextView>(R.id.text_view_choose_category).apply {
                     visibility = VISIBLE
                 }
@@ -463,7 +465,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 viewModel.setButtonStartVisibility(VISIBLE)
             }
             findViewById<LinearLayout>(R.id.main_layout_intro).apply {
-                visibility = VISIBLE
+                viewModel.setLayoutIntroVisibility(VISIBLE)
                 this.findViewById<TextView>(R.id.text_view_choose_category).apply {
                     visibility = VISIBLE
                 }
@@ -498,7 +500,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 }
 
                 this@MainActivity.findViewById<LinearLayout>(R.id.main_layout_intro).apply {
-                    visibility = INVISIBLE
+                    viewModel.setLayoutIntroVisibility(INVISIBLE)
                 }
 
                 //display the quiz layout
@@ -580,6 +582,16 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             buttonStartVisibility = it
             findViewById<Button>(R.id.button_start_quiz).apply {
                 visibility = buttonStartVisibility
+            }
+        }
+    }
+
+    /* Observes the visibility of the introductory layout */
+    private fun observeLayoutIntroVisibility() {
+        viewModel.getLayoutIntroVisibility().observe(this) {
+            layoutIntroVisibility = it
+            this@MainActivity.findViewById<LinearLayout>(R.id.main_layout_intro).apply {
+                visibility = layoutIntroVisibility
             }
         }
     }
