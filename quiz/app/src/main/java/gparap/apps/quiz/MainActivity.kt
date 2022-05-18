@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var spinner: Spinner
     private var selectedCategory = ""
     private var spinnerVisibility = VISIBLE
+    private var buttonStartVisibility = VISIBLE
 
     fun getViewModel(): MainActivityViewModel {
         return viewModel
@@ -47,6 +48,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         observeSelectedCategory()
         handleQuizCategorySelectionCallback()
         observeSpinnerVisibility()
+        observeButtonStartVisibility()
     }
 
     override fun onDestroy() {
@@ -361,9 +363,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
             //display the starting layout
             resetSpinner()
-
-            this@MainActivity.findViewById<Button>(R.id.button_start_quiz)
-                .apply { visibility = VISIBLE }
+            this@MainActivity.findViewById<Button>(R.id.button_start_quiz).apply {
+                viewModel.setButtonStartVisibility(VISIBLE)
+            }
             this@MainActivity.findViewById<LinearLayout>(R.id.main_layout_intro).apply {
                 visibility = VISIBLE
                 this.findViewById<TextView>(R.id.text_view_choose_category).apply {
@@ -457,7 +459,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
             //display the starting layout
             resetSpinner()
-            findViewById<Button>(R.id.button_start_quiz).apply { visibility = VISIBLE }
+            findViewById<Button>(R.id.button_start_quiz).apply {
+                viewModel.setButtonStartVisibility(VISIBLE)
+            }
             findViewById<LinearLayout>(R.id.main_layout_intro).apply {
                 visibility = VISIBLE
                 this.findViewById<TextView>(R.id.text_view_choose_category).apply {
@@ -488,7 +492,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 if (viewModel.getSelectedCategory().value?.isEmpty()!!) return@setOnClickListener
 
                 //hide the current layout
-                this.visibility = GONE
+                viewModel.setButtonStartVisibility(GONE)
                 viewModel.setSpinnerVisibility(GONE).apply {
                     spinner.visibility = viewModel.getSpinnerVisibility().value!!
                 }
@@ -567,6 +571,16 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         viewModel.setSpinnerVisibility(VISIBLE).apply {
             spinner.visibility = viewModel.getSpinnerVisibility().value!!
             spinner.setSelection(0)
+        }
+    }
+
+    /* Observes the visibility of the start quiz button */
+    private fun observeButtonStartVisibility() {
+        viewModel.getButtonStartVisibility().observe(this) {
+            buttonStartVisibility = it
+            findViewById<Button>(R.id.button_start_quiz).apply {
+                visibility = buttonStartVisibility
+            }
         }
     }
 }
