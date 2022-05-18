@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private var spinnerVisibility = VISIBLE
     private var buttonStartVisibility = VISIBLE
     private var layoutIntroVisibility = VISIBLE
+    private var layoutQuizVisibility = GONE
 
     fun getViewModel(): MainActivityViewModel {
         return viewModel
@@ -51,6 +52,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         observeSpinnerVisibility()
         observeButtonStartVisibility()
         observeLayoutIntroVisibility()
+        observeLayoutQuizVisibility()
     }
 
     override fun onDestroy() {
@@ -155,7 +157,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             viewModel.addUserAnswer(answer)
 
             //swap layouts
-            findViewById<ConstraintLayout>(R.id.main_layout_quiz).apply { visibility = GONE }
+            findViewById<ConstraintLayout>(R.id.main_layout_quiz).apply {
+                viewModel.setLayoutQuizVisibility(GONE)
+            }
             findViewById<ConstraintLayout>(R.id.main_layout_results).apply { visibility = VISIBLE }
             displayQuizResults()
         }
@@ -327,7 +331,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         findViewById<Button>(R.id.button_back_to_categories).apply {
             //hide current layout
             this@MainActivity.findViewById<ConstraintLayout>(R.id.main_layout_quiz).apply {
-                visibility = GONE
+                viewModel.setLayoutQuizVisibility(GONE)
             }
             this.visibility = GONE
             this@MainActivity.findViewById<ImageButton>(R.id.button_next_question)
@@ -391,7 +395,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
             //display the quiz layout
             this@MainActivity.findViewById<ConstraintLayout>(R.id.main_layout_quiz).apply {
-                visibility = VISIBLE
+                viewModel.setLayoutQuizVisibility(VISIBLE)
 
                 //deactivate submit button
                 this.findViewById<Button>(R.id.button_submit_answer).apply {
@@ -438,7 +442,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
             //display the quiz layout
             this@MainActivity.findViewById<ConstraintLayout>(R.id.main_layout_quiz).apply {
-                visibility = VISIBLE
+                viewModel.setLayoutQuizVisibility(VISIBLE)
             }
 
             //reset the counter for questions
@@ -505,7 +509,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
                 //display the quiz layout
                 this@MainActivity.findViewById<ConstraintLayout>(R.id.main_layout_quiz).apply {
-                    visibility = VISIBLE
+                    viewModel.setLayoutQuizVisibility(VISIBLE)
                 }
 
                 //display and handle questions & answers
@@ -592,6 +596,16 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             layoutIntroVisibility = it
             this@MainActivity.findViewById<LinearLayout>(R.id.main_layout_intro).apply {
                 visibility = layoutIntroVisibility
+            }
+        }
+    }
+
+    /* Observes the visibility of the quiz layout */
+    private fun observeLayoutQuizVisibility() {
+        viewModel.getLayoutQuizVisibility().observe(this) {
+            layoutQuizVisibility = it
+            this@MainActivity.findViewById<ConstraintLayout>(R.id.main_layout_quiz).apply {
+                visibility = layoutQuizVisibility
             }
         }
     }
