@@ -46,6 +46,7 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
     private var spinnerVisibilityLiveData: MutableLiveData<Int> = MutableLiveData()
     private var buttonStartVisibilityLiveData: MutableLiveData<Int> = MutableLiveData()
     private var layoutIntroVisibilityLiveData: MutableLiveData<Int> = MutableLiveData()
+    private var layoutQuizVisibilityLiveData: MutableLiveData<Int> = MutableLiveData()
 
     fun getSelectedCategory(): LiveData<String> {
         return selectedCategoryLiveData
@@ -89,6 +90,14 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
 
     fun setLayoutIntroVisibility(visibility: Int) {
         layoutIntroVisibilityLiveData.value = visibility
+    }
+
+    fun getLayoutQuizVisibility(): LiveData<Int> {
+        return layoutQuizVisibilityLiveData
+    }
+
+    fun setLayoutQuizVisibility(visibility: Int) {
+        layoutQuizVisibilityLiveData.value = visibility
     }
 
     /**
