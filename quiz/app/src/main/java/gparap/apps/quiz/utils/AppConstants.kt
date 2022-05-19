@@ -19,15 +19,11 @@ object AppConstants {
     /* Character set name used for converting data from an array of bytes to a string */
     const val CHARSET_NAME = "UTF-8"
 
-    /* Quiz database and its tables */
+    /* Quiz database */
     const val DATABASE_NAME = "quizDB"
     const val DATABASE_VERSION = 1
-    const val DB_TABLE_ANIMALS = "animals"
-    const val DB_TABLE_GEOGRAPHY = "geography"
-    const val DB_TABLE_HISTORY = "history"
-    const val DB_TABLE_LITERATURE = "literature"
-    const val DB_TABLE_MATHS = "mathematics"
 
+    /* Quiz default number of questions */
     const val QUIZ_QUESTIONS_COUNT = 10
 
     /* Question difficulty values */

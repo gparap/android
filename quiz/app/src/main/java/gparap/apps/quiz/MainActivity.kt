@@ -63,38 +63,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         if (position == 0) return
 
-        when (parent?.getItemAtPosition(position).toString()) {
-
-            //animals category selected
-            resources.getString(R.string.category_animals) -> {
-                viewModel.populateDatabaseTable(AppConstants.DB_TABLE_ANIMALS)
-                viewModel.setSelectedCategory(resources.getString(R.string.category_animals))
-            }
-
-            //geography category selected
-            resources.getString(R.string.category_geography) -> {
-                viewModel.populateDatabaseTable(AppConstants.DB_TABLE_GEOGRAPHY)
-                viewModel.setSelectedCategory(resources.getString(R.string.category_geography))
-            }
-
-            //history category selected
-            resources.getString(R.string.category_history) -> {
-                viewModel.populateDatabaseTable(AppConstants.DB_TABLE_HISTORY)
-                viewModel.setSelectedCategory(resources.getString(R.string.category_history))
-            }
-
-            //literature category selected
-            resources.getString(R.string.category_literature) -> {
-                viewModel.populateDatabaseTable(AppConstants.DB_TABLE_LITERATURE)
-                viewModel.setSelectedCategory(resources.getString(R.string.category_literature))
-            }
-
-            //mathematics category selected
-            resources.getString(R.string.category_mathematics) -> {
-                viewModel.populateDatabaseTable(AppConstants.DB_TABLE_MATHS)
-                viewModel.setSelectedCategory(resources.getString(R.string.category_mathematics))
-            }
-        }
+        //setup the selected category and its data
+        viewModel.populateDatabaseTable(parent?.getItemAtPosition(position).toString().lowercase())
+        viewModel.setSelectedCategory(parent?.getItemAtPosition(position).toString())
 
         //remove welcome texts and show the high score for this quiz category
         findViewById<TextView>(R.id.text_view_welcome).apply { visibility = GONE }
@@ -192,62 +163,26 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         //apply a red/green color to the radio buttons describing wrong/right answers
         when (viewModel.getQuizQuestionRightAnswerIndex()) {
-            0 -> {
-                findViewById<RadioButton>(R.id.radio_button_choice_one).apply {
-                    this.setBackgroundColor(Color.GREEN)
-                }
-                findViewById<RadioButton>(R.id.radio_button_choice_two).apply {
-                    this.setBackgroundColor(Color.RED)
-                }
-                findViewById<RadioButton>(R.id.radio_button_choice_three).apply {
-                    this.setBackgroundColor(Color.RED)
-                }
-                findViewById<RadioButton>(R.id.radio_button_choice_four).apply {
-                    this.setBackgroundColor(Color.RED)
-                }
-            }
-            1 -> {
-                findViewById<RadioButton>(R.id.radio_button_choice_one).apply {
-                    this.setBackgroundColor(Color.RED)
-                }
-                findViewById<RadioButton>(R.id.radio_button_choice_two).apply {
-                    this.setBackgroundColor(Color.GREEN)
-                }
-                findViewById<RadioButton>(R.id.radio_button_choice_three).apply {
-                    this.setBackgroundColor(Color.RED)
-                }
-                findViewById<RadioButton>(R.id.radio_button_choice_four).apply {
-                    this.setBackgroundColor(Color.RED)
-                }
-            }
-            2 -> {
-                findViewById<RadioButton>(R.id.radio_button_choice_one).apply {
-                    this.setBackgroundColor(Color.RED)
-                }
-                findViewById<RadioButton>(R.id.radio_button_choice_two).apply {
-                    this.setBackgroundColor(Color.RED)
-                }
-                findViewById<RadioButton>(R.id.radio_button_choice_three).apply {
-                    this.setBackgroundColor(Color.GREEN)
-                }
-                findViewById<RadioButton>(R.id.radio_button_choice_four).apply {
-                    this.setBackgroundColor(Color.RED)
-                }
-            }
-            3 -> {
-                findViewById<RadioButton>(R.id.radio_button_choice_one).apply {
-                    this.setBackgroundColor(Color.RED)
-                }
-                findViewById<RadioButton>(R.id.radio_button_choice_two).apply {
-                    this.setBackgroundColor(Color.RED)
-                }
-                findViewById<RadioButton>(R.id.radio_button_choice_three).apply {
-                    this.setBackgroundColor(Color.RED)
-                }
-                findViewById<RadioButton>(R.id.radio_button_choice_four).apply {
-                    this.setBackgroundColor(Color.GREEN)
-                }
-            }
+            0 -> applyRadioButtonsColors(Color.GREEN, Color.RED, Color.RED, Color.RED)
+            1 -> applyRadioButtonsColors(Color.RED, Color.GREEN, Color.RED, Color.RED)
+            2 -> applyRadioButtonsColors(Color.RED, Color.RED, Color.GREEN, Color.RED)
+            3 -> applyRadioButtonsColors(Color.RED, Color.RED, Color.RED, Color.GREEN)
+        }
+    }
+
+    /* Apply colors to the radio buttons holding the multiple choices (in default order always) */
+    private fun applyRadioButtonsColors(color1: Int, color2: Int, color3: Int, color4: Int) {
+        findViewById<RadioButton>(R.id.radio_button_choice_one).apply {
+            this.setBackgroundColor(color1)
+        }
+        findViewById<RadioButton>(R.id.radio_button_choice_two).apply {
+            this.setBackgroundColor(color2)
+        }
+        findViewById<RadioButton>(R.id.radio_button_choice_three).apply {
+            this.setBackgroundColor(color3)
+        }
+        findViewById<RadioButton>(R.id.radio_button_choice_four).apply {
+            this.setBackgroundColor(color4)
         }
     }
 
