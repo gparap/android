@@ -9,6 +9,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Quiz">
         <activity
+            android:screenOrientation="locked"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
