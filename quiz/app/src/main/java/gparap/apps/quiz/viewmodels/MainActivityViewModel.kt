@@ -147,47 +147,27 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
 
             //Animals
             this.getApplication<Application?>().applicationContext.resources.getString(R.string.category_animals) -> {
-                if (questionsAnimals.value == null) {
-                    questionsAnimals.value =
-                        database.getAllQuestions(selectedCategoryLiveData.value!!)
-                }
-                selectedCategoryQuestions.value = questionsAnimals.value
+                populateAnimalsCategoryQuestions()
             }
 
             //Geography
             this.getApplication<Application?>().applicationContext.resources.getString(R.string.category_geography) -> {
-                if (questionsGeography.value == null) {
-                    questionsGeography.value =
-                        database.getAllQuestions(selectedCategoryLiveData.value!!)
-                }
-                selectedCategoryQuestions.value = questionsGeography.value
+                populateGeographyCategoryQuestions()
             }
 
             //History
             this.getApplication<Application?>().applicationContext.resources.getString(R.string.category_history) -> {
-                if (questionsHistory.value == null) {
-                    questionsHistory.value =
-                        database.getAllQuestions(selectedCategoryLiveData.value!!)
-                }
-                selectedCategoryQuestions.value = questionsHistory.value
+                populateHistoryCategoryQuestions()
             }
 
             //Literature
             this.getApplication<Application?>().applicationContext.resources.getString(R.string.category_literature) -> {
-                if (questionsLiterature.value == null) {
-                    questionsLiterature.value =
-                        database.getAllQuestions(selectedCategoryLiveData.value!!)
-                }
-                selectedCategoryQuestions.value = questionsLiterature.value
+                populateLiteratureCategoryQuestions()
             }
 
             //Mathematics
             this.getApplication<Application?>().applicationContext.resources.getString(R.string.category_mathematics) -> {
-                if (questionsMathematics.value == null) {
-                    questionsMathematics.value =
-                        database.getAllQuestions(selectedCategoryLiveData.value!!)
-                }
-                selectedCategoryQuestions.value = questionsMathematics.value
+                populateMathematicsCategoryQuestions()
             }
         }
     }
@@ -406,7 +386,9 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
         questionsCounter = 0
     }
 
-    /* Returns the index among multiple choices of the current quiz question's right answer */
+    /**
+     * Returns the index among multiple choices of the current quiz question's right answer
+     */
     fun getQuizQuestionRightAnswerIndex(): Int {
         var rightAnswerIndex = 0
 
@@ -425,7 +407,9 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
         return rightAnswerIndex
     }
 
-    /* Returns the index among multiple choices of the current quiz question's user answer */
+    /**
+     * Returns the index among multiple choices of the current quiz question's user answer
+     */
     fun getQuizQuestionUserAnswerIndex(): Int {
         var userAnswerIndex = 0
 
@@ -442,5 +426,45 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
         }
 
         return userAnswerIndex
+    }
+
+    private fun populateAnimalsCategoryQuestions() {
+        if (questionsAnimals.value == null) {
+            questionsAnimals.value =
+                database.getAllQuestions(selectedCategoryLiveData.value!!)
+        }
+        selectedCategoryQuestions.value = questionsAnimals.value
+    }
+
+    private fun populateGeographyCategoryQuestions() {
+        if (questionsGeography.value == null) {
+            questionsGeography.value =
+                database.getAllQuestions(selectedCategoryLiveData.value!!)
+        }
+        selectedCategoryQuestions.value = questionsGeography.value
+    }
+
+    private fun populateHistoryCategoryQuestions() {
+        if (questionsHistory.value == null) {
+            questionsHistory.value =
+                database.getAllQuestions(selectedCategoryLiveData.value!!)
+        }
+        selectedCategoryQuestions.value = questionsHistory.value
+    }
+
+    private fun populateLiteratureCategoryQuestions() {
+        if (questionsLiterature.value == null) {
+            questionsLiterature.value =
+                database.getAllQuestions(selectedCategoryLiveData.value!!)
+        }
+        selectedCategoryQuestions.value = questionsLiterature.value
+    }
+
+    private fun populateMathematicsCategoryQuestions() {
+        if (questionsMathematics.value == null) {
+            questionsMathematics.value =
+                database.getAllQuestions(selectedCategoryLiveData.value!!)
+        }
+        selectedCategoryQuestions.value = questionsMathematics.value
     }
 }
