@@ -22,12 +22,33 @@ import gparap.apps.quiz.data.QuizModel
 import java.io.IOException
 import java.io.InputStream
 import java.nio.charset.Charset
+import kotlin.math.roundToInt
 
 object Utils {
     /**
+     * Accepts milliseconds and converts them to a custom time string like ie. 00:00, 00:59, etc.
+     */
+    fun convertMillisToTimeString(millis: Long): String {
+        val time: String
+
+        //convert millis to seconds
+        val seconds = millis.div(AppConstants.ONE_SECOND_INTERVAL).toFloat().roundToInt()
+
+        //get time string from seconds
+        time = if (seconds < 10) {
+            "00:0$seconds"  //add "0" when seconds are bellow 10
+        } else {
+            "00:$seconds"
+        }
+
+        //return time string
+        return time
+    }
+
+    /**
      * Returns the score based on a question's difficulty
      */
-    fun getScoreByDifficulty(difficulty: String) : Int{
+    fun getScoreByDifficulty(difficulty: String): Int {
         return when (difficulty) {
             AppConstants.QUESTION_DIFFICULTY_EASY -> AppConstants.SCORE_DIFFICULTY_EASY
             AppConstants.QUESTION_DIFFICULTY_MEDIUM -> AppConstants.SCORE_DIFFICULTY_MEDIUM
@@ -43,16 +64,16 @@ object Utils {
      *
      * Returns the average difficulty as a string ie. "EASY"
      */
-    fun calculateQuizAverageDifficulty(values: List<String>) : String {
+    fun calculateQuizAverageDifficulty(values: List<String>): String {
 
         var difficultyPoints = 0
 
         //get all difficulties and map them to relative name variables
-        for(i in 0 until AppConstants.QUIZ_QUESTIONS_COUNT){
-            when(values[i]) {
+        for (i in 0 until AppConstants.QUIZ_QUESTIONS_COUNT) {
+            when (values[i]) {
                 AppConstants.QUESTION_DIFFICULTY_EASY -> difficultyPoints += 1
                 AppConstants.QUESTION_DIFFICULTY_MEDIUM -> difficultyPoints += 2
-                AppConstants.QUESTION_DIFFICULTY_HARD ->difficultyPoints += 3
+                AppConstants.QUESTION_DIFFICULTY_HARD -> difficultyPoints += 3
             }
         }
 
@@ -80,7 +101,7 @@ object Utils {
     /**
      * Gets the specific JSON file based on a category name
      */
-    fun getJsonFileByCategory(categoryName: String) : String {
+    fun getJsonFileByCategory(categoryName: String): String {
         return categoryName.plus(".json")
     }
 

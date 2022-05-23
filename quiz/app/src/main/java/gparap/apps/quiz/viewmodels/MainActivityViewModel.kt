@@ -17,6 +17,7 @@ package gparap.apps.quiz.viewmodels
 
 import android.app.Application
 import android.content.Context.MODE_PRIVATE
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -25,6 +26,7 @@ import gparap.apps.quiz.R
 import gparap.apps.quiz.data.QuizDatabase
 import gparap.apps.quiz.data.QuizModel
 import gparap.apps.quiz.utils.AppConstants
+import gparap.apps.quiz.utils.CountDownTimer
 import gparap.apps.quiz.utils.Utils
 
 class MainActivityViewModel(application: Application) : AndroidViewModel(application) {
@@ -47,6 +49,7 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
     private var buttonStartVisibilityLiveData: MutableLiveData<Int> = MutableLiveData()
     private var layoutIntroVisibilityLiveData: MutableLiveData<Int> = MutableLiveData()
     private var layoutQuizVisibilityLiveData: MutableLiveData<Int> = MutableLiveData()
+    private var questionTimer: CountDownTimer? = null
 
     fun getSelectedCategory(): LiveData<String> {
         return selectedCategoryLiveData
@@ -466,5 +469,21 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
                 database.getAllQuestions(selectedCategoryLiveData.value!!)
         }
         selectedCategoryQuestions.value = questionsMathematics.value
+    }
+
+    fun createQuestionTimer(timerView: TextView) {
+        questionTimer = CountDownTimer(timerView)
+    }
+
+    fun startQuestionTimer() {
+        questionTimer?.start()
+    }
+
+    fun stopQuestionTimer() {
+        questionTimer?.stop()
+    }
+
+    fun isQuestionTimerRunning() : Boolean? {
+        return (questionTimer?.isRunning())
     }
 }
