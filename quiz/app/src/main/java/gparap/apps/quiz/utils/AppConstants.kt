@@ -39,4 +39,11 @@ object AppConstants {
     const val SCORE_DIFFICULTY_EASY = 100
     const val SCORE_DIFFICULTY_MEDIUM = 200
     const val SCORE_DIFFICULTY_HARD = 300
+
+    /**
+     * Quiz question countdown
+     */
+    const val ONE_SECOND_INTERVAL = 1000L
+    const val MAX_QUESTION_TIME = 6000L
+    const val ZERO_QUESTION_TIME = "00:00"
 }

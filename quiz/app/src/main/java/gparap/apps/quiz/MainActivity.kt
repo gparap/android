@@ -53,11 +53,13 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         observeButtonStartVisibility()
         observeLayoutIntroVisibility()
         observeLayoutQuizVisibility()
+        createQuestionTimer()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         viewModel.closeDatabase()
+        viewModel.stopQuestionTimer()
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -259,6 +261,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         this@MainActivity.findViewById<TextView>(R.id.text_view_question).apply {
             this.text = viewModel.getSelectedCategoryNextQuestion()
         }
+        resetQuestionTimer()
     }
 
     /* Registers a callback to be invoked when the user presses the button to return to categories */
@@ -543,5 +546,20 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 visibility = layoutQuizVisibility
             }
         }
+    }
+
+    /* Creates a countdown timer for a quiz questions */
+    private fun createQuestionTimer() {
+        this@MainActivity.findViewById<TextView>(R.id.text_view_timer).apply {
+            viewModel.createQuestionTimer(this)
+        }
+    }
+
+    /* Starts the question count down from the beginning */
+    private fun resetQuestionTimer() {
+        if (viewModel.isQuestionTimerRunning() == true) {
+            viewModel.stopQuestionTimer()
+        }
+        viewModel.startQuestionTimer()
     }
 }

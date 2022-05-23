@@ -115,4 +115,22 @@ class UtilsTest {
 
         assertEquals(expectedScore, actualScore)
     }
+
+    @Test
+    fun convertMillisToTimeString_secondsAbove10() {
+        //seconds above 10
+        val millis = 12345L
+        val expectedTimeString = "00:12"
+        val actualTimeString = Utils.convertMillisToTimeString(millis)
+        assertEquals(expectedTimeString, actualTimeString)
+    }
+
+    @Test
+    fun convertMillisToTimeString_secondsBellow10() {
+        //seconds below 10
+        val millis = 2345L
+        val expectedTimeString = "00:02"
+        val actualTimeString = Utils.convertMillisToTimeString(millis)
+        assertEquals(expectedTimeString, actualTimeString)
+    }
 }
