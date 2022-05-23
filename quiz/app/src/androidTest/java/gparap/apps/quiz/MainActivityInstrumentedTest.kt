@@ -199,9 +199,10 @@ class MainActivityInstrumentedTest {
             questionCurr = it.getViewModel().getSelectedCategoryNextQuestion()
         }
 
+        //submit answer to proceed
+        submitAnswer()
+
         //get next question
-        onView(withId(R.id.button_next_question)).perform(click())
-        Thread.sleep(300)
         activityScenario.onActivity {
             questionNext = it.getViewModel().getSelectedCategoryNextQuestion()
         }
@@ -216,6 +217,10 @@ class MainActivityInstrumentedTest {
         var questionNext: String? = null
         val category = context.resources.getString(R.string.category_animals)
         selectCategoryAndStartQuiz(category)
+
+        //finish the quiz and check answers
+        finishQuiz()
+        onView(withId(R.id.button_check_answers)).perform(click())
 
         //go a little forward into questions
         onView(withId(R.id.button_next_question)).perform(click())
@@ -247,6 +252,10 @@ class MainActivityInstrumentedTest {
         val category = context.resources.getString(R.string.category_animals)
         selectCategoryAndStartQuiz(category)
 
+        //finish the quiz and check answers
+        finishQuiz()
+        onView(withId(R.id.button_check_answers)).perform(click())
+
         //go forward into the quiz until you pass the end
         for (i in 1..AppConstants.QUIZ_QUESTIONS_COUNT + 1) {
             onView(withId(R.id.button_next_question)).perform(click())
@@ -255,6 +264,9 @@ class MainActivityInstrumentedTest {
         onView(withText(R.string.toast_next_question_error))
             .inRoot(withDecorView(not(decorView)))
             .check(matches(isDisplayed()))
+
+        //wait the toast message to fade away
+        Thread.sleep(Toast.LENGTH_LONG.toLong())
     }
 
     @Test
@@ -267,6 +279,10 @@ class MainActivityInstrumentedTest {
         val category = context.resources.getString(R.string.category_animals)
         selectCategoryAndStartQuiz(category)
 
+        //finish the quiz and check answers
+        finishQuiz()
+        onView(withId(R.id.button_check_answers)).perform(click())
+
         //try to go beyond the start of the quiz
         onView(withId(R.id.button_prev_question)).perform(click())
 
@@ -274,6 +290,8 @@ class MainActivityInstrumentedTest {
             .inRoot(withDecorView(not(decorView)))
             .check(matches(isDisplayed()))
 
+        //wait the toast message to fade away
+        Thread.sleep(Toast.LENGTH_LONG.toLong())
     }
 
     @Test
@@ -292,6 +310,9 @@ class MainActivityInstrumentedTest {
         onView(withText(R.string.toast_select_answer_error))
             .inRoot(withDecorView(not(decorView)))
             .check(matches(isDisplayed()))
+
+        //wait the toast message to fade away
+        Thread.sleep(Toast.LENGTH_LONG.toLong())
     }
 
     @Test
@@ -323,8 +344,26 @@ class MainActivityInstrumentedTest {
         onView(withText(category)).perform(click())
         Thread.sleep(300)
     }
+
     private fun selectCategoryAndStartQuiz(category: String) {
         selectCategory(category)
         onView(withId(R.id.button_start_quiz)).perform(click())
+    }
+
+    private fun submitAnswer() {
+        onView(withId(R.id.radio_button_choice_one)).perform(click())
+        //!!! do NOT remove block - we are not actually submitting answers
+        try {
+            onView(withId(R.id.button_submit_answer)).perform(click())
+        } catch (e: Exception) {
+        } finally {
+            Thread.sleep(300)
+        }
+    }
+
+    private fun finishQuiz() {
+        for (i in 1..AppConstants.QUIZ_QUESTIONS_COUNT) {
+            submitAnswer()
+        }
     }
 }
