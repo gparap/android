@@ -90,16 +90,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     /* The user submits an answer for the current quiz question */
     private fun submitAnswer() {
-        //check if one radio button is selected
-        val radioGroup: RadioGroup? = findViewById<RadioGroup>(R.id.radio_group_choices).apply {
-            if (checkedRadioButtonId == -1) {
-                Toast.makeText(this@MainActivity,
-                    resources.getString(R.string.toast_select_answer_error),
-                    Toast.LENGTH_SHORT)
-                    .show()
-                return
-            }
-        }
+        val radioGroup: RadioGroup? = findViewById(R.id.radio_group_choices)
 
         //get the user answer from the radio button text
         var answer = ""
@@ -156,6 +147,10 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
             //check radio button to indicate the user answer
             when (viewModel.getQuizQuestionUserAnswerIndex()) {
+                //user did not select an answer or counter expired
+                -1 -> findViewById<RadioGroup?>(R.id.radio_group_choices).apply { clearCheck() }
+
+                //user did select an answer
                 0 -> check(R.id.radio_button_choice_one)
                 1 -> check(R.id.radio_button_choice_two)
                 2 -> check(R.id.radio_button_choice_three)

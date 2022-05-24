@@ -414,7 +414,7 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
      * Returns the index among multiple choices of the current quiz question's user answer
      */
     fun getQuizQuestionUserAnswerIndex(): Int {
-        var userAnswerIndex = 0
+        var userAnswerIndex = -1
 
         val userAnswer = userQuizAnswers.value!![questionsCounter - 1]
         val choices = selectedCategoryMultipleChoices.value?.get(questionsCounter - 1)
@@ -483,7 +483,7 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
         questionTimer?.stop()
     }
 
-    fun isQuestionTimerRunning() : Boolean? {
+    fun isQuestionTimerRunning(): Boolean? {
         return (questionTimer?.isRunning())
     }
 }
