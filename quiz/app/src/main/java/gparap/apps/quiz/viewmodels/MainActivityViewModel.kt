@@ -22,11 +22,13 @@ import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import gparap.apps.quiz.MainActivity
 import gparap.apps.quiz.R
 import gparap.apps.quiz.data.QuizDatabase
 import gparap.apps.quiz.data.QuizModel
 import gparap.apps.quiz.utils.AppConstants
 import gparap.apps.quiz.utils.CountDownTimer
+import gparap.apps.quiz.utils.CountDownTimerListener
 import gparap.apps.quiz.utils.Utils
 
 class MainActivityViewModel(application: Application) : AndroidViewModel(application) {
@@ -50,6 +52,7 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
     private var layoutIntroVisibilityLiveData: MutableLiveData<Int> = MutableLiveData()
     private var layoutQuizVisibilityLiveData: MutableLiveData<Int> = MutableLiveData()
     private var questionTimer: CountDownTimer? = null
+    private var countDownTimerListener: CountDownTimerListener? = null
 
     fun getSelectedCategory(): LiveData<String> {
         return selectedCategoryLiveData
@@ -471,8 +474,8 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
         selectedCategoryQuestions.value = questionsMathematics.value
     }
 
-    fun createQuestionTimer(timerView: TextView) {
-        questionTimer = CountDownTimer(timerView)
+    fun createQuestionTimer(timerView: TextView, activity: MainActivity) {
+        questionTimer = CountDownTimer(timerView, activity)
     }
 
     fun startQuestionTimer() {
@@ -485,5 +488,13 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
 
     fun isQuestionTimerRunning(): Boolean? {
         return (questionTimer?.isRunning())
+    }
+
+    fun addQuestionTimerListener(mainActivity: MainActivity) {
+        countDownTimerListener = mainActivity
+    }
+
+    fun removeQuestionTimerListener() {
+        countDownTimerListener = null
     }
 }

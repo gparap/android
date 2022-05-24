@@ -26,10 +26,12 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import gparap.apps.quiz.utils.AppConstants
+import gparap.apps.quiz.utils.CountDownTimerListener
 import gparap.apps.quiz.viewmodels.MainActivityViewModel
 import java.util.*
 
-class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+class MainActivity
+    : AppCompatActivity(), AdapterView.OnItemSelectedListener, CountDownTimerListener {
     private lateinit var viewModel: MainActivityViewModel
     private lateinit var spinner: Spinner
     private var selectedCategory = ""
@@ -109,7 +111,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         if (viewModel.getQuestionsCounter() != AppConstants.QUIZ_QUESTIONS_COUNT) {
             radioGroup?.clearCheck()
             viewModel.addUserAnswer(answer)
-            displayNextQuestion()
+            displayNextQuestion(true)
             displayMultipleChoices()
             displayDifficulty()
             updateQuestionCounter()
@@ -215,6 +217,13 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             text = viewModel.getUserHighScore().toString()
         }
 
+        //clear question timer
+        viewModel.stopQuestionTimer()
+        viewModel.removeQuestionTimerListener()
+        findViewById<TextView>(R.id.text_view_timer).apply {
+            text = AppConstants.ZERO_QUESTION_TIME
+        }
+
         //handle the buttons callbacks in quiz results screen
         handleCheckAnswersCallback()
         handleRestartQuizCallback()
@@ -252,11 +261,13 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     /* Displays the next question for the current quiz */
-    private fun displayNextQuestion() {
+    private fun displayNextQuestion(isQuizRunning: Boolean) {
         this@MainActivity.findViewById<TextView>(R.id.text_view_question).apply {
             this.text = viewModel.getSelectedCategoryNextQuestion()
         }
-        resetQuestionTimer()
+        if (isQuizRunning) {
+            resetQuestionTimer()
+        }
     }
 
     /* Registers a callback to be invoked when the user presses the button to return to categories */
@@ -355,7 +366,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             viewModel.resetQuestionCounter()
 
             //display questions & answers
-            displayNextQuestion()
+            displayNextQuestion(false)
             displayMultipleChoices()
             highlightQuizAnswers()
             displayDifficulty()
@@ -382,7 +393,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             viewModel.resetQuestionCounter()
 
             //display and handle questions & answers
-            displayNextQuestion()
+            displayNextQuestion(true)
             displayMultipleChoices()
             displayDifficulty()
             updateQuestionCounter()
@@ -446,7 +457,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 }
 
                 //display and handle questions & answers
-                displayNextQuestion()
+                displayNextQuestion(true)
                 displayMultipleChoices()
                 displayDifficulty()
                 updateQuestionCounter()
@@ -471,7 +482,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private fun handleNextQuestionButtonCallback() {
         this@MainActivity.findViewById<ImageButton>(R.id.button_next_question).apply {
             setOnClickListener {
-                displayNextQuestion()
+                displayNextQuestion(false)
                 displayMultipleChoices()
                 highlightQuizAnswers()
                 updateQuestionCounter()
@@ -546,8 +557,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     /* Creates a countdown timer for a quiz questions */
     private fun createQuestionTimer() {
         this@MainActivity.findViewById<TextView>(R.id.text_view_timer).apply {
-            viewModel.createQuestionTimer(this)
+            viewModel.createQuestionTimer(this, this@MainActivity)
         }
+        viewModel.addQuestionTimerListener(this)
     }
 
     /* Starts the question count down from the beginning */
@@ -556,5 +568,10 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             viewModel.stopQuestionTimer()
         }
         viewModel.startQuestionTimer()
+    }
+
+    override fun onCountDownTimerFinished() {
+        submitAnswer()
+        viewModel.removeQuestionTimerListener()
     }
 }

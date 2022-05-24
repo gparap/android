@@ -18,6 +18,7 @@ package gparap.apps.quiz
 import android.content.Context
 import android.view.View
 import android.widget.RadioButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
@@ -315,6 +316,34 @@ class MainActivityInstrumentedTest {
         }
 
         assert(!userAnswer.isNullOrEmpty())
+    }
+
+    @Test
+    @LargeTest
+    fun onCountDownTimerFinished_gotoTheNextQuestion() {
+        var counterCurr: String? = null
+        var counterNext: String? = null
+
+        //select category
+        val category = context.resources.getString(R.string.category_animals)
+        selectCategoryAndStartQuiz(category)
+
+        //get current question counter string
+        activityScenario.onActivity {
+            val view = it.findViewById<TextView>(R.id.text_view_questions_counter)
+            counterCurr = view.text.toString()
+        }
+
+        //wait till the timer expires
+        Thread.sleep(AppConstants.MAX_QUESTION_TIME)
+
+        //get next question counter string
+        activityScenario.onActivity {
+            val view = it.findViewById<TextView>(R.id.text_view_questions_counter)
+            counterNext = view.text.toString()
+        }
+
+        assertNotEquals(counterNext, counterCurr)
     }
 
     private fun selectCategory(category: String) {

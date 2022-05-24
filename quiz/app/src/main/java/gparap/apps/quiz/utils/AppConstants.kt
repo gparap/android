@@ -44,6 +44,6 @@ object AppConstants {
      * Quiz question countdown
      */
     const val ONE_SECOND_INTERVAL = 1000L
-    const val MAX_QUESTION_TIME = 6000L
+    const val MAX_QUESTION_TIME = 60000L
     const val ZERO_QUESTION_TIME = "00:00"
 }
