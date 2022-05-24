@@ -33,7 +33,6 @@
     <string name="desc_prev_question_button">Previous question</string>
     <string name="toast_next_question_error">No more questions!</string>
     <string name="toast_prev_question_error">Can\'t go back!</string>
-    <string name="toast_select_answer_error">Please, select an answer!</string>
 
     <!--Quiz results-->
     <string name="label_category">Category:&#160;</string>

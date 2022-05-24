@@ -296,27 +296,6 @@ class MainActivityInstrumentedTest {
 
     @Test
     @LargeTest
-    fun onUserAnswerSubmitButton_showMessageWhenTheUserSelectedNothing() {
-        //wait for a possible toast message to fade away
-        Thread.sleep(Toast.LENGTH_LONG.toLong())
-
-        //select category
-        val category = context.resources.getString(R.string.category_animals)
-        selectCategoryAndStartQuiz(category)
-
-        //try to submit without selecting an answer
-        onView(withId(R.id.button_submit_answer)).perform(click())
-
-        onView(withText(R.string.toast_select_answer_error))
-            .inRoot(withDecorView(not(decorView)))
-            .check(matches(isDisplayed()))
-
-        //wait the toast message to fade away
-        Thread.sleep(Toast.LENGTH_LONG.toLong())
-    }
-
-    @Test
-    @LargeTest
     fun onUserAnswerSubmitButton_userQuizAnswerIsNotEmpty() {
         //wait for a possible toast message to fade away
         Thread.sleep(Toast.LENGTH_LONG.toLong())
