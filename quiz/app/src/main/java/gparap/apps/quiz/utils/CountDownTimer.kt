@@ -2,14 +2,16 @@ package gparap.apps.quiz.utils
 
 import android.os.CountDownTimer
 import android.widget.TextView
+import gparap.apps.quiz.MainActivity
 import gparap.apps.quiz.utils.AppConstants.MAX_QUESTION_TIME
 import gparap.apps.quiz.utils.AppConstants.ONE_SECOND_INTERVAL
 import gparap.apps.quiz.utils.AppConstants.ZERO_QUESTION_TIME
 
+
 /**
  * This timer represents the maximum time that the user has to answer a question
  */
-class CountDownTimer(val timerView: TextView) {
+class CountDownTimer(val timerView: TextView, val activity: MainActivity) {
     private var millisUntilFinished = MAX_QUESTION_TIME
     private var isRunning = false
     private val timer = object : CountDownTimer(MAX_QUESTION_TIME, ONE_SECOND_INTERVAL) {
@@ -21,6 +23,8 @@ class CountDownTimer(val timerView: TextView) {
 
         override fun onFinish() {
             isRunning = false
+
+            activity.onCountDownTimerFinished()
 
             //!!! needed for safety on older devices
             timerView.text = ZERO_QUESTION_TIME
