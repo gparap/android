@@ -21,8 +21,8 @@
             android:layout_gravity="center"
             android:background="@color/cardview_shadow_end_color"
             android:gravity="center"
-            android:numColumns="auto_fit"
-            android:stretchMode="spacingWidthUniform" />
+            android:numColumns="5"
+            android:stretchMode="columnWidth" />
 
     </FrameLayout>
 
