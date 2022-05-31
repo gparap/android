@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Launcher</string>
+    <string name="desc_app_launcher_icon">App launcher icon</string>
 </resources>
