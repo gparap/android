@@ -59,6 +59,13 @@ class GridItemAdapter(
         launcherIcon?.setImageDrawable(apps[position].drawable)
         launcherTitle?.text = apps[position].title
 
+        //enable launcher icons to start activities
+        launcherIcon?.setOnClickListener {
+            context.startActivity(
+                context.packageManager.getLaunchIntentForPackage(apps[position].id)
+            )
+        }
+
         return view!!
     }
 }
