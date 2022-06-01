@@ -3,6 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="gparap.apps.launcher">
 
+    <!--Only for Android 11 and beyond-->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+    <queries>
+        <intent>
+            <action android:name="ACTION_MAIN" />
+            <category android:name="android.intent.category.LAUNCHER"/>
+        </intent>
+    </queries>
+
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"

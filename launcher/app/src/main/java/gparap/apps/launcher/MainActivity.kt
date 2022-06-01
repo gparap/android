@@ -15,6 +15,8 @@
  */
 package gparap.apps.launcher
 
+import android.content.Intent
+import android.content.pm.ResolveInfo
 import android.os.Bundle
 import android.widget.FrameLayout
 import android.widget.GridView
@@ -22,11 +24,30 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.PEEK_HEIGHT_AUTO
 import gparap.apps.launcher.adapters.GridItemAdapter
+import gparap.apps.launcher.data.AppModel
 
 class MainActivity : AppCompatActivity() {
+    private val launcherApps = ArrayList<AppModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //get the installed applications on the device
+        val intent = Intent(Intent.ACTION_MAIN, null)
+        intent.addCategory(Intent.CATEGORY_LAUNCHER)
+        val installedApps: List<ResolveInfo> = packageManager.queryIntentActivities(intent, 0)
+
+        //add installed applications to list
+        for (info in installedApps) {
+            launcherApps.add(
+                AppModel(
+                    info.activityInfo.loadIcon(packageManager),
+                    info.activityInfo.loadLabel(packageManager).toString(),
+                    info.activityInfo.packageName
+                )
+            )
+        }
 
         //setup bottom sheet
         val bottomSheetView = findViewById<FrameLayout>(R.id.frame_layout_apps)
@@ -36,6 +57,6 @@ class MainActivity : AppCompatActivity() {
 
         //setup grid with adapter
         val gridView = findViewById<GridView>(R.id.grid_view_apps)
-        gridView.adapter = GridItemAdapter(this, ArrayList())
+        gridView.adapter = GridItemAdapter(this, launcherApps)
     }
 }
