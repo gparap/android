@@ -18,15 +18,20 @@ package gparap.apps.launcher
 import android.content.Intent
 import android.content.pm.ResolveInfo
 import android.os.Bundle
-import android.widget.*
+import android.widget.FrameLayout
+import android.widget.GridView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.PEEK_HEIGHT_AUTO
-import gparap.apps.launcher.adapters.GridItemAdapter
+import gparap.apps.launcher.adapters.BottomGridItemAdapter
+import gparap.apps.launcher.adapters.TopGritItemAdapter
 import gparap.apps.launcher.data.AppModel
 
 class MainActivity : AppCompatActivity() {
-    private val launcherApps = ArrayList<AppModel>()
+    private val bottomSheetLaunchers = ArrayList<AppModel>()
+    private val homeScreenLaunchers = ArrayList<AppModel>()
+    private lateinit var bottomSheetView: FrameLayout
+    private lateinit var bottomSheetBehavior:  BottomSheetBehavior<FrameLayout>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         //add installed applications to list
         for (info in installedApps) {
-            launcherApps.add(
+            bottomSheetLaunchers.add(
                 AppModel(
                     info.activityInfo.loadIcon(packageManager),
                     info.activityInfo.loadLabel(packageManager).toString(),
@@ -49,13 +54,28 @@ class MainActivity : AppCompatActivity() {
         }
 
         //setup bottom sheet
-        val bottomSheetView = findViewById<FrameLayout>(R.id.frame_layout_apps)
-        val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView)
+        bottomSheetView = findViewById<FrameLayout>(R.id.frame_layout_apps)
+        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView)
         bottomSheetBehavior.isHideable = true
         bottomSheetBehavior.peekHeight = PEEK_HEIGHT_AUTO
 
-        //setup grid with adapter
+        //setup bottom sheet grid with adapter
         val gridView = findViewById<GridView>(R.id.grid_view_apps_bottom)
-        gridView.adapter = GridItemAdapter(this, launcherApps)
+        gridView.adapter = BottomGridItemAdapter(this, bottomSheetLaunchers)
+    }
+
+    fun handleLongPressClick(launcher: AppModel) {
+        //hide bottom sheet
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+
+        //add launcher to list
+        homeScreenLaunchers.add(launcher)
+
+        //setup home screen grid with adapter
+        val gridLayout = findViewById<GridView>(R.id.grid_layout_apps_top)
+        gridLayout.adapter = TopGritItemAdapter(this, homeScreenLaunchers)
+
+        //!!! important
+        gridLayout.refreshDrawableState()
     }
 }
