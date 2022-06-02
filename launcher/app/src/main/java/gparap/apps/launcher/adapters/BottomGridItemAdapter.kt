@@ -23,10 +23,11 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import gparap.apps.launcher.MainActivity
 import gparap.apps.launcher.R
 import gparap.apps.launcher.data.AppModel
 
-class GridItemAdapter(
+class BottomGridItemAdapter(
     private val context: Context,
     private val apps: ArrayList<AppModel>,  //this is the list that contains all the app launchers
 ) : BaseAdapter() {
@@ -64,6 +65,14 @@ class GridItemAdapter(
             context.startActivity(
                 context.packageManager.getLaunchIntentForPackage(apps[position].id)
             )
+        }
+
+        //set the user selected app launcher
+        launcherIcon?.setOnLongClickListener {
+            (context as MainActivity).handleLongPressClick(
+                AppModel(apps[position].drawable, apps[position].title, apps[position].id)
+            )
+            return@setOnLongClickListener true
         }
 
         return view!!
