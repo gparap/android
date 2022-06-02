@@ -6,6 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--Container for user selected app launcher icons-->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <GridLayout
+                android:id="@+id/grid_layout_apps_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/cardview_shadow_end_color"
+                android:columnCount="5"
+                android:stretchMode="columnWidth">
+
+            </GridLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!--Container for app launcher icons-->
     <FrameLayout
         android:id="@+id/frame_layout_apps"
         style="@style/Widget.MaterialComponents.BottomSheet.Modal"
@@ -13,9 +38,8 @@
         android:layout_height="wrap_content"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-        <!--Container for app launcher icons-->
         <GridView
-            android:id="@+id/grid_view_apps"
+            android:id="@+id/grid_view_apps_bottom"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
