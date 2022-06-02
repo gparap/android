@@ -18,8 +18,7 @@ package gparap.apps.launcher
 import android.content.Intent
 import android.content.pm.ResolveInfo
 import android.os.Bundle
-import android.widget.FrameLayout
-import android.widget.GridView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.PEEK_HEIGHT_AUTO
@@ -56,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         bottomSheetBehavior.peekHeight = PEEK_HEIGHT_AUTO
 
         //setup grid with adapter
-        val gridView = findViewById<GridView>(R.id.grid_view_apps)
+        val gridView = findViewById<GridView>(R.id.grid_view_apps_bottom)
         gridView.adapter = GridItemAdapter(this, launcherApps)
     }
 }

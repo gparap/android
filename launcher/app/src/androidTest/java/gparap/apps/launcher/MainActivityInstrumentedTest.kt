@@ -60,14 +60,14 @@ class MainActivityInstrumentedTest {
     @Test
     @SmallTest
     fun isVisible_gridView() {
-        onView(withId(R.id.grid_view_apps)).check(matches(isDisplayed()))
+        onView(withId(R.id.grid_view_apps_bottom)).check(matches(isDisplayed()))
     }
 
     @Test
     @SmallTest
     fun isGridPopulatedWithAppLaunchers() {
         activityScenario.onActivity {
-            val grid = it.findViewById<GridView>(R.id.grid_view_apps)
+            val grid = it.findViewById<GridView>(R.id.grid_view_apps_bottom)
             assert(grid.size > 0)
         }
     }
@@ -77,7 +77,7 @@ class MainActivityInstrumentedTest {
     @Ignore("!!! This test in not recommended. Use with care...")
     fun launchExternalApplicationFromGrid() {
         activityScenario.onActivity {
-            val grid = it.findViewById<GridView>(R.id.grid_view_apps)
+            val grid = it.findViewById<GridView>(R.id.grid_view_apps_bottom)
 
             val imageView: View = grid.requireViewById<ImageView>(R.id.image_view_app_icon)
             imageView.performClick()
