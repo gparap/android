@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:id="@+id/layout_coordinator">
 
     <!--Container for user selected app launcher icons-->
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linearLayout"
+        android:id="@+id/linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
