@@ -15,12 +15,16 @@
  */
 package gparap.apps.launcher
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ResolveInfo
 import android.os.Bundle
+import android.view.MotionEvent
 import android.widget.FrameLayout
 import android.widget.GridView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.PEEK_HEIGHT_AUTO
 import gparap.apps.launcher.adapters.BottomGridItemAdapter
@@ -32,7 +36,10 @@ class MainActivity : AppCompatActivity() {
     private val homeScreenLaunchers = ArrayList<AppModel>()
     private lateinit var bottomSheetView: FrameLayout
     private lateinit var bottomSheetBehavior:  BottomSheetBehavior<FrameLayout>
+    private var previousSwipeY = -1F
+    private var currentSwipeY = -1F
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -54,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //setup bottom sheet
-        bottomSheetView = findViewById<FrameLayout>(R.id.frame_layout_apps)
+        bottomSheetView = findViewById(R.id.frame_layout_apps)
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView)
         bottomSheetBehavior.isHideable = true
         bottomSheetBehavior.peekHeight = PEEK_HEIGHT_AUTO
@@ -62,6 +69,32 @@ class MainActivity : AppCompatActivity() {
         //setup bottom sheet grid with adapter
         val gridView = findViewById<GridView>(R.id.grid_view_apps_bottom)
         gridView.adapter = BottomGridItemAdapter(this, bottomSheetLaunchers)
+
+        //perform a swipe-up action on the coordinator layout to open the drawer
+        findViewById<CoordinatorLayout>(R.id.layout_coordinator).setOnTouchListener { _, event ->
+            //set listener only if the drawer is hidden
+            if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED ||
+                bottomSheetBehavior.state == BottomSheetBehavior.STATE_HALF_EXPANDED) {
+                return@setOnTouchListener false
+            }
+
+            //get the starting Y of the event
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                previousSwipeY = event.y
+            }
+
+            //open the drawer if there is a swipe-up action
+            if (event.action == MotionEvent.ACTION_UP) {
+                currentSwipeY = event.y
+                 if (currentSwipeY < previousSwipeY && isBottomSheetHidden()) {
+                         showBottomSheet()
+                         return@setOnTouchListener false
+                }
+            }
+
+            //continue responding to touch events
+            return@setOnTouchListener true
+        }
     }
 
     fun handleLongPressClick(launcher: AppModel) {
@@ -77,5 +110,16 @@ class MainActivity : AppCompatActivity() {
 
         //!!! important
         gridLayout.refreshDrawableState()
+    }
+
+    fun showBottomSheet() {
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+    }
+
+    fun isBottomSheetHidden() : Boolean{
+        if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_HIDDEN) {
+            return true
+        }
+        return false
     }
 }

@@ -15,13 +15,16 @@
  */
 package gparap.apps.launcher.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import gparap.apps.launcher.MainActivity
 import gparap.apps.launcher.R
 import gparap.apps.launcher.data.AppModel
 
@@ -29,6 +32,8 @@ class TopGritItemAdapter(
     private val context: Context,
     private val apps: ArrayList<AppModel>,  //this is the list that contains all the app launchers
 ) : BaseAdapter() {
+    private var previousSwipeY = -1F
+    private var currentSwipeY = -1F
 
     override fun getCount(): Int {
         return apps.size
@@ -42,6 +47,7 @@ class TopGritItemAdapter(
         return position.toLong()
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         //inflate the view that displays the grid item data
         var view = convertView
@@ -64,6 +70,33 @@ class TopGritItemAdapter(
             context.startActivity(
                 context.packageManager.getLaunchIntentForPackage(apps[position].id)
             )
+        }
+
+        //perform a swipe-up action on the layout to open the drawer
+        view?.setOnTouchListener { _, event ->
+            //set listener only if the drawer is hidden
+            if (!(context as MainActivity).isBottomSheetHidden()) {
+                return@setOnTouchListener false
+            }
+
+            //get the starting Y of the event
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                previousSwipeY = event.y
+                return@setOnTouchListener true
+            }
+
+            //open the drawer if there is a swipe-up action
+            if (event.action == MotionEvent.ACTION_MOVE) {
+                currentSwipeY = event.y
+                if (currentSwipeY < previousSwipeY && context.isBottomSheetHidden()) {
+                    context.showBottomSheet()
+                    return@setOnTouchListener false
+
+                }
+            }
+
+            //continue responding to touch events
+            true
         }
 
         return view!!
