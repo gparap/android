@@ -23,7 +23,6 @@ import android.view.MotionEvent
 import android.widget.FrameLayout
 import android.widget.GridView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.PEEK_HEIGHT_AUTO
@@ -31,15 +30,15 @@ import gparap.apps.launcher.adapters.BottomGridItemAdapter
 import gparap.apps.launcher.adapters.TopGritItemAdapter
 import gparap.apps.launcher.data.AppModel
 
+@SuppressLint("ClickableViewAccessibility")
 class MainActivity : AppCompatActivity() {
     private val bottomSheetLaunchers = ArrayList<AppModel>()
     private val homeScreenLaunchers = ArrayList<AppModel>()
     private lateinit var bottomSheetView: FrameLayout
-    private lateinit var bottomSheetBehavior:  BottomSheetBehavior<FrameLayout>
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout>
     private var previousSwipeY = -1F
     private var currentSwipeY = -1F
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -74,7 +73,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<CoordinatorLayout>(R.id.layout_coordinator).setOnTouchListener { _, event ->
             //set listener only if the drawer is hidden
             if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED ||
-                bottomSheetBehavior.state == BottomSheetBehavior.STATE_HALF_EXPANDED) {
+                bottomSheetBehavior.state == BottomSheetBehavior.STATE_HALF_EXPANDED
+            ) {
                 return@setOnTouchListener false
             }
 
@@ -86,14 +86,26 @@ class MainActivity : AppCompatActivity() {
             //open the drawer if there is a swipe-up action
             if (event.action == MotionEvent.ACTION_UP) {
                 currentSwipeY = event.y
-                 if (currentSwipeY < previousSwipeY && isBottomSheetHidden()) {
-                         showBottomSheet()
-                         return@setOnTouchListener false
+                if (currentSwipeY < previousSwipeY && isBottomSheetHidden()) {
+                    showBottomSheet()
+                    return@setOnTouchListener false
                 }
             }
 
             //continue responding to touch events
             return@setOnTouchListener true
+        }
+    }
+
+    override fun onBackPressed() {
+        //if the bottom sheet is visible, hide it..
+        if (!isBottomSheetHidden()) {
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        }
+
+        //..else proceed with the default behaviour
+        else {
+            super.onBackPressed()
         }
     }
 
@@ -116,7 +128,7 @@ class MainActivity : AppCompatActivity() {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
     }
 
-    fun isBottomSheetHidden() : Boolean{
+    fun isBottomSheetHidden(): Boolean {
         if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_HIDDEN) {
             return true
         }
