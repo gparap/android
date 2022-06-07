@@ -20,8 +20,10 @@ import android.content.Intent
 import android.content.pm.ResolveInfo
 import android.os.Bundle
 import android.view.MotionEvent
+import android.view.View
 import android.widget.FrameLayout
 import android.widget.GridView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -64,6 +66,17 @@ class MainActivity : AppCompatActivity() {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView)
         bottomSheetBehavior.isHideable = true
         bottomSheetBehavior.peekHeight = PEEK_HEIGHT_AUTO
+        bottomSheetBehavior.addBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                //expand when dragging
+                if (newState == BottomSheetBehavior.STATE_DRAGGING) {
+                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+                }
+            }
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
+        })
 
         //setup bottom sheet grid with adapter
         val gridView = findViewById<GridView>(R.id.grid_view_apps_bottom)
@@ -109,12 +122,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun handleLongPressClick(launcher: AppModel) {
+    fun addLauncherToHomeScreen(launcher: AppModel) {
         //hide bottom sheet
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
 
         //add launcher to list
-        homeScreenLaunchers.add(launcher)
+        if (!homeScreenLaunchers.contains(launcher)) {
+            homeScreenLaunchers.add(launcher)
+        }
 
         //setup home screen grid with adapter
         val gridLayout = findViewById<GridView>(R.id.grid_layout_apps_top)
@@ -122,6 +137,30 @@ class MainActivity : AppCompatActivity() {
 
         //!!! important
         gridLayout.refreshDrawableState()
+    }
+
+    fun removeLauncherFromHomeScreen(launcher: AppModel) {
+        AlertDialog.Builder(this)
+            .setTitle(resources.getString(R.string.dialog_remove_launcher_title))
+            .setMessage(resources.getString(R.string.dialog_remove_launcher_message))
+            .setOnCancelListener { return@setOnCancelListener }
+            .setNegativeButton(resources.getString(R.string.dialog_remove_launcher_negative)) { _, _ -> return@setNegativeButton }
+            .setPositiveButton(resources.getString(R.string.dialog_remove_launcher_positive)) { _, _ ->
+                //remove launcher from list
+                if (homeScreenLaunchers.contains(launcher)) {
+                    homeScreenLaunchers.remove(launcher)
+                }
+
+                //setup home screen grid with adapter
+                val gridLayout = findViewById<GridView>(R.id.grid_layout_apps_top)
+                gridLayout.adapter = TopGritItemAdapter(this, homeScreenLaunchers)
+
+                //!!! important
+                gridLayout.refreshDrawableState()
+            }
+            .create().apply {
+                show()
+            }
     }
 
     fun showBottomSheet() {
