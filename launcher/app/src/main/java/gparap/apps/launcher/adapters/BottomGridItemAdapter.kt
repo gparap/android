@@ -69,7 +69,7 @@ class BottomGridItemAdapter(
 
         //set the user selected app launcher
         launcherIcon?.setOnLongClickListener {
-            (context as MainActivity).handleLongPressClick(
+            (context as MainActivity).addLauncherToHomeScreen(
                 AppModel(apps[position].drawable, apps[position].title, apps[position].id)
             )
             return@setOnLongClickListener true

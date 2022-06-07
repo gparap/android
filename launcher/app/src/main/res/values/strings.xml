@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Launcher</string>
     <string name="desc_app_launcher_icon">App launcher icon</string>
+    <string name="dialog_remove_launcher_title">Delete Launcher</string>
+    <string name="dialog_remove_launcher_message">The selected launcher will be removed from home screen. Are you sure?</string>
+    <string name="dialog_remove_launcher_negative">Cancel</string>
+    <string name="dialog_remove_launcher_positive">OK</string>
 </resources>

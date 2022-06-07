@@ -21,14 +21,17 @@ import android.widget.ImageView
 import androidx.core.view.size
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso
+import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.longClick
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.filters.SmallTest
 import androidx.test.platform.app.InstrumentationRegistry
+import org.hamcrest.core.IsAnything.anything
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Ignore
@@ -69,6 +72,39 @@ class MainActivityInstrumentedTest {
         activityScenario.onActivity {
             val grid = it.findViewById<GridView>(R.id.grid_view_apps_bottom)
             assert(grid.size > 0)
+        }
+    }
+
+    @Test
+    @SmallTest
+    fun addAppLauncherToHomeScreen() {
+        //press long click to add item to the home screen
+        onData(anything()).inAdapterView(withId(R.id.grid_view_apps_bottom))
+            .atPosition(0).perform(longClick())
+
+        activityScenario.onActivity {
+            val grid = it.findViewById<GridView>(R.id.grid_layout_apps_top)
+            assert(grid.size > 0)
+        }
+    }
+
+    @Test
+    @SmallTest
+    fun removeAppLauncherToHomeScreen() {
+        //press long click to add item to the home screen
+        onData(anything()).inAdapterView(withId(R.id.grid_view_apps_bottom))
+            .atPosition(0).perform(longClick())
+
+        //press long click to remove item from the home screen
+        onData(anything()).inAdapterView(withId(R.id.grid_layout_apps_top))
+            .atPosition(0).perform(longClick())
+
+        //confirm deletion on alert dialog
+        onView(withText(R.string.dialog_remove_launcher_positive)).perform(click())
+
+        activityScenario.onActivity {
+            val grid = it.findViewById<GridView>(R.id.grid_layout_apps_top)
+            assert(grid.size == 0)
         }
     }
 

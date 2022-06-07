@@ -72,6 +72,12 @@ class TopGritItemAdapter(
             )
         }
 
+        //remove launcher from the grid
+        launcherIcon?.setOnLongClickListener {
+            (context as MainActivity).removeLauncherFromHomeScreen(apps[position])
+            return@setOnLongClickListener true
+        }
+
         //perform a swipe-up action on the layout to open the drawer
         view?.setOnTouchListener { _, event ->
             //set listener only if the drawer is hidden
