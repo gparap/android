@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 gparap
+ * Copyright (c) 2022 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,9 +24,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import kotlin.properties.Delegates
 
-/**
- * Created by gparap on 2021-02-12.
- */
 class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var spinner2d: Spinner
     private lateinit var editTextSideA: EditText

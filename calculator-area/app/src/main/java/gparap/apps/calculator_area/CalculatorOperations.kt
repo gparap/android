@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 gparap
+ * Copyright (c) 2022 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ import kotlin.math.sqrt
 /**
  * Area calculations for shapes:
  * Square, Rectangle, Parallelogram, Equilateral Triangle, Triangle, Trapezoid, Hexagon and Circle.
- * Created by gparap on 2021-02-12.
  */
 class CalculatorOperations {
     companion object {
