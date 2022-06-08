@@ -28,4 +28,5 @@
     <string name="shape_trapezoid">梯形</string>
     <string name="shape_hexagon">六边形</string>
     <string name="shape_circle">圆圈</string>
+    <string name="desc_spinner_shapes_2d">二維幾何形狀</string>
 </resources>

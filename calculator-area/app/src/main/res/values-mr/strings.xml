@@ -28,4 +28,5 @@
     <string name="shape_trapezoid">ट्रॅपेझॉइड</string>
     <string name="shape_hexagon">षटकोन</string>
     <string name="shape_circle">वर्तुळ</string>
+    <string name="desc_spinner_shapes_2d">द्विमितीय भौमितिक आकार</string>
 </resources>
