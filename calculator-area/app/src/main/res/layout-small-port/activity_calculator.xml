@@ -17,9 +17,11 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:contentDescription="@string/desc_spinner_shapes_2d"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/editTextSideA"
@@ -28,7 +30,8 @@
         android:hint="@string/hint_enter_side_a"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerShapes2D" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerShapes2D"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/editTextSideB"
@@ -37,7 +40,8 @@
         android:hint="@string/hint_enter_side_b"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSideA" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextSideA"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/editTextHeight"
@@ -46,7 +50,8 @@
         android:hint="@string/hint_enter_height"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSideB" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextSideB"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/editTextRadius"
@@ -55,7 +60,8 @@
         android:hint="@string/hint_enter_radius"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
-        app:layout_constraintTop_toBottomOf="@+id/editTextHeight"/>
+        app:layout_constraintTop_toBottomOf="@+id/editTextHeight"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/buttonCalculate"
@@ -63,6 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/button_calculate"
+        android:textColor="@color/textColor_Button"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
         app:layout_constraintTop_toBottomOf="@+id/textViewResult" />

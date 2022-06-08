@@ -28,4 +28,5 @@
     <string name="shape_trapezoid">Trapezoide</string>
     <string name="shape_hexagon">Hexágono</string>
     <string name="shape_circle">Circulo</string>
+    <string name="desc_spinner_shapes_2d">Formas geométricas bidimensionales</string>
 </resources>

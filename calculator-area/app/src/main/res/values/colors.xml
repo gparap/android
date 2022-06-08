@@ -6,4 +6,8 @@
     <color name="gray_700">#cccccc</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--Colors used to increase item's text color contrast ratio-->
+    <color name="textColorHint_EditText">#757575</color>
+    <color name="textColor_Button">#3E2723</color>
 </resources>
