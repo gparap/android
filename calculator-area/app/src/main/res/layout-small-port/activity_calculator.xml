@@ -28,8 +28,7 @@
         android:hint="@string/hint_enter_side_a"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerShapes2D"
-        tools:ignore="TextFields" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerShapes2D" />
 
     <EditText
         android:id="@+id/editTextSideB"
@@ -38,8 +37,7 @@
         android:hint="@string/hint_enter_side_b"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSideA"
-        tools:ignore="TextFields" /><!--is inside style Theme_layout_small-->
+        app:layout_constraintTop_toBottomOf="@+id/editTextSideA" />
 
     <EditText
         android:id="@+id/editTextHeight"
@@ -48,8 +46,7 @@
         android:hint="@string/hint_enter_height"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSideB"
-        tools:ignore="TextFields" /><!--is inside style Theme_layout_small-->
+        app:layout_constraintTop_toBottomOf="@+id/editTextSideB" />
 
     <EditText
         android:id="@+id/editTextRadius"
@@ -58,15 +55,13 @@
         android:hint="@string/hint_enter_radius"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
-        app:layout_constraintTop_toBottomOf="@+id/editTextHeight"
-        tools:ignore="TextFields" /><!--is inside style Theme_layout_small-->
+        app:layout_constraintTop_toBottomOf="@+id/editTextHeight"/>
 
     <Button
         android:id="@+id/buttonCalculate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:onClick="onClickCalculateArea"
         android:text="@string/button_calculate"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"

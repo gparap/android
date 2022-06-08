@@ -39,8 +39,8 @@ import org.junit.runner.RunWith
 class CalculatorActivityInstrumentedTest {
     @get:Rule
     val activityScenarioRule = ActivityScenarioRule(CalculatorActivity::class.java)
-    var rootView: View? = null
-    var context: Context? = null
+    private var rootView: View? = null
+    private var context: Context? = null
 
     @Before
     fun setUp() {
