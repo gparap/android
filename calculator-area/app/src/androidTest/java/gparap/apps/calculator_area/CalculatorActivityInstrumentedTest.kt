@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 gparap
+ * Copyright (c) 2022 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,9 +35,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/**
- * Created by gparap on 2021-02-12.
- */
 @RunWith(AndroidJUnit4::class)
 class CalculatorActivityInstrumentedTest {
     @get:Rule
