@@ -67,7 +67,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:onClick="onClickCalculateArea"
         android:scaleX="1.5"
         android:scaleY="1.5"
         android:text="@string/button_calculate"

@@ -31,6 +31,7 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     private lateinit var editTextHeight: EditText
     private lateinit var editTextRadius: EditText
     private lateinit var result: TextView
+    private lateinit var buttonCalculate: Button
     private var visibleFields: ArrayList<EditText>? = ArrayList()
 
     //used for helping in clearing input fields (spinner's onItemSelected)
@@ -53,6 +54,16 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         editTextHeight = findViewById(R.id.editTextHeight)
         editTextRadius = findViewById(R.id.editTextRadius)
         result = findViewById(R.id.textViewResult)
+        buttonCalculate = findViewById(R.id.buttonCalculate)
+
+        //calculate area
+        buttonCalculate.setOnClickListener {
+            result.text = getString(R.string.string_area)
+            if (validateInputFields()){
+                calculateArea()
+                beautifyResult()
+            }
+        }
 
         //populate spinner with 2D shapes
         spinner2d = findViewById(R.id.spinnerShapes2D)
@@ -66,14 +77,6 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         //restore values after orientation changes
         if (savedInstanceState != null)
         restoreInstanceState(savedInstanceState)
-    }
-
-    fun onClickCalculateArea(view: View) {
-        result.text = getString(R.string.string_area)
-        if (validateInputFields()){
-            calculateArea()
-            beautifyResult()
-        }
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {

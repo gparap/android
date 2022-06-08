@@ -66,7 +66,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:onClick="onClickCalculateArea"
         android:text="@string/button_calculate"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"

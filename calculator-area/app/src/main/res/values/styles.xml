@@ -19,6 +19,7 @@
     <style name="edit_text_default_land" parent="@style/edit_text_default_port">
         <item name="android:layout_marginTop">2dp</item>
         <item name="android:background">@android:drawable/editbox_background</item>
+        <item name="android:inputType">number</item>
     </style>
 
     <!-- EditText style for small screens. -->
@@ -33,10 +34,12 @@
     <style name="edit_text_small_port" parent="edit_text_small">
         <item name="android:textSize">16sp</item>
         <item name="android:layout_marginTop">8dp</item>
+        <item name="android:inputType">number</item>
     </style>
     <style name="edit_text_small_land" parent="edit_text_small">
         <item name="android:textSize">14sp</item>
         <item name="android:layout_marginTop">8dp</item>
+        <item name="android:inputType">number</item>
     </style>
 
     <!-- EditText style for tablets. -->
@@ -44,6 +47,7 @@
         <item name="android:background">@android:drawable/edit_text</item>
         <item name="android:textSize">24sp</item>
         <item name="android:layout_marginTop">12dp</item>
+        <item name="android:inputType">number</item>
     </style>
 
 </resources>
