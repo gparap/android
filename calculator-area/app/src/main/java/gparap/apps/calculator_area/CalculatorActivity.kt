@@ -38,6 +38,7 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     // when orientation changes occur and need to save/restore state
     companion object {
         var previousItemPosition by Delegates.notNull<Int>()
+
         init {
             previousItemPosition = 0
         }
@@ -59,7 +60,7 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         //calculate area
         buttonCalculate.setOnClickListener {
             result.text = getString(R.string.string_area)
-            if (validateInputFields()){
+            if (validateInputFields()) {
                 calculateArea()
                 beautifyResult()
             }
@@ -76,7 +77,7 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
 
         //restore values after orientation changes
         if (savedInstanceState != null)
-        restoreInstanceState(savedInstanceState)
+            restoreInstanceState(savedInstanceState)
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -158,7 +159,7 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         }
     }
 
-    private fun validateInputFields() :Boolean {
+    private fun validateInputFields(): Boolean {
         //check if active field is empty
         for (field in visibleFields!!) {
             if (field.text.isEmpty()) {
@@ -170,7 +171,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         //check if Parallelogram's side is equal with its height
         if (spinner2d.selectedItem.toString() == getString(R.string.shape_parallelogram)) {
             if (editTextSideA.text.toString() == editTextHeight.text.toString()) {
-                Toast.makeText(this, R.string.toast_EqualValues_Parallelogram, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_EqualValues_Parallelogram, Toast.LENGTH_SHORT)
+                    .show()
                 return false
             }
         }
@@ -178,7 +180,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         //check if Trapezoid's sides are equal
         else if (spinner2d.selectedItem.toString() == getString(R.string.shape_trapezoid)) {
             if (editTextSideA.text.toString() == editTextSideB.text.toString()) {
-                Toast.makeText(this, R.string.toast_EqualValues_Trapezoid, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.toast_EqualValues_Trapezoid, Toast.LENGTH_SHORT)
+                    .show()
                 return false
             }
         }
@@ -197,42 +200,44 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     private fun calculateArea() {
         when (spinner2d.selectedItem.toString()) {
             getString(R.string.shape_square) -> result.text = CalculatorOperations.calculateSquare(
-                editTextSideA.text.toString().toInt()
-            ).toString()
+                editTextSideA.text.toString().toDouble()
+            )
 
-            getString(R.string.shape_rectangle) -> result.text = CalculatorOperations.calculateRectangle(
-                editTextSideA.text.toString().toInt(),
-                editTextSideB.text.toString().toInt()
-            ).toString()
+            getString(R.string.shape_rectangle) -> result.text =
+                CalculatorOperations.calculateRectangle(
+                    editTextSideA.text.toString().toDouble(),
+                    editTextSideB.text.toString().toDouble()
+                )
 
-            getString(R.string.shape_parallelogram) -> result.text = CalculatorOperations.calculateParallelogram(
-                editTextSideA.text.toString().toInt(),
-                editTextHeight.text.toString().toInt()
-            ).toString()
+            getString(R.string.shape_parallelogram) -> result.text =
+                CalculatorOperations.calculateParallelogram(
+                    editTextSideA.text.toString().toDouble(),
+                    editTextHeight.text.toString().toDouble()
+                )
 
             getString(R.string.shape_equilateral_triangle) -> result.text =
                 CalculatorOperations.calculateEquilateralTriangle(
-                    editTextSideA.text.toString().toInt()
-                ).toString()
+                    editTextSideA.text.toString().toDouble()
+                )
 
-            getString(R.string.shape_triangle) -> result.text = CalculatorOperations.calculateTriangle(
-                editTextSideA.text.toString().toInt(),
-                editTextHeight.text.toString().toInt()
-            ).toString()
+            getString(R.string.shape_triangle) -> result.text =
+                CalculatorOperations.calculateTriangle(
+                    editTextSideA.text.toString().toDouble(),
+                    editTextHeight.text.toString().toDouble()
+                )
 
-            getString(R.string.shape_trapezoid) -> result.text = CalculatorOperations.calculateTrapezoid(
-                editTextSideA.text.toString().toInt(),
-                editTextSideB.text.toString().toInt(),
-                editTextHeight.text.toString().toInt()
-            ).toString()
+            getString(R.string.shape_trapezoid) -> result.text =
+                CalculatorOperations.calculateTrapezoid(
+                    editTextSideA.text.toString().toDouble(),
+                    editTextSideB.text.toString().toDouble(),
+                    editTextHeight.text.toString().toDouble()
+                )
 
             getString(R.string.shape_hexagon) -> result.text =
-                CalculatorOperations.calculateHexagon(editTextSideA.text.toString().toInt())
-                    .toString()
+                CalculatorOperations.calculateHexagon(editTextSideA.text.toString().toDouble())
 
             getString(R.string.shape_circle) -> result.text =
-                CalculatorOperations.calculateCircle(editTextRadius.text.toString().toInt())
-                    .toString()
+                CalculatorOperations.calculateCircle(editTextRadius.text.toString().toDouble())
         }
     }
 
@@ -248,9 +253,14 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             result.text.toString()
         }
 
-        //remove zero ("0.")
+        //remove zero (".0")
         if (tempResult.endsWith(".0")) {
             tempResult = tempResult.dropLast(2)
+        }
+
+        //remove zero (".00")
+        if (tempResult.endsWith(".00")) {
+            tempResult = tempResult.dropLast(3)
         }
 
         //add initial string plus equals sign ("Area = ")

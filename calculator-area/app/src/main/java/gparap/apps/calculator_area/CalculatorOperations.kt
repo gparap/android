@@ -25,46 +25,45 @@ import kotlin.math.sqrt
 class CalculatorOperations {
     companion object {
         @JvmStatic
-        fun calculateSquare(side: Int): Int {
-            return side.toDouble().pow(2).toInt()
+        fun calculateSquare(side: Double): String {
+            return side.pow(2).toString()
         }
 
         @JvmStatic
-        fun calculateRectangle(sideA: Int, sideB: Int): Int {
-            return sideA.times(sideB)
+        fun calculateRectangle(sideA: Double, sideB: Double): String {
+            return sideA.times(sideB).toString()
         }
 
         @JvmStatic
-        fun calculateParallelogram(side: Int, height: Int): Int {
-            return side.times(height)
+        fun calculateParallelogram(side: Double, height: Double): String {
+            return side.times(height).toString()
         }
 
         @JvmStatic
-        fun calculateEquilateralTriangle(side: Int): Float {
-            return ((sqrt(3.0f)) * (side.toFloat().pow(2))) / 4
+        fun calculateEquilateralTriangle(side: Double): String {
+            return (((sqrt(3.0f)) * (side.pow(2))) / 4).toString()
         }
 
         @JvmStatic
-        fun calculateTriangle(side: Int, height: Int): Float {
-            return side.times(height) / 2.0f
+        fun calculateTriangle(side: Double, height: Double): String {
+            return (side.times(height) / 2.0f).toString()
         }
 
         @JvmStatic
-        fun calculateTrapezoid(sideA: Int, sideB: Int, height: Int): Float {
-            return 0.5f * (sideA + sideB) * height
+        fun calculateTrapezoid(sideA: Double, sideB: Double, height: Double): String {
+            return (0.5f * (sideA + sideB) * height).toString()
         }
 
         @JvmStatic
-        fun calculateHexagon(side: Int): Float {
-            return (3.0f * (sqrt(3.0f)) * (side.toFloat().pow(2))) / 2.0f
+        fun calculateHexagon(side: Double): String {
+            return ((3.0f * (sqrt(3.0f)) * (side.pow(2))) / 2.0f).toString()
         }
 
         @JvmStatic
-        fun calculateCircle(radius: Int): Double {
-            return Math.PI * (radius.toFloat().pow(2))
+        fun calculateCircle(radius: Double): String {
+            return (Math.PI * (radius.pow(2))).toString()
         }
     }
-
 }
 
 
