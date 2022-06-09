@@ -21,6 +21,7 @@ import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import kotlin.properties.Delegates
 
@@ -32,6 +33,7 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     private lateinit var editTextRadius: EditText
     private lateinit var result: TextView
     private lateinit var buttonCalculate: Button
+    private lateinit var imageViewShape2d: ImageView
     private var visibleFields: ArrayList<EditText>? = ArrayList()
 
     //used for helping in clearing input fields (spinner's onItemSelected)
@@ -56,6 +58,7 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         editTextRadius = findViewById(R.id.editTextRadius)
         result = findViewById(R.id.textViewResult)
         buttonCalculate = findViewById(R.id.buttonCalculate)
+        imageViewShape2d = findViewById(R.id.imageViewShape2d)
 
         //calculate area
         buttonCalculate.setOnClickListener {
@@ -91,6 +94,9 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             clear()
         }
         previousItemPosition = position
+
+        //display the correct drawable based on spinner selection
+        displayGeometricShape2d(spinner2d.selectedItem.toString())
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -289,5 +295,53 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         editTextHeight.setText(savedInstanceState?.get("height").toString())
         editTextRadius.setText(savedInstanceState?.get("radius").toString())
         result.text = savedInstanceState?.get("result").toString()
+    }
+
+    /**
+     * Displays the correct 2d geometric shape based on spinner selection
+     */
+    private fun displayGeometricShape2d(name: String) {
+        when (name) {
+            resources.getString(R.string.shape_square) -> {
+                imageViewShape2d.setImageDrawable(
+                    ResourcesCompat.getDrawable(resources, R.drawable.square, null)
+                )
+            }
+            resources.getString(R.string.shape_rectangle) -> {
+                imageViewShape2d.setImageDrawable(
+                    ResourcesCompat.getDrawable(resources, R.drawable.rectangle, null)
+                )
+            }
+            resources.getString(R.string.shape_parallelogram) -> {
+                imageViewShape2d.setImageDrawable(
+                    ResourcesCompat.getDrawable(resources, R.drawable.parallelogram, null)
+                )
+            }
+            resources.getString(R.string.shape_equilateral_triangle) -> {
+                imageViewShape2d.setImageDrawable(
+                    ResourcesCompat.getDrawable(resources, R.drawable.equilateral_triangle, null)
+                )
+            }
+            resources.getString(R.string.shape_triangle) -> {
+                imageViewShape2d.setImageDrawable(
+                    ResourcesCompat.getDrawable(resources, R.drawable.triangle, null)
+                )
+            }
+            resources.getString(R.string.shape_trapezoid) -> {
+                imageViewShape2d.setImageDrawable(
+                    ResourcesCompat.getDrawable(resources, R.drawable.trapezoid, null)
+                )
+            }
+            resources.getString(R.string.shape_hexagon) -> {
+                imageViewShape2d.setImageDrawable(
+                    ResourcesCompat.getDrawable(resources, R.drawable.hexagon, null)
+                )
+            }
+            resources.getString(R.string.shape_circle) -> {
+                imageViewShape2d.setImageDrawable(
+                    ResourcesCompat.getDrawable(resources, R.drawable.circle, null)
+                )
+            }
+        }
     }
 }

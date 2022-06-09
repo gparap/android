@@ -16,7 +16,11 @@
 package gparap.apps.calculator_area
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.view.View
+import android.widget.ImageView
+import androidx.core.content.res.ResourcesCompat
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
@@ -41,6 +45,7 @@ class CalculatorActivityInstrumentedTest {
     val activityScenarioRule = ActivityScenarioRule(CalculatorActivity::class.java)
     private var rootView: View? = null
     private var context: Context? = null
+    private lateinit var activityScenario: ActivityScenario<CalculatorActivity>
 
     @Before
     fun setUp() {
@@ -53,7 +58,7 @@ class CalculatorActivityInstrumentedTest {
         }
 
         //launch activity
-        ActivityScenario.launch(CalculatorActivity::class.java)
+        activityScenario = ActivityScenario.launch(CalculatorActivity::class.java)
     }
 
     @Test
@@ -201,5 +206,133 @@ class CalculatorActivityInstrumentedTest {
         onView(withText(R.string.toast_EqualValues_Trapezoid))
             .inRoot(withDecorView(not(`is`(rootView))))
             .check(matches(isDisplayed()))
+    }
+
+
+    @Test
+    fun squareItemSelected_SetVisible_ImageViewShape2d() {
+        //select square
+        onView(withId(R.id.spinnerShapes2D)).perform(click())
+        onData(`is`(context?.getString(R.string.shape_square))).perform(click())
+        onView(withId(R.id.imageViewShape2d)).check(matches(isDisplayed()))
+
+        activityScenario.onActivity {
+            val imageView = it.findViewById<ImageView>(R.id.imageViewShape2d)
+            val actualBitmap = (imageView.drawable as BitmapDrawable).bitmap
+            val expectedBitmap = getBitmapFromDrawable(R.drawable.square)
+            assertEquals(actualBitmap, expectedBitmap)
+        }
+    }
+
+    @Test
+    fun rectangleItemSelected_SetVisible_ImageViewShape2d() {
+        //select rectangle
+        onView(withId(R.id.spinnerShapes2D)).perform(click())
+        onData(`is`(context?.getString(R.string.shape_rectangle))).perform(click())
+        onView(withId(R.id.imageViewShape2d)).check(matches(isDisplayed()))
+
+        activityScenario.onActivity {
+            val imageView = it.findViewById<ImageView>(R.id.imageViewShape2d)
+            val actualBitmap = (imageView.drawable as BitmapDrawable).bitmap
+            val expectedBitmap = getBitmapFromDrawable(R.drawable.rectangle)
+            assertEquals(actualBitmap, expectedBitmap)
+        }
+    }
+
+    @Test
+    fun parallelogramItemSelected_SetVisible_ImageViewShape2d() {
+        //select parallelogram
+        onView(withId(R.id.spinnerShapes2D)).perform(click())
+        onData(`is`(context?.getString(R.string.shape_parallelogram))).perform(click())
+        onView(withId(R.id.imageViewShape2d)).check(matches(isDisplayed()))
+
+        activityScenario.onActivity {
+            val imageView = it.findViewById<ImageView>(R.id.imageViewShape2d)
+            val actualBitmap = (imageView.drawable as BitmapDrawable).bitmap
+            val expectedBitmap = getBitmapFromDrawable(R.drawable.parallelogram)
+            assertEquals(actualBitmap, expectedBitmap)
+        }
+    }
+
+    @Test
+    fun equilateralTriangleItemSelected_SetVisible_ImageViewShape2d() {
+        //select equilateralTriangle
+        onView(withId(R.id.spinnerShapes2D)).perform(click())
+        onData(`is`(context?.getString(R.string.shape_equilateral_triangle))).perform(click())
+        onView(withId(R.id.imageViewShape2d)).check(matches(isDisplayed()))
+
+        activityScenario.onActivity {
+            val imageView = it.findViewById<ImageView>(R.id.imageViewShape2d)
+            val actualBitmap = (imageView.drawable as BitmapDrawable).bitmap
+            val expectedBitmap = getBitmapFromDrawable(R.drawable.equilateral_triangle)
+            assertEquals(actualBitmap, expectedBitmap)
+        }
+    }
+
+    @Test
+    fun triangleItemSelected_SetVisible_ImageViewShape2d() {
+        //select triangle
+        onView(withId(R.id.spinnerShapes2D)).perform(click())
+        onData(`is`(context?.getString(R.string.shape_triangle))).perform(click())
+        onView(withId(R.id.imageViewShape2d)).check(matches(isDisplayed()))
+
+        activityScenario.onActivity {
+            val imageView = it.findViewById<ImageView>(R.id.imageViewShape2d)
+            val actualBitmap = (imageView.drawable as BitmapDrawable).bitmap
+            val expectedBitmap = getBitmapFromDrawable(R.drawable.triangle)
+            assertEquals(actualBitmap, expectedBitmap)
+        }
+    }
+
+    @Test
+    fun trapezoidItemSelected_SetVisible_ImageViewShape2d() {
+        //select trapezoid
+        onView(withId(R.id.spinnerShapes2D)).perform(click())
+        onData(`is`(context?.getString(R.string.shape_trapezoid))).perform(click())
+        onView(withId(R.id.imageViewShape2d)).check(matches(isDisplayed()))
+
+        activityScenario.onActivity {
+            val imageView = it.findViewById<ImageView>(R.id.imageViewShape2d)
+            val actualBitmap = (imageView.drawable as BitmapDrawable).bitmap
+            val expectedBitmap = getBitmapFromDrawable(R.drawable.trapezoid)
+            assertEquals(actualBitmap, expectedBitmap)
+        }
+    }
+
+    @Test
+    fun hexagonItemSelected_SetVisible_ImageViewShape2d() {
+        //select hexagon
+        onView(withId(R.id.spinnerShapes2D)).perform(click())
+        onData(`is`(context?.getString(R.string.shape_hexagon))).perform(click())
+        onView(withId(R.id.imageViewShape2d)).check(matches(isDisplayed()))
+
+        activityScenario.onActivity {
+            val imageView = it.findViewById<ImageView>(R.id.imageViewShape2d)
+            val actualBitmap = (imageView.drawable as BitmapDrawable).bitmap
+            val expectedBitmap = getBitmapFromDrawable(R.drawable.hexagon)
+            assertEquals(actualBitmap, expectedBitmap)
+        }
+    }
+
+    @Test
+    fun circleItemSelected_SetVisible_ImageViewShape2d() {
+        //select circle
+        onView(withId(R.id.spinnerShapes2D)).perform(click())
+        onData(`is`(context?.getString(R.string.shape_circle))).perform(click())
+        onView(withId(R.id.imageViewShape2d)).check(matches(isDisplayed()))
+
+        activityScenario.onActivity {
+            val imageView = it.findViewById<ImageView>(R.id.imageViewShape2d)
+            val actualBitmap = (imageView.drawable as BitmapDrawable).bitmap
+            val expectedBitmap = getBitmapFromDrawable(R.drawable.circle)
+            assertEquals(actualBitmap, expectedBitmap)
+        }
+    }
+
+    //Gets the drawable object associated with a resource ID
+    // and returns the bitmap used by this drawable to render
+    private fun getBitmapFromDrawable(resourceId: Int): Bitmap {
+        val drawable = ResourcesCompat.getDrawable(context!!.resources, resourceId, null)
+        return (drawable as BitmapDrawable).bitmap
     }
 }
