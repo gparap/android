@@ -74,4 +74,12 @@ class CalculatorUnitTest {
         val actual = CalculatorOperations.calculateCircle(4.0)
         assertEquals(expected, actual)
     }
+
+    @Test
+    fun beautifyResult() {
+        val initialResult = "64.95190262794495"
+        val expectedResult = "64.95"
+        val actualResult: String = Utils.beautifyResult(initialResult)
+        assertEquals(expectedResult, actualResult)
+    }
 }

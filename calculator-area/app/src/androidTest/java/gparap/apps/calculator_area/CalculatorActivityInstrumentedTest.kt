@@ -329,6 +329,16 @@ class CalculatorActivityInstrumentedTest {
         }
     }
 
+    @Test
+    fun isUtilityFunctionCorrect_getImageDrawable() {
+        val expectedBitmap = getBitmapFromDrawable(R.drawable.parallelogram)
+        val actualDrawable = Utils.getImageDrawable(
+            context?.getString(R.string.shape_parallelogram)!!, context?.resources!!
+        )
+        val actualBitmap = (actualDrawable as BitmapDrawable).bitmap
+        assertEquals(expectedBitmap, actualBitmap)
+    }
+
     //Gets the drawable object associated with a resource ID
     // and returns the bitmap used by this drawable to render
     private fun getBitmapFromDrawable(resourceId: Int): Bitmap {

@@ -21,7 +21,6 @@ import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import kotlin.properties.Delegates
 
@@ -60,12 +59,16 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         buttonCalculate = findViewById(R.id.buttonCalculate)
         imageViewShape2d = findViewById(R.id.imageViewShape2d)
 
-        //calculate area
+        //calculate area and display the result
         buttonCalculate.setOnClickListener {
             result.text = getString(R.string.string_area)
             if (validateInputFields()) {
                 calculateArea()
-                beautifyResult()
+
+                //construct the result string
+                result.text = getString(R.string.string_area)
+                    .plus(" = ")
+                    .plus(Utils.beautifyResult(result.text.toString()))
             }
         }
 
@@ -95,8 +98,10 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         }
         previousItemPosition = position
 
-        //display the correct drawable based on spinner selection
-        displayGeometricShape2d(spinner2d.selectedItem.toString())
+        //show 2d geometric shape drawable based on spinner selection
+        imageViewShape2d.setImageDrawable(
+            Utils.getImageDrawable(spinner2d.selectedItem.toString(), resources)
+        )
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -247,34 +252,6 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         }
     }
 
-    /**
-     * Beautifies the result string
-     *  ie. 500.0 -> 500, 13.46234756 -> 13.46, etc
-     */
-    private fun beautifyResult() {
-        //keep only two (2) decimals
-        var tempResult = try {
-            result.text.toString().substring(0, result.text.toString().indexOf(".") + 3)
-        } catch (e: Exception) {
-            result.text.toString()
-        }
-
-        //remove zero (".0")
-        if (tempResult.endsWith(".0")) {
-            tempResult = tempResult.dropLast(2)
-        }
-
-        //remove zero (".00")
-        if (tempResult.endsWith(".00")) {
-            tempResult = tempResult.dropLast(3)
-        }
-
-        //add initial string plus equals sign ("Area = ")
-        result.text = getString(R.string.string_area)
-            .plus(" = ")
-            .plus(tempResult)
-    }
-
     /*
      * Persists values on orientation changes
      */
@@ -295,53 +272,5 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         editTextHeight.setText(savedInstanceState?.get("height").toString())
         editTextRadius.setText(savedInstanceState?.get("radius").toString())
         result.text = savedInstanceState?.get("result").toString()
-    }
-
-    /**
-     * Displays the correct 2d geometric shape based on spinner selection
-     */
-    private fun displayGeometricShape2d(name: String) {
-        when (name) {
-            resources.getString(R.string.shape_square) -> {
-                imageViewShape2d.setImageDrawable(
-                    ResourcesCompat.getDrawable(resources, R.drawable.square, null)
-                )
-            }
-            resources.getString(R.string.shape_rectangle) -> {
-                imageViewShape2d.setImageDrawable(
-                    ResourcesCompat.getDrawable(resources, R.drawable.rectangle, null)
-                )
-            }
-            resources.getString(R.string.shape_parallelogram) -> {
-                imageViewShape2d.setImageDrawable(
-                    ResourcesCompat.getDrawable(resources, R.drawable.parallelogram, null)
-                )
-            }
-            resources.getString(R.string.shape_equilateral_triangle) -> {
-                imageViewShape2d.setImageDrawable(
-                    ResourcesCompat.getDrawable(resources, R.drawable.equilateral_triangle, null)
-                )
-            }
-            resources.getString(R.string.shape_triangle) -> {
-                imageViewShape2d.setImageDrawable(
-                    ResourcesCompat.getDrawable(resources, R.drawable.triangle, null)
-                )
-            }
-            resources.getString(R.string.shape_trapezoid) -> {
-                imageViewShape2d.setImageDrawable(
-                    ResourcesCompat.getDrawable(resources, R.drawable.trapezoid, null)
-                )
-            }
-            resources.getString(R.string.shape_hexagon) -> {
-                imageViewShape2d.setImageDrawable(
-                    ResourcesCompat.getDrawable(resources, R.drawable.hexagon, null)
-                )
-            }
-            resources.getString(R.string.shape_circle) -> {
-                imageViewShape2d.setImageDrawable(
-                    ResourcesCompat.getDrawable(resources, R.drawable.circle, null)
-                )
-            }
-        }
     }
 }
