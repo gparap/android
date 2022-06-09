@@ -20,51 +20,58 @@ import org.junit.Test
 
 class CalculatorUnitTest {
     @Test
-    fun calculateSquare(){
-        val expected = 25
-        val actual = CalculatorOperations.calculateSquare(5)
+    fun calculateSquare() {
+        val expected = "25.0"
+        val actual = CalculatorOperations.calculateSquare(5.0)
         assertEquals(expected, actual)
     }
+
     @Test
     fun calculateRectangle() {
-        val expected = 20
-        val actual = CalculatorOperations.calculateRectangle(4, 5)
+        val expected = "20.0"
+        val actual = CalculatorOperations.calculateRectangle(4.0, 5.0)
         assertEquals(expected, actual)
     }
+
     @Test
     fun calculateParallelogram() {
-        val expected = 20
-        val actual = CalculatorOperations.calculateParallelogram(4, 5)
+        val expected = "20.0"
+        val actual = CalculatorOperations.calculateParallelogram(4.0, 5.0)
         assertEquals(expected, actual)
     }
+
     @Test
     fun calculateEquilateralTriangle() {
-        val expected = 10.825317547305483f
-        val actual = CalculatorOperations.calculateEquilateralTriangle(5)
+        val expected = "10.825317353010178"
+        val actual = CalculatorOperations.calculateEquilateralTriangle(5.0)
         assertEquals(expected, actual)
     }
+
     @Test
     fun calculateTriangle() {
-        val expected = 10f
-        val actual = CalculatorOperations.calculateTriangle(5, 4)
+        val expected = "10.0"
+        val actual = CalculatorOperations.calculateTriangle(5.0, 4.0)
         assertEquals(expected, actual)
     }
+
     @Test
     fun calculateTrapezoid() {
-        val expected = 25.0f
-        val actual = CalculatorOperations.calculateTrapezoid(6, 4, 5)
+        val expected = "25.0"
+        val actual = CalculatorOperations.calculateTrapezoid(6.0, 4.0, 5.0)
         assertEquals(expected, actual)
     }
+
     @Test
     fun calculateHexagon() {
-        val expected = 64.9519052838329f
-        val actual = CalculatorOperations.calculateHexagon(5)
+        val expected = "64.95190262794495"
+        val actual = CalculatorOperations.calculateHexagon(5.0)
         assertEquals(expected, actual)
     }
+
     @Test
     fun calculateCircle() {
-        val expected = 50.26548245743669
-        val actual = CalculatorOperations.calculateCircle(4)
-        assertEquals(expected, actual, 0.0)
+        val expected = "50.26548245743669"
+        val actual = CalculatorOperations.calculateCircle(4.0)
+        assertEquals(expected, actual)
     }
 }
