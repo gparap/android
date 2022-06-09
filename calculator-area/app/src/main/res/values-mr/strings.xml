@@ -29,4 +29,5 @@
     <string name="shape_hexagon">षटकोन</string>
     <string name="shape_circle">वर्तुळ</string>
     <string name="desc_spinner_shapes_2d">द्विमितीय भौमितिक आकार</string>
+    <string name="desc_image_shapes_2d">द्विमितीय भौमितिक आकारासाठी प्रतिमा कंटेनर</string>
 </resources>

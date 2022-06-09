@@ -29,4 +29,5 @@
     <string name="shape_hexagon">Hexagon</string>
     <string name="shape_circle">Kreis</string>
     <string name="desc_spinner_shapes_2d">Zweidimensionale geometrische Formen</string>
+    <string name="desc_image_shapes_2d">Bildcontainer für zweidimensionale geometrische Formen</string>
 </resources>
