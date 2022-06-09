@@ -2,6 +2,7 @@
     <string name="app_name">Area Calculator</string>
     <string name="button_calculate">Calculate</string>
     <string name="desc_spinner_shapes_2d">Two-dimensional geometric shapes</string>
+    <string name="desc_image_shapes_2d">Image container for two-dimensional geometric shape</string>
 
     <!--2D shapes-->
     <string-array name="shapes2D">

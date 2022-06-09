@@ -29,4 +29,5 @@
     <string name="shape_hexagon">육각형</string>
     <string name="shape_circle">원</string>
     <string name="desc_spinner_shapes_2d">2차원 기하학적 모양</string>
+    <string name="desc_image_shapes_2d">2차원 기하학적 형태를 위한 이미지 컨테이너</string>
 </resources>

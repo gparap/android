@@ -29,4 +29,5 @@
     <string name="shape_hexagon">سداسي الزوايا</string>
     <string name="shape_circle">دائرة</string>
     <string name="desc_spinner_shapes_2d">أشكال هندسية ثنائية الأبعاد</string>
+    <string name="desc_image_shapes_2d">حاوية صورة لشكل هندسي ثنائي الأبعاد</string>
 </resources>

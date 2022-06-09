@@ -29,4 +29,5 @@
     <string name="shape_hexagon">Esagono</string>
     <string name="shape_circle">Cerchio</string>
     <string name="desc_spinner_shapes_2d">Forme geometriche bidimensionali</string>
+    <string name="desc_image_shapes_2d">Contenitore di immagini per forme geometriche bidimensionali</string>
 </resources>
