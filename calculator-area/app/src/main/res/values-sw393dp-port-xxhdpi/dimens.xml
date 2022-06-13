@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="spinner_layout_marginStart">8dp</dimen>
+    <dimen name="spinner_layout_marginLeft">8dp</dimen>
+    <dimen name="spinner_layout_marginTop">8dp</dimen>
+    <dimen name="spinner_layout_marginEnd">8dp</dimen>
+    <dimen name="spinner_layout_marginRight">8dp</dimen>
+    <dimen name="spinner_minHeight">48dp</dimen>
+
+    <dimen name="edit_text_layout_height">48dp</dimen>
+    <dimen name="edit_text_marginTop">8dp</dimen>
+    <dimen name="edit_text_textSize">18sp</dimen>
+
+    <dimen name="button_marginTop">8dp</dimen>
+    <dimen name="button_textSize">14sp</dimen>
+
+    <dimen name="text_view_marginTop">8dp</dimen>
+    <dimen name="text_view_textSize">18sp</dimen>
+
+    <dimen name="frame_layout_margin">48dp</dimen>
+</resources>
