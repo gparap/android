@@ -4,25 +4,23 @@
     <!-- EditText style portrait mode. (DEFAULT) -->
     <style name="edit_text_default_port">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">@dimen/edit_text_layout_height</item>
-        <item name="android:layout_marginTop">@dimen/edit_text_marginTop</item>
+        <item name="android:layout_height">@dimen/edit_text_layout_height_port</item>
+        <item name="android:layout_marginTop">@dimen/edit_text_marginTop_port</item>
         <item name="android:autofillHints" tools:targetApi="o">false</item>
         <item name="android:background">@android:drawable/edit_text</item>
         <item name="android:ems">10</item>
         <item name="android:gravity">center</item>
         <item name="android:inputType">number|numberDecimal</item>
-        <item name="android:textSize">@dimen/edit_text_textSize</item>
+        <item name="android:textSize">@dimen/edit_text_textSize_port</item>
         <item name="android:visibility">gone</item>
         <item name="android:textColorHint">@color/textColorHint_EditText</item>
     </style>
 
-    <!-- EditText style landscape variation. -->
-    <style name="edit_text_default_land" parent="@style/edit_text_default_port">
-        <item name="android:layout_marginTop">2dp</item>
+    <!-- EditText style landscape variation. (DEFAULT) -->
+    <style name="edit_text_default_land">
         <item name="android:background">@android:drawable/editbox_background</item>
         <item name="android:inputType">number|numberDecimal</item>
         <item name="android:textColorHint">@color/textColorHint_EditText</item>
-        <item name="android:minHeight">48dp</item>
     </style>
 
     <!-- EditText style for small screens. -->
