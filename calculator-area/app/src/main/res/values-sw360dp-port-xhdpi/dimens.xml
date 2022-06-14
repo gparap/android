@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="spinner_layout_marginStart">4dp</dimen>
-    <dimen name="spinner_layout_marginLeft">4dp</dimen>
-    <dimen name="spinner_layout_marginTop">4dp</dimen>
-    <dimen name="spinner_layout_marginEnd">4dp</dimen>
-    <dimen name="spinner_layout_marginRight">4dp</dimen>
+    <dimen name="spinner_layout_marginStart_port">4dp</dimen>
+    <dimen name="spinner_layout_marginLeft_port">4dp</dimen>
+    <dimen name="spinner_layout_marginTop_port">4dp</dimen>
+    <dimen name="spinner_layout_marginEnd_port">4dp</dimen>
+    <dimen name="spinner_layout_marginRight_port">4dp</dimen>
     <dimen name="spinner_minHeight">34dp</dimen>
 
-    <dimen name="edit_text_layout_height">36dp</dimen>
-    <dimen name="edit_text_marginTop">2dp</dimen>
-    <dimen name="edit_text_textSize">16sp</dimen>
+    <dimen name="edit_text_layout_height_port">36dp</dimen>
+    <dimen name="edit_text_marginTop_port">2dp</dimen>
+    <dimen name="edit_text_textSize_port">16sp</dimen>
 
-    <dimen name="button_marginTop">4dp</dimen>
-    <dimen name="button_textSize">12sp</dimen>
+    <dimen name="button_marginTop_port">4dp</dimen>
+    <dimen name="button_textSize_port">12sp</dimen>
 
-    <dimen name="text_view_marginTop">4dp</dimen>
-    <dimen name="text_view_textSize">18sp</dimen>
+    <dimen name="text_view_marginTop_port">4dp</dimen>
+    <dimen name="text_view_textSize_port">18sp</dimen>
 
-    <dimen name="frame_layout_margin">32dp</dimen>
+    <dimen name="frame_layout_margin_port">32dp</dimen>
 </resources>
