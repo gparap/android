@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="spinner_layout_marginStart_land">2dp</dimen>
+    <dimen name="spinner_layout_marginLeft_land">2dp</dimen>
+    <dimen name="spinner_layout_marginTop_land">2dp</dimen>
+    <dimen name="spinner_layout_marginEnd_land">2dp</dimen>
+    <dimen name="spinner_layout_marginRight_land">2dp</dimen>
+    <dimen name="spinner_minHeight">32dp</dimen>
+
+    <dimen name="edit_text_layout_height_land">32dp</dimen>
+    <dimen name="edit_text_marginTop_land">2dp</dimen>
+    <dimen name="edit_text_textSize_land">14sp</dimen>
+
+    <dimen name="button_marginBottom_land">0dp</dimen>
+    <dimen name="button_textSize_land">12sp</dimen>
+
+    <dimen name="text_view_marginBottom_land">0dp</dimen>
+    <dimen name="text_view_textSize_land">14sp</dimen>
+
+    <dimen name="frame_layout_margin_land">16dp</dimen>
+</resources>
