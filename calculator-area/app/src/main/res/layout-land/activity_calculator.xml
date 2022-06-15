@@ -26,12 +26,13 @@
     <EditText
         android:id="@+id/editTextSideA"
         style="@style/edit_text_default_land"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="@dimen/edit_text_layout_height_land"
         android:layout_marginTop="@dimen/edit_text_marginTop_land"
         android:autofillHints="false"
         android:hint="@string/hint_enter_side_a"
         android:textSize="@dimen/edit_text_textSize_land"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
         app:layout_constraintTop_toBottomOf="@+id/spinnerShapes2D"
         tools:visibility="visible" />
@@ -39,12 +40,13 @@
     <EditText
         android:id="@+id/editTextSideB"
         style="@style/edit_text_default_land"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="@dimen/edit_text_layout_height_land"
         android:layout_marginTop="@dimen/edit_text_marginTop_land"
         android:autofillHints="false"
         android:hint="@string/hint_enter_side_b"
         android:textSize="@dimen/edit_text_textSize_land"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/editTextSideA"
         app:layout_constraintTop_toBottomOf="@+id/editTextSideA"
         tools:visibility="visible" />
@@ -52,12 +54,13 @@
     <EditText
         android:id="@+id/editTextHeight"
         style="@style/edit_text_default_land"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="@dimen/edit_text_layout_height_land"
         android:layout_marginTop="@dimen/edit_text_marginTop_land"
         android:autofillHints="false"
         android:hint="@string/hint_enter_height"
         android:textSize="@dimen/edit_text_textSize_land"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/editTextSideA"
         app:layout_constraintTop_toBottomOf="@+id/editTextSideB"
         tools:visibility="visible" />
@@ -65,12 +68,13 @@
     <EditText
         android:id="@+id/editTextRadius"
         style="@style/edit_text_default_land"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="@dimen/edit_text_layout_height_land"
         android:layout_marginTop="@dimen/edit_text_marginTop_land"
         android:autofillHints="false"
         android:hint="@string/hint_enter_radius"
         android:textSize="@dimen/edit_text_textSize_land"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
         app:layout_constraintTop_toBottomOf="@+id/spinnerShapes2D"
         tools:visibility="invisible" />
@@ -117,11 +121,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/desc_image_shapes_2d"
-            android:src="@drawable/parallelogram"
+            android:src="@drawable/square"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonCalculate" />
     </FrameLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.275"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
