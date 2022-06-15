@@ -21,6 +21,7 @@
         <item name="android:background">@android:drawable/editbox_background</item>
         <item name="android:inputType">number|numberDecimal</item>
         <item name="android:textColorHint">@color/textColorHint_EditText</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <!-- EditText style for small screens. -->
