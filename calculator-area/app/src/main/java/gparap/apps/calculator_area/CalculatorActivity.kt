@@ -75,9 +75,9 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         //populate spinner with 2D shapes
         spinner2d = findViewById(R.id.spinnerShapes2D)
         val adapter2d: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(
-            this, R.array.shapes2D, android.R.layout.simple_spinner_item
+            this, R.array.shapes2D, R.layout.simple_spinner_item
         )
-        adapter2d.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        adapter2d.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
         spinner2d.adapter = adapter2d
         spinner2d.onItemSelectedListener = this
 

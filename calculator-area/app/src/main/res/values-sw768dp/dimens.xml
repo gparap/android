@@ -6,13 +6,11 @@
     <dimen name="spinner_layout_marginTop_port">8dp</dimen>
     <dimen name="spinner_layout_marginEnd_port">8dp</dimen>
     <dimen name="spinner_layout_marginRight_port">8dp</dimen>
-    <dimen name="spinner_scaleY_port">1.5</dimen>
     <dimen name="spinner_layout_marginStart_land">8dp</dimen>
     <dimen name="spinner_layout_marginLeft_land">8dp</dimen>
     <dimen name="spinner_layout_marginTop_land">8dp</dimen>
     <dimen name="spinner_layout_marginEnd_land">8dp</dimen>
     <dimen name="spinner_layout_marginRight_land">8dp</dimen>
-    <dimen name="spinner_scaleY_land">1.5</dimen>
 
     <dimen name="edit_text_layout_height_port">48dp</dimen>
     <dimen name="edit_text_marginTop_port">8dp</dimen>
