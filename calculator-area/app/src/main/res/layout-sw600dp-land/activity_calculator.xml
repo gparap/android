@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    tools:context=".CalculatorActivity">
+
+    <Spinner
+        android:id="@+id/spinnerShapes2D"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spinner_layout_marginStart_land"
+        android:layout_marginLeft="@dimen/spinner_layout_marginLeft_land"
+        android:layout_marginTop="@dimen/spinner_layout_marginTop_land"
+        android:layout_marginEnd="@dimen/spinner_layout_marginEnd_land"
+        android:layout_marginRight="@dimen/spinner_layout_marginRight_land"
+        android:contentDescription="@string/desc_spinner_shapes_2d"
+        android:minHeight="@dimen/spinner_minHeight"
+        android:scaleY="@dimen/spinner_scaleY_land"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextSideA"
+        style="@style/edit_text_default_land"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/edit_text_layout_height_land"
+        android:layout_marginTop="@dimen/edit_text_marginTop_land"
+        android:autofillHints="false"
+        android:hint="@string/hint_enter_side_a"
+        android:textSize="@dimen/edit_text_textSize_land"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerShapes2D"
+        tools:visibility="visible" />
+
+    <EditText
+        android:id="@+id/editTextSideB"
+        style="@style/edit_text_default_land"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/edit_text_layout_height_land"
+        android:layout_marginTop="@dimen/edit_text_marginTop_land"
+        android:autofillHints="false"
+        android:hint="@string/hint_enter_side_b"
+        android:textSize="@dimen/edit_text_textSize_land"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/editTextSideA"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSideA"
+        tools:visibility="visible" />
+
+    <EditText
+        android:id="@+id/editTextHeight"
+        style="@style/edit_text_default_land"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/edit_text_layout_height_land"
+        android:layout_marginTop="@dimen/edit_text_marginTop_land"
+        android:autofillHints="false"
+        android:hint="@string/hint_enter_height"
+        android:textSize="@dimen/edit_text_textSize_land"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/editTextSideA"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSideB"
+        tools:visibility="visible" />
+
+    <EditText
+        android:id="@+id/editTextRadius"
+        style="@style/edit_text_default_land"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/edit_text_layout_height_land"
+        android:layout_marginTop="@dimen/edit_text_marginTop_land"
+        android:autofillHints="false"
+        android:hint="@string/hint_enter_radius"
+        android:textSize="@dimen/edit_text_textSize_land"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerShapes2D"
+        tools:visibility="invisible" />
+
+    <Button
+        android:id="@+id/buttonCalculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/button_marginBottom_land"
+        android:text="@string/button_calculate"
+        android:textColor="@color/textColor_Button"
+        android:textSize="@dimen/button_textSize_land"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewResult"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/text_view_marginBottom_land"
+        android:focusable="true"
+        android:gravity="center"
+        android:text="@string/string_area"
+        android:textSize="@dimen/text_view_textSize_land"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCalculate"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--Image container for 2d geometric shapes-->
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/frame_layout_margin_land"
+        app:layout_constraintBottom_toTopOf="@id/textViewResult"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerShapes2D">
+
+        <ImageView
+            android:id="@+id/imageViewShape2d"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/desc_image_shapes_2d"
+            android:src="@drawable/square"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonCalculate" />
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.33"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
