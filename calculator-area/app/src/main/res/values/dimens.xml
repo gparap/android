@@ -12,6 +12,8 @@
     <dimen name="spinner_layout_marginTop_land">4dp</dimen>
     <dimen name="spinner_layout_marginEnd_land">8dp</dimen>
     <dimen name="spinner_layout_marginRight_land">8dp</dimen>
+    <dimen name="spinner_scaleY_port">1.5</dimen>
+    <dimen name="spinner_scaleY_land">1.5</dimen>
 
     <dimen name="edit_text_layout_height_port">48dp</dimen>
     <dimen name="edit_text_marginTop_port">8dp</dimen>
@@ -19,11 +21,15 @@
     <dimen name="edit_text_layout_height_land">48dp</dimen>
     <dimen name="edit_text_marginTop_land">8dp</dimen>
     <dimen name="edit_text_textSize_land">18sp</dimen>
+    <dimen name="edit_text_layout_marginTop_port">12dp</dimen>
+    <dimen name="edit_text_layout_marginTop_land">12dp</dimen>
 
     <dimen name="button_marginTop_port">8dp</dimen>
     <dimen name="button_textSize_port">14sp</dimen>
     <dimen name="button_marginBottom_land">8dp</dimen>
     <dimen name="button_textSize_land">14sp</dimen>
+    <dimen name="button_paddingVertical_port">8dp</dimen>
+    <dimen name="button_paddingVertical_land">8dp</dimen>
 
     <dimen name="text_view_marginTop_port">8dp</dimen>
     <dimen name="text_view_textSize_port">18sp</dimen>
