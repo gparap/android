@@ -36,5 +36,5 @@
     <dimen name="text_view_textSize_land">28sp</dimen>
 
     <dimen name="frame_layout_margin_port">96dp</dimen>
-    <dimen name="frame_layout_margin_land">32dp</dimen>
+    <dimen name="frame_layout_margin_land">112dp</dimen>
 </resources>
