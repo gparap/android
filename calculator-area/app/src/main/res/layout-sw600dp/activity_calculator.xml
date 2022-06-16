@@ -19,7 +19,6 @@
         android:layout_marginRight="@dimen/spinner_layout_marginRight_port"
         android:contentDescription="@string/desc_spinner_shapes_2d"
         android:minHeight="@dimen/spinner_minHeight"
-        android:scaleY="@dimen/spinner_scaleY_port"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -69,10 +68,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/button_marginTop_port"
-        android:textSize="@dimen/button_textSize_port"
-        android:text="@string/button_calculate"
         android:paddingVertical="@dimen/button_paddingVertical_port"
+        android:text="@string/button_calculate"
         android:textColor="@color/textColor_Button"
+        android:textSize="@dimen/button_textSize_port"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
         app:layout_constraintTop_toBottomOf="@+id/textViewResult" />
