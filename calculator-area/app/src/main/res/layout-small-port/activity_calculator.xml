@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:descendantFocusability="beforeDescendants"
@@ -72,7 +73,7 @@
     <!--Diagonal 1-->
     <EditText
         android:id="@+id/editTextDiagonal1"
-        style="@style/edit_text_default_port"
+        style="@style/edit_text_small_port"
         android:autofillHints="false"
         android:hint="@string/hint_enter_diagonal_1"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
@@ -83,7 +84,7 @@
     <!--Diagonal 2-->
     <EditText
         android:id="@+id/editTextDiagonal2"
-        style="@style/edit_text_default_port"
+        style="@style/edit_text_small_port"
         android:autofillHints="false"
         android:hint="@string/hint_enter_diagonal_2"
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
@@ -119,6 +120,7 @@
 
     <!--Image container for 2d geometric shapes-->
     <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="16dp"
