@@ -68,7 +68,15 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 //construct the result string
                 result.text = getString(R.string.string_area)
                     .plus(" = ")
-                    .plus(Utils.beautifyResult(result.text.toString()))
+                    .plus(
+                        //if it is a scientific number, display it as it is
+                        if (result.text.toString().contains("E")) {
+                            result.text.toString()
+
+                            //if it is a non-scientific number, beautify it
+                        } else {
+                            Utils.beautifyResult(result.text.toString())
+                        })
             }
         }
 
