@@ -24,6 +24,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--Side A-->
     <EditText
         android:id="@+id/editTextSideA"
         style="@style/edit_text_small_land"
@@ -32,8 +33,10 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
         app:layout_constraintTop_toBottomOf="@+id/spinnerShapes2D"
-        tools:ignore="TouchTargetSizeCheck" />
+        tools:ignore="TouchTargetSizeCheck"
+        tools:visibility="invisible" />
 
+    <!--Side B-->
     <EditText
         android:id="@+id/editTextSideB"
         style="@style/edit_text_small_land"
@@ -42,8 +45,10 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
         app:layout_constraintTop_toBottomOf="@+id/editTextSideA"
-        tools:ignore="TouchTargetSizeCheck" />
+        tools:ignore="TouchTargetSizeCheck"
+        tools:visibility="invisible" />
 
+    <!--Height-->
     <EditText
         android:id="@+id/editTextHeight"
         style="@style/edit_text_small_land"
@@ -54,6 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextSideB"
         tools:ignore="TouchTargetSizeCheck" />
 
+    <!--Radius-->
     <EditText
         android:id="@+id/editTextRadius"
         style="@style/edit_text_small_land"
@@ -63,6 +69,30 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
         app:layout_constraintTop_toBottomOf="@+id/editTextHeight"
+        tools:ignore="TouchTargetSizeCheck"
+        tools:visibility="visible" />
+
+    <!--Diagonal 1-->
+    <EditText
+        android:id="@+id/editTextDiagonal1"
+        style="@style/edit_text_small_land"
+        android:autofillHints="false"
+        android:hint="@string/hint_enter_diagonal_1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerShapes2D"
+        tools:ignore="TouchTargetSizeCheck"
+        tools:visibility="visible" />
+
+    <!--Diagonal 2-->
+    <EditText
+        android:id="@+id/editTextDiagonal2"
+        style="@style/edit_text_small_land"
+        android:autofillHints="false"
+        android:hint="@string/hint_enter_diagonal_2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSideA"
         tools:ignore="TouchTargetSizeCheck"
         tools:visibility="visible" />
 
@@ -105,7 +135,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/desc_image_shapes_2d"
-            android:src="@drawable/parallelogram"
+            android:src="@drawable/rhombus"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
