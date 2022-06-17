@@ -40,6 +40,11 @@ class CalculatorOperations {
         }
 
         @JvmStatic
+        fun calculateRhombus(diagonal1: Double, diagonal2: Double): String {
+            return diagonal1.times(diagonal2).div(2).toString()
+        }
+
+        @JvmStatic
         fun calculateEquilateralTriangle(side: Double): String {
             return (((sqrt(3.0f)) * (side.pow(2))) / 4).toString()
         }

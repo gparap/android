@@ -9,6 +9,7 @@
         <item>Square</item>
         <item>Rectangle</item>
         <item>Parallelogram</item>
+        <item>Rhombus</item>
         <item>Equilateral Triangle</item>
         <item>Triangle</item>
         <item>Trapezoid</item>
@@ -27,11 +28,14 @@
     <string name="hint_enter_side_b">enter side b</string>
     <string name="hint_enter_height">enter height</string>
     <string name="hint_enter_radius">enter radius</string>
+    <string name="hint_enter_diagonal_1">enter diagonal 1</string>
+    <string name="hint_enter_diagonal_2">enter diagonal 2</string>
 
     <!--Shape 2D strings for internationalization-->
     <string name="shape_square">Square</string>
     <string name="shape_rectangle">Rectangle</string>
     <string name="shape_parallelogram">Parallelogram</string>
+    <string name="shape_rhombus">Rhombus</string>
     <string name="shape_equilateral_triangle">Equilateral Triangle</string>
     <string name="shape_triangle">Triangle</string>
     <string name="shape_trapezoid">Trapezoid</string>

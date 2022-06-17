@@ -61,6 +61,9 @@ object Utils {
             resources.getString(R.string.shape_parallelogram) -> {
                 drawable = ResourcesCompat.getDrawable(resources, R.drawable.parallelogram, null)
             }
+            resources.getString(R.string.shape_rhombus) -> {
+                drawable = ResourcesCompat.getDrawable(resources, R.drawable.rhombus, null)
+            }
             resources.getString(R.string.shape_equilateral_triangle) -> {
                 drawable =
                     ResourcesCompat.getDrawable(resources, R.drawable.equilateral_triangle, null)
