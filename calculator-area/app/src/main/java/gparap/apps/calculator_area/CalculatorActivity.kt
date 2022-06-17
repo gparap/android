@@ -30,6 +30,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     private lateinit var editTextSideB: EditText
     private lateinit var editTextHeight: EditText
     private lateinit var editTextRadius: EditText
+    private lateinit var editTextDiagonal1: EditText
+    private lateinit var editTextDiagonal2: EditText
     private lateinit var result: TextView
     private lateinit var buttonCalculate: Button
     private lateinit var imageViewShape2d: ImageView
@@ -55,6 +57,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         editTextSideB = findViewById(R.id.editTextSideB)
         editTextHeight = findViewById(R.id.editTextHeight)
         editTextRadius = findViewById(R.id.editTextRadius)
+        editTextDiagonal1 = findViewById(R.id.editTextDiagonal1)
+        editTextDiagonal2 = findViewById(R.id.editTextDiagonal2)
         result = findViewById(R.id.textViewResult)
         buttonCalculate = findViewById(R.id.buttonCalculate)
         imageViewShape2d = findViewById(R.id.imageViewShape2d)
@@ -132,48 +136,72 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextSideB.isVisible = false
                 editTextHeight.isVisible = false
                 editTextRadius.isVisible = false
+                editTextDiagonal1.isVisible = false
+                editTextDiagonal2.isVisible = false
             }
             getString(R.string.shape_rectangle) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = true.also { visibleFields?.add(editTextSideB) }
                 editTextHeight.isVisible = false
                 editTextRadius.isVisible = false
+                editTextDiagonal1.isVisible = false
+                editTextDiagonal2.isVisible = false
             }
             getString(R.string.shape_parallelogram) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = false
                 editTextHeight.isVisible = true.also { visibleFields?.add(editTextHeight) }
                 editTextRadius.isVisible = false
+                editTextDiagonal1.isVisible = false
+                editTextDiagonal2.isVisible = false
+            }
+            getString(R.string.shape_rhombus) -> {
+                editTextSideA.isVisible = false
+                editTextSideB.isVisible = false
+                editTextHeight.isVisible = false
+                editTextRadius.isVisible = false
+                editTextDiagonal1.isVisible = true.also { visibleFields?.add(editTextDiagonal1) }
+                editTextDiagonal2.isVisible = true.also { visibleFields?.add(editTextDiagonal2) }
             }
             getString(R.string.shape_equilateral_triangle) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = false
                 editTextHeight.isVisible = false
                 editTextRadius.isVisible = false
+                editTextDiagonal1.isVisible = false
+                editTextDiagonal2.isVisible = false
             }
             getString(R.string.shape_triangle) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = false
                 editTextHeight.isVisible = true
                 editTextRadius.isVisible = false
+                editTextDiagonal1.isVisible = false
+                editTextDiagonal2.isVisible = false
             }
             getString(R.string.shape_trapezoid) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = true.also { visibleFields?.add(editTextSideB) }
                 editTextHeight.isVisible = true.also { visibleFields?.add(editTextHeight) }
                 editTextRadius.isVisible = false
+                editTextDiagonal1.isVisible = false
+                editTextDiagonal2.isVisible = false
             }
             getString(R.string.shape_hexagon) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = false
                 editTextHeight.isVisible = false
                 editTextRadius.isVisible = false
+                editTextDiagonal1.isVisible = false
+                editTextDiagonal2.isVisible = false
             }
             getString(R.string.shape_circle) -> {
                 editTextSideA.isVisible = false
                 editTextSideB.isVisible = false
                 editTextHeight.isVisible = false
                 editTextRadius.isVisible = true.also { visibleFields?.add(editTextRadius) }
+                editTextDiagonal1.isVisible = false
+                editTextDiagonal2.isVisible = false
             }
         }
     }
@@ -213,6 +241,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         editTextSideB.text.clear()
         editTextHeight.text.clear()
         editTextRadius.text.clear()
+        editTextDiagonal1.text.clear()
+        editTextDiagonal2.text.clear()
         result.text = getString(R.string.string_area)
     }
 
@@ -232,6 +262,12 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 CalculatorOperations.calculateParallelogram(
                     editTextSideA.text.toString().toDouble(),
                     editTextHeight.text.toString().toDouble()
+                )
+
+            getString(R.string.shape_rhombus) -> result.text =
+                CalculatorOperations.calculateRhombus(
+                    editTextDiagonal1.text.toString().toDouble(),
+                    editTextDiagonal2.text.toString().toDouble()
                 )
 
             getString(R.string.shape_equilateral_triangle) -> result.text =
@@ -269,6 +305,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         outState.putString("side_b", editTextSideB.text.toString())
         outState.putString("height", editTextHeight.text.toString())
         outState.putString("radius", editTextRadius.text.toString())
+        outState.putString("diagonal_1", editTextDiagonal1.text.toString())
+        outState.putString("diagonal_2", editTextDiagonal2.text.toString())
     }
 
     /*
@@ -279,6 +317,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         editTextSideB.setText(savedInstanceState?.get("side_b").toString())
         editTextHeight.setText(savedInstanceState?.get("height").toString())
         editTextRadius.setText(savedInstanceState?.get("radius").toString())
+        editTextDiagonal1.setText(savedInstanceState?.get("diagonal_1").toString())
+        editTextDiagonal2.setText(savedInstanceState?.get("diagonal_2").toString())
         result.text = savedInstanceState?.get("result").toString()
     }
 }

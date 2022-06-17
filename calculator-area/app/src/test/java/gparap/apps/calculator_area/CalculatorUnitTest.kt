@@ -41,6 +41,13 @@ class CalculatorUnitTest {
     }
 
     @Test
+    fun calculateRhombus() {
+        val expected = "6.0"
+        val actual = CalculatorOperations.calculateRhombus(3.0, 4.0)
+        assertEquals(expected, actual)
+    }
+
+    @Test
     fun calculateEquilateralTriangle() {
         val expected = "10.825317353010178"
         val actual = CalculatorOperations.calculateEquilateralTriangle(5.0)
