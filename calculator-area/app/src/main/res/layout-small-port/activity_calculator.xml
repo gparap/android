@@ -105,7 +105,7 @@
 
     <!--Semi-Axis r2-->
     <EditText
-        android:id="@+id/editTextSemiMajorAxis2"
+        android:id="@+id/editTextSemiAxis2"
         style="@style/edit_text_small_port"
         android:autofillHints="false"
         android:hint="@string/hint_enter_semi_axis_r2"

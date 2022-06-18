@@ -73,6 +73,11 @@ class CalculatorOperations {
         fun calculateCircle(radius: Double): String {
             return (Math.PI * (radius.pow(2))).toString()
         }
+
+        @JvmStatic
+        fun calculateOval(r1: Double, r2: Double): String {
+            return (Math.PI * r1 * r2).toString()
+        }
     }
 }
 

@@ -139,7 +139,7 @@
         android:hint="@string/hint_enter_semi_axis_r2"
         android:textSize="@dimen/edit_text_textSize_land"
         app:layout_constraintEnd_toEndOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="@+id/editTextSemiAxis1"
+        app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
         app:layout_constraintTop_toBottomOf="@+id/editTextSemiAxis1"
         tools:visibility="visible" />
 

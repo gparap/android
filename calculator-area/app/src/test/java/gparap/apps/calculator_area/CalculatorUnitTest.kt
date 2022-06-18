@@ -90,6 +90,13 @@ class CalculatorUnitTest {
     }
 
     @Test
+    fun calculateOval() {
+        val expected = "18.84955592153876"
+        val actual = CalculatorOperations.calculateOval(2.0, 3.0)
+        assertEquals(expected, actual)
+    }
+
+    @Test
     fun beautifyResult() {
         val initialResult = "64.95190262794495"
         val expectedResult = "64.95"
