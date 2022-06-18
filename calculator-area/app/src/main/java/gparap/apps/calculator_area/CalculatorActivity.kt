@@ -35,6 +35,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     private lateinit var editTextRadius: EditText
     private lateinit var editTextDiagonal1: EditText
     private lateinit var editTextDiagonal2: EditText
+    private lateinit var editTextSemiAxis1: EditText
+    private lateinit var editTextSemiAxis2: EditText
     private lateinit var result: TextView
     private lateinit var buttonCalculate: Button
     private lateinit var imageViewShape2d: ImageView
@@ -62,6 +64,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         editTextRadius = findViewById(R.id.editTextRadius)
         editTextDiagonal1 = findViewById(R.id.editTextDiagonal1)
         editTextDiagonal2 = findViewById(R.id.editTextDiagonal2)
+        editTextSemiAxis1 = findViewById(R.id.editTextSemiAxis1)
+        editTextSemiAxis2 = findViewById(R.id.editTextSemiAxis2)
         result = findViewById(R.id.textViewResult)
         buttonCalculate = findViewById(R.id.buttonCalculate)
         imageViewShape2d = findViewById(R.id.imageViewShape2d)
@@ -141,6 +145,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextRadius.isVisible = false
                 editTextDiagonal1.isVisible = false
                 editTextDiagonal2.isVisible = false
+                editTextSemiAxis1.isVisible = false
+                editTextSemiAxis2.isVisible = false
                 handleConstrainSet(R.id.editTextSideA)
             }
             getString(R.string.shape_rectangle) -> {
@@ -150,6 +156,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextRadius.isVisible = false
                 editTextDiagonal1.isVisible = false
                 editTextDiagonal2.isVisible = false
+                editTextSemiAxis1.isVisible = false
+                editTextSemiAxis2.isVisible = false
                 handleConstrainSet(R.id.editTextSideB)
             }
             getString(R.string.shape_parallelogram) -> {
@@ -159,6 +167,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextRadius.isVisible = false
                 editTextDiagonal1.isVisible = false
                 editTextDiagonal2.isVisible = false
+                editTextSemiAxis1.isVisible = false
+                editTextSemiAxis2.isVisible = false
                 handleConstrainSet(R.id.editTextHeight)
             }
             getString(R.string.shape_rhombus) -> {
@@ -168,6 +178,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextRadius.isVisible = false
                 editTextDiagonal1.isVisible = true.also { visibleFields?.add(editTextDiagonal1) }
                 editTextDiagonal2.isVisible = true.also { visibleFields?.add(editTextDiagonal2) }
+                editTextSemiAxis1.isVisible = false
+                editTextSemiAxis2.isVisible = false
                 handleConstrainSet(R.id.editTextDiagonal2)
             }
             getString(R.string.shape_equilateral_triangle) -> {
@@ -177,6 +189,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextRadius.isVisible = false
                 editTextDiagonal1.isVisible = false
                 editTextDiagonal2.isVisible = false
+                editTextSemiAxis1.isVisible = false
+                editTextSemiAxis2.isVisible = false
                 handleConstrainSet(R.id.editTextSideA)
             }
             getString(R.string.shape_triangle) -> {
@@ -186,6 +200,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextRadius.isVisible = false
                 editTextDiagonal1.isVisible = false
                 editTextDiagonal2.isVisible = false
+                editTextSemiAxis1.isVisible = false
+                editTextSemiAxis2.isVisible = false
                 handleConstrainSet(R.id.editTextHeight)
             }
             getString(R.string.shape_trapezoid) -> {
@@ -195,6 +211,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextRadius.isVisible = false
                 editTextDiagonal1.isVisible = false
                 editTextDiagonal2.isVisible = false
+                editTextSemiAxis1.isVisible = false
+                editTextSemiAxis2.isVisible = false
                 handleConstrainSet(R.id.editTextHeight)
             }
             getString(R.string.shape_regular_pentagon) -> {
@@ -204,6 +222,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextRadius.isVisible = false
                 editTextDiagonal1.isVisible = false
                 editTextDiagonal2.isVisible = false
+                editTextSemiAxis1.isVisible = false
+                editTextSemiAxis2.isVisible = false
                 handleConstrainSet(R.id.editTextSideA)
             }
             getString(R.string.shape_hexagon) -> {
@@ -213,6 +233,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextRadius.isVisible = false
                 editTextDiagonal1.isVisible = false
                 editTextDiagonal2.isVisible = false
+                editTextSemiAxis1.isVisible = false
+                editTextSemiAxis2.isVisible = false
                 handleConstrainSet(R.id.editTextSideA)
             }
             getString(R.string.shape_circle) -> {
@@ -222,7 +244,20 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextRadius.isVisible = true.also { visibleFields?.add(editTextRadius) }
                 editTextDiagonal1.isVisible = false
                 editTextDiagonal2.isVisible = false
+                editTextSemiAxis1.isVisible = false
+                editTextSemiAxis2.isVisible = false
                 handleConstrainSet(R.id.editTextRadius)
+            }
+            getString(R.string.shape_oval) -> {
+                editTextSideA.isVisible = false
+                editTextSideB.isVisible = false
+                editTextHeight.isVisible = false
+                editTextRadius.isVisible = false
+                editTextDiagonal1.isVisible = false
+                editTextDiagonal2.isVisible = false
+                editTextSemiAxis1.isVisible = true.also { visibleFields?.add(editTextSemiAxis1) }
+                editTextSemiAxis2.isVisible = true.also { visibleFields?.add(editTextSemiAxis2) }
+                handleConstrainSet(R.id.editTextSemiAxis2)
             }
         }
     }
@@ -254,6 +289,15 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             }
         }
 
+        //check if Oval's semi-axes are equal
+        else if (spinner2d.selectedItem.toString() == getString(R.string.shape_oval)) {
+            if (editTextSemiAxis1.text.toString() == editTextSemiAxis2.text.toString()) {
+                Toast.makeText(this, R.string.toast_EqualValues_Oval, Toast.LENGTH_SHORT)
+                    .show()
+                return false
+            }
+        }
+
         return true
     }
 
@@ -264,6 +308,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         editTextRadius.text.clear()
         editTextDiagonal1.text.clear()
         editTextDiagonal2.text.clear()
+        editTextSemiAxis1.text.clear()
+        editTextSemiAxis2.text.clear()
         result.text = getString(R.string.string_area)
     }
 
@@ -319,6 +365,12 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
 
             getString(R.string.shape_circle) -> result.text =
                 CalculatorOperations.calculateCircle(editTextRadius.text.toString().toDouble())
+
+            getString(R.string.shape_oval) -> result.text =
+                CalculatorOperations.calculateOval(
+                    editTextSemiAxis1.text.toString().toDouble(),
+                    editTextSemiAxis2.text.toString().toDouble()
+                )
         }
     }
 
@@ -333,6 +385,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         outState.putString("radius", editTextRadius.text.toString())
         outState.putString("diagonal_1", editTextDiagonal1.text.toString())
         outState.putString("diagonal_2", editTextDiagonal2.text.toString())
+        outState.putString("semi_axis_1", editTextSemiAxis1.text.toString())
+        outState.putString("semi_axis_2", editTextSemiAxis2.text.toString())
     }
 
     /*
@@ -345,6 +399,8 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         editTextRadius.setText(savedInstanceState?.get("radius").toString())
         editTextDiagonal1.setText(savedInstanceState?.get("diagonal_1").toString())
         editTextDiagonal2.setText(savedInstanceState?.get("diagonal_2").toString())
+        editTextSemiAxis1.setText(savedInstanceState?.get("semi_axis_1").toString())
+        editTextSemiAxis2.setText(savedInstanceState?.get("semi_axis_2").toString())
         result.text = savedInstanceState?.get("result").toString()
     }
 

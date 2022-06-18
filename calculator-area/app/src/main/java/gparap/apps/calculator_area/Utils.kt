@@ -83,6 +83,9 @@ object Utils {
             resources.getString(R.string.shape_circle) -> {
                 drawable = ResourcesCompat.getDrawable(resources, R.drawable.circle, null)
             }
+            resources.getString(R.string.shape_oval) -> {
+                drawable = ResourcesCompat.getDrawable(resources, R.drawable.oval, null)
+            }
         }
 
         return drawable
