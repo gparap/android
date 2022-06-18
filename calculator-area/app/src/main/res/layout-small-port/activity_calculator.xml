@@ -46,7 +46,7 @@
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
         app:layout_constraintTop_toBottomOf="@+id/editTextSideA"
         tools:ignore="TouchTargetSizeCheck"
-        tools:visibility="visible" />
+        tools:visibility="invisible" />
 
     <!--Height-->
     <EditText
@@ -79,7 +79,7 @@
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
         app:layout_constraintTop_toBottomOf="@+id/spinnerShapes2D"
-        tools:visibility="visible" />
+        tools:visibility="invisible" />
 
     <!--Diagonal 2-->
     <EditText
@@ -90,6 +90,28 @@
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
         app:layout_constraintTop_toBottomOf="@+id/editTextDiagonal1"
+        tools:visibility="invisible" />
+
+    <!--Semi-Axis r1-->
+    <EditText
+        android:id="@+id/editTextSemiAxis1"
+        style="@style/edit_text_small_port"
+        android:autofillHints="false"
+        android:hint="@string/hint_enter_semi_axis_r1"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
+        app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerShapes2D"
+        tools:visibility="visible" />
+
+    <!--Semi-Axis r2-->
+    <EditText
+        android:id="@+id/editTextSemiMajorAxis2"
+        style="@style/edit_text_small_port"
+        android:autofillHints="false"
+        android:hint="@string/hint_enter_semi_axis_r2"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
+        app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSemiAxis1"
         tools:visibility="visible" />
 
     <Button
@@ -134,7 +156,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/desc_image_shapes_2d"
-            android:src="@drawable/regular_pentagon"
+            android:src="@drawable/oval"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
