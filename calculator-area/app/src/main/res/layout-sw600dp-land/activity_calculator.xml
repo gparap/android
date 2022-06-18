@@ -26,7 +26,7 @@
     <!--Side A-->
     <EditText
         android:id="@+id/editTextSideA"
-        style="@style/edit_text_default_land"
+        style="@style/edit_text_tablet"
         android:layout_width="0dp"
         android:layout_height="@dimen/edit_text_layout_height_land"
         android:layout_marginTop="@dimen/edit_text_marginTop_land"
@@ -41,7 +41,7 @@
     <!--Side B-->
     <EditText
         android:id="@+id/editTextSideB"
-        style="@style/edit_text_default_land"
+        style="@style/edit_text_tablet"
         android:layout_width="0dp"
         android:layout_height="@dimen/edit_text_layout_height_land"
         android:layout_marginTop="@dimen/edit_text_marginTop_land"
@@ -56,7 +56,7 @@
     <!--Height-->
     <EditText
         android:id="@+id/editTextHeight"
-        style="@style/edit_text_default_land"
+        style="@style/edit_text_tablet"
         android:layout_width="0dp"
         android:layout_height="@dimen/edit_text_layout_height_land"
         android:layout_marginTop="@dimen/edit_text_marginTop_land"
@@ -71,7 +71,7 @@
     <!--Radius-->
     <EditText
         android:id="@+id/editTextRadius"
-        style="@style/edit_text_default_land"
+        style="@style/edit_text_tablet"
         android:layout_width="0dp"
         android:layout_height="@dimen/edit_text_layout_height_land"
         android:layout_marginTop="@dimen/edit_text_marginTop_land"
@@ -86,7 +86,7 @@
     <!--Diagonal 1-->
     <EditText
         android:id="@+id/editTextDiagonal1"
-        style="@style/edit_text_default_land"
+        style="@style/edit_text_tablet"
         android:layout_width="0dp"
         android:layout_height="@dimen/edit_text_layout_height_land"
         android:layout_marginTop="@dimen/edit_text_marginTop_land"
@@ -96,12 +96,12 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
         app:layout_constraintTop_toBottomOf="@+id/spinnerShapes2D"
-        tools:visibility="visible" />
+        tools:visibility="invisible" />
 
     <!--Diagonal 2-->
     <EditText
         android:id="@+id/editTextDiagonal2"
-        style="@style/edit_text_default_land"
+        style="@style/edit_text_tablet"
         android:layout_width="0dp"
         android:layout_height="@dimen/edit_text_layout_height_land"
         android:layout_marginTop="@dimen/edit_text_marginTop_land"
@@ -111,6 +111,36 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/editTextSideA"
         app:layout_constraintTop_toBottomOf="@+id/editTextSideA"
+        tools:visibility="invisible" />
+
+    <!--Semi-Axis r1-->
+    <EditText
+        android:id="@+id/editTextSemiAxis1"
+        style="@style/edit_text_tablet"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/edit_text_layout_height_land"
+        android:layout_marginTop="@dimen/edit_text_marginTop_land"
+        android:autofillHints="false"
+        android:hint="@string/hint_enter_semi_axis_r1"
+        android:textSize="@dimen/edit_text_textSize_land"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerShapes2D"
+        tools:visibility="visible" />
+
+    <!--Semi-Axis r2-->
+    <EditText
+        android:id="@+id/editTextSemiAxis2"
+        style="@style/edit_text_tablet"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/edit_text_layout_height_land"
+        android:layout_marginTop="@dimen/edit_text_marginTop_land"
+        android:autofillHints="false"
+        android:hint="@string/hint_enter_semi_axis_r2"
+        android:textSize="@dimen/edit_text_textSize_land"
+        app:layout_constraintEnd_toEndOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/editTextSemiAxis1"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSemiAxis1"
         tools:visibility="visible" />
 
     <Button
@@ -155,7 +185,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/desc_image_shapes_2d"
-            android:src="@drawable/regular_pentagon"
+            android:src="@drawable/oval"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
