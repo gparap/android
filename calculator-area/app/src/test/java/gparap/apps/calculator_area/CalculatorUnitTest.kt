@@ -69,6 +69,13 @@ class CalculatorUnitTest {
     }
 
     @Test
+    fun calculateRegularPentagon() {
+        val expected = "43.01193501472417"
+        val actual = CalculatorOperations.calculateRegularPentagon(5.0)
+        assertEquals(expected, actual)
+    }
+
+    @Test
     fun calculateHexagon() {
         val expected = "64.95190262794495"
         val actual = CalculatorOperations.calculateHexagon(5.0)

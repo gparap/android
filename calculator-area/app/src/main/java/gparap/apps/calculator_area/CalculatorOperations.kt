@@ -60,6 +60,11 @@ class CalculatorOperations {
         }
 
         @JvmStatic
+        fun calculateRegularPentagon(sideA: Double): String {
+            return (0.25 * sqrt(5 * (5 + 2 * sqrt(5.0))) * sideA * sideA).toString()
+        }
+
+        @JvmStatic
         fun calculateHexagon(side: Double): String {
             return ((3.0f * (sqrt(3.0f)) * (side.pow(2))) / 2.0f).toString()
         }
