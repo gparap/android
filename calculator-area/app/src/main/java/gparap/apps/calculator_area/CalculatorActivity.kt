@@ -142,20 +142,6 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextDiagonal1.isVisible = false
                 editTextDiagonal2.isVisible = false
                 handleConstrainSet(R.id.editTextSideA)
-
-                //handle constrain set on portrait orientation
-//                if (this.resources.configuration.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-//                    if (this.resources.configuration.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-//                        val constraintLayout = findViewById<ConstraintLayout>(R.id.layout_main)
-//                        val constraintSet = ConstraintSet()
-//                        constraintSet.clone(constraintLayout)
-//                        constraintSet.connect(R.id.textViewResult,
-//                            ConstraintSet.TOP,
-//                            R.id.editTextSideA,
-//                            ConstraintSet.BOTTOM)
-//                        constraintSet.applyTo(constraintLayout)
-//                    }
-//                }
             }
             getString(R.string.shape_rectangle) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
@@ -165,26 +151,6 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextDiagonal1.isVisible = false
                 editTextDiagonal2.isVisible = false
                 handleConstrainSet(R.id.editTextSideB)
-
-                //handle constrain set on portrait orientation
-//                if (this.resources.configuration.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-//                    if (this.resources.configuration.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-//                        val constraintLayout = findViewById<ConstraintLayout>(R.id.layout_main)
-//                        val constraintSet = ConstraintSet()
-//                        constraintSet.clone(constraintLayout)
-//
-////                        constraintSet.connect(R.id.editTextSideA,
-////                            ConstraintSet.TOP,
-////                            R.id.spinnerShapes2D,
-////                            ConstraintSet.BOTTOM)
-//
-//                        constraintSet.connect(R.id.textViewResult,
-//                            ConstraintSet.TOP,
-//                            R.id.editTextSideB,
-//                            ConstraintSet.BOTTOM)
-//                        constraintSet.applyTo(constraintLayout)
-//                    }
-//                }
             }
             getString(R.string.shape_parallelogram) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
@@ -194,20 +160,6 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextDiagonal1.isVisible = false
                 editTextDiagonal2.isVisible = false
                 handleConstrainSet(R.id.editTextHeight)
-
-                //handle constrain set on portrait orientation
-//                if (this.resources.configuration.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-//                    if (this.resources.configuration.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-//                        val constraintLayout = findViewById<ConstraintLayout>(R.id.layout_main)
-//                        val constraintSet = ConstraintSet()
-//                        constraintSet.clone(constraintLayout)
-//                        constraintSet.connect(R.id.textViewResult,
-//                            ConstraintSet.TOP,
-//                            R.id.editTextHeight,
-//                            ConstraintSet.BOTTOM)
-//                        constraintSet.applyTo(constraintLayout)
-//                    }
-//                }
             }
             getString(R.string.shape_rhombus) -> {
                 editTextSideA.isVisible = false
@@ -217,21 +169,6 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextDiagonal1.isVisible = true.also { visibleFields?.add(editTextDiagonal1) }
                 editTextDiagonal2.isVisible = true.also { visibleFields?.add(editTextDiagonal2) }
                 handleConstrainSet(R.id.editTextDiagonal2)
-
-
-//                //change constrain set on portrait orientation
-//                // due to the different visibility of the diagonal fields
-//                if (this.resources.configuration.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-//                    val constraintLayout = findViewById<ConstraintLayout>(R.id.layout_main)
-//                    val constraintSet = ConstraintSet()
-//                    constraintSet.clone(constraintLayout)
-//                    constraintSet.connect(R.id.textViewResult,
-//                        ConstraintSet.TOP,
-//                        R.id.editTextDiagonal2,
-//                        ConstraintSet.BOTTOM,
-//                        0)
-//                    constraintSet.applyTo(constraintLayout)
-//                }
             }
             getString(R.string.shape_equilateral_triangle) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
@@ -241,21 +178,6 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextDiagonal1.isVisible = false
                 editTextDiagonal2.isVisible = false
                 handleConstrainSet(R.id.editTextSideA)
-
-
-//                //handle constrain set on portrait orientation
-//                if (this.resources.configuration.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-//                    if (this.resources.configuration.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-//                        val constraintLayout = findViewById<ConstraintLayout>(R.id.layout_main)
-//                        val constraintSet = ConstraintSet()
-//                        constraintSet.clone(constraintLayout)
-//                        constraintSet.connect(R.id.textViewResult,
-//                            ConstraintSet.TOP,
-//                            R.id.editTextSideA,
-//                            ConstraintSet.BOTTOM)
-//                        constraintSet.applyTo(constraintLayout)
-//                    }
-//                }
             }
             getString(R.string.shape_triangle) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
@@ -265,21 +187,6 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextDiagonal1.isVisible = false
                 editTextDiagonal2.isVisible = false
                 handleConstrainSet(R.id.editTextHeight)
-
-
-//                //handle constrain set on portrait orientation
-//                if (this.resources.configuration.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-//                    if (this.resources.configuration.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-//                        val constraintLayout = findViewById<ConstraintLayout>(R.id.layout_main)
-//                        val constraintSet = ConstraintSet()
-//                        constraintSet.clone(constraintLayout)
-//                        constraintSet.connect(R.id.textViewResult,
-//                            ConstraintSet.TOP,
-//                            R.id.editTextHeight,
-//                            ConstraintSet.BOTTOM)
-//                        constraintSet.applyTo(constraintLayout)
-//                    }
-//                }
             }
             getString(R.string.shape_trapezoid) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
@@ -289,21 +196,15 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextDiagonal1.isVisible = false
                 editTextDiagonal2.isVisible = false
                 handleConstrainSet(R.id.editTextHeight)
-//
-//
-//                //handle constrain set on portrait orientation
-//                if (this.resources.configuration.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-//                    if (this.resources.configuration.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-//                        val constraintLayout = findViewById<ConstraintLayout>(R.id.layout_main)
-//                        val constraintSet = ConstraintSet()
-//                        constraintSet.clone(constraintLayout)
-//                        constraintSet.connect(R.id.textViewResult,
-//                            ConstraintSet.TOP,
-//                            R.id.editTextHeight,
-//                            ConstraintSet.BOTTOM)
-//                        constraintSet.applyTo(constraintLayout)
-//                    }
-//                }
+            }
+            getString(R.string.shape_regular_pentagon) -> {
+                editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
+                editTextSideB.isVisible = false
+                editTextHeight.isVisible = false
+                editTextRadius.isVisible = false
+                editTextDiagonal1.isVisible = false
+                editTextDiagonal2.isVisible = false
+                handleConstrainSet(R.id.editTextSideA)
             }
             getString(R.string.shape_hexagon) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
@@ -313,20 +214,6 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextDiagonal1.isVisible = false
                 editTextDiagonal2.isVisible = false
                 handleConstrainSet(R.id.editTextSideA)
-
-//                //handle constrain set on portrait orientation
-//                if (this.resources.configuration.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-//                    if (this.resources.configuration.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-//                        val constraintLayout = findViewById<ConstraintLayout>(R.id.layout_main)
-//                        val constraintSet = ConstraintSet()
-//                        constraintSet.clone(constraintLayout)
-//                        constraintSet.connect(R.id.textViewResult,
-//                            ConstraintSet.TOP,
-//                            R.id.editTextSideA,
-//                            ConstraintSet.BOTTOM)
-//                        constraintSet.applyTo(constraintLayout)
-//                    }
-//                }
             }
             getString(R.string.shape_circle) -> {
                 editTextSideA.isVisible = false
@@ -336,21 +223,6 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextDiagonal1.isVisible = false
                 editTextDiagonal2.isVisible = false
                 handleConstrainSet(R.id.editTextRadius)
-
-
-//                //handle constrain set on portrait orientation
-//                if (this.resources.configuration.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-//                    if (this.resources.configuration.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-//                        val constraintLayout = findViewById<ConstraintLayout>(R.id.layout_main)
-//                        val constraintSet = ConstraintSet()
-//                        constraintSet.clone(constraintLayout)
-//                        constraintSet.connect(R.id.textViewResult,
-//                            ConstraintSet.TOP,
-//                            R.id.editTextRadius,
-//                            ConstraintSet.BOTTOM)
-//                        constraintSet.applyTo(constraintLayout)
-//                    }
-//                }
             }
         }
     }
@@ -435,6 +307,11 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                     editTextSideA.text.toString().toDouble(),
                     editTextSideB.text.toString().toDouble(),
                     editTextHeight.text.toString().toDouble()
+                )
+
+            getString(R.string.shape_regular_pentagon) -> result.text =
+                CalculatorOperations.calculateRegularPentagon(
+                    editTextSideA.text.toString().toDouble()
                 )
 
             getString(R.string.shape_hexagon) -> result.text =

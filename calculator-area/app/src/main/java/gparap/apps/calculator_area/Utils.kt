@@ -74,6 +74,9 @@ object Utils {
             resources.getString(R.string.shape_trapezoid) -> {
                 drawable = ResourcesCompat.getDrawable(resources, R.drawable.trapezoid, null)
             }
+            resources.getString(R.string.shape_regular_pentagon) -> {
+                drawable = ResourcesCompat.getDrawable(resources, R.drawable.regular_pentagon, null)
+            }
             resources.getString(R.string.shape_hexagon) -> {
                 drawable = ResourcesCompat.getDrawable(resources, R.drawable.hexagon, null)
             }
