@@ -20,6 +20,7 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onData
@@ -84,83 +85,157 @@ class CalculatorActivityInstrumentedTest {
     }
 
     @Test
-    fun squareItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Radius() {
+    fun squareItemSelected_SetVisible_SideA_SetInvisible_allOtherInputFields() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`(context?.getString(R.string.shape_square))).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextRadius)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal2)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis2)).check(matches(not(isDisplayed())))
     }
 
     @Test
-    fun rectangleItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Radius() {
+    fun rectangleItemSelected_SetVisible_SideA_SetInvisible_allOtherInputFields() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`(context?.getString(R.string.shape_rectangle))).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextRadius)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal2)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis2)).check(matches(not(isDisplayed())))
     }
 
     @Test
-    fun parallelogramItemSelected_SetVisible_SideA_Height_SetInvisible_SideB_Radius() {
+    fun parallelogramItemSelected_SetVisible_SideA_Height_SetInvisible_allOtherInputFields() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`(context?.getString(R.string.shape_parallelogram))).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextHeight)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextRadius)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal2)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis2)).check(matches(not(isDisplayed())))
     }
 
     @Test
-    fun equilateralTriangleItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Radius() {
+    fun rhombusItemSelected_SetVisible_Diagonal1_Diagonal2_SetInvisible_allOtherInputFields() {
+        onView(withId(R.id.spinnerShapes2D)).perform(click())
+        onData(`is`(context?.getString(R.string.shape_rhombus))).perform(click())
+        onView(withId(R.id.editTextSideA)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextRadius)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal1)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextDiagonal2)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextSemiAxis1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis2)).check(matches(not(isDisplayed())))
+    }
+
+    @Test
+    fun equilateralTriangleItemSelected_SetVisible_SideA_SetInvisible_allOtherInputFields() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`(context?.getString(R.string.shape_equilateral_triangle))).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextRadius)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal2)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis2)).check(matches(not(isDisplayed())))
     }
 
     @Test
-    fun triangleItemSelected_SetVisible_SideA_Height_SetInvisible_SideB_Radius() {
+    fun triangleItemSelected_SetVisible_SideA_Height_SetInvisible_allOtherInputFields() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`(context?.getString(R.string.shape_triangle))).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextHeight)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextRadius)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal2)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis2)).check(matches(not(isDisplayed())))
     }
 
     @Test
-    fun trapezoidItemSelected_SetVisible_SideA_SideB_Height_SetInvisible_Radius() {
+    fun trapezoidItemSelected_SetVisible_SideA_SideB_Height_SetInvisible_allOtherInputFields() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`(context?.getString(R.string.shape_trapezoid))).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextHeight)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextRadius)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal2)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis2)).check(matches(not(isDisplayed())))
     }
 
     @Test
-    fun hexagonItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Radius() {
+    fun regularPentagonItemSelected_SetVisible_SideA_SetInvisible_allOtherInputFields() {
+        onView(withId(R.id.spinnerShapes2D)).perform(click())
+        onData(`is`(context?.getString(R.string.shape_regular_pentagon))).perform(click())
+        onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextRadius)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal2)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis2)).check(matches(not(isDisplayed())))
+    }
+
+    @Test
+    fun hexagonItemSelected_SetVisible_SideA_SetInvisible_allOtherInputFields() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`(context?.getString(R.string.shape_hexagon))).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
         onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextRadius)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal2)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis2)).check(matches(not(isDisplayed())))
     }
 
     @Test
-    fun circleItemSelected_SetVisible_SideA_SetInvisible_SideB_Height_Radius() {
+    fun circleItemSelected_SetVisible_SideA_SetInvisible_allOtherInputFields() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`(context?.getString(R.string.shape_circle))).perform(click())
         onView(withId(R.id.editTextSideA)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
         onView(withId(R.id.editTextRadius)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextDiagonal1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal2)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis2)).check(matches(not(isDisplayed())))
+    }
+
+    @Test
+    fun ovalItemSelected_SetVisible_SemiAxis1_SemiAxis2_SetInvisible_SideB_Height_Radius() {
+        onView(withId(R.id.spinnerShapes2D)).perform(click())
+        onData(`is`(context?.getString(R.string.shape_oval))).perform(click())
+        onView(withId(R.id.editTextSideA)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSideB)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextHeight)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextRadius)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal2)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis1)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextSemiAxis2)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -169,6 +244,7 @@ class CalculatorActivityInstrumentedTest {
         onView(withText(R.string.toast_EnterValue))
             .inRoot(withDecorView(not(rootView)))
             .check(matches(isDisplayed()))
+        waitForToastMessage()
     }
 
     @Test
@@ -187,6 +263,7 @@ class CalculatorActivityInstrumentedTest {
         onView(withText(R.string.toast_EqualValues_Parallelogram))
             .inRoot(withDecorView(not(rootView)))
             .check(matches(isDisplayed()))
+        waitForToastMessage()
     }
 
     @Test
@@ -206,8 +283,27 @@ class CalculatorActivityInstrumentedTest {
         onView(withText(R.string.toast_EqualValues_Trapezoid))
             .inRoot(withDecorView(not(`is`(rootView))))
             .check(matches(isDisplayed()))
+        waitForToastMessage()
     }
 
+    @Test
+    fun validateInput_Error_SemiAxesCannotBeEqual_Oval() {
+        //enter values
+        onView(withId(R.id.spinnerShapes2D)).perform(click())
+        onData(`is`(context?.getString(R.string.shape_oval))).perform(click())
+        onView(withId(R.id.editTextSemiAxis1)).perform(typeText("10"))
+        onView(withId(R.id.editTextSemiAxis2)).perform(typeText("10"))
+
+        //close keyboard
+        onView(isRoot()).perform(closeSoftKeyboard())
+
+        //test
+        onView(withId(R.id.buttonCalculate)).perform(click())
+        onView(withText(R.string.toast_EqualValues_Oval))
+            .inRoot(withDecorView(not(rootView)))
+            .check(matches(isDisplayed()))
+        waitForToastMessage()
+    }
 
     @Test
     fun squareItemSelected_SetVisible_ImageViewShape2d() {
@@ -250,6 +346,21 @@ class CalculatorActivityInstrumentedTest {
             val imageView = it.findViewById<ImageView>(R.id.imageViewShape2d)
             val actualBitmap = (imageView.drawable as BitmapDrawable).bitmap
             val expectedBitmap = getBitmapFromDrawable(R.drawable.parallelogram)
+            assertEquals(actualBitmap, expectedBitmap)
+        }
+    }
+
+    @Test
+    fun rhombusItemSelected_SetVisible_ImageViewShape2d() {
+        //select rhombus
+        onView(withId(R.id.spinnerShapes2D)).perform(click())
+        onData(`is`(context?.getString(R.string.shape_rhombus))).perform(click())
+        onView(withId(R.id.imageViewShape2d)).check(matches(isDisplayed()))
+
+        activityScenario.onActivity {
+            val imageView = it.findViewById<ImageView>(R.id.imageViewShape2d)
+            val actualBitmap = (imageView.drawable as BitmapDrawable).bitmap
+            val expectedBitmap = getBitmapFromDrawable(R.drawable.rhombus)
             assertEquals(actualBitmap, expectedBitmap)
         }
     }
@@ -300,6 +411,21 @@ class CalculatorActivityInstrumentedTest {
     }
 
     @Test
+    fun regularPentagonItemSelected_SetVisible_ImageViewShape2d() {
+        //select regular pentagon
+        onView(withId(R.id.spinnerShapes2D)).perform(click())
+        onData(`is`(context?.getString(R.string.shape_regular_pentagon))).perform(click())
+        onView(withId(R.id.imageViewShape2d)).check(matches(isDisplayed()))
+
+        activityScenario.onActivity {
+            val imageView = it.findViewById<ImageView>(R.id.imageViewShape2d)
+            val actualBitmap = (imageView.drawable as BitmapDrawable).bitmap
+            val expectedBitmap = getBitmapFromDrawable(R.drawable.regular_pentagon)
+            assertEquals(actualBitmap, expectedBitmap)
+        }
+    }
+
+    @Test
     fun hexagonItemSelected_SetVisible_ImageViewShape2d() {
         //select hexagon
         onView(withId(R.id.spinnerShapes2D)).perform(click())
@@ -330,6 +456,21 @@ class CalculatorActivityInstrumentedTest {
     }
 
     @Test
+    fun ovalItemSelected_SetVisible_ImageViewShape2d() {
+        //select oval
+        onView(withId(R.id.spinnerShapes2D)).perform(click())
+        onData(`is`(context?.getString(R.string.shape_oval))).perform(click())
+        onView(withId(R.id.imageViewShape2d)).check(matches(isDisplayed()))
+
+        activityScenario.onActivity {
+            val imageView = it.findViewById<ImageView>(R.id.imageViewShape2d)
+            val actualBitmap = (imageView.drawable as BitmapDrawable).bitmap
+            val expectedBitmap = getBitmapFromDrawable(R.drawable.oval)
+            assertEquals(actualBitmap, expectedBitmap)
+        }
+    }
+
+    @Test
     fun isUtilityFunctionCorrect_getImageDrawable() {
         val expectedBitmap = getBitmapFromDrawable(R.drawable.parallelogram)
         val actualDrawable = Utils.getImageDrawable(
@@ -344,5 +485,10 @@ class CalculatorActivityInstrumentedTest {
     private fun getBitmapFromDrawable(resourceId: Int): Bitmap {
         val drawable = ResourcesCompat.getDrawable(context!!.resources, resourceId, null)
         return (drawable as BitmapDrawable).bitmap
+    }
+
+    //Waits for as long as a toast message is displayed so as messages not to get mixed
+    private fun waitForToastMessage() {
+        Thread.sleep(Toast.LENGTH_LONG.toLong())
     }
 }
