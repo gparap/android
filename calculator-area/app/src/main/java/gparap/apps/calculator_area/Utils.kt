@@ -68,6 +68,10 @@ object Utils {
                 drawable =
                     ResourcesCompat.getDrawable(resources, R.drawable.equilateral_triangle, null)
             }
+            resources.getString(R.string.shape_isosceles_triangle) -> {
+                drawable =
+                    ResourcesCompat.getDrawable(resources, R.drawable.isosceles_triangle, null)
+            }
             resources.getString(R.string.shape_triangle) -> {
                 drawable = ResourcesCompat.getDrawable(resources, R.drawable.triangle, null)
             }

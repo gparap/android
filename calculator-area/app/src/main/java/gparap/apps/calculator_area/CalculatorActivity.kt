@@ -193,6 +193,17 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextSemiAxis2.isVisible = false
                 handleConstrainSet(R.id.editTextSideA)
             }
+            getString(R.string.shape_isosceles_triangle) -> {
+                editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
+                editTextSideB.isVisible = true.also { visibleFields?.add(editTextSideB) }
+                editTextHeight.isVisible = false
+                editTextRadius.isVisible = false
+                editTextDiagonal1.isVisible = false
+                editTextDiagonal2.isVisible = false
+                editTextSemiAxis1.isVisible = false
+                editTextSemiAxis2.isVisible = false
+                handleConstrainSet(R.id.editTextSideB)
+            }
             getString(R.string.shape_triangle) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = false
@@ -280,8 +291,10 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             }
         }
 
-        //check if Trapezoid's sides are equal
-        else if (spinner2d.selectedItem.toString() == getString(R.string.shape_trapezoid)) {
+        //check if Trapezoid's or Isosceles Triangle's sides are equal
+        else if (spinner2d.selectedItem.toString() == getString(R.string.shape_trapezoid) ||
+            (spinner2d.selectedItem.toString() == getString(R.string.shape_isosceles_triangle))
+        ) {
             if (editTextSideA.text.toString() == editTextSideB.text.toString()) {
                 Toast.makeText(this, R.string.toast_EqualValues_Trapezoid, Toast.LENGTH_SHORT)
                     .show()
@@ -340,6 +353,12 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             getString(R.string.shape_equilateral_triangle) -> result.text =
                 CalculatorOperations.calculateEquilateralTriangle(
                     editTextSideA.text.toString().toDouble()
+                )
+
+            getString(R.string.shape_isosceles_triangle) -> result.text =
+                CalculatorOperations.calculateIsoscelesTriangle(
+                    editTextSideA.text.toString().toDouble(),
+                    editTextSideB.text.toString().toDouble()
                 )
 
             getString(R.string.shape_triangle) -> result.text =

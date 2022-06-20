@@ -20,7 +20,11 @@ import kotlin.math.sqrt
 
 /**
  * Area calculations for shapes:
- * Square, Rectangle, Parallelogram, Equilateral Triangle, Triangle, Trapezoid, Hexagon and Circle.
+ *
+ *  Square, Rectangle, Parallelogram, Rhombus,
+ *  Equilateral Triangle, Isosceles Triangle, Triangle, Trapezoid,
+ *  Regular Pentagon, Hexagon,
+ *  Circle and Oval.
  */
 class CalculatorOperations {
     companion object {
@@ -47,6 +51,11 @@ class CalculatorOperations {
         @JvmStatic
         fun calculateEquilateralTriangle(side: Double): String {
             return (((sqrt(3.0f)) * (side.pow(2))) / 4).toString()
+        }
+
+        @JvmStatic
+        fun calculateIsoscelesTriangle(sideA: Double, sideB: Double): String {
+            return (0.5 * sideB * sqrt((sideA * sideA) - ((sideB * sideB) / 4))).toString()
         }
 
         @JvmStatic
