@@ -215,6 +215,17 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 editTextSemiAxis2.isVisible = false
                 handleConstrainSet(R.id.editTextHeight)
             }
+            getString(R.string.shape_isosceles_trapezoid) -> {
+                editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
+                editTextSideB.isVisible = true.also { visibleFields?.add(editTextSideB) }
+                editTextHeight.isVisible = true.also { visibleFields?.add(editTextHeight) }
+                editTextRadius.isVisible = false
+                editTextDiagonal1.isVisible = false
+                editTextDiagonal2.isVisible = false
+                editTextSemiAxis1.isVisible = false
+                editTextSemiAxis2.isVisible = false
+                handleConstrainSet(R.id.editTextHeight)
+            }
             getString(R.string.shape_trapezoid) -> {
                 editTextSideA.isVisible = true.also { visibleFields?.add(editTextSideA) }
                 editTextSideB.isVisible = true.also { visibleFields?.add(editTextSideB) }
@@ -291,8 +302,9 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             }
         }
 
-        //check if Trapezoid's or Isosceles Triangle's sides are equal
+        //check if Trapezoid's or Isosceles Trapezoid's or Isosceles Triangle's sides are equal
         else if (spinner2d.selectedItem.toString() == getString(R.string.shape_trapezoid) ||
+            (spinner2d.selectedItem.toString() == getString(R.string.shape_isosceles_trapezoid)) ||
             (spinner2d.selectedItem.toString() == getString(R.string.shape_isosceles_triangle))
         ) {
             if (editTextSideA.text.toString() == editTextSideB.text.toString()) {
@@ -364,6 +376,13 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             getString(R.string.shape_triangle) -> result.text =
                 CalculatorOperations.calculateTriangle(
                     editTextSideA.text.toString().toDouble(),
+                    editTextHeight.text.toString().toDouble()
+                )
+
+            getString(R.string.shape_isosceles_trapezoid) -> result.text =
+                CalculatorOperations.calculateIsoscelesTrapezoid(
+                    editTextSideA.text.toString().toDouble(),
+                    editTextSideB.text.toString().toDouble(),
                     editTextHeight.text.toString().toDouble()
                 )
 

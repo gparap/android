@@ -183,6 +183,20 @@ class CalculatorActivityInstrumentedTest {
     }
 
     @Test
+    fun isoscelesTrapezoidItemSelected_SetVisible_SideA_SideB_Height_SetInvisible_allOtherInputFields() {
+        onView(withId(R.id.spinnerShapes2D)).perform(click())
+        onData(`is`(context?.getString(R.string.shape_isosceles_trapezoid))).perform(click())
+        onView(withId(R.id.editTextSideA)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextSideB)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextHeight)).check(matches(isDisplayed()))
+        onView(withId(R.id.editTextRadius)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextDiagonal2)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis1)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editTextSemiAxis2)).check(matches(not(isDisplayed())))
+    }
+
+    @Test
     fun trapezoidItemSelected_SetVisible_SideA_SideB_Height_SetInvisible_allOtherInputFields() {
         onView(withId(R.id.spinnerShapes2D)).perform(click())
         onData(`is`(context?.getString(R.string.shape_trapezoid))).perform(click())
@@ -276,6 +290,26 @@ class CalculatorActivityInstrumentedTest {
         onView(withId(R.id.buttonCalculate)).perform(click())
         onView(withText(R.string.toast_EqualValues_Parallelogram))
             .inRoot(withDecorView(not(rootView)))
+            .check(matches(isDisplayed()))
+        waitForToastMessage()
+    }
+
+    @Test
+    fun validateInput_Error_SidesCannotBeEqual_IsoscelesTrapezoid_SideAWithSideB() {
+        //enter values
+        onView(withId(R.id.spinnerShapes2D)).perform(click())
+        onData(`is`(context?.getString(R.string.shape_isosceles_trapezoid))).perform(click())
+        onView(withId(R.id.editTextSideA)).perform(typeText("10"))
+        onView(withId(R.id.editTextSideB)).perform(typeText("10"))
+        onView(withId(R.id.editTextHeight)).perform(typeText("1"))   //indifferent
+
+        //close keyboard
+        onView(isRoot()).perform(closeSoftKeyboard())
+
+        //test
+        onView(withId(R.id.buttonCalculate)).perform(click())
+        onView(withText(R.string.toast_EqualValues_Trapezoid))
+            .inRoot(withDecorView(not(`is`(rootView))))
             .check(matches(isDisplayed()))
         waitForToastMessage()
     }
@@ -440,6 +474,21 @@ class CalculatorActivityInstrumentedTest {
             val imageView = it.findViewById<ImageView>(R.id.imageViewShape2d)
             val actualBitmap = (imageView.drawable as BitmapDrawable).bitmap
             val expectedBitmap = getBitmapFromDrawable(R.drawable.triangle)
+            assertEquals(actualBitmap, expectedBitmap)
+        }
+    }
+
+    @Test
+    fun isoscelesTrapezoidItemSelected_SetVisible_ImageViewShape2d() {
+        //select isosceles trapezoid
+        onView(withId(R.id.spinnerShapes2D)).perform(click())
+        onData(`is`(context?.getString(R.string.shape_isosceles_trapezoid))).perform(click())
+        onView(withId(R.id.imageViewShape2d)).check(matches(isDisplayed()))
+
+        activityScenario.onActivity {
+            val imageView = it.findViewById<ImageView>(R.id.imageViewShape2d)
+            val actualBitmap = (imageView.drawable as BitmapDrawable).bitmap
+            val expectedBitmap = getBitmapFromDrawable(R.drawable.isosceles_trapezoid)
             assertEquals(actualBitmap, expectedBitmap)
         }
     }

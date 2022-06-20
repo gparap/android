@@ -69,6 +69,13 @@ class CalculatorUnitTest {
     }
 
     @Test
+    fun calculateIsoscelesTrapezoid() {
+        val expected = "25.0"
+        val actual = CalculatorOperations.calculateIsoscelesTrapezoid(6.0, 4.0, 5.0)
+        assertEquals(expected, actual)
+    }
+
+    @Test
     fun calculateTrapezoid() {
         val expected = "25.0"
         val actual = CalculatorOperations.calculateTrapezoid(6.0, 4.0, 5.0)
