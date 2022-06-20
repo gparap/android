@@ -13,6 +13,7 @@
         <item>Equilateral Triangle</item>
         <item>Isosceles Triangle</item>
         <item>Triangle</item>
+        <item>Isosceles Trapezoid</item>
         <item>Trapezoid</item>
         <item>Regular Pentagon</item>
         <item>Hexagon</item>
@@ -25,6 +26,7 @@
     <string name="toast_EnterValue">Please, enter value(s)…</string>
     <string name="toast_EqualValues_Parallelogram">Side A and Height cannot be equal…</string>
     <string name="toast_EqualValues_Trapezoid">Sides A and B cannot be equal…</string>
+    <string name="toast_EqualValues_IsoscelesTrapezoid">Sides A and B cannot be equal…</string>
     <string name="toast_EqualValues_IsoscelesTriangle">Sides A and B cannot be equal…</string>
     <string name="toast_EqualValues_Oval">Semi-axes r1 and r2 cannot be equal…</string>
 
@@ -46,6 +48,7 @@
     <string name="shape_equilateral_triangle">Equilateral Triangle</string>
     <string name="shape_isosceles_triangle">Isosceles Triangle</string>
     <string name="shape_triangle">Triangle</string>
+    <string name="shape_isosceles_trapezoid">Isosceles Trapezoid</string>
     <string name="shape_trapezoid">Trapezoid</string>
     <string name="shape_regular_pentagon">Regular Pentagon</string>
     <string name="shape_hexagon">Hexagon</string>

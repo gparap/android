@@ -75,6 +75,10 @@ object Utils {
             resources.getString(R.string.shape_triangle) -> {
                 drawable = ResourcesCompat.getDrawable(resources, R.drawable.triangle, null)
             }
+            resources.getString(R.string.shape_isosceles_trapezoid) -> {
+                drawable =
+                    ResourcesCompat.getDrawable(resources, R.drawable.isosceles_trapezoid, null)
+            }
             resources.getString(R.string.shape_trapezoid) -> {
                 drawable = ResourcesCompat.getDrawable(resources, R.drawable.trapezoid, null)
             }
