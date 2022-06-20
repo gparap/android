@@ -55,6 +55,13 @@ class CalculatorUnitTest {
     }
 
     @Test
+    fun calculateIsoscelesTriangle() {
+        val expected = "7.806247497997997"
+        val actual = CalculatorOperations.calculateIsoscelesTriangle(4.0, 5.0)
+        assertEquals(expected, actual)
+    }
+
+    @Test
     fun calculateTriangle() {
         val expected = "10.0"
         val actual = CalculatorOperations.calculateTriangle(5.0, 4.0)
