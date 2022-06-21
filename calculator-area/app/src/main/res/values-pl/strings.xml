@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">Kalkulator powierzchni</string>
+    <string name="button_calculate">Oblicz</string>
+    <string name="desc_spinner_shapes_2d">Dwuwymiarowe kształty geometryczne</string>
+    <string name="desc_image_shapes_2d">Kontener obrazu dla dwuwymiarowego kształtu geometrycznego</string>
+
+    <!--2D shapes-->
+    <string-array name="shapes2D">
+        <item>Square</item>
+        <item>Rectangle</item>
+        <item>Parallelogram</item>
+        <item>Rhombus</item>
+        <item>Equilateral Triangle</item>
+        <item>Isosceles Triangle</item>
+        <item>Triangle</item>
+        <item>Isosceles Trapezoid</item>
+        <item>Trapezoid</item>
+        <item>Regular Pentagon</item>
+        <item>Hexagon</item>
+        <item>Circle</item>
+        <item>Oval</item>
+    </string-array>
+    <string name="string_area">Powierzchnia</string>
+
+    <!--Error messages-->
+    <string name="toast_EnterValue">Proszę podać wartości…</string>
+    <string name="toast_EqualValues_Parallelogram">Strona A i wysokość nie mogą być równe…</string>
+    <string name="toast_EqualValues_Trapezoid">Strony A i B nie mogą być równe…</string>
+    <string name="toast_EqualValues_IsoscelesTrapezoid">Strony A i B nie mogą być równe…</string>
+    <string name="toast_EqualValues_IsoscelesTriangle">Strony A i B nie mogą być równe…</string>
+    <string name="toast_EqualValues_Oval">Półosie r1 i r2 nie mogą być równe…</string>
+
+    <!--Hints-->
+    <string name="hint_enter_side_a">wejdź po stronie a</string>
+    <string name="hint_enter_side_b">wejdź w bok b</string>
+    <string name="hint_enter_height">wpisz wysokość</string>
+    <string name="hint_enter_radius">wprowadź promień</string>
+    <string name="hint_enter_diagonal_1">wprowadź przekątną 1</string>
+    <string name="hint_enter_diagonal_2">wprowadź przekątną 2</string>
+    <string name="hint_enter_semi_axis_r1">wprowadź półoś r1</string>
+    <string name="hint_enter_semi_axis_r2">wprowadź półoś r2</string>
+
+    <!--Shape 2D strings for internationalization-->
+    <string name="shape_square">Kwadrat</string>
+    <string name="shape_rectangle">Prostokąt</string>
+    <string name="shape_parallelogram">Równoległobok</string>
+    <string name="shape_rhombus">Romb</string>
+    <string name="shape_equilateral_triangle">Trójkąt równoboczny</string>
+    <string name="shape_isosceles_triangle">Trójkąt równoramienny</string>
+    <string name="shape_triangle">Trójkąt</string>
+    <string name="shape_isosceles_trapezoid">Trapez równoramienny</string>
+    <string name="shape_trapezoid">trapez</string>
+    <string name="shape_regular_pentagon">Pięciokąt zwykły</string>
+    <string name="shape_hexagon">Sześciokąt</string>
+    <string name="shape_circle">Koło</string>
+    <string name="shape_oval">Owalny</string>
+
+</resources>
