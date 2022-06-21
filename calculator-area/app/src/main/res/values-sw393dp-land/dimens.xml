@@ -17,5 +17,5 @@
     <dimen name="text_view_marginBottom_land">8dp</dimen>
     <dimen name="text_view_textSize_land">26sp</dimen>
 
-    <dimen name="frame_layout_margin_land">24dp</dimen>
+    <dimen name="frame_layout_margin_land">12dp</dimen>
 </resources>

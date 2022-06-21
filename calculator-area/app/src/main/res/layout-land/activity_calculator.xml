@@ -152,8 +152,8 @@
         android:textColor="@color/textColor_Button"
         android:textSize="@dimen/button_textSize_land"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
-        app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D" />
+        app:layout_constraintEnd_toEndOf="@+id/frameLayout"
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
 
     <TextView
         android:id="@+id/textViewResult"
@@ -167,7 +167,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/buttonCalculate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D" />
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
 
     <!--Image container for 2d geometric shapes-->
     <FrameLayout
@@ -177,7 +177,7 @@
         android:layout_margin="@dimen/frame_layout_margin_land"
         app:layout_constraintBottom_toTopOf="@id/textViewResult"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/spinnerShapes2D">
 
         <ImageView
@@ -185,7 +185,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/desc_image_shapes_2d"
-            android:src="@drawable/isosceles_triangle"
+            android:src="@drawable/regular_pentagon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -198,7 +198,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.275"
+        app:layout_constraintGuide_percent="0.33"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
