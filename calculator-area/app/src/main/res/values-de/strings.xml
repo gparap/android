@@ -14,15 +14,21 @@
         <item>Platz</item>
         <item>Rechteck</item>
         <item>Parallelogramm</item>
+        <item>Rhombus</item>
         <item>Gleichseitiges Dreieck</item>
+        <item>Isosceles Triangle</item>
         <item>Dreieck</item>
+        <item>Isosceles Trapezoid</item>
         <item>Trapez</item>
+        <item>Regular Pentagon</item>
         <item>Hexagon</item>
         <item>Kreis</item>
+        <item>Oval</item>
     </string-array>
     <string name="shape_square">Platz</string>
     <string name="shape_rectangle">Rechteck</string>
     <string name="shape_parallelogram">Parallelogramm</string>
+    <string name="shape_rhombus">Rhombus</string>
     <string name="shape_equilateral_triangle">Gleichseitiges Dreieck</string>
     <string name="shape_triangle">Dreieck</string>
     <string name="shape_trapezoid">Trapez</string>
@@ -30,4 +36,15 @@
     <string name="shape_circle">Kreis</string>
     <string name="desc_spinner_shapes_2d">Zweidimensionale geometrische Formen</string>
     <string name="desc_image_shapes_2d">Bildcontainer für zweidimensionale geometrische Formen</string>
+    <string name="hint_enter_diagonal_1">Diagonale 1 eingeben</string>
+    <string name="hint_enter_diagonal_2">Geben Sie Diagonale 2 ein</string>
+    <string name="shape_regular_pentagon">Regelmäßiges Fünfeck</string>
+    <string name="hint_enter_semi_axis_r1">Halbachse r1 eingeben</string>
+    <string name="hint_enter_semi_axis_r2">Halbachse r2 eingeben</string>
+    <string name="shape_oval">Oval</string>
+    <string name="toast_EqualValues_Oval">Die Halbachsen r1 und r2 können nicht gleich sein…</string>
+    <string name="toast_EqualValues_IsoscelesTriangle">Seiten A und B können nicht gleich sein …</string>
+    <string name="shape_isosceles_triangle">Gleichschenkligen Dreiecks</string>
+    <string name="toast_EqualValues_IsoscelesTrapezoid">Seiten A und B können nicht gleich sein …</string>
+    <string name="shape_isosceles_trapezoid">Gleichschenkliges Trapez</string>
 </resources>

@@ -14,15 +14,21 @@
         <item>স্কয়ার</item>
         <item>আয়তক্ষেত্র</item>
         <item>সমান্তরাল</item>
+        <item>Rhombus</item>
         <item>সমবাহু ত্রিভুজ</item>
+        <item>Isosceles Triangle</item>
         <item>ত্রিভুজ</item>
+        <item>Isosceles Trapezoid</item>
         <item>ট্র্যাপিজয়েড</item>
+        <item>Regular Pentagon</item>
         <item>ষড়ভুজ</item>
         <item>বৃত্ত</item>
+        <item>Oval</item>
     </string-array>
     <string name="shape_square">স্কয়ার</string>
     <string name="shape_rectangle">আয়তক্ষেত্র</string>
     <string name="shape_parallelogram">সমান্তরাল</string>
+    <string name="shape_rhombus">রম্বস</string>
     <string name="shape_equilateral_triangle">সমবাহু ত্রিভুজ</string>
     <string name="shape_triangle">ত্রিভুজ</string>
     <string name="shape_trapezoid">ট্র্যাপিজয়েড</string>
@@ -30,4 +36,15 @@
     <string name="shape_circle">বৃত্ত</string>
     <string name="desc_spinner_shapes_2d">দ্বি-মাত্রিক জ্যামিতিক আকার</string>
     <string name="desc_image_shapes_2d">দ্বি-মাত্রিক জ্যামিতিক আকৃতির জন্য চিত্র ধারক</string>
+    <string name="hint_enter_diagonal_1">তির্যক 1 লিখুন</string>
+    <string name="hint_enter_diagonal_2">তির্যক 2 লিখুন</string>
+    <string name="shape_regular_pentagon">নিয়মিত পেন্টাগন</string>
+    <string name="hint_enter_semi_axis_r1">সেমি-অক্ষ r1 লিখুন</string>
+    <string name="hint_enter_semi_axis_r2">সেমি-অক্ষ r2 লিখুন</string>
+    <string name="shape_oval">ওভাল</string>
+    <string name="toast_EqualValues_Oval">আধা-অক্ষ r1 এবং r2 সমান হতে পারে না…</string>
+    <string name="toast_EqualValues_IsoscelesTriangle">পক্ষ A এবং B সমান হতে পারে না …</string>
+    <string name="shape_isosceles_triangle">দ্বিসমত্রিভুজ</string>
+    <string name="toast_EqualValues_IsoscelesTrapezoid">পক্ষ A এবং B সমান হতে পারে না …</string>
+    <string name="shape_isosceles_trapezoid">সমদ্বিবাহু ট্রাপিজয়েড</string>
 </resources>

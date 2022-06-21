@@ -14,15 +14,21 @@
         <item>चौरस</item>
         <item>आयत</item>
         <item>समांतरभुज</item>
+        <item>Rhombus</item>
         <item>समभुज त्रिकोण</item>
+        <item>Isosceles Triangle</item>
         <item>त्रिकोण</item>
+        <item>Isosceles Trapezoid</item>
         <item>ट्रॅपेझॉइड</item>
+        <item>Regular Pentagon</item>
         <item>षटकोन</item>
         <item>वर्तुळ</item>
+        <item>Oval</item>
     </string-array>
     <string name="shape_square">चौरस</string>
     <string name="shape_rectangle">आयत</string>
     <string name="shape_parallelogram">समांतरभुज</string>
+    <string name="shape_rhombus">समभुज चौकोन</string>
     <string name="shape_equilateral_triangle">समभुज त्रिकोण</string>
     <string name="shape_triangle">त्रिकोण</string>
     <string name="shape_trapezoid">ट्रॅपेझॉइड</string>
@@ -30,4 +36,15 @@
     <string name="shape_circle">वर्तुळ</string>
     <string name="desc_spinner_shapes_2d">द्विमितीय भौमितिक आकार</string>
     <string name="desc_image_shapes_2d">द्विमितीय भौमितिक आकारासाठी प्रतिमा कंटेनर</string>
+    <string name="hint_enter_diagonal_1">कर्ण 1 प्रविष्ट करा</string>
+    <string name="hint_enter_diagonal_2">कर्ण 2 प्रविष्ट करा</string>
+    <string name="shape_regular_pentagon">नियमित पेंटागॉन</string>
+    <string name="hint_enter_semi_axis_r1">अर्ध-अक्ष r1 प्रविष्ट करा</string>
+    <string name="hint_enter_semi_axis_r2">अर्ध-अक्ष r2 प्रविष्ट करा</string>
+    <string name="shape_oval">ओव्हल</string>
+    <string name="toast_EqualValues_Oval">अर्ध-अक्ष r1 आणि r2 समान असू शकत नाहीत…</string>
+    <string name="toast_EqualValues_IsoscelesTriangle">बाजू अ आणि बी समान असू शकत नाहीत…</string>
+    <string name="shape_isosceles_triangle">समद्विभुज त्रिकोण</string>
+    <string name="toast_EqualValues_IsoscelesTrapezoid">बाजू अ आणि बी समान असू शकत नाहीत…</string>
+    <string name="shape_isosceles_trapezoid">समद्विभुज ट्रॅपेझॉइड</string>
 </resources>

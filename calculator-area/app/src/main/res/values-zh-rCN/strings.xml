@@ -1,33 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">面積計算器</string>
-    <string name="button_calculate">計算</string>
-    <string name="string_area">區域</string>
-    <string name="toast_EnterValue">請輸入值…</string>
-    <string name="toast_EqualValues_Parallelogram">邊A和高度不能相等…</string>
-    <string name="toast_EqualValues_Trapezoid">A和B邊不能相等…</string>
-    <string name="hint_enter_side_a">進入A面</string>
-    <string name="hint_enter_side_b">進入b面</string>
-    <string name="hint_enter_height">輸入身高</string>
-    <string name="hint_enter_radius">輸入半徑</string>
+    <string name="app_name">面积计算器</string>
+    <string name="button_calculate">计算</string>
+    <string name="string_area">区域</string>
+    <string name="toast_EnterValue">请输入值…</string>
+    <string name="toast_EqualValues_Parallelogram">A面和高度不能相等…</string>
+    <string name="toast_EqualValues_Trapezoid">A边和B边不能相等…</string>
+    <string name="hint_enter_side_a">进入a面</string>
+    <string name="hint_enter_side_b">进入b侧</string>
+    <string name="hint_enter_height">输入高度</string>
+    <string name="hint_enter_radius">输入半径</string>
     <string-array name="shapes2D">
         <item>正方形</item>
         <item>长方形</item>
         <item>平行四边形</item>
+        <item>Rhombus</item>
         <item>等边三角形</item>
+        <item>Isosceles Triangle</item>
         <item>三角形</item>
+        <item>Isosceles Trapezoid</item>
         <item>梯形</item>
+        <item>Regular Pentagon</item>
         <item>六边形</item>
         <item>圆圈</item>
+        <item>Oval</item>
     </string-array>
     <string name="shape_square">正方形</string>
     <string name="shape_rectangle">长方形</string>
     <string name="shape_parallelogram">平行四边形</string>
+    <string name="shape_rhombus">菱形</string>
     <string name="shape_equilateral_triangle">等边三角形</string>
     <string name="shape_triangle">三角形</string>
     <string name="shape_trapezoid">梯形</string>
     <string name="shape_hexagon">六边形</string>
     <string name="shape_circle">圆圈</string>
-    <string name="desc_spinner_shapes_2d">二維幾何形狀</string>
-    <string name="desc_image_shapes_2d">二維幾何形狀的圖像容器</string>
+    <string name="desc_spinner_shapes_2d">二维几何形状</string>
+    <string name="desc_image_shapes_2d">二维几何形状的图像容器</string>
+    <string name="hint_enter_diagonal_1">输入对角线 1</string>
+    <string name="hint_enter_diagonal_2">输入对角线 2</string>
+    <string name="shape_regular_pentagon">正五角大楼</string>
+    <string name="hint_enter_semi_axis_r1">进入半轴 r1</string>
+    <string name="hint_enter_semi_axis_r2">进入半轴 r2</string>
+    <string name="shape_oval">椭圆形</string>
+    <string name="toast_EqualValues_Oval">半轴 r1 和 r2 不能相等……</string>
+    <string name="toast_EqualValues_IsoscelesTriangle">A边和B边不能相等…</string>
+    <string name="shape_isosceles_triangle">等腰三角形</string>
+    <string name="toast_EqualValues_IsoscelesTrapezoid">A边和B边不能相等…</string>
+    <string name="shape_isosceles_trapezoid">等腰梯形</string>
 </resources>
