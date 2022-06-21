@@ -14,15 +14,21 @@
         <item>مربع</item>
         <item>مستطيل</item>
         <item>متوازي الاضلاع</item>
+        <item>Rhombus</item>
         <item>مثلث متساوي الاضلاع</item>
+        <item>Isosceles Triangle</item>
         <item>مثلث</item>
+        <item>Isosceles Trapezoid</item>
         <item>شبه منحرف</item>
+        <item>Regular Pentagon</item>
         <item>سداسي الزوايا</item>
         <item>دائرة</item>
+        <item>Oval</item>
     </string-array>
     <string name="shape_square">مربع</string>
     <string name="shape_rectangle">مستطيل</string>
     <string name="shape_parallelogram">متوازي الاضلاع</string>
+    <string name="shape_rhombus">معين</string>
     <string name="shape_equilateral_triangle">مثلث متساوي الاضلاع</string>
     <string name="shape_triangle">مثلث</string>
     <string name="shape_trapezoid">شبه منحرف</string>
@@ -30,4 +36,15 @@
     <string name="shape_circle">دائرة</string>
     <string name="desc_spinner_shapes_2d">أشكال هندسية ثنائية الأبعاد</string>
     <string name="desc_image_shapes_2d">حاوية صورة لشكل هندسي ثنائي الأبعاد</string>
+    <string name="hint_enter_diagonal_1">أدخل قطريًا 1</string>
+    <string name="hint_enter_diagonal_2">أدخل قطري 2</string>
+    <string name="shape_regular_pentagon">البنتاغون العادي</string>
+    <string name="hint_enter_semi_axis_r1">أدخل شبه المحور r1</string>
+    <string name="hint_enter_semi_axis_r2">أدخل شبه المحور r2</string>
+    <string name="shape_oval">بيضاوي</string>
+    <string name="toast_EqualValues_Oval">لا يمكن أن تكون أنصاف المحاور r1 و r2 متساوية …</string>
+    <string name="toast_EqualValues_IsoscelesTriangle">لا يمكن أن يكون الجانبان \"أ\" و \"ب\" متساويين …</string>
+    <string name="shape_isosceles_triangle">مثلث متساوي الساقين</string>
+    <string name="toast_EqualValues_IsoscelesTrapezoid">لا يمكن أن يكون الجانبان \"أ\" و \"ب\" متساويين …</string>
+    <string name="shape_isosceles_trapezoid">شبه منحرف متساوي الساقين</string>
 </resources>

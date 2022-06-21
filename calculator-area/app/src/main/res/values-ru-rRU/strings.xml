@@ -14,15 +14,21 @@
         <item>Квадрат</item>
         <item>Прямоугольник</item>
         <item>Параллелограмм</item>
+        <item>Rhombus</item>
         <item>Равносторонний треугольник</item>
+        <item>Isosceles Triangle</item>
         <item>Треугольник</item>
+        <item>Isosceles Trapezoid</item>
         <item>Трапеция</item>
+        <item>Regular Pentagon</item>
         <item>Шестиугольник</item>
         <item>Круг</item>
+        <item>Oval</item>
     </string-array>
     <string name="shape_square">Квадрат</string>
     <string name="shape_rectangle">Прямоугольник</string>
     <string name="shape_parallelogram">Параллелограмм</string>
+    <string name="shape_rhombus">Ромб</string>
     <string name="shape_equilateral_triangle">Равносторонний треугольник</string>
     <string name="shape_triangle">Треугольник</string>
     <string name="shape_trapezoid">Трапеция</string>
@@ -30,4 +36,15 @@
     <string name="shape_circle">Круг</string>
     <string name="desc_spinner_shapes_2d">Двумерные геометрические фигуры</string>
     <string name="desc_image_shapes_2d">Контейнер изображения для двумерной геометрической формы</string>
+    <string name="hint_enter_diagonal_1">введите диагональ 1</string>
+    <string name="hint_enter_diagonal_2">введите диагональ 2</string>
+    <string name="shape_regular_pentagon">Обычный Пентагон</string>
+    <string name="hint_enter_semi_axis_r1">введите полуось r1</string>
+    <string name="hint_enter_semi_axis_r2">введите полуось r2</string>
+    <string name="shape_oval">Овал</string>
+    <string name="toast_EqualValues_Oval">Полуоси r1 и r2 не могут быть равны…</string>
+    <string name="toast_EqualValues_IsoscelesTriangle">Стороны A и B не могут быть равными …</string>
+    <string name="shape_isosceles_triangle">Равнобедренный треугольник</string>
+    <string name="toast_EqualValues_IsoscelesTrapezoid">Стороны A и B не могут быть равными …</string>
+    <string name="shape_isosceles_trapezoid">Равнобедренная трапеция</string>
 </resources>

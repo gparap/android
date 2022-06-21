@@ -14,15 +14,21 @@
         <item>Quadrado</item>
         <item>Retângulo</item>
         <item>Paralelogramo</item>
+        <item>Rhombus</item>
         <item>Triângulo Equilátero</item>
+        <item>Isosceles Triangle</item>
         <item>Triângulo</item>
+        <item>Isosceles Trapezoid</item>
         <item>Trapézio</item>
+        <item>Regular Pentagon</item>
         <item>Hexágono</item>
         <item>Círculo</item>
+        <item>Oval</item>
     </string-array>
     <string name="shape_square">Quadrado</string>
     <string name="shape_rectangle">Retângulo</string>
     <string name="shape_parallelogram">Paralelogramo</string>
+    <string name="shape_rhombus">Losango</string>
     <string name="shape_equilateral_triangle">Triângulo Equilátero</string>
     <string name="shape_triangle">Triângulo</string>
     <string name="shape_trapezoid">Trapézio</string>
@@ -30,4 +36,15 @@
     <string name="shape_circle">Círculo</string>
     <string name="desc_spinner_shapes_2d">Formas geométricas bidimensionais</string>
     <string name="desc_image_shapes_2d">Recipiente de imagem para forma geométrica bidimensional</string>
+    <string name="hint_enter_diagonal_1">digite diagonal 1</string>
+    <string name="hint_enter_diagonal_2">digite diagonal 2</string>
+    <string name="shape_regular_pentagon">Pentágono Regular</string>
+    <string name="hint_enter_semi_axis_r1">insira o semi-eixo r1</string>
+    <string name="hint_enter_semi_axis_r2">insira o semi-eixo r2</string>
+    <string name="shape_oval">Oval</string>
+    <string name="toast_EqualValues_Oval">Os semi-eixos r1 e r2 não podem ser iguais…</string>
+    <string name="toast_EqualValues_IsoscelesTriangle">Os lados A e B não podem ser iguais …</string>
+    <string name="shape_isosceles_triangle">Triângulo isósceles</string>
+    <string name="toast_EqualValues_IsoscelesTrapezoid">Os lados A e B não podem ser iguais …</string>
+    <string name="shape_isosceles_trapezoid">Trapézio Isósceles</string>
 </resources>

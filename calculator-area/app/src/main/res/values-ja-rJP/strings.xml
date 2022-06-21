@@ -14,15 +14,21 @@
         <item>平方</item>
         <item>矩形</item>
         <item>平行四辺形</item>
+        <item>Rhombus</item>
         <item>正三角形</item>
+        <item>Isosceles Triangle</item>
         <item>三角形</item>
+        <item>Isosceles Trapezoid</item>
         <item>台形</item>
+        <item>Regular Pentagon</item>
         <item>六角形</item>
         <item>サークル</item>
+        <item>Oval</item>
     </string-array>
     <string name="shape_square">平方</string>
     <string name="shape_rectangle">矩形</string>
     <string name="shape_parallelogram">平行四辺形</string>
+    <string name="shape_rhombus">ロンバス</string>
     <string name="shape_equilateral_triangle">正三角形</string>
     <string name="shape_triangle">三角形</string>
     <string name="shape_trapezoid">台形</string>
@@ -30,4 +36,15 @@
     <string name="shape_circle">サークル</string>
     <string name="desc_spinner_shapes_2d">二次元の幾何学的形状</string>
     <string name="desc_image_shapes_2d">二次元幾何学的形状の画像コンテナ</string>
+    <string name="hint_enter_diagonal_1">対角線1を入力</string>
+    <string name="hint_enter_diagonal_2">対角線2を入力</string>
+    <string name="shape_regular_pentagon">レギュラーペンタゴン</string>
+    <string name="hint_enter_semi_axis_r1">半軸r1を入力します</string>
+    <string name="hint_enter_semi_axis_r2">半軸r2を入力します</string>
+    <string name="shape_oval">楕円形</string>
+    <string name="toast_EqualValues_Oval">半軸r1とr2を等しくすることはできません…</string>
+    <string name="toast_EqualValues_IsoscelesTriangle">サイドAとサイドBを等しくすることはできません…</string>
+    <string name="shape_isosceles_triangle">二等辺三角形</string>
+    <string name="toast_EqualValues_IsoscelesTrapezoid">サイドAとサイドBを等しくすることはできません…</string>
+    <string name="shape_isosceles_trapezoid">二等辺台形</string>
 </resources>
