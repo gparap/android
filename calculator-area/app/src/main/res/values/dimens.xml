@@ -38,4 +38,7 @@
 
     <dimen name="frame_layout_margin_port">48dp</dimen>
     <dimen name="frame_layout_margin_land">8dp</dimen>
+
+    <dimen name="adView_layout_marginStart_land">0dp</dimen>
+    <dimen name="adView_layout_marginEnd_land">8dp</dimen>
 </resources>

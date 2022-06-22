@@ -13,10 +13,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spinner_layout_marginStart_land"
-        android:layout_marginLeft="@dimen/spinner_layout_marginLeft_land"
         android:layout_marginTop="@dimen/spinner_layout_marginTop_land"
         android:layout_marginEnd="@dimen/spinner_layout_marginEnd_land"
-        android:layout_marginRight="@dimen/spinner_layout_marginRight_land"
         android:contentDescription="@string/desc_spinner_shapes_2d"
         android:minHeight="@dimen/spinner_minHeight"
         app:layout_constraintEnd_toEndOf="parent"
@@ -200,5 +198,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintGuide_percent="0.33"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <!--AdMob view-->
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-4227032191105066/7182664836"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
