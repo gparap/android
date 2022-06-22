@@ -17,5 +17,5 @@
     <dimen name="text_view_marginTop_port">10dp</dimen>
     <dimen name="text_view_textSize_port">22sp</dimen>
 
-    <dimen name="frame_layout_margin_port">32dp</dimen>
+    <dimen name="frame_layout_margin_port">16dp</dimen>
 </resources>

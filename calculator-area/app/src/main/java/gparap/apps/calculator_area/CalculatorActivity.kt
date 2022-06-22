@@ -25,6 +25,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.isVisible
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import kotlin.properties.Delegates
 
 class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -103,6 +106,12 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         //restore values after orientation changes
         if (savedInstanceState != null)
             restoreInstanceState(savedInstanceState)
+
+        //create banner ad
+        MobileAds.initialize(this) {}
+        val adView: AdView = findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {

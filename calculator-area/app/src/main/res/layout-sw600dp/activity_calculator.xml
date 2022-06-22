@@ -14,10 +14,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spinner_layout_marginStart_port"
-        android:layout_marginLeft="@dimen/spinner_layout_marginLeft_port"
         android:layout_marginTop="@dimen/spinner_layout_marginTop_port"
         android:layout_marginEnd="@dimen/spinner_layout_marginEnd_port"
-        android:layout_marginRight="@dimen/spinner_layout_marginRight_port"
         android:contentDescription="@string/desc_spinner_shapes_2d"
         android:minHeight="@dimen/spinner_minHeight"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,7 +64,7 @@
         app:layout_constraintEnd_toEndOf="@+id/spinnerShapes2D"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
         app:layout_constraintTop_toBottomOf="@+id/editTextHeight"
-        tools:visibility="visible" />
+        tools:visibility="gone" />
 
     <!--Diagonal 1-->
     <EditText
@@ -145,7 +143,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/frame_layout_margin_port"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonCalculate">
@@ -161,5 +159,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonCalculate" />
     </FrameLayout>
+
+    <!--AdMob view-->
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-4227032191105066/7182664836"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
