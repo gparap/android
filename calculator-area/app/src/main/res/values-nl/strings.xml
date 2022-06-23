@@ -6,19 +6,19 @@
 
     <!--2D shapes-->
     <string-array name="shapes2D">
-        <item>Square</item>
-        <item>Rectangle</item>
-        <item>Parallelogram</item>
-        <item>Rhombus</item>
-        <item>Equilateral Triangle</item>
-        <item>Isosceles Triangle</item>
-        <item>Triangle</item>
-        <item>Isosceles Trapezoid</item>
-        <item>Trapezoid</item>
-        <item>Regular Pentagon</item>
-        <item>Hexagon</item>
-        <item>Circle</item>
-        <item>Oval</item>
+        <item>Vierkant</item>
+        <item>Rechthoek</item>
+        <item>Parallellogram</item>
+        <item>Ruit</item>
+        <item>Gelijkzijdige driehoek</item>
+        <item>Gelijkbenige driehoek</item>
+        <item>Driehoek</item>
+        <item>Gelijkbenige trapezium</item>
+        <item>Trapezium</item>
+        <item>Regelmatige vijfhoek</item>
+        <item>Zeshoek</item>
+        <item>Cirkel</item>
+        <item>Ovaal</item>
     </string-array>
     <string name="string_area">Gebied</string>
 
@@ -35,10 +35,10 @@
     <string name="hint_enter_side_b">ga naar kant b</string>
     <string name="hint_enter_height">voer hoogte in</string>
     <string name="hint_enter_radius">voer straal in</string>
-    <string name="hint_enter_diagonal_1">voer diagonaal 1 . in</string>
-    <string name="hint_enter_diagonal_2">voer diagonaal 2 . in</string>
-    <string name="hint_enter_semi_axis_r1">voer halve as r1 . in</string>
-    <string name="hint_enter_semi_axis_r2">voer halve as r2 . in</string>
+    <string name="hint_enter_diagonal_1">diagonaal r1 invoeren</string>
+    <string name="hint_enter_diagonal_2">diagonaal r2 invoeren</string>
+    <string name="hint_enter_semi_axis_r1">voer semi-as r1 in</string>
+    <string name="hint_enter_semi_axis_r2">voer semi-as r2 in</string>
 
     <!--Shape 2D strings for internationalization-->
     <string name="shape_square">Vierkant</string>

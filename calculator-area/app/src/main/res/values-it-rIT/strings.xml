@@ -14,16 +14,16 @@
         <item>Piazza</item>
         <item>Rettangolo</item>
         <item>Parallelogramma</item>
-        <item>Rhombus</item>
+        <item>Rombo</item>
         <item>Triangolo equilatero</item>
-        <item>Isosceles Triangle</item>
+        <item>Triangolo isoscele</item>
         <item>Triangolo</item>
-        <item>Isosceles Trapezoid</item>
+        <item>Trapezio isoscele</item>
         <item>Trapezio</item>
-        <item>Regular Pentagon</item>
+        <item>Pentagono regolare</item>
         <item>Esagono</item>
         <item>Cerchio</item>
-        <item>Oval</item>
+        <item>Ovale</item>
     </string-array>
     <string name="shape_square">Piazza</string>
     <string name="shape_rectangle">Rettangolo</string>

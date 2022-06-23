@@ -14,16 +14,16 @@
         <item>Carré</item>
         <item>Rectangle</item>
         <item>Parallélogramme</item>
-        <item>Rhombus</item>
+        <item>Rhombe</item>
         <item>Triangle équilatéral</item>
-        <item>Isosceles Triangle</item>
+        <item>Triangle isocèle</item>
         <item>Triangle</item>
-        <item>Isosceles Trapezoid</item>
+        <item>Trapèze isocèle</item>
         <item>Trapèze</item>
-        <item>Regular Pentagon</item>
+        <item>Pentagone régulier</item>
         <item>Hexagone</item>
         <item>Cercle</item>
-        <item>Oval</item>
+        <item>Ovale</item>
     </string-array>
     <string name="shape_square">Carré</string>
     <string name="shape_rectangle">Rectangle</string>

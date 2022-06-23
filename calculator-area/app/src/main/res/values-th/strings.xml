@@ -6,19 +6,19 @@
 
     <!--2D shapes-->
     <string-array name="shapes2D">
-        <item>Square</item>
-        <item>Rectangle</item>
-        <item>Parallelogram</item>
-        <item>Rhombus</item>
-        <item>Equilateral Triangle</item>
-        <item>Isosceles Triangle</item>
-        <item>Triangle</item>
-        <item>Isosceles Trapezoid</item>
-        <item>Trapezoid</item>
-        <item>Regular Pentagon</item>
-        <item>Hexagon</item>
-        <item>Circle</item>
-        <item>Oval</item>
+        <item>สี่เหลี่ยม</item>
+        <item>สี่เหลี่ยมผืนผ้า</item>
+        <item>สี่เหลี่ยมด้านขนาน</item>
+        <item>รูปสี่เหลี่ยมขนมเปียกปูน</item>
+        <item>สามเหลี่ยมด้านเท่า</item>
+        <item>สามเหลี่ยมหน้าจั่ว</item>
+        <item>สามเหลี่ยม</item>
+        <item>หน้าจั่วสี่เหลี่ยมคางหมู</item>
+        <item>สี่เหลี่ยมคางหมู</item>
+        <item>เพนตากอนปกติ</item>
+        <item>หกเหลี่ยม</item>
+        <item>วงกลม</item>
+        <item>วงรี</item>
     </string-array>
     <string name="string_area">พื้นที่</string>
 

@@ -108,10 +108,14 @@ class CalculatorActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             restoreInstanceState(savedInstanceState)
 
         //create banner ad
-        MobileAds.initialize(this) {}
-        val adView: AdView = findViewById(R.id.adView)
-        val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest)
+        //!!! do NOT remove try-catch because not all layouts have the adView
+        try {
+            MobileAds.initialize(this) {}
+            val adView: AdView = findViewById(R.id.adView)
+            val adRequest = AdRequest.Builder().build()
+            adView.loadAd(adRequest)
+        } catch (e: Exception) {
+        }
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
