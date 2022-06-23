@@ -14,16 +14,16 @@
         <item>वर्ग</item>
         <item>आयत</item>
         <item>चतुर्भुज</item>
-        <item>Rhombus</item>
+        <item>विषमकोण</item>
         <item>समान भुजाओं वाला त्रिकोण</item>
-        <item>Isosceles Triangle</item>
+        <item>समद्विबाहु त्रिकोण</item>
         <item>त्रिकोण</item>
-        <item>Isosceles Trapezoid</item>
+        <item>समद्विबाहु समलंब चतुर्भुज</item>
         <item>चतुर्भुज</item>
-        <item>Regular Pentagon</item>
+        <item>नियमित पेंटागन</item>
         <item>षट्भुज</item>
         <item>वृत्त</item>
-        <item>Oval</item>
+        <item>अंडाकार</item>
     </string-array>
     <string name="shape_square">वर्ग</string>
     <string name="shape_rectangle">आयत</string>

@@ -14,16 +14,16 @@
         <item>স্কয়ার</item>
         <item>আয়তক্ষেত্র</item>
         <item>সমান্তরাল</item>
-        <item>Rhombus</item>
+        <item>রম্বস</item>
         <item>সমবাহু ত্রিভুজ</item>
-        <item>Isosceles Triangle</item>
+        <item>দ্বিসমত্রিভুজ</item>
         <item>ত্রিভুজ</item>
-        <item>Isosceles Trapezoid</item>
+        <item>সমদ্বিবাহু ট্রাপিজয়েড</item>
         <item>ট্র্যাপিজয়েড</item>
-        <item>Regular Pentagon</item>
+        <item>নিয়মিত পেন্টাগন</item>
         <item>ষড়ভুজ</item>
         <item>বৃত্ত</item>
-        <item>Oval</item>
+        <item>ওভাল</item>
     </string-array>
     <string name="shape_square">স্কয়ার</string>
     <string name="shape_rectangle">আয়তক্ষেত্র</string>

@@ -14,16 +14,16 @@
         <item>平方</item>
         <item>矩形</item>
         <item>平行四辺形</item>
-        <item>Rhombus</item>
+        <item>ロンバス</item>
         <item>正三角形</item>
-        <item>Isosceles Triangle</item>
+        <item>二等辺三角形</item>
         <item>三角形</item>
-        <item>Isosceles Trapezoid</item>
+        <item>二等辺台形</item>
         <item>台形</item>
-        <item>Regular Pentagon</item>
+        <item>レギュラーペンタゴン</item>
         <item>六角形</item>
         <item>サークル</item>
-        <item>Oval</item>
+        <item>楕円形</item>
     </string-array>
     <string name="shape_square">平方</string>
     <string name="shape_rectangle">矩形</string>
