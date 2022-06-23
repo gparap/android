@@ -68,7 +68,7 @@
         android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
-        app:layout_constraintTop_toBottomOf="@+id/editTextHeight"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerShapes2D"
         tools:ignore="TouchTargetSizeCheck"
         tools:visibility="visible" />
 
@@ -92,7 +92,7 @@
         android:hint="@string/hint_enter_diagonal_2"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/spinnerShapes2D"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSideA"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDiagonal1"
         tools:ignore="TouchTargetSizeCheck"
         tools:visibility="invisible" />
 
