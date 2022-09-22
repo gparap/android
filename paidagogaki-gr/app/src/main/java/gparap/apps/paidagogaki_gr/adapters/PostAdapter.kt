@@ -49,10 +49,15 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
+        //set image
         holder.image.setImageDrawable(AppCompatResources.getDrawable(
             context, R.drawable.ic_android_48dp
         ))
-        holder.title.text = posts[position].title
+
+        //set title TODO: fix ASCII chars
+        var text : String = posts[position].title.asJsonObject.entrySet().elementAt(0).value.toString()
+        text = text.drop(1).dropLast(1)
+        holder.title.text = text
     }
 
     override fun getItemCount(): Int {

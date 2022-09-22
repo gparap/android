@@ -15,28 +15,40 @@
  */
 package gparap.apps.paidagogaki_gr
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.paidagogaki_gr.adapters.PostAdapter
+import gparap.apps.paidagogaki_gr.api.WordpressService
 import gparap.apps.paidagogaki_gr.data.PostModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //create a test list of posts
-        val posts = mutableListOf<PostModel>()
-        posts.add(PostModel(1, "1/1/2022", "1/1/2022", "", "test1"))
-        posts.add(PostModel(2, "2/1/2022", "2/1/2022", "", "test2"))
-        posts.add(PostModel(3, "3/1/2022", "3/1/2022", "", "test3"))
-        posts.add(PostModel(4, "4/1/2022", "4/1/2022", "", "test4"))
-
         //create a RecyclerView with adapter for posts
         val postsRecyclerView = findViewById<RecyclerView>(R.id.recycleViewMain)
         postsRecyclerView.layoutManager = LinearLayoutManager(this)
-        postsRecyclerView.adapter = PostAdapter().apply { setPosts(posts) }
+        postsRecyclerView.adapter = PostAdapter()
+
+        //get all posts and update UI
+        WordpressService.create().getPosts().enqueue(object : Callback<List<PostModel>>{
+            override fun onResponse(
+                call: Call<List<PostModel>>,
+                response: Response<List<PostModel>>,
+            ) {
+                val posts: MutableList<PostModel> = response.body() as MutableList<PostModel>
+                postsRecyclerView.adapter = PostAdapter().apply { setPosts(posts) }
+            }
+
+            override fun onFailure(call: Call<List<PostModel>>, t: Throwable) {
+                println(t.message.toString())
+            }
+        })
     }
 }

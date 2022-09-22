@@ -50,9 +50,15 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun hasPosts_recycleViewMain() {
+        waitForWebServiceResponse()
         activityScenario.onActivity {
             val recyclerView = it.findViewById<RecyclerView>(R.id.recycleViewMain)
             assert(recyclerView.adapter?.itemCount!! > 0)
         }
+    }
+
+    /* !!! if response is late increase the time !!! */
+    private fun waitForWebServiceResponse() {
+        Thread.sleep(2667)
     }
 }
