@@ -31,5 +31,8 @@ data class PostModel(
     val url: String,
 
     @SerializedName("title")
-    val title: com.google.gson.JsonObject
+    val title: com.google.gson.JsonObject,
+
+    @SerializedName("content")
+    val content: com.google.gson.JsonObject,
 )
