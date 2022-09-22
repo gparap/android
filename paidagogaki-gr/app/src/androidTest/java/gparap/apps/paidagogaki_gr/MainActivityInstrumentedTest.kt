@@ -15,6 +15,7 @@
  */
 package gparap.apps.paidagogaki_gr
 
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -29,9 +30,11 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class MainActivityInstrumentedTest {
+    private lateinit var activityScenario: ActivityScenario<MainActivity>
+
     @Before
     fun setUp() {
-        ActivityScenario.launch(MainActivity::class.java)
+        activityScenario = ActivityScenario.launch(MainActivity::class.java)
     }
 
     @Test
@@ -43,5 +46,13 @@ class MainActivityInstrumentedTest {
     @Test
     fun isVisible_recycleViewMain() {
         onView(withId(R.id.recycleViewMain)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun hasPosts_recycleViewMain() {
+        activityScenario.onActivity {
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recycleViewMain)
+            assert(recyclerView.adapter?.itemCount!! > 0)
+        }
     }
 }
