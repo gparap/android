@@ -13,23 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.paidagogaki_gr.data
+package gparap.apps.paidagogaki_gr.utils
 
-import com.google.gson.annotations.SerializedName
-
-/** This is the model for a Blog's post. */
-data class PostModel(
-    val id: Int,
-
-    @SerializedName("date")
-    val datePublished: String,
-
-    @SerializedName("modified")
-    val dateModified: String,
-
-    @SerializedName("link")
-    val url: String,
-
-    @SerializedName("title")
-    val title: com.google.gson.JsonObject
-)
+const val BASE_URL = "https://paidagogaki.gr"
