@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Paidagogaki.gr</string>
     <string name="desc_brand">Blog Brand</string>
+    <string name="menu_category_home">Αρχική</string>
+    <string name="menu_category_parents">Γονείς</string>
+    <string name="menu_category_arts">Τέχνες</string>
+    <string name="menu_category_health">Υγεία</string>
+    <string name="menu_category_depression">Κατάθλιψη</string>
+    <string name="menu_category_sclerosis">Πολλαπλή Σκλήρυνση</string>
 </resources>

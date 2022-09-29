@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_item_home"
+        android:title="@string/menu_category_home"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_item_parents"
+        android:title="@string/menu_category_parents"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_item_arts"
+        android:title="@string/menu_category_arts"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_item_health"
+        android:title="@string/menu_category_health"
+        app:showAsAction="never" >
+
+        <menu>
+            <item
+                android:id="@+id/menu_item_depression"
+                android:title="@string/menu_category_depression"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/menu_item_sclerosis"
+                android:title="@string/menu_category_sclerosis"
+                app:showAsAction="never" />
+        </menu>
+
+        </item>
+
+</menu>
