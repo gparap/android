@@ -16,6 +16,8 @@
 package gparap.apps.paidagogaki_gr
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,17 +29,113 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var postsRecyclerView: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         //create a RecyclerView with adapter for posts
-        val postsRecyclerView = findViewById<RecyclerView>(R.id.recycleViewMain)
+        postsRecyclerView = findViewById<RecyclerView>(R.id.recycleViewMain)
         postsRecyclerView.layoutManager = LinearLayoutManager(this)
         postsRecyclerView.adapter = PostAdapter()
 
         //get all posts and update UI
+        getAllPosts()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+
+            //get all posts and update UI
+            R.id.menu_item_home -> getAllPosts()
+
+            //get parents category posts and update UI
+            R.id.menu_item_parents -> getParentsPosts()
+
+            //get arts category posts and update UI
+            R.id.menu_item_arts -> getArtsPosts()
+
+            //get health category depression posts and update UI
+            R.id.menu_item_depression -> getDepressionPosts()
+
+            //get health category multiple sclerosis posts and update UI
+            R.id.menu_item_sclerosis -> getSclerosisPosts()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun getAllPosts() {
         WordpressService.create().getPosts().enqueue(object : Callback<List<PostModel>>{
+            override fun onResponse(
+                call: Call<List<PostModel>>,
+                response: Response<List<PostModel>>,
+            ) {
+                val posts: MutableList<PostModel> = response.body() as MutableList<PostModel>
+                postsRecyclerView.adapter = PostAdapter().apply { setPosts(posts) }
+            }
+
+            override fun onFailure(call: Call<List<PostModel>>, t: Throwable) {
+                println(t.message.toString())
+            }
+        })
+    }
+
+    private fun getParentsPosts() {
+        WordpressService.create().getParentsPosts().enqueue(object : Callback<List<PostModel>>{
+            override fun onResponse(
+                call: Call<List<PostModel>>,
+                response: Response<List<PostModel>>,
+            ) {
+                val posts: MutableList<PostModel> = response.body() as MutableList<PostModel>
+                postsRecyclerView.adapter = PostAdapter().apply { setPosts(posts) }
+            }
+
+            override fun onFailure(call: Call<List<PostModel>>, t: Throwable) {
+                println(t.message.toString())
+            }
+        })
+    }
+
+    private fun getArtsPosts() {
+        WordpressService.create().getArtsPosts().enqueue(object : Callback<List<PostModel>>{
+            override fun onResponse(
+                call: Call<List<PostModel>>,
+                response: Response<List<PostModel>>,
+            ) {
+                val posts: MutableList<PostModel> = response.body() as MutableList<PostModel>
+                postsRecyclerView.adapter = PostAdapter().apply { setPosts(posts) }
+            }
+
+            override fun onFailure(call: Call<List<PostModel>>, t: Throwable) {
+                println(t.message.toString())
+            }
+        })
+    }
+
+    private fun getDepressionPosts() {
+        WordpressService.create().getDepressionPosts().enqueue(object : Callback<List<PostModel>>{
+            override fun onResponse(
+                call: Call<List<PostModel>>,
+                response: Response<List<PostModel>>,
+            ) {
+                val posts: MutableList<PostModel> = response.body() as MutableList<PostModel>
+                postsRecyclerView.adapter = PostAdapter().apply { setPosts(posts) }
+            }
+
+            override fun onFailure(call: Call<List<PostModel>>, t: Throwable) {
+                println(t.message.toString())
+            }
+        })
+    }
+
+    private fun getSclerosisPosts() {
+        WordpressService.create().getSclerosisPosts().enqueue(object : Callback<List<PostModel>>{
             override fun onResponse(
                 call: Call<List<PostModel>>,
                 response: Response<List<PostModel>>,
