@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Music</string>
+    <string name="desc_icon_for_music_item">Icon for music item</string>
 </resources>
