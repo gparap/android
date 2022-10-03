@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?><!--Design Dimensions: Pixel (411 x 731 dp, 420dpi)-->
+<resources>
+    <dimen name="layout_margin_cardview_song">4dp</dimen>
+    <dimen name="layout_width_imageViewSongIcon">64dp</dimen>
+    <dimen name="layout_height_imageViewSongIcon">64dp</dimen>
+</resources>
