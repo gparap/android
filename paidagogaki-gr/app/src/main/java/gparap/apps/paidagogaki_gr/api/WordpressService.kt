@@ -40,6 +40,9 @@ interface WordpressService {
     @GET("/wp-json/wp/v2/posts?categories=4")
     fun getSclerosisPosts(): Call<List<PostModel>>
 
+    @GET("/wp-json/wp/v2/posts?categories=31")
+    fun getOlderPosts(): Call<List<PostModel>>
+
     companion object {
         fun create(): WordpressService {
             return Retrofit.Builder()

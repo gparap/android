@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //create a RecyclerView with adapter for posts
-        postsRecyclerView = findViewById<RecyclerView>(R.id.recycleViewMain)
+        postsRecyclerView = findViewById(R.id.recycleViewMain)
         postsRecyclerView.layoutManager = LinearLayoutManager(this)
         postsRecyclerView.adapter = PostAdapter()
 
@@ -66,6 +66,9 @@ class MainActivity : AppCompatActivity() {
 
             //get health category multiple sclerosis posts and update UI
             R.id.menu_item_sclerosis -> getSclerosisPosts()
+
+            //get older posts and update UI
+            R.id.menu_item_older_posts -> getOlderPosts()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -149,4 +152,21 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
+
+    private fun getOlderPosts() {
+        WordpressService.create().getOlderPosts().enqueue(object : Callback<List<PostModel>>{
+            override fun onResponse(
+                call: Call<List<PostModel>>,
+                response: Response<List<PostModel>>,
+            ) {
+                val posts: MutableList<PostModel> = response.body() as MutableList<PostModel>
+                postsRecyclerView.adapter = PostAdapter().apply { setPosts(posts) }
+            }
+
+            override fun onFailure(call: Call<List<PostModel>>, t: Throwable) {
+                println(t.message.toString())
+            }
+        })
+    }
+
 }
