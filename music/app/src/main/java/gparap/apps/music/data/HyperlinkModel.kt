@@ -17,19 +17,16 @@ package gparap.apps.music.data
 
 import com.google.gson.annotations.SerializedName
 
-data class SongModel(
-    @SerializedName("song_title")
-    val title: String,
+data class HyperlinkModel(
+    @SerializedName("image_link")
+    val imageUrl: String,
 
-    @SerializedName("song_duration")
-    val duration: String,
+    @SerializedName("file_link")
+    val fileUrl: String,
 
-    @SerializedName("song_description")
-    val description: String,
+    @SerializedName("author_link")
+    val userUrl: String,
 
-    @SerializedName("song_date")
-    val date: String,
-
-    @SerializedName("song_author")
-    val author: String,
+    @SerializedName("download_link")
+    val downloadUrl: String,
 )

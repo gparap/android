@@ -17,19 +17,10 @@ package gparap.apps.music.data
 
 import com.google.gson.annotations.SerializedName
 
-data class SongModel(
-    @SerializedName("song_title")
-    val title: String,
+data class CategoryModel(
+    @SerializedName("music_genre")
+    val genre: String,
 
-    @SerializedName("song_duration")
-    val duration: String,
-
-    @SerializedName("song_description")
-    val description: String,
-
-    @SerializedName("song_date")
-    val date: String,
-
-    @SerializedName("song_author")
-    val author: String,
+    @SerializedName("time_period")
+    val period: Boolean,
 )
