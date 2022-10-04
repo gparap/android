@@ -35,4 +35,9 @@
 
         </item>
 
+    <item
+        android:id="@+id/menu_item_older_posts"
+        android:title="@string/menu_category_older_posts"
+        app:showAsAction="never" />
+
 </menu>
