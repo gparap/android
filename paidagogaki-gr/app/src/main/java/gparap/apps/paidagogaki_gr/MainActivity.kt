@@ -18,6 +18,7 @@ package gparap.apps.paidagogaki_gr
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,10 +31,12 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var postsRecyclerView: RecyclerView
+    private lateinit var progress: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        progress = findViewById(R.id.progress)
 
         //create a RecyclerView with adapter for posts
         postsRecyclerView = findViewById(R.id.recycleViewMain)
@@ -50,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
 
             //get all posts and update UI
             R.id.menu_item_home -> getAllPosts()
@@ -74,99 +77,124 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getAllPosts() {
-        WordpressService.create().getPosts().enqueue(object : Callback<List<PostModel>>{
+        showLoadingProgress()
+        WordpressService.create().getPosts().enqueue(object : Callback<List<PostModel>> {
             override fun onResponse(
                 call: Call<List<PostModel>>,
                 response: Response<List<PostModel>>,
             ) {
                 val posts: MutableList<PostModel> = response.body() as MutableList<PostModel>
                 postsRecyclerView.adapter = PostAdapter().apply { setPosts(posts) }
+                hideLoadingProgress()
             }
 
             override fun onFailure(call: Call<List<PostModel>>, t: Throwable) {
                 println(t.message.toString())
+                hideLoadingProgress()
             }
         })
     }
 
     private fun getParentsPosts() {
-        WordpressService.create().getParentsPosts().enqueue(object : Callback<List<PostModel>>{
+        showLoadingProgress()
+        WordpressService.create().getParentsPosts().enqueue(object : Callback<List<PostModel>> {
             override fun onResponse(
                 call: Call<List<PostModel>>,
                 response: Response<List<PostModel>>,
             ) {
                 val posts: MutableList<PostModel> = response.body() as MutableList<PostModel>
                 postsRecyclerView.adapter = PostAdapter().apply { setPosts(posts) }
+                hideLoadingProgress()
             }
 
             override fun onFailure(call: Call<List<PostModel>>, t: Throwable) {
                 println(t.message.toString())
+                hideLoadingProgress()
             }
         })
     }
 
     private fun getArtsPosts() {
-        WordpressService.create().getArtsPosts().enqueue(object : Callback<List<PostModel>>{
+        showLoadingProgress()
+        WordpressService.create().getArtsPosts().enqueue(object : Callback<List<PostModel>> {
             override fun onResponse(
                 call: Call<List<PostModel>>,
                 response: Response<List<PostModel>>,
             ) {
                 val posts: MutableList<PostModel> = response.body() as MutableList<PostModel>
                 postsRecyclerView.adapter = PostAdapter().apply { setPosts(posts) }
+                hideLoadingProgress()
             }
 
             override fun onFailure(call: Call<List<PostModel>>, t: Throwable) {
                 println(t.message.toString())
+                hideLoadingProgress()
             }
         })
     }
 
     private fun getDepressionPosts() {
-        WordpressService.create().getDepressionPosts().enqueue(object : Callback<List<PostModel>>{
+        showLoadingProgress()
+        WordpressService.create().getDepressionPosts().enqueue(object : Callback<List<PostModel>> {
             override fun onResponse(
                 call: Call<List<PostModel>>,
                 response: Response<List<PostModel>>,
             ) {
                 val posts: MutableList<PostModel> = response.body() as MutableList<PostModel>
                 postsRecyclerView.adapter = PostAdapter().apply { setPosts(posts) }
+                hideLoadingProgress()
             }
 
             override fun onFailure(call: Call<List<PostModel>>, t: Throwable) {
                 println(t.message.toString())
+                hideLoadingProgress()
             }
         })
     }
 
     private fun getSclerosisPosts() {
-        WordpressService.create().getSclerosisPosts().enqueue(object : Callback<List<PostModel>>{
+        showLoadingProgress()
+        WordpressService.create().getSclerosisPosts().enqueue(object : Callback<List<PostModel>> {
             override fun onResponse(
                 call: Call<List<PostModel>>,
                 response: Response<List<PostModel>>,
             ) {
                 val posts: MutableList<PostModel> = response.body() as MutableList<PostModel>
                 postsRecyclerView.adapter = PostAdapter().apply { setPosts(posts) }
+                hideLoadingProgress()
             }
 
             override fun onFailure(call: Call<List<PostModel>>, t: Throwable) {
                 println(t.message.toString())
+                hideLoadingProgress()
             }
         })
     }
 
     private fun getOlderPosts() {
-        WordpressService.create().getOlderPosts().enqueue(object : Callback<List<PostModel>>{
+        showLoadingProgress()
+        WordpressService.create().getOlderPosts().enqueue(object : Callback<List<PostModel>> {
             override fun onResponse(
                 call: Call<List<PostModel>>,
                 response: Response<List<PostModel>>,
             ) {
                 val posts: MutableList<PostModel> = response.body() as MutableList<PostModel>
                 postsRecyclerView.adapter = PostAdapter().apply { setPosts(posts) }
+                hideLoadingProgress()
             }
 
             override fun onFailure(call: Call<List<PostModel>>, t: Throwable) {
                 println(t.message.toString())
+                hideLoadingProgress()
             }
         })
     }
 
+    private fun showLoadingProgress() {
+        progress.visibility = ProgressBar.VISIBLE
+    }
+
+    private fun hideLoadingProgress() {
+        progress.visibility = ProgressBar.INVISIBLE
+    }
 }
