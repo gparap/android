@@ -15,27 +15,43 @@
  */
 package gparap.apps.music
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.music.adapters.SongsAdapter
-import gparap.apps.music.data.SongModel
+import gparap.apps.music.api.MusicService
+import gparap.apps.music.data.MusicResponseModel
+import gparap.apps.music.data.SongResponseModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //create a test son list
-        val songs = ArrayList<SongModel>()
-        songs.add(SongModel("song 1", "00:00", "0 KB"))
-        songs.add(SongModel("song 2", "00:00", "0 KB"))
-        songs.add(SongModel("song 3", "00:00", "0 KB"))
-
         //create recycler view for songs with adapter
         val recyclerViewSongs = findViewById<RecyclerView>(R.id.recyclerViewSongs)
         recyclerViewSongs.layoutManager = LinearLayoutManager(this)
-        recyclerViewSongs.adapter = SongsAdapter().apply { setSongs(songs) }
+        recyclerViewSongs.adapter = SongsAdapter().apply { } //TODO: setSongs(songs)
+
+        //fetch all songs
+        MusicService.create().getAllSongs().enqueue(object :
+            Callback<MusicResponseModel>{
+            override fun onResponse(
+                call: Call<MusicResponseModel>,
+                response: Response<MusicResponseModel>,
+            ) {
+                val songs: List<SongResponseModel>? = response.body()?.songs
+                println(songs.toString())
+                println(songs?.size)
+            }
+
+            override fun onFailure(call: Call<MusicResponseModel>, t: Throwable) {
+                println(t.message.toString())
+            }
+        })
     }
 }

@@ -21,25 +21,25 @@ import com.google.gson.annotations.SerializedName
 data class SongResponseModel(
     @SerializedName("tags")
     @Expose
-    val tags: TagModel,
+    val tags: List<TagModel>,
 
     @SerializedName("category")
     @Expose
-    val category: CategoryModel,
+    val category: List<CategoryModel>,
 
     @SerializedName("song_information")
     @Expose
-    val songInfo: SongModel,
+    val songInfo: List<SongModel>,
 
     @SerializedName("file_information")
     @Expose
-    val fileInfo: FileModel,
+    val fileInfo: List<FileModel>,
 
     @SerializedName("links")
     @Expose
-    val urls: HyperlinkModel,
+    val urls: List<HyperlinkModel>,
 
     @SerializedName("licence")
     @Expose
-    val licence: LicenceModel,
+    val licence: List<LicenceModel>,
 )

@@ -62,7 +62,6 @@ class SongsAdapter : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
         holder.icon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_launcher_foreground))
         holder.title.text = songs[position].title
         holder.duration.text = songs[position].duration
-        holder.size.text = songs[position].size
     }
 
     override fun getItemCount(): Int {
