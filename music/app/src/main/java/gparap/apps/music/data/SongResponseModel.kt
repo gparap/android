@@ -15,21 +15,31 @@
  */
 package gparap.apps.music.data
 
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class SongModel(
-    @SerializedName("song_title")
-    val title: String,
+data class SongResponseModel(
+    @SerializedName("tags")
+    @Expose
+    val tags: TagModel,
 
-    @SerializedName("song_duration")
-    val duration: String,
+    @SerializedName("category")
+    @Expose
+    val category: CategoryModel,
 
-    @SerializedName("song_description")
-    val description: String,
+    @SerializedName("song_information")
+    @Expose
+    val songInfo: SongModel,
 
-    @SerializedName("song_date")
-    val date: String,
+    @SerializedName("file_information")
+    @Expose
+    val fileInfo: FileModel,
 
-    @SerializedName("song_author")
-    val author: String,
+    @SerializedName("links")
+    @Expose
+    val urls: HyperlinkModel,
+
+    @SerializedName("licence")
+    @Expose
+    val licence: LicenceModel,
 )
