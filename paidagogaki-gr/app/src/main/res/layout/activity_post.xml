@@ -9,6 +9,7 @@
 
     <!-- Post Title -->
     <androidx.cardview.widget.CardView
+        android:backgroundTint="@color/secondary_color_opacity_99"
         android:id="@+id/cardviewPostTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
