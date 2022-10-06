@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/cardView_layout_margin"
+    android:layout_marginStart="@dimen/cardView_layout_margin"
+    android:layout_marginEnd="@dimen/cardView_layout_margin"
+    android:layout_marginTop="@dimen/cardView_layout_margin"
     android:elevation="@dimen/cardview_default_elevation"
     app:cardCornerRadius="@dimen/cardview_default_radius">
 
@@ -14,6 +16,7 @@
 
         <!-- Brand -->
         <ImageView
+            android:background="@color/secondary_color_opacity_11"
             android:id="@+id/imageViewBrand"
             android:layout_width="@dimen/imageViewBrand_layout_width"
             android:layout_height="@dimen/imageViewBrand_layout_height"
@@ -24,6 +27,7 @@
 
         <!-- Post title -->
         <TextView
+            android:background="@color/secondary_color_opacity_11"
             android:id="@+id/textViewPostTitle"
             android:layout_width="0dp"
             android:layout_height="0dp"
