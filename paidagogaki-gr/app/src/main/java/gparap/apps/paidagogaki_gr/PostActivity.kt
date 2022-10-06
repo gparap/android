@@ -15,10 +15,10 @@
  */
 package gparap.apps.paidagogaki_gr
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.WebView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import gparap.apps.paidagogaki_gr.utils.Utils
 
 class PostActivity : AppCompatActivity() {
@@ -26,14 +26,16 @@ class PostActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         //get clicked post details from intent
         val postTitle = intent.getStringExtra("blog_post_title")
         var postContent = intent.getStringExtra("blog_post_content")
 
-        //update the app bar
-        supportActionBar?.title = Utils.fixUnicodeChars(postTitle!!)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        //update the title
+        findViewById<TextView>(R.id.webViewPostTitle).apply {
+            this.text = Utils.fixUnicodeChars(postTitle!!)
+        }
 
         //update the content
         findViewById<WebView>(R.id.webViewPost).apply {
@@ -49,7 +51,6 @@ class PostActivity : AppCompatActivity() {
 
     //go back to home page
     override fun onSupportNavigateUp(): Boolean {
-        startActivity(Intent(this, MainActivity::class.java))
         finish()
         return super.onSupportNavigateUp()
     }

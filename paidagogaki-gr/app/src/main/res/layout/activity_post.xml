@@ -7,7 +7,30 @@
     android:layout_height="match_parent"
     tools:context=".PostActivity">
 
-    <!-- Post -->
+    <!-- Post Title -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardviewPostTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/cardview_default_elevation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/webViewPostTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="@dimen/textViewPostTitle_textSize"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/app_name" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Post Content-->
     <WebView
         android:id="@+id/webViewPost"
         android:layout_width="0dp"
@@ -15,6 +38,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/cardviewPostTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
