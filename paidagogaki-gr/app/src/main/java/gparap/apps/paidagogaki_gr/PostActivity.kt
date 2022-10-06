@@ -19,6 +19,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.WebView
+import gparap.apps.paidagogaki_gr.utils.Utils
 
 class PostActivity : AppCompatActivity() {
 
@@ -31,14 +32,14 @@ class PostActivity : AppCompatActivity() {
         var postContent = intent.getStringExtra("blog_post_content")
 
         //update the app bar
-        supportActionBar?.title = postTitle
+        supportActionBar?.title = Utils.fixUnicodeChars(postTitle!!)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        //update the content TODO: fix the content before loading
+        //update the content
         findViewById<WebView>(R.id.webViewPost).apply {
             this.requestFocus()
 
-            //fix some issues with json content TODO: fix special chars
+            //fix some issues with json content coming from wordpress service
             postContent = postContent!!.replace("\\\"", "\"")
             postContent = postContent!!.replace("\\n", "")
 
