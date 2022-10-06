@@ -29,6 +29,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import gparap.apps.paidagogaki_gr.PostActivity
 import gparap.apps.paidagogaki_gr.R
 import gparap.apps.paidagogaki_gr.data.PostModel
+import gparap.apps.paidagogaki_gr.utils.Utils
 
 /** Adapter & ViewHolder for Blog's posts */
 class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
@@ -56,11 +57,11 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
             context, R.drawable.ic_android_48dp
         ))
 
-        //get text and set title TODO: fix ASCII chars
+        //get text and set title
         var titleText: String =
             posts[position].title.asJsonObject.entrySet().elementAt(0).value.toString()
         titleText = titleText.drop(1).dropLast(1)
-        holder.title.text = titleText
+        holder.title.text = Utils.fixUnicodeChars(titleText)
 
         //get post content
         var postContent: String =
