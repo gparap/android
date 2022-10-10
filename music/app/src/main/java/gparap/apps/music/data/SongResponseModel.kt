@@ -19,9 +19,9 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 data class SongResponseModel(
-    @SerializedName("tags")
+    @SerializedName("attributes")
     @Expose
-    val tags: List<TagModel>,
+    val attributes: List<AttributeModel>,
 
     @SerializedName("category")
     @Expose

@@ -17,13 +17,16 @@ package gparap.apps.music.data
 
 import com.google.gson.annotations.SerializedName
 
-data class TagModel(
-    @SerializedName("tags_list")
+data class AttributeModel(
+    @SerializedName("tags")
     val tags: String,
 
-    @SerializedName("is_hidden")
+    @SerializedName("hidden")
     val isHidden: Boolean,
 
-    @SerializedName("need_todo")
-    val isTodo: Boolean,
+    @SerializedName("recently_added")
+    val isRecentlyAdded: Boolean,
+
+    @SerializedName("version_code")
+    val versionCode: Int,
 )
