@@ -18,6 +18,6 @@ package gparap.apps.music.data
 import com.google.gson.annotations.SerializedName
 
 data class MusicResponseModel(
-    @SerializedName("songs")
+    @SerializedName("music")
     val songs: List<SongResponseModel>,
 )

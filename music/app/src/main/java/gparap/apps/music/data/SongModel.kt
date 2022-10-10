@@ -30,6 +30,9 @@ data class SongModel(
     @SerializedName("song_date")
     val date: String,
 
-    @SerializedName("song_author")
+    @SerializedName("original_author")
     val author: String,
+
+    @SerializedName("modern_performer")
+    val performer: String,
 )

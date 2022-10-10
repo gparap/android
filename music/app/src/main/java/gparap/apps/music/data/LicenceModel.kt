@@ -18,15 +18,9 @@ package gparap.apps.music.data
 import com.google.gson.annotations.SerializedName
 
 data class LicenceModel(
-    @SerializedName("licence_type")
+    @SerializedName("type")
     val type: String,
 
-    @SerializedName("licence_text")
-    val text: String,
-
-    @SerializedName("licence_text_alt")
-    val alternativeText: String,
-
-    @SerializedName("licence_extra")
-    val extras: String,
+    @SerializedName("attribution_html")
+    val attribution: String,
 )

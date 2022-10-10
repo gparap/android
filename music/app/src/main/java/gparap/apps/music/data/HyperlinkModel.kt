@@ -24,9 +24,6 @@ data class HyperlinkModel(
     @SerializedName("file_link")
     val fileUrl: String,
 
-    @SerializedName("author_link")
-    val userUrl: String,
-
     @SerializedName("download_link")
     val downloadUrl: String,
 )

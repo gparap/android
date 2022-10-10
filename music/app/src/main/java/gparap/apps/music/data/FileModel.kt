@@ -26,10 +26,4 @@ data class FileModel(
 
     @SerializedName("file_size")
     val size: String,
-
-    @SerializedName("file_source")
-    val source: String,
-
-    @SerializedName("file_recorded")
-    val recorder: String,
 )
