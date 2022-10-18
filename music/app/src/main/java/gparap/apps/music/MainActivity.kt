@@ -16,6 +16,8 @@
 package gparap.apps.music
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -53,5 +55,20 @@ class MainActivity : AppCompatActivity() {
                 println(t.message.toString())
             }
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_item_medieval -> println(resources.getString(R.string.medieval_period))
+            R.id.menu_item_renaissance -> println(resources.getString(R.string.renaissance_period))
+            R.id.menu_item_baroque -> println(resources.getString(R.string.baroque_period))
+            R.id.menu_item_classical -> println(resources.getString(R.string.classical_period))
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
