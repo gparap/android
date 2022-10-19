@@ -87,9 +87,68 @@ class MainActivity : AppCompatActivity() {
                     })
             }
 
-            R.id.menu_item_renaissance -> println(resources.getString(R.string.renaissance_period))
-            R.id.menu_item_baroque -> println(resources.getString(R.string.baroque_period))
-            R.id.menu_item_classical -> println(resources.getString(R.string.classical_period))
+            //get music of renaissance classical period
+            R.id.menu_item_renaissance -> {
+                MusicService.create().getRenaissanceSongs()
+                    ?.enqueue(object : Callback<MusicResponseModel?> {
+                        override fun onResponse(
+                            call: Call<MusicResponseModel?>,
+                            response: Response<MusicResponseModel?>
+                        ) {
+                            //load songs to recycler view
+                            val songs = response.body()?.songs as ArrayList<SongResponseModel>?
+                            recyclerViewSongs.adapter = SongsAdapter().apply {
+                                setSongs(songs)
+                            }
+                        }
+
+                        override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
+                            println(t.message.toString())
+                        }
+                    })
+            }
+
+            //get music of baroque classical period
+            R.id.menu_item_baroque -> {
+                MusicService.create().getBaroqueSongs()
+                    ?.enqueue(object : Callback<MusicResponseModel?> {
+                        override fun onResponse(
+                            call: Call<MusicResponseModel?>,
+                            response: Response<MusicResponseModel?>
+                        ) {
+                            //load songs to recycler view
+                            val songs = response.body()?.songs as ArrayList<SongResponseModel>?
+                            recyclerViewSongs.adapter = SongsAdapter().apply {
+                                setSongs(songs)
+                            }
+                        }
+
+                        override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
+                            println(t.message.toString())
+                        }
+                    })
+            }
+
+            //get music of classical period
+            R.id.menu_item_classical -> {
+                MusicService.create().getClassicalSongs()
+                    ?.enqueue(object : Callback<MusicResponseModel?> {
+                        override fun onResponse(
+                            call: Call<MusicResponseModel?>,
+                            response: Response<MusicResponseModel?>
+                        ) {
+                            //load songs to recycler view
+                            val songs = response.body()?.songs as ArrayList<SongResponseModel>?
+                            recyclerViewSongs.adapter = SongsAdapter().apply {
+                                setSongs(songs)
+                            }
+                        }
+
+                        override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
+                            println(t.message.toString())
+                        }
+                    })
+            }
         }
         return super.onOptionsItemSelected(item)
     }
