@@ -33,7 +33,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Song Title" />
 
-        <!--Song title-->
+        <!--Song duration-->
         <TextView
             android:id="@+id/textViewSongDuration"
             android:layout_width="0dp"
@@ -43,7 +43,7 @@
             app:layout_constraintTop_toBottomOf="@id/textViewSongTitle"
             tools:text="00:00" />
 
-        <!--Song title-->
+        <!--Song size-->
         <TextView
             android:id="@+id/textViewSongSize"
             android:layout_width="0dp"
