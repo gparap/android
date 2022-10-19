@@ -15,25 +15,27 @@
  */
 package gparap.apps.music
 
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
+import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
-
+import androidx.test.platform.app.InstrumentationRegistry
+import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import org.junit.Assert.*
-import org.junit.Before
-
 @RunWith(AndroidJUnit4::class)
 class MainActivityInstrumentedTest {
+    private lateinit var activityScenario: ActivityScenario<MainActivity>
+
     @Before
     fun setUp() {
-        ActivityScenario.launch(MainActivity::class.java)
+        activityScenario = ActivityScenario.launch(MainActivity::class.java)
     }
 
     @Test
@@ -45,5 +47,22 @@ class MainActivityInstrumentedTest {
     @Test
     fun isVisible_recyclerViewSongs() {
         onView(withId(R.id.recyclerViewSongs)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun getMedievalSongs_recyclerViewNotEmpty() {
+        //open main menu's "medieval music" option
+        val context = InstrumentationRegistry.getInstrumentation().context
+        Espresso.openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.medieval_period)).perform(click())
+
+        //wait a little for web service response
+        Thread.sleep(1667)
+
+        //test here
+        activityScenario.onActivity {
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recyclerViewSongs)
+            assert(recyclerView.adapter?.itemCount!! > 0)
+        }
     }
 }

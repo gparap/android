@@ -26,16 +26,18 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import gparap.apps.music.R
-import gparap.apps.music.data.SongModel
+import gparap.apps.music.data.SongResponseModel
 
 class SongsAdapter : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
     private lateinit var context: Context
-    private var songs = ArrayList<SongModel>()
+    private var songs = ArrayList<SongResponseModel>()
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setSongs(songs: ArrayList<SongModel>) {
-        this.songs = songs
-        notifyDataSetChanged()
+    fun setSongs(songs: ArrayList<SongResponseModel>?) {
+        if (songs != null) {
+            this.songs = songs
+            notifyDataSetChanged()
+        }
     }
 
     class SongsViewHolder(itemView: View) : ViewHolder(itemView) {
@@ -60,8 +62,9 @@ class SongsAdapter : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
 
     override fun onBindViewHolder(holder: SongsViewHolder, position: Int) {
         holder.icon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_launcher_foreground))
-        holder.title.text = songs[position].title
-        holder.duration.text = songs[position].duration
+        holder.title.text = songs[position].songInfo[0].title
+        holder.duration.text = songs[position].songInfo[0].duration
+        holder.size.text = songs[position].fileInfo[0].size
     }
 
     override fun getItemCount(): Int {

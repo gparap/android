@@ -24,8 +24,11 @@ import retrofit2.http.GET
 
 interface MusicService {
 
-    @GET("<<API_ENDPOINT>>")
-    fun getAllSongs(): Call<MusicResponseModel>
+    @GET("/api/music.php?key=" + AppConstants.API_KEY)
+    fun getAllSongs(): Call<MusicResponseModel?>?
+
+    @GET("/api/music_medieval.php?key=" + AppConstants.API_KEY)
+    fun getMedievalSongs(): Call<MusicResponseModel?>?
 
     companion object {
         /** Creates an implementation of the MusicService endpoints. */
