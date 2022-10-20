@@ -45,7 +45,7 @@ class PostActivity : AppCompatActivity() {
             postContent = postContent!!.replace("\\\"", "\"")
             postContent = postContent!!.replace("\\n", "")
 
-            this.loadData(postContent!!, "text/html", "UTF-8")
+            this.loadDataWithBaseURL(null, postContent!!, "text/html", "UTF-8", null)
         }
     }
 
