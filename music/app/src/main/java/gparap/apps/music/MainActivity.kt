@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
+        menuInflater.inflate(R.menu.music_type_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -74,11 +74,7 @@ class MainActivity : AppCompatActivity() {
                             call: Call<MusicResponseModel?>,
                             response: Response<MusicResponseModel?>
                         ) {
-                            //load songs to recycler view
-                            val songs = response.body()?.songs as ArrayList<SongResponseModel>?
-                            recyclerViewSongs.adapter = SongsAdapter().apply {
-                                setSongs(songs)
-                            }
+                            displaySongs(response)
                         }
 
                         override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
@@ -95,11 +91,7 @@ class MainActivity : AppCompatActivity() {
                             call: Call<MusicResponseModel?>,
                             response: Response<MusicResponseModel?>
                         ) {
-                            //load songs to recycler view
-                            val songs = response.body()?.songs as ArrayList<SongResponseModel>?
-                            recyclerViewSongs.adapter = SongsAdapter().apply {
-                                setSongs(songs)
-                            }
+                            displaySongs(response)
                         }
 
                         override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
@@ -116,11 +108,7 @@ class MainActivity : AppCompatActivity() {
                             call: Call<MusicResponseModel?>,
                             response: Response<MusicResponseModel?>
                         ) {
-                            //load songs to recycler view
-                            val songs = response.body()?.songs as ArrayList<SongResponseModel>?
-                            recyclerViewSongs.adapter = SongsAdapter().apply {
-                                setSongs(songs)
-                            }
+                            displaySongs(response)
                         }
 
                         override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
@@ -137,11 +125,24 @@ class MainActivity : AppCompatActivity() {
                             call: Call<MusicResponseModel?>,
                             response: Response<MusicResponseModel?>
                         ) {
-                            //load songs to recycler view
-                            val songs = response.body()?.songs as ArrayList<SongResponseModel>?
-                            recyclerViewSongs.adapter = SongsAdapter().apply {
-                                setSongs(songs)
-                            }
+                            displaySongs(response)
+                        }
+
+                        override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
+                            println(t.message.toString())
+                        }
+                    })
+            }
+
+            //get instrumental music
+            R.id.menu_item_instrumental -> {
+                MusicService.create().getInstrumentalSongs()
+                    ?.enqueue(object : Callback<MusicResponseModel?> {
+                        override fun onResponse(
+                            call: Call<MusicResponseModel?>,
+                            response: Response<MusicResponseModel?>
+                        ) {
+                            displaySongs(response)
                         }
 
                         override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
@@ -151,5 +152,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    //load fetched songs into the recycler view for displaying
+    private fun displaySongs(response: Response<MusicResponseModel?>) {
+        val songs = response.body()?.songs as ArrayList<SongResponseModel>?
+        recyclerViewSongs.adapter = SongsAdapter().apply {
+            setSongs(songs)
+        }
     }
 }

@@ -54,6 +54,7 @@ class MainActivityInstrumentedTest {
         //open main menu's "medieval music" option
         val context = InstrumentationRegistry.getInstrumentation().context
         Espresso.openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.classical_music)).perform(click())
         onView(withText(R.string.medieval_period)).perform(click())
 
         //wait a little for web service response
@@ -71,6 +72,7 @@ class MainActivityInstrumentedTest {
         //open main menu's "renaissance music" option
         val context = InstrumentationRegistry.getInstrumentation().context
         Espresso.openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.classical_music)).perform(click())
         onView(withText(R.string.renaissance_period)).perform(click())
 
         //wait a little for web service response
@@ -88,6 +90,7 @@ class MainActivityInstrumentedTest {
         //open main menu's "baroque music" option
         val context = InstrumentationRegistry.getInstrumentation().context
         Espresso.openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.classical_music)).perform(click())
         onView(withText(R.string.baroque_period)).perform(click())
 
         //wait a little for web service response
@@ -105,7 +108,25 @@ class MainActivityInstrumentedTest {
         //open main menu's "classical music" option
         val context = InstrumentationRegistry.getInstrumentation().context
         Espresso.openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.classical_music)).perform(click())
         onView(withText(R.string.classical_period)).perform(click())
+
+        //wait a little for web service response
+        Thread.sleep(1667)
+
+        //test here
+        activityScenario.onActivity {
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recyclerViewSongs)
+            assert(recyclerView.adapter?.itemCount!! > 0)
+        }
+    }
+
+    @Test
+    fun getInstrumentalSongs_recyclerViewNotEmpty() {
+        //open main menu's "instrumental music" option
+        val context = InstrumentationRegistry.getInstrumentation().context
+        Espresso.openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.instrumental_music)).perform(click())
 
         //wait a little for web service response
         Thread.sleep(1667)
