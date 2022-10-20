@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--Classical music with sub-menu for epoch-->
+    <item
+        android:id="@+id/menu_item_classical_music"
+        android:title="@string/classical_music"
+        app:showAsAction="never">
+        <menu>
+            <item
+                android:id="@+id/menu_item_medieval"
+                android:title="@string/medieval_period"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/menu_item_renaissance"
+                android:title="@string/renaissance_period"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/menu_item_baroque"
+                android:title="@string/baroque_period"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/menu_item_classical"
+                android:title="@string/classical_period"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+
+    <!--Instrumental music-->
+    <item
+        android:id="@+id/menu_item_instrumental"
+        android:title="@string/instrumental_music"
+        app:showAsAction="never" />
+
+</menu>

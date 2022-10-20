@@ -6,4 +6,6 @@
     <string name="renaissance_period">Renaissance Period</string>
     <string name="baroque_period">Baroque Period</string>
     <string name="classical_period">Classical Period</string>
+    <string name="classical_music">Classical Music</string>
+    <string name="instrumental_music">Instrumental Music</string>
 </resources>

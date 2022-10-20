@@ -39,6 +39,9 @@ interface MusicService {
     @GET("/api/music_classical.php?key=" + AppConstants.API_KEY)
     fun getClassicalSongs(): Call<MusicResponseModel?>?
 
+    @GET("/api/music_instrumental.php?key=" + AppConstants.API_KEY)
+    fun getInstrumentalSongs(): Call<MusicResponseModel?>?
+
     companion object {
         /** Creates an implementation of the MusicService endpoints. */
         fun create(): MusicService {
