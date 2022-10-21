@@ -40,4 +40,10 @@
         android:title="@string/menu_category_older_posts"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/menu_item_bio"
+        android:title="@string/menu_category_bio"
+        app:showAsAction="collapseActionView"
+        />
+
 </menu>

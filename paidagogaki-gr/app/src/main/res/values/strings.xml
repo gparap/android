@@ -8,4 +8,5 @@
     <string name="menu_category_depression">Κατάθλιψη</string>
     <string name="menu_category_sclerosis">Πολλαπλή Σκλήρυνση</string>
     <string name="menu_category_older_posts">Παλαιότερες Αναρτήσεις</string>
+    <string name="menu_category_bio">Βιογραφικό</string>
 </resources>

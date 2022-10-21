@@ -15,6 +15,7 @@
  */
 package gparap.apps.paidagogaki_gr
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -72,6 +73,11 @@ class MainActivity : AppCompatActivity() {
 
             //get older posts and update UI
             R.id.menu_item_older_posts -> getOlderPosts()
+
+            //get bio
+            R.id.menu_item_bio -> {
+                startActivity(Intent(this, BioActivity::class.java))
+            }
         }
         return super.onOptionsItemSelected(item)
     }
