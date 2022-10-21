@@ -20,6 +20,7 @@ import android.webkit.WebView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import gparap.apps.paidagogaki_gr.utils.Utils
+import gparap.apps.paidagogaki_gr.utils.WEBKIT_TABLET_ZOOM_FACTOR
 
 class PostActivity : AppCompatActivity() {
 
@@ -40,6 +41,12 @@ class PostActivity : AppCompatActivity() {
         //update the content
         findViewById<WebView>(R.id.webViewPost).apply {
             this.requestFocus()
+
+            //increase font size for tablets
+            val isTablet = resources.getBoolean(R.bool.isSW600dp)
+            if (isTablet) {
+                this.settings.textZoom = this.settings.textZoom + WEBKIT_TABLET_ZOOM_FACTOR
+            }
 
             //fix some issues with json content coming from wordpress service
             postContent = postContent!!.replace("\\\"", "\"")

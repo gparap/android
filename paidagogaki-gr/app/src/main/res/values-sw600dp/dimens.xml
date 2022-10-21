@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="cardView_layout_margin">12dp</dimen>
+    <dimen name="imageViewBrand_layout_width">144dp</dimen>
+    <dimen name="imageViewBrand_layout_height">144dp</dimen>
+    <dimen name="textViewPostTitle_textSize">22sp</dimen>
+    <dimen name="webViewPostTitle_padding">8sp</dimen>
+    <bool name="isSW600dp">true</bool>
+</resources>
