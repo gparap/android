@@ -5,8 +5,14 @@ object Utils {
     fun fixUnicodeChars(string: String): String {
         return string
             .replace("&#34;", "\u0022")
+            .replace("&#034;", "\u0022")
+            .replace("&#0034;", "\u0022")
             .replace("&#36;", "\u0024")
+            .replace("&#036;", "\u0024")
+            .replace("&#0036;", "\u0024")
             .replace("&#38;", "\u0026")
+            .replace("&#038;", "\u0026")
+            .replace("&#0038;", "\u0026")
             .replace("&#169;", "\u00A9")
             .replace("&#697;", "\u02B9")
             .replace("&#698;", "\u02BA")
