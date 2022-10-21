@@ -5,18 +5,18 @@ import org.junit.Test
 class UtilsUnitTest {
     @Test
     fun fixUnicodeChars_isCorrect() {
-        var inputString = "&#34;&#36;&#38;&#169;&#697;&#698;&#699;&#700;&#701;&#702;"
-        var expectedString = "\u0022\u0024\u0026\u00A9\u02B9\u02BA\u02BB\u02BC\u02BD\u02BE"
+        var inputString = "&#34;&#36;&#38;&#169;&#697;&#698;&#699;&#700;&#701;&#702;&#038;&#0038;"
+        var expectedString = "\u0022\u0024\u0026\u00A9\u02B9\u02BA\u02BB\u02BC\u02BD\u02BE\u0026\u0026"
         var actualString = Utils.fixUnicodeChars(inputString)
         assert(expectedString == actualString).apply { println("Row #1 OK") }
 
-        inputString = "&#703;&#706;&#707;&#712;&#713;&#714;&#715;&#716;&#717;&#720;"
-        expectedString = "\u02BF\u02C2\u02C3\u02C8\u02C9\u02CA\u02CB\u02CC\u02CD\u02D0"
+        inputString = "&#703;&#706;&#707;&#712;&#713;&#714;&#715;&#716;&#717;&#720;&#034;&#0034;"
+        expectedString = "\u02BF\u02C2\u02C3\u02C8\u02C9\u02CA\u02CB\u02CC\u02CD\u02D0\u0022\u0022"
         actualString = Utils.fixUnicodeChars(inputString)
         assert(expectedString == actualString).apply { println("Row #2 OK") }
 
-        inputString = "&#722;&#727;&#732;&#733;&#750;&#760;&#768;&#769;&#770;&#771;"
-        expectedString = "\u02D2\u02D7\u02DC\u02DD\u02EE\u02F8\u0300\u0301\u0302\u0303"
+        inputString = "&#722;&#727;&#732;&#733;&#750;&#760;&#768;&#769;&#770;&#771;&#036;&#0036;"
+        expectedString = "\u02D2\u02D7\u02DC\u02DD\u02EE\u02F8\u0300\u0301\u0302\u0303\u0024\u0024"
         actualString = Utils.fixUnicodeChars(inputString)
         assert(expectedString == actualString).apply { println("Row #3 OK") }
 
