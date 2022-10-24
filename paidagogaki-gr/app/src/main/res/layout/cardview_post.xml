@@ -16,6 +16,7 @@
 
         <!-- Brand -->
         <ImageView
+            android:padding="4dp"
             android:background="@color/secondary_color_opacity_11"
             android:id="@+id/imageViewBrand"
             android:layout_width="@dimen/imageViewBrand_layout_width"

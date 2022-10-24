@@ -54,7 +54,7 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         //set image
         holder.image.setImageDrawable(AppCompatResources.getDrawable(
-            context, R.drawable.ic_android_48dp
+            context, R.drawable.logo
         ))
 
         //get text and set title
