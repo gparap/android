@@ -34,6 +34,7 @@
 
     <!-- Post Content-->
     <WebView
+        android:textDirection="firstStrong"
         android:id="@+id/webViewPost"
         android:layout_width="0dp"
         android:layout_height="0dp"
