@@ -184,6 +184,23 @@ class MainActivity : AppCompatActivity() {
                         }
                     })
             }
+
+            //get world music
+            R.id.menu_item_world -> {
+                MusicService.create().getWorldSongs()
+                    ?.enqueue(object : Callback<MusicResponseModel?> {
+                        override fun onResponse(
+                            call: Call<MusicResponseModel?>,
+                            response: Response<MusicResponseModel?>
+                        ) {
+                            displaySongs(response)
+                        }
+
+                        override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
+                            println(t.message.toString())
+                        }
+                    })
+            }
         }
         return super.onOptionsItemSelected(item)
     }
