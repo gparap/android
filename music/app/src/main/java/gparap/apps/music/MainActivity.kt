@@ -150,6 +150,23 @@ class MainActivity : AppCompatActivity() {
                         }
                     })
             }
+
+            //get traditional music
+            R.id.menu_item_traditional -> {
+                MusicService.create().getTraditionalSongs()
+                    ?.enqueue(object : Callback<MusicResponseModel?> {
+                        override fun onResponse(
+                            call: Call<MusicResponseModel?>,
+                            response: Response<MusicResponseModel?>
+                        ) {
+                            displaySongs(response)
+                        }
+
+                        override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
+                            println(t.message.toString())
+                        }
+                    })
+            }
         }
         return super.onOptionsItemSelected(item)
     }
