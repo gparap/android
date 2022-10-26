@@ -137,4 +137,21 @@ class MainActivityInstrumentedTest {
             assert(recyclerView.adapter?.itemCount!! > 0)
         }
     }
+
+    @Test
+    fun getTraditionalSongs_recyclerViewNotEmpty() {
+        //open main menu's "traditional music" option
+        val context = InstrumentationRegistry.getInstrumentation().context
+        Espresso.openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.traditional_music)).perform(click())
+
+        //wait a little for web service response
+        Thread.sleep(1667)
+
+        //test here
+        activityScenario.onActivity {
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recyclerViewSongs)
+            assert(recyclerView.adapter?.itemCount!! > 0)
+        }
+    }
 }
