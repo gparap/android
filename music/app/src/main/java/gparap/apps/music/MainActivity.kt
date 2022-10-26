@@ -167,6 +167,23 @@ class MainActivity : AppCompatActivity() {
                         }
                     })
             }
+
+            //get folk music
+            R.id.menu_item_folk -> {
+                MusicService.create().getFolkSongs()
+                    ?.enqueue(object : Callback<MusicResponseModel?> {
+                        override fun onResponse(
+                            call: Call<MusicResponseModel?>,
+                            response: Response<MusicResponseModel?>
+                        ) {
+                            displaySongs(response)
+                        }
+
+                        override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
+                            println(t.message.toString())
+                        }
+                    })
+            }
         }
         return super.onOptionsItemSelected(item)
     }
