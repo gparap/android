@@ -45,4 +45,10 @@
         android:title="@string/traditional_music"
         app:showAsAction="never" />
 
+    <!--Traditional music-->
+    <item
+        android:id="@+id/menu_item_world"
+        android:title="@string/world_music"
+        app:showAsAction="never" />
+
 </menu>
