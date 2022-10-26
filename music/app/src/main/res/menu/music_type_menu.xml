@@ -27,6 +27,12 @@
         </menu>
     </item>
 
+    <!--Folk music-->
+    <item
+        android:id="@+id/menu_item_folk"
+        android:title="@string/folk_music"
+        app:showAsAction="never" />
+
     <!--Instrumental music-->
     <item
         android:id="@+id/menu_item_instrumental"
