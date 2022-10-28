@@ -19,6 +19,9 @@ import android.os.Bundle
 import android.webkit.WebView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import gparap.apps.paidagogaki_gr.utils.Utils
 import gparap.apps.paidagogaki_gr.utils.WEBKIT_TABLET_ZOOM_FACTOR
 
@@ -54,6 +57,14 @@ class PostActivity : AppCompatActivity() {
 
             this.loadDataWithBaseURL(null, postContent!!, "text/html", "UTF-8", null)
         }
+
+        //initialize the Google Mobile Ads SDK
+        MobileAds.initialize(this)
+
+        //load ad
+        val adView: AdView = findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
     }
 
     //go back to home page
