@@ -47,4 +47,7 @@ dependencies {
     def retrofit_version = '2.9.0'
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    //Mobile Ads SDK (Android)
+    implementation 'com.google.android.gms:play-services-ads:21.3.0'
 }

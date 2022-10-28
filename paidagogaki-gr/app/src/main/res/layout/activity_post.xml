@@ -9,21 +9,21 @@
 
     <!-- Post Title -->
     <androidx.cardview.widget.CardView
-        android:backgroundTint="@color/secondary_color_opacity_99"
         android:id="@+id/cardviewPostTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/secondary_color_opacity_99"
         android:elevation="@dimen/cardview_default_elevation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:padding="@dimen/webViewPostTitle_padding"
             android:id="@+id/webViewPostTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:padding="@dimen/webViewPostTitle_padding"
             android:textSize="@dimen/textViewPostTitle_textSize"
             android:textStyle="bold|italic"
             app:layout_constraintEnd_toEndOf="parent"
@@ -34,13 +34,26 @@
 
     <!-- Post Content-->
     <WebView
-        android:textDirection="firstStrong"
         android:id="@+id/webViewPost"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textDirection="firstStrong"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardviewPostTitle" />
+
+    <!--Banner Ad-->
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
