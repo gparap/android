@@ -24,6 +24,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import gparap.apps.music.ui.MainActivity
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
