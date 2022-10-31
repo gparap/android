@@ -13,49 +13,48 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.music
+package gparap.apps.music.ui
 
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import gparap.apps.music.R
 import gparap.apps.music.adapters.SongsAdapter
 import gparap.apps.music.api.MusicService
 import gparap.apps.music.data.MusicResponseModel
 import gparap.apps.music.data.SongResponseModel
+import gparap.apps.music.viewmodels.MainActivityViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerViewSongs: RecyclerView
+    private lateinit var viewModel: MainActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //create ViewModel for this activity
+        viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
+
         //create recycler view for songs
         recyclerViewSongs = findViewById(R.id.recyclerViewSongs)
         recyclerViewSongs.layoutManager = LinearLayoutManager(this)
 
-        //fetch all songs   TODO: will be implemented in user defined songs inside local database
-        val response: Call<MusicResponseModel?>? = MusicService.create().getAllSongs()
-        response?.enqueue(object : Callback<MusicResponseModel?> {
-            override fun onResponse(
-                call: Call<MusicResponseModel?>,
-                response: Response<MusicResponseModel?>,
-            ) {
-                val songs: List<SongResponseModel>? = response.body()?.songs
-                println(songs.toString())
-                println(songs?.size)
+        //observe songs
+        viewModel.getSongs().observe(this) {
+            recyclerViewSongs.adapter = SongsAdapter().apply {
+                setSongs(it)
             }
+        }
 
-            override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
-                println(t.message.toString())
-            }
-        })
+        //fetch favorite songs TODO: will be implemented in user defined songs inside local database
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -208,8 +207,6 @@ class MainActivity : AppCompatActivity() {
     //load fetched songs into the recycler view for displaying
     private fun displaySongs(response: Response<MusicResponseModel?>) {
         val songs = response.body()?.songs as ArrayList<SongResponseModel>?
-        recyclerViewSongs.adapter = SongsAdapter().apply {
-            setSongs(songs)
-        }
+        viewModel.setSongs(songs)
     }
 }
