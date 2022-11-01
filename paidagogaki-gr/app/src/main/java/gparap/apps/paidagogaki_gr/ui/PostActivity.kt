@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.paidagogaki_gr
+package gparap.apps.paidagogaki_gr.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.webkit.WebView
 import android.widget.TextView
@@ -22,11 +23,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+import gparap.apps.paidagogaki_gr.R
 import gparap.apps.paidagogaki_gr.utils.Utils
 import gparap.apps.paidagogaki_gr.utils.WEBKIT_TABLET_ZOOM_FACTOR
 
 class PostActivity : AppCompatActivity() {
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
@@ -44,6 +47,7 @@ class PostActivity : AppCompatActivity() {
         //update the content
         findViewById<WebView>(R.id.webViewPost).apply {
             this.requestFocus()
+            this.settings.javaScriptEnabled = true
 
             //increase font size for tablets
             val isTablet = resources.getBoolean(R.bool.isSW600dp)
