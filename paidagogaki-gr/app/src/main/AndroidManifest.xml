@@ -16,21 +16,21 @@
         android:theme="@style/Theme.Paidagogaki.gr"
         tools:targetApi="31">
         <activity
-            android:name=".BioActivity"
+            android:name=".ui.BioActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".PostActivity"
+            android:name=".ui.PostActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

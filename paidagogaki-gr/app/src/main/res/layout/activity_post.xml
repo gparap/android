@@ -5,7 +5,7 @@
     android:id="@+id/layout_activity_post"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PostActivity">
+    tools:context=".ui.PostActivity">
 
     <!-- Post Title -->
     <androidx.cardview.widget.CardView

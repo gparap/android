@@ -26,7 +26,7 @@ import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import gparap.apps.paidagogaki_gr.PostActivity
+import gparap.apps.paidagogaki_gr.ui.PostActivity
 import gparap.apps.paidagogaki_gr.R
 import gparap.apps.paidagogaki_gr.data.PostModel
 import gparap.apps.paidagogaki_gr.utils.Utils
@@ -37,8 +37,8 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostViewHolder>() {
     private var posts: MutableList<PostModel> = mutableListOf()
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setPosts(posts: List<PostModel>) {
-        this.posts = posts.toMutableList()
+    fun setPosts(posts: MutableList<PostModel>) {
+        this.posts = posts
         notifyDataSetChanged()
     }
 

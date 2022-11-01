@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.paidagogaki_gr
+package gparap.apps.paidagogaki_gr.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -21,11 +21,14 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import gparap.apps.paidagogaki_gr.R
 import gparap.apps.paidagogaki_gr.adapters.PostAdapter
 import gparap.apps.paidagogaki_gr.api.WordpressService
 import gparap.apps.paidagogaki_gr.data.PostModel
+import gparap.apps.paidagogaki_gr.viewmodels.MainActivityViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,19 +36,35 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
     private lateinit var postsRecyclerView: RecyclerView
     private lateinit var progress: ProgressBar
+    private lateinit var viewModel: MainActivityViewModel
+    private lateinit var posts: MutableList<PostModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         progress = findViewById(R.id.progress)
 
+        //create ViewModel for this activity
+        viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
+
         //create a RecyclerView with adapter for posts
         postsRecyclerView = findViewById(R.id.recycleViewMain)
         postsRecyclerView.layoutManager = LinearLayoutManager(this)
         postsRecyclerView.adapter = PostAdapter()
 
+        //observe posts
+        viewModel.getPosts().observe(this) {
+            posts = it
+        }
+
         //get all posts and update UI
-        getAllPosts()
+        if (viewModel.getPosts().value.isNullOrEmpty()) {
+            getAllPosts()
+        } else {
+            postsRecyclerView.adapter = PostAdapter().apply {
+                setPosts(viewModel.getPosts().value!!)
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -89,8 +108,11 @@ class MainActivity : AppCompatActivity() {
                 call: Call<List<PostModel>>,
                 response: Response<List<PostModel>>,
             ) {
-                val posts: MutableList<PostModel> = response.body() as MutableList<PostModel>
-                postsRecyclerView.adapter = PostAdapter().apply { setPosts(posts) }
+                posts = response.body() as MutableList<PostModel>
+                postsRecyclerView.adapter = PostAdapter().apply {
+                    setPosts(posts)
+                    viewModel.setPosts(posts)
+                }
                 hideLoadingProgress()
             }
 
@@ -108,8 +130,11 @@ class MainActivity : AppCompatActivity() {
                 call: Call<List<PostModel>>,
                 response: Response<List<PostModel>>,
             ) {
-                val posts: MutableList<PostModel> = response.body() as MutableList<PostModel>
-                postsRecyclerView.adapter = PostAdapter().apply { setPosts(posts) }
+                posts = response.body() as MutableList<PostModel>
+                postsRecyclerView.adapter = PostAdapter().apply {
+                    setPosts(posts)
+                    viewModel.setPosts(posts)
+                }
                 hideLoadingProgress()
             }
 
@@ -127,8 +152,11 @@ class MainActivity : AppCompatActivity() {
                 call: Call<List<PostModel>>,
                 response: Response<List<PostModel>>,
             ) {
-                val posts: MutableList<PostModel> = response.body() as MutableList<PostModel>
-                postsRecyclerView.adapter = PostAdapter().apply { setPosts(posts) }
+                posts = response.body() as MutableList<PostModel>
+                postsRecyclerView.adapter = PostAdapter().apply {
+                    setPosts(posts)
+                    viewModel.setPosts(posts)
+                }
                 hideLoadingProgress()
             }
 
@@ -146,8 +174,11 @@ class MainActivity : AppCompatActivity() {
                 call: Call<List<PostModel>>,
                 response: Response<List<PostModel>>,
             ) {
-                val posts: MutableList<PostModel> = response.body() as MutableList<PostModel>
-                postsRecyclerView.adapter = PostAdapter().apply { setPosts(posts) }
+                posts = response.body() as MutableList<PostModel>
+                postsRecyclerView.adapter = PostAdapter().apply {
+                    setPosts(posts)
+                    viewModel.setPosts(posts)
+                }
                 hideLoadingProgress()
             }
 
@@ -165,8 +196,11 @@ class MainActivity : AppCompatActivity() {
                 call: Call<List<PostModel>>,
                 response: Response<List<PostModel>>,
             ) {
-                val posts: MutableList<PostModel> = response.body() as MutableList<PostModel>
-                postsRecyclerView.adapter = PostAdapter().apply { setPosts(posts) }
+                posts = response.body() as MutableList<PostModel>
+                postsRecyclerView.adapter = PostAdapter().apply {
+                    setPosts(posts)
+                    viewModel.setPosts(posts)
+                }
                 hideLoadingProgress()
             }
 
@@ -184,8 +218,11 @@ class MainActivity : AppCompatActivity() {
                 call: Call<List<PostModel>>,
                 response: Response<List<PostModel>>,
             ) {
-                val posts: MutableList<PostModel> = response.body() as MutableList<PostModel>
-                postsRecyclerView.adapter = PostAdapter().apply { setPosts(posts) }
+                posts = response.body() as MutableList<PostModel>
+                postsRecyclerView.adapter = PostAdapter().apply {
+                    setPosts(posts)
+                    viewModel.setPosts(posts)
+                }
                 hideLoadingProgress()
             }
 

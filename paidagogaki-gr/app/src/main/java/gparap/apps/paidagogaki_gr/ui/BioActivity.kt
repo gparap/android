@@ -1,8 +1,9 @@
-package gparap.apps.paidagogaki_gr
+package gparap.apps.paidagogaki_gr.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.WebView
+import gparap.apps.paidagogaki_gr.R
 import gparap.apps.paidagogaki_gr.utils.BIO
 
 class BioActivity : AppCompatActivity() {
