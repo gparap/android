@@ -17,6 +17,8 @@ package gparap.apps.music.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,7 +63,16 @@ class SongsAdapter : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: SongsViewHolder, position: Int) {
-        holder.icon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_launcher_foreground))
+        holder.icon.setImageDrawable(
+            ContextCompat.getDrawable(context, R.drawable.ic_play_circle_48)
+        ).also {
+            //play the song
+            holder.icon.setOnClickListener {
+                val intent =
+                    Intent(Intent.ACTION_VIEW, Uri.parse(songs[position].urls[0].downloadUrl))
+                context.startActivity(intent)
+            }
+        }
         holder.title.text = songs[position].songInfo[0].title
         holder.duration.text = songs[position].songInfo[0].duration
         holder.size.text = songs[position].fileInfo[0].size
