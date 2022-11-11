@@ -16,9 +16,11 @@
 package gparap.apps.player_music
 
 import android.content.pm.PackageManager
+import android.database.Cursor
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.provider.MediaStore
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -50,14 +52,15 @@ class MainActivity : AppCompatActivity() {
                         //get storage files from device (SDK >= 21 && <= 28)
                         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
                             storageFiles.clear()
-                            getStorageFiles()
+                            getStorageFiles(Build.VERSION_CODES.P)
                         }
 
                         //get storage files from device (SDK >= 29 && < 33)
                         else if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P
                             && Build.VERSION.SDK_INT <= Build.VERSION_CODES.TIRAMISU
                         ) {
-                            TODO("Not implemented yet. (SDK >= 29 && < 33)")
+                            storageFiles.clear()
+                            getStorageFiles(Build.VERSION_CODES.Q)
                         }
                     }
                     this@apply == PackageManager.PERMISSION_DENIED -> {
@@ -89,38 +92,70 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == REQUEST_CODE_READ_EXTERNAL_STORAGE && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             //get storage files from device (SDK >= 21 && <= 28)
             storageFiles.clear()
-            getStorageFiles()
+            getStorageFiles(Build.VERSION_CODES.P)
         }
     }
 
-    //get storage files from the device folders "DOWNLOADS" & "MUSIC"   TODO: Refactor code
-    private fun getStorageFiles() {
-        //"DOWNLOADS"
-        var dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-        var files = dir?.listFiles()
-        files?.forEach { f ->
-            //get the file name
-            val filename = f.path.substring(f.path.lastIndexOf('/') + 1, f.path.length)
+    //get audio storage files from the device folders   TODO: Refactor code
+    private fun getStorageFiles(sdkVersionCode: Int) {
+        //(SDK >= 21 && <= 28)
+        if (sdkVersionCode <= 28) {
+            //get storage files from the device folder "DOWNLOADS"
+            var dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+            var files = dir?.listFiles()
+            files?.forEach { f ->
+                //get the file name
+                val filename = f.path.substring(f.path.lastIndexOf('/') + 1, f.path.length)
 
-            //check if filename extension is of audio type (ie: mp3, ogg, etc.) and add to list
-            val extension = filename.substring(filename.lastIndexOf('.') + 1, filename.length)
-            if (extension.contains("mp3") || extension.contains("ogg")) {   //TODO: more
-                storageFiles.add(StorageFileModel(filename))
+                //check if filename extension is of audio type (ie: mp3, ogg, etc.) and add to list
+                val extension = filename.substring(filename.lastIndexOf('.') + 1, filename.length)
+                if (extension.contains("mp3") || extension.contains("ogg")) {   //TODO: more
+                    storageFiles.add(StorageFileModel(filename))
+                }
+            }
+
+            //get storage files from the device folder "MUSIC"
+            dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
+            files = dir?.listFiles()
+            files?.forEach { f ->
+                //get the file name
+                val filename = f.path.substring(f.path.lastIndexOf('/') + 1, f.path.length)
+
+                //check if filename extension is of audio type (ie: mp3, ogg, etc.) and add to list
+                val extension = filename.substring(filename.lastIndexOf('.') + 1, filename.length)
+                if (extension.contains("mp3") || extension.contains("ogg")) {   //TODO: more
+                    storageFiles.add(StorageFileModel(filename))
+                }
             }
         }
 
-        //"MUSIC"
-        dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
-        files = dir?.listFiles()
-        files?.forEach { f ->
-            //get the file name
-            val filename = f.path.substring(f.path.lastIndexOf('/') + 1, f.path.length)
+        //(SDK >= 29 && < 33)
+        if (sdkVersionCode >= 29) {
+            //define the columns that will be returned for each row
+            val projection:  Array<String> = arrayOf(
+                MediaStore.Audio.Media._ID,
+                MediaStore.Audio.Media.DISPLAY_NAME
+            )
 
-            //check if filename extension is of audio type (ie: mp3, ogg, etc.) and add to list
-            val extension = filename.substring(filename.lastIndexOf('.') + 1, filename.length)
-            if (extension.contains("mp3") || extension.contains("ogg")) {   //TODO: more
+            //query against the table and return a Cursor object
+            val cursor: Cursor? = contentResolver.query(
+                MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+                projection,
+                null,
+                null,
+                null
+            )
+
+            //get audio files and add to list
+            while (cursor?.moveToNext() == true) {
+                val index = cursor.getColumnIndex(MediaStore.Audio.Media.DISPLAY_NAME)
+                val filename = cursor.getString(index)
+                println(filename)
                 storageFiles.add(StorageFileModel(filename))
             }
+
+            //free up the Cursor after use
+            cursor?.close()
         }
 
         //update recycler view with storage files
