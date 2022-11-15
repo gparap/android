@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.player_music.adapters.StorageFilesAdapter
 import gparap.apps.player_music.data.StorageFileModel
 import gparap.apps.player_music.utils.REQUEST_CODE_READ_EXTERNAL_STORAGE
+import gparap.apps.player_music.utils.REQUEST_CODE_READ_MEDIA_AUDIO
 
 class MainActivity : AppCompatActivity() {
     private var storageFiles = ArrayList<StorageFileModel>()
@@ -44,43 +45,63 @@ class MainActivity : AppCompatActivity() {
             this.storageFiles = this@MainActivity.storageFiles
         }
 
+        //TODO: Refactor code
         //determine whether the app have been granted the READ_EXTERNAL_STORAGE permission
-        ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE)
-            .apply {
-                when {
-                    this@apply == PackageManager.PERMISSION_GRANTED -> {
-                        //get storage files from device (SDK >= 21 && <= 28)
-                        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
-                            storageFiles.clear()
-                            getStorageFiles(Build.VERSION_CODES.P)
-                        }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+            ContextCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+                .apply {
+                    when {
+                        this@apply == PackageManager.PERMISSION_GRANTED -> {
+                            //get storage files from device (SDK >= 21 && <= 28)
+                            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+                                storageFiles.clear()
+                                getStorageFiles(Build.VERSION_CODES.P)
+                            }
 
-                        //get storage files from device (SDK >= 29 && < 33)
-                        else if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P
-                            && Build.VERSION.SDK_INT <= Build.VERSION_CODES.TIRAMISU
-                        ) {
-                            storageFiles.clear()
-                            getStorageFiles(Build.VERSION_CODES.Q)
+                            //get storage files from device (SDK >= 29 && < 33)
+                            else if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P
+                                && Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU
+                            ) {
+                                storageFiles.clear()
+                                getStorageFiles(Build.VERSION_CODES.Q)
+                            }
                         }
-                    }
-                    this@apply == PackageManager.PERMISSION_DENIED -> {
-                        //ask for READ_EXTERNAL_STORAGE permission (SDK >= 23 && < 33)
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-                            && Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU
-                        ) {
-                            requestPermissions(
-                                arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
-                                REQUEST_CODE_READ_EXTERNAL_STORAGE
-                            )
-                        }
-                        //TODO: MANAGE_EXTERNAL_STORAGE (SDK >= 33)
-                        //do not ask for READ_EXTERNAL_STORAGE permission (SDK >= 33)
-                        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                            TODO("Not implemented yet. (SDK >= 33)")
+                        this@apply == PackageManager.PERMISSION_DENIED -> {
+                            //ask for READ_EXTERNAL_STORAGE permission (SDK >= 23 && < 33)
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                                && Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU
+                            ) {
+                                requestPermissions(
+                                    arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                                    REQUEST_CODE_READ_EXTERNAL_STORAGE
+                                )
+                            }
                         }
                     }
                 }
-            }
+        }
+
+        //determine whether the app have been granted the READ_MEDIA_AUDIO permission
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_MEDIA_AUDIO)
+                .apply {
+                    when {
+                        this@apply == PackageManager.PERMISSION_GRANTED -> {
+                            storageFiles.clear()
+                            getStorageFiles(Build.VERSION_CODES.TIRAMISU)
+                        }
+                        this@apply == PackageManager.PERMISSION_DENIED -> {
+                            requestPermissions(
+                                arrayOf(android.Manifest.permission.READ_MEDIA_AUDIO),
+                                REQUEST_CODE_READ_MEDIA_AUDIO
+                            )
+                        }
+                    }
+                }
+        }
     }
 
     override fun onRequestPermissionsResult(
@@ -91,8 +112,23 @@ class MainActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE_READ_EXTERNAL_STORAGE && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             //get storage files from device (SDK >= 21 && <= 28)
+            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+                storageFiles.clear()
+                getStorageFiles(Build.VERSION_CODES.P)
+            }
+            //get storage files from device (SDK >= 29 && < 33)
+            else if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P
+                && Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU
+            ) {
+                storageFiles.clear()
+                getStorageFiles(Build.VERSION_CODES.Q)
+            }
+        }
+
+        if (requestCode == REQUEST_CODE_READ_MEDIA_AUDIO && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            //get storage files from device (SDK >= 33)
             storageFiles.clear()
-            getStorageFiles(Build.VERSION_CODES.P)
+            getStorageFiles(Build.VERSION_CODES.TIRAMISU)
         }
     }
 
@@ -129,10 +165,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        //(SDK >= 29 && < 33)
+        //(SDK >= 29)
         if (sdkVersionCode >= 29) {
             //define the columns that will be returned for each row
-            val projection:  Array<String> = arrayOf(
+            val projection: Array<String> = arrayOf(
                 MediaStore.Audio.Media._ID,
                 MediaStore.Audio.Media.DISPLAY_NAME
             )
