@@ -146,7 +146,7 @@ class MainActivity : AppCompatActivity() {
                 //check if filename extension is of audio type (ie: mp3, ogg, etc.) and add to list
                 val extension = filename.substring(filename.lastIndexOf('.') + 1, filename.length)
                 if (extension.contains("mp3") || extension.contains("ogg")) {   //TODO: more
-                    storageFiles.add(StorageFileModel(filename))
+                    storageFiles.add(StorageFileModel(-1L, "", filename))    //TODO: path
                 }
             }
 
@@ -160,7 +160,7 @@ class MainActivity : AppCompatActivity() {
                 //check if filename extension is of audio type (ie: mp3, ogg, etc.) and add to list
                 val extension = filename.substring(filename.lastIndexOf('.') + 1, filename.length)
                 if (extension.contains("mp3") || extension.contains("ogg")) {   //TODO: more
-                    storageFiles.add(StorageFileModel(filename))
+                    storageFiles.add(StorageFileModel(-1L, "", filename))    //TODO: path
                 }
             }
         }
@@ -184,10 +184,11 @@ class MainActivity : AppCompatActivity() {
 
             //get audio files and add to list
             while (cursor?.moveToNext() == true) {
-                val index = cursor.getColumnIndex(MediaStore.Audio.Media.DISPLAY_NAME)
+                var index = cursor.getColumnIndex(MediaStore.Audio.Media.DISPLAY_NAME)
                 val filename = cursor.getString(index)
-                println(filename)
-                storageFiles.add(StorageFileModel(filename))
+                index = cursor.getColumnIndex(MediaStore.Audio.Media._ID)
+                val id: Long = cursor.getString(index).toLong()
+                storageFiles.add(StorageFileModel(id, "", filename))
             }
 
             //free up the Cursor after use

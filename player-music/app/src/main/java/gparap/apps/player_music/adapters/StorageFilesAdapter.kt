@@ -15,10 +15,18 @@
  */
 package gparap.apps.player_music.adapters
 
+import android.content.ContentUris
+import android.content.Context
+import android.media.AudioAttributes
+import android.media.MediaPlayer
+import android.net.Uri
+import android.os.PowerManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import gparap.apps.player_music.R
@@ -26,12 +34,19 @@ import gparap.apps.player_music.data.StorageFileModel
 
 class StorageFilesAdapter : RecyclerView.Adapter<StorageFilesAdapter.StorageFilesViewHolder>() {
     var storageFiles = ArrayList<StorageFileModel>()
+    private lateinit var context: Context
+    private lateinit var mediaPlayer: MediaPlayer
 
-    class StorageFilesViewHolder(itemView: View) : ViewHolder(itemView){
+    class StorageFilesViewHolder(itemView: View) : ViewHolder(itemView) {
         val storageFilename: TextView = itemView.findViewById(R.id.textViewStorageFilename)
+        val playButton: ImageButton = itemView.findViewById(R.id.imageButtonPlayStorageFile)
+        val stopButton: ImageButton = itemView.findViewById(R.id.imageButtonStopStorageFile)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StorageFilesViewHolder {
+        //get the context the view
+        context = parent.context
+
         //inflate view
         val storageFileView = LayoutInflater.from(parent.context).inflate(
             R.layout.cardview_storage_file, parent, false
@@ -42,6 +57,39 @@ class StorageFilesAdapter : RecyclerView.Adapter<StorageFilesAdapter.StorageFile
 
     override fun onBindViewHolder(holder: StorageFilesViewHolder, position: Int) {
         holder.storageFilename.text = storageFiles[position].filename
+
+        //TODO: refactor code & check files
+        //play the audio file
+        holder.playButton.setOnClickListener {
+            val id = storageFiles[position].id
+            val name = storageFiles[position].filename
+
+            //get the URI of the storage file inside te device
+            val uri: Uri = ContentUris.withAppendedId(
+                android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id
+            )
+
+            //create a MediaPlayer object and set its attributes
+            mediaPlayer = MediaPlayer().apply {
+                setAudioAttributes(
+                    AudioAttributes.Builder()
+                        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                        .setUsage(AudioAttributes.USAGE_MEDIA)
+                        .build()
+                )
+                setDataSource(context, uri)
+                setScreenOnWhilePlaying(true)
+            }
+
+            //play the storage file
+            mediaPlayer.prepare()
+            mediaPlayer.start()
+        }
+
+        //stop the audio file and release resources
+        holder.stopButton.setOnClickListener {
+            mediaPlayer.release()
+        }
     }
 
     override fun getItemCount(): Int {
