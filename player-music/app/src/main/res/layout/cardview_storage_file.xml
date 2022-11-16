@@ -9,12 +9,44 @@
     android:elevation="@dimen/cardview_default_elevation"
     app:cardCornerRadius="@dimen/cardview_default_radius">
 
-    <!--Music file title-->
-    <TextView
-        android:id="@+id/textViewStorageFilename"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        tools:text="music file title" />
+        android:layout_height="match_parent">
+
+        <!-- Play button-->
+        <ImageButton
+            android:id="@+id/imageButtonPlayStorageFile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/play_button"
+            android:src="@drawable/ic_baseline_play_arrow_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Stop button-->
+        <ImageButton
+            android:id="@+id/imageButtonStopStorageFile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/stop_button"
+            android:src="@drawable/ic_baseline_stop_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageButtonPlayStorageFile"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--Music file title-->
+        <TextView
+            android:id="@+id/textViewStorageFilename"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageButtonStopStorageFile"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="music file title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
