@@ -20,13 +20,11 @@ import android.content.Context
 import android.media.AudioAttributes
 import android.media.MediaPlayer
 import android.net.Uri
-import android.os.PowerManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import gparap.apps.player_music.R
@@ -62,12 +60,15 @@ class StorageFilesAdapter : RecyclerView.Adapter<StorageFilesAdapter.StorageFile
         //play the audio file
         holder.playButton.setOnClickListener {
             val id = storageFiles[position].id
-            val name = storageFiles[position].filename
+            val path = storageFiles[position].filepath
 
-            //get the URI of the storage file inside te device
-            val uri: Uri = ContentUris.withAppendedId(
-                android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id
-            )
+            //get the URI of the storage file inside te device (SDK >= 29)
+            var uri: Uri? = null
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+                uri = ContentUris.withAppendedId(
+                    android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id
+                )
+            }
 
             //create a MediaPlayer object and set its attributes
             mediaPlayer = MediaPlayer().apply {
@@ -77,7 +78,12 @@ class StorageFilesAdapter : RecyclerView.Adapter<StorageFilesAdapter.StorageFile
                         .setUsage(AudioAttributes.USAGE_MEDIA)
                         .build()
                 )
-                setDataSource(context, uri)
+                when {
+                    android.os.Build.VERSION.SDK_INT <= android.os.Build.VERSION_CODES.P ->
+                        setDataSource(path)
+                    android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q ->
+                        setDataSource(context, uri!!)
+                }
                 setScreenOnWhilePlaying(true)
             }
 

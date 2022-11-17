@@ -146,7 +146,7 @@ class MainActivity : AppCompatActivity() {
                 //check if filename extension is of audio type (ie: mp3, ogg, etc.) and add to list
                 val extension = filename.substring(filename.lastIndexOf('.') + 1, filename.length)
                 if (extension.contains("mp3") || extension.contains("ogg")) {   //TODO: more
-                    storageFiles.add(StorageFileModel(-1L, "", filename))    //TODO: path
+                    storageFiles.add(StorageFileModel(-1L, f.path, filename))
                 }
             }
 
@@ -160,7 +160,7 @@ class MainActivity : AppCompatActivity() {
                 //check if filename extension is of audio type (ie: mp3, ogg, etc.) and add to list
                 val extension = filename.substring(filename.lastIndexOf('.') + 1, filename.length)
                 if (extension.contains("mp3") || extension.contains("ogg")) {   //TODO: more
-                    storageFiles.add(StorageFileModel(-1L, "", filename))    //TODO: path
+                    storageFiles.add(StorageFileModel(-1L, f.path, filename))
                 }
             }
         }
