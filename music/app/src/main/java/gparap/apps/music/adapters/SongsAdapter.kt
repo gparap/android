@@ -17,14 +17,13 @@ package gparap.apps.music.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
+import android.media.AudioAttributes
+import android.media.MediaPlayer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import gparap.apps.music.R
@@ -33,6 +32,7 @@ import gparap.apps.music.data.SongResponseModel
 class SongsAdapter : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
     private lateinit var context: Context
     private var songs = ArrayList<SongResponseModel>()
+    private var mediaPlayer: MediaPlayer? = null
 
     @SuppressLint("NotifyDataSetChanged")
     fun setSongs(songs: ArrayList<SongResponseModel>?) {
@@ -43,7 +43,8 @@ class SongsAdapter : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
     }
 
     class SongsViewHolder(itemView: View) : ViewHolder(itemView) {
-        val icon: ImageView = itemView.findViewById(R.id.imageViewSongIcon)
+        val iconPlay: ImageView = itemView.findViewById(R.id.imageViewPlaySong)
+        val iconStop: ImageView = itemView.findViewById(R.id.imageViewStopSong)
         val title: TextView = itemView.findViewById(R.id.textViewSongTitle)
         val duration: TextView = itemView.findViewById(R.id.textViewSongDuration)
         val size: TextView = itemView.findViewById(R.id.textViewSongSize)
@@ -63,16 +64,40 @@ class SongsAdapter : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: SongsViewHolder, position: Int) {
-        holder.icon.setImageDrawable(
-            ContextCompat.getDrawable(context, R.drawable.ic_play_circle_48)
-        ).also {
-            //play the song
-            holder.icon.setOnClickListener {
-                val intent =
-                    Intent(Intent.ACTION_VIEW, Uri.parse(songs[position].urls[0].downloadUrl))
-                context.startActivity(intent)
+        //play the song using the multimedia framework's primary API (MediaPlayer)
+        holder.iconPlay.setOnClickListener {
+            //kill any previous MediaPlayer instance
+            if (mediaPlayer != null) {
+                mediaPlayer!!.release()
             }
+
+            //initialize new MediaPlayer object
+            mediaPlayer = MediaPlayer().apply {
+                setAudioAttributes(
+                    AudioAttributes.Builder()
+                        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                        .setUsage(AudioAttributes.USAGE_MEDIA)
+                        .build()
+                )
+                setDataSource(songs[position].urls[0].downloadUrl)
+                setScreenOnWhilePlaying(true)
+            }
+            //play the song
+            mediaPlayer!!.prepare()
+            mediaPlayer!!.start()
         }
+
+        //stop the song manually
+        holder.iconStop.setOnClickListener {
+            mediaPlayer?.release()
+        }
+
+        //stop the song automatically
+        mediaPlayer?.setOnCompletionListener {
+            mediaPlayer?.release()
+        }
+
+        //display song info
         holder.title.text = songs[position].songInfo[0].title
         holder.duration.text = songs[position].songInfo[0].duration
         holder.size.text = songs[position].fileInfo[0].size
