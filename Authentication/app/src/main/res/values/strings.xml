@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Authentication</string>
+    <string name="email">enter email</string>
+    <string name="desc_email_icon">email icon</string>
+    <string name="password">enter password</string>
+    <string name="desc_password_icon">password icon</string>
+    <string name="login">Login</string>
 </resources>
