@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <!--Username input-->
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="@string/enter_username"
+        android:inputType="textEmailAddress"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/editTextEmail_register"
+        app:layout_constraintEnd_toEndOf="@+id/editTextEmail_register"
+        app:layout_constraintStart_toStartOf="@+id/editTextEmail_register"
+        tools:ignore="Autofill" />
+
+    <!--Username icon-->
+    <ImageView
+        android:id="@+id/imageViewUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/desc_email_icon"
+        android:src="@drawable/ic_baseline_person_24"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextUsername"
+        app:layout_constraintEnd_toStartOf="@+id/editTextUsername"
+        app:layout_constraintTop_toTopOf="@+id/editTextUsername" />
+
+    <!--Email input-->
+    <EditText
+        android:id="@+id/editTextEmail_register"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPassword_register"
+        app:layout_constraintEnd_toEndOf="@+id/editTextPassword_register"
+        app:layout_constraintStart_toStartOf="@+id/editTextPassword_register"
+        tools:ignore="Autofill" />
+
+    <!--Email icon-->
+    <ImageView
+        android:id="@+id/imageViewEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/desc_email_icon"
+        android:src="@drawable/ic_baseline_email_24"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextEmail_register"
+        app:layout_constraintEnd_toStartOf="@+id/editTextEmail_register"
+        app:layout_constraintTop_toTopOf="@+id/editTextEmail_register" />
+
+    <!--Password input-->
+    <EditText
+        android:id="@+id/editTextPassword_register"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editTextPasswordConfirm_register"
+        app:layout_constraintStart_toStartOf="@+id/editTextPasswordConfirm_register"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="Autofill" />
+
+    <!--Password icon-->
+    <ImageView
+        android:id="@+id/imageViewPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/desc_email_icon"
+        android:src="@drawable/ic_baseline_password_24"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextPassword_register"
+        app:layout_constraintEnd_toStartOf="@+id/editTextPassword_register"
+        app:layout_constraintTop_toTopOf="@+id/editTextPassword_register" />
+
+    <!--Password confirm input-->
+    <EditText
+        android:id="@+id/editTextPasswordConfirm_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="@string/confirm_password"
+        android:inputType="textPassword"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword_register"
+        tools:ignore="Autofill" />
+
+    <!--Password icon-->
+    <ImageView
+        android:id="@+id/imageViewPasswordConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/desc_email_icon"
+        android:src="@drawable/ic_baseline_password_24"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextPasswordConfirm_register"
+        app:layout_constraintEnd_toStartOf="@+id/editTextPasswordConfirm_register"
+        app:layout_constraintTop_toTopOf="@+id/editTextPasswordConfirm_register" />
+
+    <!--Register button-->
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/register"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
