@@ -1,9 +1,11 @@
 package gparap.apps.authentication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import gparap.apps.authentication.api.AuthenticationService
 import gparap.apps.authentication.api.RetrofitClient
 import gparap.apps.authentication.data.AuthenticationModel
@@ -43,6 +45,11 @@ class MainActivity : AppCompatActivity() {
                     println(t.message.toString())
                 }
             })
+        }
+
+        //goto registration
+        findViewById<TextView>(R.id.textViewGoToRegistration).setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 }

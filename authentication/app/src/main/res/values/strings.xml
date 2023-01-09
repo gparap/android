@@ -5,4 +5,8 @@
     <string name="password">enter password</string>
     <string name="desc_password_icon">password icon</string>
     <string name="login">Login</string>
+    <string name="not_registered_yet">Not registered yet?</string>
+    <string name="confirm_password">confirm password</string>
+    <string name="register">Register</string>
+    <string name="enter_username">enter username</string>
 </resources>

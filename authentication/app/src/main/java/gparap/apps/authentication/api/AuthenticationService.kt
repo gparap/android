@@ -13,4 +13,12 @@ interface AuthenticationService {
         @Field("email") first: String?,
         @Field("password") last: String?
     ): Call<AuthenticationModel?>?
+
+    @FormUrlEncoded
+    @POST("register.php")
+    fun createUserWithEmailAndPassword(
+        @Field("email") first: String?,
+        @Field("username") middle: String?,
+        @Field("password") last: String?
+    ): Call<AuthenticationModel?>?
 }
