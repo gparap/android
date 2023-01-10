@@ -1,8 +1,9 @@
-package gparap.apps.authentication.api
+package gparap.apps.authentication
 
-import gparap.apps.authentication.utils.AppConstants
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import gparap.apps.authentication.utils.Validator
+import org.junit.Test
+
+import org.junit.Assert.*
 
 /*
  * Copyright 2023 gparap
@@ -19,11 +20,21 @@ import retrofit2.converter.gson.GsonConverterFactory
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class RetrofitClient {
-    fun create(): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(AppConstants.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+class UtilsUnitTest {
+    @Test
+    fun validator_emailIsValid() {
+        val email = "gp@dot.com"
+        assertTrue(Validator.isEmailValid(email))
+    }
+    @Test
+    fun validator_emailIsNotValid() {
+        var email = "gpdotcom"
+        assertFalse(Validator.isEmailValid(email))
+
+        email = "gp@dotcom"
+        assertFalse(Validator.isEmailValid(email))
+
+        email = "gpdot.com"
+        assertFalse(Validator.isEmailValid(email))
     }
 }
