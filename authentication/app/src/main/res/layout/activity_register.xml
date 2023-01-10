@@ -47,7 +47,7 @@
 
     <!--Email icon-->
     <ImageView
-        android:id="@+id/imageViewEmail"
+        android:id="@+id/imageViewEmail_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/desc_email_icon"
@@ -73,7 +73,7 @@
 
     <!--Password icon-->
     <ImageView
-        android:id="@+id/imageViewPassword"
+        android:id="@+id/imageViewPassword_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/desc_email_icon"
@@ -98,7 +98,7 @@
 
     <!--Password icon-->
     <ImageView
-        android:id="@+id/imageViewPasswordConfirm"
+        android:id="@+id/imageViewPasswordConfirm_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/desc_email_icon"

@@ -1,9 +1,9 @@
 package gparap.apps.authentication
 
 import gparap.apps.authentication.utils.Validator
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
-
-import org.junit.Assert.*
 
 /*
  * Copyright 2023 gparap
@@ -26,6 +26,7 @@ class UtilsUnitTest {
         val email = "gp@dot.com"
         assertTrue(Validator.isEmailValid(email))
     }
+
     @Test
     fun validator_emailIsNotValid() {
         var email = "gpdotcom"
@@ -36,5 +37,33 @@ class UtilsUnitTest {
 
         email = "gpdot.com"
         assertFalse(Validator.isEmailValid(email))
+    }
+
+    @Test
+    fun validator_isPasswordLongEnough() {
+        var password = "12345678"
+        assertTrue(Validator.isPasswordLongEnough(password))
+
+        password = "1234567"
+        assertFalse(Validator.isPasswordLongEnough(password))
+    }
+
+    @Test
+    fun validator_isPasswordTooLong(){
+        var password = "0123456789ABCDEF"
+        assertTrue(Validator.isPasswordTooLong(password))
+
+        password = "0123456789ABCDEFx"
+        assertFalse(Validator.isPasswordTooLong(password))
+    }
+
+    @Test
+    fun validator_doPasswordsMatch() {
+        val password = "12345678"
+        var confirm = "12345678"
+        assertTrue(Validator.doPasswordsMatch(password, confirm))
+
+        confirm = "12345678x"
+        assertFalse(Validator.doPasswordsMatch(password, confirm))
     }
 }
