@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 gparap
+ * Copyright (c) 2023 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,9 +23,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 interface MusicService {
-
-    @GET("/api/music.php?key=" + AppConstants.API_KEY)
-    fun getAllSongs(): Call<MusicResponseModel?>?
 
     @GET("/api/music_medieval.php?key=" + AppConstants.API_KEY)
     fun getMedievalSongs(): Call<MusicResponseModel?>?

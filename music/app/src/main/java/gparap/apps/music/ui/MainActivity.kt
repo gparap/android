@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 gparap
+ * Copyright (c) 2023 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,13 +24,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.music.R
 import gparap.apps.music.adapters.SongsAdapter
-import gparap.apps.music.api.MusicService
-import gparap.apps.music.data.MusicResponseModel
-import gparap.apps.music.data.SongResponseModel
 import gparap.apps.music.viewmodels.MainActivityViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerViewSongs: RecyclerView
@@ -64,149 +58,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-
-            //get music of medieval classical period
-            R.id.menu_item_medieval -> {
-                MusicService.create().getMedievalSongs()
-                    ?.enqueue(object : Callback<MusicResponseModel?> {
-                        override fun onResponse(
-                            call: Call<MusicResponseModel?>,
-                            response: Response<MusicResponseModel?>
-                        ) {
-                            displaySongs(response)
-                        }
-
-                        override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
-                            println(t.message.toString())
-                        }
-                    })
-            }
-
-            //get music of renaissance classical period
-            R.id.menu_item_renaissance -> {
-                MusicService.create().getRenaissanceSongs()
-                    ?.enqueue(object : Callback<MusicResponseModel?> {
-                        override fun onResponse(
-                            call: Call<MusicResponseModel?>,
-                            response: Response<MusicResponseModel?>
-                        ) {
-                            displaySongs(response)
-                        }
-
-                        override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
-                            println(t.message.toString())
-                        }
-                    })
-            }
-
-            //get music of baroque classical period
-            R.id.menu_item_baroque -> {
-                MusicService.create().getBaroqueSongs()
-                    ?.enqueue(object : Callback<MusicResponseModel?> {
-                        override fun onResponse(
-                            call: Call<MusicResponseModel?>,
-                            response: Response<MusicResponseModel?>
-                        ) {
-                            displaySongs(response)
-                        }
-
-                        override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
-                            println(t.message.toString())
-                        }
-                    })
-            }
-
-            //get music of classical period
-            R.id.menu_item_classical -> {
-                MusicService.create().getClassicalSongs()
-                    ?.enqueue(object : Callback<MusicResponseModel?> {
-                        override fun onResponse(
-                            call: Call<MusicResponseModel?>,
-                            response: Response<MusicResponseModel?>
-                        ) {
-                            displaySongs(response)
-                        }
-
-                        override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
-                            println(t.message.toString())
-                        }
-                    })
-            }
-
-            //get instrumental music
-            R.id.menu_item_instrumental -> {
-                MusicService.create().getInstrumentalSongs()
-                    ?.enqueue(object : Callback<MusicResponseModel?> {
-                        override fun onResponse(
-                            call: Call<MusicResponseModel?>,
-                            response: Response<MusicResponseModel?>
-                        ) {
-                            displaySongs(response)
-                        }
-
-                        override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
-                            println(t.message.toString())
-                        }
-                    })
-            }
-
-            //get traditional music
-            R.id.menu_item_traditional -> {
-                MusicService.create().getTraditionalSongs()
-                    ?.enqueue(object : Callback<MusicResponseModel?> {
-                        override fun onResponse(
-                            call: Call<MusicResponseModel?>,
-                            response: Response<MusicResponseModel?>
-                        ) {
-                            displaySongs(response)
-                        }
-
-                        override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
-                            println(t.message.toString())
-                        }
-                    })
-            }
-
-            //get folk music
-            R.id.menu_item_folk -> {
-                MusicService.create().getFolkSongs()
-                    ?.enqueue(object : Callback<MusicResponseModel?> {
-                        override fun onResponse(
-                            call: Call<MusicResponseModel?>,
-                            response: Response<MusicResponseModel?>
-                        ) {
-                            displaySongs(response)
-                        }
-
-                        override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
-                            println(t.message.toString())
-                        }
-                    })
-            }
-
-            //get world music
-            R.id.menu_item_world -> {
-                MusicService.create().getWorldSongs()
-                    ?.enqueue(object : Callback<MusicResponseModel?> {
-                        override fun onResponse(
-                            call: Call<MusicResponseModel?>,
-                            response: Response<MusicResponseModel?>
-                        ) {
-                            displaySongs(response)
-                        }
-
-                        override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
-                            println(t.message.toString())
-                        }
-                    })
-            }
+            R.id.menu_item_medieval -> viewModel.getMedievalSongs()
+            R.id.menu_item_renaissance -> viewModel.getRenaissanceSongs()
+            R.id.menu_item_baroque -> viewModel.getBaroqueSongs()
+            R.id.menu_item_classical -> viewModel.getClassicalSongs()
+            R.id.menu_item_instrumental -> viewModel.getInstrumentalSongs()
+            R.id.menu_item_traditional -> viewModel.getTraditionalSongs()
+            R.id.menu_item_folk -> viewModel.getFolkSongs()
+            R.id.menu_item_world -> viewModel.getWorldSongs()
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    //load fetched songs into the recycler view for displaying
-    private fun displaySongs(response: Response<MusicResponseModel?>) {
-        val songs = response.body()?.songs as ArrayList<SongResponseModel>?
-        viewModel.setSongs(songs)
     }
 }
