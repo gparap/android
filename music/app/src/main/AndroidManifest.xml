@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Music"
-        tools:targetApi="31" >
+        tools:targetApi="s">
         <activity
             android:name=".ui.MainActivity"
             android:exported="true" >
