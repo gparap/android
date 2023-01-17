@@ -13,16 +13,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!--Stop song icon-->
-        <ImageView
-            android:id="@+id/imageViewStopSong"
-            android:layout_width="@dimen/layout_width_imageViewSongIcon"
-            android:layout_height="@dimen/layout_height_imageViewSongIcon"
-            android:contentDescription="@string/desc_icon_for_music_item"
-            android:src="@drawable/ic_stop_circle_48"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <!--Play song icon-->
         <ImageView
             android:id="@+id/imageViewPlaySong"
@@ -30,7 +20,7 @@
             android:layout_height="@dimen/layout_height_imageViewSongIcon"
             android:contentDescription="@string/desc_icon_for_music_item"
             android:src="@drawable/ic_play_circle_48"
-            app:layout_constraintStart_toEndOf="@id/imageViewStopSong"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <!--Song title-->

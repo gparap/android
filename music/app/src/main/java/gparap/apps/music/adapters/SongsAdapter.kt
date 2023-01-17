@@ -16,6 +16,7 @@
 package gparap.apps.music.adapters
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Context
 import android.media.AudioAttributes
 import android.media.MediaPlayer
@@ -33,6 +34,7 @@ class SongsAdapter : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
     private lateinit var context: Context
     private var songs = ArrayList<SongResponseModel>()
     private var mediaPlayer: MediaPlayer? = null
+    private var songDialog: AlertDialog? = null
 
     @SuppressLint("NotifyDataSetChanged")
     fun setSongs(songs: ArrayList<SongResponseModel>?) {
@@ -44,7 +46,6 @@ class SongsAdapter : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
 
     class SongsViewHolder(itemView: View) : ViewHolder(itemView) {
         val iconPlay: ImageView = itemView.findViewById(R.id.imageViewPlaySong)
-        val iconStop: ImageView = itemView.findViewById(R.id.imageViewStopSong)
         val title: TextView = itemView.findViewById(R.id.textViewSongTitle)
         val duration: TextView = itemView.findViewById(R.id.textViewSongDuration)
         val size: TextView = itemView.findViewById(R.id.textViewSongSize)
@@ -82,19 +83,30 @@ class SongsAdapter : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
                 setDataSource(songs[position].urls[0].downloadUrl)
                 setScreenOnWhilePlaying(true)
             }
+
             //play the song
             mediaPlayer!!.prepare()
             mediaPlayer!!.start()
-        }
 
-        //stop the song manually
-        holder.iconStop.setOnClickListener {
-            mediaPlayer?.release()
-        }
+            //display a dialog with the current song that is playing
+            songDialog = AlertDialog.Builder(context)
+                .setNegativeButton("Stop") { dialog, _ ->
+                    //stop the song manually
+                    mediaPlayer?.release()
+                    dialog.dismiss()
+                }
+                .setTitle("Now Playing...")
+                .setMessage(songs[position].songInfo[0].title)
+                .setCancelable(false)
+                .create().apply {
+                    show()
+                }
 
-        //stop the song automatically
-        mediaPlayer?.setOnCompletionListener {
-            mediaPlayer?.release()
+            //stop the song automatically
+            mediaPlayer?.setOnCompletionListener {
+                mediaPlayer?.release()
+                songDialog?.dismiss()
+            }
         }
 
         //display song info
