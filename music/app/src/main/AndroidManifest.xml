@@ -16,6 +16,7 @@
         android:theme="@style/Theme.Music"
         tools:targetApi="s">
         <activity
+            android:screenOrientation="locked"
             android:name=".ui.MainActivity"
             android:exported="true" >
             <intent-filter>
