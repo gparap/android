@@ -16,4 +16,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--Welcome Text (main)-->
+    <TextView
+        android:id="@+id/textViewWelcome_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/padding_textViewWelcome_main"
+        android:paddingEnd="@dimen/padding_textViewWelcome_main"
+        android:text="@string/welcome_text_main"
+        android:textAlignment="center"
+        android:textSize="@dimen/textSize_textViewWelcome_main"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <!--Welcome Text (secondary)-->
+    <TextView
+        android:id="@+id/textViewWelcome_secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_marginTop_textViewWelcome_secondary"
+        android:paddingStart="@dimen/padding_textViewWelcome_secondary"
+        android:paddingEnd="@dimen/padding_textViewWelcome_secondary"
+        android:text="@string/welcome_text_secondary"
+        android:textAlignment="center"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWelcome_main" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

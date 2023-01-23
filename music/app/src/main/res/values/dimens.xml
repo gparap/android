@@ -3,4 +3,8 @@
     <dimen name="layout_margin_cardview_song">4dp</dimen>
     <dimen name="layout_width_imageViewSongIcon">64dp</dimen>
     <dimen name="layout_height_imageViewSongIcon">64dp</dimen>
+    <dimen name="padding_textViewWelcome_main">2dp</dimen>
+    <dimen name="textSize_textViewWelcome_main">16sp</dimen>
+    <dimen name="padding_textViewWelcome_secondary">4dp</dimen>
+    <dimen name="layout_marginTop_textViewWelcome_secondary">4dp</dimen>
 </resources>

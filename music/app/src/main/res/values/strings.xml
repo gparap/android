@@ -11,4 +11,6 @@
     <string name="traditional_music">Traditional Music</string>
     <string name="folk_music">Folk Music</string>
     <string name="world_music">World Music</string>
+    <string name="welcome_text_main">Welcome to World Music!</string>
+    <string name="welcome_text_secondary">Please, choose a music category from the menu and enjoy…</string>
 </resources>

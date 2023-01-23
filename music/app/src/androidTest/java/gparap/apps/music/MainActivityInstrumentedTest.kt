@@ -25,6 +25,7 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import gparap.apps.music.ui.MainActivity
+import org.hamcrest.core.IsNot.not
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -43,6 +44,12 @@ class MainActivityInstrumentedTest {
     fun useAppContext() {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("gparap.apps.music", appContext.packageName)
+    }
+
+    @Test
+    fun isVisible_welcomeText() {
+        onView(withId(R.id.textViewWelcome_main)).check(matches(isDisplayed()))
+        onView(withId(R.id.textViewWelcome_secondary)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -189,5 +196,17 @@ class MainActivityInstrumentedTest {
             val recyclerView = it.findViewById<RecyclerView>(R.id.recyclerViewSongs)
             assert(recyclerView.adapter?.itemCount!! > 0)
         }
+    }
+
+    @Test
+    fun hideWelcomeTextWhenChoosingCategory() {
+        //open main menu's category option
+        val context = InstrumentationRegistry.getInstrumentation().context
+        Espresso.openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.world_music)).perform(click())
+
+        //assert welcome text is hidden
+        onView(withId(R.id.textViewWelcome_main)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.textViewWelcome_secondary)).check(matches(not(isDisplayed())))
     }
 }
