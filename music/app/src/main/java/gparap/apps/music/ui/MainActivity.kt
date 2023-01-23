@@ -18,6 +18,8 @@ package gparap.apps.music.ui
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -57,6 +59,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        //hide welcome text when user is choosing category
+        findViewById<TextView>(R.id.textViewWelcome_main).apply { this.visibility = View.GONE }
+        findViewById<TextView>(R.id.textViewWelcome_secondary).apply { this.visibility = View.GONE }
+
+        //fill the recycler view with songs
         when (item.itemId) {
             R.id.menu_item_medieval -> viewModel.getMedievalSongs()
             R.id.menu_item_renaissance -> viewModel.getRenaissanceSongs()
