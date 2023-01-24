@@ -15,6 +15,8 @@
  */
 package gparap.apps.music.viewmodels
 
+import android.view.View
+import android.widget.ProgressBar
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -32,12 +34,12 @@ class MainActivityViewModel : ViewModel() {
         return songsLiveData
     }
 
-    fun setSongs(songs: ArrayList<SongResponseModel>?) {
+    private fun setSongs(songs: ArrayList<SongResponseModel>?) {
         songsLiveData.value = songs
     }
 
     /** Get music of medieval classical period. */
-    fun getMedievalSongs() {
+    fun getMedievalSongs(progressBar: ProgressBar) {
         MusicService.create().getMedievalSongs()
             ?.enqueue(object : Callback<MusicResponseModel?> {
                 override fun onResponse(
@@ -45,6 +47,7 @@ class MainActivityViewModel : ViewModel() {
                     response: Response<MusicResponseModel?>
                 ) {
                     displaySongs(response)
+                    progressBar.visibility = View.INVISIBLE
                 }
 
                 override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
@@ -54,7 +57,7 @@ class MainActivityViewModel : ViewModel() {
     }
 
     /** Get music of renaissance classical period. */
-    fun getRenaissanceSongs() {
+    fun getRenaissanceSongs(progressBar: ProgressBar) {
         MusicService.create().getRenaissanceSongs()
             ?.enqueue(object : Callback<MusicResponseModel?> {
                 override fun onResponse(
@@ -62,6 +65,7 @@ class MainActivityViewModel : ViewModel() {
                     response: Response<MusicResponseModel?>
                 ) {
                     displaySongs(response)
+                    progressBar.visibility = View.INVISIBLE
                 }
 
                 override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
@@ -71,7 +75,7 @@ class MainActivityViewModel : ViewModel() {
     }
 
     /** Get music of baroque classical period. */
-    fun getBaroqueSongs() {
+    fun getBaroqueSongs(progressBar: ProgressBar) {
         MusicService.create().getBaroqueSongs()
             ?.enqueue(object : Callback<MusicResponseModel?> {
                 override fun onResponse(
@@ -79,6 +83,7 @@ class MainActivityViewModel : ViewModel() {
                     response: Response<MusicResponseModel?>
                 ) {
                     displaySongs(response)
+                    progressBar.visibility = View.INVISIBLE
                 }
 
                 override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
@@ -88,7 +93,7 @@ class MainActivityViewModel : ViewModel() {
     }
 
     /** Get music of classical period. */
-    fun getClassicalSongs() {
+    fun getClassicalSongs(progressBar: ProgressBar) {
         MusicService.create().getClassicalSongs()
             ?.enqueue(object : Callback<MusicResponseModel?> {
                 override fun onResponse(
@@ -96,6 +101,7 @@ class MainActivityViewModel : ViewModel() {
                     response: Response<MusicResponseModel?>
                 ) {
                     displaySongs(response)
+                    progressBar.visibility = View.INVISIBLE
                 }
 
                 override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
@@ -105,7 +111,7 @@ class MainActivityViewModel : ViewModel() {
     }
 
     /** Get instrumental music. */
-    fun getInstrumentalSongs() {
+    fun getInstrumentalSongs(progressBar: ProgressBar) {
         MusicService.create().getInstrumentalSongs()
             ?.enqueue(object : Callback<MusicResponseModel?> {
                 override fun onResponse(
@@ -113,6 +119,7 @@ class MainActivityViewModel : ViewModel() {
                     response: Response<MusicResponseModel?>
                 ) {
                     displaySongs(response)
+                    progressBar.visibility = View.INVISIBLE
                 }
 
                 override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
@@ -122,7 +129,7 @@ class MainActivityViewModel : ViewModel() {
     }
 
     /** Get traditional music. */
-    fun getTraditionalSongs() {
+    fun getTraditionalSongs(progressBar: ProgressBar) {
         MusicService.create().getTraditionalSongs()
             ?.enqueue(object : Callback<MusicResponseModel?> {
                 override fun onResponse(
@@ -130,6 +137,7 @@ class MainActivityViewModel : ViewModel() {
                     response: Response<MusicResponseModel?>
                 ) {
                     displaySongs(response)
+                    progressBar.visibility = View.INVISIBLE
                 }
 
                 override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
@@ -139,7 +147,7 @@ class MainActivityViewModel : ViewModel() {
     }
 
     /** Get folk music. */
-    fun getFolkSongs() {
+    fun getFolkSongs(progressBar: ProgressBar) {
         MusicService.create().getFolkSongs()
             ?.enqueue(object : Callback<MusicResponseModel?> {
                 override fun onResponse(
@@ -147,6 +155,7 @@ class MainActivityViewModel : ViewModel() {
                     response: Response<MusicResponseModel?>
                 ) {
                     displaySongs(response)
+                    progressBar.visibility = View.INVISIBLE
                 }
 
                 override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
@@ -156,7 +165,7 @@ class MainActivityViewModel : ViewModel() {
     }
 
     /** Get world music. */
-    fun getWorldSongs() {
+    fun getWorldSongs(progressBar: ProgressBar) {
         MusicService.create().getWorldSongs()
             ?.enqueue(object : Callback<MusicResponseModel?> {
                 override fun onResponse(
@@ -164,6 +173,7 @@ class MainActivityViewModel : ViewModel() {
                     response: Response<MusicResponseModel?>
                 ) {
                     displaySongs(response)
+                    progressBar.visibility = View.INVISIBLE
                 }
 
                 override fun onFailure(call: Call<MusicResponseModel?>, t: Throwable) {
