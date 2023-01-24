@@ -19,6 +19,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -31,10 +32,12 @@ import gparap.apps.music.viewmodels.MainActivityViewModel
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerViewSongs: RecyclerView
     private lateinit var viewModel: MainActivityViewModel
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        progressBar = findViewById(R.id.progressBarLoadingSongs)
 
         //create ViewModel for this activity
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
@@ -65,14 +68,38 @@ class MainActivity : AppCompatActivity() {
 
         //fill the recycler view with songs
         when (item.itemId) {
-            R.id.menu_item_medieval -> viewModel.getMedievalSongs()
-            R.id.menu_item_renaissance -> viewModel.getRenaissanceSongs()
-            R.id.menu_item_baroque -> viewModel.getBaroqueSongs()
-            R.id.menu_item_classical -> viewModel.getClassicalSongs()
-            R.id.menu_item_instrumental -> viewModel.getInstrumentalSongs()
-            R.id.menu_item_traditional -> viewModel.getTraditionalSongs()
-            R.id.menu_item_folk -> viewModel.getFolkSongs()
-            R.id.menu_item_world -> viewModel.getWorldSongs()
+            R.id.menu_item_medieval -> {
+                progressBar.visibility = View.VISIBLE
+                viewModel.getMedievalSongs(progressBar)
+            }
+            R.id.menu_item_renaissance -> {
+                progressBar.visibility = View.VISIBLE
+                viewModel.getRenaissanceSongs(progressBar)
+            }
+            R.id.menu_item_baroque -> {
+                progressBar.visibility = View.VISIBLE
+                viewModel.getBaroqueSongs(progressBar)
+            }
+            R.id.menu_item_classical -> {
+                progressBar.visibility = View.VISIBLE
+                viewModel.getClassicalSongs(progressBar)
+            }
+            R.id.menu_item_instrumental -> {
+                progressBar.visibility = View.VISIBLE
+                viewModel.getInstrumentalSongs(progressBar)
+            }
+            R.id.menu_item_traditional -> {
+                progressBar.visibility = View.VISIBLE
+                viewModel.getTraditionalSongs(progressBar)
+            }
+            R.id.menu_item_folk -> {
+                progressBar.visibility = View.VISIBLE
+                viewModel.getFolkSongs(progressBar)
+            }
+            R.id.menu_item_world -> {
+                progressBar.visibility = View.VISIBLE
+                viewModel.getWorldSongs(progressBar)
+            }
         }
         return super.onOptionsItemSelected(item)
     }

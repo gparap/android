@@ -47,6 +47,11 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
+    fun isNotVisible_SongsLoadingProgressBar() {
+        onView(withId(R.id.progressBarLoadingSongs)).check(matches(not(isDisplayed())))
+    }
+
+    @Test
     fun isVisible_welcomeText() {
         onView(withId(R.id.textViewWelcome_main)).check(matches(isDisplayed()))
         onView(withId(R.id.textViewWelcome_secondary)).check(matches(isDisplayed()))
@@ -208,5 +213,19 @@ class MainActivityInstrumentedTest {
         //assert welcome text is hidden
         onView(withId(R.id.textViewWelcome_main)).check(matches(not(isDisplayed())))
         onView(withId(R.id.textViewWelcome_secondary)).check(matches(not(isDisplayed())))
+    }
+
+    @Test
+    fun showSongsLoadingProgressBarWhenChoosingCategory() {
+        //progress must be hidden
+        onView(withId(R.id.progressBarLoadingSongs)).check(matches(not(isDisplayed())))
+
+        //open main menu's category option
+        val context = InstrumentationRegistry.getInstrumentation().context
+        Espresso.openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.world_music)).perform(click())
+
+        //progress must be visible
+        onView(withId(R.id.progressBarLoadingSongs)).check(matches(isDisplayed()))
     }
 }
