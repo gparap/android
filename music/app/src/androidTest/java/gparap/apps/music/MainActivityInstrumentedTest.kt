@@ -81,6 +81,19 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
+    fun getMedievalSongs_appBarTitleUpdatedCorrectly() {
+        //open main menu's "medieval music" option
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        Espresso.openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.classical_music)).perform(click())
+        onView(withText(R.string.medieval_period)).perform(click())
+
+        activityScenario.onActivity {
+            assert(it.supportActionBar?.title == context.resources.getString(R.string.medieval_period))
+        }
+    }
+
+    @Test
     fun getRenaissanceSongs_recyclerViewNotEmpty() {
         //open main menu's "renaissance music" option
         val context = InstrumentationRegistry.getInstrumentation().context
@@ -95,6 +108,19 @@ class MainActivityInstrumentedTest {
         activityScenario.onActivity {
             val recyclerView = it.findViewById<RecyclerView>(R.id.recyclerViewSongs)
             assert(recyclerView.adapter?.itemCount!! > 0)
+        }
+    }
+
+    @Test
+    fun getRenaissanceSongs_appBarTitleUpdatedCorrectly() {
+        //open main menu's "renaissance music" option
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        Espresso.openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.classical_music)).perform(click())
+        onView(withText(R.string.renaissance_period)).perform(click())
+
+        activityScenario.onActivity {
+            assert(it.supportActionBar?.title == context.resources.getString(R.string.renaissance_period))
         }
     }
 
@@ -117,6 +143,19 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
+    fun getBaroqueSongs_appBarTitleUpdatedCorrectly() {
+        //open main menu's "baroque music" option
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        Espresso.openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.classical_music)).perform(click())
+        onView(withText(R.string.baroque_period)).perform(click())
+
+        activityScenario.onActivity {
+            assert(it.supportActionBar?.title == context.resources.getString(R.string.baroque_period))
+        }
+    }
+
+    @Test
     fun getClassicalSongs_recyclerViewNotEmpty() {
         //open main menu's "classical music" option
         val context = InstrumentationRegistry.getInstrumentation().context
@@ -131,6 +170,19 @@ class MainActivityInstrumentedTest {
         activityScenario.onActivity {
             val recyclerView = it.findViewById<RecyclerView>(R.id.recyclerViewSongs)
             assert(recyclerView.adapter?.itemCount!! > 0)
+        }
+    }
+
+    @Test
+    fun getClassicalSongs_appBarTitleUpdatedCorrectly() {
+        //open main menu's "classical music" option
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        Espresso.openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.classical_music)).perform(click())
+        onView(withText(R.string.classical_period)).perform(click())
+
+        activityScenario.onActivity {
+            assert(it.supportActionBar?.title == context.resources.getString(R.string.classical_music))
         }
     }
 
@@ -152,6 +204,18 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
+    fun getInstrumentalSongs_appBarTitleUpdatedCorrectly() {
+        //open main menu's "instrumental music" option
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        Espresso.openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.instrumental_music)).perform(click())
+
+        activityScenario.onActivity {
+            assert(it.supportActionBar?.title == context.resources.getString(R.string.instrumental_music))
+        }
+    }
+
+    @Test
     fun getTraditionalSongs_recyclerViewNotEmpty() {
         //open main menu's "traditional music" option
         val context = InstrumentationRegistry.getInstrumentation().context
@@ -160,6 +224,18 @@ class MainActivityInstrumentedTest {
 
         //wait a little for web service response
         Thread.sleep(1667)
+
+        activityScenario.onActivity {
+            assert(it.supportActionBar?.title == context.resources.getString(R.string.traditional_music))
+        }
+    }
+
+    @Test
+    fun getTraditionalSongs_appBarTitleUpdatedCorrectly() {
+        //open main menu's "traditional music" option
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        Espresso.openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.traditional_music)).perform(click())
 
         //test here
         activityScenario.onActivity {
@@ -185,6 +261,18 @@ class MainActivityInstrumentedTest {
         }
     }
 
+    @Test
+    fun getFolkSongs_appBarTitleUpdatedCorrectly() {
+        //open main menu's "folk music" option
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        Espresso.openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.folk_music)).perform(click())
+
+        //test here
+        activityScenario.onActivity {
+            assert(it.supportActionBar?.title == context.resources.getString(R.string.folk_music))
+        }
+    }
 
     @Test
     fun getWorldSongs_recyclerViewNotEmpty() {
@@ -200,6 +288,18 @@ class MainActivityInstrumentedTest {
         activityScenario.onActivity {
             val recyclerView = it.findViewById<RecyclerView>(R.id.recyclerViewSongs)
             assert(recyclerView.adapter?.itemCount!! > 0)
+        }
+    }
+
+    @Test
+    fun getWorldSongs_appBarTitleUpdatedCorrectly() {
+        //open main menu's "world music" option
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        Espresso.openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.world_music)).perform(click())
+
+        activityScenario.onActivity {
+            assert(it.supportActionBar?.title == context.resources.getString(R.string.world_music))
         }
     }
 
