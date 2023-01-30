@@ -48,7 +48,6 @@ class SongsAdapter : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
         val iconPlay: ImageView = itemView.findViewById(R.id.imageViewPlaySong)
         val title: TextView = itemView.findViewById(R.id.textViewSongTitle)
         val duration: TextView = itemView.findViewById(R.id.textViewSongDuration)
-        val size: TextView = itemView.findViewById(R.id.textViewSongSize)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongsViewHolder {
@@ -112,7 +111,6 @@ class SongsAdapter : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
         //display song info
         holder.title.text = songs[position].songInfo[0].title
         holder.duration.text = songs[position].songInfo[0].duration
-        holder.size.text = songs[position].fileInfo[0].size
     }
 
     override fun getItemCount(): Int {
