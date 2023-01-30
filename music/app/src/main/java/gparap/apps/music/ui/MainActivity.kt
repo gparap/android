@@ -71,34 +71,43 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_item_medieval -> {
                 progressBar.visibility = View.VISIBLE
                 viewModel.getMedievalSongs(progressBar)
+                supportActionBar?.title = resources.getString(R.string.medieval_period)
+
             }
             R.id.menu_item_renaissance -> {
                 progressBar.visibility = View.VISIBLE
                 viewModel.getRenaissanceSongs(progressBar)
+                supportActionBar?.title = resources.getString(R.string.medieval_period)
             }
             R.id.menu_item_baroque -> {
                 progressBar.visibility = View.VISIBLE
                 viewModel.getBaroqueSongs(progressBar)
+                supportActionBar?.title = resources.getString(R.string.baroque_period)
             }
             R.id.menu_item_classical -> {
                 progressBar.visibility = View.VISIBLE
                 viewModel.getClassicalSongs(progressBar)
+                supportActionBar?.title = resources.getString(R.string.classical_music)
             }
             R.id.menu_item_instrumental -> {
                 progressBar.visibility = View.VISIBLE
                 viewModel.getInstrumentalSongs(progressBar)
+                supportActionBar?.title = resources.getString(R.string.instrumental_music)
             }
             R.id.menu_item_traditional -> {
                 progressBar.visibility = View.VISIBLE
                 viewModel.getTraditionalSongs(progressBar)
+                supportActionBar?.title = resources.getString(R.string.traditional_music)
             }
             R.id.menu_item_folk -> {
                 progressBar.visibility = View.VISIBLE
                 viewModel.getFolkSongs(progressBar)
+                supportActionBar?.title = resources.getString(R.string.folk_music)
             }
             R.id.menu_item_world -> {
                 progressBar.visibility = View.VISIBLE
                 viewModel.getWorldSongs(progressBar)
+                supportActionBar?.title = resources.getString(R.string.world_music)
             }
         }
         return super.onOptionsItemSelected(item)
