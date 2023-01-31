@@ -30,7 +30,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import gparap.apps.music.R
 import gparap.apps.music.data.SongResponseModel
-import gparap.apps.music.ui.MainActivity
 import gparap.apps.music.ui.SongActivity
 
 class SongsAdapter : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
@@ -120,8 +119,8 @@ class SongsAdapter : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
             //create an intent for the SongActivity
             val intent = Intent(context, SongActivity::class.java)
 
-            //get the app bar title and add it to the intent
-            val appBarTitle = (context as MainActivity).supportActionBar?.title
+            //get the song title and add it to the intent
+            val appBarTitle = songs[position].songInfo[0].title
             intent.putExtra("app_bar_title", appBarTitle)
 
             //add song extended data to the intent and goto SongActivity

@@ -37,5 +37,8 @@ class SongActivity : AppCompatActivity() {
 
         //get song extended data from intent
         viewModel.getSongData(intent)
+
+        //display the user selected song details
+        viewModel.displaySongDetails(this)
     }
 }
