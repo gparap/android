@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -16,9 +16,12 @@
         android:theme="@style/Theme.Music"
         tools:targetApi="s">
         <activity
-            android:screenOrientation="locked"
+            android:name=".ui.SongActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.MainActivity"
-            android:exported="true" >
+            android:exported="true"
+            android:screenOrientation="locked">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

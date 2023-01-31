@@ -15,8 +15,11 @@
  */
 package gparap.apps.music.data
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class HyperlinkModel(
     @SerializedName("image_link")
     val imageUrl: String,
@@ -26,4 +29,4 @@ data class HyperlinkModel(
 
     @SerializedName("download_link")
     val downloadUrl: String,
-)
+) : Parcelable

@@ -15,8 +15,11 @@
  */
 package gparap.apps.music.data
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class FileModel(
     @SerializedName("file_name")
     val name: String,
@@ -26,4 +29,4 @@ data class FileModel(
 
     @SerializedName("file_size")
     val size: String,
-)
+) : Parcelable

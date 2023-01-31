@@ -15,12 +15,15 @@
  */
 package gparap.apps.music.data
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class CategoryModel(
     @SerializedName("music_genre")
     val genre: String,
 
     @SerializedName("time_period")
     val period: Boolean,
-)
+) : Parcelable

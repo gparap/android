@@ -15,12 +15,15 @@
  */
 package gparap.apps.music.data
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class LicenceModel(
     @SerializedName("type")
     val type: String,
 
     @SerializedName("attribution_html")
     val attribution: String,
-)
+) : Parcelable
