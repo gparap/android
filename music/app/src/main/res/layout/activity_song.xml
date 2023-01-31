@@ -1,8 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.SongActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--Music category details-->
+        <TextView
+            android:id="@+id/label_category_music_genre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="Music Genre"
+            android:textStyle="bold"
+            tools:text="category_music_genre" />
+        <TextView
+            android:id="@+id/text_view_category_music_genre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_category_music_genre"
+            tools:text="category_music_genre" />
+        <TextView
+            android:id="@+id/label_category_time_period"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_category_music_genre"
+            android:text="Time Period"
+            android:textStyle="bold"
+            tools:text="category_time_period" />
+        <TextView
+            android:id="@+id/text_view_category_time_period"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="category_time_period"
+            app:layout_constraintTop_toBottomOf="@+id/label_category_time_period"/>
+
+        <!--Song details-->
+        <TextView
+            android:id="@+id/label_song_information_song_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_category_time_period"
+            android:text="Song Title"
+            android:textStyle="bold"
+            tools:text="song_information_song_title" />
+        <TextView
+            android:id="@+id/text_view_song_information_song_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_song_information_song_title"
+            tools:text="song_information_song_title" />
+        <TextView
+            android:id="@+id/label_song_information_song_duration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_song_information_song_title"
+            android:text="Song Duration"
+            android:textStyle="bold"
+            tools:text="song_information_song_duration" />
+        <TextView
+            android:id="@+id/text_view_song_information_song_duration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_song_information_song_duration"
+            tools:text="song_information_song_duration" />
+        <TextView
+            android:id="@+id/label_song_information_song_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_song_information_song_duration"
+            android:text="Song Description"
+            android:textStyle="bold"
+            tools:text="song_information_song_description" />
+        <TextView
+            android:id="@+id/text_view_song_information_song_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_song_information_song_description"
+            tools:text="song_information_song_description" />
+        <TextView
+            android:id="@+id/label_song_information_song_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_song_information_song_description"
+            android:text="Song Date"
+            android:textStyle="bold"
+            tools:text="song_information_song_date" />
+        <TextView
+            android:id="@+id/text_view_song_information_song_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_song_information_song_date"
+            tools:text="song_information_song_date" />
+        <TextView
+            android:id="@+id/label_song_information_original_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_song_information_song_date"
+            android:text="Original Author"
+            android:textStyle="bold"
+            tools:text="song_information_original_author" />
+        <TextView
+            android:id="@+id/text_view_song_information_original_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_song_information_original_author"
+            tools:text="song_information_original_author" />
+        <TextView
+            android:id="@+id/label_song_information_modern_performer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_song_information_original_author"
+            android:text="Modern Performer"
+            android:textStyle="bold"
+            tools:text="song_information_modern_performer" />
+        <TextView
+            android:id="@+id/text_view_song_information_modern_performer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_song_information_modern_performer"
+            tools:text="song_information_modern_performer" />
+
+        <!--File details-->
+        <TextView
+            android:id="@+id/label_file_information_file_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_song_information_modern_performer"
+            android:text="File Name"
+            android:textStyle="bold"
+            tools:text="file_information_file_name" />
+        <TextView
+            android:id="@+id/text_view_file_information_file_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_file_information_file_name"
+            tools:text="file_information_file_name" />
+        <TextView
+            android:id="@+id/label_file_information_mime_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_file_information_file_name"
+            android:text="Mime Type"
+            android:textStyle="bold"
+            tools:text="file_information_mime_type" />
+        <TextView
+            android:id="@+id/text_view_file_information_mime_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_file_information_mime_type"
+            tools:text="file_information_mime_type" />
+        <TextView
+            android:id="@+id/label_file_information_file_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_file_information_mime_type"
+            android:text="File Size"
+            android:textStyle="bold"
+            tools:text="file_information_file_size" />
+        <TextView
+            android:id="@+id/text_view_file_information_file_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_file_information_file_size"
+            tools:text="file_information_file_size" />
+
+        <!--Url details-->
+        <TextView
+            android:id="@+id/label_links_image_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_file_information_file_size"
+            android:text="Image Link"
+            android:textStyle="bold"
+            tools:text="links_image_link" />
+        <TextView
+            android:id="@+id/text_view_links_image_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_links_image_link"
+            tools:text="links_image_link" />
+        <TextView
+            android:id="@+id/label_links_file_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_links_image_link"
+            android:text="File Link"
+            android:textStyle="bold"
+            tools:text="links_file_link" />
+        <TextView
+            android:id="@+id/text_view_links_file_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_links_file_link"
+            tools:text="links_file_link" />
+        <TextView
+            android:id="@+id/label_links_download_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_links_file_link"
+            android:text="Download Link"
+            android:textStyle="bold"
+            tools:text="file_information_file_size" />
+        <TextView
+            android:id="@+id/text_view_links_download_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_links_download_link"
+            tools:text="links_download_link" />
+
+        <!--License details-->
+        <TextView
+            android:id="@+id/label_licence_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_links_download_link"
+            android:text="Licence Type"
+            android:textStyle="bold"
+            tools:text="licence_type" />
+        <TextView
+            android:id="@+id/text_view_licence_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_licence_type"
+            tools:text="licence_type" />
+        <TextView
+            android:id="@+id/label_licence_attribution_html"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_licence_type"
+            android:text="Attribution Html"
+            android:textStyle="bold"
+            tools:text="licence_attribution_html" />
+        <TextView
+            android:id="@+id/text_view_licence_attribution_html"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_licence_attribution_html"
+            tools:text="licence_attribution_html" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -25,5 +25,5 @@ data class CategoryModel(
     val genre: String,
 
     @SerializedName("time_period")
-    val period: Boolean,
+    val period: String,
 ) : Parcelable
