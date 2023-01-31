@@ -18,6 +18,7 @@ package gparap.apps.music.adapters
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.media.AudioAttributes
 import android.media.MediaPlayer
 import android.view.LayoutInflater
@@ -29,10 +30,12 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import gparap.apps.music.R
 import gparap.apps.music.data.SongResponseModel
+import gparap.apps.music.ui.MainActivity
+import gparap.apps.music.ui.SongActivity
 
 class SongsAdapter : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
     private lateinit var context: Context
-    private var songs = ArrayList<SongResponseModel>()
+    private var songs = kotlin.collections.ArrayList<SongResponseModel>()
     private var mediaPlayer: MediaPlayer? = null
     private var songDialog: AlertDialog? = null
 
@@ -111,6 +114,25 @@ class SongsAdapter : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
         //display song info
         holder.title.text = songs[position].songInfo[0].title
         holder.duration.text = songs[position].songInfo[0].duration
+
+        //goto SongActivity
+        holder.itemView.setOnClickListener {
+            //create an intent for the SongActivity
+            val intent = Intent(context, SongActivity::class.java)
+
+            //get the app bar title and add it to the intent
+            val appBarTitle = (context as MainActivity).supportActionBar?.title
+            intent.putExtra("app_bar_title", appBarTitle)
+
+            //add song extended data to the intent and goto SongActivity
+            intent.putExtra("song_info", songs[position].songInfo[0])
+            intent.putExtra("song_urls", songs[position].urls[0])
+            intent.putExtra("song_file", songs[position].fileInfo[0])
+            intent.putExtra("song_attributes", songs[position].attributes[0])
+            intent.putExtra("song_category", songs[position].category[0])
+            intent.putExtra("song_licence", songs[position].licence[0])
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

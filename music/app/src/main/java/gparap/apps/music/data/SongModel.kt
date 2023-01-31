@@ -15,8 +15,11 @@
  */
 package gparap.apps.music.data
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class SongModel(
     @SerializedName("song_title")
     val title: String,
@@ -35,4 +38,4 @@ data class SongModel(
 
     @SerializedName("modern_performer")
     val performer: String,
-)
+) : Parcelable
