@@ -24,6 +24,7 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import gparap.apps.music.ui.MainActivity
+import org.hamcrest.core.IsNot.not
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -54,5 +55,23 @@ class SongActivityInstrumentedTest {
         onView(withId(androidx.appcompat.R.id.action_bar)).check(
             matches(hasDescendant(withText(songTitle)))
         )
+    }
+
+    @Test
+    fun testIfEmptyFieldAndItsLabelAreHidden() {
+        //!!! it is always the 1st song in the songs API
+        val songTitle = "Achaidh Cheide (ISRC USUAN1100340)"
+
+        //open main menu's "world music" option
+        val context = InstrumentationRegistry.getInstrumentation().context
+        Espresso.openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.world_music)).perform(click())
+
+        //wait a little for web service response and click the first song
+        Thread.sleep(1667)
+        onView(withText(songTitle)).perform(click())
+
+        onView(withId(R.id.text_view_links_image_link)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.label_links_image_link)).check(matches(not(isDisplayed())))
     }
 }
