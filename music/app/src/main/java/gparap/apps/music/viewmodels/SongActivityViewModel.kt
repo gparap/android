@@ -24,6 +24,7 @@ import androidx.lifecycle.ViewModel
 import gparap.apps.music.R
 import gparap.apps.music.data.*
 import gparap.apps.music.ui.SongActivity
+import gparap.apps.music.utils.Utils
 
 class SongActivityViewModel : ViewModel() {
     private var songInfo: SongModel? = null
@@ -39,25 +40,24 @@ class SongActivityViewModel : ViewModel() {
     }
 
     /** Get song extended data from intent. */
+    @Suppress("DEPRECATION")
     fun getSongData(intent: Intent) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             songInfo = intent.getParcelableExtra("song_info", SongModel::class.java)
             songInfoUrls = intent.getParcelableExtra("song_urls", HyperlinkModel::class.java)
             songInfoFiles = intent.getParcelableExtra("song_file", FileModel::class.java)
-            songInfoAttributes = intent.getParcelableExtra("song_attributes", AttributeModel::class.java)
-            songInfoCategory  = intent.getParcelableExtra("song_category", CategoryModel::class.java)
+            songInfoAttributes =
+                intent.getParcelableExtra("song_attributes", AttributeModel::class.java)
+            songInfoCategory = intent.getParcelableExtra("song_category", CategoryModel::class.java)
             songInfoLicence = intent.getParcelableExtra("song_licence", LicenceModel::class.java)
 
-            //DEBUG
-            println(songInfo)
-            println(songInfoUrls)
-            println(songInfoFiles)
-            println(songInfoAttributes)
-            println(songInfoCategory)
-            println(songInfoLicence)
-
         } else {
-            TODO("VERSION.SDK_INT < TIRAMISU")
+            songInfo = intent.getParcelableExtra("song_info")
+            songInfoUrls = intent.getParcelableExtra("song_urls")
+            songInfoFiles = intent.getParcelableExtra("song_file")
+            songInfoAttributes = intent.getParcelableExtra("song_attributes")
+            songInfoCategory = intent.getParcelableExtra("song_category")
+            songInfoLicence = intent.getParcelableExtra("song_licence")
         }
     }
 
@@ -71,6 +71,9 @@ class SongActivityViewModel : ViewModel() {
         }
         activity.findViewById<TextView>(R.id.text_view_category_time_period).apply {
             this.text = songInfoCategory?.period
+            Utils.hideEmptyViews(
+                this, songInfoCategory?.period, R.id.label_category_time_period, activity
+            )
         }
 
         //Song info
@@ -85,12 +88,21 @@ class SongActivityViewModel : ViewModel() {
         }
         activity.findViewById<TextView>(R.id.text_view_song_information_song_date).apply {
             this.text = songInfo?.date
+            Utils.hideEmptyViews(
+                this, songInfo?.date, R.id.label_song_information_song_date, activity
+            )
         }
         activity.findViewById<TextView>(R.id.text_view_song_information_original_author).apply {
             this.text = songInfo?.author
+            Utils.hideEmptyViews(
+                this, songInfo?.author, R.id.label_song_information_original_author, activity
+            )
         }
         activity.findViewById<TextView>(R.id.text_view_song_information_modern_performer).apply {
             this.text = songInfo?.performer
+            Utils.hideEmptyViews(
+                this, songInfo?.performer, R.id.label_song_information_modern_performer, activity
+            )
         }
 
         //File info
@@ -102,11 +114,17 @@ class SongActivityViewModel : ViewModel() {
         }
         activity.findViewById<TextView>(R.id.text_view_file_information_file_size).apply {
             this.text = songInfoFiles?.size
+            Utils.hideEmptyViews(
+                this, songInfoFiles?.size, R.id.label_file_information_file_size, activity
+            )
         }
 
         //Url info
         activity.findViewById<TextView>(R.id.text_view_links_image_link).apply {
             this.text = songInfoUrls?.imageUrl
+            Utils.hideEmptyViews(
+                this, songInfoUrls?.imageUrl, R.id.label_links_image_link, activity
+            )
         }
         activity.findViewById<TextView>(R.id.text_view_links_file_link).apply {
             this.text = songInfoUrls?.fileUrl
