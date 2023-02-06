@@ -18,6 +18,7 @@ package gparap.apps.music.viewmodels
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.text.method.LinkMovementMethod
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.lifecycle.ViewModel
@@ -121,16 +122,22 @@ class SongActivityViewModel : ViewModel() {
 
         //Url info
         activity.findViewById<TextView>(R.id.text_view_links_image_link).apply {
-            this.text = songInfoUrls?.imageUrl
             Utils.hideEmptyViews(
                 this, songInfoUrls?.imageUrl, R.id.label_links_image_link, activity
             )
+            //display as link
+            this.text = Utils.createLink(songInfoUrls?.imageUrl, songInfoUrls?.imageUrl)
+            this.movementMethod = LinkMovementMethod.getInstance()
         }
         activity.findViewById<TextView>(R.id.text_view_links_file_link).apply {
-            this.text = songInfoUrls?.fileUrl
+            //display as link
+            this.text = Utils.createLink(songInfoUrls?.fileUrl, songInfoUrls?.fileUrl)
+            this.movementMethod = LinkMovementMethod.getInstance()
         }
         activity.findViewById<TextView>(R.id.text_view_links_download_link).apply {
-            this.text = songInfoUrls?.downloadUrl
+            //display as link
+            this.text = Utils.createLink(songInfoUrls?.downloadUrl, songInfoUrls?.downloadUrl)
+            this.movementMethod = LinkMovementMethod.getInstance()
         }
 
         //License info

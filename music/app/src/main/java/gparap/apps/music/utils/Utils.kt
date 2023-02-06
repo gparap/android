@@ -16,6 +16,8 @@
 package gparap.apps.music.utils
 
 import android.app.Activity
+import android.os.Build
+import android.text.Html
 import android.view.View
 import android.widget.TextView
 
@@ -28,5 +30,24 @@ object Utils {
                 visibility = View.GONE
             }
         }
+    }
+
+    /** Returns a text that has markup objects containing a link. */
+    fun createLink(linkHref: String?, linkText: String?): android.text.Spanned {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Html.fromHtml(
+                "<a href=\"" + linkHref + "\">" +
+                        linkText +
+                        "</a>", Html.FROM_HTML_MODE_LEGACY
+            )
+        } else {
+            @Suppress("DEPRECATION")
+            Html.fromHtml(
+                "<a href=\"" + linkHref + "\">" +
+                        linkText +
+                        "</a>"
+            )
+        }
+
     }
 }
