@@ -237,12 +237,17 @@
             android:text="Attribution Html"
             android:textStyle="bold"
             tools:text="licence_attribution_html" />
-        <TextView
-            android:id="@+id/text_view_licence_attribution_html"
+        <!--Container for the WebView that contains the attribution details-->
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/label_licence_attribution_html"
-            tools:text="licence_attribution_html" />
+            android:layout_height="match_parent">
+            <WebView
+                android:id="@+id/text_view_licence_attribution_html"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="licence_attribution_html" />
+        </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

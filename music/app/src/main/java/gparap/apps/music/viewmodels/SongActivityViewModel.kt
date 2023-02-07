@@ -19,6 +19,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.text.method.LinkMovementMethod
+import android.webkit.WebView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.lifecycle.ViewModel
@@ -144,8 +145,10 @@ class SongActivityViewModel : ViewModel() {
         activity.findViewById<TextView>(R.id.text_view_licence_type).apply {
             this.text = songInfoLicence?.type
         }
-        activity.findViewById<TextView>(R.id.text_view_licence_attribution_html).apply {
-            this.text = songInfoLicence?.attribution
+        activity.findViewById<WebView>(R.id.text_view_licence_attribution_html).apply {
+            this.loadDataWithBaseURL(
+                null, songInfoLicence?.attribution!!, "text/html", "UTF-8", null
+            )
         }
     }
 }
