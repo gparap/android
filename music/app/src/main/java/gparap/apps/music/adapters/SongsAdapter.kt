@@ -31,6 +31,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import gparap.apps.music.R
 import gparap.apps.music.data.SongResponseModel
 import gparap.apps.music.ui.SongActivity
+import gparap.apps.music.utils.AppConstants
 
 class SongsAdapter : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
     private lateinit var context: Context
@@ -91,12 +92,12 @@ class SongsAdapter : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
 
             //display a dialog with the current song that is playing
             songDialog = AlertDialog.Builder(context)
-                .setNegativeButton("Stop") { dialog, _ ->
+                .setNegativeButton(AppConstants.DIALOG_TEXT_STOP) { dialog, _ ->
                     //stop the song manually
                     mediaPlayer?.release()
                     dialog.dismiss()
                 }
-                .setTitle("Now Playing...")
+                .setTitle(AppConstants.DIALOG_TEXT_PLAYING)
                 .setMessage(songs[position].songInfo[0].title)
                 .setCancelable(false)
                 .create().apply {
@@ -121,15 +122,15 @@ class SongsAdapter : RecyclerView.Adapter<SongsAdapter.SongsViewHolder>() {
 
             //get the song title and add it to the intent
             val appBarTitle = songs[position].songInfo[0].title
-            intent.putExtra("app_bar_title", appBarTitle)
+            intent.putExtra(AppConstants.EXTRAS_APPBAR_TITLE, appBarTitle)
 
             //add song extended data to the intent and goto SongActivity
-            intent.putExtra("song_info", songs[position].songInfo[0])
-            intent.putExtra("song_urls", songs[position].urls[0])
-            intent.putExtra("song_file", songs[position].fileInfo[0])
-            intent.putExtra("song_attributes", songs[position].attributes[0])
-            intent.putExtra("song_category", songs[position].category[0])
-            intent.putExtra("song_licence", songs[position].licence[0])
+            intent.putExtra(AppConstants.EXTRAS_SONG_INFO, songs[position].songInfo[0])
+            intent.putExtra(AppConstants.EXTRAS_SONG_URLS, songs[position].urls[0])
+            intent.putExtra(AppConstants.EXTRAS_SONG_FILE, songs[position].fileInfo[0])
+            intent.putExtra(AppConstants.EXTRAS_SONG_ATTRIBUTES, songs[position].attributes[0])
+            intent.putExtra(AppConstants.EXTRAS_SONG_CATEGORY, songs[position].category[0])
+            intent.putExtra(AppConstants.EXTRAS_SONG_LICENCE, songs[position].licence[0])
             context.startActivity(intent)
         }
     }

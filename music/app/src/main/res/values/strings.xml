@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">Music</string>
     <string name="desc_icon_for_music_item">Icon for music item</string>
-    <!--Classical Music-->
+
+    <!--Welcome texts-->
+    <string name="welcome_text_main">Welcome to World Music!</string>
+    <string name="welcome_text_secondary">Please, choose a music category from the menu and enjoy…</string>
+
+    <!--Music & Time Period texts-->
     <string name="medieval_period">Medieval Period</string>
     <string name="renaissance_period">Renaissance Period</string>
     <string name="baroque_period">Baroque Period</string>
@@ -11,6 +16,22 @@
     <string name="traditional_music">Traditional Music</string>
     <string name="folk_music">Folk Music</string>
     <string name="world_music">World Music</string>
-    <string name="welcome_text_main">Welcome to World Music!</string>
-    <string name="welcome_text_secondary">Please, choose a music category from the menu and enjoy…</string>
+
+    <!--Label texts-->
+    <string name="label_music_genre">Music Genre</string>
+    <string name="label_time_period">Time Period</string>
+    <string name="label_song_title">Song Title</string>
+    <string name="label_song_duration">Song Duration</string>
+    <string name="label_song_description">Song Description</string>
+    <string name="label_song_date">Song Date</string>
+    <string name="label_original_author">Original Author</string>
+    <string name="label_modern_performer">Modern Performer</string>
+    <string name="label_file_name">File Name</string>
+    <string name="label_mime_type">Mime Type</string>
+    <string name="label_file_size">File Size</string>
+    <string name="label_image_link">Image Link</string>
+    <string name="label_file_link">File Link</string>
+    <string name="label_download_link">Download Link</string>
+    <string name="label_licence_type">Licence Type</string>
+    <string name="label_attribution_html">Attribution</string>
 </resources>
