@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Style for labels that describe the song details-->
+    <style name="TextViewSongLabel">
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:background">@color/teal_200</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--Style for the song details-->
+    <style name="TextViewSongData">
+        <item name="android:padding">8dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+</resources>

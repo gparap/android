@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_item_renaissance -> {
                 progressBar.visibility = View.VISIBLE
                 viewModel.getRenaissanceSongs(progressBar)
-                supportActionBar?.title = resources.getString(R.string.medieval_period)
+                supportActionBar?.title = resources.getString(R.string.renaissance_period)
             }
             R.id.menu_item_baroque -> {
                 progressBar.visibility = View.VISIBLE
