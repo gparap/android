@@ -18,4 +18,19 @@ package gparap.apps.music.utils
 object AppConstants {
     const val BASE_URL = "https://www.gparap.com"
     const val API_KEY = "API_KEY"
+    const val MIME_TYPE = "text/html"
+    const val ENCODING= "UTF-8"
+
+    //Dialog texts
+    const val DIALOG_TEXT_STOP = "Stop"
+    const val DIALOG_TEXT_PLAYING = "Now Playing..."
+
+    //Intent extras
+    const val EXTRAS_APPBAR_TITLE = "app_bar_title"
+    const val EXTRAS_SONG_INFO = "song_info"
+    const val EXTRAS_SONG_URLS = "song_urls"
+    const val EXTRAS_SONG_FILE = "song_file"
+    const val EXTRAS_SONG_ATTRIBUTES = "song_attributes"
+    const val EXTRAS_SONG_CATEGORY = "song_category"
+    const val EXTRAS_SONG_LICENCE = "song_licence"
 }

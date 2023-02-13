@@ -26,6 +26,7 @@ import androidx.lifecycle.ViewModel
 import gparap.apps.music.R
 import gparap.apps.music.data.*
 import gparap.apps.music.ui.SongActivity
+import gparap.apps.music.utils.AppConstants
 import gparap.apps.music.utils.Utils
 
 class SongActivityViewModel : ViewModel() {
@@ -38,28 +39,28 @@ class SongActivityViewModel : ViewModel() {
 
     /** Update activity's AppBar title from intent data. */
     fun updateTitle(actionBar: ActionBar?, intent: Intent) {
-        actionBar?.title = intent.getStringExtra("app_bar_title")
+        actionBar?.title = intent.getStringExtra(AppConstants.EXTRAS_APPBAR_TITLE)
     }
 
     /** Get song extended data from intent. */
     @Suppress("DEPRECATION")
     fun getSongData(intent: Intent) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            songInfo = intent.getParcelableExtra("song_info", SongModel::class.java)
-            songInfoUrls = intent.getParcelableExtra("song_urls", HyperlinkModel::class.java)
-            songInfoFiles = intent.getParcelableExtra("song_file", FileModel::class.java)
+            songInfo = intent.getParcelableExtra(AppConstants.EXTRAS_SONG_INFO, SongModel::class.java)
+            songInfoUrls = intent.getParcelableExtra(AppConstants.EXTRAS_SONG_URLS, HyperlinkModel::class.java)
+            songInfoFiles = intent.getParcelableExtra(AppConstants.EXTRAS_SONG_FILE, FileModel::class.java)
             songInfoAttributes =
-                intent.getParcelableExtra("song_attributes", AttributeModel::class.java)
-            songInfoCategory = intent.getParcelableExtra("song_category", CategoryModel::class.java)
-            songInfoLicence = intent.getParcelableExtra("song_licence", LicenceModel::class.java)
+                intent.getParcelableExtra(AppConstants.EXTRAS_SONG_ATTRIBUTES, AttributeModel::class.java)
+            songInfoCategory = intent.getParcelableExtra(AppConstants.EXTRAS_SONG_CATEGORY, CategoryModel::class.java)
+            songInfoLicence = intent.getParcelableExtra(AppConstants.EXTRAS_SONG_LICENCE, LicenceModel::class.java)
 
         } else {
-            songInfo = intent.getParcelableExtra("song_info")
-            songInfoUrls = intent.getParcelableExtra("song_urls")
-            songInfoFiles = intent.getParcelableExtra("song_file")
-            songInfoAttributes = intent.getParcelableExtra("song_attributes")
-            songInfoCategory = intent.getParcelableExtra("song_category")
-            songInfoLicence = intent.getParcelableExtra("song_licence")
+            songInfo = intent.getParcelableExtra(AppConstants.EXTRAS_SONG_INFO)
+            songInfoUrls = intent.getParcelableExtra(AppConstants.EXTRAS_SONG_URLS)
+            songInfoFiles = intent.getParcelableExtra(AppConstants.EXTRAS_SONG_FILE)
+            songInfoAttributes = intent.getParcelableExtra(AppConstants.EXTRAS_SONG_ATTRIBUTES)
+            songInfoCategory = intent.getParcelableExtra(AppConstants.EXTRAS_SONG_CATEGORY)
+            songInfoLicence = intent.getParcelableExtra(AppConstants.EXTRAS_SONG_LICENCE)
         }
     }
 
@@ -147,7 +148,7 @@ class SongActivityViewModel : ViewModel() {
         }
         activity.findViewById<WebView>(R.id.text_view_licence_attribution_html).apply {
             this.loadDataWithBaseURL(
-                null, songInfoLicence?.attribution!!, "text/html", "UTF-8", null
+                null, songInfoLicence?.attribution!!, AppConstants.MIME_TYPE, AppConstants.ENCODING, null
             )
         }
     }

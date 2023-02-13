@@ -16,7 +16,7 @@
             style="@style/TextViewSongLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Music Genre"
+            android:text="@string/label_music_genre"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="category_music_genre" />
         <TextView
@@ -31,7 +31,7 @@
             style="@style/TextViewSongLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Time Period"
+            android:text="@string/label_time_period"
             app:layout_constraintTop_toBottomOf="@+id/text_view_category_music_genre"
             tools:text="category_time_period" />
         <TextView
@@ -48,7 +48,7 @@
             style="@style/TextViewSongLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Song Title"
+            android:text="@string/label_song_title"
             app:layout_constraintTop_toBottomOf="@+id/text_view_category_time_period"
             tools:text="song_information_song_title" />
         <TextView
@@ -63,7 +63,7 @@
             style="@style/TextViewSongLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Song Duration"
+            android:text="@string/label_song_duration"
             app:layout_constraintTop_toBottomOf="@+id/text_view_song_information_song_title"
             tools:text="song_information_song_duration" />
         <TextView
@@ -78,7 +78,7 @@
             style="@style/TextViewSongLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Song Description"
+            android:text="@string/label_song_description"
             app:layout_constraintTop_toBottomOf="@+id/text_view_song_information_song_duration"
             tools:text="song_information_song_description" />
         <TextView
@@ -93,7 +93,7 @@
             style="@style/TextViewSongLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Song Date"
+            android:text="@string/label_song_date"
             app:layout_constraintTop_toBottomOf="@+id/text_view_song_information_song_description"
             tools:text="song_information_song_date" />
         <TextView
@@ -108,7 +108,7 @@
             style="@style/TextViewSongLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Original Author"
+            android:text="@string/label_original_author"
             app:layout_constraintTop_toBottomOf="@+id/text_view_song_information_song_date"
             tools:text="song_information_original_author" />
         <TextView
@@ -123,7 +123,7 @@
             style="@style/TextViewSongLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Modern Performer"
+            android:text="@string/label_modern_performer"
             app:layout_constraintTop_toBottomOf="@+id/text_view_song_information_original_author"
             tools:text="song_information_modern_performer" />
         <TextView
@@ -140,7 +140,7 @@
             style="@style/TextViewSongLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="File Name"
+            android:text="@string/label_file_name"
             app:layout_constraintTop_toBottomOf="@+id/text_view_song_information_modern_performer"
             tools:text="file_information_file_name" />
         <TextView
@@ -155,7 +155,7 @@
             style="@style/TextViewSongLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mime Type"
+            android:text="@string/label_mime_type"
             app:layout_constraintTop_toBottomOf="@+id/text_view_file_information_file_name"
             tools:text="file_information_mime_type" />
         <TextView
@@ -170,7 +170,7 @@
             style="@style/TextViewSongLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="File Size"
+            android:text="@string/label_file_size"
             app:layout_constraintTop_toBottomOf="@+id/text_view_file_information_mime_type"
             tools:text="file_information_file_size" />
         <TextView
@@ -187,7 +187,7 @@
             style="@style/TextViewSongLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Image Link"
+            android:text="@string/label_image_link"
             app:layout_constraintTop_toBottomOf="@+id/text_view_file_information_file_size"
             tools:text="links_image_link" />
         <TextView
@@ -202,7 +202,7 @@
             style="@style/TextViewSongLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="File Link"
+            android:text="@string/label_file_link"
             app:layout_constraintTop_toBottomOf="@+id/text_view_links_image_link"
             tools:text="links_file_link" />
         <TextView
@@ -217,7 +217,7 @@
             style="@style/TextViewSongLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Download Link"
+            android:text="@string/label_download_link"
             app:layout_constraintTop_toBottomOf="@+id/text_view_links_file_link"
             tools:text="file_information_file_size" />
         <TextView
@@ -234,7 +234,7 @@
             style="@style/TextViewSongLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Licence Type"
+            android:text="@string/label_licence_type"
             app:layout_constraintTop_toBottomOf="@+id/text_view_links_download_link"
             tools:text="licence_type" />
         <TextView
@@ -249,7 +249,7 @@
             style="@style/TextViewSongLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Attribution Html"
+            android:text="@string/label_attribution_html"
             app:layout_constraintTop_toBottomOf="@+id/text_view_licence_type"
             tools:text="licence_attribution_html" />
 
