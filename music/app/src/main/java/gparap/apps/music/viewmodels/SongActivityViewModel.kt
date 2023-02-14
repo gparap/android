@@ -109,9 +109,6 @@ class SongActivityViewModel : ViewModel() {
         }
 
         //File info
-        activity.findViewById<TextView>(R.id.text_view_file_information_file_name).apply {
-            this.text = songInfoFiles?.name
-        }
         activity.findViewById<TextView>(R.id.text_view_file_information_mime_type).apply {
             this.text = songInfoFiles?.format
         }
@@ -131,11 +128,6 @@ class SongActivityViewModel : ViewModel() {
             this.text = Utils.createLink(songInfoUrls?.imageUrl, songInfoUrls?.imageUrl)
             this.movementMethod = LinkMovementMethod.getInstance()
         }
-        activity.findViewById<TextView>(R.id.text_view_links_file_link).apply {
-            //display as link
-            this.text = Utils.createLink(songInfoUrls?.fileUrl, songInfoUrls?.fileUrl)
-            this.movementMethod = LinkMovementMethod.getInstance()
-        }
         activity.findViewById<TextView>(R.id.text_view_links_download_link).apply {
             //display as link
             this.text = Utils.createLink(songInfoUrls?.downloadUrl, songInfoUrls?.downloadUrl)
@@ -143,9 +135,6 @@ class SongActivityViewModel : ViewModel() {
         }
 
         //License info
-        activity.findViewById<TextView>(R.id.text_view_licence_type).apply {
-            this.text = songInfoLicence?.type
-        }
         activity.findViewById<WebView>(R.id.text_view_licence_attribution_html).apply {
             this.loadDataWithBaseURL(
                 null, songInfoLicence?.attribution!!, AppConstants.MIME_TYPE, AppConstants.ENCODING, null
