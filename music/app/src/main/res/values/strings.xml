@@ -26,12 +26,9 @@
     <string name="label_song_date">Song Date</string>
     <string name="label_original_author">Original Author</string>
     <string name="label_modern_performer">Modern Performer</string>
-    <string name="label_file_name">File Name</string>
     <string name="label_mime_type">Mime Type</string>
     <string name="label_file_size">File Size</string>
     <string name="label_image_link">Image Link</string>
-    <string name="label_file_link">File Link</string>
     <string name="label_download_link">Download Link</string>
-    <string name="label_licence_type">Licence Type</string>
     <string name="label_attribution_html">Attribution</string>
 </resources>

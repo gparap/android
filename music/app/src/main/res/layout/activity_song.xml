@@ -136,27 +136,12 @@
 
         <!--File details-->
         <TextView
-            android:id="@+id/label_file_information_file_name"
-            style="@style/TextViewSongLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/label_file_name"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_song_information_modern_performer"
-            tools:text="file_information_file_name" />
-        <TextView
-            android:id="@+id/text_view_file_information_file_name"
-            style="@style/TextViewSongData"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/label_file_information_file_name"
-            tools:text="file_information_file_name" />
-        <TextView
             android:id="@+id/label_file_information_mime_type"
             style="@style/TextViewSongLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_mime_type"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_file_information_file_name"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_song_information_modern_performer"
             tools:text="file_information_mime_type" />
         <TextView
             android:id="@+id/text_view_file_information_mime_type"
@@ -198,27 +183,12 @@
             app:layout_constraintTop_toBottomOf="@+id/label_links_image_link"
             tools:text="links_image_link" />
         <TextView
-            android:id="@+id/label_links_file_link"
-            style="@style/TextViewSongLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/label_file_link"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_links_image_link"
-            tools:text="links_file_link" />
-        <TextView
-            android:id="@+id/text_view_links_file_link"
-            style="@style/TextViewSongData"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/label_links_file_link"
-            tools:text="links_file_link" />
-        <TextView
             android:id="@+id/label_links_download_link"
             style="@style/TextViewSongLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_download_link"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_links_file_link"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_links_image_link"
             tools:text="file_information_file_size" />
         <TextView
             android:id="@+id/text_view_links_download_link"
@@ -230,27 +200,12 @@
 
         <!--License details-->
         <TextView
-            android:id="@+id/label_licence_type"
-            style="@style/TextViewSongLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/label_licence_type"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_links_download_link"
-            tools:text="licence_type" />
-        <TextView
-            android:id="@+id/text_view_licence_type"
-            style="@style/TextViewSongData"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/label_licence_type"
-            tools:text="licence_type" />
-        <TextView
             android:id="@+id/label_licence_attribution_html"
             style="@style/TextViewSongLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_attribution_html"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_licence_type"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_links_download_link"
             tools:text="licence_attribution_html" />
 
         <!--Container for the WebView that contains the attribution details-->
