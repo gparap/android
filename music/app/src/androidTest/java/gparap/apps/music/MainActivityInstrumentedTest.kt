@@ -218,7 +218,7 @@ class MainActivityInstrumentedTest {
     @Test
     fun getTraditionalSongs_recyclerViewNotEmpty() {
         //open main menu's "traditional music" option
-        val context = InstrumentationRegistry.getInstrumentation().context
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
         Espresso.openActionBarOverflowOrOptionsMenu(context)
         onView(withText(R.string.traditional_music)).perform(click())
 
@@ -236,6 +236,9 @@ class MainActivityInstrumentedTest {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         Espresso.openActionBarOverflowOrOptionsMenu(context)
         onView(withText(R.string.traditional_music)).perform(click())
+
+        //wait a little for web service response
+        Thread.sleep(1667)
 
         //test here
         activityScenario.onActivity {
