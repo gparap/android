@@ -21,6 +21,7 @@ import android.text.Html
 import android.view.View
 import android.widget.TextView
 
+
 object Utils {
     /** Hides an empty text view with its accompanying label when no song details are available. */
     fun hideEmptyViews(textView: TextView, field: String?, labelId: Int, activity: Activity) {
@@ -36,9 +37,9 @@ object Utils {
     fun createLink(linkHref: String?, linkText: String?): android.text.Spanned {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             Html.fromHtml(
-                "<a href=\"" + linkHref + "\">" +
+                "<font color='" + AppConstants.HTML_LINK_COLOR + "'><a href=\"" + linkHref + "\">" +
                         linkText +
-                        "</a>", Html.FROM_HTML_MODE_LEGACY
+                        "</a></font>", Html.FROM_HTML_MODE_LEGACY
             )
         } else {
             @Suppress("DEPRECATION")
