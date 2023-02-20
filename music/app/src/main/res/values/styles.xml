@@ -4,7 +4,7 @@
     <style name="TextViewSongLabel">
         <item name="android:layout_margin">4dp</item>
         <item name="android:padding">2dp</item>
-        <item name="android:background">@color/teal_200</item>
+        <item name="android:background">@color/secondary_light_color</item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle">bold</item>
     </style>

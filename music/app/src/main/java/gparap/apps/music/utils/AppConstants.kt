@@ -20,6 +20,7 @@ object AppConstants {
     const val API_KEY = "API_KEY"
     const val MIME_TYPE = "text/html"
     const val ENCODING= "UTF-8"
+    const val HTML_LINK_COLOR = "#0000EE"
 
     //Dialog texts
     const val DIALOG_TEXT_STOP = "Stop"
