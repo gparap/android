@@ -22,6 +22,7 @@ import android.text.method.LinkMovementMethod
 import android.webkit.WebView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import gparap.apps.music.R
 import gparap.apps.music.data.*
@@ -134,10 +135,19 @@ class SongActivityViewModel : ViewModel() {
             this.movementMethod = LinkMovementMethod.getInstance()
         }
 
-        //License info
+        //Attribution info
         activity.findViewById<WebView>(R.id.text_view_licence_attribution_html).apply {
+            var htmlText = songInfoLicence?.attribution!!
+
+            //change the background color and the text color if we are on dark mode
+            val uiMode = resources.configuration.uiMode.and(android.content.res.Configuration.UI_MODE_NIGHT_MASK)
+            if (uiMode == android.content.res.Configuration.UI_MODE_NIGHT_YES) {
+                this.setBackgroundColor(ContextCompat.getColor(context, com.google.android.material.R.color.material_on_background_disabled))
+                htmlText = "<font color='white'" +  songInfoLicence?.attribution!! +  "</font>"
+            }
+
             this.loadDataWithBaseURL(
-                null, songInfoLicence?.attribution!!, AppConstants.MIME_TYPE, AppConstants.ENCODING, null
+                null, htmlText, AppConstants.MIME_TYPE, AppConstants.ENCODING, null
             )
         }
     }

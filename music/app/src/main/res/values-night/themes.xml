@@ -13,4 +13,13 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!--Style for labels that describe the song details-->
+    <style name="TextViewSongLabel" parent="Theme.Music">
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:background">@color/material_on_background_disabled</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
