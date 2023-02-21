@@ -16,6 +16,10 @@
 package gparap.apps.music.utils
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.Context
+import android.media.AudioAttributes
+import android.media.MediaPlayer
 import android.os.Build
 import android.text.Html
 import android.view.View
@@ -50,5 +54,38 @@ object Utils {
             )
         }
 
+    }
+
+    /** Initializes a new MediaPlayer object. */
+    fun initMediaPlayer(dataSource: String): MediaPlayer {
+        val mediaPlayer = MediaPlayer().apply {
+            setAudioAttributes(
+                AudioAttributes.Builder()
+                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                    .setUsage(AudioAttributes.USAGE_MEDIA)
+                    .build()
+            )
+            setDataSource(dataSource)
+            setScreenOnWhilePlaying(true)
+        }
+        return mediaPlayer
+    }
+
+    /** Creates a dialog to be used for the current song that is playing. */
+    fun createSongDialog(
+        context: Context,
+        mediaPlayer: MediaPlayer?,
+        songTitle: String
+    ): AlertDialog {
+        return AlertDialog.Builder(context)
+            .setNegativeButton(AppConstants.DIALOG_TEXT_STOP) { dialog, _ ->
+                //stop the song manually
+                mediaPlayer?.release()
+                dialog.dismiss()
+            }
+            .setTitle(AppConstants.DIALOG_TEXT_PLAYING)
+            .setMessage(songTitle)
+            .setCancelable(false)
+            .create()
     }
 }
