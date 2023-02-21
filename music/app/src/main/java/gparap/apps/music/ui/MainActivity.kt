@@ -52,8 +52,6 @@ class MainActivity : AppCompatActivity() {
                 setSongs(it)
             }
         }
-
-        //fetch favorite songs TODO: will be implemented in user defined songs inside local database
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
