@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text_main">뮤직 월드에 오신 것을 환영합니다!</string>
+    <string name="welcome_text_secondary">메뉴에서 음악 카테고리를 선택하고 즐기세요…</string>
+    <string name="medieval_period">중세 시대</string>
+    <string name="renaissance_period">르네상스 시대</string>
+    <string name="baroque_period">바로크 시대</string>
+    <string name="classical_period">고전기</string>
+    <string name="classical_music">고전 음악</string>
+    <string name="instrumental_music">기악</string>
+    <string name="traditional_music">전통 음악</string>
+    <string name="folk_music">민속 음악</string>
+    <string name="world_music">세계 음악</string>
+    <string name="label_music_genre">음악 장르</string>
+    <string name="label_time_period">기간</string>
+    <string name="label_song_title">노래 제목</string>
+    <string name="label_song_duration">노래 길이</string>
+    <string name="label_song_description">노래 설명</string>
+    <string name="label_song_date">노래 날짜</string>
+    <string name="label_original_author">원저자</string>
+    <string name="label_modern_performer">모던 퍼포머</string>
+    <string name="label_mime_type">파일 유형</string>
+    <string name="label_file_size">파일 크기</string>
+    <string name="label_image_link">이미지 링크</string>
+    <string name="label_download_link">다운로드 링크</string>
+    <string name="label_attribution_html">속성</string>
+    <string name="song_dialog_playing">재생 중…</string>
+    <string name="song_dialog_stop">멈추다</string>
+</resources>

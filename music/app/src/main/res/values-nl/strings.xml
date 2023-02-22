@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text_main">Welkom bij Muziekwereld!</string>
+    <string name="welcome_text_secondary">Kies een muziekcategorie uit het menu en geniet van…</string>
+    <string name="medieval_period">Middeleeuwen</string>
+    <string name="renaissance_period">Renaissance-periode</string>
+    <string name="baroque_period">Barokke periode</string>
+    <string name="classical_period">Klassieke periode</string>
+    <string name="classical_music">Klassieke muziek</string>
+    <string name="instrumental_music">Instrumentale muziek</string>
+    <string name="traditional_music">Traditionele muziek</string>
+    <string name="folk_music">Volksmuziek</string>
+    <string name="world_music">Wereld Muziek</string>
+    <string name="label_music_genre">Muziek genre</string>
+    <string name="label_time_period">Tijdsperiode</string>
+    <string name="label_song_title">Titel van het nummer</string>
+    <string name="label_song_duration">Duur van het nummer</string>
+    <string name="label_song_description">Beschrijving van het nummer</string>
+    <string name="label_song_date">Lied datum</string>
+    <string name="label_original_author">Oorspronkelijke auteur</string>
+    <string name="label_modern_performer">Moderne artiest</string>
+    <string name="label_mime_type">Bestandstype</string>
+    <string name="label_file_size">Bestandsgrootte</string>
+    <string name="label_image_link">Afbeeldingslink</string>
+    <string name="label_download_link">Download link</string>
+    <string name="label_attribution_html">Naamsvermelding</string>
+    <string name="song_dialog_playing">Nu aan het spelen…</string>
+    <string name="song_dialog_stop">Stop</string>
+</resources>

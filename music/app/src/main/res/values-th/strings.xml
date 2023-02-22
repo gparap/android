@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text_main">ยินดีต้อนรับสู่โลกดนตรี!</string>
+    <string name="welcome_text_secondary">กรุณาเลือกประเภทเพลงจากเมนูและเพลิดเพลินไปกับ…</string>
+    <string name="medieval_period">ยุคกลาง</string>
+    <string name="renaissance_period">ยุคฟื้นฟูศิลปวิทยา</string>
+    <string name="baroque_period">ยุคบาโรก</string>
+    <string name="classical_period">ยุคคลาสสิก</string>
+    <string name="classical_music">เพลงคลาสสิค</string>
+    <string name="instrumental_music">เพลงบรรเลง</string>
+    <string name="traditional_music">ดนตรีพื้นเมือง</string>
+    <string name="folk_music">ดนตรีพื้นบ้าน</string>
+    <string name="world_music">เวิลด์มิวสิค</string>
+    <string name="label_music_genre">แนวเพลง</string>
+    <string name="label_time_period">ช่วงเวลา</string>
+    <string name="label_song_title">ชื่อเพลง</string>
+    <string name="label_song_duration">ระยะเวลาของเพลง</string>
+    <string name="label_song_description">คำอธิบายเพลง</string>
+    <string name="label_song_date">วันที่เพลง</string>
+    <string name="label_original_author">ผู้เขียนต้นฉบับ</string>
+    <string name="label_modern_performer">นักแสดงสมัยใหม่</string>
+    <string name="label_mime_type">ประเภทไฟล์</string>
+    <string name="label_file_size">ขนาดไฟล์</string>
+    <string name="label_image_link">ลิงค์ภาพ</string>
+    <string name="label_download_link">ลิ้งค์ดาวน์โหลด</string>
+    <string name="label_attribution_html">แสดงที่มา</string>
+    <string name="song_dialog_playing">กำลังเล่น…</string>
+    <string name="song_dialog_stop">หยุด</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text_main">సంగీత ప్రపంచానికి స్వాగతం!</string>
+    <string name="welcome_text_secondary">దయచేసి, మెను నుండి సంగీత వర్గాన్ని ఎంచుకుని, ఆనందించండి…</string>
+    <string name="medieval_period">మధ్యయుగ కాలం</string>
+    <string name="renaissance_period">పునరుజ్జీవనోద్యమ కాలం</string>
+    <string name="baroque_period">బరోక్ కాలం</string>
+    <string name="classical_period">క్లాసికల్ పీరియడ్</string>
+    <string name="classical_music">శాస్త్రీయ సంగీతం</string>
+    <string name="instrumental_music">వాయిద్య సంగీతం</string>
+    <string name="traditional_music">సాంప్రదాయ సంగీతం</string>
+    <string name="folk_music">జానపద సంగీతం</string>
+    <string name="world_music">ప్రపంచ సంగీతం</string>
+    <string name="label_music_genre">సంగీత శైలి</string>
+    <string name="label_time_period">సమయ వ్యవధి</string>
+    <string name="label_song_title">పాట పేరు</string>
+    <string name="label_song_duration">పాట వ్యవధి</string>
+    <string name="label_song_description">పాట వివరణ</string>
+    <string name="label_song_date">పాట తేదీ</string>
+    <string name="label_original_author">అసలు రచయిత</string>
+    <string name="label_modern_performer">ఆధునిక ప్రదర్శనకారుడు</string>
+    <string name="label_mime_type">ఫైల్ రకం</string>
+    <string name="label_file_size">ఫైల్ పరిమాణం</string>
+    <string name="label_image_link">చిత్రం లింక్</string>
+    <string name="label_download_link">డౌన్లోడ్ లింక్</string>
+    <string name="label_attribution_html">ఆపాదింపు</string>
+    <string name="song_dialog_playing">ఇప్పుడు ఆడుతున్నారు…</string>
+    <string name="song_dialog_stop">ఆపు</string>
+</resources>

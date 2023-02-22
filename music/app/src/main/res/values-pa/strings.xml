@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text_main">ਸੰਗੀਤ ਸੰਸਾਰ ਵਿੱਚ ਸੁਆਗਤ ਹੈ!</string>
+    <string name="welcome_text_secondary">ਕਿਰਪਾ ਕਰਕੇ ਮੀਨੂ ਵਿੱਚੋਂ ਇੱਕ ਸੰਗੀਤ ਸ਼੍ਰੇਣੀ ਚੁਣੋ ਅਤੇ ਆਨੰਦ ਲਓ…</string>
+    <string name="medieval_period">ਮੱਧਕਾਲੀ ਦੌਰ</string>
+    <string name="renaissance_period">ਪੁਨਰਜਾਗਰਣ ਦੀ ਮਿਆਦ</string>
+    <string name="baroque_period">ਬਾਰੋਕ ਪੀਰੀਅਡ</string>
+    <string name="classical_period">ਕਲਾਸੀਕਲ ਪੀਰੀਅਡ</string>
+    <string name="classical_music">ਕਲਾਸੀਕਲ ਸੰਗੀਤ</string>
+    <string name="instrumental_music">ਇੰਸਟਰੂਮੈਂਟਲ ਸੰਗੀਤ</string>
+    <string name="traditional_music">ਰਵਾਇਤੀ ਸੰਗੀਤ</string>
+    <string name="folk_music">ਲੋਕ ਸੰਗੀਤ</string>
+    <string name="world_music">ਵਿਸ਼ਵ ਸੰਗੀਤ</string>
+    <string name="label_music_genre">ਸੰਗੀਤ ਸ਼ੈਲੀ</string>
+    <string name="label_time_period">ਸਮਾਂ ਮਿਆਦ</string>
+    <string name="label_song_title">ਗੀਤ ਦਾ ਸਿਰਲੇਖ</string>
+    <string name="label_song_duration">ਗੀਤ ਦੀ ਮਿਆਦ</string>
+    <string name="label_song_description">ਗੀਤ ਦਾ ਵਰਣਨ</string>
+    <string name="label_song_date">ਗੀਤ ਦੀ ਮਿਤੀ</string>
+    <string name="label_original_author">ਮੂਲ ਲੇਖਕ</string>
+    <string name="label_modern_performer">ਆਧੁਨਿਕ ਪ੍ਰਦਰਸ਼ਨਕਾਰ</string>
+    <string name="label_mime_type">ਫਾਈਲ ਦੀ ਕਿਸਮ</string>
+    <string name="label_file_size">ਫਾਈਲ ਦਾ ਆਕਾਰ</string>
+    <string name="label_image_link">ਚਿੱਤਰ ਲਿੰਕ</string>
+    <string name="label_download_link">ਡਾਊਨਲੋਡ ਲਿੰਕ</string>
+    <string name="label_attribution_html">ਵਿਸ਼ੇਸ਼ਤਾ</string>
+    <string name="song_dialog_playing">ਹੁਣ ਚੱਲ ਰਿਹਾ ਹੈ…</string>
+    <string name="song_dialog_stop">ਰੂਕੋ</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text_main">Добро пожаловать в мир музыки!</string>
+    <string name="welcome_text_secondary">Пожалуйста, выберите музыкальную категорию из меню и наслаждайтесь…</string>
+    <string name="medieval_period">Средневековый период</string>
+    <string name="renaissance_period">Период Возрождения</string>
+    <string name="baroque_period">Период барокко</string>
+    <string name="classical_period">Классический период</string>
+    <string name="classical_music">Классическая музыка</string>
+    <string name="instrumental_music">Инструментальная музыка</string>
+    <string name="traditional_music">Традиционная музыка</string>
+    <string name="folk_music">Народная музыка</string>
+    <string name="world_music">Мировая музыка</string>
+    <string name="label_music_genre">Музыкальный жанр</string>
+    <string name="label_time_period">Временной период</string>
+    <string name="label_song_title">Название песни</string>
+    <string name="label_song_duration">Продолжительность песни</string>
+    <string name="label_song_description">Описание песни</string>
+    <string name="label_song_date">Дата песни</string>
+    <string name="label_original_author">Оригинальный автор</string>
+    <string name="label_modern_performer">Современный исполнитель</string>
+    <string name="label_mime_type">Тип файла</string>
+    <string name="label_file_size">Размер файла</string>
+    <string name="label_image_link">Ссылка на изображение</string>
+    <string name="label_download_link">Ссылка для скачивания</string>
+    <string name="label_attribution_html">Атрибуция</string>
+    <string name="song_dialog_playing">Сейчас играет…</string>
+    <string name="song_dialog_stop">Останавливаться</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text_main">Sugeng rawuh ing Music World!</string>
+    <string name="welcome_text_secondary">Mangga, pilih kategori musik saka menu lan nikmati…</string>
+    <string name="medieval_period">Periode Abad Pertengahan</string>
+    <string name="renaissance_period">Periode Renaissance</string>
+    <string name="baroque_period">Periode Baroque</string>
+    <string name="classical_period">Periode Klasik</string>
+    <string name="classical_music">Musik Klasik</string>
+    <string name="instrumental_music">Musik Instrumental</string>
+    <string name="traditional_music">Musik Tradisional</string>
+    <string name="folk_music">Musik Rakyat</string>
+    <string name="world_music">World Music</string>
+    <string name="label_music_genre">Genre Musik</string>
+    <string name="label_time_period">Jangka wektu</string>
+    <string name="label_song_title">Judul Lagu</string>
+    <string name="label_song_duration">Lagu Duration</string>
+    <string name="label_song_description">Deskripsi Lagu</string>
+    <string name="label_song_date">Song Date</string>
+    <string name="label_original_author">Penulis asli</string>
+    <string name="label_modern_performer">Performer Modern</string>
+    <string name="label_mime_type">Jinis File</string>
+    <string name="label_file_size">Ukuran File</string>
+    <string name="label_image_link">Link Gambar</string>
+    <string name="label_download_link">Ngundhuh Link</string>
+    <string name="label_attribution_html">Atribusi</string>
+    <string name="song_dialog_playing">Saiki Muter…</string>
+    <string name="song_dialog_stop">mandeg</string>
+</resources>

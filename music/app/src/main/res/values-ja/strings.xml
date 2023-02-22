@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text_main">ミュージックワールドへようこそ！</string>
+    <string name="welcome_text_secondary">メニューから音楽カテゴリを選択してお楽しみください…</string>
+    <string name="medieval_period">中世</string>
+    <string name="renaissance_period">ルネサンス期</string>
+    <string name="baroque_period">バロック時代</string>
+    <string name="classical_period">古典時代</string>
+    <string name="classical_music">クラッシック</string>
+    <string name="instrumental_music">インストルメンタル</string>
+    <string name="traditional_music">伝統音楽</string>
+    <string name="folk_music">民族音楽</string>
+    <string name="world_music">ワールドミュージック</string>
+    <string name="label_music_genre">音楽ジャンル</string>
+    <string name="label_time_period">期間</string>
+    <string name="label_song_title">曲名</string>
+    <string name="label_song_duration">曲の長さ</string>
+    <string name="label_song_description">曲の説明</string>
+    <string name="label_song_date">曲の日付</string>
+    <string name="label_original_author">原作者</string>
+    <string name="label_modern_performer">現代のパフォーマー</string>
+    <string name="label_mime_type">ファイルの種類</string>
+    <string name="label_file_size">ファイルサイズ</string>
+    <string name="label_image_link">画像リンク</string>
+    <string name="label_download_link">リンクをダウンロード</string>
+    <string name="label_attribution_html">帰属</string>
+    <string name="song_dialog_playing">再生中…</string>
+    <string name="song_dialog_stop">ストップ</string>
+</resources>

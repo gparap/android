@@ -22,10 +22,6 @@ object AppConstants {
     const val ENCODING= "UTF-8"
     const val HTML_LINK_COLOR = "#0000EE"
 
-    //Dialog texts
-    const val DIALOG_TEXT_STOP = "Stop"
-    const val DIALOG_TEXT_PLAYING = "Now Playing..."
-
     //Intent extras
     const val EXTRAS_APPBAR_TITLE = "app_bar_title"
     const val EXTRAS_SONG_INFO = "song_info"
