@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text_main">Selamat datang ke Dunia Muzik!</string>
+    <string name="welcome_text_secondary">Sila pilih kategori muzik daripada menu dan nikmati…</string>
+    <string name="medieval_period">Zaman Pertengahan</string>
+    <string name="renaissance_period">Zaman Renaissance</string>
+    <string name="baroque_period">Zaman Baroque</string>
+    <string name="classical_period">Zaman Klasik</string>
+    <string name="classical_music">Muzik klasik</string>
+    <string name="instrumental_music">Muzik Instrumental</string>
+    <string name="traditional_music">Muzik Tradisional</string>
+    <string name="folk_music">Muzik rakyat</string>
+    <string name="world_music">Muzik Dunia</string>
+    <string name="label_music_genre">Genre Muzik</string>
+    <string name="label_time_period">Jangka masa</string>
+    <string name="label_song_title">Tajuk lagu</string>
+    <string name="label_song_duration">Tempoh Lagu</string>
+    <string name="label_song_description">Penerangan Lagu</string>
+    <string name="label_song_date">Tarikh Lagu</string>
+    <string name="label_original_author">Pengarang Asal</string>
+    <string name="label_modern_performer">Penghibur Moden</string>
+    <string name="label_mime_type">Jenis fail</string>
+    <string name="label_file_size">Saiz fail</string>
+    <string name="label_image_link">Pautan Imej</string>
+    <string name="label_download_link">Pautan muat turun</string>
+    <string name="label_attribution_html">Atribusi</string>
+    <string name="song_dialog_playing">Bermain sekarang…</string>
+    <string name="song_dialog_stop">Berhenti</string>
+</resources>

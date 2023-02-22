@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text_main">Music World වෙත සාදරයෙන් පිළිගනිමු!</string>
+    <string name="welcome_text_secondary">කරුණාකර, මෙනුවෙන් සංගීත ප්‍රවර්ගයක් තෝරා රසවිඳින්න…</string>
+    <string name="medieval_period">මධ්යතන යුගය</string>
+    <string name="renaissance_period">පුනරුද සමය</string>
+    <string name="baroque_period">බැරොක් යුගය</string>
+    <string name="classical_period">සම්භාව්ය කාලය</string>
+    <string name="classical_music">සම්භාව්ය සංගීතය</string>
+    <string name="instrumental_music">සංගීත භාණ්ඩ සංගීතය</string>
+    <string name="traditional_music">සාම්ප්‍රදායික සංගීතය</string>
+    <string name="folk_music">ජන සංගීතය</string>
+    <string name="world_music">ලෝක සංගීතය</string>
+    <string name="label_music_genre">සංගීත ප්‍රභේදය</string>
+    <string name="label_time_period">කාල සීමාව</string>
+    <string name="label_song_title">ගීතයේ තේමාව</string>
+    <string name="label_song_duration">ගීතයේ කාලසීමාව</string>
+    <string name="label_song_description">ගීත විස්තරය</string>
+    <string name="label_song_date">ගීතයේ දිනය</string>
+    <string name="label_original_author">මුල් කර්තෘ</string>
+    <string name="label_modern_performer">නවීන රංගන ශිල්පියා</string>
+    <string name="label_mime_type">ගොනු වර්ගය</string>
+    <string name="label_file_size">ගොනු විශාලත්වය</string>
+    <string name="label_image_link">රූප සබැඳිය</string>
+    <string name="label_download_link">බාගත කිරීමේ සබැඳිය</string>
+    <string name="label_attribution_html">ආරෝපණය</string>
+    <string name="song_dialog_playing">දැන් වාදනය වන්නේ…</string>
+    <string name="song_dialog_stop">නවත්වන්න</string>
+</resources>

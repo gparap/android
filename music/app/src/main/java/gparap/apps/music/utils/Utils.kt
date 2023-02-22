@@ -24,6 +24,7 @@ import android.os.Build
 import android.text.Html
 import android.view.View
 import android.widget.TextView
+import gparap.apps.music.R
 
 
 object Utils {
@@ -78,12 +79,12 @@ object Utils {
         songTitle: String
     ): AlertDialog {
         return AlertDialog.Builder(context)
-            .setNegativeButton(AppConstants.DIALOG_TEXT_STOP) { dialog, _ ->
+            .setNegativeButton(context.resources.getString(R.string.song_dialog_stop)) { dialog, _ ->
                 //stop the song manually
                 mediaPlayer?.release()
                 dialog.dismiss()
             }
-            .setTitle(AppConstants.DIALOG_TEXT_PLAYING)
+            .setTitle(context.resources.getString(R.string.song_dialog_playing))
             .setMessage(songTitle)
             .setCancelable(false)
             .create()

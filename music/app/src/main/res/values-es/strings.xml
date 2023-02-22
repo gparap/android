@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text_main">¡Bienvenidos al mundo de la música!</string>
+    <string name="welcome_text_secondary">Por favor, elige una categoría de música del menú y disfruta…</string>
+    <string name="medieval_period">Período medieval</string>
+    <string name="renaissance_period">Período del Renacimiento</string>
+    <string name="baroque_period">Período Barroco</string>
+    <string name="classical_period">Período clásico</string>
+    <string name="classical_music">Música clásica</string>
+    <string name="instrumental_music">Música instrumental</string>
+    <string name="traditional_music">Música tradicional</string>
+    <string name="folk_music">Música folk</string>
+    <string name="world_music">Música del mundo</string>
+    <string name="label_music_genre">Género musical</string>
+    <string name="label_time_period">Periodo de tiempo</string>
+    <string name="label_song_title">Título de la canción</string>
+    <string name="label_song_duration">Duración de la canción</string>
+    <string name="label_song_description">Descripción de la canción</string>
+    <string name="label_song_date">Fecha de la canción</string>
+    <string name="label_original_author">Autor original</string>
+    <string name="label_modern_performer">Intérprete moderno</string>
+    <string name="label_mime_type">Tipo de archivo</string>
+    <string name="label_file_size">Tamaño del archivo</string>
+    <string name="label_image_link">Enlace de imagen</string>
+    <string name="label_download_link">Enlace de descarga</string>
+    <string name="label_attribution_html">Atribución</string>
+    <string name="song_dialog_playing">Jugando ahora…</string>
+    <string name="song_dialog_stop">Detener</string>
+</resources>

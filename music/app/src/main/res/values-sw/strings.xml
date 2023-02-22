@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text_main">Karibu kwenye Ulimwengu wa Muziki!</string>
+    <string name="welcome_text_secondary">Tafadhali, chagua aina ya muziki kutoka kwenye menyu na ufurahie…</string>
+    <string name="medieval_period">Kipindi cha Zama za Kati</string>
+    <string name="renaissance_period">Kipindi cha Renaissance</string>
+    <string name="baroque_period">Kipindi cha Baroque</string>
+    <string name="classical_period">Kipindi cha Classical</string>
+    <string name="classical_music">Muziki wa Kikale</string>
+    <string name="instrumental_music">Muziki wa Ala</string>
+    <string name="traditional_music">Muziki wa Asili</string>
+    <string name="folk_music">Muziki wa Watu</string>
+    <string name="world_music">Muziki wa Dunia</string>
+    <string name="label_music_genre">Aina ya Muziki</string>
+    <string name="label_time_period">Muda</string>
+    <string name="label_song_title">Kichwa cha Wimbo</string>
+    <string name="label_song_duration">Muda wa Wimbo</string>
+    <string name="label_song_description">Maelezo ya Wimbo</string>
+    <string name="label_song_date">Tarehe ya Wimbo</string>
+    <string name="label_original_author">Mwandishi Asilia</string>
+    <string name="label_modern_performer">Muigizaji wa Kisasa</string>
+    <string name="label_mime_type">Aina ya Faili</string>
+    <string name="label_file_size">Ukubwa wa faili</string>
+    <string name="label_image_link">Kiungo cha Picha</string>
+    <string name="label_download_link">Kiungo cha Kupakua</string>
+    <string name="label_attribution_html">Maelezo</string>
+    <string name="song_dialog_playing">Inacheza sasa…</string>
+    <string name="song_dialog_stop">Acha</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text_main">संगीत की दुनिया में आपका स्वागत है!</string>
+    <string name="welcome_text_secondary">कृपया, मेनू से एक संगीत श्रेणी चुनें और आनंद लें…</string>
+    <string name="medieval_period">मध्यकाल</string>
+    <string name="renaissance_period">पुनर्जागरण काल</string>
+    <string name="baroque_period">बैरोक काल</string>
+    <string name="classical_period">शास्त्रीय काल</string>
+    <string name="classical_music">शास्त्रीय संगीत</string>
+    <string name="instrumental_music">वाद्य संगीत</string>
+    <string name="traditional_music">पारंपरिक संगीत</string>
+    <string name="folk_music">लोक संगीत</string>
+    <string name="world_music">विश्व संगीत</string>
+    <string name="label_music_genre">संगीत शैली</string>
+    <string name="label_time_period">समय सीमा</string>
+    <string name="label_song_title">शीर्षक गीत</string>
+    <string name="label_song_duration">गाने की अवधि</string>
+    <string name="label_song_description">गीत विवरण</string>
+    <string name="label_song_date">गाने की तारीख</string>
+    <string name="label_original_author">मूल लेखक</string>
+    <string name="label_modern_performer">आधुनिक कलाकार</string>
+    <string name="label_mime_type">फाइल का प्रकार</string>
+    <string name="label_file_size">फ़ाइल का साइज़</string>
+    <string name="label_image_link">छवि लिंक</string>
+    <string name="label_download_link">लिंक को डाउनलोड करें</string>
+    <string name="label_attribution_html">आरोपण</string>
+    <string name="song_dialog_playing">अब खेल रहे हैं…</string>
+    <string name="song_dialog_stop">रुकना</string>
+</resources>

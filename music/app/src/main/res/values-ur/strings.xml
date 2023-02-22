@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text_main">موسیقی کی دنیا میں خوش آمدید!</string>
+    <string name="welcome_text_secondary">براہ کرم، مینو سے موسیقی کا ایک زمرہ منتخب کریں اور لطف اٹھائیں…</string>
+    <string name="medieval_period">قرون وسطیٰ کا دور</string>
+    <string name="renaissance_period">نشاۃ ثانیہ کا دور</string>
+    <string name="baroque_period">باروک دور</string>
+    <string name="classical_period">کلاسیکی دور</string>
+    <string name="classical_music">کلاسیکی موسیقی</string>
+    <string name="instrumental_music">انسٹرومینٹل میوزک</string>
+    <string name="traditional_music">روایتی موسیقی</string>
+    <string name="folk_music">لوک موسیقی</string>
+    <string name="world_music">ورلڈ میوزک</string>
+    <string name="label_music_genre">موسیقی کی صنف</string>
+    <string name="label_time_period">وقت کی مدت</string>
+    <string name="label_song_title">گانے کا عنوان</string>
+    <string name="label_song_duration">گانے کا دورانیہ</string>
+    <string name="label_song_description">گانے کی تفصیل</string>
+    <string name="label_song_date">گانے کی تاریخ</string>
+    <string name="label_original_author">اصل مصنف</string>
+    <string name="label_modern_performer">جدید اداکار</string>
+    <string name="label_mime_type">فائل کی قسم</string>
+    <string name="label_file_size">فائل کا ناپ</string>
+    <string name="label_image_link">تصویری لنک</string>
+    <string name="label_download_link">ڈاؤن لوڈ لنک</string>
+    <string name="label_attribution_html">انتساب</string>
+    <string name="song_dialog_playing">اب چل رہا ہے…</string>
+    <string name="song_dialog_stop">رک جاؤ</string>
+</resources>

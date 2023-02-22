@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text_main">Chào mừng đến với Thế giới âm nhạc!</string>
+    <string name="welcome_text_secondary">Vui lòng chọn danh mục nhạc từ menu và thưởng thức…</string>
+    <string name="medieval_period">thời trung cổ</string>
+    <string name="renaissance_period">thời kỳ phục hưng</string>
+    <string name="baroque_period">Thời kỳ Baroque</string>
+    <string name="classical_period">Giai đoạn cổ điển</string>
+    <string name="classical_music">Nhạc cổ điển</string>
+    <string name="instrumental_music">Nhạc cụ</string>
+    <string name="traditional_music">Nhạc truyền thống</string>
+    <string name="folk_music">Dân ca</string>
+    <string name="world_music">Âm nhạc thế giới</string>
+    <string name="label_music_genre">Thể loại âm nhạc</string>
+    <string name="label_time_period">Khoảng thời gian</string>
+    <string name="label_song_title">Tên bài hát</string>
+    <string name="label_song_duration">Thời lượng bài hát</string>
+    <string name="label_song_description">Mô tả bài hát</string>
+    <string name="label_song_date">Ngày bài hát</string>
+    <string name="label_original_author">Tác giả gốc</string>
+    <string name="label_modern_performer">Trình diễn hiện đại</string>
+    <string name="label_mime_type">Loại tệp</string>
+    <string name="label_file_size">Kích thước tập tin</string>
+    <string name="label_image_link">Đường kết nối tới hình ảnh</string>
+    <string name="label_download_link">Liên kết tải xuống</string>
+    <string name="label_attribution_html">Ghi công</string>
+    <string name="song_dialog_playing">Đang chơi…</string>
+    <string name="song_dialog_stop">Dừng lại</string>
+</resources>

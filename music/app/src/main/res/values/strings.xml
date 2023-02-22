@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Music</string>
-    <string name="desc_icon_for_music_item">Icon for music item</string>
+    <string name="app_name" translatable="false">Music World</string>
+    <string name="desc_icon_for_music_item" translatable="false">Icon for music item</string>
 
     <!--Welcome texts-->
-    <string name="welcome_text_main">Welcome to World Music!</string>
+    <string name="welcome_text_main">Welcome to Music World!</string>
     <string name="welcome_text_secondary">Please, choose a music category from the menu and enjoy…</string>
 
     <!--Music & Time Period texts-->
@@ -31,4 +31,8 @@
     <string name="label_image_link">Image Link</string>
     <string name="label_download_link">Download Link</string>
     <string name="label_attribution_html">Attribution</string>
+
+    <!--Song Dialog texts-->
+    <string name="song_dialog_playing">Now Playing…</string>
+    <string name="song_dialog_stop">Stop</string>
 </resources>

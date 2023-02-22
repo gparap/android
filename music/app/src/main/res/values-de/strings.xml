@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text_main">Willkommen in der Musikwelt!</string>
+    <string name="welcome_text_secondary">Bitte wählen Sie eine Musikkategorie aus dem Menü und genießen Sie…</string>
+    <string name="medieval_period">Mittelalter</string>
+    <string name="renaissance_period">Renaissancezeit</string>
+    <string name="baroque_period">Barockzeit</string>
+    <string name="classical_period">Klassik</string>
+    <string name="classical_music">Klassische Musik</string>
+    <string name="instrumental_music">Instrumentalmusik</string>
+    <string name="traditional_music">Traditionelle Musik</string>
+    <string name="folk_music">Volksmusik</string>
+    <string name="world_music">Weltmusik</string>
+    <string name="label_music_genre">Musikrichtung</string>
+    <string name="label_time_period">Zeitraum</string>
+    <string name="label_song_title">Song Titel</string>
+    <string name="label_song_duration">Lieddauer</string>
+    <string name="label_song_description">Liedbeschreibung</string>
+    <string name="label_song_date">Song-Datum</string>
+    <string name="label_original_author">Ursprünglicher Autor</string>
+    <string name="label_modern_performer">Moderner Performer</string>
+    <string name="label_mime_type">Dateityp</string>
+    <string name="label_file_size">Dateigröße</string>
+    <string name="label_image_link">Bildlink</string>
+    <string name="label_download_link">Download-Link</string>
+    <string name="label_attribution_html">Zuschreibung</string>
+    <string name="song_dialog_playing">Läuft gerade…</string>
+    <string name="song_dialog_stop">Stoppen</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text_main">مرحبًا بك في عالم الموسيقى!</string>
+    <string name="welcome_text_secondary">من فضلك ، اختر فئة الموسيقى من القائمة واستمتع …</string>
+    <string name="medieval_period">فترة العصور الوسطى</string>
+    <string name="renaissance_period">عصر النهضة</string>
+    <string name="baroque_period">فترة الباروك</string>
+    <string name="classical_period">الفترة الكلاسيكية</string>
+    <string name="classical_music">موسيقى كلاسيكية</string>
+    <string name="instrumental_music">الآلات الموسيقية</string>
+    <string name="traditional_music">موسيقى تقليدية</string>
+    <string name="folk_music">الموسيقى الشعبية</string>
+    <string name="world_music">عالم الموسيقى</string>
+    <string name="label_music_genre">نوع الموسيقى</string>
+    <string name="label_time_period">فترة زمنية</string>
+    <string name="label_song_title">عنوان الأغنية</string>
+    <string name="label_song_duration">مدة الأغنية</string>
+    <string name="label_song_description">وصف الأغنية</string>
+    <string name="label_song_date">تاريخ الأغنية</string>
+    <string name="label_original_author">المؤلف الأصلي</string>
+    <string name="label_modern_performer">مؤدي حديث</string>
+    <string name="label_mime_type">نوع الملف</string>
+    <string name="label_file_size">حجم الملف</string>
+    <string name="label_image_link">رابط الصورة</string>
+    <string name="label_download_link">رابط التحميل</string>
+    <string name="label_attribution_html">الإسناد</string>
+    <string name="song_dialog_playing">الان العب…</string>
+    <string name="song_dialog_stop">قف</string>
+</resources>

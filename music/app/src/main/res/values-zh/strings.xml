@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text_main">欢迎来到音乐世界！</string>
+    <string name="welcome_text_secondary">请从菜单中选择一个音乐类别并享受......</string>
+    <string name="medieval_period">中世纪时期</string>
+    <string name="renaissance_period">文艺复兴时期</string>
+    <string name="baroque_period">巴洛克时期</string>
+    <string name="classical_period">古典时期</string>
+    <string name="classical_music">古典音乐</string>
+    <string name="instrumental_music">器乐</string>
+    <string name="traditional_music">传统音乐</string>
+    <string name="folk_music">民间音乐</string>
+    <string name="world_music">世界音乐</string>
+    <string name="label_music_genre">音乐类型</string>
+    <string name="label_time_period">时间段</string>
+    <string name="label_song_title">歌名</string>
+    <string name="label_song_duration">歌曲时长</string>
+    <string name="label_song_description">歌曲描述</string>
+    <string name="label_song_date">歌曲日期</string>
+    <string name="label_original_author">原作者</string>
+    <string name="label_modern_performer">现代表演者</string>
+    <string name="label_mime_type">文件类型</string>
+    <string name="label_file_size">文件大小</string>
+    <string name="label_image_link">图片链接</string>
+    <string name="label_download_link">下载链接</string>
+    <string name="label_attribution_html">归因</string>
+    <string name="song_dialog_playing">现在播放…</string>
+    <string name="song_dialog_stop">停止</string>
+</resources>
