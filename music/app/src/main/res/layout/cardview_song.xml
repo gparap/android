@@ -29,6 +29,7 @@
 
         <!--Song title-->
         <TextView
+            android:textSize="@dimen/textSize_textView_default"
             android:id="@+id/textViewSongTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -40,6 +41,7 @@
 
         <!--Song duration-->
         <TextView
+            android:textSize="@dimen/textSize_textView_default"
             android:id="@+id/textViewSongDuration"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

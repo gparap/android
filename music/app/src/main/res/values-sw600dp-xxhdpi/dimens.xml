@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><!--Design Dimensions: Tablets (xxhdpi)-->
+<resources>
+    <dimen name="textSize_textView_default">18sp</dimen>
+
+    <!--Cardview-->
+    <dimen name="padding_cardview_ConstraintLayout">4dp</dimen>
+    <dimen name="layout_margin_cardview_song">8dp</dimen>
+    <dimen name="layout_width_imageViewSongIcon">64dp</dimen>
+    <dimen name="layout_height_imageViewSongIcon">50dp</dimen>
+
+    <!--Main activity-->
+    <dimen name="padding_textViewWelcome_main">8dp</dimen>
+    <dimen name="textSize_textViewWelcome_main">22sp</dimen>
+    <dimen name="padding_textViewWelcome_secondary">8dp</dimen>
+    <dimen name="textSize_textViewWelcome_secondary">20sp</dimen>
+    <dimen name="layout_marginTop_textViewWelcome_secondary">16dp</dimen>
+
+    <!--Song activity-->
+    <dimen name="padding_textViewSongLabel">4dp</dimen>
+    <dimen name="padding_textViewSongData">8dp</dimen>
+    <dimen name="layout_margin_song">8dp</dimen>
+    <dimen name="layout_marginStart_WebView">8dp</dimen>
+    <dimen name="layout_marginEnd_WebView">8dp</dimen>
+</resources>
