@@ -2,13 +2,14 @@
 <resources>
     <!--Style for the song details-->
     <style name="TextViewSongData">
-        <item name="android:padding">8dp</item>
+        <item name="android:padding">@dimen/padding_textViewSongData</item>
         <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/textSize_textView_default</item>
     </style>
 
     <!--Style for the song details-->
     <style name="WebView">
-        <item name="android:layout_marginStart">4dp</item>
-        <item name="android:layout_marginEnd">4dp</item>
+        <item name="android:layout_marginStart">@dimen/layout_marginStart_WebView</item>
+        <item name="android:layout_marginEnd">@dimen/layout_marginStart_WebView</item>
     </style>
 </resources>

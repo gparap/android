@@ -44,6 +44,7 @@
         android:paddingEnd="@dimen/padding_textViewWelcome_secondary"
         android:text="@string/welcome_text_secondary"
         android:textAlignment="center"
+        android:textSize="@dimen/textSize_textViewWelcome_secondary"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -62,6 +63,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5"
-        tools:visibility="visible" />
+        tools:visibility="invisible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
