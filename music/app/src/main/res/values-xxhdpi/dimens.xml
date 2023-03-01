@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><!--Design Dimensions: Phones (xxhdpi)-->
+<resources>
+    <dimen name="textSize_textView_default">15sp</dimen>
+
+    <!--Cardview-->
+    <dimen name="padding_cardview_ConstraintLayout">3dp</dimen>
+    <dimen name="layout_margin_cardview_song">5dp</dimen>
+    <dimen name="layout_width_imageViewSongIcon">52dp</dimen>
+    <dimen name="layout_height_imageViewSongIcon">42dp</dimen>
+
+    <!--Main activity-->
+    <dimen name="padding_textViewWelcome_main">3dp</dimen>
+    <dimen name="textSize_textViewWelcome_main">17sp</dimen>
+    <dimen name="padding_textViewWelcome_secondary">4dp</dimen>
+    <dimen name="textSize_textViewWelcome_secondary">15sp</dimen>
+    <dimen name="layout_marginTop_textViewWelcome_secondary">6dp</dimen>
+
+    <!--Song activity-->
+    <dimen name="padding_textViewSongLabel">2dp</dimen>
+    <dimen name="padding_textViewSongData">8dp</dimen>
+    <dimen name="layout_margin_song">5dp</dimen>
+    <dimen name="layout_marginStart_WebView">5dp</dimen>
+    <dimen name="layout_marginEnd_WebView">5dp</dimen>
+</resources>
