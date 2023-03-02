@@ -331,4 +331,19 @@ class MainActivityInstrumentedTest {
         //progress must be visible
         onView(withId(R.id.progressBarLoadingSongs)).check(matches(isDisplayed()))
     }
+
+    @Test
+    fun hideAdsBeforeCategorySelection() {
+        onView(withId(R.id.adView_main)).check(matches(isNotClickable()))
+    }
+
+    @Test
+    fun showAdsAfterCategorySelection() {
+        //choose a category
+        val context = InstrumentationRegistry.getInstrumentation().context
+        Espresso.openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.world_music)).perform(click())
+
+        onView(withId(R.id.adView_main)).check(matches(isDisplayed()))
+    }
 }

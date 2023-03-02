@@ -15,6 +15,10 @@
  */
 package gparap.apps.music
 
+import android.view.View
+import android.widget.ScrollView
+import androidx.core.view.get
+import androidx.recyclerview.widget.ItemTouchHelper.DOWN
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
@@ -23,6 +27,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import com.google.android.gms.ads.AdView
 import gparap.apps.music.ui.MainActivity
 import org.hamcrest.core.IsNot.not
 import org.junit.Before

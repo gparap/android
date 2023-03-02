@@ -198,6 +198,17 @@
             app:layout_constraintTop_toBottomOf="@+id/label_links_download_link"
             tools:text="links_download_link" />
 
+        <!--AdView-->
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:adSize="BANNER"
+            app:adUnitId="ca-app-pub-4227032191105066/6178243962"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_links_download_link"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <!--License details-->
         <TextView
             android:id="@+id/label_licence_attribution_html"
@@ -205,7 +216,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_attribution_html"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_links_download_link"
+            app:layout_constraintTop_toBottomOf="@+id/adView_info"
             tools:text="licence_attribution_html" />
 
         <!--Container for the WebView that contains the attribution details-->
