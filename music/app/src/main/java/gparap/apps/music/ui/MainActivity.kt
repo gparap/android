@@ -25,6 +25,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import gparap.apps.music.R
 import gparap.apps.music.adapters.SongsAdapter
 import gparap.apps.music.viewmodels.MainActivityViewModel
@@ -46,10 +49,18 @@ class MainActivity : AppCompatActivity() {
         recyclerViewSongs = findViewById(R.id.recyclerViewSongs)
         recyclerViewSongs.layoutManager = LinearLayoutManager(this)
 
+        //initialize the Google Mobile Ads SDK
+        MobileAds.initialize(this) {}
+
         //observe songs
         viewModel.getSongs().observe(this) {
             recyclerViewSongs.adapter = SongsAdapter().apply {
                 setSongs(it)
+            }.apply {
+                //load an ad
+                val adView = findViewById<AdView>(R.id.adView_main)
+                val adRequest = AdRequest.Builder().build()
+                adView.loadAd(adRequest)
             }
         }
     }

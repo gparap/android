@@ -18,6 +18,9 @@ package gparap.apps.music.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import gparap.apps.music.R
 import gparap.apps.music.viewmodels.SongActivityViewModel
 
@@ -40,5 +43,13 @@ class SongActivity : AppCompatActivity() {
 
         //display the user selected song details
         viewModel.displaySongDetails(this)
+
+        //initialize the Google Mobile Ads SDK
+        MobileAds.initialize(this){}
+
+        //load an ad
+        val adView = findViewById<AdView>(R.id.adView_info)
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
     }
 }
