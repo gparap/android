@@ -48,4 +48,50 @@ class MainActivityInstrumentedTest {
         onView(withId(R.id.favoritesFragment)).perform(click())
         onView(withId(R.id.layout_fragment_favorites)).check(matches(isDisplayed()))
     }
+
+    @Test
+    fun isVisible_homeFragment_text_view_random_recipe() {
+        navigateToFragment(R.id.homeFragment)
+        onView(withId(R.id.text_view_random_recipe)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isVisible_homeFragment_card_view_random_recipe() {
+        navigateToFragment(R.id.homeFragment)
+        onView(withId(R.id.card_view_random_recipe)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isVisible_homeFragment_image_view_random_recipe() {
+        navigateToFragment(R.id.homeFragment)
+        onView(withId(R.id.image_view_random_recipe)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isVisible_homeFragment_text_view_featured_recipes() {
+        navigateToFragment(R.id.homeFragment)
+        onView(withId(R.id.text_view_featured_recipes)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isVisible_homeFragment_recycler_view_featured_recipes() {
+        navigateToFragment(R.id.homeFragment)
+        onView(withId(R.id.recycler_view_featured_recipes)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isVisible_homeFragment_recycle_view_recipe_categories() {
+        navigateToFragment(R.id.categoriesFragment)
+        onView(withId(R.id.recycle_view_recipe_categories)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isVisible_homeFragment_recycle_view_favorite_recipes() {
+        navigateToFragment(R.id.favoritesFragment)
+        onView(withId(R.id.recycle_view_favorite_recipes)).check(matches(isDisplayed()))
+    }
+
+    private fun navigateToFragment(fragmentId: Int) {
+        onView(withId(fragmentId)).perform(click())
+    }
 }

@@ -3,4 +3,9 @@
     <string name="home_fragment">Home</string>
     <string name="categories_fragment">Categories</string>
     <string name="favorites_fragment">Favorites</string>
+    <string name="hint_find_a_recipe">Find a recipe</string>
+    <string name="desc_find_a_recipe">Searches for a specific recipe</string>
+    <string name="desc_random_recipe">Random featured recipe of the day</string>
+    <string name="label_recipe_of_the_day">Recipe of the day</string>
+    <string name="label_featured_recipes">Featured recipes</string>
 </resources>
