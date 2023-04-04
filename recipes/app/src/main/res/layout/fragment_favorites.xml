@@ -6,10 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".FavoritesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!--Favorite recipes-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycle_view_favorite_recipes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/favorites_fragment" />
+        android:layout_margin="4dp" />
 
 </FrameLayout>
