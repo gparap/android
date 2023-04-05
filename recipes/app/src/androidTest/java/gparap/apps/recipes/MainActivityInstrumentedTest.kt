@@ -1,3 +1,18 @@
+/*
+ * Copyright 2023 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.recipes
 
 import androidx.recyclerview.widget.RecyclerView
@@ -8,6 +23,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import gparap.apps.recipes.utils.AppConstants
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -97,13 +113,32 @@ class MainActivityInstrumentedTest {
     @Test
     fun isNotEmpty_categoriesRecyclerView() {
         navigateToFragment(R.id.categoriesFragment)
-        activityScenario.onActivity {
-            val recyclerView = it.findViewById<RecyclerView>(R.id.recycle_view_recipe_categories)
-            assert(recyclerView.childCount > 0)
+        waitForTheWebServiceResponse(AppConstants.WEB_SERVICE_DELAY_SHORT)
+        try {
+            activityScenario.onActivity {
+                val recyclerView =
+                    it.findViewById<RecyclerView>(R.id.recycle_view_recipe_categories)
+                assert(recyclerView.childCount > 0)
+            }
+        } catch (_: java.lang.AssertionError) {
+            //navigateToFragment(R.id.categoriesFragment)
+            waitForTheWebServiceResponse(AppConstants.WEB_SERVICE_DELAY_LONG)
+            activityScenario.onActivity {
+                val recyclerView =
+                    it.findViewById<RecyclerView>(R.id.recycle_view_recipe_categories)
+                assert(recyclerView.childCount > 0)
+            }
         }
     }
 
     private fun navigateToFragment(fragmentId: Int) {
         onView(withId(fragmentId)).perform(click())
+    }
+
+    private fun waitForTheWebServiceResponse(delay: Long) {
+        when (delay) {
+            AppConstants.WEB_SERVICE_DELAY_LONG -> Thread.sleep(AppConstants.WEB_SERVICE_DELAY_LONG)
+            AppConstants.WEB_SERVICE_DELAY_SHORT -> Thread.sleep(AppConstants.WEB_SERVICE_DELAY_SHORT)
+        }
     }
 }
