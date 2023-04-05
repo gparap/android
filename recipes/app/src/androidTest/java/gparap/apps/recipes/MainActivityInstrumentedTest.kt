@@ -1,5 +1,6 @@
 package gparap.apps.recipes
 
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -14,9 +15,11 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class MainActivityInstrumentedTest {
+    private lateinit var activityScenario: ActivityScenario<MainActivity>
+
     @Before
     fun setUp() {
-        ActivityScenario.launch(MainActivity::class.java)
+        activityScenario = ActivityScenario.launch(MainActivity::class.java)
     }
 
     @Test
@@ -89,6 +92,15 @@ class MainActivityInstrumentedTest {
     fun isVisible_homeFragment_recycle_view_favorite_recipes() {
         navigateToFragment(R.id.favoritesFragment)
         onView(withId(R.id.recycle_view_favorite_recipes)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isNotEmpty_categoriesRecyclerView() {
+        navigateToFragment(R.id.categoriesFragment)
+        activityScenario.onActivity {
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recycle_view_recipe_categories)
+            assert(recyclerView.childCount > 0)
+        }
     }
 
     private fun navigateToFragment(fragmentId: Int) {
