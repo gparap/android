@@ -8,4 +8,5 @@
     <string name="desc_random_recipe">Random featured recipe of the day</string>
     <string name="label_recipe_of_the_day">Recipe of the day</string>
     <string name="label_featured_recipes">Featured recipes</string>
+    <string name="desc_category_image">Recipe category</string>
 </resources>
