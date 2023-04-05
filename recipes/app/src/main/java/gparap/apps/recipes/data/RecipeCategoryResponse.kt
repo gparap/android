@@ -17,21 +17,7 @@ package gparap.apps.recipes.data
 
 import com.google.gson.annotations.SerializedName
 
-data class RecipeCategoryModel(
-    @SerializedName("id")
-    val id: String,
-    @SerializedName("name")
-    val name: String,
-    @SerializedName("desc")
-    val description: String,
-    @SerializedName("descAttribText")
-    val descriptionAttribution: String,
-    @SerializedName("descAttribLink")
-    val descriptionAttributionLink: String,
-    @SerializedName("img")
-    val imageUri: String,
-    @SerializedName("imgAttrib")
-    val imageAttributionLink: String,
-    @SerializedName("keywords")
-    val keywords: String,
+data class RecipeCategoryResponse(
+    @SerializedName("categories")
+    val categories: List<RecipeCategoryModel>
 )
