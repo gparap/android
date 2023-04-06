@@ -29,8 +29,14 @@ import gparap.apps.recipes.data.RecipeCategoryModel
 
 class RecipeCategoryAdapter :
     RecyclerView.Adapter<RecipeCategoryAdapter.RecipeCategoryViewHolder>() {
-    var recipeCategories = ArrayList<RecipeCategoryModel>()
+    private var recipeCategories = ArrayList<RecipeCategoryModel>()
     private lateinit var context: Context
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setRecipeCategories(recipeCategories: ArrayList<RecipeCategoryModel>) {
+        this.recipeCategories = recipeCategories
+        notifyDataSetChanged()
+    }
 
     class RecipeCategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val categoryName: TextView = itemView.findViewById(R.id.text_view_recipe_category)

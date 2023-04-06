@@ -15,6 +15,7 @@
  */
 package gparap.apps.recipes
 
+import android.content.pm.ActivityInfo
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
@@ -131,6 +132,31 @@ class MainActivityInstrumentedTest {
         }
     }
 
+    @Test
+    fun onDeviceOrientationChange_categoriesRecyclerViewDataPersist() {
+        var childCountBeforeRotation = 0
+        var childCountAfterRotation = 0
+
+        //start with portrait orientation and get the RecyclerView's childCount
+        setScreenOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+        navigateToFragment(R.id.categoriesFragment)
+        waitForTheWebServiceResponse(AppConstants.WEB_SERVICE_DELAY_LONG)
+        activityScenario.onActivity {
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recycle_view_recipe_categories)
+            childCountBeforeRotation = recyclerView.childCount
+        }
+
+        //rotate the device and get the RecyclerView's childCount
+        setScreenOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
+        waitForTheWebServiceResponse(AppConstants.WEB_SERVICE_DELAY_LONG)
+        activityScenario.onActivity {
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recycle_view_recipe_categories)
+            childCountAfterRotation = recyclerView.childCount
+        }
+
+        assertEquals(childCountBeforeRotation, childCountAfterRotation)
+    }
+
     private fun navigateToFragment(fragmentId: Int) {
         onView(withId(fragmentId)).perform(click())
     }
@@ -139,6 +165,12 @@ class MainActivityInstrumentedTest {
         when (delay) {
             AppConstants.WEB_SERVICE_DELAY_LONG -> Thread.sleep(AppConstants.WEB_SERVICE_DELAY_LONG)
             AppConstants.WEB_SERVICE_DELAY_SHORT -> Thread.sleep(AppConstants.WEB_SERVICE_DELAY_SHORT)
+        }
+    }
+
+    private fun setScreenOrientation(orientation: Int) {
+        activityScenario.onActivity {
+            it.requestedOrientation = orientation
         }
     }
 }
