@@ -16,21 +16,15 @@
 package gparap.apps.recipes
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.recipes.adapters.RecipeCategoryAdapter
-import gparap.apps.recipes.api.RecipeService
-import gparap.apps.recipes.data.RecipeCategoryModel
-import gparap.apps.recipes.data.RecipeCategoryResponse
-import gparap.apps.recipes.utils.AppConstants
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import gparap.apps.recipes.viewmodels.CategoriesViewModel
 
 class CategoriesFragment : Fragment() {
     override fun onCreateView(
@@ -39,30 +33,23 @@ class CategoriesFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_categories, container, false)
 
+        //get the ViewModel of this fragment
+        val viewModel = ViewModelProvider(this)[CategoriesViewModel::class.java]
+
         //consume the web service to fetch recipe categories
-        var categories: ArrayList<RecipeCategoryModel>
-        RecipeService.create().getRecipeCategories()
-            .enqueue(object : Callback<RecipeCategoryResponse> {
-                override fun onResponse(
-                    call: Call<RecipeCategoryResponse>,
-                    response: Response<RecipeCategoryResponse>
-                ) {
-                    //get the recipe categories
-                    categories = response.body()?.categories as ArrayList<RecipeCategoryModel>
+        viewModel.getRecipeCategories()
 
-                    //setup the categories RecyclerView with adapter
-                    val categoriesRecyclerView =
-                        view.findViewById<RecyclerView>(R.id.recycle_view_recipe_categories)
-                    categoriesRecyclerView.layoutManager = GridLayoutManager(view.context, 2)
-                    val adapter = RecipeCategoryAdapter()
-                    adapter.recipeCategories = categories
-                    categoriesRecyclerView.adapter = adapter
-                }
+        //setup the categories RecyclerView with adapter
+        val categoriesRecyclerView =
+            view.findViewById<RecyclerView>(R.id.recycle_view_recipe_categories)
+        categoriesRecyclerView.layoutManager = GridLayoutManager(view.context, 2)
+        val adapter = RecipeCategoryAdapter()
+        categoriesRecyclerView.adapter = adapter
 
-                override fun onFailure(call: Call<RecipeCategoryResponse>, t: Throwable) {
-                    t.message?.let { Log.d(AppConstants.RECIPES_LOG, it) }
-                }
-            })
+        //observe the recipe categories live data
+        viewModel.getRecipeCategoriesLiveData().observe(viewLifecycleOwner) {
+            adapter.setRecipeCategories(it)
+        }
 
         //inflate the layout for this fragment
         return view
