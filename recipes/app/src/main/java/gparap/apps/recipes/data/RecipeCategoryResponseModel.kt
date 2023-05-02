@@ -17,7 +17,7 @@ package gparap.apps.recipes.data
 
 import com.google.gson.annotations.SerializedName
 
-data class RecipeCategoryResponse(
+data class RecipeCategoryResponseModel(
     @SerializedName("categories")
     val categories: List<RecipeCategoryModel>
 )
