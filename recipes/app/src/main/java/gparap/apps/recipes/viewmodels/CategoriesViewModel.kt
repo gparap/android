@@ -21,7 +21,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import gparap.apps.recipes.api.RecipeService
 import gparap.apps.recipes.data.RecipeCategoryModel
-import gparap.apps.recipes.data.RecipeCategoryResponse
+import gparap.apps.recipes.data.RecipeCategoryResponseModel
 import gparap.apps.recipes.utils.AppConstants
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,17 +34,17 @@ class CategoriesViewModel : ViewModel() {
     fun getRecipeCategories() {
         var categories: ArrayList<RecipeCategoryModel>
         RecipeService.create().getRecipeCategories()
-            .enqueue(object : Callback<RecipeCategoryResponse> {
+            .enqueue(object : Callback<RecipeCategoryResponseModel> {
                 override fun onResponse(
-                    call: Call<RecipeCategoryResponse>,
-                    response: Response<RecipeCategoryResponse>
+                    call: Call<RecipeCategoryResponseModel>,
+                    response: Response<RecipeCategoryResponseModel>
                 ) {
                     //get the recipe categories
                     categories = response.body()?.categories as ArrayList<RecipeCategoryModel>
                     recipeCategoriesLiveData.value = categories
                 }
 
-                override fun onFailure(call: Call<RecipeCategoryResponse>, t: Throwable) {
+                override fun onFailure(call: Call<RecipeCategoryResponseModel>, t: Throwable) {
                     t.message?.let { Log.d(AppConstants.RECIPES_LOG, it) }
                 }
             })
