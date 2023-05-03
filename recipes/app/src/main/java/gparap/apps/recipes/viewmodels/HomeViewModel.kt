@@ -29,6 +29,7 @@ import retrofit2.Response
 
 class HomeViewModel : ViewModel() {
     private var featuredRecipesLiveData = MutableLiveData<List<RecipeModel>>()
+    private var randomFeaturedRecipeLiveData = MutableLiveData<RecipeModel>()
 
     /** Consume the web service to fetch featured recipes from the API. */
     fun getFeaturedRecipes() {
@@ -38,6 +39,10 @@ class HomeViewModel : ViewModel() {
                 response: Response<RecipeResponseModel>
             ) {
                 featuredRecipesLiveData.value = response.body()?.recipes
+
+                //get a random featured recipe
+                val randomRecipes = response.body()?.recipes
+                randomFeaturedRecipeLiveData.value = randomRecipes?.random()
             }
 
             override fun onFailure(call: Call<RecipeResponseModel>, t: Throwable) {
@@ -48,5 +53,9 @@ class HomeViewModel : ViewModel() {
 
     fun getFeaturedRecipesLiveData() : LiveData<List<RecipeModel>> {
         return featuredRecipesLiveData
+    }
+
+    fun getRandomFeaturedRecipeLiveData() : LiveData<RecipeModel> {
+        return randomFeaturedRecipeLiveData
     }
 }
