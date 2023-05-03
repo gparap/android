@@ -19,10 +19,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import gparap.apps.recipes.adapters.FeaturedRecipeAdapter
 import gparap.apps.recipes.data.RecipeModel
 import gparap.apps.recipes.viewmodels.HomeViewModel
@@ -50,6 +52,14 @@ class HomeFragment : Fragment() {
         //observe the featured recipes live data
         viewModel.getFeaturedRecipesLiveData().observe(viewLifecycleOwner) {
             adapter.setFeaturedRecipes(it as ArrayList<RecipeModel>)
+        }
+
+        //observe the random featured recipe live data
+        viewModel.getRandomFeaturedRecipeLiveData().observe(viewLifecycleOwner) {
+            Picasso.get()
+                .load(it.image[0].url)
+                .placeholder(R.drawable.ic_image_placeholder_24)
+                .into(view.findViewById<ImageView>(R.id.image_view_random_recipe))
         }
 
         //return the layout for this fragment

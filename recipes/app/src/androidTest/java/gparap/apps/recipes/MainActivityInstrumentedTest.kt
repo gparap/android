@@ -16,6 +16,7 @@
 package gparap.apps.recipes
 
 import android.content.pm.ActivityInfo
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
@@ -109,6 +110,24 @@ class MainActivityInstrumentedTest {
     fun isVisible_homeFragment_recycle_view_favorite_recipes() {
         navigateToFragment(R.id.favoritesFragment)
         onView(withId(R.id.recycle_view_favorite_recipes)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isNotEmpty_randomRecipeOfTheDayImageView() {
+        navigateToFragment(R.id.homeFragment)
+        waitForTheWebServiceResponse(AppConstants.WEB_SERVICE_DELAY_SHORT)
+        try {
+            activityScenario.onActivity {
+                val imageView = it.findViewById<ImageView>(R.id.image_view_random_recipe)
+                assert(imageView.drawable.isVisible)
+            }
+        } catch (_: java.lang.AssertionError) {
+            waitForTheWebServiceResponse(AppConstants.WEB_SERVICE_DELAY_LONG)
+            activityScenario.onActivity {
+                val imageView = it.findViewById<ImageView>(R.id.image_view_random_recipe)
+                assert(imageView.drawable.isVisible)
+            }
+        }
     }
 
     @Test
