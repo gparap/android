@@ -112,6 +112,26 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
+    fun isNotEmpty_featuredRecipesRecyclerView() {
+        navigateToFragment(R.id.homeFragment)
+        waitForTheWebServiceResponse(AppConstants.WEB_SERVICE_DELAY_SHORT)
+        try {
+            activityScenario.onActivity {
+                val recyclerView =
+                    it.findViewById<RecyclerView>(R.id.recycler_view_featured_recipes)
+                assert(recyclerView.childCount > 0)
+            }
+        } catch (_: java.lang.AssertionError) {
+            waitForTheWebServiceResponse(AppConstants.WEB_SERVICE_DELAY_LONG)
+            activityScenario.onActivity {
+                val recyclerView =
+                    it.findViewById<RecyclerView>(R.id.recycler_view_featured_recipes)
+                assert(recyclerView.childCount > 0)
+            }
+        }
+    }
+
+    @Test
     fun isNotEmpty_categoriesRecyclerView() {
         navigateToFragment(R.id.categoriesFragment)
         waitForTheWebServiceResponse(AppConstants.WEB_SERVICE_DELAY_SHORT)
@@ -122,7 +142,6 @@ class MainActivityInstrumentedTest {
                 assert(recyclerView.childCount > 0)
             }
         } catch (_: java.lang.AssertionError) {
-            //navigateToFragment(R.id.categoriesFragment)
             waitForTheWebServiceResponse(AppConstants.WEB_SERVICE_DELAY_LONG)
             activityScenario.onActivity {
                 val recyclerView =

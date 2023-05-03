@@ -16,13 +16,15 @@
 package gparap.apps.recipes
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import gparap.apps.recipes.utils.AppConstants
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import gparap.apps.recipes.adapters.FeaturedRecipeAdapter
+import gparap.apps.recipes.data.RecipeModel
 import gparap.apps.recipes.viewmodels.HomeViewModel
 
 class HomeFragment : Fragment() {
@@ -37,8 +39,20 @@ class HomeFragment : Fragment() {
         val viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
         //consume the web service to fetch featured recipes
-        Log.d(AppConstants.RECIPES_LOG, viewModel.getFeaturedRecipes().toString())
+        viewModel.getFeaturedRecipes()
 
+        //setup the featured recipes RecyclerView with adapter
+        val featureRecipes = view.findViewById<RecyclerView>(R.id.recycler_view_featured_recipes)
+        featureRecipes.layoutManager = LinearLayoutManager(this.context)
+        val adapter = FeaturedRecipeAdapter()
+        featureRecipes.adapter = adapter
+
+        //observe the featured recipes live data
+        viewModel.getFeaturedRecipesLiveData().observe(viewLifecycleOwner) {
+            adapter.setFeaturedRecipes(it as ArrayList<RecipeModel>)
+        }
+
+        //return the layout for this fragment
         return view
     }
 }

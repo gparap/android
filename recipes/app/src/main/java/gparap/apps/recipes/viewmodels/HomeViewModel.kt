@@ -37,7 +37,6 @@ class HomeViewModel : ViewModel() {
                 call: Call<RecipeResponseModel>,
                 response: Response<RecipeResponseModel>
             ) {
-                println(response.body())
                 featuredRecipesLiveData.value = response.body()?.recipes
             }
 
