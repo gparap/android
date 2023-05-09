@@ -6,13 +6,128 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <!--Top Layout-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutPianoTop"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/material_dynamic_neutral90"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!--Piano Layout-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutPianoBottom"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/material_dynamic_neutral90"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutPianoTop">
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <!--Natural Notes layout-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/button_note_c_low"
+                        style="@style/piano_button_white"
+                        android:text="@string/note_C_low" />
+
+                    <Button
+                        android:id="@+id/button_note_d"
+                        style="@style/piano_button_white"
+                        android:text="@string/note_D" />
+
+                    <Button
+                        android:id="@+id/button_note_e"
+                        style="@style/piano_button_white"
+                        android:text="@string/note_E" />
+
+                    <Button
+                        android:id="@+id/button_note_f"
+                        style="@style/piano_button_white"
+                        android:text="@string/note_F" />
+
+                    <Button
+                        android:id="@+id/button_note_g"
+                        style="@style/piano_button_white"
+                        android:text="@string/note_G" />
+
+                    <Button
+                        android:id="@+id/button_note_a"
+                        style="@style/piano_button_white"
+                        android:text="@string/note_A" />
+
+                    <Button
+                        android:id="@+id/button_note_b"
+                        style="@style/piano_button_white"
+                        android:text="@string/note_B" />
+
+                    <Button
+                        android:id="@+id/note_c_high"
+                        style="@style/piano_button_white"
+                        android:text="@string/note_C_high" />
+
+                </LinearLayout>
+
+                <!--Sharp Notes (C#, D#) layout-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="52dp"
+                    android:layout_marginBottom="100dp">
+
+                    <Button
+                        android:id="@+id/button_note_c_sharp"
+                        style="@style/piano_button_black" />
+
+                    <Button
+                        android:id="@+id/button_note_d_sharp"
+                        style="@style/piano_button_black" />
+
+                </LinearLayout>
+
+                <!--Sharp Notes (F#, G#, A#) layout-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="364dp"
+                    android:layout_marginBottom="100dp">
+
+                    <Button
+                        android:id="@+id/button_note_f_sharp"
+                        style="@style/piano_button_black" />
+
+                    <Button
+                        android:id="@+id/button_note_g_sharp"
+                        style="@style/piano_button_black" />
+
+                    <Button
+                        android:id="@+id/button_note_a_sharp"
+                        style="@style/piano_button_black" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </HorizontalScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
