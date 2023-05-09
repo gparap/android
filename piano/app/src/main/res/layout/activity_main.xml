@@ -80,7 +80,7 @@
                         android:text="@string/note_B" />
 
                     <Button
-                        android:id="@+id/note_c_high"
+                        android:id="@+id/button_note_c_high"
                         style="@style/piano_button_white"
                         android:text="@string/note_C_high" />
 
