@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">My Piano App</string>
+
+    <!--Notes-->
+    <string name="note_C_low">C</string>
+    <string name="note_D">D</string>
+    <string name="note_E">E</string>
+    <string name="note_F">F</string>
+    <string name="note_G">G</string>
+    <string name="note_A">A</string>
+    <string name="note_B">B</string>
+    <string name="note_C_high">C</string>
 </resources>
