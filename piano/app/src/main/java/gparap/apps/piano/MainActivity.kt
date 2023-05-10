@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.KeyEvent.ACTION_DOWN
 import android.view.KeyEvent.ACTION_UP
 import android.view.View
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import kotlin.properties.Delegates
 
@@ -54,17 +55,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    fun onWhiteButtonClick(view: View) {
+    fun onNoteButtonClick(view: View) {
         view.setOnTouchListener { v, event ->
             when (event?.action) {
                 ACTION_DOWN -> v?.setBackgroundColor(Color.GRAY)
                 ACTION_UP -> {
                     //handle the button color
-                    v?.setBackgroundColor(Color.WHITE)
+                    setBackgroundColor(v)
 
                     //play the note
-                    when(view.id) {
-                        R.id.button_note_c_low -> {soundPool.play(c3, 1F, 1F, 1,  0, 1F)}
+                    when (view.id) {
+                        R.id.button_note_c_low -> {soundPool.play(c3, 1F, 1F, 1,  0, 1F);}
                         R.id.button_note_d -> {soundPool.play(d3, 1F, 1F, 1,  0, 1F)}
                         R.id.button_note_e -> {soundPool.play(e3, 1F, 1F, 1,  0, 1F)}
                         R.id.button_note_f -> {soundPool.play(f3, 1F, 1F, 1,  0, 1F)}
@@ -72,28 +73,6 @@ class MainActivity : AppCompatActivity() {
                         R.id.button_note_a -> {soundPool.play(a3, 1F, 1F, 1,  0, 1F)}
                         R.id.button_note_b -> {soundPool.play(b3, 1F, 1F, 1,  0, 1F)}
                         R.id.button_note_c_high -> {soundPool.play(c4, 1F, 1F, 1,  0, 1F)}
-                    }
-                }
-                else -> {
-                    //for the gray color no to stuck
-                    v?.setBackgroundColor(Color.WHITE)
-                }
-            }
-            v?.onTouchEvent(event) ?: true
-        }
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    fun onBlackButtonClick(view: View) {
-        view.setOnTouchListener { v, event ->
-            when (event?.action) {
-                ACTION_DOWN -> v?.setBackgroundColor(Color.GRAY)
-                ACTION_UP -> {
-                    //handle the button color
-                    v?.setBackgroundColor(Color.BLACK)
-
-                    //play the note
-                    when(view.id) {
                         R.id.button_note_c_sharp -> {soundPool.play(cSharp, 1F, 1F, 1,  0, 1F)}
                         R.id.button_note_d_sharp -> {soundPool.play(dSharp, 1F, 1F, 1,  0, 1F)}
                         R.id.button_note_f_sharp -> {soundPool.play(fSharp, 1F, 1F, 1,  0, 1F)}
@@ -101,12 +80,22 @@ class MainActivity : AppCompatActivity() {
                         R.id.button_note_a_sharp -> {soundPool.play(aSharp, 1F, 1F, 1,  0, 1F)}
                     }
                 }
+
                 else -> {
                     //for the gray color no to stuck
-                    v?.setBackgroundColor(Color.BLACK)
+                    setBackgroundColor(v)
                 }
             }
             v?.onTouchEvent(event) ?: true
+        }
+    }
+
+    /* Handles the background color of the note button pressed. */
+    private fun setBackgroundColor(view: View) {
+        if ((view as Button).text.isEmpty()) {
+            view.setBackgroundColor(Color.BLACK)
+        } else {
+            view.setBackgroundColor(Color.WHITE)
         }
     }
 }
