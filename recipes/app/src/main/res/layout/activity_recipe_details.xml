@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RecipeDetailsActivity">
+
+    <ImageView
+        android:id="@+id/image_view_recipe_details"
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:contentDescription="@string/desc_recipe_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <WebView
+        android:id="@+id/web_view_recipe_details_license"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_view_recipe_details" />
+
+    <TextView
+        android:id="@+id/text_view_recipe_details_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Recipe Title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/web_view_recipe_details_license" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_recipe_details_title">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/text_view_recipe_details_category_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_category"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_view_recipe_details_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Peruvian recipes"
+                app:layout_constraintStart_toEndOf="@+id/text_view_recipe_details_category_label"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_view_recipe_details_servings_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_servings"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_recipe_details_category"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/text_view_recipe_servings_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="8"
+                app:layout_constraintStart_toEndOf="@+id/text_view_recipe_details_servings_label"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_recipe_details_category" />
+
+            <TextView
+                android:id="@+id/text_view_recipe_details_time_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_preparation"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_recipe_servings_category"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/text_view_recipe_details_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="45 mins approx"
+                app:layout_constraintStart_toEndOf="@+id/text_view_recipe_details_time_label"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_recipe_servings_category" />
+
+            <TextView
+                android:id="@+id/text_view_recipe_details_difficulty_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_difficulty"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_recipe_details_time"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/text_view_recipe_details_difficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Easy"
+                app:layout_constraintStart_toEndOf="@+id/text_view_recipe_details_difficulty_label"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_recipe_details_time" />
+
+            <TextView
+                android:id="@+id/text_view_recipe_details_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_recipe_details_difficulty"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+
+            <TextView
+                android:id="@+id/text_view_recipe_details_ingredients_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_ingredients"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_recipe_details_desc" />
+
+            <TextView
+                android:id="@+id/text_view_recipe_details_ingredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="1. 1300 g (4 lb) chicken\n2. 120 ml (½ cup) of olive oil\n3. etc..."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_recipe_details_ingredients_label" />
+
+            <TextView
+                android:id="@+id/text_view_recipe_details_steps_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_steps"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_recipe_details_ingredients" />
+
+            <TextView
+                android:id="@+id/text_view_recipe_steps_ingredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="1. Boil chicken in salted water together with the stock cube. Remove bones and break into bite size pieces, keeping the resulting chicken stock.
+                \n2. In a saucepan, heat oil and sauté the onion, garlic, and finely chopped chili peppers and add salt and pepper. Fry this until the onions are cooked and golden.
+                \n3. etc..."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_recipe_details_steps_label" />
+
+            <TextView
+                tools:visibility="visible"
+                android:visibility="invisible"
+                android:id="@+id/text_view_recipe_details_notes_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_notes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_recipe_steps_ingredients" />
+
+            <TextView
+                tools:visibility="visible"
+                android:visibility="invisible"
+                android:id="@+id/text_view_recipe_notes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="notes are not always present..."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_view_recipe_details_notes_label" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

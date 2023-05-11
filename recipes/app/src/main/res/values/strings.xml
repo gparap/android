@@ -9,4 +9,12 @@
     <string name="label_recipe_of_the_day">Recipe of the day</string>
     <string name="label_featured_recipes">Featured recipes</string>
     <string name="desc_category_image">Recipe category</string>
+    <string name="desc_recipe_image">Recipe Image</string>
+    <string name="text_category">Category:\u00A0</string>
+    <string name="text_servings">Servings:\u00A0</string>
+    <string name="text_preparation">Time:\u00A0</string>
+    <string name="text_difficulty">Difficulty:\u00A0</string>
+    <string name="text_ingredients">Ingredients:</string>
+    <string name="text_steps">Steps:</string>
+    <string name="text_notes">Notes:</string>
 </resources>
