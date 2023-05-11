@@ -15,6 +15,7 @@
  */
 package gparap.apps.recipes
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -60,6 +61,11 @@ class HomeFragment : Fragment() {
                 .load(it.image[0].url)
                 .placeholder(R.drawable.ic_image_placeholder_24)
                 .into(view.findViewById<ImageView>(R.id.image_view_random_recipe))
+        }.also {
+            //open recipe in its details activity
+            view.findViewById<ImageView>(R.id.image_view_random_recipe).setOnClickListener {
+                startActivity(Intent(context, RecipeDetailsActivity::class.java))
+            }
         }
 
         //return the layout for this fragment

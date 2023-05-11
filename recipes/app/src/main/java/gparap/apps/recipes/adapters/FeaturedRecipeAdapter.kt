@@ -16,6 +16,8 @@
 package gparap.apps.recipes.adapters
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,10 +27,12 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.squareup.picasso.Picasso
 import gparap.apps.recipes.R
+import gparap.apps.recipes.RecipeDetailsActivity
 import gparap.apps.recipes.data.RecipeModel
 
 class FeaturedRecipeAdapter : RecyclerView.Adapter<FeaturedRecipeAdapter.RecipeViewHolder>() {
     private var featuredRecipes = ArrayList<RecipeModel>()
+    private var context: Context? = null
 
     @SuppressLint("NotifyDataSetChanged")
     fun setFeaturedRecipes(featuredRecipes: ArrayList<RecipeModel>) {
@@ -42,6 +46,9 @@ class FeaturedRecipeAdapter : RecyclerView.Adapter<FeaturedRecipeAdapter.RecipeV
     }
 
     override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): RecipeViewHolder {
+        //get the context the view is running in
+        context = parent.context
+
         //create the item view
         LayoutInflater.from(parent.context).inflate(
             parent.context.resources.getLayout(R.layout.cardview_recipe), parent, false
@@ -59,6 +66,11 @@ class FeaturedRecipeAdapter : RecyclerView.Adapter<FeaturedRecipeAdapter.RecipeV
 
         //display recipe text
         holder.recipeText.text = featuredRecipes[position].title
+
+        //open recipe in its details activity
+        holder.recipeImage.setOnClickListener {
+            context?.startActivity(Intent(context, RecipeDetailsActivity::class.java))
+        }
     }
 
     override fun getItemCount(): Int {
