@@ -15,11 +15,38 @@
  */
 package gparap.apps.recipes.data
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 data class RecipeImageModel(
     @SerializedName("url")
-    val url: String,
+    val url: String?,
     @SerializedName("license")
-    val license: String,
-)
+    val license: String?,
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString(),
+        parcel.readString()
+    ) {
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(url)
+        parcel.writeString(license)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<RecipeImageModel> {
+        override fun createFromParcel(parcel: Parcel): RecipeImageModel {
+            return RecipeImageModel(parcel)
+        }
+
+        override fun newArray(size: Int): Array<RecipeImageModel?> {
+            return arrayOfNulls(size)
+        }
+    }
+}

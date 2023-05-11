@@ -15,15 +15,46 @@
  */
 package gparap.apps.recipes.data
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 data class RecipeInformationModel(
     @SerializedName("category")
-    val category: String,
+    val category: String?,
     @SerializedName("servings")
-    val servings: String,
+    val servings: String?,
     @SerializedName("prep_time")
-    val preparationTime: String,
+    val preparationTime: String?,
     @SerializedName("difficulty")
-    val difficulty: String,
-)
+    val difficulty: String?,
+):Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString()
+    ) {
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(category)
+        parcel.writeString(servings)
+        parcel.writeString(preparationTime)
+        parcel.writeString(difficulty)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<RecipeInformationModel> {
+        override fun createFromParcel(parcel: Parcel): RecipeInformationModel {
+            return RecipeInformationModel(parcel)
+        }
+
+        override fun newArray(size: Int): Array<RecipeInformationModel?> {
+            return arrayOfNulls(size)
+        }
+    }
+}
