@@ -15,12 +15,113 @@
  */
 package gparap.apps.recipes
 
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+import com.squareup.picasso.Picasso
+import gparap.apps.recipes.data.RecipeModel
 
 class RecipeDetailsActivity : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recipe_details)
+
+        //get recipe data from intent
+        val recipe = intent.getParcelableExtra("recipe_extra", RecipeModel::class.java)
+
+        //display image
+        findViewById<ImageView>(R.id.image_view_recipe_details).apply {
+            Picasso.get().load(recipe?.image?.get(0)?.url)
+                .placeholder(R.drawable.ic_image_placeholder_24)
+                .into(this)
+        }
+
+        //TODO: licence
+
+        //display title
+        findViewById<TextView>(R.id.text_view_recipe_details_title).apply {
+            text = recipe?.title
+        }
+
+        //display category
+        findViewById<TextView>(R.id.text_view_recipe_details_category).apply {
+            text = recipe?.information?.get(0)?.category
+        }
+
+        //display servings
+        findViewById<TextView>(R.id.text_view_recipe_servings_category).apply {
+            text = recipe?.information?.get(0)?.servings
+        }
+
+        //display preparation time
+        findViewById<TextView>(R.id.text_view_recipe_details_time).apply {
+            text = recipe?.information?.get(0)?.preparationTime
+        }
+
+        //display difficulty
+        findViewById<TextView>(R.id.text_view_recipe_details_difficulty).apply {
+            text = recipe?.information?.get(0)?.difficulty
+        }
+
+        //display description
+        findViewById<TextView>(R.id.text_view_recipe_details_desc).apply {
+            text = recipe?.description
+        }
+
+        //display ingredient
+        findViewById<TextView>(R.id.text_view_recipe_details_ingredients).apply {
+            text = recipe?.ingredients?.get(0)?.ingredient1.plus('\n')
+                .plus(recipe?.ingredients?.get(0)?.ingredient2).plus('\n')
+                .plus(recipe?.ingredients?.get(0)?.ingredient3).plus('\n')
+                .plus(recipe?.ingredients?.get(0)?.ingredient4).plus('\n')
+                .plus(recipe?.ingredients?.get(0)?.ingredient5).plus('\n')
+                .plus(recipe?.ingredients?.get(0)?.ingredient6).plus('\n')
+                .plus(recipe?.ingredients?.get(0)?.ingredient7).plus('\n')
+                .plus(recipe?.ingredients?.get(0)?.ingredient8).plus('\n')
+                .plus(recipe?.ingredients?.get(0)?.ingredient9).plus('\n')
+                .plus(recipe?.ingredients?.get(0)?.ingredient10).plus('\n')
+                .plus(recipe?.ingredients?.get(0)?.ingredient11).plus('\n')
+                .plus(recipe?.ingredients?.get(0)?.ingredient12).plus('\n')
+                .plus(recipe?.ingredients?.get(0)?.ingredient13).plus('\n')
+                .plus(recipe?.ingredients?.get(0)?.ingredient14).plus('\n')
+                .plus(recipe?.ingredients?.get(0)?.ingredient15).trimEnd()
+        }
+
+        //display steps
+        findViewById<TextView>(R.id.text_view_recipe_details_steps).apply {
+            text = recipe?.preparationSteps?.get(0)?.step1.plus('\n')
+                .plus(recipe?.preparationSteps?.get(0)?.step2).plus('\n')
+                .plus(recipe?.preparationSteps?.get(0)?.step3).plus('\n')
+                .plus(recipe?.preparationSteps?.get(0)?.step4).plus('\n')
+                .plus(recipe?.preparationSteps?.get(0)?.step5).plus('\n')
+                .plus(recipe?.preparationSteps?.get(0)?.step6).plus('\n')
+                .plus(recipe?.preparationSteps?.get(0)?.step7).plus('\n')
+                .plus(recipe?.preparationSteps?.get(0)?.step8).plus('\n')
+                .plus(recipe?.preparationSteps?.get(0)?.step9).trimEnd()
+        }
+
+        //display notes, if there are any notes
+        if (recipe?.preparationNotes?.get(0)?.note1?.isNotEmpty() == true) {
+            findViewById<TextView>(R.id.text_view_recipe_details_notes_label).apply {
+                visibility = View.VISIBLE
+            }
+            findViewById<TextView>(R.id.text_view_recipe_details_notes).apply {
+                visibility = View.VISIBLE
+                text = recipe.preparationNotes[0].note1.plus('\n')
+                    .plus(recipe.preparationNotes[0].note2).plus('\n')
+                    .plus(recipe.preparationNotes[0].note3).plus('\n')
+                    .plus(recipe.preparationNotes[0].note4).plus('\n')
+                    .plus(recipe.preparationNotes[0].note5).plus('\n')
+                    .plus(recipe.preparationNotes[0].note6).plus('\n')
+                    .plus(recipe.preparationNotes[0].note7).plus('\n')
+                    .plus(recipe.preparationNotes[0].note8).plus('\n')
+                    .plus(recipe.preparationNotes[0].note9).trimEnd()
+            }
+        }
     }
 }

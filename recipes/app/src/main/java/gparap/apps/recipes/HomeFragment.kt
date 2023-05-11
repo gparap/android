@@ -56,15 +56,20 @@ class HomeFragment : Fragment() {
         }
 
         //observe the random featured recipe live data
+        var recipeModel: RecipeModel? = null
         viewModel.getRandomFeaturedRecipeLiveData().observe(viewLifecycleOwner) {
             Picasso.get()
-                .load(it.image[0].url)
+                .load(it.image?.get(0)?.url)
                 .placeholder(R.drawable.ic_image_placeholder_24)
                 .into(view.findViewById<ImageView>(R.id.image_view_random_recipe))
+
+            recipeModel = it
         }.also {
             //open recipe in its details activity
             view.findViewById<ImageView>(R.id.image_view_random_recipe).setOnClickListener {
-                startActivity(Intent(context, RecipeDetailsActivity::class.java))
+                val intent = Intent(context, RecipeDetailsActivity::class.java)
+                intent.putExtra("recipe_extra", recipeModel)
+                startActivity(intent)
             }
         }
 

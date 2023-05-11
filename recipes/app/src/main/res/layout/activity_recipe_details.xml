@@ -8,12 +8,13 @@
 
     <ImageView
         android:id="@+id/image_view_recipe_details"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="192dp"
         android:contentDescription="@string/desc_recipe_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <WebView
@@ -146,7 +147,7 @@
                 app:layout_constraintTop_toBottomOf="@id/text_view_recipe_details_ingredients" />
 
             <TextView
-                android:id="@+id/text_view_recipe_steps_ingredients"
+                android:id="@+id/text_view_recipe_details_steps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="1. Boil chicken in salted water together with the stock cube. Remove bones and break into bite size pieces, keeping the resulting chicken stock.
@@ -158,19 +159,19 @@
 
             <TextView
                 tools:visibility="visible"
-                android:visibility="invisible"
+                android:visibility="gone"
                 android:id="@+id/text_view_recipe_details_notes_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_notes"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_view_recipe_steps_ingredients" />
+                app:layout_constraintTop_toBottomOf="@id/text_view_recipe_details_steps" />
 
             <TextView
                 tools:visibility="visible"
-                android:visibility="invisible"
-                android:id="@+id/text_view_recipe_notes"
+                android:visibility="gone"
+                android:id="@+id/text_view_recipe_details_notes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="notes are not always present..."
