@@ -71,7 +71,7 @@
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
-                android:id="@+id/text_view_recipe_servings_category"
+                android:id="@+id/text_view_recipe_details_servings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="8"
@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/text_preparation"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_recipe_servings_category"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_recipe_details_servings"
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 tools:text="45 mins approx"
                 app:layout_constraintStart_toEndOf="@+id/text_view_recipe_details_time_label"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_recipe_servings_category" />
+                app:layout_constraintTop_toBottomOf="@+id/text_view_recipe_details_servings" />
 
             <TextView
                 android:id="@+id/text_view_recipe_details_difficulty_label"

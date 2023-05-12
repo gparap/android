@@ -20,19 +20,22 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
 import gparap.apps.recipes.data.RecipeModel
+import gparap.apps.recipes.utils.AppConstants
 
 class RecipeDetailsActivity : AppCompatActivity() {
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recipe_details)
 
         //get recipe data from intent
-        val recipe = intent.getParcelableExtra("recipe_extra", RecipeModel::class.java)
+        val recipe: RecipeModel? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra(AppConstants.RECIPE_PARCELABLE_EXTRA, RecipeModel::class.java)
+        } else {
+            intent.getParcelableExtra(AppConstants.RECIPE_PARCELABLE_EXTRA)
+        }
 
         //display image
         findViewById<ImageView>(R.id.image_view_recipe_details).apply {
@@ -54,7 +57,7 @@ class RecipeDetailsActivity : AppCompatActivity() {
         }
 
         //display servings
-        findViewById<TextView>(R.id.text_view_recipe_servings_category).apply {
+        findViewById<TextView>(R.id.text_view_recipe_details_servings).apply {
             text = recipe?.information?.get(0)?.servings
         }
 
@@ -73,7 +76,7 @@ class RecipeDetailsActivity : AppCompatActivity() {
             text = recipe?.description
         }
 
-        //display ingredient
+        //display ingredient    TODO:utils
         findViewById<TextView>(R.id.text_view_recipe_details_ingredients).apply {
             text = recipe?.ingredients?.get(0)?.ingredient1.plus('\n')
                 .plus(recipe?.ingredients?.get(0)?.ingredient2).plus('\n')
@@ -92,7 +95,7 @@ class RecipeDetailsActivity : AppCompatActivity() {
                 .plus(recipe?.ingredients?.get(0)?.ingredient15).trimEnd()
         }
 
-        //display steps
+        //display steps TODO:utils
         findViewById<TextView>(R.id.text_view_recipe_details_steps).apply {
             text = recipe?.preparationSteps?.get(0)?.step1.plus('\n')
                 .plus(recipe?.preparationSteps?.get(0)?.step2).plus('\n')
@@ -105,7 +108,7 @@ class RecipeDetailsActivity : AppCompatActivity() {
                 .plus(recipe?.preparationSteps?.get(0)?.step9).trimEnd()
         }
 
-        //display notes, if there are any notes
+        //display notes, if there are any notes TODO:utils
         if (recipe?.preparationNotes?.get(0)?.note1?.isNotEmpty() == true) {
             findViewById<TextView>(R.id.text_view_recipe_details_notes_label).apply {
                 visibility = View.VISIBLE

@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import gparap.apps.recipes.adapters.FeaturedRecipeAdapter
 import gparap.apps.recipes.data.RecipeModel
+import gparap.apps.recipes.utils.AppConstants
 import gparap.apps.recipes.viewmodels.HomeViewModel
 
 class HomeFragment : Fragment() {
@@ -68,7 +69,7 @@ class HomeFragment : Fragment() {
             //open recipe in its details activity
             view.findViewById<ImageView>(R.id.image_view_random_recipe).setOnClickListener {
                 val intent = Intent(context, RecipeDetailsActivity::class.java)
-                intent.putExtra("recipe_extra", recipeModel)
+                intent.putExtra(AppConstants.RECIPE_PARCELABLE_EXTRA, recipeModel)
                 startActivity(intent)
             }
         }
