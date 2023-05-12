@@ -29,6 +29,7 @@ import com.squareup.picasso.Picasso
 import gparap.apps.recipes.R
 import gparap.apps.recipes.RecipeDetailsActivity
 import gparap.apps.recipes.data.RecipeModel
+import gparap.apps.recipes.utils.AppConstants
 
 class FeaturedRecipeAdapter : RecyclerView.Adapter<FeaturedRecipeAdapter.RecipeViewHolder>() {
     private var featuredRecipes = ArrayList<RecipeModel>()
@@ -45,7 +46,7 @@ class FeaturedRecipeAdapter : RecyclerView.Adapter<FeaturedRecipeAdapter.RecipeV
         var recipeText: TextView = itemView.findViewById(R.id.text_view_recipe)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): RecipeViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
         //get the context the view is running in
         context = parent.context
 
@@ -69,7 +70,9 @@ class FeaturedRecipeAdapter : RecyclerView.Adapter<FeaturedRecipeAdapter.RecipeV
 
         //open recipe in its details activity
         holder.recipeImage.setOnClickListener {
-            context?.startActivity(Intent(context, RecipeDetailsActivity::class.java))
+            val intent = Intent(context, RecipeDetailsActivity::class.java)
+            intent.putExtra(AppConstants.RECIPE_PARCELABLE_EXTRA, featuredRecipes[position])
+            context?.startActivity(intent)
         }
     }
 

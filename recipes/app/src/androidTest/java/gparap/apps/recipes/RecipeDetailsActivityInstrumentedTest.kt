@@ -15,16 +15,24 @@
  */
 package gparap.apps.recipes
 
+import android.widget.TextView
+import androidx.lifecycle.Lifecycle
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
+import androidx.test.runner.lifecycle.ActivityLifecycleMonitorRegistry
+import androidx.test.runner.lifecycle.Stage
+import gparap.apps.recipes.utils.AppConstants
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+
 
 @RunWith(AndroidJUnit4::class)
 class RecipeDetailsActivityInstrumentedTest {
@@ -41,13 +49,17 @@ class RecipeDetailsActivityInstrumentedTest {
     }
 
     @Test
-    fun isVisible_web_view_recipe_details_license() {
-        onView(withId(R.id.web_view_recipe_details_license)).check(matches(isDisplayed()))
+    fun isNotEmpty_Title() {
+        destroyAndStartMainActivity()
+        sleepAndClickRecipe()
+        val activity = getRecipeDetailsActivity()
+        val title = activity?.findViewById<TextView>(R.id.text_view_recipe_details_title)
+        title?.text?.isNotEmpty()?.let { assert(it) }
     }
 
     @Test
-    fun isVisible_text_view_recipe_details_title() {
-        onView(withId(R.id.text_view_recipe_details_title)).check(matches(isDisplayed()))
+    fun isVisible_web_view_recipe_details_license() {
+        onView(withId(R.id.web_view_recipe_details_license)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -56,8 +68,26 @@ class RecipeDetailsActivityInstrumentedTest {
     }
 
     @Test
+    fun isNotEmpty_Category() {
+        destroyAndStartMainActivity()
+        sleepAndClickRecipe()
+        val activity = getRecipeDetailsActivity()
+        val title = activity?.findViewById<TextView>(R.id.text_view_recipe_details_category)
+        title?.text?.isNotEmpty()?.let { assert(it) }
+    }
+
+    @Test
     fun isVisible_text_view_recipe_details_servings_label() {
         onView(withId(R.id.text_view_recipe_details_servings_label)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isNotEmpty_Servings() {
+        destroyAndStartMainActivity()
+        sleepAndClickRecipe()
+        val activity = getRecipeDetailsActivity()
+        val title = activity?.findViewById<TextView>(R.id.text_view_recipe_details_servings)
+        title?.text?.isNotEmpty()?.let { assert(it) }
     }
 
     @Test
@@ -66,8 +96,35 @@ class RecipeDetailsActivityInstrumentedTest {
     }
 
     @Test
+    fun isNotEmpty_Time() {
+        destroyAndStartMainActivity()
+        sleepAndClickRecipe()
+        val activity = getRecipeDetailsActivity()
+        val title = activity?.findViewById<TextView>(R.id.text_view_recipe_details_time)
+        title?.text?.isNotEmpty()?.let { assert(it) }
+    }
+
+    @Test
     fun isVisible_text_view_recipe_details_difficulty_label() {
         onView(withId(R.id.text_view_recipe_details_difficulty_label)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isNotEmpty_Difficulty() {
+        destroyAndStartMainActivity()
+        sleepAndClickRecipe()
+        val activity = getRecipeDetailsActivity()
+        val title = activity?.findViewById<TextView>(R.id.text_view_recipe_details_difficulty)
+        title?.text?.isNotEmpty()?.let { assert(it) }
+    }
+
+    @Test
+    fun isNotEmpty_Description() {
+        destroyAndStartMainActivity()
+        sleepAndClickRecipe()
+        val activity = getRecipeDetailsActivity()
+        val title = activity?.findViewById<TextView>(R.id.text_view_recipe_details_desc)
+        title?.text?.isNotEmpty()?.let { assert(it) }
     }
 
     @Test
@@ -76,8 +133,26 @@ class RecipeDetailsActivityInstrumentedTest {
     }
 
     @Test
+    fun isNotEmpty_Ingredients() {
+        destroyAndStartMainActivity()
+        sleepAndClickRecipe()
+        val activity = getRecipeDetailsActivity()
+        val title = activity?.findViewById<TextView>(R.id.text_view_recipe_details_ingredients)
+        title?.text?.isNotEmpty()?.let { assert(it) }
+    }
+
+    @Test
     fun isVisible_text_view_recipe_details_steps_label() {
         onView(withId(R.id.text_view_recipe_details_steps_label)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isNotEmpty_Steps() {
+        destroyAndStartMainActivity()
+        sleepAndClickRecipe()
+        val activity = getRecipeDetailsActivity()
+        val title = activity?.findViewById<TextView>(R.id.text_view_recipe_details_steps)
+        title?.text?.isNotEmpty()?.let { assert(it) }
     }
 
     @Test
@@ -85,4 +160,27 @@ class RecipeDetailsActivityInstrumentedTest {
         onView(withId(R.id.text_view_recipe_details_notes_label)).check(matches(isDisplayed()))
     }
 
+    /* Destroy current scenario and launch main activity. */
+    private fun destroyAndStartMainActivity() {
+        activityScenario.moveToState(Lifecycle.State.DESTROYED)
+        ActivityScenario.launch(MainActivity::class.java)
+    }
+
+    /* Wait for the web service response and Click the first recipe. */
+    private fun sleepAndClickRecipe() {
+        Thread.sleep(AppConstants.WEB_SERVICE_DELAY_LONG)
+        onView(withId(R.id.image_view_random_recipe)).perform(click())
+    }
+
+    /* Return the resumed RecipeDetailsActivity. */
+    private fun getRecipeDetailsActivity(): RecipeDetailsActivity? {
+        var activity: RecipeDetailsActivity? = null
+        getInstrumentation().runOnMainSync {
+            val activities = ActivityLifecycleMonitorRegistry.getInstance().getActivitiesInStage(Stage.RESUMED)
+            activities.onEach {
+                activity = it as RecipeDetailsActivity?
+            }
+        }
+        return activity
+    }
 }
