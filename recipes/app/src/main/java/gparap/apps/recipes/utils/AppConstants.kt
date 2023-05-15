@@ -21,4 +21,5 @@ object AppConstants {
     const val RECIPES_LOG = "RECIPES_LOG"
     const val WEB_SERVICE_DELAY_LONG = 1667L
     const val WEB_SERVICE_DELAY_SHORT = 667L
+    const val RECIPE_PARCELABLE_EXTRA = "recipe_parcelable_extra"
 }

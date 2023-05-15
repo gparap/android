@@ -21,6 +21,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -72,6 +73,11 @@ class HomeFragment : Fragment() {
                 intent.putExtra(AppConstants.RECIPE_PARCELABLE_EXTRA, recipeModel)
                 startActivity(intent)
             }
+        }
+
+        //observe the loading progress
+        viewModel.getLoadingProgressVisibility().observe(viewLifecycleOwner) {
+            view.findViewById<ProgressBar>(R.id.progress_home).visibility = it
         }
 
         //return the layout for this fragment
