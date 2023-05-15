@@ -16,6 +16,7 @@
 package gparap.apps.recipes.viewmodels
 
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -30,9 +31,11 @@ import retrofit2.Response
 class HomeViewModel : ViewModel() {
     private var featuredRecipesLiveData = MutableLiveData<List<RecipeModel>>()
     private var randomFeaturedRecipeLiveData = MutableLiveData<RecipeModel>()
+    private var progressBarVisibilityLiveData = MutableLiveData<Int>()
 
     /** Consume the web service to fetch featured recipes from the API. */
     fun getFeaturedRecipes() {
+        setLoadingProgressVisibility(View.VISIBLE)
         RecipeService.create().getFeaturedRecipes().enqueue(object : Callback<RecipeResponseModel> {
             override fun onResponse(
                 call: Call<RecipeResponseModel>,
@@ -43,10 +46,13 @@ class HomeViewModel : ViewModel() {
                 //get a random featured recipe
                 val randomRecipes = response.body()?.recipes
                 randomFeaturedRecipeLiveData.value = randomRecipes?.random()
+
+                setLoadingProgressVisibility(View.INVISIBLE)
             }
 
             override fun onFailure(call: Call<RecipeResponseModel>, t: Throwable) {
                 t.message?.let { Log.d(AppConstants.RECIPES_LOG, it) }
+                setLoadingProgressVisibility(View.INVISIBLE)
             }
         })
     }
@@ -57,5 +63,13 @@ class HomeViewModel : ViewModel() {
 
     fun getRandomFeaturedRecipeLiveData() : LiveData<RecipeModel> {
         return randomFeaturedRecipeLiveData
+    }
+
+    fun getLoadingProgressVisibility() : MutableLiveData<Int> {
+       return progressBarVisibilityLiveData
+    }
+
+    private fun setLoadingProgressVisibility(visibility: Int) {
+        progressBarVisibilityLiveData.value = visibility
     }
 }

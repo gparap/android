@@ -19,6 +19,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -49,6 +50,11 @@ class CategoriesFragment : Fragment() {
         //observe the recipe categories live data
         viewModel.getRecipeCategoriesLiveData().observe(viewLifecycleOwner) {
             adapter.setRecipeCategories(it)
+        }
+
+        //observe the loading progress
+        viewModel.getLoadingProgressVisibility().observe(viewLifecycleOwner) {
+            view.findViewById<ProgressBar>(R.id.progress_categories).visibility = it
         }
 
         //inflate the layout for this fragment

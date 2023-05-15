@@ -16,6 +16,7 @@
 package gparap.apps.recipes.viewmodels
 
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -29,10 +30,12 @@ import retrofit2.Response
 
 class CategoriesViewModel : ViewModel() {
     private var recipeCategoriesLiveData = MutableLiveData<ArrayList<RecipeCategoryModel>>()
+    private var progressBarVisibilityLiveData = MutableLiveData<Int>()
 
     /** Consume the web service to fetch recipe categories from the API. */
     fun getRecipeCategories() {
         var categories: ArrayList<RecipeCategoryModel>
+        setLoadingProgressVisibility(View.VISIBLE)
         RecipeService.create().getRecipeCategories()
             .enqueue(object : Callback<RecipeCategoryResponseModel> {
                 override fun onResponse(
@@ -42,15 +45,26 @@ class CategoriesViewModel : ViewModel() {
                     //get the recipe categories
                     categories = response.body()?.categories as ArrayList<RecipeCategoryModel>
                     recipeCategoriesLiveData.value = categories
+
+                    setLoadingProgressVisibility(View.INVISIBLE)
                 }
 
                 override fun onFailure(call: Call<RecipeCategoryResponseModel>, t: Throwable) {
                     t.message?.let { Log.d(AppConstants.RECIPES_LOG, it) }
+                    setLoadingProgressVisibility(View.INVISIBLE)
                 }
             })
     }
 
     fun getRecipeCategoriesLiveData() : LiveData<ArrayList<RecipeCategoryModel>> {
         return recipeCategoriesLiveData
+    }
+
+    fun getLoadingProgressVisibility() : MutableLiveData<Int> {
+        return progressBarVisibilityLiveData
+    }
+
+    private fun setLoadingProgressVisibility(visibility: Int) {
+        progressBarVisibilityLiveData.value = visibility
     }
 }
