@@ -61,7 +61,7 @@ class FeaturedRecipeAdapter : RecyclerView.Adapter<FeaturedRecipeAdapter.RecipeV
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         //display recipe image
         Picasso.get()
-            .load(featuredRecipes[position].image?.get(0)?.url)
+            .load(featuredRecipes[position].imageUrl)
             .placeholder(R.drawable.ic_image_placeholder_24)
             .into(holder.recipeImage)
 

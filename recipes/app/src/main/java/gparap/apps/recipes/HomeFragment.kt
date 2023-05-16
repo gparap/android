@@ -61,7 +61,7 @@ class HomeFragment : Fragment() {
         var recipeModel: RecipeModel? = null
         viewModel.getRandomFeaturedRecipeLiveData().observe(viewLifecycleOwner) {
             Picasso.get()
-                .load(it.image?.get(0)?.url)
+                .load(it.imageUrl)
                 .placeholder(R.drawable.ic_image_placeholder_24)
                 .into(view.findViewById<ImageView>(R.id.image_view_random_recipe))
 

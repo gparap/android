@@ -22,7 +22,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import gparap.apps.recipes.api.RecipeService
 import gparap.apps.recipes.data.RecipeModel
-import gparap.apps.recipes.data.RecipeResponseModel
 import gparap.apps.recipes.utils.AppConstants
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,37 +35,37 @@ class HomeViewModel : ViewModel() {
     /** Consume the web service to fetch featured recipes from the API. */
     fun getFeaturedRecipes() {
         setLoadingProgressVisibility(View.VISIBLE)
-        RecipeService.create().getFeaturedRecipes().enqueue(object : Callback<RecipeResponseModel> {
+        RecipeService.create().getFeaturedRecipes().enqueue(object : Callback<List<RecipeModel>> {
             override fun onResponse(
-                call: Call<RecipeResponseModel>,
-                response: Response<RecipeResponseModel>
+                call: Call<List<RecipeModel>>,
+                response: Response<List<RecipeModel>>
             ) {
-                featuredRecipesLiveData.value = response.body()?.recipes
+                featuredRecipesLiveData.value = response.body()
 
                 //get a random featured recipe
-                val randomRecipes = response.body()?.recipes
+                val randomRecipes = response.body()
                 randomFeaturedRecipeLiveData.value = randomRecipes?.random()
 
                 setLoadingProgressVisibility(View.INVISIBLE)
             }
 
-            override fun onFailure(call: Call<RecipeResponseModel>, t: Throwable) {
+            override fun onFailure(call: Call<List<RecipeModel>>, t: Throwable) {
                 t.message?.let { Log.d(AppConstants.RECIPES_LOG, it) }
                 setLoadingProgressVisibility(View.INVISIBLE)
             }
         })
     }
 
-    fun getFeaturedRecipesLiveData() : LiveData<List<RecipeModel>> {
+    fun getFeaturedRecipesLiveData(): LiveData<List<RecipeModel>> {
         return featuredRecipesLiveData
     }
 
-    fun getRandomFeaturedRecipeLiveData() : LiveData<RecipeModel> {
+    fun getRandomFeaturedRecipeLiveData(): LiveData<RecipeModel> {
         return randomFeaturedRecipeLiveData
     }
 
-    fun getLoadingProgressVisibility() : MutableLiveData<Int> {
-       return progressBarVisibilityLiveData
+    fun getLoadingProgressVisibility(): MutableLiveData<Int> {
+        return progressBarVisibilityLiveData
     }
 
     private fun setLoadingProgressVisibility(visibility: Int) {

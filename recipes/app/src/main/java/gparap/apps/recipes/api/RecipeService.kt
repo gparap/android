@@ -16,7 +16,7 @@
 package gparap.apps.recipes.api
 
 import gparap.apps.recipes.data.RecipeCategoryResponseModel
-import gparap.apps.recipes.data.RecipeResponseModel
+import gparap.apps.recipes.data.RecipeModel
 import gparap.apps.recipes.utils.AppConstants
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -32,7 +32,7 @@ interface RecipeService {
     fun getRecipeCategories() : Call<RecipeCategoryResponseModel>
 
     @GET("featured.php?key=" + AppConstants.API_KEY)
-    fun getFeaturedRecipes() : Call<RecipeResponseModel>
+    fun getFeaturedRecipes() : Call<List<RecipeModel>>
 
     companion object {
         fun create(): RecipeService {
