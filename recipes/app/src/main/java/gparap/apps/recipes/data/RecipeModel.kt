@@ -18,64 +18,82 @@ package gparap.apps.recipes.data
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import java.util.ArrayList
 
 data class RecipeModel(
     @SerializedName("id")
-    val id: Int,
+    val id: String?,
+
     @SerializedName("title")
     val title: String?,
+
     @SerializedName("descr")
     val description: String?,
+
     @SerializedName("keywords")
     val keywords: String?,
-    @SerializedName("placeholder_r0")
-    val placeholder0: String?,
-    @SerializedName("placeholder_r1")
-    val placeholder1: String?,
 
     @SerializedName("img")
-    val image: ArrayList<RecipeImageModel>?,
+    val imageUrl: String?,
 
-    @SerializedName("info")
-    val information: ArrayList<RecipeInformationModel>?,
+    @SerializedName("license")
+    val imageAttribution: String?,
+
+    @SerializedName("video")
+    val videoUrl: String?,
+
+    @SerializedName("category")
+    val category: String?,
+
+    @SerializedName("servings")
+    val servings: String?,
+
+    @SerializedName("prep_time")
+    val preparationTime: String?,
+
+    @SerializedName("difficulty")
+    val difficulty: String?,
 
     @SerializedName("ingreds")
-    val ingredients: ArrayList<RecipeIngredientsModel>?,
+    val ingredients: String?,
 
     @SerializedName("steps")
-    val preparationSteps: ArrayList<RecipeStepsModel>?,
+    val preparationSteps: String?,
 
     @SerializedName("notes")
-    val preparationNotes: ArrayList<RecipeNotesModel>?,
-):Parcelable {
+    val preparationNotes: String?,
+) : Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readInt(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.createTypedArrayList(RecipeImageModel),
-        parcel.createTypedArrayList(RecipeInformationModel),
-        parcel.createTypedArrayList(RecipeIngredientsModel),
-        parcel.createTypedArrayList(RecipeStepsModel),
-        parcel.createTypedArrayList(RecipeNotesModel)
-    ) {
-    }
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString()
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(id)
+        parcel.writeString(id)
         parcel.writeString(title)
         parcel.writeString(description)
         parcel.writeString(keywords)
-        parcel.writeString(placeholder0)
-        parcel.writeString(placeholder1)
-        parcel.writeTypedList(image)
-        parcel.writeTypedList(information)
-        parcel.writeTypedList(ingredients)
-        parcel.writeTypedList(preparationSteps)
-        parcel.writeTypedList(preparationNotes)
+        parcel.writeString(imageUrl)
+        parcel.writeString(imageAttribution)
+        parcel.writeString(videoUrl)
+        parcel.writeString(category)
+        parcel.writeString(servings)
+        parcel.writeString(preparationTime)
+        parcel.writeString(difficulty)
+        parcel.writeString(ingredients)
+        parcel.writeString(preparationSteps)
+        parcel.writeString(preparationNotes)
     }
 
     override fun describeContents(): Int {
