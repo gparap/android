@@ -13,11 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.recipes.data
+package gparap.apps.recipes
 
-import com.google.gson.annotations.SerializedName
+import org.junit.runner.RunWith
+import org.junit.runners.Suite
+import org.junit.runners.Suite.SuiteClasses
 
-data class RecipeResponseModel(
-    @SerializedName("recipes")
-    val recipes: List<RecipeModel>
+@RunWith(Suite::class)
+@SuiteClasses(
+    MainActivityInstrumentedTest::class,
+    RecipeDetailsActivityInstrumentedTest::class
 )
+class AppTestSuite
