@@ -24,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
 import gparap.apps.recipes.data.RecipeModel
 import gparap.apps.recipes.utils.AppConstants
+import gparap.apps.recipes.utils.Utils
 
 class RecipeDetailsActivity : AppCompatActivity() {
 
@@ -79,12 +80,12 @@ class RecipeDetailsActivity : AppCompatActivity() {
 
         //display ingredient
         findViewById<TextView>(R.id.text_view_recipe_details_ingredients).apply {
-            text = recipe?.ingredients
+            text = Utils.getOrderedListString(recipe?.ingredients)
         }
 
         //display steps
         findViewById<TextView>(R.id.text_view_recipe_details_steps).apply {
-            text = recipe?.preparationSteps
+            text = Utils.getOrderedListString(recipe?.preparationSteps)
         }
 
         //display notes, if there are any notes
@@ -94,7 +95,7 @@ class RecipeDetailsActivity : AppCompatActivity() {
             }
             findViewById<TextView>(R.id.text_view_recipe_details_notes).apply {
                 visibility = View.VISIBLE
-                text = recipe?.preparationNotes
+                text = Utils.getOrderedListString(recipe?.preparationNotes)
             }
         }
     }
