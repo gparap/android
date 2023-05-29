@@ -17,34 +17,34 @@
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-    <WebView
-        android:id="@+id/web_view_recipe_details_license"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_view_recipe_details" />
-
-    <TextView
-        android:id="@+id/text_view_recipe_details_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Recipe Title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/web_view_recipe_details_license" />
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_recipe_details_title">
+        app:layout_constraintTop_toBottomOf="@+id/image_view_recipe_details">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <WebView
+                android:id="@+id/web_view_recipe_details_image_license"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_view_recipe_details_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Recipe Title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/web_view_recipe_details_image_license" />
 
             <TextView
                 android:id="@+id/text_view_recipe_details_category_label"
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/text_category"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/text_view_recipe_details_title" />
 
             <TextView
                 android:id="@+id/text_view_recipe_details_category"
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 tools:text="Peruvian recipes"
                 app:layout_constraintStart_toEndOf="@+id/text_view_recipe_details_category_label"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/text_view_recipe_details_title" />
 
             <TextView
                 android:id="@+id/text_view_recipe_details_servings_label"
@@ -178,6 +178,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_view_recipe_details_notes_label" />
+
+            <WebView
+                android:id="@+id/web_view_recipe_details_text_license"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_recipe_details_notes" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -17,7 +17,9 @@ package gparap.apps.recipes
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Base64
 import android.view.View
+import android.webkit.WebView
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -46,7 +48,13 @@ class RecipeDetailsActivity : AppCompatActivity() {
                 .into(this)
         }
 
-        //TODO: licence
+        //display image license
+        findViewById<WebView>(R.id.web_view_recipe_details_image_license).apply {
+            val unencodedHtml = "<html><body style=\"font-size: small; font-style: oblique; " +
+                    "text-align: center; \" >" + recipe?.imageAttribution + "<hr>" + "</body></html>";
+            val encodedHtml = Base64.encodeToString(unencodedHtml.toByteArray(), Base64.NO_PADDING)
+            this.loadData(encodedHtml, "text/html", "base64")
+        }
 
         //display title
         findViewById<TextView>(R.id.text_view_recipe_details_title).apply {
@@ -97,6 +105,16 @@ class RecipeDetailsActivity : AppCompatActivity() {
                 visibility = View.VISIBLE
                 text = Utils.getOrderedListString(recipe?.preparationNotes)
             }
+        }
+
+        //display text license
+        findViewById<WebView>(R.id.web_view_recipe_details_text_license).apply {
+            val unencodedHtml = "<html><body style=\"font-size: small; font-style: italic; " +
+                    "text-align: justify;\" >" + "<hr>" + "Text is available under the " +
+                    "<a href=\"https://creativecommons.org/licenses/by-sa/3.0/\">Creative Commons " +
+                    "Attribution-ShareAlike License</a>" + "</body></html>";
+            val encodedHtml = Base64.encodeToString(unencodedHtml.toByteArray(), Base64.NO_PADDING)
+            this.loadData(encodedHtml, "text/html", "base64")
         }
     }
 }

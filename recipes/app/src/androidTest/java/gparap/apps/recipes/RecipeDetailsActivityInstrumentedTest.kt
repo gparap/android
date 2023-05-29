@@ -59,7 +59,7 @@ class RecipeDetailsActivityInstrumentedTest {
 
     @Test
     fun isVisible_web_view_recipe_details_license() {
-        onView(withId(R.id.web_view_recipe_details_license)).check(matches(isDisplayed()))
+        onView(withId(R.id.web_view_recipe_details_image_license)).check(matches(isDisplayed()))
     }
 
     @Test
