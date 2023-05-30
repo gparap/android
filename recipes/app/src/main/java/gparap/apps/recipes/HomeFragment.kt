@@ -27,7 +27,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import gparap.apps.recipes.adapters.FeaturedRecipeAdapter
+import gparap.apps.recipes.adapters.RecipeAdapter
 import gparap.apps.recipes.data.RecipeModel
 import gparap.apps.recipes.utils.AppConstants
 import gparap.apps.recipes.viewmodels.HomeViewModel
@@ -49,12 +49,12 @@ class HomeFragment : Fragment() {
         //setup the featured recipes RecyclerView with adapter
         val featureRecipes = view.findViewById<RecyclerView>(R.id.recycler_view_featured_recipes)
         featureRecipes.layoutManager = LinearLayoutManager(this.context)
-        val adapter = FeaturedRecipeAdapter()
+        val adapter = RecipeAdapter()
         featureRecipes.adapter = adapter
 
         //observe the featured recipes live data
         viewModel.getFeaturedRecipesLiveData().observe(viewLifecycleOwner) {
-            adapter.setFeaturedRecipes(it as ArrayList<RecipeModel>)
+            adapter.setRecipes(it as ArrayList<RecipeModel>)
         }
 
         //observe the random featured recipe live data

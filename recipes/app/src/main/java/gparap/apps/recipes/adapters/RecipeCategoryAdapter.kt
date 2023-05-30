@@ -17,6 +17,7 @@ package gparap.apps.recipes.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import gparap.apps.recipes.CategoryRecipesActivity
 import gparap.apps.recipes.R
 import gparap.apps.recipes.data.RecipeCategoryModel
 
@@ -62,5 +64,12 @@ class RecipeCategoryAdapter :
 
         val categoryImageUri = recipeCategories[position].imageUri
         Picasso.get().load(categoryImageUri).into(holder.categoryImage)
+
+        //open the category recipes activity
+        holder.categoryName.setOnClickListener {
+            val intent = Intent(this.context, CategoryRecipesActivity::class.java)
+            intent.putExtra("category_name", holder.categoryName.text.toString())
+            context.startActivity(intent)
+        }
     }
 }

@@ -31,13 +31,13 @@ import gparap.apps.recipes.RecipeDetailsActivity
 import gparap.apps.recipes.data.RecipeModel
 import gparap.apps.recipes.utils.AppConstants
 
-class FeaturedRecipeAdapter : RecyclerView.Adapter<FeaturedRecipeAdapter.RecipeViewHolder>() {
-    private var featuredRecipes = ArrayList<RecipeModel>()
+class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
+    private var recipes = ArrayList<RecipeModel>()
     private var context: Context? = null
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setFeaturedRecipes(featuredRecipes: ArrayList<RecipeModel>) {
-        this.featuredRecipes = featuredRecipes
+    fun setRecipes(featuredRecipes: ArrayList<RecipeModel>) {
+        this.recipes = featuredRecipes
         notifyDataSetChanged()
     }
 
@@ -61,22 +61,22 @@ class FeaturedRecipeAdapter : RecyclerView.Adapter<FeaturedRecipeAdapter.RecipeV
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         //display recipe image
         Picasso.get()
-            .load(featuredRecipes[position].imageUrl)
+            .load(recipes[position].imageUrl)
             .placeholder(R.drawable.ic_image_placeholder_24)
             .into(holder.recipeImage)
 
         //display recipe text
-        holder.recipeText.text = featuredRecipes[position].title
+        holder.recipeText.text = recipes[position].title
 
         //open recipe in its details activity
         holder.recipeImage.setOnClickListener {
             val intent = Intent(context, RecipeDetailsActivity::class.java)
-            intent.putExtra(AppConstants.RECIPE_PARCELABLE_EXTRA, featuredRecipes[position])
+            intent.putExtra(AppConstants.RECIPE_PARCELABLE_EXTRA, recipes[position])
             context?.startActivity(intent)
         }
     }
 
     override fun getItemCount(): Int {
-        return featuredRecipes.size
+        return recipes.size
     }
 }
