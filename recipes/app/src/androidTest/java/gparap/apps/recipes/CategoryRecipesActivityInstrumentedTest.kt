@@ -15,23 +15,38 @@
  */
 package gparap.apps.recipes
 
+import android.content.Intent
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import gparap.apps.recipes.utils.AppConstants
 import org.hamcrest.core.IsNot.not
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
+
 @RunWith(AndroidJUnit4::class)
 class CategoryRecipesActivityInstrumentedTest {
+    private lateinit var activityScenario: ActivityScenario<CategoryRecipesActivity>
+
     @Before
     fun setUp() {
-        ActivityScenario.launch(CategoryRecipesActivity::class.java)
+        //create an intent with the category name
+        val intent = Intent(
+            ApplicationProvider.getApplicationContext(),
+            CategoryRecipesActivity::class.java
+        )
+        intent.putExtra("category_name", "Breakfast")
+
+        //launch activity with intent
+        activityScenario = ActivityScenario.launch(intent)
     }
 
     @Test
@@ -42,5 +57,16 @@ class CategoryRecipesActivityInstrumentedTest {
     @Test
     fun isNotVisible_ProgressBar() {
         onView(withId(R.id.progress_category_recipes)).check(matches(not(isDisplayed())))
+    }
+
+    @Test
+    fun categoryIsSelected_categoryIsNotEmpty() {
+        //wait for web service response
+        Thread.sleep(AppConstants.WEB_SERVICE_DELAY_SHORT)
+
+        activityScenario.onActivity {
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recycler_view_category_recipes)
+            assertTrue(recyclerView.adapter?.itemCount!! > 0)
+        }
     }
 }

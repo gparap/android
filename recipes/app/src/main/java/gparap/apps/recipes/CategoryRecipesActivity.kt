@@ -17,6 +17,7 @@ package gparap.apps.recipes
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,31 +31,30 @@ class CategoryRecipesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category_recipes)
 
+        //get the category name from intent
+        val categoryName: String? = intent.getStringExtra("category_name")
+
         //get the view model for this activity
         val viewModel = ViewModelProvider(this)[CategoryRecipesViewModel::class.java]
-
-        //..temp list of category's recipes
-        val tempCategoryRecipes = ArrayList<RecipeModel>()
-        tempCategoryRecipes.add(RecipeModel("1", "recipe 1", "description 1", "", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Ají_de_gallina_%28gourmet%29-b.jpg/290px-Ají_de_gallina_%28gourmet%29-b.jpg", "","","","","","","","",""))
-        tempCategoryRecipes.add(RecipeModel("2", "recipe 2", "description 2", "", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Ají_de_gallina_%28gourmet%29-b.jpg/290px-Ají_de_gallina_%28gourmet%29-b.jpg", "","","","","","","","",""))
-        tempCategoryRecipes.add(RecipeModel("3", "recipe 3", "description 3", "", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Ají_de_gallina_%28gourmet%29-b.jpg/290px-Ají_de_gallina_%28gourmet%29-b.jpg", "","","","","","","","",""))
-        tempCategoryRecipes.add(RecipeModel("4", "recipe 4", "description 4", "", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Ají_de_gallina_%28gourmet%29-b.jpg/290px-Ají_de_gallina_%28gourmet%29-b.jpg", "","","","","","","","",""))
 
         //setup recycler view with adapter
         val recyclerViewCategoryRecipes =
             findViewById<RecyclerView>(R.id.recycler_view_category_recipes)
         recyclerViewCategoryRecipes.layoutManager = LinearLayoutManager(this)
         val adapter = RecipeAdapter()
-        adapter.setRecipes(tempCategoryRecipes)
         recyclerViewCategoryRecipes.adapter = adapter
 
-        //observe recipe categories
-        viewModel.getCategoryRecipesLiveData().observe(this) {
-            adapter.setRecipes(it)
+        //observe & display recipe categories
+        viewModel.getCategoryRecipes(categoryName).observe(this) {
+            adapter.setRecipes(it as ArrayList<RecipeModel>)
+        }
+
+        //observe the progress bar visibility
+        viewModel.getLoadingProgressVisibility().observe(this) {
+            this.findViewById<ProgressBar>(R.id.progress_category_recipes).visibility = it
         }
 
         //display the category name
-        val categoryName: String? = intent.getStringExtra("category_name")
         findViewById<TextView>(R.id.text_view_category_recipes_category_name).apply {
             this.text = categoryName
         }

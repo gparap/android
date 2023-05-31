@@ -22,6 +22,7 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 /**
  * Connects to the gparap API to fetch recipes.
@@ -33,6 +34,9 @@ interface RecipeService {
 
     @GET("featured.php?key=" + AppConstants.API_KEY)
     fun getFeaturedRecipes() : Call<List<RecipeModel>>
+
+    @GET("recipes.php?key=" + AppConstants.API_KEY)
+    fun getCategoryRecipes(@Query("category") category: String?) : Call<List<RecipeModel>>
 
     companion object {
         fun create(): RecipeService {
