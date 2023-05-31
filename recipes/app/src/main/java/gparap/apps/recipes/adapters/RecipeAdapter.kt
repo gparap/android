@@ -36,8 +36,8 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
     private var context: Context? = null
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setRecipes(featuredRecipes: ArrayList<RecipeModel>) {
-        this.recipes = featuredRecipes
+    fun setRecipes(recipes: ArrayList<RecipeModel>) {
+        this.recipes = recipes
         notifyDataSetChanged()
     }
 
