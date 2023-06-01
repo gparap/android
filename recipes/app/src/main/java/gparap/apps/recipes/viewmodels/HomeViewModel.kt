@@ -15,6 +15,7 @@
  */
 package gparap.apps.recipes.viewmodels
 
+import android.content.SharedPreferences
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData
@@ -26,26 +27,86 @@ import gparap.apps.recipes.utils.AppConstants
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.Calendar
+import java.util.TimeZone
 
 class HomeViewModel : ViewModel() {
     private var featuredRecipesLiveData = MutableLiveData<List<RecipeModel>>()
-    private var randomFeaturedRecipeLiveData = MutableLiveData<RecipeModel>()
+    private var randomFeaturedRecipeLiveData = MutableLiveData<RecipeModel?>()
     private var progressBarVisibilityLiveData = MutableLiveData<Int>()
 
     /** Consume the web service to fetch featured recipes from the API. */
-    fun getFeaturedRecipes() {
+    fun getFeaturedRecipes(
+        prefsRecipeOfTheDay: SharedPreferences?,
+        prefsWhatDayIsToday: SharedPreferences?
+    ) {
         setLoadingProgressVisibility(View.VISIBLE)
         RecipeService.create().getFeaturedRecipes().enqueue(object : Callback<List<RecipeModel>> {
             override fun onResponse(
                 call: Call<List<RecipeModel>>,
                 response: Response<List<RecipeModel>>
             ) {
+                //get featured recipes
                 featuredRecipesLiveData.value = response.body()
+                val recipes = response.body()
 
-                //get a random featured recipe
-                val randomRecipes = response.body()
-                randomFeaturedRecipeLiveData.value = randomRecipes?.random()
+                //get the shared preferences
+                val recipeOfTheDay = prefsRecipeOfTheDay?.getString("recipe_of_the_day", "")
+                val whatDayIsToday = prefsWhatDayIsToday?.getInt("what_day_is_today", 0)
 
+                //handle the shared preferences for the 1st time running the app
+                val calendar = Calendar.getInstance(TimeZone.getDefault())
+                if (recipeOfTheDay!!.isEmpty()) {
+                    //pick a random recipe
+                    val randomRecipe = recipes?.random()
+
+                    //save recipe of the day preference
+                    with(prefsRecipeOfTheDay.edit()) {
+                        this?.putString("recipe_of_the_day", randomRecipe?.title)
+                        apply()
+                    }
+
+                    //save the today preference
+                    with(prefsWhatDayIsToday?.edit()) {
+                        this?.putInt("what_day_is_today", calendar.get(Calendar.DAY_OF_YEAR))
+                        this?.apply()
+                    }
+
+                    //set the recipe of the day value
+                    randomFeaturedRecipeLiveData.value = randomRecipe
+
+                    //handle the shared preferences from the 2nd time running the app and onwards
+                } else {
+                    //are we in the same day? - keep the same recipe
+                    if (whatDayIsToday == calendar.get(Calendar.DAY_OF_YEAR)) {
+                        run recipe@{
+                            recipes?.forEach {
+                                if (it.title.equals(recipeOfTheDay)) {
+                                    //set the recipe of the day value
+                                    randomFeaturedRecipeLiveData.value = it
+                                    return@recipe
+                                }
+                            }
+                        }
+                        //a day has passed - choose another recipe
+                    } else {
+                        //pick a random recipe
+                        val randomRecipe = recipes?.random()
+                        randomFeaturedRecipeLiveData.value = randomRecipe
+
+                        //save recipe of the day preference
+                        with(prefsRecipeOfTheDay.edit()) {
+                            this?.putString("recipe_of_the_day", randomRecipe?.title)
+                            apply()
+                        }
+
+                        //save the today preference
+                        with(prefsWhatDayIsToday?.edit()) {
+                            this?.putInt("what_day_is_today", calendar.get(Calendar.DAY_OF_YEAR))
+                            this?.apply()
+                        }
+                    }
+                }
                 setLoadingProgressVisibility(View.INVISIBLE)
             }
 
@@ -60,7 +121,7 @@ class HomeViewModel : ViewModel() {
         return featuredRecipesLiveData
     }
 
-    fun getRandomFeaturedRecipeLiveData(): LiveData<RecipeModel> {
+    fun getRandomFeaturedRecipeLiveData(): MutableLiveData<RecipeModel?> {
         return randomFeaturedRecipeLiveData
     }
 

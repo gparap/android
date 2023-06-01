@@ -15,6 +15,7 @@
  */
 package gparap.apps.recipes
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -40,11 +41,15 @@ class HomeFragment : Fragment() {
         //inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
+        //get the SharedPreferences
+        val prefsRecipeOfTheDay = this.context?.getSharedPreferences("recipe_of_the_day", Context.MODE_PRIVATE)
+        val prefsWhatDayIsToday = this.context?.getSharedPreferences("what_day_is_today", Context.MODE_PRIVATE)
+
         //get the ViewModel of this fragment
         val viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
         //consume the web service to fetch featured recipes
-        viewModel.getFeaturedRecipes()
+        viewModel.getFeaturedRecipes(prefsRecipeOfTheDay, prefsWhatDayIsToday)
 
         //setup the featured recipes RecyclerView with adapter
         val featureRecipes = view.findViewById<RecyclerView>(R.id.recycler_view_featured_recipes)
@@ -61,7 +66,7 @@ class HomeFragment : Fragment() {
         var recipeModel: RecipeModel? = null
         viewModel.getRandomFeaturedRecipeLiveData().observe(viewLifecycleOwner) {
             Picasso.get()
-                .load(it.imageUrl)
+                .load(it?.imageUrl)
                 .placeholder(R.drawable.ic_image_placeholder_24)
                 .into(view.findViewById<ImageView>(R.id.image_view_random_recipe))
 
