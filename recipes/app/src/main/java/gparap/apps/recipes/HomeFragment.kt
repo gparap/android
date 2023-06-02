@@ -31,6 +31,8 @@ import com.squareup.picasso.Picasso
 import gparap.apps.recipes.adapters.RecipeAdapter
 import gparap.apps.recipes.data.RecipeModel
 import gparap.apps.recipes.utils.AppConstants
+import gparap.apps.recipes.utils.AppConstants.PREFS_TODAY
+import gparap.apps.recipes.utils.AppConstants.PREFS_TODAY_RECIPE
 import gparap.apps.recipes.viewmodels.HomeViewModel
 
 class HomeFragment : Fragment() {
@@ -42,8 +44,8 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         //get the SharedPreferences
-        val prefsRecipeOfTheDay = this.context?.getSharedPreferences("recipe_of_the_day", Context.MODE_PRIVATE)
-        val prefsWhatDayIsToday = this.context?.getSharedPreferences("what_day_is_today", Context.MODE_PRIVATE)
+        val prefsRecipeOfTheDay = this.context?.getSharedPreferences(PREFS_TODAY_RECIPE, Context.MODE_PRIVATE)
+        val prefsWhatDayIsToday = this.context?.getSharedPreferences(PREFS_TODAY, Context.MODE_PRIVATE)
 
         //get the ViewModel of this fragment
         val viewModel = ViewModelProvider(this)[HomeViewModel::class.java]

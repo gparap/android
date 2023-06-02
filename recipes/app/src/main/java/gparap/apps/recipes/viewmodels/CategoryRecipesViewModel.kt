@@ -15,12 +15,14 @@
  */
 package gparap.apps.recipes.viewmodels
 
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import gparap.apps.recipes.api.RecipeService
 import gparap.apps.recipes.data.RecipeModel
+import gparap.apps.recipes.utils.AppConstants
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -45,7 +47,7 @@ class CategoryRecipesViewModel : ViewModel() {
 
             override fun onFailure(call: Call<List<RecipeModel>>, t: Throwable) {
                 progressBarVisibilityLiveData.value = View.INVISIBLE
-                println(t.message.toString())   //DEBUG
+                Log.d(AppConstants.RECIPES_LOG, t.message.toString())
             }
         })
         return categoryRecipesLiveData

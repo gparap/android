@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.recipes.adapters.RecipeAdapter
 import gparap.apps.recipes.data.RecipeModel
+import gparap.apps.recipes.utils.AppConstants
 import gparap.apps.recipes.viewmodels.CategoryRecipesViewModel
 
 class CategoryRecipesActivity : AppCompatActivity() {
@@ -32,7 +33,7 @@ class CategoryRecipesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_category_recipes)
 
         //get the category name from intent
-        val categoryName: String? = intent.getStringExtra("category_name")
+        val categoryName: String? = intent.getStringExtra(AppConstants.CATEGORY_NAME_EXTRA)
 
         //get the view model for this activity
         val viewModel = ViewModelProvider(this)[CategoryRecipesViewModel::class.java]

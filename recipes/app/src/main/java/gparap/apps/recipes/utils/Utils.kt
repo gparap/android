@@ -15,6 +15,8 @@
  */
 package gparap.apps.recipes.utils
 
+import android.content.SharedPreferences
+
 object Utils {
 
     /** Returns the recipe's relevant multi-valued string as a single string,
@@ -42,5 +44,21 @@ object Utils {
 
         //return the ordered string
         return orderedListString
+    }
+
+    /** Save preference data. */
+    fun saveSharedPreferences(preferences: SharedPreferences?, key: String, value: String?) {
+        with(preferences?.edit()) {
+            this?.putString(key, value)
+            this?.apply()
+        }
+    }
+
+    /** Save preference data. */
+    fun saveSharedPreferences(preferences: SharedPreferences?, key: String, value: Int) {
+        with(preferences?.edit()) {
+            this?.putInt(key, value)
+            this?.apply()
+        }
     }
 }

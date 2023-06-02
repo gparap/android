@@ -24,6 +24,9 @@ import androidx.lifecycle.ViewModel
 import gparap.apps.recipes.api.RecipeService
 import gparap.apps.recipes.data.RecipeModel
 import gparap.apps.recipes.utils.AppConstants
+import gparap.apps.recipes.utils.AppConstants.PREFS_TODAY
+import gparap.apps.recipes.utils.AppConstants.PREFS_TODAY_RECIPE
+import gparap.apps.recipes.utils.Utils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,33 +54,17 @@ class HomeViewModel : ViewModel() {
                 val recipes = response.body()
 
                 //get the shared preferences
-                val recipeOfTheDay = prefsRecipeOfTheDay?.getString("recipe_of_the_day", "")
-                val whatDayIsToday = prefsWhatDayIsToday?.getInt("what_day_is_today", 0)
+                val recipeOfTheDay = prefsRecipeOfTheDay?.getString(PREFS_TODAY_RECIPE, "")
+                val whatDayIsToday = prefsWhatDayIsToday?.getInt(PREFS_TODAY, 0)
 
                 //handle the shared preferences for the 1st time running the app
-                val calendar = Calendar.getInstance(TimeZone.getDefault())
                 if (recipeOfTheDay!!.isEmpty()) {
-                    //pick a random recipe
-                    val randomRecipe = recipes?.random()
-
-                    //save recipe of the day preference
-                    with(prefsRecipeOfTheDay.edit()) {
-                        this?.putString("recipe_of_the_day", randomRecipe?.title)
-                        apply()
-                    }
-
-                    //save the today preference
-                    with(prefsWhatDayIsToday?.edit()) {
-                        this?.putInt("what_day_is_today", calendar.get(Calendar.DAY_OF_YEAR))
-                        this?.apply()
-                    }
-
-                    //set the recipe of the day value
-                    randomFeaturedRecipeLiveData.value = randomRecipe
-
-                    //handle the shared preferences from the 2nd time running the app and onwards
-                } else {
+                    setRecipeOfTheDay(recipes, arrayOf(prefsRecipeOfTheDay, prefsWhatDayIsToday))
+                }
+                //handle the shared preferences from the 2nd time running the app and onwards
+                else {
                     //are we in the same day? - keep the same recipe
+                    val calendar = Calendar.getInstance(TimeZone.getDefault())
                     if (whatDayIsToday == calendar.get(Calendar.DAY_OF_YEAR)) {
                         run recipe@{
                             recipes?.forEach {
@@ -88,23 +75,10 @@ class HomeViewModel : ViewModel() {
                                 }
                             }
                         }
-                        //a day has passed - choose another recipe
-                    } else {
-                        //pick a random recipe
-                        val randomRecipe = recipes?.random()
-                        randomFeaturedRecipeLiveData.value = randomRecipe
-
-                        //save recipe of the day preference
-                        with(prefsRecipeOfTheDay.edit()) {
-                            this?.putString("recipe_of_the_day", randomRecipe?.title)
-                            apply()
-                        }
-
-                        //save the today preference
-                        with(prefsWhatDayIsToday?.edit()) {
-                            this?.putInt("what_day_is_today", calendar.get(Calendar.DAY_OF_YEAR))
-                            this?.apply()
-                        }
+                    }
+                    //a day has passed - choose another recipe
+                    else {
+                        setRecipeOfTheDay(recipes, arrayOf(prefsRecipeOfTheDay, prefsWhatDayIsToday))
                     }
                 }
                 setLoadingProgressVisibility(View.INVISIBLE)
@@ -131,5 +105,24 @@ class HomeViewModel : ViewModel() {
 
     private fun setLoadingProgressVisibility(visibility: Int) {
         progressBarVisibilityLiveData.value = visibility
+    }
+
+    private fun setRecipeOfTheDay(recipes: List<RecipeModel>?, preferences: Array<SharedPreferences?>) {
+        //get a calendar using the specified time zone and default locale
+        val calendar = Calendar.getInstance(TimeZone.getDefault())
+
+        //pick a random recipe
+        val randomRecipe = recipes?.random()
+
+        //save recipe of the day preference
+        Utils.saveSharedPreferences(preferences[0], PREFS_TODAY_RECIPE, randomRecipe?.title)
+
+        //save the today preference
+        Utils.saveSharedPreferences(
+            preferences[1], PREFS_TODAY, calendar.get(Calendar.DAY_OF_YEAR)
+        )
+
+        //set the recipe of the day value
+        randomFeaturedRecipeLiveData.value = randomRecipe
     }
 }

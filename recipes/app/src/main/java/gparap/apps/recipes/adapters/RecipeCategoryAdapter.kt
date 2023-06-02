@@ -28,6 +28,7 @@ import com.squareup.picasso.Picasso
 import gparap.apps.recipes.CategoryRecipesActivity
 import gparap.apps.recipes.R
 import gparap.apps.recipes.data.RecipeCategoryModel
+import gparap.apps.recipes.utils.AppConstants
 
 class RecipeCategoryAdapter :
     RecyclerView.Adapter<RecipeCategoryAdapter.RecipeCategoryViewHolder>() {
@@ -68,7 +69,7 @@ class RecipeCategoryAdapter :
         //open the category recipes activity
         holder.categoryName.setOnClickListener {
             val intent = Intent(this.context, CategoryRecipesActivity::class.java)
-            intent.putExtra("category_name", holder.categoryName.text.toString())
+            intent.putExtra(AppConstants.CATEGORY_NAME_EXTRA, holder.categoryName.text.toString())
             context.startActivity(intent)
         }
     }
