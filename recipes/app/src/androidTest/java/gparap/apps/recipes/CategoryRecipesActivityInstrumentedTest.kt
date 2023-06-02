@@ -43,7 +43,7 @@ class CategoryRecipesActivityInstrumentedTest {
             ApplicationProvider.getApplicationContext(),
             CategoryRecipesActivity::class.java
         )
-        intent.putExtra("category_name", "Breakfast")
+        intent.putExtra(AppConstants.CATEGORY_NAME_EXTRA, "Breakfast")
 
         //launch activity with intent
         activityScenario = ActivityScenario.launch(intent)

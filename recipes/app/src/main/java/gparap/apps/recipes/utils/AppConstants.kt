@@ -22,4 +22,7 @@ object AppConstants {
     const val WEB_SERVICE_DELAY_LONG = 1667L
     const val WEB_SERVICE_DELAY_SHORT = 667L
     const val RECIPE_PARCELABLE_EXTRA = "recipe_parcelable_extra"
+    const val CATEGORY_NAME_EXTRA = "category_name"
+    const val PREFS_TODAY_RECIPE = "recipe_of_the_day"
+    const val PREFS_TODAY = "what_day_is_today"
 }
