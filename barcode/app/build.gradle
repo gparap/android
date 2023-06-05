@@ -11,8 +11,8 @@ android {
         applicationId "gparap.apps.barcode"
         minSdkVersion 24
         targetSdkVersion 33
-        versionCode 3
-        versionName "1.03"
+        versionCode 4
+        versionName "1.04"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
