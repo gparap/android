@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 gparap
+ * Copyright 2023 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,9 +36,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
 
-/**
- * Created by gparap on 2021-01-31.
- */
 public class CalculatorActivityInstrumentedTest {
     @Rule
     public ActivityScenarioRule<CalculatorActivity> activityScenarioRule = new ActivityScenarioRule<>(CalculatorActivity.class);
@@ -46,14 +43,9 @@ public class CalculatorActivityInstrumentedTest {
     UiDevice device;    /* minSdkVersion 18 */
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         //get the top-level window decor view
-        activityScenarioRule.getScenario().onActivity(new ActivityScenario.ActivityAction<CalculatorActivity>() {
-            @Override
-            public void perform(CalculatorActivity activity) {
-                rootView = activity.getWindow().getDecorView();
-            }
-        });
+        activityScenarioRule.getScenario().onActivity(activity -> rootView = activity.getWindow().getDecorView());
 
         /* minSdkVersion 18 */
         //get access to the device
@@ -186,7 +178,7 @@ public class CalculatorActivityInstrumentedTest {
     }
 
     @Test
-    public void onButtonClickOperation_TypeMulptiply() {
+    public void onButtonClickOperation_TypeMultiply() {
         onView(withId(R.id.button1)).perform(click());
         onView(withId(R.id.buttonMulti)).perform(click());
         onView(withId(R.id.textViewDisplay)).check(matches(withText("1*")));
@@ -298,11 +290,11 @@ public class CalculatorActivityInstrumentedTest {
     @Test
     public void onButtonClickOperation_ScientificNumbersOperationsUnsupported() {
         //produce a scientific number
-        for (int i=0; i<5; i++) {
+        for (int i = 0; i < 5; i++) {
             onView(withId(R.id.button9)).perform(click());
         }
         onView(withId(R.id.buttonMulti)).perform(click());
-        for (int i=0; i<5; i++) {
+        for (int i = 0; i < 5; i++) {
             onView(withId(R.id.button9)).perform(click());
         }
         onView(withId(R.id.buttonEquals)).perform(click());

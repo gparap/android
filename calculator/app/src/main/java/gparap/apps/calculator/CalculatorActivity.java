@@ -29,6 +29,8 @@ public class CalculatorActivity extends AppCompatActivity {
     String result = "";         //final result of operation
     int operations = 0;         //number of operations allowed
     char operation;
+    @SuppressWarnings({"RegExpRedundantNestedCharacterClass", "RegExpSimplifiable"})
+    final String REGEX = "[+[-[*[/[%[\\^]]]]]]";    //regular expression used for splitting strings
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,9 +77,9 @@ public class CalculatorActivity extends AppCompatActivity {
 
             //check if expression starts with negative or positive number
             if (result.charAt(0) == '-') {
-                operands = result.substring(1).split("[+[-[*[/[%]]]]]");
+                operands = result.substring(1).split(REGEX);
             } else {
-                operands = result.split("[+[-[*[/[%[\\^]]]]]]");
+                operands = result.split(REGEX);
             }
 
             //disappear multiple zeros in front of number - 2nd operand
@@ -100,7 +102,7 @@ public class CalculatorActivity extends AppCompatActivity {
     public void OnButtonClickOperation(View view) {
         CharSequence tempText = ((Button) view).getText();
 
-        //dont display operator in the start except "-"
+        //don't display operator in the start except "-"
         if (result.equals("")) {
             result = "0";
         }
@@ -177,7 +179,7 @@ public class CalculatorActivity extends AppCompatActivity {
             return;
         }
 
-        //dont do scientific number operations
+        //don't do scientific number operations
         if (result.contains("E")) {
             reset();
             Toast.makeText(this, R.string.toast_unsupportedOperation, Toast.LENGTH_SHORT).show();
@@ -187,13 +189,13 @@ public class CalculatorActivity extends AppCompatActivity {
         //expression starts with negative number
         String[] operands;
         if (result.charAt(0) == '-') {
-            operands = result.substring(1).split("[+[-[*[/[%[\\^]]]]]]");
+            operands = result.substring(1).split(REGEX);
             operands[0] = "-".concat(operands[0]);
         } else {
-            operands = result.split("[+[-[*[/[%[\\^]]]]]]");
+            operands = result.split(REGEX);
         }
 
-        //dont eveluate if operand is missing
+        //don't evaluate if operand is missing
         if (operands.length != 2) {
             return;
         }
@@ -296,7 +298,7 @@ public class CalculatorActivity extends AppCompatActivity {
         tempResult.append(result);
 
         //give dot to the last of operands
-        String[] operands = result.split("[+[-[*[/[%]]]]]");
+        String[] operands = result.split(REGEX);
         if (operands.length == 1) {
             if (!operands[0].contains(".")) {
                 tempResult.append(".");
