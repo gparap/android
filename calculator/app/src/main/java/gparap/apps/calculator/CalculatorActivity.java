@@ -1,5 +1,5 @@
 /*
- * Copyright 2020-present gparap
+ * Copyright 2023 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,9 +24,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-/**
- * Created by gparap on 2020-08-31.
- */
 public class CalculatorActivity extends AppCompatActivity {
     TextView textViewDisplay;   //displays the result
     String result = "";         //final result of operation
