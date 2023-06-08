@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 gparap
+ * Copyright 2023 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by gparap on 2021-01-29.
- */
 public class CalculatorActivityTest {
     @Test
     public void addTwoNumbers_positive_positive() {
@@ -76,7 +73,7 @@ public class CalculatorActivityTest {
 
     @Test
     public void powerTwoNumbers_negative_positive() {
-        assertEquals( 4, CalculatorOperationsKt.powerTwoNumbers(-2, 2), 0);
+        assertEquals(4, CalculatorOperationsKt.powerTwoNumbers(-2, 2), 0);
         assertEquals(-8, CalculatorOperationsKt.powerTwoNumbers(-2, 3), 0);
     }
 
@@ -87,8 +84,8 @@ public class CalculatorActivityTest {
 
     @Test
     public void powerTwoNumbers_any_zero() {
-        assertEquals(1, CalculatorOperationsKt.powerTwoNumbers( 2, 0), 0);
+        assertEquals(1, CalculatorOperationsKt.powerTwoNumbers(2, 0), 0);
         assertEquals(1, CalculatorOperationsKt.powerTwoNumbers(-1, 0), 0);
-        assertEquals(1, CalculatorOperationsKt.powerTwoNumbers( 0, 0), 0);
+        assertEquals(1, CalculatorOperationsKt.powerTwoNumbers(0, 0), 0);
     }
 }
