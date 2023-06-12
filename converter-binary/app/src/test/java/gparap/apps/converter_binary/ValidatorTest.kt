@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 gparap
+ * Copyright 2023 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,9 +21,6 @@ import org.junit.Test
 import org.junit.Assert.*
 import kotlin.properties.Delegates
 
-/**
- * Created by gparap on 2021-02-25.
- */
 class ValidatorTest {
     private var validator: Validator? = null
     private lateinit var input: String
