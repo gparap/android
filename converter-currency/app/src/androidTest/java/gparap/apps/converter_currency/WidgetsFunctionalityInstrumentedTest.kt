@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 gparap
+ * Copyright 2023 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,8 +37,8 @@ class WidgetsFunctionalityInstrumentedTest {
     @get:Rule
     val rule = ActivityScenarioRule(ConverterActivity::class.java)
     private var context: Context? = null
-    val euroIndex = 8
-    val euroName = "Euro"
+    private val euroIndex = 8
+    private val euroName = "Euro"
 
     @Before
     fun setUp() {
