@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 gparap
+ * Copyright 2023 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -245,7 +245,7 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
                     stringBuilder.append(reversed[i]).append(reversed[i + 1])
                         .append(reversed[i + 2])
                     stringBuilder.append(",")
-                } catch (e: Exception) {
+                } catch (_: Exception) {
                 }
             }
             stringBuilder.reverse()
