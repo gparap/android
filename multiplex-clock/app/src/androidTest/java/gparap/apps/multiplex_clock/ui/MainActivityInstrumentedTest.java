@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 gparap
+ * Copyright 2021-2023 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import gparap.apps.multiplex_clock.MainActivity;
+import gparap.apps.multiplex_clock.R;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;

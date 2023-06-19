@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 gparap
+ * Copyright 2021-2023 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,8 @@ import android.widget.TextView;
 
 import java.util.Locale;
 import java.util.TimeZone;
+
+import gparap.apps.multiplex_clock.R;
 
 public class ClockFragment extends Fragment {
     public ClockFragment() {
