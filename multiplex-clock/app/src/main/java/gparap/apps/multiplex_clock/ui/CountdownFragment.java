@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 gparap
+ * Copyright 2021-2023 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,7 @@ import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
+import gparap.apps.multiplex_clock.R;
 import gparap.apps.multiplex_clock.utils.PreferencesManager;
 import gparap.apps.multiplex_clock.utils.TimeUtils;
 

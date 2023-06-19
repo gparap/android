@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 gparap
+ * Copyright 2021-2023 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,7 @@ import android.widget.Toast;
 
 import java.text.DateFormat;
 
+import gparap.apps.multiplex_clock.R;
 import gparap.apps.multiplex_clock.services.AlarmReceiver;
 import gparap.apps.multiplex_clock.utils.TimeUtils;
 
@@ -136,7 +137,7 @@ public class AlarmClockFragment extends Fragment {
 
         //register an intent to be broadcasted by the alarm receiver
         Intent intent = new Intent(getActivity(), AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity().getApplicationContext(), 0, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity().getApplicationContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         //schedule an alarm if set correctly
         if (isAlarmSet) {
