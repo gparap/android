@@ -15,6 +15,14 @@
  */
 package gparap.apps.multiplex_clock.ui;
 
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static org.junit.Assert.assertEquals;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -25,19 +33,12 @@ import org.junit.Test;
 import gparap.apps.multiplex_clock.MainActivity;
 import gparap.apps.multiplex_clock.R;
 
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
-import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
-
 public class MainActivityInstrumentedTest {
+    private ActivityScenario<MainActivity> activityScenario;
 
     @Before
     public void setUp() {
-        ActivityScenario.launch(MainActivity.class);
+        activityScenario = ActivityScenario.launch(MainActivity.class);
     }
 
     @Test
@@ -50,6 +51,7 @@ public class MainActivityInstrumentedTest {
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getContext());
         onView(withText(R.string.menu_item_clock)).perform(click());
         onView(withId(R.id.clockFragment)).check(matches(isDisplayed()));
+        isAppBarTitleCorrect(R.string.menu_item_clock);
     }
 
     @Test
@@ -57,6 +59,7 @@ public class MainActivityInstrumentedTest {
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getContext());
         onView(withText(R.string.menu_item_chronometer)).perform(click());
         onView(withId(R.id.chronometerFragment)).check(matches(isDisplayed()));
+        isAppBarTitleCorrect(R.string.menu_item_chronometer);
     }
 
     @Test
@@ -64,6 +67,7 @@ public class MainActivityInstrumentedTest {
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getContext());
         onView(withText(R.string.menu_item_countdown_timer)).perform(click());
         onView(withId(R.id.countdownTimerFragment)).check(matches(isDisplayed()));
+        isAppBarTitleCorrect(R.string.menu_item_countdown_timer);
     }
 
     @Test
@@ -71,5 +75,16 @@ public class MainActivityInstrumentedTest {
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().getContext());
         onView(withText(R.string.menu_item_alarm_clock)).perform(click());
         onView(withId(R.id.alarmClockFragment)).check(matches(isDisplayed()));
+        isAppBarTitleCorrect(R.string.menu_item_alarm_clock);
+    }
+
+    //check if the app bar title is correct when changing fragments
+    private void isAppBarTitleCorrect(int strResourceId) {
+        activityScenario.onActivity(activity -> {
+            ActionBar toolbar = activity.getSupportActionBar();
+            assert toolbar != null;
+            assertEquals((String) toolbar.getTitle(), InstrumentationRegistry.getInstrumentation()
+                    .getTargetContext().getString(strResourceId));
+        });
     }
 }
