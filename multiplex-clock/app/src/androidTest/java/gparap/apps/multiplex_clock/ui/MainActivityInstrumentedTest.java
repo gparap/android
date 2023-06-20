@@ -20,11 +20,12 @@ import static androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.assertEquals;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.test.core.app.ActivityScenario;
-import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.junit.Before;
@@ -43,7 +44,7 @@ public class MainActivityInstrumentedTest {
 
     @Test
     public void Toolbar_IsDisplayed() {
-        onView(ViewMatchers.withId(R.id.toolbar)).check(matches(isDisplayed()));
+        onView(withId(R.id.toolbar)).check(matches(isDisplayed()));
     }
 
     @Test
@@ -83,7 +84,7 @@ public class MainActivityInstrumentedTest {
         activityScenario.onActivity(activity -> {
             ActionBar toolbar = activity.getSupportActionBar();
             assert toolbar != null;
-            assertEquals((String) toolbar.getTitle(), InstrumentationRegistry.getInstrumentation()
+            assertEquals(toolbar.getTitle(), InstrumentationRegistry.getInstrumentation()
                     .getTargetContext().getString(strResourceId));
         });
     }

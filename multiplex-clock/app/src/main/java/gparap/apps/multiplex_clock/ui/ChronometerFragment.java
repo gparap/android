@@ -30,7 +30,7 @@ import gparap.apps.multiplex_clock.R;
 import gparap.apps.multiplex_clock.utils.CircularProgress;
 import gparap.apps.multiplex_clock.utils.PreferencesManager;
 
-@SuppressWarnings({"FieldCanBeLocal", "Convert2Lambda"})
+@SuppressWarnings("ConstantConditions")
 public class ChronometerFragment extends Fragment {
     private Chronometer chronometer;
     private ProgressBar progressBar;
@@ -154,24 +154,9 @@ public class ChronometerFragment extends Fragment {
     }
 
     private void addOnClickListenersToFragmentWidgets() {
-        buttonStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startTimer();
-            }
-        });
-        buttonStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                stopTimer();
-            }
-        });
-        buttonReset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetTimer();
-            }
-        });
+        buttonStart.setOnClickListener(v -> startTimer());
+        buttonStop.setOnClickListener(v -> stopTimer());
+        buttonReset.setOnClickListener(v -> resetTimer());
     }
 
     private void getFragmentWidgets(View view) {

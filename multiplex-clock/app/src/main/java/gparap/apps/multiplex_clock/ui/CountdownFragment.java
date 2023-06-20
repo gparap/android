@@ -32,14 +32,14 @@ import gparap.apps.multiplex_clock.R;
 import gparap.apps.multiplex_clock.utils.PreferencesManager;
 import gparap.apps.multiplex_clock.utils.TimeUtils;
 
-@SuppressWarnings("Convert2Lambda")
+@SuppressWarnings("ConstantConditions")
 public class CountdownFragment extends Fragment {
     private EditText editTextHours, editTextMinutes, editTextSeconds;
     private Button buttonStart, buttonStop, buttonReset;
     private CountDownTimer countDownTimer;
     private boolean isCounting;
     private long millisInFuture;
-    private long backroungTime;
+    private long backgroundTime;
 
     public CountdownFragment() {
     }
@@ -65,8 +65,8 @@ public class CountdownFragment extends Fragment {
         isCounting = PreferencesManager.getInstance().getBoolean(getActivity(), "isCounting", false);
         millisInFuture = PreferencesManager.getInstance().getLong(getActivity(), "millisInFuture", 0L);
         if (isCounting) {
-            backroungTime = PreferencesManager.getInstance().getLong(getActivity(), "backroungTime", 0L);
-            millisInFuture = backroungTime - System.currentTimeMillis();
+            backgroundTime = PreferencesManager.getInstance().getLong(getActivity(), "backgroundTime", 0L);
+            millisInFuture = backgroundTime - System.currentTimeMillis();
             if (millisInFuture < 0) {
                 millisInFuture = 0;
                 isCounting = false;
@@ -88,7 +88,7 @@ public class CountdownFragment extends Fragment {
         //save state
         PreferencesManager.getInstance().saveBoolean(getActivity(), "isCounting", isCounting);
         PreferencesManager.getInstance().saveLong(getActivity(), "millisInFuture", millisInFuture);
-        PreferencesManager.getInstance().saveLong(getActivity(), "backroungTime", backroungTime);
+        PreferencesManager.getInstance().saveLong(getActivity(), "backgroundTime", backgroundTime);
         if (countDownTimer != null) {
             countDownTimer.cancel();
         }
@@ -102,7 +102,7 @@ public class CountdownFragment extends Fragment {
                 getTimeOutputFromTextFields();
                 getMillisInFuture();
             }
-            backroungTime = System.currentTimeMillis() + millisInFuture;
+            backgroundTime = System.currentTimeMillis() + millisInFuture;
 
             //start the countdown
             isCounting = true;
@@ -201,24 +201,9 @@ public class CountdownFragment extends Fragment {
     }
 
     private void addOnClickListeners() {
-        buttonStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startCountdown();
-            }
-        });
-        buttonStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                stopCountdown();
-            }
-        });
-        buttonReset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetCountdown();
-            }
-        });
+        buttonStart.setOnClickListener(v -> startCountdown());
+        buttonStop.setOnClickListener(v -> stopCountdown());
+        buttonReset.setOnClickListener(v -> resetCountdown());
     }
 
     private void getFragmentWidgets(View view) {
@@ -310,13 +295,13 @@ public class CountdownFragment extends Fragment {
         int seconds = minutesRemaining % 60;
 
         //update fields
-        editTextHours.setText(String.format("%s%s", handleZeroPreffix(hours), hours));
-        editTextMinutes.setText(String.format("%s%s", handleZeroPreffix(minutes), minutes));
-        editTextSeconds.setText(String.format("%s%s", handleZeroPreffix(seconds), seconds));
+        editTextHours.setText(String.format("%s%s", handleZeroPrefix(hours), hours));
+        editTextMinutes.setText(String.format("%s%s", handleZeroPrefix(minutes), minutes));
+        editTextSeconds.setText(String.format("%s%s", handleZeroPrefix(seconds), seconds));
     }
 
     //checks if an integer is less than ten and returns a zero string
-    private String handleZeroPreffix(int value) {
+    private String handleZeroPrefix(int value) {
         if (value < 10) {
             return getString(R.string.value_0);
         }

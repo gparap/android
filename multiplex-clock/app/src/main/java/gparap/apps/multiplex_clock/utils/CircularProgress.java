@@ -20,14 +20,13 @@ import android.os.Looper;
 import android.view.View;
 import android.widget.ProgressBar;
 
-@SuppressWarnings("FieldCanBeLocal")
 public class CircularProgress {
     private ProgressBar progressBar;
     private int progress;
     private Thread progressThread;
     private Handler progressHandler;
-    private static int PROGRESS_MIN = 0;
-    private static short PROGRESS_SLEEP_INTERVAL = 1000;
+    private static final int PROGRESS_MIN = 0;
+    private static final short PROGRESS_SLEEP_INTERVAL = 1000;
     private int progressMax;
 
     public CircularProgress() {
@@ -47,14 +46,14 @@ public class CircularProgress {
         progress++;
         //cycle progress every minute
         if (progress < progressMax) {
-            delayProgress(PROGRESS_SLEEP_INTERVAL);
+            delayProgress();
         } else {
-            delayProgress(PROGRESS_SLEEP_INTERVAL);
+            delayProgress();
             progress = PROGRESS_MIN;
             progressBar.setProgress(progress);
 
             //for extra sync
-            delayProgress(PROGRESS_SLEEP_INTERVAL);
+            delayProgress();
         }
         return progress;
     }
@@ -64,17 +63,6 @@ public class CircularProgress {
         progressBar.setMax(progressMax);
         progressBar.setProgress(progress);
         progressBar.setVisibility(View.INVISIBLE);
-    }
-
-    public void setupProgress(String timer) {
-        progress = calculateProgress(timer);
-        progressBar.setMax(progressMax);
-        progressBar.setProgress(progress);
-        if (progress == PROGRESS_MIN) {
-            progressBar.setVisibility(View.INVISIBLE);
-        } else {
-            progressBar.setVisibility(View.VISIBLE);
-        }
     }
 
     public void resumeProgress(String timer) {
@@ -91,21 +79,13 @@ public class CircularProgress {
         progressBar.setVisibility(View.VISIBLE);
 
         //handle progress
-        progressThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (progressThread != null && progress < progressMax) {
-                    progress = getProgress();
+        progressThread = new Thread(() -> {
+            while (progressThread != null && progress < progressMax) {
+                progress = getProgress();
 
-                    //update progress bar
-                    progressHandler = new Handler(Looper.getMainLooper());
-                    progressHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            progressBar.setProgress(progress);
-                        }
-                    });
-                }
+                //update progress bar
+                progressHandler = new Handler(Looper.getMainLooper());
+                progressHandler.post(() -> progressBar.setProgress(progress));
             }
         });
         progressThread.start();
@@ -130,9 +110,9 @@ public class CircularProgress {
 
     //Causes a thread to sleep for the given interval of time (in millis)
     //  to sync progress with a timer
-    private void delayProgress(short interval) {
+    private void delayProgress() {
         try {
-            Thread.sleep(interval);
+            Thread.sleep(CircularProgress.PROGRESS_SLEEP_INTERVAL);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -153,7 +133,7 @@ public class CircularProgress {
     //Calculates progress based on seconds left every time the chronometer is stopped
     //  for syncing the chronometer with the progress bar
     private int calculateProgress(String timer) {
-        String progress = timer.substring(timer.lastIndexOf(':') + 1, timer.length());
+        String progress = timer.substring(timer.lastIndexOf(':') + 1);
         return Integer.parseInt(progress);
     }
 }
