@@ -39,7 +39,7 @@ import gparap.apps.multiplex_clock.R;
 import gparap.apps.multiplex_clock.services.AlarmReceiver;
 import gparap.apps.multiplex_clock.utils.TimeUtils;
 
-@SuppressWarnings("Convert2Lambda")
+@SuppressWarnings({"ConstantConditions", "BusyWait"})
 public class AlarmClockFragment extends Fragment {
     TextView textViewTimer;
     DateFormat dateFormat;  //helper to format system time to default locale
@@ -68,12 +68,7 @@ public class AlarmClockFragment extends Fragment {
     public void onStart() {
         super.onStart();
         displayCurrentTime();
-        buttonSetAlarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setAlarm();
-            }
-        });
+        buttonSetAlarm.setOnClickListener(v -> setAlarm());
     }
 
     private void getFragmentWidgets(View view) {
@@ -101,12 +96,8 @@ public class AlarmClockFragment extends Fragment {
                         sleep(1000);
 
                         //update current time
-                        new Handler(Looper.getMainLooper()).post(new Runnable() {
-                            @Override
-                            public void run() {
-                                textViewTimer.setText(dateFormat.format(System.currentTimeMillis()));
-                            }
-                        });
+                        new Handler(Looper.getMainLooper()).post(() ->
+                                textViewTimer.setText(dateFormat.format(System.currentTimeMillis())));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

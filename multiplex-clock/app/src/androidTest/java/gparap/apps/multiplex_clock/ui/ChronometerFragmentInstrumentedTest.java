@@ -33,6 +33,7 @@ import static org.hamcrest.CoreMatchers.not;
 
 import gparap.apps.multiplex_clock.R;
 
+@SuppressWarnings("ConstantConditions")
 public class ChronometerFragmentInstrumentedTest {
     FragmentScenario<ChronometerFragment> fragmentScenario;
 

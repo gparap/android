@@ -35,7 +35,6 @@ public class TimeUtils {
 
     public int getCurrentHour() {
         int hour;
-        int minuteNow;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             java.time.LocalTime localTime = java.time.LocalTime.now();
             hour = localTime.getHour();
@@ -79,6 +78,6 @@ public class TimeUtils {
     }
 
     public long convertToMillis(int hours, int minutes, int seconds) {
-        return (hours * 60 * 60 * 1000) + (minutes * 60 * 1000) + (seconds * 1000);
+        return (hours * 60 * 60 * 1000L) + (minutes * 60 * 1000L) + (seconds * 1000L);
     }
 }

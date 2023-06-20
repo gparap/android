@@ -34,6 +34,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 import gparap.apps.multiplex_clock.R;
 
+@SuppressWarnings("ConstantConditions")
 public class CountdownFragmentInstrumentedTest {
     FragmentScenario<CountdownFragment> fragmentScenario;
 

@@ -50,13 +50,6 @@ public class PreferencesManager {
         editor.apply();
     }
 
-    public void saveInteger(FragmentActivity activity, String key, Integer value) {
-        SharedPreferences preferences = activity.getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt(key, value);
-        editor.apply();
-    }
-
     public Boolean getBoolean(FragmentActivity activity, String key, Boolean defaultValue) {
         SharedPreferences preferences = activity.getPreferences(Context.MODE_PRIVATE);
         return preferences.getBoolean(key, defaultValue);
@@ -65,10 +58,5 @@ public class PreferencesManager {
     public Long getLong(FragmentActivity activity, String key, Long defaultValue) {
         SharedPreferences preferences = activity.getPreferences(Context.MODE_PRIVATE);
         return preferences.getLong(key, defaultValue);
-    }
-
-    public Integer getInteger(FragmentActivity activity, String key, Integer defaultValue) {
-        SharedPreferences preferences = activity.getPreferences(Context.MODE_PRIVATE);
-        return preferences.getInt(key, defaultValue);
     }
 }
