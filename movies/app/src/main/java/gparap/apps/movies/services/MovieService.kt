@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 gparap
+ * Copyright (c) 2022-2023 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,6 @@ interface MovieService {
     /**
      * Gets all the movies.
      */
-    @get:GET("/api/movies.php?key=" + AppConstants.API_KEY)
+    @get:GET("/api/movies/movies.php?key=" + AppConstants.API_KEY)
     val getMovies: Call<MovieResponseModel?>?
 }
