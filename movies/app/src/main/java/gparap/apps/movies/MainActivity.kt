@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 gparap
+ * Copyright (c) 2022-2023 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,9 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.widget.SearchView
+import android.view.MenuItem
+import android.view.MenuItem.OnActionExpandListener
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.recyclerview.widget.GridLayoutManager
@@ -47,6 +49,7 @@ class MainActivity : AppCompatActivity() {
     private val TAG = "Mobile Ads SDK"
     private var interstitialAd: InterstitialAd? = null
     private lateinit var moviesAdapter: MovieAdapter
+    private var movies = ArrayList<MovieModel>()    //placeholder for all movies until Room DB
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,10 +74,10 @@ class MainActivity : AppCompatActivity() {
                 response: Response<MovieResponseModel?>,
             ) {
                 //get all movies
-                val movies: List<MovieModel>? = response.body()?.movies
+                movies = response.body()?.movies as ArrayList<MovieModel>
 
                 //update adapter with movies
-                moviesAdapter.movies = movies as ArrayList<MovieModel>
+                moviesAdapter.movies = movies
             }
 
             override fun onFailure(call: Call<MovieResponseModel?>, t: Throwable) {
@@ -127,27 +130,25 @@ class MainActivity : AppCompatActivity() {
         //setup the searchable functionality
         val searchView = (menu?.findItem(R.id.menu_item_search_movies_by_title)?.actionView) as SearchView
         searchView.queryHint = getString(R.string.menu_item_search_movies_by_title)
-        searchView.setOnQueryTextListener(object : OnQueryTextListener,
-            SearchView.OnQueryTextListener {
+        searchView.setOnQueryTextListener(object:OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-
                 //creates a Retrofit HTTP client instance
                 val retrofit = RetrofitClient()
                     .build(AppConstants.BASE_URL)
                     .create(MovieService::class.java)
 
-                //consume the web service (get all movies) and update UI
-                val response: Call<MovieResponseModel?>? = retrofit.getMovieByTitle(query)
+                //consume the web service (get movie(s) by title) and update UI
+                val response: Call<MovieResponseModel?>? = retrofit.getMoviesByTitle(query)
                 response?.enqueue(object : Callback<MovieResponseModel?> {
                     override fun onResponse(
                         call: Call<MovieResponseModel?>,
                         response: Response<MovieResponseModel?>,
                     ) {
-                        //get all movies
-                        val movies: List<MovieModel>? = response.body()?.movies
+                        //get movie(s) by title
+                        val moviesByTitle: List<MovieModel>? = response.body()?.movies
 
-                        //update adapter with movies
-                        moviesAdapter.movies = movies as ArrayList<MovieModel>
+                        //update adapter with movie(s)
+                        moviesAdapter.movies = moviesByTitle as ArrayList<MovieModel>
 
                         //close the search view
                         searchView.clearFocus()
@@ -163,6 +164,22 @@ class MainActivity : AppCompatActivity() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 return false
+            }
+        })
+
+        //handle the back button click of the search view
+        val menuItem = menu.findItem(R.id.menu_item_search_movies_by_title)
+        menuItem.setOnActionExpandListener(object : OnActionExpandListener{
+            override fun onMenuItemActionExpand(item: MenuItem): Boolean {
+                return true
+            }
+
+            override fun onMenuItemActionCollapse(item: MenuItem): Boolean {
+                //display all movies if we are done searching
+                if (moviesAdapter.movies.size != movies.size) {
+                    moviesAdapter.movies = movies
+                }
+                return true
             }
         })
 

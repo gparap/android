@@ -5,6 +5,6 @@
         android:id="@+id/menu_item_search_movies_by_title"
         android:icon="@drawable/ic_baseline_search_24"
         android:title="@string/menu_item_search_movies_by_title"
-        app:actionViewClass="android.widget.SearchView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="collapseActionView|ifRoom" />
 </menu>

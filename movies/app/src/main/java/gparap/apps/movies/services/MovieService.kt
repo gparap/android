@@ -37,5 +37,5 @@ interface MovieService {
      * Gets movie by title.
      */
     @GET("/api/movies/movie.php?key=" + AppConstants.API_KEY)
-    fun getMovieByTitle(@Query("title") title: String?): Call<MovieResponseModel?>?
+    fun getMoviesByTitle(@Query("title") title: String?): Call<MovieResponseModel?>?
 }
