@@ -19,6 +19,8 @@ import gparap.apps.movies.model.MovieResponseModel
 import gparap.apps.movies.utils.AppConstants
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Query
+
 
 /**
  * A web service for receiving movie, serial and cast information.
@@ -30,4 +32,10 @@ interface MovieService {
      */
     @get:GET("/api/movies/movies.php?key=" + AppConstants.API_KEY)
     val getMovies: Call<MovieResponseModel?>?
+
+    /**
+     * Gets movie by title.
+     */
+    @GET("/api/movies/movie.php?key=" + AppConstants.API_KEY)
+    fun getMovieByTitle(@Query("title") title: String?): Call<MovieResponseModel?>?
 }

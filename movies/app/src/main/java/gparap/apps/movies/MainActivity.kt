@@ -18,7 +18,10 @@ package gparap.apps.movies
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.ads.AdRequest
@@ -43,6 +46,7 @@ class MainActivity : AppCompatActivity() {
     @Suppress("PrivatePropertyName")
     private val TAG = "Mobile Ads SDK"
     private var interstitialAd: InterstitialAd? = null
+    private lateinit var moviesAdapter: MovieAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         //create a recyclerView with adapter to display the movies list
         val recyclerViewMovies = findViewById<RecyclerView>(R.id.recycler_view_movies)
         recyclerViewMovies.layoutManager = GridLayoutManager(this, 2)
-        val moviesAdapter = MovieAdapter()
+        moviesAdapter = MovieAdapter()
         recyclerViewMovies.adapter = moviesAdapter
 
         //creates a Retrofit HTTP client instance
@@ -116,4 +120,53 @@ class MainActivity : AppCompatActivity() {
         editor?.putInt(APP_OPENED_TIMES_BY_USER, timesUserOpenedTheApp + 1)
         editor?.apply()
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.options_menu, menu)
+
+        //setup the searchable functionality
+        val searchView = (menu?.findItem(R.id.menu_item_search_movies_by_title)?.actionView) as SearchView
+        searchView.queryHint = getString(R.string.menu_item_search_movies_by_title)
+        searchView.setOnQueryTextListener(object : OnQueryTextListener,
+            SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+
+                //creates a Retrofit HTTP client instance
+                val retrofit = RetrofitClient()
+                    .build(AppConstants.BASE_URL)
+                    .create(MovieService::class.java)
+
+                //consume the web service (get all movies) and update UI
+                val response: Call<MovieResponseModel?>? = retrofit.getMovieByTitle(query)
+                response?.enqueue(object : Callback<MovieResponseModel?> {
+                    override fun onResponse(
+                        call: Call<MovieResponseModel?>,
+                        response: Response<MovieResponseModel?>,
+                    ) {
+                        //get all movies
+                        val movies: List<MovieModel>? = response.body()?.movies
+
+                        //update adapter with movies
+                        moviesAdapter.movies = movies as ArrayList<MovieModel>
+
+                        //close the search view
+                        searchView.clearFocus()
+                    }
+
+                    override fun onFailure(call: Call<MovieResponseModel?>, t: Throwable) {
+                        println(t.message.toString())
+                    }
+                })
+
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
+
+        return super.onCreateOptionsMenu(menu)
+    }
 }
+
