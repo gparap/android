@@ -18,4 +18,5 @@
     <string name="label_release_country">Country: &#160;</string>
     <string name="label_language">Language: &#160;</string>
     <string name="label_film_time">Film time: &#160;</string>
+    <string name="menu_item_search_movies_by_title">search movies by title</string>
 </resources>
