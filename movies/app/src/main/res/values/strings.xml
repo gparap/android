@@ -2,6 +2,14 @@
     <string name="app_name">Movies Vintage</string>
     <string name="desc_movie_image">Movie Image</string>
     <string name="text_watch_movie">WATCH MOVIE</string>
+    <string name="text_search_movies">search movies</string>
+    <string name="text_search_movies_by_title">search movies by title</string>
+    <string name="text_search_movies_by_genre">search movies by genre</string>
+
+    <string-array name="spinner_array_strings">
+        <item>@string/text_search_movies_by_title</item>
+        <item>@string/text_search_movies_by_genre</item>
+    </string-array>
 
     <!--Label for movie details-->
     <string name="label_movie_summary">Movie summary:</string>
@@ -18,5 +26,4 @@
     <string name="label_release_country">Country: &#160;</string>
     <string name="label_language">Language: &#160;</string>
     <string name="label_film_time">Film time: &#160;</string>
-    <string name="menu_item_search_movies_by_title">search movies by title</string>
 </resources>
