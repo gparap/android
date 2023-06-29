@@ -21,8 +21,11 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.MenuItem.OnActionExpandListener
-import androidx.appcompat.widget.SearchView
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -50,10 +53,41 @@ class MainActivity : AppCompatActivity() {
     private var interstitialAd: InterstitialAd? = null
     private lateinit var moviesAdapter: MovieAdapter
     private var movies = ArrayList<MovieModel>()    //placeholder for all movies until Room DB
+    private var selectedSearchType = "-1"           //ie. search movies by title, by genre, etc.
+    private lateinit var searchView: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //create a default spinner adapter
+        val adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.spinner_array_strings,
+            android.R.layout.simple_spinner_item
+        ).apply {
+            this.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
+
+        //setup spinner with adapter
+        val searchSpinner: androidx.appcompat.widget.AppCompatSpinner =
+            findViewById(R.id.search_spinner)
+        searchSpinner.adapter = adapter
+
+        //handle spinner item selection
+        searchSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                //set the movie search type based on the spinner selection
+                selectedSearchType = parent.getItemAtPosition(position).toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
 
         //create a recyclerView with adapter to display the movies list
         val recyclerViewMovies = findViewById<RecyclerView>(R.id.recycler_view_movies)
@@ -128,36 +162,15 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.options_menu, menu)
 
         //setup the searchable functionality
-        val searchView = (menu?.findItem(R.id.menu_item_search_movies_by_title)?.actionView) as SearchView
-        searchView.queryHint = getString(R.string.menu_item_search_movies_by_title)
-        searchView.setOnQueryTextListener(object:OnQueryTextListener{
+        searchView = (menu?.findItem(R.id.menu_item_search_movies)?.actionView) as SearchView
+        searchView.queryHint = getString(R.string.text_search_movies)
+        searchView.setOnQueryTextListener(object : OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                //creates a Retrofit HTTP client instance
-                val retrofit = RetrofitClient()
-                    .build(AppConstants.BASE_URL)
-                    .create(MovieService::class.java)
-
-                //consume the web service (get movie(s) by title) and update UI
-                val response: Call<MovieResponseModel?>? = retrofit.getMoviesByTitle(query)
-                response?.enqueue(object : Callback<MovieResponseModel?> {
-                    override fun onResponse(
-                        call: Call<MovieResponseModel?>,
-                        response: Response<MovieResponseModel?>,
-                    ) {
-                        //get movie(s) by title
-                        val moviesByTitle: List<MovieModel>? = response.body()?.movies
-
-                        //update adapter with movie(s)
-                        moviesAdapter.movies = moviesByTitle as ArrayList<MovieModel>
-
-                        //close the search view
-                        searchView.clearFocus()
-                    }
-
-                    override fun onFailure(call: Call<MovieResponseModel?>, t: Throwable) {
-                        println(t.message.toString())
-                    }
-                })
+                //search queries are based on spinner item selected
+                when (selectedSearchType) {
+                    getString(R.string.text_search_movies_by_title) -> searchMoviesByTitle(query)
+                    getString(R.string.text_search_movies_by_genre) -> searchMoviesByGenre(query)
+                }
 
                 return true
             }
@@ -168,8 +181,8 @@ class MainActivity : AppCompatActivity() {
         })
 
         //handle the back button click of the search view
-        val menuItem = menu.findItem(R.id.menu_item_search_movies_by_title)
-        menuItem.setOnActionExpandListener(object : OnActionExpandListener{
+        val menuItem = menu.findItem(R.id.menu_item_search_movies)
+        menuItem.setOnActionExpandListener(object : OnActionExpandListener {
             override fun onMenuItemActionExpand(item: MenuItem): Boolean {
                 return true
             }
@@ -184,6 +197,64 @@ class MainActivity : AppCompatActivity() {
         })
 
         return super.onCreateOptionsMenu(menu)
+    }
+
+    private fun searchMoviesByTitle(query: String?) {
+        //creates a Retrofit HTTP client instance
+        val retrofit = RetrofitClient()
+            .build(AppConstants.BASE_URL)
+            .create(MovieService::class.java)
+
+        //consume the web service (get movie(s) by title) and update UI
+        val response: Call<MovieResponseModel?>? = retrofit.getMoviesByTitle(query)
+        response?.enqueue(object : Callback<MovieResponseModel?> {
+            override fun onResponse(
+                call: Call<MovieResponseModel?>,
+                response: Response<MovieResponseModel?>,
+            ) {
+                //get movie(s) by title
+                val moviesByTitle: List<MovieModel>? = response.body()?.movies
+
+                //update adapter with movie(s)
+                moviesAdapter.movies = moviesByTitle as ArrayList<MovieModel>
+
+                //close the search view
+                searchView.clearFocus()
+            }
+
+            override fun onFailure(call: Call<MovieResponseModel?>, t: Throwable) {
+                println(t.message.toString())
+            }
+        })
+    }
+
+    private fun searchMoviesByGenre(query: String?) {
+        //creates a Retrofit HTTP client instance
+        val retrofit = RetrofitClient()
+            .build(AppConstants.BASE_URL)
+            .create(MovieService::class.java)
+
+        //consume the web service (get movie(s) by title) and update UI
+        val response: Call<MovieResponseModel?>? = retrofit.getMoviesByGenre(query)
+        response?.enqueue(object : Callback<MovieResponseModel?> {
+            override fun onResponse(
+                call: Call<MovieResponseModel?>,
+                response: Response<MovieResponseModel?>,
+            ) {
+                //get movie(s) by title
+                val moviesByTitle: List<MovieModel>? = response.body()?.movies
+
+                //update adapter with movie(s)
+                moviesAdapter.movies = moviesByTitle as ArrayList<MovieModel>
+
+                //close the search view
+                searchView.clearFocus()
+            }
+
+            override fun onFailure(call: Call<MovieResponseModel?>, t: Throwable) {
+                println(t.message.toString())
+            }
+        })
     }
 }
 

@@ -34,8 +34,14 @@ interface MovieService {
     val getMovies: Call<MovieResponseModel?>?
 
     /**
-     * Gets movie by title.
+     * Gets movie(s) by title.
      */
     @GET("/api/movies/movie.php?key=" + AppConstants.API_KEY)
     fun getMoviesByTitle(@Query("title") title: String?): Call<MovieResponseModel?>?
+
+    /**
+     * Gets movies by genre.
+     */
+    @GET("/api/movies/genre.php?key=" + AppConstants.API_KEY)
+    fun getMoviesByGenre(@Query("genre") genre: String?): Call<MovieResponseModel?>?
 }
