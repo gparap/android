@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 gparap
+ * Copyright 2021 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Created by gparap on 2021-01-29.
+ */
 public class CalculatorActivityTest {
     @Test
     public void addTwoNumbers_positive_positive() {
