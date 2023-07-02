@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 gparap
+ * Copyright 2021 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,9 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
+/**
+ * Created by gparap on 2021-02-19.
+ */
 class MainActivity : AppCompatActivity() {
     private lateinit var editTextResult: EditText
     private lateinit var buttonConvertToBinary: Button
