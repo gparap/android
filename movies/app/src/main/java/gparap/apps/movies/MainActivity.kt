@@ -43,6 +43,7 @@ import gparap.apps.movies.utils.AppConstants
 import gparap.apps.movies.utils.AppConstants.APP_OPENED_TIMES_BY_USER
 import gparap.apps.movies.utils.AppConstants.INTERSTITIAL_AD_UNIT_ID
 import gparap.apps.movies.utils.AppConstants.INTERSTITIAL_LOAD_FACTOR
+import gparap.apps.movies.utils.Utils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -166,11 +167,42 @@ class MainActivity : AppCompatActivity() {
         searchView.queryHint = getString(R.string.text_search_movies)
         searchView.setOnQueryTextListener(object : OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                //search queries are based on spinner item selected
+                //create the web service
+                val retrofit = Utils.createMoviesService()
+
+                //initialize the web service response
+                var response: Call<MovieResponseModel?>? = null
+
+                //search movies with query based on spinner item selected
                 when (selectedSearchType) {
-                    getString(R.string.text_search_movies_by_title) -> searchMoviesByTitle(query)
-                    getString(R.string.text_search_movies_by_genre) -> searchMoviesByGenre(query)
+                    getString(R.string.text_search_movies_by_title) -> {
+                        response = retrofit.getMoviesByTitle(query)
+                    }
+                    getString(R.string.text_search_movies_by_genre) -> {
+                        response = retrofit.getMoviesByGenre(query)
+                    }
                 }
+
+                //fetch movies and update UI
+                response?.enqueue(object : Callback<MovieResponseModel?> {
+                    override fun onResponse(
+                        call: Call<MovieResponseModel?>,
+                        response: Response<MovieResponseModel?>,
+                    ) {
+                        //get movies
+                        val movieList: List<MovieModel>? = response.body()?.movies
+
+                        //update adapter with movies
+                        moviesAdapter.movies = movieList as ArrayList<MovieModel>
+
+                        //close the search view
+                        searchView.clearFocus()
+                    }
+
+                    override fun onFailure(call: Call<MovieResponseModel?>, t: Throwable) {
+                        println(t.message.toString())
+                    }
+                })
 
                 return true
             }
@@ -197,64 +229,6 @@ class MainActivity : AppCompatActivity() {
         })
 
         return super.onCreateOptionsMenu(menu)
-    }
-
-    private fun searchMoviesByTitle(query: String?) {
-        //creates a Retrofit HTTP client instance
-        val retrofit = RetrofitClient()
-            .build(AppConstants.BASE_URL)
-            .create(MovieService::class.java)
-
-        //consume the web service (get movie(s) by title) and update UI
-        val response: Call<MovieResponseModel?>? = retrofit.getMoviesByTitle(query)
-        response?.enqueue(object : Callback<MovieResponseModel?> {
-            override fun onResponse(
-                call: Call<MovieResponseModel?>,
-                response: Response<MovieResponseModel?>,
-            ) {
-                //get movie(s) by title
-                val moviesByTitle: List<MovieModel>? = response.body()?.movies
-
-                //update adapter with movie(s)
-                moviesAdapter.movies = moviesByTitle as ArrayList<MovieModel>
-
-                //close the search view
-                searchView.clearFocus()
-            }
-
-            override fun onFailure(call: Call<MovieResponseModel?>, t: Throwable) {
-                println(t.message.toString())
-            }
-        })
-    }
-
-    private fun searchMoviesByGenre(query: String?) {
-        //creates a Retrofit HTTP client instance
-        val retrofit = RetrofitClient()
-            .build(AppConstants.BASE_URL)
-            .create(MovieService::class.java)
-
-        //consume the web service (get movie(s) by title) and update UI
-        val response: Call<MovieResponseModel?>? = retrofit.getMoviesByGenre(query)
-        response?.enqueue(object : Callback<MovieResponseModel?> {
-            override fun onResponse(
-                call: Call<MovieResponseModel?>,
-                response: Response<MovieResponseModel?>,
-            ) {
-                //get movie(s) by title
-                val moviesByTitle: List<MovieModel>? = response.body()?.movies
-
-                //update adapter with movie(s)
-                moviesAdapter.movies = moviesByTitle as ArrayList<MovieModel>
-
-                //close the search view
-                searchView.clearFocus()
-            }
-
-            override fun onFailure(call: Call<MovieResponseModel?>, t: Throwable) {
-                println(t.message.toString())
-            }
-        })
     }
 }
 

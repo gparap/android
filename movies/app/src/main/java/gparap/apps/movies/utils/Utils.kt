@@ -2,6 +2,8 @@ package gparap.apps.movies.utils
 
 import android.text.Html
 import gparap.apps.movies.model.ArticleModel
+import gparap.apps.movies.services.MovieService
+import gparap.apps.movies.services.RetrofitClient
 
 object Utils {
     /**
@@ -30,5 +32,12 @@ object Utils {
                     "</a>" +
                     "&#160;&#60;&#60;", Html.FROM_HTML_MODE_LEGACY
         )
+    }
+
+    /** Returns an implementation of the Movies API endpoints defined by the service interface. */
+    fun createMoviesService() : MovieService {
+        return RetrofitClient()
+            .build(AppConstants.BASE_URL)
+            .create(MovieService::class.java)
     }
 }
