@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 gparap
+ * Copyright 2021 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package gparap.apps.converter_binary
 
 /**
  * Converts from binary to text and vice versa.
+ * Created by gparap on 2021-02-19.
  */
 class Converter {
 
