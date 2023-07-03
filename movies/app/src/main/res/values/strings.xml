@@ -5,10 +5,18 @@
     <string name="text_search_movies">search movies</string>
     <string name="text_search_movies_by_title">search movies by title</string>
     <string name="text_search_movies_by_genre">search movies by genre</string>
+    <string name="text_search_movies_by_actor">search movies by actor</string>
+    <string name="text_search_movies_by_director">search movies by director</string>
+    <string name="text_search_movies_by_publisher">search movies by publisher</string>
+    <string name="text_search_movies_by_year">search movies by year</string>
 
     <string-array name="spinner_array_strings">
         <item>@string/text_search_movies_by_title</item>
         <item>@string/text_search_movies_by_genre</item>
+        <item>@string/text_search_movies_by_actor</item>
+        <item>@string/text_search_movies_by_director</item>
+        <item>@string/text_search_movies_by_publisher</item>
+        <item>@string/text_search_movies_by_year</item>
     </string-array>
 
     <!--Label for movie details-->

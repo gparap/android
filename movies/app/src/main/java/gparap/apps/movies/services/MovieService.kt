@@ -21,7 +21,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-
 /**
  * A web service for receiving movie, serial and cast information.
  * APIs results are in JSON format.
@@ -44,4 +43,28 @@ interface MovieService {
      */
     @GET("/api/movies/movies.php?key=" + AppConstants.API_KEY)
     fun getMoviesByGenre(@Query("genre") genre: String?): Call<MovieResponseModel?>?
+
+    /**
+     * Gets movies by actor.
+     */
+    @GET("/api/movies/movies.php?key=" + AppConstants.API_KEY)
+    fun getMoviesByActor(@Query("actor") actor: String?): Call<MovieResponseModel?>?
+
+    /**
+     * Gets movies by director.
+     */
+    @GET("/api/movies/movies.php?key=" + AppConstants.API_KEY)
+    fun getMoviesByDirector(@Query("director") director: String?): Call<MovieResponseModel?>?
+
+    /**
+     * Gets movies by publisher.
+     */
+    @GET("/api/movies/movies.php?key=" + AppConstants.API_KEY)
+    fun getMoviesByPublisher(@Query("publisher") publisher: String?): Call<MovieResponseModel?>?
+
+    /**
+     * Gets movies by release year.
+     */
+    @GET("/api/movies/movies.php?key=" + AppConstants.API_KEY)
+    fun getMoviesByYear(@Query("year") year: String?): Call<MovieResponseModel?>?
 }

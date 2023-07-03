@@ -175,11 +175,35 @@ class MainActivity : AppCompatActivity() {
 
                 //search movies with query based on spinner item selected
                 when (selectedSearchType) {
+
+                    //query => title
                     getString(R.string.text_search_movies_by_title) -> {
                         response = retrofit.getMoviesByTitle(query)
                     }
+
+                    //query => genre
                     getString(R.string.text_search_movies_by_genre) -> {
                         response = retrofit.getMoviesByGenre(query)
+                    }
+
+                    //query => actor
+                    getString(R.string.text_search_movies_by_actor) -> {
+                        response = retrofit.getMoviesByActor(query)
+                    }
+
+                    //query => director
+                    getString(R.string.text_search_movies_by_director) -> {
+                        response = retrofit.getMoviesByDirector(query)
+                    }
+
+                    //query => publisher
+                    getString(R.string.text_search_movies_by_publisher) -> {
+                        response = retrofit.getMoviesByPublisher(query)
+                    }
+
+                    //query => year
+                    getString(R.string.text_search_movies_by_year) -> {
+                        response = retrofit.getMoviesByYear(query)
                     }
                 }
 
