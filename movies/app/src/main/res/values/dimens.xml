@@ -17,4 +17,6 @@
     <dimen name="textView_movieSummary_paddingStart">4dp</dimen>
     <dimen name="textView_movieSummary_paddingEnd">4dp</dimen>
     <dimen name="textView_padding">4dp</dimen>
+    <dimen name="spinner_padding">8dp</dimen>
+    <dimen name="spinner_textSize">@dimen/textSize_material_body2</dimen>
 </resources>

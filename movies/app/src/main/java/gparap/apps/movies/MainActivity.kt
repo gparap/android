@@ -16,6 +16,7 @@
 package gparap.apps.movies
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -27,6 +28,8 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
+import androidx.core.graphics.BlendModeColorFilterCompat
+import androidx.core.graphics.BlendModeCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.ads.AdRequest
@@ -65,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = ArrayAdapter.createFromResource(
             this,
             R.array.spinner_array_strings,
-            android.R.layout.simple_spinner_item
+            R.layout.simple_spinner_item
         ).apply {
             this.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         }
@@ -73,6 +76,11 @@ class MainActivity : AppCompatActivity() {
         //setup spinner with adapter
         val searchSpinner: androidx.appcompat.widget.AppCompatSpinner =
             findViewById(R.id.search_spinner)
+        searchSpinner.background.colorFilter =
+            BlendModeColorFilterCompat.createBlendModeColorFilterCompat(
+                Color.WHITE,
+                BlendModeCompat.SRC_ATOP
+            )
         searchSpinner.adapter = adapter
 
         //handle spinner item selection
