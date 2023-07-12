@@ -18,7 +18,6 @@ package gparap.apps.movies
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -62,8 +61,6 @@ class MainActivity : AppCompatActivity() {
     private var movies = ArrayList<MovieModel>()    //placeholder for all movies until Room DB
     private var selectedSearchType = "-1"           //ie. search movies by title, by genre, etc.
     private lateinit var searchView: SearchView
-    private lateinit var consentInformation: ConsentInformation
-    private lateinit var consentForm: ConsentForm
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -170,21 +167,6 @@ class MainActivity : AppCompatActivity() {
         val editor = sharedPref.edit()
         editor?.putInt(APP_OPENED_TIMES_BY_USER, timesUserOpenedTheApp + 1)
         editor?.apply()
-
-        //setup EEA & UK decreed user consent policy
-        val params = ConsentRequestParameters.Builder()
-            .setTagForUnderAgeOfConsent(false)
-            .build()
-        consentInformation = UserMessagingPlatform.getConsentInformation(this)
-        consentInformation.requestConsentInfoUpdate(this, params,
-            {
-                if (isGeographyEEA()) {
-                    if (consentInformation.isConsentFormAvailable) {
-                        loadConsentForm()
-                    }
-                }
-            }, { }
-        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -281,26 +263,5 @@ class MainActivity : AppCompatActivity() {
         })
 
         return super.onCreateOptionsMenu(menu)
-    }
-
-    //loads a rendered form for collecting decreed consent from a user
-    private fun loadConsentForm() {
-        UserMessagingPlatform.loadConsentForm(this,
-            { consentForm ->
-                this.consentForm = consentForm
-                if (consentInformation.consentStatus == ConsentInformation.ConsentStatus.REQUIRED) {
-                    consentForm.show(this) { loadConsentForm() }
-                }
-            },
-            { }
-        )
-    }
-
-    //check if we're in the EEA or the UK geographic regions
-    //values:   0 == NOT_EEA, 1 = EEA & UK
-    private fun isGeographyEEA(): Boolean {
-        val prefs = PreferenceManager.getDefaultSharedPreferences(applicationContext)   //TODO: fix
-        val gdpr = prefs.getInt("IABTCF_gdprApplies", 0)
-        return gdpr == 1
     }
 }
