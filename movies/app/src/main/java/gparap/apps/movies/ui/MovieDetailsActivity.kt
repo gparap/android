@@ -113,10 +113,12 @@ class MovieDetailsActivity : AppCompatActivity() {
         attribution.text = Utils.createAttributionDetails(article)
         attribution.movementMethod = LinkMovementMethod.getInstance()
 
-        //handle bottom banner ad
+        //handle banner ads
         MobileAds.initialize(this)
+        val adViewTop: AdView = findViewById(R.id.ad_view_banner_top)
         val adViewBottom: AdView = findViewById(R.id.ad_view_banner_bottom)
         val adRequest = AdRequest.Builder().build()
+        adViewTop.loadAd(adRequest)
         adViewBottom.loadAd(adRequest)
     }
 
