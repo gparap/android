@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Movies Vintage</string>
+    <string name="desc_movie_image">동영상 이미지</string>
+    <string name="text_watch_movie">영화를보고</string>
+    <string name="text_search_movies">영화 검색</string>
+    <string name="text_search_movies_by_title">제목으로 영화 검색</string>
+    <string name="text_search_movies_by_genre">장르별 영화 검색</string>
+    <string name="text_search_movies_by_actor">배우로 영화 찾기</string>
+    <string name="text_search_movies_by_director">감독으로 영화 찾기</string>
+    <string name="text_search_movies_by_publisher">출판사로 영화 검색</string>
+    <string name="text_search_movies_by_year">연도별로 영화 검색</string>
+    <string name="label_movie_summary">영화 요약:</string>
+    <string name="label_movie_details">영화 정보:</string>
+    <string name="label_director">감독:</string>
+    <string name="label_cast">깁스:</string>
+    <string name="label_script">스크립트:</string>
+    <string name="label_producer">생산자:</string>
+    <string name="label_photography">사진술:</string>
+    <string name="label_editor">편집자:</string>
+    <string name="label_music">음악:</string>
+    <string name="label_publisher">발행자:</string>
+    <string name="label_release_year">출시 연도:</string>
+    <string name="label_release_country">국가:</string>
+    <string name="label_language">언어:</string>
+    <string name="label_film_time">촬영 시간:</string>
+</resources>

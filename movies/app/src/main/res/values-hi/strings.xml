@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="desc_movie_image">Hình Ảnh Phim</string>
+    <string name="text_watch_movie">XEM PHIM</string>
+    <string name="text_search_movies">tìm kiếm phim</string>
+    <string name="text_search_movies_by_title">tìm kiếm phim theo tiêu đề</string>
+    <string name="text_search_movies_by_genre">tìm kiếm phim theo thể loại</string>
+    <string name="text_search_movies_by_actor">tìm phim theo diễn viên</string>
+    <string name="text_search_movies_by_director">tìm phim theo đạo diễn</string>
+    <string name="text_search_movies_by_publisher">tìm kiếm phim theo nhà xuất bản</string>
+    <string name="text_search_movies_by_year">tìm kiếm phim theo năm</string>
+    <string name="label_movie_summary">Tóm tắt phim:</string>
+    <string name="label_movie_details">Chi tiết phim:</string>
+    <string name="label_director">Giám đốc:</string>
+    <string name="label_cast">Dàn diễn viên:</string>
+    <string name="label_script">Kịch bản:</string>
+    <string name="label_producer">Nhà sản xuất:</string>
+    <string name="label_photography">Nhiếp ảnh:</string>
+    <string name="label_editor">biên tập viên:</string>
+    <string name="label_music">Âm nhạc:</string>
+    <string name="label_publisher">Nhà xuất bản:</string>
+    <string name="label_release_year">Năm phát hành:</string>
+    <string name="label_release_country">Quốc gia:</string>
+    <string name="label_language">Ngôn ngữ:</string>
+    <string name="label_film_time">Thời lượng phim:</string>
+</resources>

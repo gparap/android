@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="desc_movie_image">电影形象</string>
+    <string name="text_watch_movie">看电影</string>
+    <string name="text_search_movies">搜索电影</string>
+    <string name="text_search_movies_by_title">按标题搜索电影</string>
+    <string name="text_search_movies_by_genre">按类型搜索电影</string>
+    <string name="text_search_movies_by_actor">按演员搜索电影</string>
+    <string name="text_search_movies_by_director">按导演搜索电影</string>
+    <string name="text_search_movies_by_publisher">按发行商搜索电影</string>
+    <string name="text_search_movies_by_year">按年份搜索电影</string>
+    <string name="label_movie_summary">电影概要：</string>
+    <string name="label_movie_details">电影详情：</string>
+    <string name="label_director">导演：</string>
+    <string name="label_cast">投掷：</string>
+    <string name="label_script">脚本：</string>
+    <string name="label_producer">制作人：</string>
+    <string name="label_photography">摄影：</string>
+    <string name="label_editor">编辑：</string>
+    <string name="label_music">音乐：</string>
+    <string name="label_publisher">出版商：</string>
+    <string name="label_release_year">发布年份：</string>
+    <string name="label_release_country">国家：</string>
+    <string name="label_language">语言：</string>
+    <string name="label_film_time">影片时间：</string>
+</resources>

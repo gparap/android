@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="desc_movie_image">ภาพยนต์</string>
+    <string name="text_watch_movie">ดูหนัง</string>
+    <string name="text_search_movies">ค้นหาภาพยนตร์</string>
+    <string name="text_search_movies_by_title">ค้นหาภาพยนตร์ตามชื่อเรื่อง</string>
+    <string name="text_search_movies_by_genre">ค้นหาภาพยนตร์ตามประเภท</string>
+    <string name="text_search_movies_by_actor">ค้นหาภาพยนตร์ตามนักแสดง</string>
+    <string name="text_search_movies_by_director">ค้นหาภาพยนตร์โดยผู้กำกับ</string>
+    <string name="text_search_movies_by_publisher">ค้นหาภาพยนตร์โดยผู้จัดพิมพ์</string>
+    <string name="text_search_movies_by_year">ค้นหาภาพยนตร์ตามปี</string>
+    <string name="label_movie_summary">เรื่องย่อของภาพยนตร์:</string>
+    <string name="label_movie_details">รายละเอียดภาพยนตร์:</string>
+    <string name="label_director">ผู้อำนวยการ:</string>
+    <string name="label_cast">หล่อ:</string>
+    <string name="label_script">สคริปต์:</string>
+    <string name="label_producer">ผู้ผลิต:</string>
+    <string name="label_photography">การถ่ายภาพ:</string>
+    <string name="label_editor">บรรณาธิการ:</string>
+    <string name="label_music">ดนตรี:</string>
+    <string name="label_publisher">สำนักพิมพ์:</string>
+    <string name="label_release_year">ปีที่วางจำหน่าย:</string>
+    <string name="label_release_country">ประเทศ:</string>
+    <string name="label_language">ภาษา:</string>
+    <string name="label_film_time">เวลาฉายภาพยนตร์:</string>
+</resources>

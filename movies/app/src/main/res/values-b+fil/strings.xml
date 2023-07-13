@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="desc_movie_image">Larawan ng Pelikula</string>
+    <string name="text_watch_movie">MANOOD NG PELIKULA</string>
+    <string name="text_search_movies">maghanap ng mga pelikula</string>
+    <string name="text_search_movies_by_title">maghanap ng mga pelikula ayon sa pamagat</string>
+    <string name="text_search_movies_by_genre">maghanap ng mga pelikula ayon sa genre</string>
+    <string name="text_search_movies_by_actor">maghanap ng mga pelikula ng aktor</string>
+    <string name="text_search_movies_by_director">maghanap ng mga pelikula sa pamamagitan ng direktor</string>
+    <string name="text_search_movies_by_publisher">maghanap ng mga pelikula ayon sa publisher</string>
+    <string name="text_search_movies_by_year">maghanap ng mga pelikula ayon sa taon</string>
+    <string name="label_movie_summary">Buod ng pelikula:</string>
+    <string name="label_movie_details">Mga detalye ng pelikula:</string>
+    <string name="label_director">Direktor:</string>
+    <string name="label_cast">Cast:</string>
+    <string name="label_script">Script:</string>
+    <string name="label_producer">Producer:</string>
+    <string name="label_photography">Photography:</string>
+    <string name="label_editor">Editor:</string>
+    <string name="label_music">Musika:</string>
+    <string name="label_publisher">Publisher:</string>
+    <string name="label_release_year">Taon ng Paglabas:</string>
+    <string name="label_release_country">Bansa:</string>
+    <string name="label_language">Wika:</string>
+    <string name="label_film_time">Oras ng pelikula:</string>
+</resources>

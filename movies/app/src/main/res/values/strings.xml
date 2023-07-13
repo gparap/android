@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Movies Vintage</string>
+    <string name="app_name" translatable="false">Movies Vintage</string>
     <string name="desc_movie_image">Movie Image</string>
     <string name="text_watch_movie">WATCH MOVIE</string>
     <string name="text_search_movies">search movies</string>
@@ -20,18 +20,18 @@
     </string-array>
 
     <!--Label for movie details-->
-    <string name="label_movie_summary">Movie summary:</string>
-    <string name="label_movie_details">Movie details:</string>
-    <string name="label_director">Director: &#160;</string>
-    <string name="label_cast">Cast: &#160;</string>
-    <string name="label_script">Script: &#160;</string>
-    <string name="label_producer">Producer: &#160;</string>
-    <string name="label_photography">Photography: &#160;</string>
-    <string name="label_editor">Editor: &#160;</string>
-    <string name="label_music">Music: &#160;</string>
-    <string name="label_publisher">Publisher: &#160;</string>
-    <string name="label_release_year">Release Year: &#160;</string>
-    <string name="label_release_country">Country: &#160;</string>
-    <string name="label_language">Language: &#160;</string>
-    <string name="label_film_time">Film time: &#160;</string>
+    <string name="label_movie_summary">Movie summary: </string>
+    <string name="label_movie_details">Movie details: </string>
+    <string name="label_director">Director: </string>
+    <string name="label_cast">Cast: </string>
+    <string name="label_script">Script: </string>
+    <string name="label_producer">Producer: </string>
+    <string name="label_photography">Photography: </string>
+    <string name="label_editor">Editor: </string>
+    <string name="label_music">Music: </string>
+    <string name="label_publisher">Publisher: </string>
+    <string name="label_release_year">Release Year: </string>
+    <string name="label_release_country">Country: </string>
+    <string name="label_language">Language: </string>
+    <string name="label_film_time">Film time: </string>
 </resources>

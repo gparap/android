@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Movies Vintage</string>
+    <string name="desc_movie_image">Εικόνα ταινίας</string>
+    <string name="text_watch_movie">ΔΕΙΤΕ ΤΗΝ ΤΑΙΝΙΑ</string>
+    <string name="text_search_movies">αναζήτηση ταινιών</string>
+    <string name="text_search_movies_by_title">αναζήτηση ταινιών ανά τίτλο</string>
+    <string name="text_search_movies_by_genre">αναζήτηση ταινιών ανά είδος</string>
+    <string name="text_search_movies_by_actor">αναζήτηση ταινιών ανά ηθοποιό</string>
+    <string name="text_search_movies_by_director">αναζήτηση ταινιών ανά σκηνοθέτη</string>
+    <string name="text_search_movies_by_publisher">αναζήτηση ταινιών ανά εκδότη</string>
+    <string name="text_search_movies_by_year">αναζήτηση ταινιών ανά έτος</string>
+    <string name="label_movie_summary">Περίληψη ταινίας:</string>
+    <string name="label_movie_details">Λεπτομέρειες ταινίας:</string>
+    <string name="label_director">Σκηνοθέτης:</string>
+    <string name="label_cast">Ηθοποιοί:</string>
+    <string name="label_script">Σενάριο:</string>
+    <string name="label_producer">Παραγωγός:</string>
+    <string name="label_photography">Φωτογραφία:</string>
+    <string name="label_editor">Συντάκτης:</string>
+    <string name="label_music">Μουσική:</string>
+    <string name="label_publisher">Εκδότης:</string>
+    <string name="label_release_year">Έτος κυκλοφορίας:</string>
+    <string name="label_release_country">Χώρα:</string>
+    <string name="label_language">Γλώσσα:</string>
+    <string name="label_film_time">Διάρκεια ταινίας:</string>
+</resources>
