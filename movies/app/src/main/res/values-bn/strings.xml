@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="desc_movie_image">মুভি ইমেজ</string>
+    <string name="text_watch_movie">সিনোম দেখা</string>
+    <string name="text_search_movies">সিনেমা অনুসন্ধান করুন</string>
+    <string name="text_search_movies_by_title">শিরোনাম দ্বারা সিনেমা অনুসন্ধান</string>
+    <string name="text_search_movies_by_genre">জেনার দ্বারা সিনেমা অনুসন্ধান করুন</string>
+    <string name="text_search_movies_by_actor">অভিনেতা দ্বারা সিনেমা অনুসন্ধান</string>
+    <string name="text_search_movies_by_director">পরিচালক দ্বারা সিনেমা অনুসন্ধান</string>
+    <string name="text_search_movies_by_publisher">প্রকাশক দ্বারা সিনেমা অনুসন্ধান</string>
+    <string name="text_search_movies_by_year">বছর অনুযায়ী সিনেমা খুঁজুন</string>
+    <string name="label_movie_summary">সিনেমার সারাংশ:</string>
+    <string name="label_movie_details">মুভির বিস্তারিত:</string>
+    <string name="label_director">পরিচালক:</string>
+    <string name="label_cast">কাস্ট:</string>
+    <string name="label_script">লিপি:</string>
+    <string name="label_producer">প্রযোজক:</string>
+    <string name="label_photography">ফটোগ্রাফি:</string>
+    <string name="label_editor">সম্পাদক:</string>
+    <string name="label_music">সঙ্গীত:</string>
+    <string name="label_publisher">প্রকাশক:</string>
+    <string name="label_release_year">মুক্তির বছর:</string>
+    <string name="label_release_country">দেশ:</string>
+    <string name="label_language">ভাষা:</string>
+    <string name="label_film_time">চলচ্চিত্রের সময়:</string>
+</resources>
