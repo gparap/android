@@ -67,4 +67,10 @@ interface MovieService {
      */
     @GET("/api/movies/movies.php?key=" + AppConstants.API_KEY)
     fun getMoviesByYear(@Query("year") year: String?): Call<MovieResponseModel?>?
+
+    /**
+     * Gets all new movies.
+     */
+    @get:GET("/api/movies/movies.php?key=" + AppConstants.API_KEY + "&new=1")
+    val getNewMovies: Call<MovieResponseModel?>?
 }
