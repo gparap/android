@@ -1,3 +1,18 @@
+/*
+ * Copyright (c) 2022-2023 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.movies.utils
 
 import android.text.Html
@@ -14,7 +29,7 @@ object Utils {
             "This page uses material from the Wikipedia article " +
                     "<a href=\"" + article.articleLink + "\">" + article.title + ",</a> " +
                     "which is released under the " +
-                    "<a href=\"" + article.licenseLink + "\">Creative Commons Attribution-ShareAlike 3.0 Unported License</a> " +
+                    "<a href=\"" + article.licenseLink + "\">Creative Commons Attribution-ShareAlike License 4.0</a> " +
                     "(" +
                     "<a href=\"" + article.authorsLink + "\">view authors</a>" +
                     ").", Html.FROM_HTML_MODE_LEGACY
