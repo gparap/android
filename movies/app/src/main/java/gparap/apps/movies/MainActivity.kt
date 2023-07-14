@@ -25,6 +25,7 @@ import android.view.MenuItem.OnActionExpandListener
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
@@ -215,6 +216,11 @@ class MainActivity : AppCompatActivity() {
                     getString(R.string.text_search_movies_by_year) -> {
                         response = retrofit.getMoviesByYear(query)
                     }
+
+                    //query => newest added movies
+                    getString(R.string.text_search_new_movies) -> {
+                        response = retrofit.getNewMovies
+                    }
                 }
 
                 //fetch movies and update UI
@@ -245,6 +251,16 @@ class MainActivity : AppCompatActivity() {
                 return false
             }
         })
+
+        //activate search for new added movies when spinner is at that position
+        searchView.setOnSearchClickListener {
+            val searchSpinner: androidx.appcompat.widget.AppCompatSpinner =
+                findViewById(R.id.search_spinner)
+            val selectedItemPosition = searchSpinner.selectedItemPosition
+            if (selectedItemPosition == 6) {    //TODO: constant
+                searchView.setQuery("new", true)
+            }
+        }
 
         //handle the back button click of the search view
         val menuItem = menu.findItem(R.id.menu_item_search_movies)
