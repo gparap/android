@@ -9,6 +9,7 @@
     <string name="text_search_movies_by_director">পরিচালক দ্বারা সিনেমা অনুসন্ধান</string>
     <string name="text_search_movies_by_publisher">প্রকাশক দ্বারা সিনেমা অনুসন্ধান</string>
     <string name="text_search_movies_by_year">বছর অনুযায়ী সিনেমা খুঁজুন</string>
+    <string name="text_search_new_movies">নতুন সিনেমা অনুসন্ধান করুন</string>
     <string name="label_movie_summary">সিনেমার সারাংশ:</string>
     <string name="label_movie_details">মুভির বিস্তারিত:</string>
     <string name="label_director">পরিচালক:</string>

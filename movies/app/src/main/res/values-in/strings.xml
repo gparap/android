@@ -9,6 +9,7 @@
     <string name="text_search_movies_by_director">cari film oleh sutradara</string>
     <string name="text_search_movies_by_publisher">cari film oleh penerbit</string>
     <string name="text_search_movies_by_year">cari film berdasarkan tahun</string>
+    <string name="text_search_new_movies">cari film baru</string>
     <string name="label_movie_summary">Ringkasan film:</string>
     <string name="label_movie_details">Detail film:</string>
     <string name="label_director">Direktur:</string>

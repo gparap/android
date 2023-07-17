@@ -9,6 +9,7 @@
     <string name="text_search_movies_by_director">bincika fina-finai ta darakta</string>
     <string name="text_search_movies_by_publisher">bincika fina-finai ta mawallafi</string>
     <string name="text_search_movies_by_year">bincika fina-finai da shekara</string>
+    <string name="text_search_new_movies">bincika sababbin fina-finai</string>
     <string name="label_movie_summary">Takaitacciyar fim:</string>
     <string name="label_movie_details">Cikakken bayanin fim:</string>
     <string name="label_director">Darakta:</string>

@@ -9,6 +9,7 @@
     <string name="text_search_movies_by_director">maghanap ng mga pelikula sa pamamagitan ng direktor</string>
     <string name="text_search_movies_by_publisher">maghanap ng mga pelikula ayon sa publisher</string>
     <string name="text_search_movies_by_year">maghanap ng mga pelikula ayon sa taon</string>
+    <string name="text_search_new_movies">maghanap ng mga bagong pelikula</string>
     <string name="label_movie_summary">Buod ng pelikula:</string>
     <string name="label_movie_details">Mga detalye ng pelikula:</string>
     <string name="label_director">Direktor:</string>

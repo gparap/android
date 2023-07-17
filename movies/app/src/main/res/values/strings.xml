@@ -9,8 +9,7 @@
     <string name="text_search_movies_by_director">search movies by director</string>
     <string name="text_search_movies_by_publisher">search movies by publisher</string>
     <string name="text_search_movies_by_year">search movies by year</string>
-    <!--TODO: temporary non-translatable-->
-    <string name="text_search_new_movies" translatable="false">search NEW movies</string>
+    <string name="text_search_new_movies">search new movies</string>
 
     <string-array name="spinner_array_strings">
         <item>@string/text_search_movies_by_title</item>
