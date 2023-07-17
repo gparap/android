@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 gparap
+ * Copyright (c) 2022-2023 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package gparap.apps.movies.ui
 
+import android.os.Build
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.view.MenuItem
@@ -30,13 +31,20 @@ import gparap.apps.movies.model.MovieModel
 import gparap.apps.movies.utils.Utils
 
 class MovieDetailsActivity : AppCompatActivity() {
+    private lateinit var movie: MovieModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         //get movie from intent
-        val movie = intent.extras?.get("movie") as MovieModel
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            movie = intent.extras?.getParcelable("movie", MovieModel::class.java)!!
+        } else {
+            @Suppress("DEPRECATION")
+            movie = intent.extras?.get("movie") as MovieModel
+        }
 
         //display title to the activity's ActionBar
         supportActionBar?.title = movie.title

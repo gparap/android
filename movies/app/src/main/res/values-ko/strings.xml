@@ -10,6 +10,7 @@
     <string name="text_search_movies_by_director">감독으로 영화 찾기</string>
     <string name="text_search_movies_by_publisher">출판사로 영화 검색</string>
     <string name="text_search_movies_by_year">연도별로 영화 검색</string>
+    <string name="text_search_new_movies">새 영화 검색</string>
     <string name="label_movie_summary">영화 요약:</string>
     <string name="label_movie_details">영화 정보:</string>
     <string name="label_director">감독:</string>

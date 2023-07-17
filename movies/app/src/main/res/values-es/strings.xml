@@ -9,6 +9,7 @@
     <string name="text_search_movies_by_director">buscar películas por director</string>
     <string name="text_search_movies_by_publisher">buscar películas por editorial</string>
     <string name="text_search_movies_by_year">buscar películas por año</string>
+    <string name="text_search_new_movies">buscar nuevas películas</string>
     <string name="label_movie_summary">Resumen de la película:</string>
     <string name="label_movie_details">Detalles de la película:</string>
     <string name="label_director">Director:</string>

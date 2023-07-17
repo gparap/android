@@ -9,6 +9,7 @@
     <string name="text_search_movies_by_director">按导演搜索电影</string>
     <string name="text_search_movies_by_publisher">按发行商搜索电影</string>
     <string name="text_search_movies_by_year">按年份搜索电影</string>
+    <string name="text_search_new_movies">搜索新电影</string>
     <string name="label_movie_summary">电影概要：</string>
     <string name="label_movie_details">电影详情：</string>
     <string name="label_director">导演：</string>

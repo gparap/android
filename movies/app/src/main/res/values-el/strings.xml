@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Movies Vintage</string>
     <string name="desc_movie_image">Εικόνα ταινίας</string>
     <string name="text_watch_movie">ΔΕΙΤΕ ΤΗΝ ΤΑΙΝΙΑ</string>
     <string name="text_search_movies">αναζήτηση ταινιών</string>
@@ -10,6 +9,7 @@
     <string name="text_search_movies_by_director">αναζήτηση ταινιών ανά σκηνοθέτη</string>
     <string name="text_search_movies_by_publisher">αναζήτηση ταινιών ανά εκδότη</string>
     <string name="text_search_movies_by_year">αναζήτηση ταινιών ανά έτος</string>
+    <string name="text_search_new_movies">αναζήτηση νέων ταινιών</string>
     <string name="label_movie_summary">Περίληψη ταινίας:</string>
     <string name="label_movie_details">Λεπτομέρειες ταινίας:</string>
     <string name="label_director">Σκηνοθέτης:</string>

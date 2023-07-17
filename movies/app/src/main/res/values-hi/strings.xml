@@ -9,6 +9,7 @@
     <string name="text_search_movies_by_director">tìm phim theo đạo diễn</string>
     <string name="text_search_movies_by_publisher">tìm kiếm phim theo nhà xuất bản</string>
     <string name="text_search_movies_by_year">tìm kiếm phim theo năm</string>
+    <string name="text_search_new_movies">नई फिल्में खोजें</string>
     <string name="label_movie_summary">Tóm tắt phim:</string>
     <string name="label_movie_details">Chi tiết phim:</string>
     <string name="label_director">Giám đốc:</string>

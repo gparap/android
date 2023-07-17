@@ -9,6 +9,7 @@
     <string name="text_search_movies_by_director">ค้นหาภาพยนตร์โดยผู้กำกับ</string>
     <string name="text_search_movies_by_publisher">ค้นหาภาพยนตร์โดยผู้จัดพิมพ์</string>
     <string name="text_search_movies_by_year">ค้นหาภาพยนตร์ตามปี</string>
+    <string name="text_search_new_movies">ค้นหาภาพยนตร์ใหม่</string>
     <string name="label_movie_summary">เรื่องย่อของภาพยนตร์:</string>
     <string name="label_movie_details">รายละเอียดภาพยนตร์:</string>
     <string name="label_director">ผู้อำนวยการ:</string>

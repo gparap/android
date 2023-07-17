@@ -9,6 +9,7 @@
     <string name="text_search_movies_by_director">監督から映画を探す</string>
     <string name="text_search_movies_by_publisher">出版社ごとに映画を検索する</string>
     <string name="text_search_movies_by_year">年ごとに映画を検索する</string>
+    <string name="text_search_new_movies">新しい映画を検索する</string>
     <string name="label_movie_summary">映画の概要:</string>
     <string name="label_movie_details">映画の詳細:</string>
     <string name="label_director">監督：</string>

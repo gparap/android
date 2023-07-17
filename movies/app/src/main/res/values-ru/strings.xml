@@ -9,6 +9,7 @@
     <string name="text_search_movies_by_director">поиск фильмов по режиссеру</string>
     <string name="text_search_movies_by_publisher">поиск фильмов по издателю</string>
     <string name="text_search_movies_by_year">искать фильмы по годам</string>
+    <string name="text_search_new_movies">искать новые фильмы</string>
     <string name="label_movie_summary">Краткое содержание фильма:</string>
     <string name="label_movie_details">Детали фильма:</string>
     <string name="label_director">Режиссер:</string>
