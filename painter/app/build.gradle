@@ -39,6 +39,7 @@ android {
             useJUnitPlatform()
         }
     }
+    namespace 'gparap.apps.painter'
 }
 
 dependencies {
