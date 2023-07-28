@@ -14,3 +14,8 @@ calculator-area/app/src/main/res/drawable/square.png
 calculator-area/app/src/main/res/drawable/trapezoid.png
 calculator-area/app/src/main/res/drawable/triangle.png
 movies/app/release/app-release.aab
+weather/.idea/compiler.xml
+weather/.idea/deploymentTargetDropDown.xml
+weather/.idea/gradle.xml
+weather/.idea/misc.xml
+weather/.idea/runConfigurations.xml
