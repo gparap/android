@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Speed Counter</string>
+    <string name="text_speed">Speed:</string>
+    <string name="text_zero">0</string>
+</resources>
