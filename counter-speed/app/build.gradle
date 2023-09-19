@@ -45,4 +45,7 @@ dependencies {
 
     //Google Play services
     implementation 'com.google.android.gms:play-services-location:21.0.1'
+
+    //granting of runtime permissions on tests
+    androidTestImplementation 'androidx.test:rules:1.5.0'
 }

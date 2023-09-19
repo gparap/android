@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 gparap
+ * Copyright 2023 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,25 +15,32 @@
  */
 package gparap.apps.counter_speed
 
+import android.widget.TextView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-
+import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.rule.GrantPermissionRule
+import org.junit.Assert.*
+import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import org.junit.Assert.*
-import org.junit.Before
-
 @RunWith(AndroidJUnit4::class)
 class MainActivityInstrumentedTest {
+    private lateinit var activityScenario: ActivityScenario<MainActivity>
+
+    @get:Rule
+    var permissionRule: GrantPermissionRule =
+        GrantPermissionRule.grant(android.Manifest.permission.ACCESS_FINE_LOCATION)
+
     @Before
     fun setUp() {
-        ActivityScenario.launch(MainActivity::class.java)
+        activityScenario = ActivityScenario.launch(MainActivity::class.java)
     }
 
     @Test
@@ -50,5 +57,32 @@ class MainActivityInstrumentedTest {
     @Test
     fun isVisible_textView_speed() {
         onView(withId(R.id.textView_speed)).check(matches(isDisplayed()))
+    }
+
+    //!!! Leave the route on when testing on emulator
+    @Test
+    fun onLocationChanges_SpeedChanges() {
+        var speedBefore = ""
+        var speedAfter = ""
+
+        //hang on a while
+        Thread.sleep(667)
+
+        //get the previous speed
+        activityScenario.onActivity {
+            val textViewSpeed = it.findViewById<TextView>(R.id.textView_speed)
+            speedBefore = textViewSpeed.text.toString()
+        }
+
+        //hang on a while
+        Thread.sleep(1667)
+
+        //get the next speed
+        activityScenario.onActivity {
+            val textViewSpeed = it.findViewById<TextView>(R.id.textView_speed)
+            speedAfter = textViewSpeed.text.toString()
+        }
+
+        assertNotEquals(speedBefore, speedAfter)
     }
 }
