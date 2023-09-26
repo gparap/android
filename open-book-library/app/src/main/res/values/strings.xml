@@ -4,4 +4,5 @@
     <string name="text_featured_books">Featured Books</string>
     <string name="text_book_library">Book Library</string>
     <string name="text_open_library">Open Library</string>
+    <string name="desc_book_cover_thumbnail">Book cover thumbnail</string>
 </resources>

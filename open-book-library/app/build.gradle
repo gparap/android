@@ -48,4 +48,7 @@ dependencies {
     def nav_version = "2.7.3"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    //Testing fragments
+    debugImplementation "androidx.fragment:fragment-testing:1.6.1"
 }
