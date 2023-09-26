@@ -9,7 +9,11 @@
         android:id="@+id/featuredBooksFragment"
         android:name="gparap.apps.open_book_library.ui.FeaturedBooksFragment"
         android:label="fragment_featured_books"
-        tools:layout="@layout/fragment_featured_books" />
+        tools:layout="@layout/fragment_featured_books" >
+        <action
+            android:id="@+id/action_featuredBooksFragment_to_bookDetailsFragment"
+            app:destination="@id/bookDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/bookLibraryFragment"
         android:name="gparap.apps.open_book_library.ui.BookLibraryFragment"
@@ -20,4 +24,18 @@
         android:name="gparap.apps.open_book_library.ui.OpenLibraryFragment"
         android:label="fragment_open_library"
         tools:layout="@layout/fragment_open_library" />
+    <fragment
+        android:id="@+id/bookDetailsFragment"
+        android:name="gparap.apps.open_book_library.ui.BookDetailsFragment"
+        android:label="fragment_book_details"
+        tools:layout="@layout/fragment_book_details" >
+        <argument
+            android:name="args_book_title"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="args_book_author"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
 </navigation>

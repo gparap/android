@@ -4,5 +4,20 @@
     <string name="text_featured_books">Featured Books</string>
     <string name="text_book_library">Book Library</string>
     <string name="text_open_library">Open Library</string>
+
     <string name="desc_book_cover_thumbnail">Book cover thumbnail</string>
+
+    <!--Book Details-->
+    <string name="text_book_title">Book Title</string>
+    <string name="text_book_author">Book Author</string>
+    <string name="text_book_genre">Book Genre</string>
+    <string name="text_book_date">Book Date</string>
+    <string name="text_book_pages">Book Pages</string>
+    <string name="text_book_language">Book Language</string>
+    <string name="text_book_country">Book Country</string>
+    <string name="text_book_publisher">Book Publisher</string>
+    <string name="text_book_cover_url">Book Cover Url</string>
+    <string name="text_book_cover_artist">Book Cover Artist</string>
+    <string name="text_book_attributionFile">Book Attribution File</string>
+    <string name="text_book_attributionText">Book Attribution Text</string>
 </resources>
