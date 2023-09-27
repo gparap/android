@@ -1,60 +1,66 @@
+/*
+ * Copyright 2023 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.open_book_library.ui
 
+import android.content.res.AssetManager
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.core.graphics.drawable.toDrawable
+import androidx.navigation.fragment.navArgs
 import gparap.apps.open_book_library.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [BookDetailsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class BookDetailsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    //access the Fragment's arguments as an Args instance
+    private val args: BookDetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        //inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_book_details, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BookDetailsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            BookDetailsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //display the book details using the passed arguments of the fragment
+        view.findViewById<TextView>(R.id.text_view_book_title).apply { text =  args.argsBookTitle}
+        view.findViewById<TextView>(R.id.text_view_book_author).apply { text =  args.argsBookAuthor}
+        view.findViewById<TextView>(R.id.text_view_book_genre).apply { text =  args.argsBookGenre}
+        view.findViewById<TextView>(R.id.text_view_book_date).apply { text =  args.argsBookDate.toString()}
+        view.findViewById<TextView>(R.id.text_view_book_pages).apply { text =  args.argsBookPages.toString()}
+        view.findViewById<TextView>(R.id.text_view_book_language).apply { text =  args.argsBookLanguage}
+        view.findViewById<TextView>(R.id.text_view_book_country).apply { text =  args.argsBookCountry}
+        view.findViewById<TextView>(R.id.text_view_book_publisher).apply { text =  args.argsBookPublisher}
+        view.findViewById<ImageView>(R.id.image_view_book_cover).apply {
+            //show book cover
+            val assetManager: AssetManager = context.assets
+            val inputStream = assetManager.open(args.argsBookCoverUrl)
+            val bitmap = BitmapFactory.decodeStream(inputStream)
+            setImageDrawable(bitmap.toDrawable(context.resources))
+        }
+        view.findViewById<TextView>(R.id.text_view_book_cover_artist).apply { text =  args.argsBookCoverArtist}
+        //TODO: attribution details
     }
 }

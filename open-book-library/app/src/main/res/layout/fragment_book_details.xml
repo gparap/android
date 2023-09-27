@@ -120,7 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/text_book_date"
+            android:text="@string/text_book_pages"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="parent"
@@ -135,7 +135,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_book_pages_label"
-            tools:text="Book Date" />
+            tools:text="Book Pages" />
 
         <!--Book language label-->
         <TextView
@@ -174,7 +174,7 @@
 
         <!--Book country-->
         <TextView
-            android:id="@+id/text_view_country"
+            android:id="@+id/text_view_book_country"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -193,11 +193,11 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_country" />
+            app:layout_constraintTop_toBottomOf="@+id/text_view_book_country" />
 
         <!--Book publisher-->
         <TextView
-            android:id="@+id/text_view_publisher"
+            android:id="@+id/text_view_book_publisher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -216,11 +216,11 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_publisher" />
+            app:layout_constraintTop_toBottomOf="@+id/text_view_book_publisher" />
 
         <!--Book cover artist-->
         <TextView
-            android:id="@+id/text_view_cover_url"
+            android:id="@+id/text_view_book_cover_artist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

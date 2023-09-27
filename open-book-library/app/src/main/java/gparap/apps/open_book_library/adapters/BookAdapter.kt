@@ -25,13 +25,15 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.graphics.drawable.toDrawable
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import gparap.apps.open_book_library.R
 import gparap.apps.open_book_library.data.BookModel
+import gparap.apps.open_book_library.ui.FeaturedBooksFragmentDirections
 
 class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
-    private var books: ArrayList<BookModel> = ArrayList()
+    public var books: ArrayList<BookModel> = ArrayList()
     private lateinit var context: Context
 
     @SuppressLint("NotifyDataSetChanged")
@@ -71,5 +73,26 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
         //show book title
         holder.bookTitle.text = books[position].title
+
+        //register a callback to display the book details in another fragment
+        holder.itemView.setOnClickListener {
+            //pass the book details as fragment arguments to a navigation-generated object
+            val directions = FeaturedBooksFragmentDirections.actionFeaturedBooksFragmentToBookDetailsFragment()
+            directions.argsBookTitle = books[position].title
+            directions.argsBookAuthor = books[position].author
+            directions.argsBookGenre = books[position].genre
+            directions.argsBookDate = books[position].date
+            directions.argsBookPages = books[position].pages
+            directions.argsBookLanguage = books[position].language
+            directions.argsBookCountry = books[position].country
+            directions.argsBookPublisher = books[position].publisher
+            directions.argsBookCoverUrl = books[position].coverUrl
+            directions.argsBookCoverArtist = books[position].coverArtist
+            //TODO: attribution details
+
+            //redirect to the book details fragment
+            val navController = holder.itemView.findNavController()
+            navController.navigate(directions)
+        }
     }
 }
