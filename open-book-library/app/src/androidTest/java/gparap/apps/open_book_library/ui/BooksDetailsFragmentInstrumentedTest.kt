@@ -105,7 +105,7 @@ class BooksDetailsFragmentInstrumentedTest {
 
     @Test
     fun isVisible_text_view_country() {
-        onView(withId(R.id.text_view_country)).check(matches(isDisplayed()))
+        onView(withId(R.id.text_view_book_country)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -115,7 +115,7 @@ class BooksDetailsFragmentInstrumentedTest {
 
     @Test
     fun isVisible_text_view_publisher() {
-        onView(withId(R.id.text_view_publisher)).check(matches(isDisplayed()))
+        onView(withId(R.id.text_view_book_publisher)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -124,7 +124,7 @@ class BooksDetailsFragmentInstrumentedTest {
     }
 
     @Test
-    fun isVisible_text_view_cover_url() {
-        onView(withId(R.id.text_view_cover_url)).check(matches(isDisplayed()))
+    fun isVisible_image_view_cover_url() {
+        onView(withId(R.id.image_view_book_cover)).check(matches(isDisplayed()))
     }
 }

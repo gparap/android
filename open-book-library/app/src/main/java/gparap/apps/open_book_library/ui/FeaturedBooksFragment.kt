@@ -1,3 +1,18 @@
+/*
+ * Copyright 2023 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.open_book_library.ui
 
 import android.os.Bundle
@@ -17,13 +32,13 @@ class FeaturedBooksFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //create the list of the app's default featured books TODO: fill in the rest of the book details
+        //create the list of the app's default featured books TODO: fill in the attribution details
         books = ArrayList<BookModel>().apply {
-            this.add(BookModel("Autobiography of a Yogi", "", "", 0, 0, "", "", "", "Autobiography-of-a-Yogi.jpg", "", "", ""))
-            this.add(BookModel("Oliver Twist (1838) Volume 1", "", "", 0, 0, "", "", "", "Olivertwist_front.jpg", "", "", ""))
-            this.add(BookModel("Oliver Twist (1838) Volume 2", "", "", 0, 0, "", "", "", "Olivertwist_front.jpg", "", "", ""))
-            this.add(BookModel("Oliver Twist (1838) Volume 3", "", "", 0, 0, "", "", "", "Olivertwist_front.jpg", "", "", ""))
-            this.add(BookModel("Pip", "", "", 0, 0, "", "", "", "Pip_(novel).jpg", "", "", ""))
+            this.add(BookModel("Autobiography of a Yogi", "Paramahansa Yogananda", "Autobiography", 1946, 758, "Hindi, English", "India and the United States", "Philosophical Library", "Autobiography-of-a-Yogi.jpg", "", "", ""))
+            this.add(BookModel("Oliver Twist (1838) Volume 1", "Charles Dickens", "novel", 1838, 284, "English", "England", "Bentley's Miscellany", "Olivertwist_front.jpg", "George Cruikshank", "", ""))
+            this.add(BookModel("Oliver Twist (1838) Volume 2", "Charles Dickens", "novel", 1838, 257, "English", "England", "Bentley's Miscellany", "Olivertwist_front.jpg", "George Cruikshank", "", ""))
+            this.add(BookModel("Oliver Twist (1838) Volume 3", "Charles Dickens", "novel", 1838, 272, "English", "England", "Bentley's Miscellany", "Olivertwist_front.jpg", "George Cruikshank", "", ""))
+            this.add(BookModel("Pip", "Ian Hay", "", 1907, 373, "English", "United Kingdom", "", "Pip_(novel).jpg", "", "", ""))
         }
     }
 
