@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 33
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "gparap.apps.password"
         minSdkVersion 17
-        targetSdkVersion 30
-        versionCode 1
+        targetSdkVersion 33
+        versionCode 2
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -69,10 +69,10 @@ dependencies {
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     //testing Fragments in isolation
-    debugImplementation 'androidx.fragment:fragment-testing:1.3.4'
+    debugImplementation 'androidx.fragment:fragment-testing:1.4.0'
 
     //testing LiveData in unit tests
     testImplementation 'android.arch.core:core-testing:1.1.1'
@@ -81,7 +81,7 @@ dependencies {
     testImplementation 'org.robolectric:robolectric:4.2.1'
 
     //using a matcher to select a particular view/viewholder within the RecyclerView
-    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.4.0-beta01'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.6.0-alpha01'
 
     //fitting requested classes in a single dex file
     implementation 'com.android.support:multidex:1.0.3'
