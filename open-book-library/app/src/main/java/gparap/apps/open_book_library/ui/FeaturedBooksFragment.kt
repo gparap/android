@@ -50,9 +50,8 @@ class FeaturedBooksFragment : Fragment() {
         val fragmentView = inflater.inflate(R.layout.fragment_featured_books, container, false)
 
         //create the adapter with the featured books
-        val booksAdapter = BookAdapter().apply {
-            addBooks(books)
-        }
+        val booksAdapter = BookAdapter()
+        booksAdapter.addBooks(books)
 
         //setup RecyclerView with BookAdapter
         val recyclerViewBooks = fragmentView.findViewById<RecyclerView>(R.id.recycler_view_featured_books)

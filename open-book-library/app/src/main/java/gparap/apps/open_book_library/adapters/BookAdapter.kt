@@ -33,7 +33,7 @@ import gparap.apps.open_book_library.data.BookModel
 import gparap.apps.open_book_library.ui.FeaturedBooksFragmentDirections
 
 class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
-    public var books: ArrayList<BookModel> = ArrayList()
+    private var books: ArrayList<BookModel> = ArrayList()
     private lateinit var context: Context
 
     @SuppressLint("NotifyDataSetChanged")
