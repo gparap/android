@@ -37,5 +37,37 @@
             android:name="args_book_author"
             app:argType="string"
             android:defaultValue="" />
+        <argument
+            android:name="args_book_genre"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="args_book_date"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="args_book_pages"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="args_book_language"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="args_book_country"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="args_book_publisher"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="args_book_cover_url"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="args_book_cover_artist"
+            app:argType="string"
+            android:defaultValue="" />
     </fragment>
 </navigation>
