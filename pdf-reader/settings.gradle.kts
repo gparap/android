@@ -10,6 +10,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+
+        //needed for android-pdf-viewer
+        maven("https://jcenter.bintray.com")
     }
 }
 
