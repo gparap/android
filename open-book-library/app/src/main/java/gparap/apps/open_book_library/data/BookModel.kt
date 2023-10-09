@@ -31,4 +31,7 @@ data class BookModel(
     val coverArtist: String,
     val attributionFile: String,
     val attributionText: String,
+    val isAsset: Boolean,
+    val assetName: String,
+    val filePath: String,
 )

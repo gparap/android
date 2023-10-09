@@ -46,6 +46,7 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
     class BookViewHolder(itemView: View) : ViewHolder(itemView) {
         val bookCover: ImageView = itemView.findViewById(R.id.cardview_book_cover)
         val bookTitle: TextView = itemView.findViewById(R.id.cardview_book_title)
+        val bookInfoIcon: ImageView = itemView.findViewById(R.id.cardview_book_info_icon)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
@@ -75,7 +76,7 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
         holder.bookTitle.text = books[position].title
 
         //register a callback to display the book details in another fragment
-        holder.itemView.setOnClickListener {
+        holder.bookInfoIcon.setOnClickListener {
             //pass the book details as fragment arguments to a navigation-generated object
             val directions = FeaturedBooksFragmentDirections.actionFeaturedBooksFragmentToBookDetailsFragment()
             directions.argsBookTitle = books[position].title

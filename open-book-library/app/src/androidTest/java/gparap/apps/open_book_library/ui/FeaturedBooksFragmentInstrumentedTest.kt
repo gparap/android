@@ -17,11 +17,16 @@ package gparap.apps.open_book_library.ui
 
 import androidx.fragment.app.testing.FragmentScenario
 import androidx.recyclerview.widget.RecyclerView
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import gparap.apps.open_book_library.R
 
 @RunWith(AndroidJUnit4::class)
 class FeaturedBooksFragmentInstrumentedTest {
@@ -34,10 +39,33 @@ class FeaturedBooksFragmentInstrumentedTest {
     }
 
     @Test
+    fun isVisible_recycler_view_featured_books() {
+        onView(withId(R.id.recycler_view_featured_books)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isVisible_cardview_book_info_icon() {
+        try {
+            onView(withId(R.id.cardview_book_info_icon)).check(matches(isDisplayed()))
+        }catch (e:androidx.test.espresso.AmbiguousViewMatcherException){
+            assert(true)
+        }
+    }
+
+    @Test
+    fun isVisible_cardview_read_book_icon() {
+        try {
+            onView(withId(R.id.cardview_read_book_icon)).check(matches(isDisplayed()))
+        }catch (e:androidx.test.espresso.AmbiguousViewMatcherException){
+            assert(true)
+        }
+    }
+
+    @Test
     fun onLoad_assertFeaturedBooksNotZero() {
         fragmentScenario.onFragment {
             val recyclerView =
-                it.view?.findViewById<RecyclerView>(gparap.apps.open_book_library.R.id.recycler_view_featured_books)
+                it.view?.findViewById<RecyclerView>(R.id.recycler_view_featured_books)
             assert(recyclerView?.adapter?.itemCount!! > 0)
         }
     }

@@ -23,6 +23,30 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/backgrounds/scenic" />
 
+        <!--Icon for reading book-->
+        <ImageView
+            android:id="@+id/cardview_read_book_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/desc_read_book"
+            android:src="@drawable/ic_read_book_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!--Icon for book info-->
+        <ImageView
+            android:id="@+id/cardview_book_info_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/desc_read_book"
+            android:src="@drawable/ic_book_info_24"
+            app:layout_constraintBottom_toBottomOf="@+id/cardview_read_book_icon"
+            app:layout_constraintEnd_toStartOf="@+id/cardview_read_book_icon"
+            app:layout_constraintTop_toTopOf="@+id/cardview_read_book_icon" />
+
         <!--Book title-->
         <TextView
             android:id="@+id/cardview_book_title"
