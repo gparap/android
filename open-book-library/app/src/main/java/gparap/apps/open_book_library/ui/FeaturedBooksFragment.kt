@@ -34,11 +34,11 @@ class FeaturedBooksFragment : Fragment() {
 
         //create the list of the app's default featured books TODO: fill in the attribution details
         books = ArrayList<BookModel>().apply {
-            this.add(BookModel("Autobiography of a Yogi", "Paramahansa Yogananda", "Autobiography", 1946, 758, "Hindi, English", "India and the United States", "Philosophical Library", "Autobiography-of-a-Yogi.jpg", "", "", ""))
-            this.add(BookModel("Oliver Twist (1838) Volume 1", "Charles Dickens", "novel", 1838, 284, "English", "England", "Bentley's Miscellany", "Olivertwist_front.jpg", "George Cruikshank", "", ""))
-            this.add(BookModel("Oliver Twist (1838) Volume 2", "Charles Dickens", "novel", 1838, 257, "English", "England", "Bentley's Miscellany", "Olivertwist_front.jpg", "George Cruikshank", "", ""))
-            this.add(BookModel("Oliver Twist (1838) Volume 3", "Charles Dickens", "novel", 1838, 272, "English", "England", "Bentley's Miscellany", "Olivertwist_front.jpg", "George Cruikshank", "", ""))
-            this.add(BookModel("Pip", "Ian Hay", "", 1907, 373, "English", "United Kingdom", "", "Pip_(novel).jpg", "", "", ""))
+            this.add(BookModel("Autobiography of a Yogi", "Paramahansa Yogananda", "Autobiography", 1946, 758, "Hindi, English", "India and the United States", "Philosophical Library", "Autobiography-of-a-Yogi.jpg", "", "", "", true, "Autobiography_of_a_Yogi.pdf", ""))
+            this.add(BookModel("Oliver Twist (1838) Volume 1", "Charles Dickens", "novel", 1838, 284, "English", "England", "Bentley's Miscellany", "Olivertwist_front.jpg", "George Cruikshank", "", "", true, "Oliver_Twist_(1838)_Volume_1.pdf", ""))
+            this.add(BookModel("Oliver Twist (1838) Volume 2", "Charles Dickens", "novel", 1838, 257, "English", "England", "Bentley's Miscellany", "Olivertwist_front.jpg", "George Cruikshank", "", "", true, "Oliver_Twist_(1838)_Volume_2.pdf", ""))
+            this.add(BookModel("Oliver Twist (1838) Volume 3", "Charles Dickens", "novel", 1838, 272, "English", "England", "Bentley's Miscellany", "Olivertwist_front.jpg", "George Cruikshank", "", "", true, "Oliver_Twist_(1838)_Volume_3.pdf", ""))
+            this.add(BookModel("Pip", "Ian Hay", "", 1907, 373, "English", "United Kingdom", "", "Pip_(novel).jpg", "", "", "", true, "Pip.pdf", ""))
         }
     }
 

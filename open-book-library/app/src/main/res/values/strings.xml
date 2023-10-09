@@ -20,4 +20,5 @@
     <string name="text_book_cover_artist">Book Cover Artist</string>
     <string name="text_book_attributionFile">Book Attribution File</string>
     <string name="text_book_attributionText">Book Attribution Text</string>
+    <string name="desc_read_book">Read book</string>
 </resources>
