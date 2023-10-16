@@ -15,16 +15,22 @@
  */
 package gparap.apps.open_book_library.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import com.github.barteksc.pdfviewer.PDFView
 import gparap.apps.open_book_library.R
 
 class BookLibraryFragment : Fragment() {
+    private var fragmentView: View? = null
+    private var bookUrl: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,12 +41,64 @@ class BookLibraryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_book_library, container, false)
+        //inflate the layout for this fragment
+        fragmentView = inflater.inflate(R.layout.fragment_book_library, container, false)
+
+        //restore previously open PDF after orientation/navigation changes
+        if (savedInstanceState != null
+            && !(savedInstanceState.getString(BUNDLE_URI_PDF).isNullOrEmpty())
+        ) {
+            bookUrl = Uri.parse(savedInstanceState.getString(BUNDLE_URI_PDF))
+            fragmentView?.findViewById<PDFView>(R.id.pdf_view_book_library).apply {
+                this?.fromUri(bookUrl)?.load()
+            }
+        }
+
+        //return the layout for this fragment
+        return fragmentView
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_book_library, menu)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        //select & open PDF from device
+        if (item.itemId == R.id.menu_item_search_book_library) {
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = MIME_TYPE_PDF
+            startActivityForResult(intent, REQUEST_CODE_ACTION_GET_PDF)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_ACTION_GET_PDF) {
+            bookUrl = data?.data
+            fragmentView?.findViewById<com.github.barteksc.pdfviewer.PDFView>(R.id.pdf_view_book_library)
+                ?.apply {
+                    this.fromUri(bookUrl).load()
+                }
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        //save open PDF state for orientation/navigation changes
+        if (bookUrl != null) {
+            outState.putString(BUNDLE_URI_PDF, bookUrl.toString())
+        }
+    }
+
+    companion object {
+        const val MIME_TYPE_PDF = "application/pdf"
+        const val REQUEST_CODE_ACTION_GET_PDF = 999
+        const val BUNDLE_URI_PDF = "pdf_uri"
     }
 }
