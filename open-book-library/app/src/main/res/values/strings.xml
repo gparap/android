@@ -21,4 +21,8 @@
     <string name="text_book_attributionFile">Book Attribution File</string>
     <string name="text_book_attributionText">Book Attribution Text</string>
     <string name="desc_read_book">Read book</string>
+
+    <!--Book Library menu-->
+    <string name="text_open_pdf_from_library">Open PDF from library</string>
+    <string name="text_add_pdf_to_featured">Add PDF to favorites</string>
 </resources>
