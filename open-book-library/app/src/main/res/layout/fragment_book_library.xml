@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".ui.BookLibraryFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!--PDF file view-->
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/pdf_view_book_library"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/text_book_library" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>
