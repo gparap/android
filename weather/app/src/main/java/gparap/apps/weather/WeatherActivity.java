@@ -15,6 +15,8 @@
  */
 package gparap.apps.weather;
 
+import static android.view.View.VISIBLE;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
@@ -31,7 +33,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.Observer;
@@ -48,16 +49,12 @@ import gparap.apps.weather.utils.WeatherModelParser;
 import gparap.apps.weather.utils.WeatherUtils;
 import gparap.apps.weather.viewmodel.WeatherActivityViewModel;
 
-import static android.view.View.VISIBLE;
-
-@SuppressWarnings({"Convert2Lambda", "ConstantConditions", "unused"})
-@SuppressLint("NonConstantResourceId")
 public class WeatherActivity extends AppCompatActivity {
     private TextView textViewWeather,
             labelTemperature, labelTemperatureFeelsLike, labelTemperatureMax, labelTemperatureMin,
-            labelWindSpeed, labelAirPressure, labelHumidity, labelVisibility, labelCloudness,
+            labelWindSpeed, labelAirPressure, labelHumidity, labelVisibility, labelCloudiness,
             textViewTemperature, textViewTemperatureFeelsLike, textViewTemperatureMax, textViewTemperatureMin,
-            textViewWindSpeed, textViewAirPressure, textViewHumidity, textViewVisibility, textViewCloudness;
+            textViewWindSpeed, textViewAirPressure, textViewHumidity, textViewVisibility, textViewCloudiness;
     private ImageView imageViewWeather;
     private Button buttonWeatherProvider;
     private EditText editTextCity;
@@ -82,32 +79,19 @@ public class WeatherActivity extends AppCompatActivity {
         }
 
         //search a city for weather
-        iconCitySearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!isCitySearchEmpty()) {
-                    city = editTextCity.getText().toString();
-                    hideSoftKeyboard(v);
-                    getCurrentWeather(false);
-                }
+        iconCitySearch.setOnClickListener(v -> {
+            if (!isCitySearchEmpty()) {
+                city = editTextCity.getText().toString();
+                hideSoftKeyboard(v);
+                getCurrentWeather(false);
             }
         });
 
         //goto weather provider website
-        buttonWeatherProvider.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                WeatherUtils.gotoProviderWebsite(WeatherActivity.this);
-            }
-        });
+        buttonWeatherProvider.setOnClickListener(v -> WeatherUtils.gotoProviderWebsite(WeatherActivity.this));
 
         //observe and display weather data
-        viewModel.getWeatherData().observe(this, new Observer<WeatherModel>() {
-            @Override
-            public void onChanged(@Nullable final WeatherModel model) {
-                displayWeather(model);
-            }
-        });
+        viewModel.getWeatherData().observe(this, this::displayWeather);
     }
 
     @Override
@@ -150,7 +134,7 @@ public class WeatherActivity extends AppCompatActivity {
         textViewTemperatureMin.setText(WeatherUtils.formatWeatherValue(temp_min, 0));
         textViewWindSpeed.setText(model.getWindSpeed() + WeatherUtils.getWindSpeedUnit());
         textViewAirPressure.setText(model.getAirPressure() + WeatherUtils.SUFFIX_AIR_PRESSURE);
-        textViewHumidity.setText(model.getHumidity() + WeatherUtils.SUFFIX_HUMIDITY_CLOUDNESS);
+        textViewHumidity.setText(model.getHumidity() + WeatherUtils.SUFFIX_HUMIDITY_CLOUDINESS);
         if (isTablet()) {
             if (units.equals(WeatherUtils.UNIT_METRIC)) {
                 textViewVisibility.setText(model.getVisibility() + WeatherUtils.SUFFIX_VISIBILITY_METRIC);
@@ -158,7 +142,7 @@ public class WeatherActivity extends AppCompatActivity {
                 textViewVisibility.setText(WeatherUtils.convertMetersToMiles(model.getVisibility())
                         + WeatherUtils.SUFFIX_VISIBILITY_IMPERIAL);
             }
-            textViewCloudness.setText(model.getCloudness() + WeatherUtils.SUFFIX_HUMIDITY_CLOUDNESS);
+            textViewCloudiness.setText(model.getCloudiness() + WeatherUtils.SUFFIX_HUMIDITY_CLOUDINESS);
         }
     }
 
@@ -250,7 +234,7 @@ public class WeatherActivity extends AppCompatActivity {
         labelHumidity.setVisibility(VISIBLE);
         if (isTablet()) {
             labelVisibility.setVisibility(VISIBLE);
-            labelCloudness.setVisibility(VISIBLE);
+            labelCloudiness.setVisibility(VISIBLE);
         }
     }
 
@@ -276,9 +260,9 @@ public class WeatherActivity extends AppCompatActivity {
         textViewHumidity = findViewById(R.id.textViewHumidity);
         if (isTablet()) {
             labelVisibility = findViewById(R.id.labelVisibility);
-            labelCloudness = findViewById(R.id.labelCloudness);
+            labelCloudiness = findViewById(R.id.labelCloudness);
             textViewVisibility = findViewById(R.id.textViewVisibility);
-            textViewCloudness = findViewById(R.id.textViewCloudness);
+            textViewCloudiness = findViewById(R.id.textViewCloudness);
         }
     }
 

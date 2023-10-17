@@ -105,7 +105,7 @@ public class WidgetVisibilityInstrumentedTest {
 
     @Test
     //!! Should run in tablets
-    public void isWidgetInvisible_labelCloudness() {
+    public void isWidgetInvisible_labelCloudiness() {
         if (isTablet())
             onView(withId(R.id.labelCloudness)).check(matches(not(isDisplayed())));
         else
@@ -163,7 +163,7 @@ public class WidgetVisibilityInstrumentedTest {
 
     @Test
     //!! Should run in tablets
-    public void isWidgetInvisible_textViewCloudness() {
+    public void isWidgetInvisible_textViewCloudiness() {
         if (isTablet())
             onView(withId(R.id.textViewCloudness)).check(matches(not(isDisplayed())));
         else
@@ -175,7 +175,6 @@ public class WidgetVisibilityInstrumentedTest {
         DisplayMetrics metrics = new DisplayMetrics();
         AtomicReference<Float> smallestScreenWidth = new AtomicReference<>(0.0f);
         activityScenario.onActivity(activity -> {
-            //noinspection deprecation
             activity.getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
             float width = metrics.widthPixels / metrics.density;
             float height = metrics.heightPixels / metrics.density;

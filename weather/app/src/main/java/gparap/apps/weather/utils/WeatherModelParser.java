@@ -25,12 +25,10 @@ public class WeatherModelParser {
     private static WeatherModelParser instance;
     private WeatherModel model;
     private JSONObject jsonObjectResponse;
-    private JSONObject coord;
     private JSONArray weather;
     private JSONObject main;
     private JSONObject wind;
     private JSONObject clouds;
-    private JSONObject sys;
 
     private WeatherModelParser() {
 
@@ -55,12 +53,10 @@ public class WeatherModelParser {
     private void getDataFromJsonResponse(String response) throws JSONException {
         jsonObjectResponse = new JSONObject(response);
 
-        coord = (JSONObject) jsonObjectResponse.get("coord");
         weather = jsonObjectResponse.getJSONArray("weather");
         main = (JSONObject) jsonObjectResponse.get("main");
         wind = (JSONObject) jsonObjectResponse.get("wind");
         clouds = (JSONObject) jsonObjectResponse.get("clouds");
-        sys = (JSONObject) jsonObjectResponse.get("sys");
     }
 
     private void initWeatherModelWithData() throws JSONException {
@@ -81,7 +77,7 @@ public class WeatherModelParser {
         //wind
         model.setWindSpeed(wind.getDouble("speed"));
         //clouds
-        model.setCloudness(clouds.getInt("all"));
+        model.setCloudiness(clouds.getInt("all"));
         //name
         model.setCityName(jsonObjectResponse.getString("name"));
     }

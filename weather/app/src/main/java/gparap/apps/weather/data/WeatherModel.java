@@ -28,7 +28,7 @@ public class WeatherModel {
     private double humidity;
     private double visibility;
     private double windSpeed;
-    private int cloudness;
+    private int cloudiness;
     private String cityName;
 
     public int getId() {
@@ -127,12 +127,12 @@ public class WeatherModel {
         this.windSpeed = windSpeed;
     }
 
-    public int getCloudness() {
-        return cloudness;
+    public int getCloudiness() {
+        return cloudiness;
     }
 
-    public void setCloudness(int cloudness) {
-        this.cloudness = cloudness;
+    public void setCloudiness(int cloudiness) {
+        this.cloudiness = cloudiness;
     }
 
     public String getCityName() {
