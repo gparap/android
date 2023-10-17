@@ -35,14 +35,14 @@ public class WeatherModelParserUnitTest {
                 ":10800,\"id\":264371,\"name\":\"Athens\",\"cod\":200}";
 
 
-        WeatherModel expected = createExcpectedWeatherDataModel();
+        WeatherModel expected = createExpectedWeatherDataModel();
         WeatherModel actual = WeatherModelParser.getInstance()
                 .getCurrentWeatherDataModel(mockJsonResponse);
 
         assert areWeatherValuesEqual(actual, expected);
     }
 
-    private WeatherModel createExcpectedWeatherDataModel() {
+    private WeatherModel createExpectedWeatherDataModel() {
         WeatherModel model = new WeatherModel();
 
         model.setId(803);
@@ -57,7 +57,7 @@ public class WeatherModelParserUnitTest {
         model.setHumidity(81);
         model.setVisibility(9000);
         model.setWindSpeed(5.14);
-        model.setCloudness(75);
+        model.setCloudiness(75);
         model.setCityName("Athens");
 
         return model;
@@ -82,7 +82,7 @@ public class WeatherModelParserUnitTest {
                 actual.getHumidity() == expected.getHumidity() &&
                 actual.getVisibility() == expected.getVisibility() &&
                 actual.getWindSpeed() == expected.getWindSpeed() &&
-                actual.getCloudness() == expected.getCloudness() &&
+                actual.getCloudiness() == expected.getCloudiness() &&
                 actual.getCityName().equals(expected.getCityName());
     }
 }

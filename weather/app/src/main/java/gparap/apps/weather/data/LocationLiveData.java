@@ -18,6 +18,7 @@ package gparap.apps.weather.data;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.location.Location;
+import android.os.Looper;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
@@ -27,9 +28,7 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
 
-@SuppressWarnings("Convert2Lambda")
 public class LocationLiveData extends LiveData<Location> {
     private final FusedLocationProviderClient fusedLocationClient;
     private LocationCallback locationCallback;
@@ -47,16 +46,13 @@ public class LocationLiveData extends LiveData<Location> {
         //get the best most recent location currently available
         if (fusedLocationClient != null) {
             fusedLocationClient.getLastLocation()
-                    .addOnSuccessListener(new OnSuccessListener<Location>() {
-                        @Override
-                        public void onSuccess(Location location) {
-                            if (location != null) {
-                                //posts location data to the main thread
-                                postValue(location);
-                            }
+                    .addOnSuccessListener(location -> {
+                        if (location != null) {
+                            //posts location data to the main thread
+                            postValue(location);
                         }
                     });
-            fusedLocationClient.requestLocationUpdates(createLocationRequest(), createLocationCallback(), null);
+            fusedLocationClient.requestLocationUpdates(createLocationRequest(), createLocationCallback(), Looper.getMainLooper());
         }
     }
 

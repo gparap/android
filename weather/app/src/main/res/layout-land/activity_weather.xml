@@ -19,6 +19,7 @@
         android:ems="10"
         android:hint="@string/search_city"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:textSize="@dimen/textSize_big"
         app:layout_constraintEnd_toStartOf="@+id/imageViewSearchCityIcon"
         app:layout_constraintHorizontal_bias="0.502"

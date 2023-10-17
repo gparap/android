@@ -34,12 +34,12 @@ public class WeatherUtils {
     public final static String API_URL_SUFFIX = "&appid=";
 
     //helper suffixes
-    public final static String SUFFIX_CELSIUS = " \u2103";
-    public final static String SUFFIX_FAHRENHEIT = " \u2109";
+    public final static String SUFFIX_CELSIUS = " ℃";
+    public final static String SUFFIX_FAHRENHEIT = " ℉";
     public final static String SUFFIX_WIND_SPEED_METRIC = " m/s";
     public final static String SUFFIX_WIND_SPEED_IMPERIAL = " mph";
     public final static String SUFFIX_AIR_PRESSURE = " hPa";
-    public final static String SUFFIX_HUMIDITY_CLOUDNESS = " %";
+    public final static String SUFFIX_HUMIDITY_CLOUDINESS = " %";
     public final static String SUFFIX_VISIBILITY_METRIC = " meters";
     public final static String SUFFIX_VISIBILITY_IMPERIAL = " miles";
 
