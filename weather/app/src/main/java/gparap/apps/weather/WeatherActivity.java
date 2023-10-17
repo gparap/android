@@ -59,7 +59,7 @@ public class WeatherActivity extends AppCompatActivity {
     private Button buttonWeatherProvider;
     private EditText editTextCity;
     private ImageView iconCitySearch;
-    private final int REQUEST_CODE_ACCESS_FINE_LOCATION = 999;
+    private final int REQUEST_CODE_ACCESS_COARSE_LOCATION = 999;
     private String city = "";
     private Location userLocation;
     private WeatherActivityViewModel viewModel;
@@ -98,7 +98,7 @@ public class WeatherActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode == REQUEST_CODE_ACCESS_FINE_LOCATION) {
+        if (requestCode == REQUEST_CODE_ACCESS_COARSE_LOCATION) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 getUserLocation();
             } else {
@@ -185,11 +185,11 @@ public class WeatherActivity extends AppCompatActivity {
     public void getUserLocation() {
         //request location permissions
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ActivityCompat.checkSelfPermission(WeatherActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(WeatherActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(
                         WeatherActivity.this,
-                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                        REQUEST_CODE_ACCESS_FINE_LOCATION);
+                        new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                        REQUEST_CODE_ACCESS_COARSE_LOCATION);
                 return;
             }
         }
