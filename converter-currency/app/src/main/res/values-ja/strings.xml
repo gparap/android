@@ -41,5 +41,7 @@
         <item>南アフリカランド</item>
     </string-array>
     <string name="hint_wifi_disabled">インターネットに接続できません。</string>
+    <string name="text_unsupported_currency_HRK">クロアチアは 2023 年 1 月 1 日にユーロ圏に参加しました。\\n換算レートは \\n1 ユーロあたり 7.53450 クーナに固定されています。\\n換算には EUR を使用してください…</string>
+    <string name="text_unsupported_currency_RUB">ロシア ルーブルの換算レートは一時的に利用できません…</string>
 
 </resources>

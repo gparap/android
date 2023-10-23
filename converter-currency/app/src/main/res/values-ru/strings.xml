@@ -41,5 +41,7 @@
         <item>Южноафриканский рэнд</item>
     </string-array>
     <string name="hint_wifi_disabled">Подключение к Интернету отсутствует.</string>
+    <string name="text_unsupported_currency_HRK">Хорватия присоединилась к еврозоне 1 января 2023 года.\\nКурс конвертации зафиксирован на уровне \\n7,53450 кун за 1 евро.\\nПожалуйста, используйте евро для конвертации…</string>
+    <string name="text_unsupported_currency_RUB">Курсы конвертации российского рубля временно недоступны...</string>
 
 </resources>

@@ -41,5 +41,7 @@
         <item>남아프리카 랜드</item>
     </string-array>
     <string name="hint_wifi_disabled">인터넷에 연결되지 않음.</string>
+    <string name="text_unsupported_currency_HRK">크로아티아는 2023년 1월 1일에 유로존에 가입했습니다.\\n환율은 1유로당 \\n7.53450쿠나로 고정되어 있습니다.\\n환산에는 EUR를 사용하세요...</string>
+    <string name="text_unsupported_currency_RUB">러시아 루블의 환율을 일시적으로 이용할 수 없습니다…</string>
 
 </resources>

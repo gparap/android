@@ -41,5 +41,7 @@
         <item>Südafrikanischer Rand</item>
     </string-array>
     <string name="hint_wifi_disabled">Keine Internetverbindung.</string>
+    <string name="text_unsupported_currency_HRK">Kroatien ist am 1. Januar 2023 der Eurozone beigetreten.\\nDer Umrechnungskurs ist auf \\n7,53450 Kuna pro 1 Euro festgelegt.\\nBitte verwenden Sie EUR für die Umrechnung…</string>
+    <string name="text_unsupported_currency_RUB">Umrechnungskurse für den russischen Rubel sind vorübergehend nicht verfügbar…</string>
 
 </resources>

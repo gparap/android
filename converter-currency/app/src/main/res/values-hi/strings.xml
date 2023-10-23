@@ -41,5 +41,7 @@
         <item>दक्षिण अफ्रीकी रैंड</item>
     </string-array>
     <string name="hint_wifi_disabled">कोई इंटरनेट कनेक्शन नहीं।</string>
+    <string name="text_unsupported_currency_HRK">क्रोएशिया 1 जनवरी 2023 को यूरो-ज़ोन में शामिल हो गया।\\nरूपांतरण दर \\n7.53450 कुना प्रति 1 यूरो तय की गई है।\\nकृपया, रूपांतरण के लिए EUR का उपयोग करें…</string>
+    <string name="text_unsupported_currency_RUB">रूसी रूबल के लिए रूपांतरण दरें अस्थायी रूप से अनुपलब्ध हैं...</string>
 
 </resources>

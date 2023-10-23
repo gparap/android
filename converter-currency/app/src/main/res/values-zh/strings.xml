@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">貨幣換算</string>
-    <string name="string_from">從</string>
+    <string name="app_name">货币换算</string>
+    <string name="string_from">从</string>
     <string name="string_to">到</string>
-    <string name="string_convert">轉變</string>
-    <string name="hint_enter_amount">輸入金額</string>
+    <string name="string_convert">转变</string>
+    <string name="hint_enter_amount">输入金额</string>
     <string-array name="currencyNames">
         <item>澳元</item>
         <item>保加利亞列弗</item>
@@ -40,6 +40,8 @@
         <item>美元</item>
         <item>南非蘭特</item>
     </string-array>
-    <string name="hint_wifi_disabled">沒有網絡連接。</string>
+    <string name="hint_wifi_disabled">没有网络连接。</string>
+    <string name="text_unsupported_currency_HRK">克罗地亚于 2023 年 1 月 1 日加入欧元区。\\n兑换率固定为 \\n每 1 欧元 7.53450 库纳。\\n请使用欧元进行兑换...</string>
+    <string name="text_unsupported_currency_RUB">俄罗斯卢布的兑换率暂时不可用......</string>
 
 </resources>

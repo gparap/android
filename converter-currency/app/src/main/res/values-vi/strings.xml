@@ -6,4 +6,6 @@
     <string name="string_convert">Đổi</string>
     <string name="hint_enter_amount">nhập số tiền</string>
     <string name="hint_wifi_disabled">Không có kết nối Internet.</string>
+    <string name="text_unsupported_currency_HRK">Croatia gia nhập khu vực đồng euro vào ngày 1 tháng 1 năm 2023.\\nTỷ lệ chuyển đổi được cố định ở mức \\n7,53450 kuna trên 1 euro.\\nVui lòng sử dụng EUR để chuyển đổi…</string>
+    <string name="text_unsupported_currency_RUB">Tỷ giá chuyển đổi sang đồng rúp của Nga tạm thời không có sẵn…</string>
 </resources>

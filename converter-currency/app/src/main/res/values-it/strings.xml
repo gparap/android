@@ -41,5 +41,7 @@
         <item>Rand sudafricano</item>
     </string-array>
     <string name="hint_wifi_disabled">Nessuna connessione internet.</string>
+    <string name="text_unsupported_currency_HRK">La Croazia è entrata nell\'Eurozona il 1° gennaio 2023.\\nIl tasso di conversione è fissato a\\n7,53450 kune per 1 euro.\\nPer favore, utilizza l\'EUR per la conversione...</string>
+    <string name="text_unsupported_currency_RUB">I tassi di conversione del rublo russo sono temporaneamente non disponibili...</string>
 
 </resources>
