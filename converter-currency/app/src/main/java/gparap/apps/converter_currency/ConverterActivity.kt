@@ -17,8 +17,14 @@ package gparap.apps.converter_currency
 
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Spinner
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
@@ -41,7 +47,30 @@ class ConverterActivity : AppCompatActivity(), OnItemSelectedListener {
         initCurrencies()
         getWidgets()
         initSpinners()
-        buttonConvert.setOnClickListener { convert() }
+        buttonConvert.setOnClickListener {
+            if (isCurrencySupported()){
+                convert()
+            }
+        }
+    }
+
+    private fun isCurrencySupported() : Boolean {
+        //handle HRK (Croatian kuna)
+        if (spinnerFromCurrency.selectedItem.toString() == "HRK" || spinnerToCurrency.selectedItem.toString() == "HRK") {
+            findViewById<TextView>(R.id.textViewResult).apply {
+                text = resources.getString(R.string.text_unsupported_currency_HRK)
+            }
+            return false
+        }
+
+        //handle RUB (Russian rouble)
+        if (spinnerFromCurrency.selectedItem.toString() == "RUB" || spinnerToCurrency.selectedItem.toString() == "RUB") {
+            findViewById<TextView>(R.id.textViewResult).apply {
+                text = resources.getString(R.string.text_unsupported_currency_RUB)
+            }
+            return false
+        }
+        return true
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {

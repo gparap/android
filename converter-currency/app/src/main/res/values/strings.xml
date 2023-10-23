@@ -5,6 +5,8 @@
     <string name="string_convert">Convert</string>
     <string name="hint_enter_amount">enter amount</string>
     <string name="hint_wifi_disabled">No internet connection.</string>
+    <string name="text_unsupported_currency_HRK">Croatia joined euro-zone on 1 January 2023.\nConversion rate is fixed at \n7.53450 kuna per 1 euro.\nPlease, use EUR for conversion…</string>
+    <string name="text_unsupported_currency_RUB">Conversion rates for the Russian rouble are temporary unavailable…</string>
 
     <!--International Currency Codes-->
     <string-array name="currencyCodes">
