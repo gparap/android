@@ -41,5 +41,7 @@
         <item>راند جنوب أفريقيا</item>
     </string-array>
     <string name="hint_wifi_disabled">لا يوجد اتصال بالإنترنت.</string>
+    <string name="text_unsupported_currency_HRK">انضمت كرواتيا إلى منطقة اليورو في 1 يناير 2023.\\nسعر التحويل ثابت عند \\n7.53450 كونا لكل 1 يورو.\\nيرجى استخدام اليورو للتحويل...</string>
+    <string name="text_unsupported_currency_RUB">أسعار تحويل الروبل الروسي غير متاحة مؤقتًا...</string>
 
 </resources>

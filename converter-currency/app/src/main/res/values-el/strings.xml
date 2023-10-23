@@ -41,5 +41,7 @@
         <item>Ραντ Νοτίου Αφρικής</item>
     </string-array>
     <string name="hint_wifi_disabled">Δεν υπάρχει σύνδεση στο διαδίκτυο.</string>
+    <string name="text_unsupported_currency_HRK">Η Κροατία εντάχθηκε στην ευρωζώνη την 1η Ιανουαρίου 2023.\\nΗ ισοτιμία μετατροπής έχει καθοριστεί σε \\n7,53450 kuna ανά 1 ευρώ.\\nΠαρακαλούμε, χρησιμοποιήστε EUR για μετατροπή…</string>
+    <string name="text_unsupported_currency_RUB">Οι τιμές μετατροπής για το ρούβλι Ρωσίας δεν είναι προσωρινά διαθέσιμες…</string>
 
 </resources>

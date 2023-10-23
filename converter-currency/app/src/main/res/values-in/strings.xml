@@ -41,5 +41,7 @@
         <item>Rand Afrika Selatan</item>
     </string-array>
     <string name="hint_wifi_disabled">Tidak ada koneksi internet.</string>
+    <string name="text_unsupported_currency_HRK">Kroasia bergabung dengan zona euro pada 1 Januari 2023.\\nNilai konversi ditetapkan pada \\n7,53450 kuna per 1 euro.\\nHarap gunakan EUR untuk konversi…</string>
+    <string name="text_unsupported_currency_RUB">Kurs konversi untuk rubel Rusia untuk sementara tidak tersedia…</string>
 
 </resources>

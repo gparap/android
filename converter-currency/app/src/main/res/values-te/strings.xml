@@ -41,5 +41,7 @@
         <item>దక్షిణాఫ్రికా రాండ్</item>
     </string-array>
     <string name="hint_wifi_disabled">ఇంటర్నెట్ కనెక్షన్ లేదు.</string>
+    <string name="text_unsupported_currency_HRK">క్రొయేషియా 1 జనవరి 2023న యూరో-జోన్‌లో చేరింది.\\nమార్పిడి రేటు 1 యూరోకు \\n7.53450 కునాగా నిర్ణయించబడింది.\\nదయచేసి, మార్పిడి కోసం EURని ఉపయోగించండి...</string>
+    <string name="text_unsupported_currency_RUB">రష్యన్ రూబుల్ కోసం మార్పిడి రేట్లు తాత్కాలికంగా అందుబాటులో లేవు…</string>
 
 </resources>

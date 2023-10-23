@@ -41,5 +41,7 @@
         <item>দক্ষিণ আফ্রিকার র্যান্ড</item>
     </string-array>
     <string name="hint_wifi_disabled">কোনও ইন্টারনেট সংযোগ নেই।</string>
+    <string name="text_unsupported_currency_HRK">ক্রোয়েশিয়া 1 জানুয়ারী 2023-এ ইউরো-জোনে যোগদান করেছে।\\nরূপান্তরের হার প্রতি 1 ইউরোতে \\n7.53450 কুনা নির্ধারণ করা হয়েছে।\\nঅনুগ্রহ, রূপান্তরের জন্য EUR ব্যবহার করুন...</string>
+    <string name="text_unsupported_currency_RUB">রাশিয়ান রুবলের রূপান্তর হার অস্থায়ীভাবে অনুপলব্ধ...</string>
 
 </resources>

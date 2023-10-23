@@ -41,5 +41,7 @@
         <item>Rand sud-africain</item>
     </string-array>
     <string name="hint_wifi_disabled">Pas de connexion Internet.</string>
+    <string name="text_unsupported_currency_HRK">La Croatie a rejoint la zone euro le 1er janvier 2023.\\nLe taux de conversion est fixé à \\n7,53450 kuna pour 1 euro.\\nVeuillez utiliser l\'EUR pour la conversion…</string>
+    <string name="text_unsupported_currency_RUB">Les taux de conversion du rouble russe sont temporairement indisponibles…</string>
 
 </resources>

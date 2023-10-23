@@ -6,4 +6,6 @@
     <string name="string_convert">แปลง</string>
     <string name="hint_enter_amount">ใส่จำนวนเงิน</string>
     <string name="hint_wifi_disabled">ไม่มีการเชื่อมต่ออินเทอร์เน็ต.</string>
+    <string name="text_unsupported_currency_HRK">โครเอเชียเข้าร่วมยูโรโซนเมื่อวันที่ 1 มกราคม 2023\\nอัตรา Conversion คงที่อยู่ที่ \\n7.53450 คูนาต่อ 1 ยูโร\\nโปรดใช้ EUR สำหรับการแปลง...</string>
+    <string name="text_unsupported_currency_RUB">อัตราการแปลงสำหรับรูเบิลรัสเซียไม่สามารถใช้งานได้ชั่วคราว...</string>
 </resources>
