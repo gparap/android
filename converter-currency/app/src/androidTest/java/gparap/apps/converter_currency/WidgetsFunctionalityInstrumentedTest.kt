@@ -39,6 +39,8 @@ class WidgetsFunctionalityInstrumentedTest {
     private var context: Context? = null
     private val euroIndex = 8
     private val euroName = "Euro"
+    private val kunaIndex = 11
+    private val roubleIndex = 26
 
     @Before
     fun setUp() {
@@ -58,15 +60,35 @@ class WidgetsFunctionalityInstrumentedTest {
 
     @Test
     fun displayCurrencyName_FromCurrencySpinner() {
-        onView(withId(R.id.spinnerFromCurrency)).perform(click())
-        onData(`is`(context?.resources?.getStringArray(R.array.currencyCodes)?.get(euroIndex))).perform(click())
+        selectCurrencyOnSpinner(R.id.spinnerFromCurrency, euroIndex)
         onView(withId(R.id.textViewLabelFromCurrency)).check(matches(withText(euroName)))
     }
 
     @Test
     fun displayCurrencyName_ToCurrencySpinner() {
-        onView(withId(R.id.spinnerToCurrency)).perform(click())
-        onData(`is`(context?.resources?.getStringArray(R.array.currencyCodes)?.get(euroIndex))).perform(click())
+        selectCurrencyOnSpinner(R.id.spinnerToCurrency, euroIndex)
         onView(withId(R.id.textViewLabelToCurrency)).check(matches(withText(euroName)))
+    }
+
+    @Test
+    fun onCroatianKunaSelected_showTextMessage() {
+        selectCurrencyOnSpinner(R.id.spinnerFromCurrency, euroIndex)    //select 1st currency
+        selectCurrencyOnSpinner(R.id.spinnerToCurrency,kunaIndex)       //select 2nd currency
+        onView(withId(R.id.buttonConvert)).perform(click())
+        onView(withId(R.id.textViewResult)).check(matches(withText(R.string.text_unsupported_currency_HRK)))
+        println(R.string.text_unsupported_currency_HRK)
+    }
+
+    @Test
+    fun onRussianRoubleSelected_showTextMessage() {
+        selectCurrencyOnSpinner(R.id.spinnerFromCurrency, euroIndex)    //select 1st currency
+        selectCurrencyOnSpinner(R.id.spinnerToCurrency,roubleIndex)     //select 2nd currency
+        onView(withId(R.id.buttonConvert)).perform(click())
+        onView(withId(R.id.textViewResult)).check(matches(withText(R.string.text_unsupported_currency_RUB)))
+    }
+
+    private fun selectCurrencyOnSpinner(spinnerId: Int, currencyIndex: Int) {
+        onView(withId(spinnerId)).perform(click())
+        onData(`is`(context?.resources?.getStringArray(R.array.currencyCodes)?.get(currencyIndex))).perform(click())
     }
 }
