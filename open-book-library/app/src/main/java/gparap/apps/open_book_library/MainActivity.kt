@@ -15,11 +15,14 @@
  */
 package gparap.apps.open_book_library
 
+import android.content.ContentValues
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import gparap.apps.open_book_library.data.AppDatabase
+import gparap.apps.open_book_library.utils.Utils
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +35,12 @@ class MainActivity : AppCompatActivity() {
         val bottomNavView = findViewById<BottomNavigationView>(R.id.bottom_nav_view)
         if (navController != null) {
             NavigationUI.setupWithNavController(bottomNavView, navController)
+        }
+
+        //setup the local database
+        val dbHelper = AppDatabase(this)
+        if (dbHelper.isDatabaseEmpty()) {
+            Utils.initFeaturedBooks(dbHelper)
         }
     }
 }

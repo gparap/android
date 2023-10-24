@@ -29,6 +29,14 @@ class AppDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE, null, 
         onCreate(db)
     }
 
+    fun isDatabaseEmpty() : Boolean{
+        val db = this.readableDatabase
+        val cursor =  db.rawQuery("SELECT * FROM $TABLE_BOOKS", null)
+        val isEmpty: Boolean = (cursor.count == 0)
+        cursor.close()
+        return isEmpty
+    }
+
     companion object {
         private const val DATABASE = "OpenBookLibrary.db"
         private const val VERSION = 1
@@ -50,6 +58,7 @@ class AppDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE, null, 
                 "  `attr_file` varchar(256) DEFAULT NULL,\n" +
                 "  `attr_text` text DEFAULT NULL,\n" +
                 "  `is_asset` tinyint(1) DEFAULT NULL,\n" +
+                "  `asset_name` varchar(256) DEFAULT NULL,\n" +
                 "  `file_path` varchar(256) DEFAULT NULL\n" +
                 ");"
 
