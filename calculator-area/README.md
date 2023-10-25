@@ -14,6 +14,14 @@ View on Google Play:
 --------------------
 https://play.google.com/store/apps/details?id=gparap.apps.calculator_area
 
+View on Amazon Appstore:
+------------------------
+https://www.amazon.com/gp/product/B0B56JJV56
+
+View on Huawei AppGallery:
+--------------------------
+https://appgallery.huawei.com/app/C109407581
+
 Releases:
 ---------
 version 2.0

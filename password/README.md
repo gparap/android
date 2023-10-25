@@ -13,3 +13,11 @@ With this multiple manager app you can:
 View on Google Play:
 --------------------
 https://play.google.com/store/apps/details?id=gparap.apps.password
+
+View on Amazon Appstore:
+------------------------
+https://www.amazon.com/gp/product/B0CL98G5TF
+
+View on Huawei AppGallery:
+--------------------------
+https://appgallery.huawei.com/app/C109255947
