@@ -72,6 +72,10 @@ class BookLibraryFragment : Fragment() {
             intent.type = MIME_TYPE_PDF
             startActivityForResult(intent, REQUEST_CODE_ACTION_GET_PDF)
         }
+        //add PDF from device
+        if (item.itemId == R.id.menu_item_add_book_from_book_library) {
+            AddBookDialogFragment().show(childFragmentManager, null)
+        }
         return super.onOptionsItemSelected(item)
     }
 
@@ -80,7 +84,7 @@ class BookLibraryFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_ACTION_GET_PDF) {
             bookUrl = data?.data
-            fragmentView?.findViewById<com.github.barteksc.pdfviewer.PDFView>(R.id.pdf_view_book_library)
+            fragmentView?.findViewById<PDFView>(R.id.pdf_view_book_library)
                 ?.apply {
                     this.fromUri(bookUrl).load()
                 }
