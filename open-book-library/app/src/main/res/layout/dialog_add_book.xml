@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_dialog_add_book"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:background="@color/material_dynamic_primary95"
+                android:contentDescription="@string/app_name"
+                android:scaleType="center"
+                android:src="@drawable/ic_bookmark_add_24" />
+
+            <EditText
+                android:id="@+id/bookmark_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="4dp"
+                android:autofillHints=""
+                android:hint="@string/text_book_title"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/bookmark_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="16dp"
+                android:autofillHints=""
+                android:fontFamily="sans-serif"
+                android:hint="@string/text_book_author"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/bookmark_genre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="4dp"
+                android:autofillHints=""
+                android:hint="@string/text_book_genre"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/bookmark_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="16dp"
+                android:autofillHints=""
+                android:fontFamily="sans-serif"
+                android:hint="@string/text_book_date"
+                android:inputType="textPassword"
+                tools:ignore="TextFields" />
+
+            <EditText
+                android:id="@+id/bookmark_pages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="16dp"
+                android:autofillHints=""
+                android:fontFamily="sans-serif"
+                android:hint="@string/text_book_pages"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/bookmark_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="4dp"
+                android:autofillHints=""
+                android:hint="@string/text_book_language"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/bookmark_country"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="4dp"
+                android:autofillHints=""
+                android:hint="@string/text_book_country"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/bookmark_publisher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="16dp"
+                android:autofillHints=""
+                android:fontFamily="sans-serif"
+                android:hint="@string/text_book_publisher"
+                android:inputType="textPassword" />
+
+            <!--TODO: bookmark_coverUrl-->
+
+            <EditText
+                android:id="@+id/bookmark_cover_artist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="16dp"
+                android:autofillHints=""
+                android:fontFamily="sans-serif"
+                android:hint="@string/text_book_cover_artist"
+                android:inputType="textPassword" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

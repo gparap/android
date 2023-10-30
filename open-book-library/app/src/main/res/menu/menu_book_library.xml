@@ -8,9 +8,9 @@
         android:title="@string/text_open_pdf_from_library"
         app:showAsAction="ifRoom" />
 
-    <!--Bookmark PDF book to featured books-->
+    <!--Add PDF book to featured books-->
     <item
-        android:id="@+id/menu_item_bookmark_book_library"
+        android:id="@+id/menu_item_add_book_from_book_library"
         android:icon="@drawable/ic_bookmark_add_24"
         android:title="@string/text_add_pdf_to_featured"
         app:showAsAction="never" />

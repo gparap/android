@@ -16,11 +16,14 @@
 package gparap.apps.open_book_library
 
 import androidx.test.core.app.ActivityScenario
+import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayingAtLeast
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 
@@ -59,5 +62,19 @@ class MainActivityInstrumentedTest {
     fun onOpenLibraryClick_navigateToOpenLibraryFragment() {
         onView(withId(R.id.openLibraryFragment)).perform(click())
         onView(withId(R.id.layout_fragment_open_library)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun openAddBookDialog() {
+        //open the book library fragment
+        onView(withId(R.id.bookLibraryFragment)).perform(click())
+
+        //select the menu item
+        onView(withId(R.id.layout_fragment_book_library)).check(matches(isDisplayed()))
+        Espresso.openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().targetContext)
+        onView(withText(R.string.text_add_pdf_to_featured)).perform(click())
+
+        //test if dialog is displayed
+        onView(withId(R.id.layout_dialog_add_book)).check(matches(isDisplayed()))
     }
 }
