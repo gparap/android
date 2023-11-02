@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Default minimum & maximum size for icons-->
+    <item name="icon_size_min" type="dimen">48dp</item>
+    <item name="icon_size_max" type="dimen">64dp</item>
+</resources>

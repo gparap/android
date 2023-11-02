@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">My Selfie Editor App</string>
+    <string name="take_selfie">Take Selfie</string>
+    <string name="desc_selfie_capture_button">Selfie Capture</string>
+    <string name="desc_selfie_canvas">Selfie Image Canvas</string>
+    <string name="toast_permissions_denied">Permissions denied by the user.</string>
+    <string name="toast_selfie_captured">Selfie captured.</string>
+    <string name="toast_selfie_failed">Selfie failed.</string>
+    <string name="dialog_title">Edit Selfie</string>
+    <string name="dialog_msg">Open the captured image in a new activity for editing?</string>
+    <string name="dialog_yes">OK</string>
+    <string name="dialog_no">Cancel</string>
+    <string name="desc_image_icon">Image Icon for selfie editing</string>
+</resources>
