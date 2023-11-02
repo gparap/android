@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_activity_editor"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditorActivity">
+
+    <!--Top container for application icons-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout_container_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@color/design_default_color_secondary">
+
+        <HorizontalScrollView
+            android:id="@+id/scroll_View_container_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:background="@color/design_default_color_secondary">
+
+            <LinearLayout
+                android:id="@+id/linear_layout_container_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_min"
+                    android:layout_height="@dimen/icon_size_min"
+                    android:contentDescription="@string/desc_image_icon"
+                    android:src="@drawable/heart" />
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_min"
+                    android:layout_height="@dimen/icon_size_min"
+                    android:contentDescription="@string/desc_image_icon"
+                    android:src="@drawable/ic_baseline_photo_camera_48" />
+
+                <ImageView
+                    android:layout_width="@dimen/icon_size_min"
+                    android:layout_height="@dimen/icon_size_min"
+                    android:contentDescription="@string/desc_image_icon"
+                    android:src="@drawable/ic_launcher_background" />
+            </LinearLayout>
+        </HorizontalScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--Selfie placeholder for editing-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/selfie_canvas"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/desc_selfie_canvas"
+        app:layout_constraintBottom_toTopOf="@+id/constraint_layout_container_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraint_layout_container_top" />
+
+    <!--Bottom container for various image editing icons -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout_container_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:background="@color/design_default_color_secondary">
+
+        <HorizontalScrollView
+            android:id="@+id/scroll_View_container_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:background="@color/design_default_color_secondary">
+
+            <LinearLayout
+                android:id="@+id/linear_layout_container_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/image_view_balloon"
+                    android:layout_width="@dimen/icon_size_max"
+                    android:layout_height="@dimen/icon_size_max"
+                    android:contentDescription="@string/desc_image_icon"
+                    android:src="@drawable/balloon" />
+
+                <ImageView
+                    android:id="@+id/image_view_bulb"
+                    android:layout_width="@dimen/icon_size_max"
+                    android:layout_height="@dimen/icon_size_max"
+                    android:contentDescription="@string/desc_image_icon"
+                    android:src="@drawable/bulb" />
+
+                <ImageView
+                    android:id="@+id/image_view_butterfly"
+                    android:layout_width="@dimen/icon_size_max"
+                    android:layout_height="@dimen/icon_size_max"
+                    android:contentDescription="@string/desc_image_icon"
+                    android:src="@drawable/butterfly" />
+
+                <ImageView
+                    android:id="@+id/image_view_donut"
+                    android:layout_width="@dimen/icon_size_max"
+                    android:layout_height="@dimen/icon_size_max"
+                    android:contentDescription="@string/desc_image_icon"
+                    android:src="@drawable/donut" />
+
+                <ImageView
+                    android:id="@+id/image_view_heart"
+                    android:layout_width="@dimen/icon_size_max"
+                    android:layout_height="@dimen/icon_size_max"
+                    android:contentDescription="@string/desc_image_icon"
+                    android:src="@drawable/heart" />
+
+                <ImageView
+                    android:id="@+id/image_view_kite"
+                    android:layout_width="@dimen/icon_size_max"
+                    android:layout_height="@dimen/icon_size_max"
+                    android:contentDescription="@string/desc_image_icon"
+                    android:src="@drawable/kite" />
+
+                <ImageView
+                    android:id="@+id/image_view_rocket"
+                    android:layout_width="@dimen/icon_size_max"
+                    android:layout_height="@dimen/icon_size_max"
+                    android:contentDescription="@string/desc_image_icon"
+                    android:src="@drawable/rocket" />
+
+                <ImageView
+                    android:id="@+id/image_view_star"
+                    android:layout_width="@dimen/icon_size_max"
+                    android:layout_height="@dimen/icon_size_max"
+                    android:contentDescription="@string/desc_image_icon"
+                    android:src="@drawable/star" />
+
+                <ImageView
+                    android:id="@+id/image_view_sun"
+                    android:layout_width="@dimen/icon_size_max"
+                    android:layout_height="@dimen/icon_size_max"
+                    android:contentDescription="@string/desc_image_icon"
+                    android:src="@drawable/sun" />
+
+                <ImageView
+                    android:id="@+id/image_view_tank_you"
+                    android:layout_width="@dimen/icon_size_max"
+                    android:layout_height="@dimen/icon_size_max"
+                    android:contentDescription="@string/desc_image_icon"
+                    android:src="@drawable/thank_you" />
+            </LinearLayout>
+        </HorizontalScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

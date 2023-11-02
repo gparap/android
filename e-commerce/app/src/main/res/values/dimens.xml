@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Design dimensions (Pixel 2)-->
+    <dimen name="default_minHeight">48dp</dimen>
+    <integer name="default_ems">10</integer>
+</resources>

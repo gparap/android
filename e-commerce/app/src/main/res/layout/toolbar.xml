@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.MaterialToolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/default_minHeight"
+    android:background="@color/purple_500"
+    android:elevation="@dimen/cardview_default_elevation" />

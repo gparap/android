@@ -1,0 +1,125 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_gradient"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:id="@+id/layout_activity_register"
+    tools:context=".ui.auth.RegisterActivity">
+
+    <!-- Placeholder for app logo -->
+    <include
+        android:id="@+id/image_view_register"
+        layout="@layout/image_view_app_logo" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_view_register">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- E-mail -->
+            <EditText
+                android:id="@+id/edit_text_register_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_email_24"
+                android:ems="@integer/default_ems"
+                android:gravity="center"
+                android:hint="@string/hint_email"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:minHeight="@dimen/default_minHeight"
+                android:textColorHint="@color/material_on_background_disabled"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Username -->
+            <EditText
+                android:id="@+id/edit_text_register_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_person_24"
+                android:ems="@integer/default_ems"
+                android:gravity="center"
+                android:hint="@string/hint_username"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:minHeight="@dimen/default_minHeight"
+                android:textColorHint="@color/material_on_background_disabled"
+                app:layout_constraintEnd_toEndOf="@+id/edit_text_register_email"
+                app:layout_constraintStart_toStartOf="@+id/edit_text_register_email"
+                app:layout_constraintTop_toBottomOf="@+id/edit_text_register_email" />
+
+            <!-- Password -->
+            <EditText
+                android:id="@+id/edit_text_register_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_password_24"
+                android:ems="@integer/default_ems"
+                android:gravity="center"
+                android:hint="@string/hint_password"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:minHeight="@dimen/default_minHeight"
+                android:textColorHint="@color/material_on_background_disabled"
+                app:layout_constraintEnd_toEndOf="@+id/edit_text_register_email"
+                app:layout_constraintStart_toStartOf="@+id/edit_text_register_email"
+                app:layout_constraintTop_toBottomOf="@+id/edit_text_register_username" />
+
+            <!-- Confirm Password -->
+            <EditText
+                android:id="@+id/edit_text_register_confirm_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_password_24"
+                android:ems="@integer/default_ems"
+                android:gravity="center"
+                android:hint="@string/hint_confirm_password"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:minHeight="@dimen/default_minHeight"
+                android:textColorHint="@color/material_on_background_disabled"
+                app:layout_constraintEnd_toEndOf="@+id/edit_text_register_email"
+                app:layout_constraintStart_toStartOf="@+id/edit_text_register_email"
+                app:layout_constraintTop_toBottomOf="@+id/edit_text_register_password" />
+
+            <!-- Register button -->
+            <Button
+                android:id="@+id/button_register"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_round"
+                android:text="@string/button_register"
+                app:layout_constraintEnd_toEndOf="@+id/edit_text_register_email"
+                app:layout_constraintStart_toStartOf="@+id/edit_text_register_email"
+                app:layout_constraintTop_toBottomOf="@id/edit_text_register_confirm_password" />
+
+            <!-- Registration progress -->
+            <ProgressBar
+                android:id="@+id/progress_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@+id/edit_text_register_email"
+                app:layout_constraintStart_toStartOf="@+id/edit_text_register_email"
+                app:layout_constraintTop_toBottomOf="@id/button_register"
+                tools:visibility="visible" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="@dimen/cardview_default_elevation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--Image-->
+            <ImageView
+                android:id="@+id/image_view_cart_item"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_margin="4dp"
+                android:contentDescription="@string/desc_product_image"
+                android:padding="2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <!--Name-->
+            <TextView
+                android:id="@+id/text_view_cart_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/text_view_cart_item_quantity"
+                app:layout_constraintStart_toEndOf="@+id/image_view_cart_item"
+                app:layout_constraintTop_toTopOf="@+id/image_view_cart_item"
+                tools:text="Name" />
+
+            <!--Price-->
+            <TextView
+                android:id="@+id/text_view_cart_item_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="5"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toStartOf="@+id/text_view_cart_item_quantity"
+                app:layout_constraintStart_toEndOf="@+id/image_view_cart_item"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_cart_item_name"
+                tools:text="Price" />
+
+            <!--Quantity-->
+            <TextView
+                android:id="@+id/text_view_cart_item_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:background="@null"
+                android:ems="5"
+                android:gravity="center"
+                android:maxEms="5"
+                android:paddingBottom="4dp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_cart_item_price"
+                app:layout_constraintEnd_toStartOf="@+id/button_cart_remove_one"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_cart_item_name"
+                tools:text="0" />
+
+            <!--Remove one item (quantity)-->
+            <ImageButton
+                android:id="@+id/button_cart_remove_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/cart_remove_item"
+                android:src="@drawable/ic_remove_24"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_cart_item_quantity"
+                app:layout_constraintEnd_toStartOf="@+id/button_cart_add_one"
+                app:layout_constraintTop_toTopOf="@+id/text_view_cart_item_quantity" />
+
+            <!--Add one item-->
+            <ImageButton
+                android:id="@+id/button_cart_add_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/cart_add_item"
+                android:src="@drawable/ic_add_24"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_cart_item_quantity"
+                app:layout_constraintEnd_toStartOf="@+id/button_cart_remove_item"
+                app:layout_constraintTop_toTopOf="@+id/text_view_cart_item_quantity" />
+
+            <!--Remove item-->
+            <ImageButton
+                android:id="@+id/button_cart_remove_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/cart_add_item"
+                android:src="@drawable/ic_delete_24"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_cart_item_quantity"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/text_view_cart_item_quantity" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--Cart items label-->
+    <TextView
+        android:id="@+id/text_view_cart_items_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/text_cart_items"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--Cart items-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_cart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_cart_items_details_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_cart_items_label" />
+
+    <!--Cart items details label-->
+    <TextView
+        android:id="@+id/text_view_cart_items_details_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/text_cart_items_details"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/constraint_layout_cart_items_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--Cart items details-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout_cart_items_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_checkout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="text_view_cart_total_items_label, text_view_cart_total_cost_label, text_view_cart_discount_label, text_view_cart_final_cost_label" />
+
+        <TextView
+            android:id="@+id/text_view_cart_total_items_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_total_items"
+            app:layout_constraintEnd_toEndOf="@+id/barrier"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_cart_total_items"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_zero"
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_cart_total_items_label"
+            app:layout_constraintStart_toEndOf="@+id/barrier"
+            app:layout_constraintTop_toTopOf="@+id/text_view_cart_total_items_label" />
+
+        <TextView
+            android:id="@+id/text_view_cart_total_cost_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_total_cost"
+            app:layout_constraintEnd_toEndOf="@+id/barrier"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_cart_total_items" />
+
+        <TextView
+            android:id="@+id/text_view_cart_total_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_zero"
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_cart_total_cost_label"
+            app:layout_constraintStart_toEndOf="@+id/barrier"
+            app:layout_constraintTop_toTopOf="@+id/text_view_cart_total_cost_label" />
+
+        <TextView
+            android:id="@+id/text_view_cart_discount_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_discount"
+            app:layout_constraintEnd_toEndOf="@+id/barrier"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_cart_total_cost" />
+
+        <TextView
+            android:id="@+id/text_view_cart_discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_zero_percent"
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_cart_discount_label"
+            app:layout_constraintStart_toEndOf="@+id/barrier"
+            app:layout_constraintTop_toTopOf="@+id/text_view_cart_discount_label" />
+
+        <TextView
+            android:id="@+id/text_view_cart_final_cost_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_final_cost"
+            app:layout_constraintEnd_toEndOf="@+id/barrier"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_cart_discount" />
+
+        <TextView
+            android:id="@+id/text_view_cart_final_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_zero"
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_cart_final_cost_label"
+            app:layout_constraintStart_toEndOf="@+id/barrier"
+            app:layout_constraintTop_toTopOf="@+id/text_view_cart_final_cost_label" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--Checkout button-->
+    <Button
+        android:id="@+id/button_checkout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_checkout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

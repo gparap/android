@@ -1,0 +1,114 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_gradient"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    tools:context=".ui.auth.LoginActivity">
+
+    <!-- Placeholder for app logo -->
+    <include layout="@layout/image_view_app_logo"
+        android:id="@+id/image_view_login"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_view_login">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Username -->
+            <EditText
+                android:id="@+id/edit_text_login_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_person_24"
+                android:ems="@integer/default_ems"
+                android:gravity="center"
+                android:hint="@string/hint_username"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:minHeight="@dimen/default_minHeight"
+                android:textColorHint="@color/material_on_background_disabled"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Password -->
+            <EditText
+                android:id="@+id/edit_text_login_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_password_24"
+                android:ems="@integer/default_ems"
+                android:gravity="center"
+                android:hint="@string/hint_password"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:minHeight="@dimen/default_minHeight"
+                android:textColorHint="@color/material_on_background_disabled"
+                app:layout_constraintEnd_toEndOf="@+id/edit_text_login_username"
+                app:layout_constraintStart_toStartOf="@+id/edit_text_login_username"
+                app:layout_constraintTop_toBottomOf="@+id/edit_text_login_username" />
+
+            <!-- Progress -->
+            <ProgressBar
+                android:id="@+id/progress_login"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edit_text_login_password"
+                tools:visibility="visible" />
+
+            <!-- Login Button -->
+            <Button
+                android:id="@+id/button_login"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_round"
+                android:text="@string/button_login"
+                app:layout_constraintEnd_toEndOf="@+id/edit_text_login_username"
+                app:layout_constraintStart_toStartOf="@+id/edit_text_login_username"
+                app:layout_constraintTop_toBottomOf="@+id/progress_login" />
+
+            <!-- User not registered -->
+            <TextView
+                android:id="@+id/text_view_user_not_registered"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/text_user_not_registered"
+                android:textAlignment="textEnd"
+                android:textStyle="italic|bold"
+                app:layout_constraintEnd_toEndOf="@+id/edit_text_login_username"
+                app:layout_constraintStart_toStartOf="@+id/edit_text_login_username"
+                app:layout_constraintTop_toBottomOf="@+id/button_login" />
+
+            <!-- Register Button -->
+            <Button
+                android:id="@+id/button_goto_register"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_round"
+                android:text="@string/button_register"
+                app:layout_constraintEnd_toEndOf="@+id/button_login"
+                app:layout_constraintStart_toStartOf="@+id/button_login"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_user_not_registered" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">E-commerce</string>
+
+    <string name="hint_email">e-mail</string>
+    <string name="hint_password">password</string>
+    <string name="hint_username">username</string>
+    <string name="hint_confirm_password">confirm password</string>
+
+    <string name="button_login">Login</string>
+    <string name="button_register">Register</string>
+
+    <string name="text_user_not_registered">Not registered yet?</string>
+    <string name="text_welcome_user_after_login">Welcome back,&#160;</string>
+    <string name="text_welcome_user_after_register">Welcome on board,&#160;</string>
+    <string name="text_goodbye_user_after_logout">Farewell,&#160;</string>
+    <string name="text_login_failed">Authentication failed. Please, check your credentials…</string>
+    <string name="text_register_failed">Registration failed. Please, check your input…</string>
+    <string name="text_logout">Logout</string>
+    <string name="text_add_to_cart_title">Add to Cart?</string>
+    <string name="text_add_to_cart_message">The selected item will be added to cart. Are you sure?</string>
+    <string name="text_remove_from_cart_title">Remove from Cart?</string>
+    <string name="text_remove_from_cart_message">The selected item will be removed from cart. Are you sure?</string>
+    <string name="text_dialog_ok">OK</string>
+    <string name="text_dialog_cancel">Cancel</string>
+    <string name="text_cart">Shopping Cart</string>
+    <string name="text_categories">Categories</string>
+    <string name="text_products">Products</string>
+    <string name="text_cart_items">Cart Items</string>
+    <string name="text_cart_items_details">Cart Items Details</string>
+    <string name="text_total_items">Total Items:</string>
+    <string name="text_zero">0</string>
+    <string name="text_total_cost">Total Cost:</string>
+    <string name="text_discount">Discount:</string>
+    <string name="text_zero_percent">0%</string>
+    <string name="text_final_cost">Final Cost:</string>
+    <string name="text_checkout">Checkout</string>
+
+    <string name="desc_app_logo">App Logo</string>
+    <string name="desc_category_image">Category Image</string>
+    <string name="desc_product_image">Product Image</string>
+    <string name="desc_add_to_cart">Add to Cart</string>
+
+    <string name="price_prefix">Price:\u00A0</string>
+    <string name="price_suffix">€</string>
+
+    <string name="stock_unavailable">currently out of stock</string>
+    <string name="stock_low">low availability in stock</string>
+    <string name="stock_available">available in stock</string>
+
+    <string name="toast_add_to_cart_success">Item added to cart.</string>
+    <string name="toast_add_to_cart_failure">"Error adding item to cart."</string>
+    <string name="cart_remove_item">Remove one item</string>
+    <string name="cart_add_item">Add one item</string>
+</resources>
