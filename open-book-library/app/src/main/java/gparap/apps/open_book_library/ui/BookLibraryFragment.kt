@@ -29,7 +29,6 @@ import androidx.fragment.app.Fragment
 import com.github.barteksc.pdfviewer.PDFView
 import gparap.apps.open_book_library.R
 
-
 class BookLibraryFragment : Fragment() {
     private var fragmentView: View? = null
     private var bookUrl: Uri? = null
@@ -77,7 +76,7 @@ class BookLibraryFragment : Fragment() {
         }
         //add PDF from device
         if (item.itemId == R.id.menu_item_add_book_from_book_library) {
-            AddBookDialogFragment(bookTitle).show(childFragmentManager, null)
+            AddBookDialogFragment(bookTitle, bookUrl).show(childFragmentManager, null)
         }
         return super.onOptionsItemSelected(item)
     }
