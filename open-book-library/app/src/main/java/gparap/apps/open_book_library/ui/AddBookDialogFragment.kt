@@ -29,17 +29,24 @@ import gparap.apps.open_book_library.services.AddBookDialogCallback
  * The book exists in user's device library and the details are stored in a local database.
  * Thus, the added book is quickly available from the featured books fragment.
  */
-class AddBookDialogFragment : DialogFragment(), AddBookDialogCallback {
+class AddBookDialogFragment(val bookTitle: String?) : DialogFragment(), AddBookDialogCallback {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialogView = layoutInflater.inflate(R.layout.dialog_add_book, null)
+
+        //display the book title without the file extension (".pdf")
+        val titleWidget = dialogView.findViewById<EditText>(R.id.bookmark_title)
+        if (bookTitle.isNullOrEmpty()) {
+            titleWidget.setText("")
+        }else{
+            titleWidget.setText(bookTitle.removeSuffix(".pdf"))
+        }
 
         val dialog = AlertDialog.Builder(context)
             .setTitle("test")
             .setView(dialogView)
             .setPositiveButton("OK") {_dialog, _which ->
                 //get the book details from the user input TODO: details
-                val titleWidget = dialogView.findViewById<EditText>(R.id.bookmark_title)
-                val title = titleWidget.text.toString()
+                val title = titleWidget.text.toString() //in case user wants to change the name
 
                 //create test book
                 val book = BookModel(title,"","",0,0,"","","","",""
