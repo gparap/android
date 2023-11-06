@@ -18,19 +18,22 @@ package gparap.apps.open_book_library.ui
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.provider.OpenableColumns
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.github.barteksc.pdfviewer.PDFView
 import gparap.apps.open_book_library.R
+
 
 class BookLibraryFragment : Fragment() {
     private var fragmentView: View? = null
     private var bookUrl: Uri? = null
+    private var bookTitle: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,7 +77,7 @@ class BookLibraryFragment : Fragment() {
         }
         //add PDF from device
         if (item.itemId == R.id.menu_item_add_book_from_book_library) {
-            AddBookDialogFragment().show(childFragmentManager, null)
+            AddBookDialogFragment(bookTitle).show(childFragmentManager, null)
         }
         return super.onOptionsItemSelected(item)
     }
@@ -84,6 +87,18 @@ class BookLibraryFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_ACTION_GET_PDF) {
             bookUrl = data?.data
+
+            //get the selected book title by accessing the application content model
+            if (bookUrl != null) {
+                val cursor = this.context?.contentResolver?.query(bookUrl!!, null, null, null, null)
+                val columnIndex = cursor?.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                cursor?.moveToFirst()
+                if (columnIndex != null) {
+                    bookTitle = cursor.getString(columnIndex)
+                }
+                cursor?.close()
+            }
+
             fragmentView?.findViewById<PDFView>(R.id.pdf_view_book_library)
                 ?.apply {
                     this.fromUri(bookUrl).load()
