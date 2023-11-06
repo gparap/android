@@ -15,6 +15,7 @@
  */
 package gparap.apps.open_book_library.data
 
+import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
@@ -35,6 +36,34 @@ class AppDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE, null, 
         val isEmpty: Boolean = (cursor.count == 0)
         cursor.close()
         return isEmpty
+    }
+
+    fun insertBook(book: BookModel) : Boolean {
+        val db = this.writableDatabase
+
+        //create a set of values containing the book details
+        val contentValues = ContentValues()
+        contentValues.put("title", book.title)
+        contentValues.put("author", book.author)
+        contentValues.put("genre", book.genre)
+        contentValues.put("date", book.date)
+        contentValues.put("pages", book.pages)
+        contentValues.put("lang", book.language)
+        contentValues.put("country", book.country)
+        contentValues.put("publisher", book.publisher)
+        contentValues.put("cover_url", book.coverUrl)
+        contentValues.put("cover_artist", book.coverArtist)
+        contentValues.put("attr_file", book.attributionFile)
+        contentValues.put("attr_text", book.attributionText)
+        contentValues.put("is_asset", book.isAsset)
+        contentValues.put("asset_name", book.assetName)
+        contentValues.put("file_path", book.filePath)
+
+        //insert values into the database
+        val rowId = db.insert(TABLE_BOOKS, null, contentValues)
+
+        //flag to check if values inserted correctly
+        return rowId != -1L
     }
 
     companion object {

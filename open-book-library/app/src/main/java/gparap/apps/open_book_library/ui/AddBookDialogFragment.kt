@@ -17,10 +17,13 @@ package gparap.apps.open_book_library.ui
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
 import gparap.apps.open_book_library.R
+import gparap.apps.open_book_library.data.AppDatabase
 import gparap.apps.open_book_library.data.BookModel
 import gparap.apps.open_book_library.services.AddBookDialogCallback
 
@@ -29,7 +32,8 @@ import gparap.apps.open_book_library.services.AddBookDialogCallback
  * The book exists in user's device library and the details are stored in a local database.
  * Thus, the added book is quickly available from the featured books fragment.
  */
-class AddBookDialogFragment(val bookTitle: String?) : DialogFragment(), AddBookDialogCallback {
+class AddBookDialogFragment(private val bookTitle: String?, private val bookUrl: Uri?) :
+    DialogFragment(), AddBookDialogCallback {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialogView = layoutInflater.inflate(R.layout.dialog_add_book, null)
 
@@ -37,30 +41,61 @@ class AddBookDialogFragment(val bookTitle: String?) : DialogFragment(), AddBookD
         val titleWidget = dialogView.findViewById<EditText>(R.id.bookmark_title)
         if (bookTitle.isNullOrEmpty()) {
             titleWidget.setText("")
-        }else{
+        } else {
             titleWidget.setText(bookTitle.removeSuffix(".pdf"))
         }
 
         val dialog = AlertDialog.Builder(context)
             .setTitle("test")
             .setView(dialogView)
-            .setPositiveButton("OK") {_dialog, _which ->
-                //get the book details from the user input TODO: details
-                val title = titleWidget.text.toString() //in case user wants to change the name
+            .setPositiveButton("OK") { _, _ ->
 
-                //create test book
-                val book = BookModel(title,"","",0,0,"","","","",""
-                    ,"","",false,"","")
+                //get the book details from the user input
+                val title = getWidgetText(dialogView, R.id.bookmark_title)
+                val author = getWidgetText(dialogView, R.id.bookmark_author)
+                val genre = getWidgetText(dialogView, R.id.bookmark_genre)
+                val date = getWidgetText(dialogView, R.id.bookmark_date)
+                val pages = getWidgetText(dialogView, R.id.bookmark_pages)
+                val language = getWidgetText(dialogView, R.id.bookmark_language)
+                val country = getWidgetText(dialogView, R.id.bookmark_country)
+                val publisher = getWidgetText(dialogView, R.id.bookmark_publisher)
+                val coverArtist = getWidgetText(dialogView, R.id.bookmark_cover_artist)
+
+                //create book
+                val book = BookModel(
+                    title,
+                    author,
+                    genre,
+                    date.toInt(),
+                    pages.toInt(),
+                    language,
+                    country,
+                    publisher,
+                    "",
+                    coverArtist,
+                    "", //TODO: attributions in the end
+                    "",//TODO: attributions in the end
+                    false,
+                    "",
+                    bookUrl.toString()
+                )
+
+                //add book details to local database
                 addBook(book)
             }
-            .setNegativeButton("Cancel") { _dialog, _which -> _dialog.dismiss()}
+            .setNegativeButton("Cancel") { dialog, _ -> dialog.dismiss() }
             .create()
 
         return dialog
     }
 
     override fun addBook(book: BookModel) {
-        //DEBUG
-        println(book.title)
+        val database = context?.let { AppDatabase(it) }
+        database?.insertBook(book)
+    }
+
+    private fun getWidgetText(dialog: View, widgetId: Int): String {
+        val widget = dialog.findViewById<EditText>(widgetId)
+        return widget.text.toString()
     }
 }
