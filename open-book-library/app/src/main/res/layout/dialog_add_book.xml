@@ -37,7 +37,7 @@
                 android:layout_marginBottom="4dp"
                 android:autofillHints=""
                 android:hint="@string/text_book_title"
-                android:inputType="textEmailAddress" />
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/bookmark_author"
@@ -50,7 +50,7 @@
                 android:autofillHints=""
                 android:fontFamily="sans-serif"
                 android:hint="@string/text_book_author"
-                android:inputType="textPassword" />
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/bookmark_genre"
@@ -62,7 +62,7 @@
                 android:layout_marginBottom="4dp"
                 android:autofillHints=""
                 android:hint="@string/text_book_genre"
-                android:inputType="textEmailAddress" />
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/bookmark_date"
@@ -75,7 +75,6 @@
                 android:autofillHints=""
                 android:fontFamily="sans-serif"
                 android:hint="@string/text_book_date"
-                android:inputType="textPassword"
                 tools:ignore="TextFields" />
 
             <EditText
@@ -89,7 +88,7 @@
                 android:autofillHints=""
                 android:fontFamily="sans-serif"
                 android:hint="@string/text_book_pages"
-                android:inputType="textPassword" />
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/bookmark_language"
@@ -101,7 +100,7 @@
                 android:layout_marginBottom="4dp"
                 android:autofillHints=""
                 android:hint="@string/text_book_language"
-                android:inputType="textEmailAddress" />
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/bookmark_country"
@@ -113,7 +112,7 @@
                 android:layout_marginBottom="4dp"
                 android:autofillHints=""
                 android:hint="@string/text_book_country"
-                android:inputType="textEmailAddress" />
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/bookmark_publisher"
@@ -126,7 +125,7 @@
                 android:autofillHints=""
                 android:fontFamily="sans-serif"
                 android:hint="@string/text_book_publisher"
-                android:inputType="textPassword" />
+                android:inputType="text" />
 
             <!--TODO: bookmark_coverUrl-->
 
@@ -141,7 +140,7 @@
                 android:autofillHints=""
                 android:fontFamily="sans-serif"
                 android:hint="@string/text_book_cover_artist"
-                android:inputType="textPassword" />
+                android:inputType="text" />
         </LinearLayout>
 
     </ScrollView>
