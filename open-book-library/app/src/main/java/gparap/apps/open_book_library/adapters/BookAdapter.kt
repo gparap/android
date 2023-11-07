@@ -24,6 +24,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -68,10 +69,14 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
         //show book cover
-        val assetManager: AssetManager = context.assets
-        val inputStream = assetManager.open(books[position].coverUrl)
-        val bitmap = BitmapFactory.decodeStream(inputStream)
-        holder.bookCover.setImageDrawable(bitmap.toDrawable(context.resources))
+        if (books[position].isAsset) {
+            val assetManager: AssetManager = context.assets
+            val inputStream = assetManager.open(books[position].coverUrl)
+            val bitmap = BitmapFactory.decodeStream(inputStream)
+            holder.bookCover.setImageDrawable(bitmap.toDrawable(context.resources))
+        } else {
+            holder.bookCover.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_read_book_24))
+        }
 
         //show book title
         holder.bookTitle.text = books[position].title
