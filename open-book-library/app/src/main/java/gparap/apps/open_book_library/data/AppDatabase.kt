@@ -15,6 +15,7 @@
  */
 package gparap.apps.open_book_library.data
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
@@ -30,15 +31,15 @@ class AppDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE, null, 
         onCreate(db)
     }
 
-    fun isDatabaseEmpty() : Boolean{
+    fun isDatabaseEmpty(): Boolean {
         val db = this.readableDatabase
-        val cursor =  db.rawQuery("SELECT * FROM $TABLE_BOOKS", null)
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_BOOKS", null)
         val isEmpty: Boolean = (cursor.count == 0)
         cursor.close()
         return isEmpty
     }
 
-    fun insertBook(book: BookModel) : Boolean {
+    fun insertBook(book: BookModel): Boolean {
         val db = this.writableDatabase
 
         //create a set of values containing the book details
@@ -64,6 +65,44 @@ class AppDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE, null, 
 
         //flag to check if values inserted correctly
         return rowId != -1L
+    }
+
+    @SuppressLint("Range")
+    fun selectFeaturedBooks(): ArrayList<BookModel> {
+        val featuresBooks = ArrayList<BookModel>()
+
+        //read featured books from the database and them to the list
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM ${TABLE_BOOKS};", null)
+        while (cursor.moveToNext()) {
+            featuresBooks.add(
+                BookModel(
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getInt(4), //date
+                    cursor.getInt(5), //pages
+                    cursor.getString(6),
+                    cursor.getString(7),
+                    cursor.getString(8),
+                    cursor.getString(9),
+                    cursor.getString(10),
+                    cursor.getString(11),
+                    cursor.getString(12),
+                    getBoolean(cursor.getInt(13)), //isAsset
+                    cursor.getString(14),
+                    cursor.getString(15)
+                )
+            )
+        }
+        cursor.close()
+
+        //return the list
+        return featuresBooks
+    }
+
+    private fun getBoolean(value: Int): Boolean {
+        return value == 1
     }
 
     companion object {
