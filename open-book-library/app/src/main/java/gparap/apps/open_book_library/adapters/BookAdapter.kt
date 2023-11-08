@@ -102,7 +102,7 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
             navController.navigate(directions)
         }
 
-        //register a callback to read the book details in another fragment
+        //register a callback to read the book in another fragment
         holder.readBookIcon.setOnClickListener {
             //pass the book details as fragment arguments to a navigation-generated object
             val directions = FeaturedBooksFragmentDirections.actionFeaturedBooksFragmentToReadBookFragment()
@@ -110,6 +110,7 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.BookViewHolder>() {
                 directions.argsBookIsAsset = books[position].isAsset
                 directions.argsBookAssetName = books[position].assetName
             }else{
+                directions.argsBookIsAsset = books[position].isAsset
                 directions.argsBookFilepath = books[position].filePath
             }
 

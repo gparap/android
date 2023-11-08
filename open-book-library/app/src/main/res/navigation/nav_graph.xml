@@ -72,6 +72,18 @@
             android:name="args_book_cover_artist"
             app:argType="string"
             android:defaultValue="" />
+        <argument
+            android:name="args_book_is_asset"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="args_book_asset_name"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="args_book_filepath"
+            app:argType="string"
+            android:defaultValue=""/>
     </fragment>
     <fragment
         android:id="@+id/readBookFragment"

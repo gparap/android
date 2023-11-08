@@ -25,6 +25,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
 import androidx.navigation.fragment.navArgs
 import gparap.apps.open_book_library.R
@@ -55,10 +56,14 @@ class BookDetailsFragment : Fragment() {
         view.findViewById<TextView>(R.id.text_view_book_publisher).apply { text =  args.argsBookPublisher}
         view.findViewById<ImageView>(R.id.image_view_book_cover).apply {
             //show book cover
-            val assetManager: AssetManager = context.assets
-            val inputStream = assetManager.open(args.argsBookCoverUrl)
-            val bitmap = BitmapFactory.decodeStream(inputStream)
-            setImageDrawable(bitmap.toDrawable(context.resources))
+            if (args.argsBookIsAsset) {
+                val assetManager: AssetManager = context.assets
+                val inputStream = assetManager.open(args.argsBookCoverUrl)
+                val bitmap = BitmapFactory.decodeStream(inputStream)
+                setImageDrawable(bitmap.toDrawable(context.resources))
+            } else {
+                setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_read_book_24))
+            }
         }
         view.findViewById<TextView>(R.id.text_view_book_cover_artist).apply { text =  args.argsBookCoverArtist}
         //TODO: attribution details
