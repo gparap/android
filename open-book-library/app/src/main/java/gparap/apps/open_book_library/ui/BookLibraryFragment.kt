@@ -27,12 +27,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.github.barteksc.pdfviewer.PDFView
+import com.github.barteksc.pdfviewer.util.FileUtils
 import gparap.apps.open_book_library.R
+import java.io.File
+import java.io.InputStream
 
 class BookLibraryFragment : Fragment() {
     private var fragmentView: View? = null
     private var bookUrl: Uri? = null
     private var bookTitle: String? = null
+    private var inputStream: InputStream? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -98,9 +102,24 @@ class BookLibraryFragment : Fragment() {
                 cursor?.close()
             }
 
+            //copy book to the directory holding application files  TODO: warning dialog for copying
+            val inputStreamCopy = requireContext().contentResolver.openInputStream(bookUrl!!)
+            inputStream = requireContext().contentResolver.openInputStream(bookUrl!!)
+            val outFilePath = requireContext().filesDir.toString() + "/" + bookTitle
+            val outFile = File(outFilePath)
+            FileUtils.copy(inputStreamCopy, outFile).also {
+                bookUrl = Uri.parse(outFilePath)
+            }
+
+            //open book for reading
             fragmentView?.findViewById<PDFView>(R.id.pdf_view_book_library)
                 ?.apply {
-                    this.fromUri(bookUrl).load()
+                    val configurator = this.fromStream(inputStream)
+                    configurator.load().also {
+                        configurator.onLoad {
+                            inputStream?.close()
+                        }
+                    }
                 }
         }
     }
