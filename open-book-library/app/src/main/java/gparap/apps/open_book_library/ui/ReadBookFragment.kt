@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.github.barteksc.pdfviewer.PDFView
 import gparap.apps.open_book_library.R
+import java.io.File
 
 class ReadBookFragment : Fragment() {
     //access the Fragment's arguments as an Args instance
@@ -41,9 +42,14 @@ class ReadBookFragment : Fragment() {
 
         //display the book details using the passed arguments of the fragment
         view.findViewById<PDFView>(R.id.pdf_view).apply {
-            //books in assets folder
             if (args.argsBookIsAsset) {
+                //books in application assets folder
                 this.fromAsset(args.argsBookAssetName).load()
+            } else {
+                //books in application storage folder
+                val filePath = args.argsBookFilepath
+                val file = File(filePath)
+                this.fromFile(file).load()
             }
         }
     }
