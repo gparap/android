@@ -46,6 +46,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
+        android:paddingStart="48dp"
+        android:minWidth="192dp"
         app:layout_constraintBottom_toTopOf="@+id/button_checkout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -68,10 +70,11 @@
 
         <TextView
             android:id="@+id/text_view_cart_total_items"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/text_zero"
             app:layout_constraintBottom_toBottomOf="@+id/text_view_cart_total_items_label"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/barrier"
             app:layout_constraintTop_toTopOf="@+id/text_view_cart_total_items_label" />
 
@@ -86,10 +89,11 @@
 
         <TextView
             android:id="@+id/text_view_cart_total_cost"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/text_zero"
             app:layout_constraintBottom_toBottomOf="@+id/text_view_cart_total_cost_label"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/barrier"
             app:layout_constraintTop_toTopOf="@+id/text_view_cart_total_cost_label" />
 
@@ -104,10 +108,11 @@
 
         <TextView
             android:id="@+id/text_view_cart_discount"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/text_zero_percent"
             app:layout_constraintBottom_toBottomOf="@+id/text_view_cart_discount_label"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/barrier"
             app:layout_constraintTop_toTopOf="@+id/text_view_cart_discount_label" />
 
@@ -122,10 +127,11 @@
 
         <TextView
             android:id="@+id/text_view_cart_final_cost"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/text_zero"
             app:layout_constraintBottom_toBottomOf="@+id/text_view_cart_final_cost_label"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/barrier"
             app:layout_constraintTop_toTopOf="@+id/text_view_cart_final_cost_label" />
     </androidx.constraintlayout.widget.ConstraintLayout>

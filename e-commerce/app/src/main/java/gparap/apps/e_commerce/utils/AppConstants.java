@@ -48,6 +48,7 @@ public class AppConstants {
     public static final String COLUMN_NAME_ITEM_CATEGORY_ID = "category_id";
     public static final String COLUMN_NAME_ITEM_NAME = "name";
     public static final String COLUMN_NAME_ITEM_COST = "cost";
+    public static final String COLUMN_NAME_ITEM_DISCOUNT = "discount";
     public static final String COLUMN_NAME_ITEM_IMAGE_URL = "image_url";
     public static final String COLUMN_NAME_ITEM_QUANTITY = "quantity";
 

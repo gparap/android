@@ -44,6 +44,7 @@ public class CartRepository implements CartDao {
         contentValues.put(AppConstants.COLUMN_NAME_ITEM_CATEGORY_ID, cartItem.getCategoryId());
         contentValues.put(AppConstants.COLUMN_NAME_ITEM_NAME, cartItem.getName());
         contentValues.put(AppConstants.COLUMN_NAME_ITEM_COST, cartItem.getPrice());
+        contentValues.put(AppConstants.COLUMN_NAME_ITEM_DISCOUNT, cartItem.getDiscount());
         contentValues.put(AppConstants.COLUMN_NAME_ITEM_IMAGE_URL, cartItem.getImageUrl());
         contentValues.put(AppConstants.COLUMN_NAME_ITEM_QUANTITY, 1);
 
@@ -77,6 +78,7 @@ public class CartRepository implements CartDao {
                     cursor.getInt(cursor.getColumnIndexOrThrow(AppConstants.COLUMN_NAME_ITEM_CATEGORY_ID)),
                     cursor.getString(cursor.getColumnIndexOrThrow(AppConstants.COLUMN_NAME_ITEM_NAME)),
                     cursor.getFloat(cursor.getColumnIndexOrThrow(AppConstants.COLUMN_NAME_ITEM_COST)),
+                    cursor.getInt(cursor.getColumnIndexOrThrow(AppConstants.COLUMN_NAME_ITEM_DISCOUNT)),
                     cursor.getString(cursor.getColumnIndexOrThrow(AppConstants.COLUMN_NAME_ITEM_IMAGE_URL)),
                     cursor.getInt(cursor.getColumnIndexOrThrow(AppConstants.COLUMN_NAME_ITEM_QUANTITY))
             );

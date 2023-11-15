@@ -19,15 +19,17 @@ public class CartItemModel {
     private final int id;
     private final int categoryId;
     private final String name;
+    private final int discount;
     private final float price;
     private final String imageUrl;
     private int quantity;
 
-    public CartItemModel(int id, int categoryId, String name, float price, String imageUrl, int quantity) {
+    public CartItemModel(int id, int categoryId, String name, float price, int discount, String imageUrl, int quantity) {
         this.id = id;
         this.categoryId = categoryId;
         this.name = name;
         this.price = price;
+        this.discount = discount;
         this.imageUrl = imageUrl;
         this.quantity = quantity;
     }
@@ -50,6 +52,10 @@ public class CartItemModel {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public int getDiscount() {
+        return discount;
     }
 
     public int getQuantity() {
