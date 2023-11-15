@@ -32,7 +32,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 import gparap.apps.e_commerce.R;
 import gparap.apps.e_commerce.data.CartItemModel;
@@ -121,10 +120,10 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
         //show the cart item quantity
         holder.quantity.setText(String.valueOf(cartItems.get(position).getQuantity()));
 
-        //Update the total items in cart items details TODO: discount
+        //Update the total items in cart items details
         //total items
         TextView cartTotalItems = ((CartActivity) context).findViewById(R.id.text_view_cart_total_items);
-        cartTotalItems.setText(String.valueOf(cartRepository.getCartItemsCount()));
+        cartTotalItems.setText(String.valueOf(Utils.getInstance().getCartTotalItems(cartItems)));
         //total cost
         TextView cartTotalCost = ((CartActivity) context).findViewById(R.id.text_view_cart_total_cost);
         cartTotalCost.setText(Utils.getInstance().formatPrice(Utils.getInstance().getCartTotalCost(cartItems),
