@@ -31,6 +31,7 @@ public class CartItemsDbHelper extends SQLiteOpenHelper {
             AppConstants.COLUMN_NAME_ITEM_CATEGORY_ID + " INTEGER," +
             AppConstants.COLUMN_NAME_ITEM_NAME + " TEXT," +
             AppConstants.COLUMN_NAME_ITEM_COST + " DECIMAL(8,2)," +
+            AppConstants.COLUMN_NAME_ITEM_DISCOUNT + " INTEGER," +
             AppConstants.COLUMN_NAME_ITEM_IMAGE_URL + " TEXT," +
             AppConstants.COLUMN_NAME_ITEM_QUANTITY + " INTEGER)";
 

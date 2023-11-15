@@ -43,6 +43,9 @@
     <string name="price_prefix">Price:\u00A0</string>
     <string name="price_suffix">€</string>
 
+    <string name="discount_prefix">discount:\u00A0</string>
+    <string name="discount_suffix">%</string>
+
     <string name="stock_unavailable">currently out of stock</string>
     <string name="stock_low">low availability in stock</string>
     <string name="stock_available">available in stock</string>

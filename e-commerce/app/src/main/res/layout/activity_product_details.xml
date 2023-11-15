@@ -50,6 +50,20 @@
                 app:layout_constraintTop_toBottomOf="@+id/image_view_product_details"
                 tools:text="Product Price 0€" />
 
+            <!--Product Discount (%)-->
+            <TextView
+                android:id="@+id/text_view_discount_product_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:textStyle="bold|italic"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_price_product_details"
+                tools:text="discount 10%"
+                tools:visibility="visible" />
+
             <!--Items in Stock-->
             <TextView
                 android:id="@+id/text_view_stock_product_details"
@@ -59,7 +73,7 @@
                 android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_price_product_details"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_discount_product_details"
                 tools:text="Availability in Stock" />
 
             <!--Product Description-->

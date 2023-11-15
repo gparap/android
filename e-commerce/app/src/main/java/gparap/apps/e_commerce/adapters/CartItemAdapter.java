@@ -32,11 +32,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import gparap.apps.e_commerce.R;
 import gparap.apps.e_commerce.data.CartItemModel;
 import gparap.apps.e_commerce.data.CartRepository;
+import gparap.apps.e_commerce.ui.CartActivity;
 import gparap.apps.e_commerce.utils.AppConstants;
+import gparap.apps.e_commerce.utils.Utils;
 
 public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartItemViewHolder> {
     private ArrayList<CartItemModel> cartItems = new ArrayList<>();
@@ -80,12 +83,24 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
         int categoryId = cartItems.get(position).getCategoryId();
         String itemImagePath = "";
         switch (categoryId) {
-            case 1: itemImagePath = AppConstants.PRODUCTS_AUTOS_URL; break;
-            case 2: itemImagePath = AppConstants.PRODUCTS_BIKES_URL; break;
-            case 3: itemImagePath = AppConstants.PRODUCTS_DRINKS_URL; break;
-            case 4: itemImagePath = AppConstants.PRODUCTS_GARDEN_URL; break;
-            case 5: itemImagePath = AppConstants.PRODUCTS_GYM_URL; break;
-            case 6: itemImagePath = AppConstants.PRODUCTS_TECH_URL; break;
+            case 1:
+                itemImagePath = AppConstants.PRODUCTS_AUTOS_URL;
+                break;
+            case 2:
+                itemImagePath = AppConstants.PRODUCTS_BIKES_URL;
+                break;
+            case 3:
+                itemImagePath = AppConstants.PRODUCTS_DRINKS_URL;
+                break;
+            case 4:
+                itemImagePath = AppConstants.PRODUCTS_GARDEN_URL;
+                break;
+            case 5:
+                itemImagePath = AppConstants.PRODUCTS_GYM_URL;
+                break;
+            case 6:
+                itemImagePath = AppConstants.PRODUCTS_TECH_URL;
+                break;
         }
 
         //create the image URI reference
@@ -105,6 +120,25 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
 
         //show the cart item quantity
         holder.quantity.setText(String.valueOf(cartItems.get(position).getQuantity()));
+
+        //Update the total items in cart items details TODO: discount
+        //total items
+        TextView cartTotalItems = ((CartActivity) context).findViewById(R.id.text_view_cart_total_items);
+        cartTotalItems.setText(String.valueOf(cartRepository.getCartItemsCount()));
+        //total cost
+        TextView cartTotalCost = ((CartActivity) context).findViewById(R.id.text_view_cart_total_cost);
+        cartTotalCost.setText(Utils.getInstance().formatPrice(Utils.getInstance().getCartTotalCost(cartItems),
+                context.getResources().getString(R.string.price_suffix)));
+        //discount
+        TextView cartDiscount = ((CartActivity) context).findViewById(R.id.text_view_cart_discount);
+        cartDiscount.setText(Utils.getInstance().getCartDiscount(cartItems) +
+                context.getResources().getString(R.string.discount_suffix));
+
+        //final cost
+        TextView cartFinalCost = ((CartActivity) context).findViewById(R.id.text_view_cart_final_cost);
+        cartFinalCost.setText(Utils.getInstance().formatPrice(Utils.getInstance().getCartFinalCost(cartItems),
+                context.getResources().getString(R.string.price_suffix)
+        ));
 
         //remove item from the cart
         holder.buttonRemoveItem.setOnClickListener(v -> {
@@ -144,7 +178,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
             //get the existing quantity & remove one
             int quantity = cartItems.get(position).getQuantity();
             quantity -= 1;
-            if (quantity < 0){
+            if (quantity < 0) {
                 quantity = 0;
             }
 

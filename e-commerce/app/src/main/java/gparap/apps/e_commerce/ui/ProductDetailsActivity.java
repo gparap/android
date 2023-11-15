@@ -18,6 +18,7 @@ package gparap.apps.e_commerce.ui;
 import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -73,6 +74,16 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 getResources().getString(R.string.price_suffix)
         );
 
+        //show the product discount, if exists
+        if (productDetails.get(0).getDiscount() != 0) {
+            TextView productDiscount = findViewById(R.id.text_view_discount_product_details);
+            productDiscount.setVisibility(View.VISIBLE);
+            productDiscount.setText(getResources().getString(R.string.discount_prefix)
+                    + productDetails.get(0).getDiscount()
+                    + getResources().getString(R.string.discount_suffix)
+            );
+        }
+
         //show product availability based on items left in stock
         TextView productStock = findViewById(R.id.text_view_stock_product_details);
         productStock.setText(Utils.getInstance().getProductAvailability(
@@ -100,6 +111,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                                 productDetails.get(0).getCategoryId(),
                                 productDetails.get(0).getName(),
                                 productDetails.get(0).getPrice(),
+                                productDetails.get(0).getDiscount(),
                                 productDetails.get(0).getUrl(),
                                 1
                         );

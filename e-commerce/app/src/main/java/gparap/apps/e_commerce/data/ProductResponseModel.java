@@ -33,6 +33,8 @@ public class ProductResponseModel implements Parcelable {
     private String description;
     @SerializedName("item_cost")
     private Float price;
+    @SerializedName("item_discount")
+    private int discount;
     @SerializedName("items_left")
     private int stock;
     @SerializedName("image_url")
@@ -43,12 +45,13 @@ public class ProductResponseModel implements Parcelable {
     public ProductResponseModel() {
     }
 
-    public ProductResponseModel(int id, int categoryId, String name, String description, Float price, int stock, String url, String keywords) {
+    public ProductResponseModel(int id, int categoryId, String name, String description, Float price, int discount, int stock, String url, String keywords) {
         this.id = id;
         this.categoryId = categoryId;
         this.name = name;
         this.description = description;
         this.price = price;
+        this.discount = discount;
         this.stock = stock;
         this.url = url;
         this.keywords = keywords;
@@ -60,6 +63,7 @@ public class ProductResponseModel implements Parcelable {
         name = in.readString();
         description = in.readString();
         price = in.readFloat();
+        discount = in.readInt();
         stock = in.readInt();
         url = in.readString();
         keywords = in.readString();
@@ -117,6 +121,14 @@ public class ProductResponseModel implements Parcelable {
         this.price = price;
     }
 
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
     public int getStock() {
         return stock;
     }
@@ -153,6 +165,7 @@ public class ProductResponseModel implements Parcelable {
         dest.writeString(name);
         dest.writeString(description);
         dest.writeFloat(price);
+        dest.writeInt(discount);
         dest.writeInt(stock);
         dest.writeString(url);
         dest.writeString(keywords);

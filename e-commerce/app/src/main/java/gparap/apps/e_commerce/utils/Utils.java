@@ -23,7 +23,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.badge.BadgeDrawable;
 
+import java.util.ArrayList;
+import java.util.Locale;
+
 import gparap.apps.e_commerce.R;
+import gparap.apps.e_commerce.data.CartItemModel;
 
 public class Utils {
     private static Utils instance = null;
@@ -118,5 +122,47 @@ public class Utils {
         badgeDrawable.setVisible(true);
         badgeDrawable.setNumber(0);
         return badgeDrawable;
+    }
+
+    /**
+     * Calculates the total cost of all items in the shopping cart.
+     */
+    public float getCartTotalCost(ArrayList<CartItemModel> items) {
+        float cost = 0;
+        for (CartItemModel item: items) {
+            cost += item.getPrice() * item.getQuantity();
+        }
+        return cost;
+    }
+
+    /**
+     * Calculates the final cost of all items in the shopping cart after their discount.
+     */
+    public float getCartFinalCost(ArrayList<CartItemModel> items) {
+        float finalCost = 0;
+        for (CartItemModel item: items) {
+            float cost = item.getPrice() * item.getQuantity();
+            cost = cost - item.getPrice() * ((float) item.getDiscount() / 100);
+            finalCost += cost;
+        }
+        return finalCost;
+    }
+
+    /**
+     * Calculates the approximate discount of the final price of all items in the shopping cart.
+     */
+    public int getCartDiscount(ArrayList<CartItemModel> items) {
+        int discount;
+        float totalCost = Utils.getInstance().getCartTotalCost(items);
+        float finalCost = Utils.getInstance().getCartFinalCost(items);
+        discount = (int) (((100 * finalCost / totalCost) - 100) * -1);
+        return discount;
+    }
+
+    /** Formats a price in the form of ie. "9.99€". */
+    public String formatPrice(float cost, String priceSuffix) {
+        String formattedCost;
+        formattedCost = String.format(Locale.getDefault(), "%.2f", cost) + priceSuffix;
+        return formattedCost;
     }
 }
