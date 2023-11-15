@@ -43,6 +43,19 @@ public class UtilsUnitTest {
     }
 
     @Test
+    public void getCartTotalItems() {
+        //add items to cart
+        ArrayList<CartItemModel> items = new ArrayList<>();
+        items.add(new CartItemModel(1,1, "item1", 19.99f, 5, "", 3));
+        items.add(new CartItemModel(1,1, "item1", 7.49f, 0, "", 1));
+        items.add(new CartItemModel(2,1, "item2", 59.99f, 15, "", 2));
+
+        int expectedCount = 6;
+        int actualCount = Utils.getInstance().getCartTotalItems(items);
+        assertEquals(expectedCount, actualCount);
+    }
+
+    @Test
     public void getCartTotalCost() {
         //add items to cart
         ArrayList<CartItemModel> items = new ArrayList<>();

@@ -125,6 +125,17 @@ public class Utils {
     }
 
     /**
+     * Calculates the total number of items in the shopping cart.
+     */
+    public int getCartTotalItems(ArrayList<CartItemModel> items) {
+        int count = 0;
+        for (CartItemModel item: items) {
+            count += item.getQuantity();
+        }
+        return count;
+    }
+
+    /**
      * Calculates the total cost of all items in the shopping cart.
      */
     public float getCartTotalCost(ArrayList<CartItemModel> items) {
