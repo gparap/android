@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--Book (major) Categories-->
+
+    <item
+        android:id="@+id/menu_book_category_ancient_classics"
+        android:title="@string/text_ancient_classics"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_book_category_biography"
+        android:title="@string/text_biography"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_book_category_folklore"
+        android:title="@string/text_folklore"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_book_category_history"
+        android:title="@string/text_history"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_book_category_non_fiction"
+        android:title="@string/text_non_fiction"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_book_category_novel"
+        android:title="@string/text_novel"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_book_category_poetry"
+        android:title="@string/text_poetry"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_book_category_philosophy"
+        android:title="@string/text_philosophy"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_book_category_science_fiction"
+        android:title="@string/text_science_fiction"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_book_category_short_stories"
+        android:title="@string/text_short_stories"
+        app:showAsAction="never" />
+</menu>

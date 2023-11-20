@@ -25,4 +25,16 @@
     <!--Book Library menu-->
     <string name="text_open_pdf_from_library">Open PDF from library</string>
     <string name="text_add_pdf_to_featured">Add to favorite books</string>
+
+    <!--Book categories menu-->
+    <string name="text_ancient_classics">Ancient Classics</string>
+    <string name="text_biography">Biography</string>
+    <string name="text_folklore">Folklore</string>
+    <string name="text_history">History</string>
+    <string name="text_non_fiction">Non-Fiction</string>
+    <string name="text_novel">Novel</string>
+    <string name="text_poetry">Poetry</string>
+    <string name="text_philosophy">Philosophy</string>
+    <string name="text_science_fiction">Science Fiction</string>
+    <string name="text_short_stories">Short Stories</string>
 </resources>
