@@ -34,7 +34,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import gparap.apps.e_commerce.R;
-import gparap.apps.e_commerce.ui.auth.RegisterActivity;
 
 public class RegisterActivityInstrumentedTest {
     private View decorView;

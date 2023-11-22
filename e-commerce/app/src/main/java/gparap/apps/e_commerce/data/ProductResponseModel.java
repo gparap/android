@@ -22,6 +22,7 @@ import androidx.annotation.NonNull;
 
 import com.google.gson.annotations.SerializedName;
 
+/** @noinspection unused*/
 public class ProductResponseModel implements Parcelable {
     @SerializedName("id")
     private int id;

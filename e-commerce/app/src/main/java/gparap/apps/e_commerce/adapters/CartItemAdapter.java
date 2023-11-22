@@ -201,7 +201,8 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
         cartTotalItems.setText(String.valueOf(Utils.getInstance().getCartTotalItems(cartItems)));
 
         //total cost
-        cartTotalCost.setText(Utils.getInstance().formatPrice(Utils.getInstance().getCartTotalCost(cartItems), context.getResources().getString(R.string.price_suffix)));
+        cartTotalCost.setText(Utils.getInstance().formatPrice(Utils.getInstance().getCartTotalCost(cartItems),
+                context.getResources().getString(R.string.price_suffix)));
 
         //discount
         cartDiscount.setText(Utils.getInstance().getCartDiscount(cartItems) + context.getResources().getString(R.string.discount_suffix));

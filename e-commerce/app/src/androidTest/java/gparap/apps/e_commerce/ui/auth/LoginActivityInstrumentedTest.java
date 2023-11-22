@@ -35,7 +35,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import gparap.apps.e_commerce.R;
-import gparap.apps.e_commerce.ui.auth.LoginActivity;
 
 public class LoginActivityInstrumentedTest {
     private View decorView;
@@ -45,9 +44,7 @@ public class LoginActivityInstrumentedTest {
         ActivityScenario<LoginActivity> activityScenario = ActivityScenario.launch(LoginActivity.class);
 
         //get the root view of this activity
-        activityScenario.onActivity(activity -> {
-            decorView = activity.getWindow().getDecorView();
-        });
+        activityScenario.onActivity(activity -> decorView = activity.getWindow().getDecorView());
     }
 
     @Test
