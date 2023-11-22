@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 gparap
+ * Copyright 2023 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,6 +44,10 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
     private ArrayList<CartItemModel> cartItems = new ArrayList<>();
     private Context context;
     private CartRepository cartRepository;
+    private TextView cartTotalItems;
+    private TextView cartTotalCost;
+    private TextView cartDiscount;
+    private TextView cartFinalCost;
 
     @SuppressWarnings("unused")
     public ArrayList<CartItemModel> getCartItems() {
@@ -120,24 +124,13 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
         //show the cart item quantity
         holder.quantity.setText(String.valueOf(cartItems.get(position).getQuantity()));
 
-        //Update the total items in cart items details
-        //total items
-        TextView cartTotalItems = ((CartActivity) context).findViewById(R.id.text_view_cart_total_items);
-        cartTotalItems.setText(String.valueOf(Utils.getInstance().getCartTotalItems(cartItems)));
-        //total cost
-        TextView cartTotalCost = ((CartActivity) context).findViewById(R.id.text_view_cart_total_cost);
-        cartTotalCost.setText(Utils.getInstance().formatPrice(Utils.getInstance().getCartTotalCost(cartItems),
-                context.getResources().getString(R.string.price_suffix)));
-        //discount
-        TextView cartDiscount = ((CartActivity) context).findViewById(R.id.text_view_cart_discount);
-        cartDiscount.setText(Utils.getInstance().getCartDiscount(cartItems) +
-                context.getResources().getString(R.string.discount_suffix));
+        //get the views of the cart items details section
+        cartTotalItems = ((CartActivity) context).findViewById(R.id.text_view_cart_total_items);
+        cartTotalCost = ((CartActivity) context).findViewById(R.id.text_view_cart_total_cost);
+        cartDiscount = ((CartActivity) context).findViewById(R.id.text_view_cart_discount);
+        cartFinalCost = ((CartActivity) context).findViewById(R.id.text_view_cart_final_cost);
 
-        //final cost
-        TextView cartFinalCost = ((CartActivity) context).findViewById(R.id.text_view_cart_final_cost);
-        cartFinalCost.setText(Utils.getInstance().formatPrice(Utils.getInstance().getCartFinalCost(cartItems),
-                context.getResources().getString(R.string.price_suffix)
-        ));
+        updateCartItemDetails();
 
         //remove item from the cart
         holder.buttonRemoveItem.setOnClickListener(v -> {
@@ -149,6 +142,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
                         cartRepository.removeCartItem(cartItems.get(position).getId());
                         cartItems.remove(position);
                         notifyItemRemoved(position);
+                        updateCartItemDetails();
                     })
                     .setNegativeButton(context.getResources().getString(R.string.text_dialog_cancel), (dialog, which) ->
                             dialog.dismiss());
@@ -170,6 +164,8 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
 
             //update the adapter
             cartItems.get(position).setQuantity(quantity);
+
+            updateCartItemDetails();
         });
 
         //decrease cart item quantity
@@ -189,12 +185,31 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
 
             //update the adapter
             cartItems.get(position).setQuantity(quantity);
+
+            updateCartItemDetails();
         });
     }
 
     @Override
     public int getItemCount() {
         return cartItems.size();
+    }
+
+    /** Update the total items details in shopping cart. */
+    public void updateCartItemDetails() {
+        //total items
+        cartTotalItems.setText(String.valueOf(Utils.getInstance().getCartTotalItems(cartItems)));
+
+        //total cost
+        cartTotalCost.setText(Utils.getInstance().formatPrice(Utils.getInstance().getCartTotalCost(cartItems), context.getResources().getString(R.string.price_suffix)));
+
+        //discount
+        cartDiscount.setText(Utils.getInstance().getCartDiscount(cartItems) + context.getResources().getString(R.string.discount_suffix));
+
+        //final cost
+        cartFinalCost.setText(Utils.getInstance().formatPrice(Utils.getInstance().getCartFinalCost(cartItems),
+                context.getResources().getString(R.string.price_suffix)
+        ));
     }
 
     static class CartItemViewHolder extends RecyclerView.ViewHolder {
