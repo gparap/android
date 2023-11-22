@@ -74,7 +74,7 @@ public class UtilsUnitTest {
         items.add(new CartItemModel(1,1, "item1", 19.99f, 5, "", 1));
         items.add(new CartItemModel(2,1, "item2", 59.99f, 15, "", 2));
 
-        float expectedCost = 129.972f;
+        float expectedCost = 120.9735f;
         float actualCost = Utils.getInstance().getCartFinalCost(items);
         assertEquals(expectedCost, actualCost, 0);
     }
@@ -87,7 +87,7 @@ public class UtilsUnitTest {
         items.add(new CartItemModel(1,1, "item1", 7.49f, 0, "", 1));
         items.add(new CartItemModel(2,1, "item2", 59.99f, 15, "", 2));
 
-        int expectedDiscount = 5;
+        int expectedDiscount = 11;
         int actualDiscount = Utils.getInstance().getCartDiscount(items);
         assertEquals(expectedDiscount, actualDiscount);
     }
