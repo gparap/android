@@ -176,7 +176,7 @@ public class CartActivityInstrumentedTest {
         AtomicInteger items = new AtomicInteger(0);
         activityScenario.onActivity(activity -> {
             //add item
-            CartItemModel item = new CartItemModel(1, 1, "test item", 0.99F, "", 1);
+            CartItemModel item = new CartItemModel(1, 1, "test item", 0.99F, 0, "", 1);
             CartRepository repository = new CartRepository(InstrumentationRegistry.getInstrumentation().getTargetContext());
             repository.addItemToCart(item);
             items.set(1);

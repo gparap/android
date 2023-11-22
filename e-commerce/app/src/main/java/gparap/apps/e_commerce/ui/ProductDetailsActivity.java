@@ -15,7 +15,6 @@
  */
 package gparap.apps.e_commerce.ui;
 
-import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -41,7 +40,6 @@ import gparap.apps.e_commerce.utils.Utils;
 public class ProductDetailsActivity extends AppCompatActivity {
     private CartRepository cartRepository;
 
-    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

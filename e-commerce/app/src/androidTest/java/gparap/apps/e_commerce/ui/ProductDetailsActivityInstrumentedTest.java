@@ -171,10 +171,11 @@ public class ProductDetailsActivityInstrumentedTest {
 
     //delete previous test item from cart (if exists)
     private void deleteItemFromCart() {
-        CartItemsDbHelper dbHelper = new CartItemsDbHelper(InstrumentationRegistry.getInstrumentation().getTargetContext());
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String selection = AppConstants.COLUMN_NAME_ITEM_ID + " LIKE ?";
-        String[] selectionArgs = {"0"};
-        db.delete(AppConstants.TABLE_NAME_CART_ITEMS, selection, selectionArgs);
+        try (CartItemsDbHelper dbHelper = new CartItemsDbHelper(InstrumentationRegistry.getInstrumentation().getTargetContext())){
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            String selection = AppConstants.COLUMN_NAME_ITEM_ID + " LIKE ?";
+            String[] selectionArgs = {"0"};
+            db.delete(AppConstants.TABLE_NAME_CART_ITEMS, selection, selectionArgs);
+        }
     }
 }

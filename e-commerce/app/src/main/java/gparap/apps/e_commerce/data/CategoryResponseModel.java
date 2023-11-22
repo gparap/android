@@ -17,6 +17,7 @@ package gparap.apps.e_commerce.data;
 
 import com.google.gson.annotations.SerializedName;
 
+/** @noinspection unused*/
 public class CategoryResponseModel {
     @SerializedName("id")
     private int id;
