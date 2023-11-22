@@ -150,10 +150,12 @@ public class Utils {
      * Calculates the final cost of all items in the shopping cart after their discount.
      */
     public float getCartFinalCost(ArrayList<CartItemModel> items) {
+        float totalCost;
         float finalCost = 0;
         for (CartItemModel item: items) {
-            float cost = item.getPrice() * item.getQuantity();
-            cost = cost - item.getPrice() * ((float) item.getDiscount() / 100);
+            float cost;
+            totalCost = item.getPrice() * item.getQuantity();
+            cost = totalCost - item.getPrice() * item.getQuantity() * ((float) item.getDiscount() / 100);
             finalCost += cost;
         }
         return finalCost;
