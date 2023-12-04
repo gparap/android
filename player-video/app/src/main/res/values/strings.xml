@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">My Video Player Application</string>
+    <string name="video_image_button">Video Image</string>
+    <string name="video_title">Video Title</string>
+    <string name="video_description">Video Description</string>
+    <string name="video_length">Video Length</string>
 </resources>
