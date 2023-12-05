@@ -15,6 +15,7 @@
  */
 package gparap.apps.player_video
 
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -28,12 +29,28 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class MainActivityInstrumentedTest {
+    private lateinit var activityScenario: ActivityScenario<MainActivity>
+
     @Before
     fun setUp() {
-        ActivityScenario.launch(MainActivity::class.java)
+        activityScenario = ActivityScenario.launch(MainActivity::class.java)
     }
+
     @Test
     fun isVisible_recyclerViewVideos() {
         onView(withId(R.id.recycler_view_videos)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isNotEmpty_recyclerViewVideos() {
+        activityScenario.onActivity {
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recycler_view_videos)
+            val videoCount = recyclerView.adapter?.itemCount
+            if (videoCount != null) {
+                assert(videoCount > 0)
+            } else {
+                assert(false)
+            }
+        }
     }
 }
