@@ -19,20 +19,20 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import gparap.apps.player_video.data.VideoModel
+import com.bumptech.glide.Glide
 import gparap.apps.player_video.R
+import gparap.apps.player_video.data.VideoModel
 
 class VideoAdapter : RecyclerView.Adapter<VideoAdapter.VideoViewHolder>() {
     var videos = ArrayList<VideoModel>()
     private lateinit var context: Context
 
     class VideoViewHolder(itemView: View) : ViewHolder(itemView) {
-        val videoPlay = itemView.findViewById<ImageButton>(R.id.image_button_video_play)
+        val videoPlay = itemView.findViewById<ImageView>(R.id.image_button_video_play)
         val videoTitle = itemView.findViewById<TextView>(R.id.text_view_video_title)
         val videoDescription = itemView.findViewById<TextView>(R.id.text_view_video_description)
         val videoLength = itemView.findViewById<TextView>(R.id.text_view_video_length)
@@ -51,11 +51,8 @@ class VideoAdapter : RecyclerView.Adapter<VideoAdapter.VideoViewHolder>() {
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
         //display the video image
-        holder.videoPlay.setImageDrawable(
-            AppCompatResources.getDrawable(
-                context,
-                R.drawable.ic_video_play_24
-            )
+        Glide.with(context).load(videos[position].path).into(
+            holder.videoPlay
         )
 
         //display the video details
