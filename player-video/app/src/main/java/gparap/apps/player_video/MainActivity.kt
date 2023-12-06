@@ -90,6 +90,7 @@ class MainActivity : AppCompatActivity() {
             android.provider.MediaStore.Video.Media.TITLE,
             android.provider.MediaStore.Video.Media.DESCRIPTION,
             android.provider.MediaStore.Video.Media.DURATION,
+            android.provider.MediaStore.Video.Media.DATA,
         )
 
         //query the given URI and get the Cursor
@@ -110,9 +111,13 @@ class MainActivity : AppCompatActivity() {
             val description = cursor.getString(index)
             index = cursor.getColumnIndex(android.provider.MediaStore.Video.Media.DURATION)
             val duration = cursor.getString(index)
+            index = cursor.getColumnIndex(android.provider.MediaStore.Video.Media.DATA)
+            val path = cursor.getString(index)
 
             //create a video model with these details and add to list
-            videos.add(VideoModel.Builder().title(title).description(description).length(duration).build())
+            videos.add(VideoModel.Builder()
+                .title(title).description(description).length(duration).path(path)
+                .build())
         }
 
         //free up the Cursor
