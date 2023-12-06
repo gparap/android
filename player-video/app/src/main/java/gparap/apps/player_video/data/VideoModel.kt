@@ -52,7 +52,12 @@ class VideoModel(
         fun creator(creator: String) = apply { this.creator = creator }
         fun category(category: String) = apply { this.category = category }
         fun title(title: String) = apply { this.title = title }
-        fun description(description: String) = apply { this.description = description }
+        fun description(description: String?) = apply {
+            this.description = description
+            if (description == null) {
+                this.description = ""
+            }
+        }
         fun language(language: String) = apply { this.language = language }
         fun length(length: String) = apply { this.length = length }
         fun size(size: String) = apply { this.size = size }
