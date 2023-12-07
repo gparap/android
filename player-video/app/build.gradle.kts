@@ -49,4 +49,9 @@ dependencies {
 
     //Glide framework
     implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    //Media3 ExoPlayer component
+    implementation("androidx.media3:media3-exoplayer:1.2.0")
+    implementation("androidx.media3:media3-exoplayer-dash:1.2.0")
+    implementation("androidx.media3:media3-ui:1.2.0")
 }

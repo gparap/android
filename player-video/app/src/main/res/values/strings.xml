@@ -4,4 +4,7 @@
     <string name="video_title">Video Title</string>
     <string name="video_description">Video Description</string>
     <string name="video_length">Video Length</string>
+    <string name="desc_play_video">Start video</string>
+    <string name="desc_pause_video">Pause video</string>
+    <string name="desc_stop_video">Stop video</string>
 </resources>
