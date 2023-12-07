@@ -29,7 +29,7 @@
                 android:layout_width="72dp"
                 android:layout_height="48dp"
                 android:contentDescription="@string/video_image_button"
-                tools:src="@drawable/ic_video_play_24"
+                tools:src="@drawable/ic_play_24"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

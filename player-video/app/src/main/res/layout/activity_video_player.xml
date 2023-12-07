@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VideoPlayerActivity">
+
+    <!--Media player view-->
+    <androidx.media3.ui.PlayerView
+        android:id="@+id/player_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/image_button_pause_video"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--Play video-->
+    <ImageButton
+        android:id="@+id/image_button_play_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/desc_play_video"
+        app:layout_constraintBottom_toTopOf="@+id/default_time_bar"
+        app:layout_constraintEnd_toStartOf="@+id/image_button_pause_video"
+        app:srcCompat="@drawable/ic_play_24" />
+
+    <!--Pause video-->
+    <ImageButton
+        android:id="@+id/image_button_pause_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/desc_pause_video"
+        app:layout_constraintBottom_toTopOf="@+id/default_time_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_pause_24" />
+
+    <!--Stop video-->
+    <ImageButton
+        android:id="@+id/image_button_stop_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/desc_stop_video"
+        app:layout_constraintBottom_toTopOf="@+id/default_time_bar"
+        app:layout_constraintStart_toEndOf="@+id/image_button_pause_video"
+        app:srcCompat="@drawable/ic_stop_24" />
+
+    <!--Time bar that shows the current position of the player-->
+    <androidx.media3.ui.DefaultTimeBar
+        android:id="@+id/default_time_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
