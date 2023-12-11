@@ -16,6 +16,7 @@
 package gparap.apps.player_video.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import gparap.apps.player_video.R
+import gparap.apps.player_video.VideoPlayerActivity
 import gparap.apps.player_video.data.VideoModel
 
 class VideoAdapter : RecyclerView.Adapter<VideoAdapter.VideoViewHolder>() {
@@ -59,5 +61,12 @@ class VideoAdapter : RecyclerView.Adapter<VideoAdapter.VideoViewHolder>() {
         holder.videoTitle.text = videos[position].title
         holder.videoDescription.text = videos[position].description
         holder.videoLength.text = videos[position].length
+
+        //open video in new activity
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, VideoPlayerActivity::class.java)
+            intent.putExtra("video_path", videos[position].path)
+            context.startActivity(intent)
+        }
     }
 }
