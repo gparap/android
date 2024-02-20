@@ -30,19 +30,11 @@
                 tools:text="objective title" />
 
             <!--Description-->
-            <EditText
+            <TextView
                 android:id="@+id/cardview_objective_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="4dp"
-                android:background="@null"
-                android:ems="10"
-                android:gravity="start|center_vertical"
-                android:importantForAutofill="no"
-                android:inputType="textMultiLine"
-                android:minHeight="48dp"
-                android:textSize="14sp"
-                tools:ignore="LabelFor"
                 tools:text="objective description" />
 
             <!--Due Date-->
