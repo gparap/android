@@ -22,3 +22,5 @@ local.properties
 /.idea/migrations.xml
 /.idea/misc.xml
 /.idea/vcs.xml
+/.idea/androidTestResultsUserPreferences.xml
+/.idea/render.experimental.xml
