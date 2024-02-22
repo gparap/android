@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_activity_add_objective"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddObjectiveActivity">
+
+    <!--Title-->
+    <EditText
+        android:id="@+id/add_objective_title"
+        style="@style/add_objective_edit_text_style"
+        android:hint="@string/hint_objective_title"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="Autofill" />
+
+    <!--Description-->
+    <EditText
+        android:id="@+id/add_objective_description"
+        style="@style/add_objective_edit_text_style"
+        android:hint="@string/hint_objective_description"
+
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_objective_title"
+        tools:ignore="Autofill" />
+
+    <!--Due Date TODO: use Date-->
+    <EditText
+        android:id="@+id/add_objective_due_date"
+        style="@style/add_objective_edit_text_style"
+        android:hint="@string/hint_objective_due_date"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_objective_description"
+        tools:ignore="Autofill" />
+
+    <!--Add objective-->
+    <Button
+        android:id="@+id/add_objective_submit_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:text="@string/text_add_objective"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

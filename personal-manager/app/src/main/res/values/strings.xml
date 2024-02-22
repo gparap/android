@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">My Personal Manager</string>
+    <string name="desc_add_objective">Adds  a new objective.</string>
+    <string name="hint_objective_title">enter title for objective</string>
+    <string name="hint_objective_description">enter description for objective</string>
+    <string name="hint_objective_due_date">enter due date for objective</string>
+    <string name="text_add_objective">Add Objective</string>
 </resources>
