@@ -13,22 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.personal_manager.data
+package gparap.apps.personal_manager
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import android.app.Application
+import androidx.room.Room
+import gparap.apps.personal_manager.data.ObjectiveDatabase
+import gparap.apps.personal_manager.data.ObjectiveRepository
 
-/** This data class describes an objective. */
-@Entity(tableName = "objectives")
-data class ObjectiveModel(
-    val title: String,
-    val description: String,
+/** Personal Manager application base class. */
+class PersonalManagerApplication : Application() {
 
-    //TODO: create converters for Date values
-    @ColumnInfo(name = "due_date") val dueDate: String,
-    @ColumnInfo(name = "inception_date") val inceptionDate: String
-) {
-    @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+    /** Application Database. */
+    val database by lazy { ObjectiveDatabase.getInstance(this) }
 }

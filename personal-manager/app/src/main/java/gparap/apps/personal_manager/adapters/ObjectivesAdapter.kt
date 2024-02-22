@@ -43,8 +43,9 @@ class ObjectivesAdapter : Adapter<ObjectivesAdapter.ObjectivesViewHolder>() {
         //display the objective details
         holder.title.text = objectives[position].title
         holder.description.text = objectives[position].description
-        holder.dueDate.text = Date(objectives[position].dueDate.toString()).toString()
-        holder.insceptionDate.text = Date(objectives[position].inceptionDate.toString()).toString()
+        //TODO: revert back to Date values
+        holder.dueDate.text = objectives[position].dueDate
+        holder.insceptionDate.text = objectives[position].inceptionDate
     }
 
     class ObjectivesViewHolder(itemView: View) : ViewHolder(itemView) {
