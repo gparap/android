@@ -15,12 +15,52 @@
  */
 package gparap.apps.personal_manager
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import gparap.apps.personal_manager.data.ObjectiveModel
+import kotlinx.coroutines.launch
 
 class AddObjectiveActivity : AppCompatActivity() {
+    private var objectiveTitle: String = ""
+    private var objectiveDescription: String = ""
+    private var objectiveDueDate: String = ""
+    private var objectiveInceptionDate: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_objective)
+
+        //add objective TODO: validation
+        findViewById<Button>(R.id.add_objective_submit_button).setOnClickListener {
+            //get the objective details that the user submitted
+            findViewById<EditText>(R.id.add_objective_title).apply {
+                objectiveTitle = this.text.toString()
+            }
+            findViewById<EditText>(R.id.add_objective_description).apply {
+                objectiveDescription = this.text.toString()
+            }
+            findViewById<EditText>(R.id.add_objective_title).apply {
+                objectiveDueDate = this.text.toString()
+            }
+
+            //initialize the data repository
+            val appContext = application as PersonalManagerApplication
+            val appRepository = appContext.repository
+
+            //add objective into the database
+            lifecycleScope.launch {
+                appRepository.insertObjective(
+                    ObjectiveModel(
+                        objectiveTitle,
+                        objectiveDescription,
+                        objectiveDueDate,
+                        objectiveInceptionDate
+                    )
+                )
+            }
+        }
     }
 }
