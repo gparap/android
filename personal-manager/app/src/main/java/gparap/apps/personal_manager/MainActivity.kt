@@ -15,13 +15,12 @@
  */
 package gparap.apps.personal_manager
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.personal_manager.adapters.ObjectivesAdapter
 import gparap.apps.personal_manager.data.ObjectiveModel
-import java.util.Date
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,11 +31,11 @@ class MainActivity : AppCompatActivity() {
         val testObjectives = ArrayList<ObjectiveModel>()
         testObjectives.addAll(
             listOf(
-                ObjectiveModel("objective 1", "desc 1", Date(2024, 31, 1), Date(2024, 31, 12)),
-                ObjectiveModel("objective 2", "desc 2", Date(2024, 31, 2), Date(2024, 31, 12)),
-                ObjectiveModel("objective 3", "desc 3", Date(2024, 31, 3), Date(2024, 31, 12)),
-                ObjectiveModel("objective 4", "desc 4", Date(2024, 31, 4), Date(2024, 31, 12)),
-                ObjectiveModel("objective 5", "desc 5", Date(2024, 31, 5), Date(2024, 31, 12))
+                ObjectiveModel("objective 1", "desc 1", "2024, 31, 1", "2024, 31, 12"),
+                ObjectiveModel("objective 2", "desc 2", "2024, 31, 2", "2024, 31, 12"),
+                ObjectiveModel("objective 3", "desc 3", "2024, 31, 3", "2024, 31, 12"),
+                ObjectiveModel("objective 4", "desc 4", "2024, 31, 4", "2024, 31, 12"),
+                ObjectiveModel("objective 5", "desc 5", "2024, 31, 5", "2024, 31, 12")
             )
         )
 
