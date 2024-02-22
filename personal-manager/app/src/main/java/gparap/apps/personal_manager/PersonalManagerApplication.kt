@@ -25,4 +25,7 @@ class PersonalManagerApplication : Application() {
 
     /** Application Database. */
     val database by lazy { ObjectiveDatabase.getInstance(this) }
+
+    /** Data Repository. */
+    val repository by lazy { ObjectiveRepository(database.objectiveDao()) }
 }
