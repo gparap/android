@@ -17,7 +17,6 @@ package gparap.apps.personal_manager
 
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -28,26 +27,29 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class MainActivityInstrumentedTest {
+class AddObjectiveActivityInstrumentedTest {
     @Before
     fun setUp() {
-        ActivityScenario.launch(MainActivity::class.java)
+        ActivityScenario.launch(AddObjectiveActivity::class.java)
     }
 
     @Test
-    fun isVisible_recycler_view_objectives() {
-        onView(withId(R.id.recycler_view_objectives)).check(matches(isDisplayed()))
+    fun isVisible_add_objective_title() {
+        onView(withId(R.id.add_objective_title)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun isVisible_fab_add_objective() {
-        onView(withId(R.id.fab_add_objective)).check(matches(isDisplayed()))
+    fun isVisible_add_objective_description() {
+        onView(withId(R.id.add_objective_description)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun onAddObjectiveFabButtonClick_redirectToAddObjectiveActivity() {
-        onView(withId(R.id.layout_activity_main)).check(matches(isDisplayed()))
-        onView(withId(R.id.fab_add_objective)).perform(click())
-        onView(withId(R.id.layout_activity_add_objective)).check(matches(isDisplayed()))
+    fun isVisible_add_objective_due_date() {
+        onView(withId(R.id.add_objective_due_date)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isVisible_add_objective_submit_button() {
+        onView(withId(R.id.add_objective_submit_button)).check(matches(isDisplayed()))
     }
 }

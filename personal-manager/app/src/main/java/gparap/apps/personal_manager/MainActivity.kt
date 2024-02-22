@@ -15,10 +15,12 @@
  */
 package gparap.apps.personal_manager
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.personal_manager.adapters.ObjectivesAdapter
 import gparap.apps.personal_manager.data.ObjectiveModel
 
@@ -44,5 +46,10 @@ class MainActivity : AppCompatActivity() {
         val recyclerViewObjectives = findViewById<RecyclerView>(R.id.recycler_view_objectives)
         recyclerViewObjectives.layoutManager = LinearLayoutManager(this)
         recyclerViewObjectives.adapter = adapterObjectives
+
+        //goto add objective activity
+        findViewById<FloatingActionButton>(R.id.fab_add_objective).setOnClickListener {
+            startActivity(Intent(this, AddObjectiveActivity::class.java))
+        }
     }
 }
