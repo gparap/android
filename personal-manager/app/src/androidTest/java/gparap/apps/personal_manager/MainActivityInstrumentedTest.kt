@@ -26,6 +26,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import gparap.apps.personal_manager.ui.MainActivity
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -59,16 +60,8 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun isCorrect_addNewObjective() {
-        //objectives in the recycler view
-        var itemsBefore = 0
-        var itemsAfter = 0
-
         //get how many objective are there before inserting a new one
-        activityScenario.onActivity {
-            val recyclerView = it.findViewById<RecyclerView>(R.id.recycler_view_objectives)
-            val adapter = recyclerView.adapter
-            itemsBefore = adapter?.itemCount ?: 0
-        }
+        val itemsBefore = getItems()
 
         //goto add objective activity
         onView(withId(R.id.fab_add_objective)).perform(click())
@@ -82,13 +75,20 @@ class MainActivityInstrumentedTest {
         pressBack()
 
         //get how many objective are there after inserting a new one
-        activityScenario.onActivity {
-            val recyclerView = it.findViewById<RecyclerView>(R.id.recycler_view_objectives)
-            val adapter = recyclerView.adapter
-            itemsAfter = adapter?.itemCount ?: 0
-        }
+        val itemsAfter = getItems()
 
         //test here if objective added successfully
         assert(itemsAfter > itemsBefore)
+    }
+
+    /** Returns the number of items in the recycler view. */
+    private fun getItems(): Int {
+        var items = 0
+        activityScenario.onActivity {
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recycler_view_objectives)
+            val adapter = recyclerView.adapter
+            items = adapter?.itemCount ?: 0
+        }
+        return items
     }
 }

@@ -16,7 +16,6 @@
 package gparap.apps.personal_manager
 
 import android.app.Application
-import androidx.room.Room
 import gparap.apps.personal_manager.data.ObjectiveDatabase
 import gparap.apps.personal_manager.data.ObjectiveRepository
 
@@ -24,7 +23,7 @@ import gparap.apps.personal_manager.data.ObjectiveRepository
 class PersonalManagerApplication : Application() {
 
     /** Application Database. */
-    val database by lazy { ObjectiveDatabase.getInstance(this) }
+    private val database by lazy { ObjectiveDatabase.getInstance(this) }
 
     /** Data Repository. */
     val repository by lazy { ObjectiveRepository(database.objectiveDao()) }
