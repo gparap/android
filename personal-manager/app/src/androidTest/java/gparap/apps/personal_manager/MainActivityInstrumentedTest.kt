@@ -15,9 +15,13 @@
  */
 package gparap.apps.personal_manager
 
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
+import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -29,9 +33,11 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class MainActivityInstrumentedTest {
+    private lateinit var activityScenario: ActivityScenario<MainActivity>
+
     @Before
     fun setUp() {
-        ActivityScenario.launch(MainActivity::class.java)
+        activityScenario = ActivityScenario.launch(MainActivity::class.java)
     }
 
     @Test
@@ -49,5 +55,40 @@ class MainActivityInstrumentedTest {
         onView(withId(R.id.layout_activity_main)).check(matches(isDisplayed()))
         onView(withId(R.id.fab_add_objective)).perform(click())
         onView(withId(R.id.layout_activity_add_objective)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isCorrect_addNewObjective() {
+        //objectives in the recycler view
+        var itemsBefore = 0
+        var itemsAfter = 0
+
+        //get how many objective are there before inserting a new one
+        activityScenario.onActivity {
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recycler_view_objectives)
+            val adapter = recyclerView.adapter
+            itemsBefore = adapter?.itemCount ?: 0
+        }
+
+        //goto add objective activity
+        onView(withId(R.id.fab_add_objective)).perform(click())
+
+        //add a new test objective
+        onView(withId(R.id.add_objective_title)).perform(typeText("test title"))
+        onView(withId(R.id.add_objective_description)).perform(typeText("test desc"))
+        onView(withId(R.id.add_objective_due_date)).perform(typeText("test due date"))
+        closeSoftKeyboard()
+        onView(withId(R.id.add_objective_submit_button)).perform(click())
+        pressBack()
+
+        //get how many objective are there after inserting a new one
+        activityScenario.onActivity {
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recycler_view_objectives)
+            val adapter = recyclerView.adapter
+            itemsAfter = adapter?.itemCount ?: 0
+        }
+
+        //test here if objective added successfully
+        assert(itemsAfter > itemsBefore)
     }
 }

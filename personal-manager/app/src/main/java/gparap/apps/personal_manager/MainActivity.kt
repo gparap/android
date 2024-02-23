@@ -18,6 +18,7 @@ package gparap.apps.personal_manager
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -29,23 +30,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //create a test list of objectives
-        val testObjectives = ArrayList<ObjectiveModel>()
-        testObjectives.addAll(
-            listOf(
-                ObjectiveModel("objective 1", "desc 1", "2024, 31, 1", "2024, 31, 12"),
-                ObjectiveModel("objective 2", "desc 2", "2024, 31, 2", "2024, 31, 12"),
-                ObjectiveModel("objective 3", "desc 3", "2024, 31, 3", "2024, 31, 12"),
-                ObjectiveModel("objective 4", "desc 4", "2024, 31, 4", "2024, 31, 12"),
-                ObjectiveModel("objective 5", "desc 5", "2024, 31, 5", "2024, 31, 12")
-            )
-        )
+        //initialize the data repository
+        val appContext = application as PersonalManagerApplication
+        val appRepository = appContext.repository
 
-        //create recycler view with adapter
-        val adapterObjectives = ObjectivesAdapter().apply { objectives = testObjectives }
-        val recyclerViewObjectives = findViewById<RecyclerView>(R.id.recycler_view_objectives)
-        recyclerViewObjectives.layoutManager = LinearLayoutManager(this)
-        recyclerViewObjectives.adapter = adapterObjectives
+        //get objectives from the database
+        val objectivesLiveData: LiveData<List<ObjectiveModel>> = appRepository.getObjectives()
+
+        //display objectives
+        objectivesLiveData.observe(this) {
+            //create recycler view with adapter
+            val adapterObjectives = ObjectivesAdapter().apply {
+                    objectives = it as ArrayList<ObjectiveModel>
+            }
+            val recyclerViewObjectives = findViewById<RecyclerView>(R.id.recycler_view_objectives)
+            recyclerViewObjectives.layoutManager = LinearLayoutManager(this)
+            recyclerViewObjectives.adapter = adapterObjectives
+        }
 
         //goto add objective activity
         findViewById<FloatingActionButton>(R.id.fab_add_objective).setOnClickListener {

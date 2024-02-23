@@ -25,7 +25,7 @@ class ObjectiveRepository(private val objectiveDao: ObjectiveDao) : ObjectiveDao
     }
 
     override fun getObjectives(): LiveData<List<ObjectiveModel>> {
-        TODO("Not yet implemented")
+        return objectiveDao.getObjectives()
     }
 
     override suspend fun updateObjective(objectiveModel: ObjectiveModel) {
