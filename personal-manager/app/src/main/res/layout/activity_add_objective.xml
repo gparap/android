@@ -5,7 +5,7 @@
     android:id="@+id/layout_activity_add_objective"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddObjectiveActivity">
+    tools:context=".ui.AddObjectiveActivity">
 
     <!--Title-->
     <EditText

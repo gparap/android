@@ -13,14 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.personal_manager
+package gparap.apps.personal_manager.ui
 
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import gparap.apps.personal_manager.R
 import gparap.apps.personal_manager.data.ObjectiveModel
+import gparap.apps.personal_manager.utils.Utils
 import kotlinx.coroutines.launch
 
 class AddObjectiveActivity : AppCompatActivity() {
@@ -46,13 +48,9 @@ class AddObjectiveActivity : AppCompatActivity() {
                 objectiveDueDate = this.text.toString()
             }
 
-            //initialize the data repository
-            val appContext = application as PersonalManagerApplication
-            val appRepository = appContext.repository
-
             //add objective into the database
             lifecycleScope.launch {
-                appRepository.insertObjective(
+                Utils.getRepository(application).insertObjective(
                     ObjectiveModel(
                         objectiveTitle,
                         objectiveDescription,

@@ -14,10 +14,10 @@
         android:theme="@style/Theme.MyPersonalManager"
         tools:targetApi="31">
         <activity
-            android:name=".AddObjectiveActivity"
+            android:name=".ui.AddObjectiveActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

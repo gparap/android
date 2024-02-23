@@ -13,37 +13,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.personal_manager
+package gparap.apps.personal_manager.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import gparap.apps.personal_manager.R
 import gparap.apps.personal_manager.adapters.ObjectivesAdapter
 import gparap.apps.personal_manager.data.ObjectiveModel
+import gparap.apps.personal_manager.utils.Utils
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var recyclerViewObjectives: RecyclerView
+    private lateinit var adapterObjectives: ObjectivesAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //initialize the data repository
-        val appContext = application as PersonalManagerApplication
-        val appRepository = appContext.repository
-
         //get objectives from the database
-        val objectivesLiveData: LiveData<List<ObjectiveModel>> = appRepository.getObjectives()
+        val objectivesLiveData = Utils.getRepository(application).getObjectives()
 
         //display objectives
         objectivesLiveData.observe(this) {
             //create recycler view with adapter
-            val adapterObjectives = ObjectivesAdapter().apply {
-                    objectives = it as ArrayList<ObjectiveModel>
+            adapterObjectives = ObjectivesAdapter().apply {
+                objectives = it as ArrayList<ObjectiveModel>
             }
-            val recyclerViewObjectives = findViewById<RecyclerView>(R.id.recycler_view_objectives)
+            recyclerViewObjectives = findViewById(R.id.recycler_view_objectives)
             recyclerViewObjectives.layoutManager = LinearLayoutManager(this)
             recyclerViewObjectives.adapter = adapterObjectives
         }

@@ -23,7 +23,6 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import gparap.apps.personal_manager.R
 import gparap.apps.personal_manager.data.ObjectiveModel
-import java.util.Date
 
 class ObjectivesAdapter : Adapter<ObjectivesAdapter.ObjectivesViewHolder>() {
     var objectives = ArrayList<ObjectiveModel>()
@@ -45,13 +44,13 @@ class ObjectivesAdapter : Adapter<ObjectivesAdapter.ObjectivesViewHolder>() {
         holder.description.text = objectives[position].description
         //TODO: revert back to Date values
         holder.dueDate.text = objectives[position].dueDate
-        holder.insceptionDate.text = objectives[position].inceptionDate
+        holder.inceptionDate.text = objectives[position].inceptionDate
     }
 
     class ObjectivesViewHolder(itemView: View) : ViewHolder(itemView) {
-        val title = itemView.findViewById<TextView>(R.id.cardview_objective_title)
-        val description = itemView.findViewById<TextView>(R.id.cardview_objective_description)
-        val dueDate = itemView.findViewById<TextView>(R.id.cardview_objective_due_date)
-        val insceptionDate = itemView.findViewById<TextView>(R.id.cardview_objective_inception_date)
+        val title: TextView = itemView.findViewById(R.id.cardview_objective_title)
+        val description: TextView = itemView.findViewById(R.id.cardview_objective_description)
+        val dueDate: TextView = itemView.findViewById(R.id.cardview_objective_due_date)
+        val inceptionDate: TextView = itemView.findViewById(R.id.cardview_objective_inception_date)
     }
 }
