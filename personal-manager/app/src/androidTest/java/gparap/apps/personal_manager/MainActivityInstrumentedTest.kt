@@ -23,18 +23,27 @@ import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import gparap.apps.personal_manager.adapters.ObjectivesAdapter
 import gparap.apps.personal_manager.ui.MainActivity
 import org.junit.Assert.*
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class MainActivityInstrumentedTest {
     private lateinit var activityScenario: ActivityScenario<MainActivity>
+
+    //use these details for a test objective
+    private val testObjectiveTitle = "test_title"
+    private val testObjectiveDescription = "test_desc"
+    private val testObjectiveDueDate = "test_due_date"
 
     @Before
     fun setUp() {
@@ -63,22 +72,37 @@ class MainActivityInstrumentedTest {
         //get how many objective are there before inserting a new one
         val itemsBefore = getItems()
 
-        //goto add objective activity
-        onView(withId(R.id.fab_add_objective)).perform(click())
-
         //add a new test objective
-        onView(withId(R.id.add_objective_title)).perform(typeText("test title"))
-        onView(withId(R.id.add_objective_description)).perform(typeText("test desc"))
-        onView(withId(R.id.add_objective_due_date)).perform(typeText("test due date"))
-        closeSoftKeyboard()
-        onView(withId(R.id.add_objective_submit_button)).perform(click())
-        pressBack()
+        addObjective()
 
         //get how many objective are there after inserting a new one
         val itemsAfter = getItems()
 
         //test here if objective added successfully
         assert(itemsAfter > itemsBefore)
+    }
+
+    @Test
+    @Ignore("TODO: wait for delete functionality")
+    fun isCorrect_openObjectiveForEditing() {
+        //check if at least an objective exists, if not add one
+        if (getItems() == 0) {
+            addObjective()
+        }
+
+        //open the first objective
+        onView(withId(R.id.recycler_view_objectives)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<ObjectivesAdapter.ObjectivesViewHolder>(
+                0,
+                click()
+            )
+        )
+
+        //test here
+        onView(withId(R.id.layout_activity_update_objective)).check(matches(isDisplayed()))
+        onView(withText(testObjectiveTitle)).check(matches(isDisplayed()))
+        onView(withText(testObjectiveDescription)).check(matches(isDisplayed()))
+        onView(withText(testObjectiveDueDate)).check(matches(isDisplayed()))
     }
 
     /** Returns the number of items in the recycler view. */
@@ -90,5 +114,16 @@ class MainActivityInstrumentedTest {
             items = adapter?.itemCount ?: 0
         }
         return items
+    }
+
+    /** Goes to add objective activity & Adds a new test objective. */
+    private fun addObjective() {
+        onView(withId(R.id.fab_add_objective)).perform(click())
+        onView(withId(R.id.add_objective_title)).perform(typeText(testObjectiveTitle))
+        onView(withId(R.id.add_objective_description)).perform(typeText(testObjectiveDescription))
+        onView(withId(R.id.add_objective_due_date)).perform(typeText(testObjectiveDueDate))
+        closeSoftKeyboard()
+        onView(withId(R.id.add_objective_submit_button)).perform(click())
+        pressBack()
     }
 }

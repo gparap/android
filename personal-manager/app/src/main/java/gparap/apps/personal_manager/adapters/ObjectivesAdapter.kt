@@ -15,6 +15,8 @@
  */
 package gparap.apps.personal_manager.adapters
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,13 +25,15 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import gparap.apps.personal_manager.R
 import gparap.apps.personal_manager.data.ObjectiveModel
+import gparap.apps.personal_manager.ui.UpdateObjectiveActivity
 
 class ObjectivesAdapter : Adapter<ObjectivesAdapter.ObjectivesViewHolder>() {
     var objectives = ArrayList<ObjectiveModel>()
+    private var context: Context? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ObjectivesViewHolder {
         //create the inflated item view
-        val context = parent.context
+        context = parent.context
         val view = LayoutInflater.from(context).inflate(R.layout.cardview_objective, parent, false)
         return ObjectivesViewHolder(view)
     }
@@ -45,6 +49,16 @@ class ObjectivesAdapter : Adapter<ObjectivesAdapter.ObjectivesViewHolder>() {
         //TODO: revert back to Date values
         holder.dueDate.text = objectives[position].dueDate
         holder.inceptionDate.text = objectives[position].inceptionDate
+
+        //open objective in new activity for editing
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, UpdateObjectiveActivity::class.java)
+            intent.putExtra("objective_title", objectives[position].title)
+            intent.putExtra("objective_description", objectives[position].description)
+            intent.putExtra("objective_due_date", objectives[position].dueDate)
+            intent.putExtra("objective_inception_date", objectives[position].inceptionDate)
+            context?.startActivity(intent)
+        }
     }
 
     class ObjectivesViewHolder(itemView: View) : ViewHolder(itemView) {
