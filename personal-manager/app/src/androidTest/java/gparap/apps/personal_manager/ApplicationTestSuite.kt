@@ -22,6 +22,7 @@ import org.junit.runners.Suite.SuiteClasses
 @RunWith(Suite::class)
 @SuiteClasses(
     MainActivityInstrumentedTest::class,
-    AddObjectiveActivityInstrumentedTest::class
+    AddObjectiveActivityInstrumentedTest::class,
+    UpdateObjectiveActivityInstrumentedTest::class
 )
 class ApplicationTestSuite
