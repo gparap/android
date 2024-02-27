@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--Add Objective-->
+    <item
+        android:id="@+id/menu_item_add_objective"
+        android:title="@string/text_add_objective"
+        app:showAsAction="never" />
+
+    <!--Delete All Objectives-->
+    <item
+        android:id="@+id/menu_item_delete_objectives"
+        android:title="@string/text_delete_objectives"
+        app:showAsAction="never" />
+
+    <!--About Application-->
+    <item
+        android:id="@+id/menu_item_about_app"
+        android:title="@string/text_about_app"
+        app:showAsAction="never" />
+
+</menu>

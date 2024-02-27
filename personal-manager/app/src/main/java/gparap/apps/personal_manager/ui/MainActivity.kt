@@ -17,6 +17,8 @@ package gparap.apps.personal_manager.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -52,5 +54,28 @@ class MainActivity : AppCompatActivity() {
         findViewById<FloatingActionButton>(R.id.fab_add_objective).setOnClickListener {
             startActivity(Intent(this, AddObjectiveActivity::class.java))
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            //goto add objective activity
+            R.id.menu_item_add_objective -> {
+                startActivity(Intent(this, AddObjectiveActivity::class.java))
+            }
+            //delete all objectives
+            R.id.menu_item_add_objective -> {
+                TODO("Not implemented yet")
+            }
+            //display the "about app" text
+            R.id.menu_item_about_app -> {
+                TODO("Not implemented yet")
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
