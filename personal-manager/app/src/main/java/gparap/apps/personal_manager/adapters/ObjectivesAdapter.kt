@@ -53,6 +53,7 @@ class ObjectivesAdapter : Adapter<ObjectivesAdapter.ObjectivesViewHolder>() {
         //open objective in new activity for editing
         holder.itemView.setOnClickListener {
             val intent = Intent(context, UpdateObjectiveActivity::class.java)
+            intent.putExtra("objective_id", objectives[position].id)
             intent.putExtra("objective_title", objectives[position].title)
             intent.putExtra("objective_description", objectives[position].description)
             intent.putExtra("objective_due_date", objectives[position].dueDate)

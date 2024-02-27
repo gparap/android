@@ -20,6 +20,7 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.pressBack
+import androidx.test.espresso.action.ViewActions.clearText
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -30,6 +31,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import gparap.apps.personal_manager.adapters.ObjectivesAdapter
 import gparap.apps.personal_manager.ui.MainActivity
+import org.jetbrains.annotations.Nullable
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Ignore
@@ -103,6 +105,42 @@ class MainActivityInstrumentedTest {
         onView(withText(testObjectiveTitle)).check(matches(isDisplayed()))
         onView(withText(testObjectiveDescription)).check(matches(isDisplayed()))
         onView(withText(testObjectiveDueDate)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    @Ignore("TODO: wait for delete functionality")
+    fun icCorrect_UpdateObjective() {
+        //check if at least an objective exists, if not add one
+        if (getItems() == 0) {
+            addObjective()
+        }
+
+        //open the first objective for editing
+        onView(withId(R.id.recycler_view_objectives)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<ObjectivesAdapter.ObjectivesViewHolder>(
+                0,
+                click()
+            )
+        )
+
+        //update objective title
+        val updatedTitle = testObjectiveTitle.plus(" updated")
+        val updatedDescription = testObjectiveDescription.plus(" updated")
+        val updatedDueDate = testObjectiveDueDate.plus(" updated")
+        onView(withId(R.id.update_objective_title)).perform(clearText())
+        onView(withId(R.id.update_objective_title)).perform(typeText(updatedTitle))
+        onView(withId(R.id.update_objective_description)).perform(clearText())
+        onView(withId(R.id.update_objective_description)).perform(typeText(updatedDescription))
+        onView(withId(R.id.update_objective_due_date)).perform(clearText())
+        onView(withId(R.id.update_objective_due_date)).perform(typeText(updatedDueDate))
+        closeSoftKeyboard()
+        onView(withId(R.id.update_objective_submit_button)).perform(click())
+        pressBack()
+
+        //test here
+        onView(withText(updatedTitle)).check(matches(isDisplayed()))
+        onView(withText(updatedDescription)).check(matches(isDisplayed()))
+        onView(withText(updatedDueDate)).check(matches(isDisplayed()))
     }
 
     /** Returns the number of items in the recycler view. */

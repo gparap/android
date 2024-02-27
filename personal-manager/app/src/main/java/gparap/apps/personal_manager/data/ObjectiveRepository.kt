@@ -29,7 +29,7 @@ class ObjectiveRepository(private val objectiveDao: ObjectiveDao) : ObjectiveDao
     }
 
     override suspend fun updateObjective(objectiveModel: ObjectiveModel) {
-        TODO("Not yet implemented")
+        objectiveDao.updateObjective(objectiveModel)
     }
 
     override suspend fun deleteObjective(objectiveModel: ObjectiveModel) {
