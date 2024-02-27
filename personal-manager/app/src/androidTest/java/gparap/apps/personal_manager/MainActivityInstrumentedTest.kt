@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
 import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.action.ViewActions.clearText
 import androidx.test.espresso.action.ViewActions.click
@@ -29,9 +30,9 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import gparap.apps.personal_manager.adapters.ObjectivesAdapter
 import gparap.apps.personal_manager.ui.MainActivity
-import org.jetbrains.annotations.Nullable
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Ignore
@@ -109,7 +110,7 @@ class MainActivityInstrumentedTest {
 
     @Test
     @Ignore("TODO: wait for delete functionality")
-    fun icCorrect_UpdateObjective() {
+    fun icCorrect_updateObjective() {
         //check if at least an objective exists, if not add one
         if (getItems() == 0) {
             addObjective()
@@ -141,6 +142,23 @@ class MainActivityInstrumentedTest {
         onView(withText(updatedTitle)).check(matches(isDisplayed()))
         onView(withText(updatedDescription)).check(matches(isDisplayed()))
         onView(withText(updatedDueDate)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun onMenuItemAddObjectiveClick_openAddOObjectiveActivity() {
+        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().targetContext)
+        onView(withText(R.string.text_add_objective)).perform(click())
+        onView(withId(R.id.layout_activity_add_objective)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun onMenuItemDeleteObjectivesClick_deleteAllObjectives() {
+        assert(false) { "Not implemented yet." }
+    }
+
+    @Test
+    fun onMenuItemAboutAppClick_showTheAboutAppSection() {
+        assert(false) { "Not implemented yet." }
     }
 
     /** Returns the number of items in the recycler view. */
