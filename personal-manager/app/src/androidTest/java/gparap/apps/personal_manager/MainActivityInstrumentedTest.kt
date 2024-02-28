@@ -35,7 +35,6 @@ import gparap.apps.personal_manager.adapters.ObjectivesAdapter
 import gparap.apps.personal_manager.ui.MainActivity
 import org.junit.Assert.*
 import org.junit.Before
-import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -86,12 +85,10 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
-    @Ignore("TODO: wait for delete functionality")
     fun isCorrect_openObjectiveForEditing() {
-        //check if at least an objective exists, if not add one
-        if (getItems() == 0) {
-            addObjective()
-        }
+        //make sure there is only one test objective
+        deleteObjectives()
+        addObjective()
 
         //open the first objective
         onView(withId(R.id.recycler_view_objectives)).perform(
@@ -109,12 +106,10 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
-    @Ignore("TODO: wait for delete functionality")
     fun icCorrect_updateObjective() {
-        //check if at least an objective exists, if not add one
-        if (getItems() == 0) {
-            addObjective()
-        }
+        //make sure there is only one test objective
+        deleteObjectives()
+        addObjective()
 
         //open the first objective for editing
         onView(withId(R.id.recycler_view_objectives)).perform(
@@ -153,7 +148,8 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun onMenuItemDeleteObjectivesClick_deleteAllObjectives() {
-        //add two test objectives
+        //add at least two test objectives
+        //!!! never mind the same details
         addObjective()
         addObjective()
 
@@ -162,9 +158,7 @@ class MainActivityInstrumentedTest {
         assert(itemsBefore > 0)
 
         //delete all objectives
-        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().targetContext)
-        onView(withText(R.string.text_delete_objectives)).perform(click())
-        onView(withText(R.string.dialog_ok)).perform(click())
+        deleteObjectives()
 
         //test mass deletion here
         val itemsAfter = getItems()
@@ -196,5 +190,12 @@ class MainActivityInstrumentedTest {
         closeSoftKeyboard()
         onView(withId(R.id.add_objective_submit_button)).perform(click())
         pressBack()
+    }
+
+    /** Deletes all objectives from the database. */
+    private fun deleteObjectives() {
+        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().targetContext)
+        onView(withText(R.string.text_delete_objectives)).perform(click())
+        onView(withText(R.string.dialog_ok)).perform(click())
     }
 }
