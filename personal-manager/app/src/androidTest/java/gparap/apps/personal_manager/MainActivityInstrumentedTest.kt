@@ -23,6 +23,7 @@ import androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
 import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.action.ViewActions.clearText
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.longClick
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
@@ -137,6 +138,26 @@ class MainActivityInstrumentedTest {
         onView(withText(updatedTitle)).check(matches(isDisplayed()))
         onView(withText(updatedDescription)).check(matches(isDisplayed()))
         onView(withText(updatedDueDate)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isCorrect_deleteObjective() {
+        //delete everything and add a test objective
+        deleteObjectives()
+        addObjective()
+
+        //delete the objective
+        onView(withId(R.id.recycler_view_objectives)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<ObjectivesAdapter.ObjectivesViewHolder>(
+                0,
+                longClick()
+            )
+        )
+        onView(withText(R.string.dialog_ok)).perform(click())
+
+        //test if objective deleted
+        val items = getItems()
+        assert(items == 0)
     }
 
     @Test

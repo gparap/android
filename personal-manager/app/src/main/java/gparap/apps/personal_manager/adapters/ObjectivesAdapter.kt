@@ -21,11 +21,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import gparap.apps.personal_manager.R
 import gparap.apps.personal_manager.data.ObjectiveModel
+import gparap.apps.personal_manager.ui.MainActivity
 import gparap.apps.personal_manager.ui.UpdateObjectiveActivity
+import gparap.apps.personal_manager.utils.Utils
+import kotlinx.coroutines.launch
 
 class ObjectivesAdapter : Adapter<ObjectivesAdapter.ObjectivesViewHolder>() {
     var objectives = ArrayList<ObjectiveModel>()
@@ -59,6 +64,36 @@ class ObjectivesAdapter : Adapter<ObjectivesAdapter.ObjectivesViewHolder>() {
             intent.putExtra("objective_due_date", objectives[position].dueDate)
             intent.putExtra("objective_inception_date", objectives[position].inceptionDate)
             context?.startActivity(intent)
+        }
+
+        //delete objective
+        holder.itemView.setOnLongClickListener { _ ->
+            //display a confirmation dialog before deletion
+            context?.let {
+                AlertDialog.Builder(it)
+                    .setTitle(R.string.text_delete_objective)
+                    .setMessage(R.string.dialog_msg_delete_objective)
+                    .setPositiveButton(R.string.dialog_ok) { _, _ ->
+                        (it as MainActivity).lifecycleScope.launch {
+                            //create objective
+                            val objective = ObjectiveModel(
+                                objectives[position].title,
+                                objectives[position].description,
+                                objectives[position].dueDate,
+                                objectives[position].inceptionDate
+                            )
+                            objective.id = objectives[position].id
+
+                            //delete objective
+                            Utils.getRepository(it.application).deleteObjective(objective)
+                        }
+                    }
+                    .setNegativeButton(R.string.dialog_cancel) { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .create().show()
+            }
+            return@setOnLongClickListener true
         }
     }
 
