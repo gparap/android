@@ -17,6 +17,7 @@ package gparap.apps.personal_manager.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -39,7 +40,7 @@ interface ObjectiveDao {
     suspend fun updateObjective(objectiveModel: ObjectiveModel)
 
     /** Deletes an objective from the database. */
-    @Update
+    @Delete
     suspend fun deleteObjective(objectiveModel: ObjectiveModel)
 
     /** Deletes all objectives from the database. */
