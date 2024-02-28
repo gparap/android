@@ -35,4 +35,8 @@ class ObjectiveRepository(private val objectiveDao: ObjectiveDao) : ObjectiveDao
     override suspend fun deleteObjective(objectiveModel: ObjectiveModel) {
         TODO("Not yet implemented")
     }
+
+    override suspend fun deleteAllObjectives() {
+        objectiveDao.deleteAllObjectives()
+    }
 }

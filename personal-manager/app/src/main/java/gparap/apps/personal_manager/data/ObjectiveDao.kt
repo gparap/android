@@ -41,4 +41,8 @@ interface ObjectiveDao {
     /** Deletes an objective from the database. */
     @Update
     suspend fun deleteObjective(objectiveModel: ObjectiveModel)
+
+    /** Deletes all objectives from the database. */
+    @Query("DELETE FROM objectives")
+    suspend fun deleteAllObjectives()
 }
