@@ -8,4 +8,7 @@
     <string name="text_update_objective">Update Objective</string>
     <string name="text_delete_objectives">Delete Objectives</string>
     <string name="text_about_app">About App</string>
+    <string name="dialog_msg_delete_objectives">All your objectives will be removed from memory. Are you sure?</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Cancel</string>
 </resources>

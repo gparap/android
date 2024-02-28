@@ -153,7 +153,22 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun onMenuItemDeleteObjectivesClick_deleteAllObjectives() {
-        assert(false) { "Not implemented yet." }
+        //add two test objectives
+        addObjective()
+        addObjective()
+
+        //make sure objectives were added
+        val itemsBefore = getItems()
+        assert(itemsBefore > 0)
+
+        //delete all objectives
+        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getInstrumentation().targetContext)
+        onView(withText(R.string.text_delete_objectives)).perform(click())
+        onView(withText(R.string.dialog_ok)).perform(click())
+
+        //test mass deletion here
+        val itemsAfter = getItems()
+        assert(itemsAfter == 0)
     }
 
     @Test

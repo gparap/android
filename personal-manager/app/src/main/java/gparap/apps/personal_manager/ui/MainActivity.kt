@@ -19,7 +19,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -27,6 +29,7 @@ import gparap.apps.personal_manager.R
 import gparap.apps.personal_manager.adapters.ObjectivesAdapter
 import gparap.apps.personal_manager.data.ObjectiveModel
 import gparap.apps.personal_manager.utils.Utils
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerViewObjectives: RecyclerView
@@ -68,8 +71,21 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, AddObjectiveActivity::class.java))
             }
             //delete all objectives
-            R.id.menu_item_add_objective -> {
-                TODO("Not implemented yet")
+            R.id.menu_item_delete_objectives -> {
+                //display a confirmation dialog before deletion
+                AlertDialog.Builder(this)
+                    .setTitle(R.string.text_delete_objectives)
+                    .setMessage(R.string.dialog_msg_delete_objectives)
+                    .setPositiveButton(R.string.dialog_ok) { _, _ ->
+                        //delete objectives
+                        lifecycleScope.launch {
+                            Utils.getRepository(application).deleteAllObjectives()
+                        }
+                    }
+                    .setNegativeButton(R.string.dialog_cancel) { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .create().show()
             }
             //display the "about app" text
             R.id.menu_item_about_app -> {
