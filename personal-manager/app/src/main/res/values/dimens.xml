@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Design Dimensions-->
+    <dimen name="fab_layout_margin">16dp</dimen>
+    <dimen name="cardview_layout_margin">8dp</dimen>
+    <dimen name="linearLayout_padding">8dp</dimen>
+    <dimen name="textView_layout_marginVertical">4dp</dimen>
+    <dimen name="android_minHeight">48dp</dimen>
+    <dimen name="submit_button_margin">2dp</dimen>
+</resources>
