@@ -29,6 +29,11 @@ import gparap.apps.personal_manager.R
 import gparap.apps.personal_manager.data.ObjectiveModel
 import gparap.apps.personal_manager.ui.MainActivity
 import gparap.apps.personal_manager.ui.UpdateObjectiveActivity
+import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_DESCRIPTION
+import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_DUE_DATE
+import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_ID
+import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_INCEPTION_DATE
+import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_TITLE
 import gparap.apps.personal_manager.utils.Utils
 import kotlinx.coroutines.launch
 
@@ -58,11 +63,11 @@ class ObjectivesAdapter : Adapter<ObjectivesAdapter.ObjectivesViewHolder>() {
         //open objective in new activity for editing
         holder.itemView.setOnClickListener {
             val intent = Intent(context, UpdateObjectiveActivity::class.java)
-            intent.putExtra("objective_id", objectives[position].id)
-            intent.putExtra("objective_title", objectives[position].title)
-            intent.putExtra("objective_description", objectives[position].description)
-            intent.putExtra("objective_due_date", objectives[position].dueDate)
-            intent.putExtra("objective_inception_date", objectives[position].inceptionDate)
+            intent.putExtra(INTENT_EXTRA_OBJECTIVE_ID, objectives[position].id)
+            intent.putExtra(INTENT_EXTRA_OBJECTIVE_TITLE, objectives[position].title)
+            intent.putExtra(INTENT_EXTRA_OBJECTIVE_DESCRIPTION, objectives[position].description)
+            intent.putExtra(INTENT_EXTRA_OBJECTIVE_DUE_DATE, objectives[position].dueDate)
+            intent.putExtra(INTENT_EXTRA_OBJECTIVE_INCEPTION_DATE, objectives[position].inceptionDate)
             context?.startActivity(intent)
         }
 

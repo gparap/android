@@ -7,6 +7,11 @@ import android.widget.EditText
 import androidx.lifecycle.lifecycleScope
 import gparap.apps.personal_manager.R
 import gparap.apps.personal_manager.data.ObjectiveModel
+import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_DESCRIPTION
+import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_DUE_DATE
+import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_ID
+import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_INCEPTION_DATE
+import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_TITLE
 import gparap.apps.personal_manager.utils.Utils
 import kotlinx.coroutines.launch
 
@@ -21,12 +26,12 @@ class UpdateObjectiveActivity : AppCompatActivity() {
         //get the objective details from intent
         if (intent != null) {
             objectiveOld = ObjectiveModel(
-                intent.getStringExtra("objective_title")!!,
-                intent.getStringExtra("objective_description")!!,
-                intent.getStringExtra("objective_due_date")!!,
-                intent.getStringExtra("objective_inception_date")!!
+                intent.getStringExtra(INTENT_EXTRA_OBJECTIVE_TITLE)!!,
+                intent.getStringExtra(INTENT_EXTRA_OBJECTIVE_DESCRIPTION)!!,
+                intent.getStringExtra(INTENT_EXTRA_OBJECTIVE_DUE_DATE)!!,
+                intent.getStringExtra(INTENT_EXTRA_OBJECTIVE_INCEPTION_DATE)!!
             )
-            objectiveOld?.id = intent.getIntExtra("objective_id", 0)
+            objectiveOld?.id = intent.getIntExtra(INTENT_EXTRA_OBJECTIVE_ID, 0)
         }
 
         //display the objective details
