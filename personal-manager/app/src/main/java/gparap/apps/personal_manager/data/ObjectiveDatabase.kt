@@ -19,6 +19,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import gparap.apps.personal_manager.utils.AppConstants.OBJECTIVES_DATABASE
 
 /** Database schema containing the objectives. */
 @Database(entities = [ObjectiveModel::class], version = 1, exportSchema = false)
@@ -44,7 +45,7 @@ abstract class ObjectiveDatabase : RoomDatabase() {
             return Room.databaseBuilder(
                 context,
                 ObjectiveDatabase::class.java,
-                "objectives_database.db"
+                OBJECTIVES_DATABASE
             ).build()
         }
     }
