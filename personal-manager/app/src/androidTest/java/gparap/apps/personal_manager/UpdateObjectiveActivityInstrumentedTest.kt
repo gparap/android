@@ -45,6 +45,11 @@ class UpdateObjectiveActivityInstrumentedTest {
     }
 
     @Test
+    fun isVisible_update_objective_due_date_label() {
+        onView(withId(R.id.update_objective_due_date_label)).check(matches(isDisplayed()))
+    }
+
+    @Test
     fun isVisible_update_objective_due_date() {
         onView(withId(R.id.update_objective_due_date)).check(matches(isDisplayed()))
     }

@@ -13,8 +13,8 @@
         style="@style/objective_edit_text_style"
         android:hint="@string/hint_objective_title"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/add_objective_due_date"
+        app:layout_constraintStart_toStartOf="@+id/add_objective_due_date"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="Autofill" />
 
@@ -23,24 +23,35 @@
         android:id="@+id/add_objective_description"
         style="@style/objective_edit_text_style"
         android:hint="@string/hint_objective_description"
-
         android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/add_objective_due_date"
+        app:layout_constraintStart_toStartOf="@+id/add_objective_due_date"
         app:layout_constraintTop_toBottomOf="@+id/add_objective_title"
         tools:ignore="Autofill" />
 
-    <!--Due Date TODO: use Date-->
-    <EditText
+    <!--Due Date label-->
+    <TextView
+        android:id="@+id/add_objective_due_date_label"
+        style="@style/objective_text_view_style"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/hint_objective_due_date"
+        app:layout_constraintEnd_toEndOf="@+id/add_objective_due_date"
+        app:layout_constraintStart_toStartOf="@+id/add_objective_due_date"
+        app:layout_constraintTop_toBottomOf="@+id/add_objective_description" />
+
+    <!--Due Date picker-->
+    <DatePicker
+        android:layout_marginStart="4dp"
         android:id="@+id/add_objective_due_date"
-        style="@style/objective_edit_text_style"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:hint="@string/hint_objective_due_date"
-        android:inputType="text"
-        android:minHeight="@dimen/android_minHeight"
+        android:inputType="date"
+        app:layout_constraintBottom_toTopOf="@+id/add_objective_submit_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_objective_description"
-        tools:ignore="Autofill" />
+        app:layout_constraintTop_toBottomOf="@+id/add_objective_due_date_label" />
 
     <!--Add objective-->
     <Button

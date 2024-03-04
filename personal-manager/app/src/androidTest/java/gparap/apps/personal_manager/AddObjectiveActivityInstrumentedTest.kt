@@ -45,6 +45,11 @@ class AddObjectiveActivityInstrumentedTest {
     }
 
     @Test
+    fun isVisible_add_objective_due_date_label() {
+        onView(withId(R.id.add_objective_due_date_label)).check(matches(isDisplayed()))
+    }
+
+    @Test
     fun isVisible_add_objective_due_date() {
         onView(withId(R.id.add_objective_due_date)).check(matches(isDisplayed()))
     }
