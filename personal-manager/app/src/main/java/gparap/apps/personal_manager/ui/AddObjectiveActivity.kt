@@ -50,8 +50,13 @@ class AddObjectiveActivity : AppCompatActivity() {
                 objectiveDescription = this.text.toString()
             }
 
-            //get the due date of the objective
+            //get the device's calendar instance
             val calendar: Calendar = Calendar.getInstance()
+
+            //set the inception date of the objective
+            objectiveInceptionDate = calendar.time.toString()
+
+            //set the due date of the objective
             calendar.set(datePicker.year, datePicker.month, datePicker.dayOfMonth)
             objectiveDueDate = calendar.time.toString()
 
