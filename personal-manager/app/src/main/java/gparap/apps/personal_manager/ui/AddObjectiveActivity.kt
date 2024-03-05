@@ -17,6 +17,7 @@ package gparap.apps.personal_manager.ui
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.DatePicker
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -24,6 +25,7 @@ import gparap.apps.personal_manager.R
 import gparap.apps.personal_manager.data.ObjectiveModel
 import gparap.apps.personal_manager.utils.Utils
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 class AddObjectiveActivity : AppCompatActivity() {
     private var objectiveTitle: String = ""
@@ -35,18 +37,23 @@ class AddObjectiveActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_objective)
 
+        //get the date picker widget
+        val datePicker = findViewById<DatePicker>(R.id.add_objective_due_date)
+
         //add objective TODO: validation
         findViewById<Button>(R.id.add_objective_submit_button).setOnClickListener {
-            //get the objective details that the user submitted
+            //get the objective title & description details that the user submitted
             findViewById<EditText>(R.id.add_objective_title).apply {
                 objectiveTitle = this.text.toString()
             }
             findViewById<EditText>(R.id.add_objective_description).apply {
                 objectiveDescription = this.text.toString()
             }
-            findViewById<EditText>(R.id.add_objective_title).apply {
-                objectiveDueDate = this.text.toString()
-            }
+
+            //get the due date of the objective
+            val calendar: Calendar = Calendar.getInstance()
+            calendar.set(datePicker.year, datePicker.month, datePicker.dayOfMonth)
+            objectiveDueDate = calendar.time.toString()
 
             //add objective into the database
             lifecycleScope.launch {
