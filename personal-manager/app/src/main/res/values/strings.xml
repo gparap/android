@@ -13,4 +13,9 @@
     <string name="dialog_msg_delete_objective">The selected objective will be removed from memory. Are you sure?</string>
     <string name="dialog_ok">OK</string>
     <string name="dialog_cancel">Cancel</string>
+    <string name="validation_title_empty">Title must not be empty.</string>
+    <string name="validation_title_digits_only">Title must be an alphanumeric value.</string>
+    <string name="validation_description_empty">Description must not be empty.</string>
+    <string name="validation_description_digits_only">Description must be an alphanumeric value.</string>
+    <string name="validation_due_date_smaller">Due date must be greater than inception date.</string>
 </resources>
