@@ -56,7 +56,6 @@ class ObjectivesAdapter : Adapter<ObjectivesAdapter.ObjectivesViewHolder>() {
         //display the objective details
         holder.title.text = objectives[position].title
         holder.description.text = objectives[position].description
-        //TODO: revert back to Date values
         holder.dueDate.text = objectives[position].dueDate.toString()
         holder.inceptionDate.text = objectives[position].inceptionDate.toString()
 

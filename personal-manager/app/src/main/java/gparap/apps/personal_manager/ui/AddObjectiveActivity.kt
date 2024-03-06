@@ -21,7 +21,6 @@ import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.lifecycleScope
 import gparap.apps.personal_manager.R
 import gparap.apps.personal_manager.data.ObjectiveModel
@@ -43,7 +42,7 @@ class AddObjectiveActivity : AppCompatActivity() {
         //get the date picker widget
         val datePicker = findViewById<DatePicker>(R.id.add_objective_due_date)
 
-        //add objective TODO: validation
+        //add objective
         findViewById<Button>(R.id.add_objective_submit_button).setOnClickListener {
             //get the objective title & description details that the user submitted
             findViewById<EditText>(R.id.add_objective_title).apply {
@@ -63,8 +62,16 @@ class AddObjectiveActivity : AppCompatActivity() {
             calendar.set(datePicker.year, datePicker.month, datePicker.dayOfMonth)
             objectiveDueDate = calendar.time
 
+            //create the objective
+            val objective = ObjectiveModel(
+                objectiveTitle,
+                objectiveDescription,
+                objectiveDueDate,
+                objectiveInceptionDate
+            )
+
             //validate the objective
-            val validationResultArray = validateObjective()
+            val validationResultArray = Utils.validateObjective(objective, this.resources)
             val (validation, message) = validationResultArray   //deconstruct result in named values
             if (validation == false) {
                 Toast.makeText(this, message.toString(), Toast.LENGTH_SHORT).show().apply {
@@ -74,57 +81,8 @@ class AddObjectiveActivity : AppCompatActivity() {
 
             //add objective into the database
             lifecycleScope.launch {
-                Utils.getRepository(application).insertObjective(
-                    ObjectiveModel(
-                        objectiveTitle,
-                        objectiveDescription,
-                        objectiveDueDate,
-                        objectiveInceptionDate
-                    )
-                )
+                Utils.getRepository(application).insertObjective(objective)
             }
         }
-    }
-
-    /**
-     * Validates the objective before inserting it into the database and return a result array.
-     *
-     * Result Array:
-     * - `result[0]`: Validation result boolean
-     * - `result[1]`: Validation string message
-     */
-    private fun validateObjective(): Array<Any> {
-        //array holding the validation result & message
-        val result: Array<Any> = arrayOf(true, "")
-
-        //title must be an alphanumeric value
-        if (objectiveTitle.trim().isEmpty()) {
-            result[0] = false
-            result[1] = this.resources.getString(R.string.validation_title_empty)
-            return result
-        }
-        if (objectiveTitle.trim().isDigitsOnly()) {
-            result[0] = false
-            result[1] = this.resources.getString(R.string.validation_title_digits_only)
-            return result
-        }
-        //description must be an alphanumeric value
-        if (objectiveDescription.trim().isEmpty()) {
-            result[0] = false
-            result[1] = this.resources.getString(R.string.validation_description_empty)
-            return result
-        }
-        if (objectiveDescription.trim().isDigitsOnly()) {
-            result[0] = false
-            result[1] = this.resources.getString(R.string.validation_description_digits_only)
-            return result
-        }
-        //due date must be greater than inception date
-        if (objectiveDueDate.time <= objectiveInceptionDate.time) {
-            result[0] = false
-            result[1] = this.resources.getString(R.string.validation_due_date_smaller)
-            return result
-        }
-        return result
     }
 }
