@@ -21,16 +21,15 @@ import androidx.room.PrimaryKey
 import gparap.apps.personal_manager.utils.AppConstants.OBJECTIVES_COLUMN_DUE_DATE
 import gparap.apps.personal_manager.utils.AppConstants.OBJECTIVES_COLUMN_INCEPTION_DATE
 import gparap.apps.personal_manager.utils.AppConstants.OBJECTIVES_TABLE
+import java.util.Date
 
 /** This data class describes an objective. */
 @Entity(tableName = OBJECTIVES_TABLE)
 data class ObjectiveModel(
     val title: String,
     val description: String,
-
-    //TODO: create converters for Date values
-    @ColumnInfo(name = OBJECTIVES_COLUMN_DUE_DATE) val dueDate: String,
-    @ColumnInfo(name = OBJECTIVES_COLUMN_INCEPTION_DATE) val inceptionDate: String
+    @ColumnInfo(name = OBJECTIVES_COLUMN_DUE_DATE) val dueDate: Date,
+    @ColumnInfo(name = OBJECTIVES_COLUMN_INCEPTION_DATE) var inceptionDate: Date
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0

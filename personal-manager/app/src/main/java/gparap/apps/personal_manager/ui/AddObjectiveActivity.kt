@@ -26,12 +26,13 @@ import gparap.apps.personal_manager.data.ObjectiveModel
 import gparap.apps.personal_manager.utils.Utils
 import kotlinx.coroutines.launch
 import java.util.Calendar
+import java.util.Date
 
 class AddObjectiveActivity : AppCompatActivity() {
     private var objectiveTitle: String = ""
     private var objectiveDescription: String = ""
-    private var objectiveDueDate: String = ""
-    private var objectiveInceptionDate: String = ""
+    private lateinit var objectiveDueDate: Date
+    private lateinit var objectiveInceptionDate: Date
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,11 +55,11 @@ class AddObjectiveActivity : AppCompatActivity() {
             val calendar: Calendar = Calendar.getInstance()
 
             //set the inception date of the objective
-            objectiveInceptionDate = calendar.time.toString()
+            objectiveInceptionDate = calendar.time
 
             //set the due date of the objective
             calendar.set(datePicker.year, datePicker.month, datePicker.dayOfMonth)
-            objectiveDueDate = calendar.time.toString()
+            objectiveDueDate = calendar.time
 
             //add objective into the database
             lifecycleScope.launch {

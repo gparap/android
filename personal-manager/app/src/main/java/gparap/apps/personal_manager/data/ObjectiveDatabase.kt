@@ -19,10 +19,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import gparap.apps.personal_manager.utils.AppConstants.OBJECTIVES_DATABASE
 
 /** Database schema containing the objectives. */
 @Database(entities = [ObjectiveModel::class], version = 1, exportSchema = false)
+@TypeConverters(ObjectiveDateConverter::class)
 abstract class ObjectiveDatabase : RoomDatabase() {
 
     abstract fun objectiveDao(): ObjectiveDao
