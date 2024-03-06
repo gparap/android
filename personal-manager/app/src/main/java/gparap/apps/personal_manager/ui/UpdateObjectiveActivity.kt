@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import gparap.apps.personal_manager.R
@@ -73,7 +74,7 @@ class UpdateObjectiveActivity : AppCompatActivity() {
 
         //update objective in the database
         findViewById<Button>(R.id.update_objective_submit_button).setOnClickListener {
-            //get the new objective details, if any TODO: validation
+            //get the new objective details, if any
             var objectiveTitle: String
             var objectiveDescription: String
             var objectiveDueDate: Date
@@ -98,6 +99,15 @@ class UpdateObjectiveActivity : AppCompatActivity() {
                 objectiveOld?.inceptionDate!!
             )
             objectiveUpdated?.id = objectiveOld?.id!!
+
+            //validate the objective
+            val validationResultArray = Utils.validateObjective(objectiveUpdated!!, this.resources)
+            val (validation, message) = validationResultArray   //deconstruct result in named values
+            if (validation == false) {
+                Toast.makeText(this, message.toString(), Toast.LENGTH_SHORT).show().apply {
+                    return@setOnClickListener
+                }
+            }
 
             //update objective
             lifecycleScope.launch {
