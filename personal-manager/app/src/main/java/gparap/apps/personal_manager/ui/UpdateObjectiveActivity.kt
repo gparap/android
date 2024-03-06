@@ -17,6 +17,7 @@ import gparap.apps.personal_manager.utils.Utils
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
 import java.util.Locale
 
 class UpdateObjectiveActivity : AppCompatActivity() {
@@ -29,11 +30,27 @@ class UpdateObjectiveActivity : AppCompatActivity() {
 
         //get the objective details from intent
         if (intent != null) {
+            //get due & inception dates from intent extras
+            val dueDate = Date().apply {
+                intent.getLongExtra(INTENT_EXTRA_OBJECTIVE_DUE_DATE, 0L)
+                this.time = intent.getLongExtra(INTENT_EXTRA_OBJECTIVE_DUE_DATE, 0L)
+            }
+            val inceptionDate = Date().apply {
+                intent.getLongExtra(INTENT_EXTRA_OBJECTIVE_INCEPTION_DATE, 0L)
+                this.time = intent.getLongExtra(INTENT_EXTRA_OBJECTIVE_INCEPTION_DATE, 0L)
+                //if inception date is missing, set today as inception date
+                if (this.time == 0L) {
+                    val calendar = Calendar.getInstance(Locale.getDefault())
+                    this.time = (calendar.time as Date).time
+                }
+            }
+
+            //create objective
             objectiveOld = ObjectiveModel(
                 intent.getStringExtra(INTENT_EXTRA_OBJECTIVE_TITLE)!!,
                 intent.getStringExtra(INTENT_EXTRA_OBJECTIVE_DESCRIPTION)!!,
-                intent.getStringExtra(INTENT_EXTRA_OBJECTIVE_DUE_DATE)!!,
-                intent.getStringExtra(INTENT_EXTRA_OBJECTIVE_INCEPTION_DATE)!!
+                dueDate,
+                inceptionDate
             )
             objectiveOld?.id = intent.getIntExtra(INTENT_EXTRA_OBJECTIVE_ID, 0)
         }
@@ -44,9 +61,14 @@ class UpdateObjectiveActivity : AppCompatActivity() {
         val datePicker = findViewById<DatePicker>(R.id.update_objective_due_date).apply {
             //update the date picker with the due date
             val calendar = Calendar.getInstance(Locale.getDefault())
-            val simpleDateFormat = SimpleDateFormat("EEE MMM dd hh:mm:ss z yyyy", Locale.getDefault())
+            val simpleDateFormat =
+                SimpleDateFormat("EEE MMM dd hh:mm:ss z yyyy", Locale.getDefault())
             calendar.setTime(simpleDateFormat.parse(objectiveOld?.dueDate.toString())!!)
-            this.updateDate(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
+            this.updateDate(
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+            )
         }
 
         //update objective in the database
@@ -54,7 +76,7 @@ class UpdateObjectiveActivity : AppCompatActivity() {
             //get the new objective details, if any TODO: validation
             var objectiveTitle: String
             var objectiveDescription: String
-            var objectiveDueDate: String
+            var objectiveDueDate: Date
             findViewById<EditText>(R.id.update_objective_title).apply {
                 objectiveTitle = this.text.toString()
             }
@@ -65,7 +87,7 @@ class UpdateObjectiveActivity : AppCompatActivity() {
                 //get the due date of the objective
                 val calendar: Calendar = Calendar.getInstance()
                 calendar.set(datePicker.year, datePicker.month, datePicker.dayOfMonth)
-                objectiveDueDate = calendar.time.toString()
+                objectiveDueDate = calendar.time
             }
 
             //create the updated objective
@@ -73,7 +95,7 @@ class UpdateObjectiveActivity : AppCompatActivity() {
                 objectiveTitle,
                 objectiveDescription,
                 objectiveDueDate,
-                objectiveOld?.inceptionDate.toString()
+                objectiveOld?.inceptionDate!!
             )
             objectiveUpdated?.id = objectiveOld?.id!!
 

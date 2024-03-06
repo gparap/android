@@ -57,8 +57,8 @@ class ObjectivesAdapter : Adapter<ObjectivesAdapter.ObjectivesViewHolder>() {
         holder.title.text = objectives[position].title
         holder.description.text = objectives[position].description
         //TODO: revert back to Date values
-        holder.dueDate.text = objectives[position].dueDate
-        holder.inceptionDate.text = objectives[position].inceptionDate
+        holder.dueDate.text = objectives[position].dueDate.toString()
+        holder.inceptionDate.text = objectives[position].inceptionDate.toString()
 
         //open objective in new activity for editing
         holder.itemView.setOnClickListener {
@@ -66,8 +66,8 @@ class ObjectivesAdapter : Adapter<ObjectivesAdapter.ObjectivesViewHolder>() {
             intent.putExtra(INTENT_EXTRA_OBJECTIVE_ID, objectives[position].id)
             intent.putExtra(INTENT_EXTRA_OBJECTIVE_TITLE, objectives[position].title)
             intent.putExtra(INTENT_EXTRA_OBJECTIVE_DESCRIPTION, objectives[position].description)
-            intent.putExtra(INTENT_EXTRA_OBJECTIVE_DUE_DATE, objectives[position].dueDate)
-            intent.putExtra(INTENT_EXTRA_OBJECTIVE_INCEPTION_DATE, objectives[position].inceptionDate)
+            intent.putExtra(INTENT_EXTRA_OBJECTIVE_DUE_DATE, objectives[position].dueDate.time)
+            intent.putExtra(INTENT_EXTRA_OBJECTIVE_INCEPTION_DATE, objectives[position].inceptionDate.time)
             context?.startActivity(intent)
         }
 
