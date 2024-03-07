@@ -19,14 +19,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="@dimen/linearLayout_padding">
+            android:padding="@dimen/cardview_linearLayout_padding">
 
             <!--Title-->
             <TextView
                 android:id="@+id/cardview_objective_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/textView_layout_marginVertical"
+                android:layout_marginVertical="@dimen/cardview_textView_layout_marginVertical"
                 tools:text="objective title" />
 
             <!--Description-->
@@ -34,7 +34,7 @@
                 android:id="@+id/cardview_objective_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/textView_layout_marginVertical"
+                android:layout_marginVertical="@dimen/cardview_textView_layout_marginVertical"
                 tools:text="objective description" />
 
             <!--Due Date-->
@@ -42,7 +42,7 @@
                 android:id="@+id/cardview_objective_due_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/textView_layout_marginVertical"
+                android:layout_marginVertical="@dimen/cardview_textView_layout_marginVertical"
                 tools:text="objective due date" />
 
             <!--Inception Date-->
@@ -50,7 +50,7 @@
                 android:id="@+id/cardview_objective_inception_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/textView_layout_marginVertical"
+                android:layout_marginVertical="@dimen/cardview_textView_layout_marginVertical"
                 tools:text="objective inception date" />
 
         </LinearLayout>
