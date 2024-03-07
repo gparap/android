@@ -2,9 +2,18 @@
 <resources>
     <!--Design Dimensions-->
     <dimen name="fab_layout_margin">16dp</dimen>
-    <dimen name="cardview_layout_margin">8dp</dimen>
-    <dimen name="linearLayout_padding">8dp</dimen>
-    <dimen name="textView_layout_marginVertical">4dp</dimen>
     <dimen name="android_minHeight">48dp</dimen>
     <dimen name="submit_button_margin">2dp</dimen>
+    <dimen name="cardview_layout_margin">8dp</dimen>
+    <dimen name="cardview_linearLayout_padding">8dp</dimen>
+    <dimen name="cardview_textView_layout_marginVertical">4dp</dimen>
+    <dimen name="objective_editText_layout_marginStart">4dp</dimen>
+    <dimen name="objective_editText_layout_marginEnd">4dp</dimen>
+    <dimen name="objective_editText_layout_marginTop">4dp</dimen>
+    <dimen name="objective_editText_layout_marginBottom">4dp</dimen>
+    <dimen name="objective_textView_style_layout_marginStart">0dp</dimen>
+    <dimen name="objective_textView_style_layout_marginEnd">4dp</dimen>
+    <dimen name="objective_textView_style_layout_marginTop">8dp</dimen>
+    <dimen name="objective_textView_style_layout_marginBottom">4dp</dimen>
+    <dimen name="objective_textSize">18sp</dimen>
 </resources>

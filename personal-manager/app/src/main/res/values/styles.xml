@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--TODO: Refactor style design dimensions-->
-
     <!--Custom style for EditText views on AddObjective & Update Objective activity layouts-->
     <style name="objective_edit_text_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">4dp</item>
-        <item name="android:layout_marginEnd">4dp</item>
-        <item name="android:layout_marginTop">4dp</item>
-        <item name="android:layout_marginBottom">4dp</item>
-        <item name="android:minHeight">48dp</item>
+        <item name="android:layout_marginStart">@dimen/objective_editText_layout_marginStart</item>
+        <item name="android:layout_marginEnd">@dimen/objective_editText_layout_marginEnd</item>
+        <item name="android:layout_marginTop">@dimen/objective_editText_layout_marginTop</item>
+        <item name="android:layout_marginBottom">@dimen/objective_editText_layout_marginBottom</item>
+        <item name="android:minHeight">@dimen/android_minHeight</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:textStyle">italic</item>
     </style>
@@ -19,11 +17,11 @@
     <style name="objective_text_view_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">0dp</item>
-        <item name="android:layout_marginEnd">4dp</item>
-        <item name="android:layout_marginTop">8dp</item>
-        <item name="android:layout_marginBottom">4dp</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginStart">@dimen/objective_textView_style_layout_marginStart</item>
+        <item name="android:layout_marginEnd">@dimen/objective_textView_style_layout_marginEnd</item>
+        <item name="android:layout_marginTop">@dimen/objective_textView_style_layout_marginTop</item>
+        <item name="android:layout_marginBottom">@dimen/objective_textView_style_layout_marginBottom</item>
+        <item name="android:textSize">@dimen/objective_textSize</item>
         <item name="android:textStyle">italic</item>
         <item name="android:textColor">@color/hint</item>
     </style>
