@@ -21,29 +21,29 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.personal_manager.R
 import gparap.apps.personal_manager.adapters.ObjectivesAdapter
 import gparap.apps.personal_manager.data.ObjectiveModel
-import gparap.apps.personal_manager.utils.Utils
-import kotlinx.coroutines.launch
+import gparap.apps.personal_manager.viewmodels.ObjectiveViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerViewObjectives: RecyclerView
     private lateinit var adapterObjectives: ObjectivesAdapter
+    private lateinit var viewModel: ObjectiveViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //get objectives from the database
-        val objectivesLiveData = Utils.getRepository(application).getObjectives()
+        //get the ViewModel in the scope of of this activity
+        viewModel = ViewModelProvider(this)[ObjectiveViewModel::class.java]
 
-        //display objectives
-        objectivesLiveData.observe(this) {
+        //display objectives fetched from the database
+        viewModel.getObjectives().observe(this) {
             //create recycler view with adapter
             adapterObjectives = ObjectivesAdapter().apply {
                 objectives = it as ArrayList<ObjectiveModel>
@@ -77,10 +77,8 @@ class MainActivity : AppCompatActivity() {
                     .setTitle(R.string.text_delete_objectives)
                     .setMessage(R.string.dialog_msg_delete_objectives)
                     .setPositiveButton(R.string.dialog_ok) { _, _ ->
-                        //delete objectives
-                        lifecycleScope.launch {
-                            Utils.getRepository(application).deleteAllObjectives()
-                        }
+                        //delete objectives from the database
+                        viewModel.deleteAllObjectives()
                     }
                     .setNegativeButton(R.string.dialog_cancel) { dialog, _ ->
                         dialog.dismiss()

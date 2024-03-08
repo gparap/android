@@ -6,7 +6,7 @@ import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.ViewModelProvider
 import gparap.apps.personal_manager.R
 import gparap.apps.personal_manager.data.ObjectiveModel
 import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_DESCRIPTION
@@ -15,7 +15,7 @@ import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_ID
 import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_INCEPTION_DATE
 import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_TITLE
 import gparap.apps.personal_manager.utils.Utils
-import kotlinx.coroutines.launch
+import gparap.apps.personal_manager.viewmodels.ObjectiveViewModel
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -24,10 +24,14 @@ import java.util.Locale
 class UpdateObjectiveActivity : AppCompatActivity() {
     private var objectiveOld: ObjectiveModel? = null
     private var objectiveUpdated: ObjectiveModel? = null
+    private lateinit var viewModel: ObjectiveViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_objective)
+
+        //get the ViewModel in the scope of of this activity
+        viewModel = ViewModelProvider(this)[ObjectiveViewModel::class.java]
 
         //get the objective details from intent
         if (intent != null) {
@@ -109,10 +113,8 @@ class UpdateObjectiveActivity : AppCompatActivity() {
                 }
             }
 
-            //update objective
-            lifecycleScope.launch {
-                objectiveUpdated?.let { Utils.getRepository(application).updateObjective(it) }
-            }
+            //update objective in the database
+            objectiveUpdated?.let { viewModel.updateObjective(it) }
         }
     }
 }

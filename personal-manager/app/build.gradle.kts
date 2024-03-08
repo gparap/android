@@ -58,6 +58,7 @@ dependencies {
 
     //Lifecycle-aware components
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
 
     //Library support for Kotlin coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")

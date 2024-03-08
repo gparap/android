@@ -21,11 +21,11 @@ import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.ViewModelProvider
 import gparap.apps.personal_manager.R
 import gparap.apps.personal_manager.data.ObjectiveModel
 import gparap.apps.personal_manager.utils.Utils
-import kotlinx.coroutines.launch
+import gparap.apps.personal_manager.viewmodels.ObjectiveViewModel
 import java.util.Calendar
 import java.util.Date
 
@@ -34,10 +34,14 @@ class AddObjectiveActivity : AppCompatActivity() {
     private var objectiveDescription: String = ""
     private lateinit var objectiveDueDate: Date
     private lateinit var objectiveInceptionDate: Date
+    private lateinit var viewModel: ObjectiveViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_objective)
+
+        //get the ViewModel in the scope of of this activity
+        viewModel = ViewModelProvider(this)[ObjectiveViewModel::class.java]
 
         //get the date picker widget
         val datePicker = findViewById<DatePicker>(R.id.add_objective_due_date)
@@ -78,11 +82,8 @@ class AddObjectiveActivity : AppCompatActivity() {
                     return@setOnClickListener
                 }
             }
-
             //add objective into the database
-            lifecycleScope.launch {
-                Utils.getRepository(application).insertObjective(objective)
-            }
+            viewModel.insertObjective(objective)
         }
     }
 }
