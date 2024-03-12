@@ -53,4 +53,11 @@ class ObjectiveViewModel(application: Application) : AndroidViewModel(applicatio
             Utils.getRepository(this@ObjectiveViewModel.getApplication()).updateObjective(objective)
         }
     }
+
+    /** Deletes an objective from the database. */
+    fun deleteObjective(objective: ObjectiveModel) {
+        viewModelScope.launch() {
+            Utils.getRepository(this@ObjectiveViewModel.getApplication()).deleteObjective(objective)
+        }
+    }
 }
