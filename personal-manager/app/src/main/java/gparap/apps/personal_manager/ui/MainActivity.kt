@@ -51,6 +51,14 @@ class MainActivity : AppCompatActivity() {
             recyclerViewObjectives = findViewById(R.id.recycler_view_objectives)
             recyclerViewObjectives.layoutManager = LinearLayoutManager(this)
             recyclerViewObjectives.adapter = adapterObjectives
+
+            //set a listener for deleting a selected objective with the long click event
+            adapterObjectives.setObjectivesAdapterListener(object :
+                ObjectivesAdapter.ObjectiveListener {
+                override fun onLongClickPress(objectiveModel: ObjectiveModel) {
+                    viewModel.deleteObjective(objectiveModel)
+                }
+            })
         }
 
         //goto add objective activity

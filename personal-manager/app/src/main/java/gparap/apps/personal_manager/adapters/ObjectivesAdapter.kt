@@ -34,12 +34,16 @@ import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_DU
 import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_ID
 import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_INCEPTION_DATE
 import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_TITLE
-import gparap.apps.personal_manager.utils.Utils
 import kotlinx.coroutines.launch
 
 class ObjectivesAdapter : Adapter<ObjectivesAdapter.ObjectivesViewHolder>() {
     var objectives = ArrayList<ObjectiveModel>()
     private var context: Context? = null
+    private var objectiveListener: ObjectiveListener? = null
+
+    fun setObjectivesAdapterListener(objectiveListener: ObjectiveListener) {
+        this.objectiveListener = objectiveListener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ObjectivesViewHolder {
         //create the inflated item view
@@ -66,7 +70,10 @@ class ObjectivesAdapter : Adapter<ObjectivesAdapter.ObjectivesViewHolder>() {
             intent.putExtra(INTENT_EXTRA_OBJECTIVE_TITLE, objectives[position].title)
             intent.putExtra(INTENT_EXTRA_OBJECTIVE_DESCRIPTION, objectives[position].description)
             intent.putExtra(INTENT_EXTRA_OBJECTIVE_DUE_DATE, objectives[position].dueDate.time)
-            intent.putExtra(INTENT_EXTRA_OBJECTIVE_INCEPTION_DATE, objectives[position].inceptionDate.time)
+            intent.putExtra(
+                INTENT_EXTRA_OBJECTIVE_INCEPTION_DATE,
+                objectives[position].inceptionDate.time
+            )
             context?.startActivity(intent)
         }
 
@@ -88,8 +95,8 @@ class ObjectivesAdapter : Adapter<ObjectivesAdapter.ObjectivesViewHolder>() {
                             )
                             objective.id = objectives[position].id
 
-                            //delete objective
-                            Utils.getRepository(it.application).deleteObjective(objective)
+                            //delete objective callback
+                            objectiveListener?.onLongClickPress(objective)
                         }
                     }
                     .setNegativeButton(R.string.dialog_cancel) { dialog, _ ->
@@ -106,5 +113,10 @@ class ObjectivesAdapter : Adapter<ObjectivesAdapter.ObjectivesViewHolder>() {
         val description: TextView = itemView.findViewById(R.id.cardview_objective_description)
         val dueDate: TextView = itemView.findViewById(R.id.cardview_objective_due_date)
         val inceptionDate: TextView = itemView.findViewById(R.id.cardview_objective_inception_date)
+    }
+
+    /** Callback for handling the AlertDialog's positive button inside the Adapter. */
+    interface ObjectiveListener {
+        fun onLongClickPress(objectiveModel: ObjectiveModel)
     }
 }
