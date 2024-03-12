@@ -34,6 +34,7 @@ import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_DU
 import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_ID
 import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_INCEPTION_DATE
 import gparap.apps.personal_manager.utils.AppConstants.INTENT_EXTRA_OBJECTIVE_TITLE
+import gparap.apps.personal_manager.utils.Utils
 import kotlinx.coroutines.launch
 
 class ObjectivesAdapter : Adapter<ObjectivesAdapter.ObjectivesViewHolder>() {
@@ -60,7 +61,7 @@ class ObjectivesAdapter : Adapter<ObjectivesAdapter.ObjectivesViewHolder>() {
         //display the objective details
         holder.title.text = objectives[position].title
         holder.description.text = objectives[position].description
-        holder.dueDate.text = objectives[position].dueDate.toString()
+        holder.dueDate.text = Utils.getDueDateString(objectives[position].dueDate)
         holder.inceptionDate.text = objectives[position].inceptionDate.toString()
 
         //open objective in new activity for editing

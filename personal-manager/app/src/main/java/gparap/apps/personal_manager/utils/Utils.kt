@@ -7,6 +7,7 @@ import gparap.apps.personal_manager.PersonalManagerApplication
 import gparap.apps.personal_manager.R
 import gparap.apps.personal_manager.data.ObjectiveModel
 import gparap.apps.personal_manager.data.ObjectiveRepository
+import java.util.Date
 
 object Utils {
     /** Initializes the data repository. */
@@ -57,5 +58,27 @@ object Utils {
             return result
         }
         return result
+    }
+
+    /** Returns the due date as a string in the complete form of:
+     * "Deadline: (x) days and (y) hours left". */
+    fun getDueDateString(dueDate: Date) : String {
+        //get the date today
+        val today = Date()
+
+        //calculate how much time will pass from today to due date
+        val daysLeft = dueDate.time - today.time
+
+        //get the days left to deadline
+        val leftDays = daysLeft / 1000 / 60 / 60 /24
+
+        //get the hours left o deadline
+        var leftHours = daysLeft / 1000 / 60 / 60
+        if (leftHours > 24) {
+            leftHours %= 24
+        }
+
+        //return the final deadline string
+        return "Deadline: $leftDays days and $leftHours hours"
     }
 }
