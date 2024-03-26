@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Cipher Manager</string>
+    <string name="text_private_key">Private Key</string>
+    <string name="text_public_key">Public Key</string>
+    <string name="text_encrypt">encrypt</string>
+    <string name="text_decrypt">decrypt</string>
+    <string name="text_encrypted_decrypted_value">Encrypted/Decrypted value</string>
+    <string name="hint_encrypted_decrypted_value">enter value to encrypt/decrypt</string>
+    <string name="text_clear">clear</string>
+    <string name="text_current_cipher_algorithm">Current Cipher Algorithm:\u0020</string>
 </resources>
