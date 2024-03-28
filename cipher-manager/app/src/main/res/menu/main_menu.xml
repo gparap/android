@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--Symmetric-key Ciphers menu-->
+    <item
+        android:id="@+id/menu_item_symmetric_ciphers"
+        android:clickable="false"
+        android:title="@string/text_symmetric_ciphers"
+        app:showAsAction="never">
+        <!--Algorithms list submenu-->
+        <menu>
+            <item
+                android:id="@+id/menu_item_aes"
+                android:title="@string/text_aes_short" />
+            <item
+                android:id="@+id/menu_item_salsa20"
+                android:title="@string/text_salsa20" />
+        </menu>
+    </item>
+
+    <!--Asymmetric-key Ciphers menu-->
+    <item
+        android:id="@+id/menu_item_asymmetric_ciphers"
+        android:clickable="false"
+        android:title="@string/text_asymmetric_ciphers"
+        app:showAsAction="never">
+        <!--Algorithms list submenu-->
+        <menu>
+            <item
+                android:id="@+id/menu_item_rsa"
+                android:title="@string/text_rsa_short" />
+            <item
+                android:id="@+id/menu_item_dhke"
+                android:title="@string/text_dhke_short" />
+        </menu>
+    </item>
+</menu>
