@@ -7,7 +7,7 @@
     <string name="text_encrypted_decrypted_value">Encrypted/Decrypted value</string>
     <string name="hint_encrypted_decrypted_value">enter value to encrypt/decrypt</string>
     <string name="text_clear">clear</string>
-    <string name="text_current_cipher_algorithm">Current Cipher Algorithm:\u0020</string>
+    <string name="text_current_cipher_algorithm">Current Algorithm:\u0020</string>
     <string name="text_symmetric_ciphers">Symmetric Ciphers</string>
     <string name="text_aes_short">AES</string>
     <string name="text_aes_long">AES (Advanced Encryption Standard)</string>

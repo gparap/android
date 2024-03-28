@@ -39,52 +39,45 @@ class MainActivity : AppCompatActivity() {
         when (id) {
             //Advanced Encryption Standard algorithm
             R.id.menu_item_aes -> {
-                findViewById<TextView>(R.id.textView_cipher_info).apply {
-                    this.text = getString(R.string.text_current_cipher_algorithm).plus(
-                        getString(R.string.text_aes_long)
-                    )
-                }
-                handleViewVisibility(R.id.menu_item_aes)
+                updateCipherInfoText(R.string.text_aes_long)
+                handlePrivateKeyVisibility(R.id.menu_item_aes)
             }
 
             //Salsa20 algorithm
             R.id.menu_item_salsa20 -> {
-                findViewById<TextView>(R.id.textView_cipher_info).apply {
-                    this.text = getString(R.string.text_current_cipher_algorithm).plus(
-                        getString(R.string.text_salsa20)
-                    )
-                }
-                handleViewVisibility(R.id.menu_item_salsa20)
+                updateCipherInfoText(R.string.text_salsa20)
+                handlePrivateKeyVisibility(R.id.menu_item_salsa20)
             }
 
             //Rivest-Shamir-Adleman algorithm
             R.id.menu_item_rsa -> {
-                findViewById<TextView>(R.id.textView_cipher_info).apply {
-                    this.text = getString(R.string.text_current_cipher_algorithm).plus(
-                        getString(R.string.text_rsa_long)
-                    )
-                }
-                handleViewVisibility(R.id.menu_item_rsa)
+                updateCipherInfoText(R.string.text_rsa_long)
+                handlePrivateKeyVisibility(R.id.menu_item_rsa)
             }
 
             //Diffie–Hellman key exchange algorithm
             R.id.menu_item_dhke -> {
-                findViewById<TextView>(R.id.textView_cipher_info).apply {
-                    this.text = getString(R.string.text_current_cipher_algorithm).plus(
-                        getString(R.string.text_dhke_long)
-                    )
-                }
-                handleViewVisibility(R.id.menu_item_dhke)
+                updateCipherInfoText(R.string.text_dhke_long)
+                handlePrivateKeyVisibility(R.id.menu_item_dhke)
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
+    /** Update the text of the view that displays information about the full algorithm name. */
+    private fun updateCipherInfoText(resId: Int) {
+        findViewById<TextView>(R.id.textView_cipher_info).apply {
+            this.text = getString(R.string.text_current_cipher_algorithm).plus(
+                getString(resId)
+            )
+        }
+    }
+
     /** Shows and Hides the private key's label and input text based on algorithm selected. */
-    private fun handleViewVisibility(id: Int) {
+    private fun handlePrivateKeyVisibility(id: Int) {
         when (id) {
+            //hide private key
             R.id.menu_item_aes -> {
-                //hide private key
                 findViewById<TextView>(R.id.textView_privateKey_label).apply {
                     this.visibility = View.GONE
                 }
@@ -92,6 +85,8 @@ class MainActivity : AppCompatActivity() {
                     this.visibility = View.GONE
                 }
             }
+
+            //hide private key
             R.id.menu_item_salsa20 -> {
                 findViewById<TextView>(R.id.textView_privateKey_label).apply {
                     this.visibility = View.GONE
@@ -100,8 +95,9 @@ class MainActivity : AppCompatActivity() {
                     this.visibility = View.GONE
                 }
             }
+
+            //show private key
             R.id.menu_item_rsa -> {
-                //show private key
                 findViewById<TextView>(R.id.textView_privateKey_label).apply {
                     this.visibility = View.VISIBLE
                 }
@@ -109,8 +105,9 @@ class MainActivity : AppCompatActivity() {
                     this.visibility = View.VISIBLE
                 }
             }
+
+            //show private key
             R.id.menu_item_dhke -> {
-                //show private key
                 findViewById<TextView>(R.id.textView_privateKey_label).apply {
                     this.visibility = View.VISIBLE
                 }

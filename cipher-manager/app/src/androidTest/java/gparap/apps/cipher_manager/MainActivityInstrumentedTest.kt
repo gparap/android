@@ -99,81 +99,55 @@ class MainActivityInstrumentedTest {
     @Test
     fun isCipherInfoTextCorrect_selectAESMenuItem() {
         //create the actual info text
-        var infoText = ""
-        activityScenario.onActivity {
-            val textView = it.findViewById<TextView>(R.id.textView_cipher_info)
-            infoText = textView.text.toString().plus(context.getText(R.string.text_aes_long))
-        }
+        val infoText = getCipherInfoText(R.string.text_aes_long)
 
-        //select the first menu and the first algorithm
-        openActionBarOverflowOrOptionsMenu(context)
-        onView(withText(R.string.text_symmetric_ciphers)).perform(click())
-        onView(withText(R.string.text_aes_short)).perform(click())
+        //select the AES algorithm from the menu
+        selectCipher(R.string.text_symmetric_ciphers, R.string.text_aes_short)
 
-        //text here
+        //test here
         onView(withId(R.id.textView_cipher_info)).check(matches(withText(infoText)))
     }
 
     @Test
     fun isCipherInfoTextCorrect_selectSalsa20MenuItem() {
         //create the actual info text
-        var infoText = ""
-        activityScenario.onActivity {
-            val textView = it.findViewById<TextView>(R.id.textView_cipher_info)
-            infoText = textView.text.toString().plus(context.getText(R.string.text_salsa20))
-        }
+        val infoText = getCipherInfoText(R.string.text_salsa20)
 
-        //select the first menu and the second algorithm
-        openActionBarOverflowOrOptionsMenu(context)
-        onView(withText(R.string.text_symmetric_ciphers)).perform(click())
-        onView(withText(R.string.text_salsa20)).perform(click())
+        //select the Salsa20 algorithm from the menu
+        selectCipher(R.string.text_symmetric_ciphers, R.string.text_salsa20)
 
-        //text here
+        //test here
         onView(withId(R.id.textView_cipher_info)).check(matches(withText(infoText)))
     }
 
     @Test
     fun isCipherInfoTextCorrect_selectRSAMenuItem() {
         //create the actual info text
-        var infoText = ""
-        activityScenario.onActivity {
-            val textView = it.findViewById<TextView>(R.id.textView_cipher_info)
-            infoText = textView.text.toString().plus(context.getText(R.string.text_rsa_long))
-        }
+        val infoText = getCipherInfoText(R.string.text_rsa_long)
 
-        //select the second menu and the first algorithm
-        openActionBarOverflowOrOptionsMenu(context)
-        onView(withText(R.string.text_asymmetric_ciphers)).perform(click())
-        onView(withText(R.string.text_rsa_short)).perform(click())
+        //select the RSA algorithm from the menu
+        selectCipher(R.string.text_asymmetric_ciphers, R.string.text_rsa_short)
 
-        //text here
+        //test here
         onView(withId(R.id.textView_cipher_info)).check(matches(withText(infoText)))
     }
 
     @Test
     fun isCipherInfoTextCorrect_selectDHKEMenuItem() {
         //create the actual info text
-        var infoText = ""
-        activityScenario.onActivity {
-            val textView = it.findViewById<TextView>(R.id.textView_cipher_info)
-            infoText = textView.text.toString().plus(context.getText(R.string.text_dhke_long))
-        }
+        val infoText = getCipherInfoText(R.string.text_dhke_long)
 
-        //select the second menu and the second algorithm
-        openActionBarOverflowOrOptionsMenu(context)
-        onView(withText(R.string.text_asymmetric_ciphers)).perform(click())
-        onView(withText(R.string.text_dhke_short)).perform(click())
+        //select the DHKE algorithm from the menu
+        selectCipher(R.string.text_asymmetric_ciphers, R.string.text_dhke_short)
 
-        //text here
+        //test here
         onView(withId(R.id.textView_cipher_info)).check(matches(withText(infoText)))
     }
 
     @Test
     fun isPrivateKeyNotVisible_onAESMenuItemSelected() {
-        //select the first menu and the first algorithm
-        openActionBarOverflowOrOptionsMenu(context)
-        onView(withText(R.string.text_symmetric_ciphers)).perform(click())
-        onView(withText(R.string.text_aes_short)).perform(click())
+        //select the AES algorithm from the menu
+        selectCipher(R.string.text_symmetric_ciphers, R.string.text_aes_short)
 
         //test the private key views visibility
         onView(withId(R.id.textView_privateKey_label)).check(matches(not(isDisplayed())))
@@ -182,10 +156,8 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun isPrivateKeyNotVisible_onSalsa20MenuItemSelected() {
-        //select the first menu and the second algorithm
-        openActionBarOverflowOrOptionsMenu(context)
-        onView(withText(R.string.text_symmetric_ciphers)).perform(click())
-        onView(withText(R.string.text_salsa20)).perform(click())
+        //select the Salsa20 algorithm from the menu
+        selectCipher(R.string.text_symmetric_ciphers, R.string.text_salsa20)
 
         //test the private key views visibility
         onView(withId(R.id.textView_privateKey_label)).check(matches(not(isDisplayed())))
@@ -195,10 +167,8 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun isPrivateKeyVisible_onRSAMenuItemSelected() {
-        //select the second menu and the first algorithm
-        openActionBarOverflowOrOptionsMenu(context)
-        onView(withText(R.string.text_asymmetric_ciphers)).perform(click())
-        onView(withText(R.string.text_rsa_short)).perform(click())
+        //select the RSA algorithm from the menu
+        selectCipher(R.string.text_asymmetric_ciphers, R.string.text_rsa_short)
 
         //test the private key views visibility
         onView(withId(R.id.textView_privateKey_label)).check(matches(isDisplayed()))
@@ -207,13 +177,28 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun isPrivateKeyVisible_onDHKEMenuItemSelected() {
-        //select the second menu and the second algorithm
-        openActionBarOverflowOrOptionsMenu(context)
-        onView(withText(R.string.text_asymmetric_ciphers)).perform(click())
-        onView(withText(R.string.text_dhke_short)).perform(click())
+        //select the DHKE algorithm from the menu
+        selectCipher(R.string.text_asymmetric_ciphers, R.string.text_dhke_short)
 
         //test the private key views visibility
         onView(withId(R.id.textView_privateKey_label)).check(matches(isDisplayed()))
         onView(withId(R.id.editText_privateKey)).check(matches(isDisplayed()))
+    }
+
+    /** Returns the text of the cipher info TextView in conjunction with the algorithm full name. */
+    private fun getCipherInfoText(id: Int) : String {
+        var infoText = ""
+        activityScenario.onActivity {
+            val textView = it.findViewById<TextView>(R.id.textView_cipher_info)
+            infoText = textView.text.toString().plus(context.getText(id))
+        }
+        return  infoText
+    }
+
+    /** Opens the action bar menu and Selects an algorithm. */
+    private fun selectCipher(cipherTypeResId: Int, cipherNameResId: Int) {
+        openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(cipherTypeResId)).perform(click())
+        onView(withText(cipherNameResId)).perform(click())
     }
 }
