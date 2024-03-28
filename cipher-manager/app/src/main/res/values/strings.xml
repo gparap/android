@@ -8,4 +8,13 @@
     <string name="hint_encrypted_decrypted_value">enter value to encrypt/decrypt</string>
     <string name="text_clear">clear</string>
     <string name="text_current_cipher_algorithm">Current Cipher Algorithm:\u0020</string>
+    <string name="text_symmetric_ciphers">Symmetric Ciphers</string>
+    <string name="text_aes_short">AES</string>
+    <string name="text_aes_long">AES (Advanced Encryption Standard)</string>
+    <string name="text_salsa20">Salsa20</string>
+    <string name="text_asymmetric_ciphers">Asymmetric Ciphers</string>
+    <string name="text_rsa_short">RSA</string>
+    <string name="text_rsa_long">RSA (Rivest–Shamir–Adleman)</string>
+    <string name="text_dhke_short">DHKE</string>
+    <string name="text_dhke_long">DHKE (Diffie–Hellman key exchange)</string>
 </resources>

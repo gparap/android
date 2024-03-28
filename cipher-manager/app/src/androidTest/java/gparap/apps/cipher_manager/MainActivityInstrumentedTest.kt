@@ -15,12 +15,18 @@
  */
 package gparap.apps.cipher_manager
 
+import android.content.Context
+import android.widget.TextView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import org.hamcrest.CoreMatchers.not
 import org.junit.Before
 import org.junit.Test
@@ -28,9 +34,15 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class MainActivityInstrumentedTest {
+    private lateinit var activityScenario: ActivityScenario<MainActivity>
+    private lateinit var context: Context
     @Before
     fun setUp() {
-        ActivityScenario.launch(MainActivity::class.java)
+        //get the current scenario
+        activityScenario = ActivityScenario.launch(MainActivity::class.java)
+
+        //get the target context
+        context = InstrumentationRegistry.getInstrumentation().targetContext
     }
     
     @Test
@@ -81,5 +93,77 @@ class MainActivityInstrumentedTest {
     @Test
     fun isVisible_textView_cipher_info() {
         onView(withId(R.id.textView_cipher_info)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isCipherInfoTextCorrect_selectAESMenuItem() {
+        //create the actual info text
+        var infoText = ""
+        activityScenario.onActivity {
+            val textView = it.findViewById<TextView>(R.id.textView_cipher_info)
+            infoText = textView.text.toString().plus(context.getText(R.string.text_aes_long))
+        }
+
+        //select the first menu and the first algorithm
+        openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.text_symmetric_ciphers)).perform(click())
+        onView(withText(R.string.text_aes_short)).perform(click())
+
+        //text here
+        onView(withId(R.id.textView_cipher_info)).check(matches(withText(infoText)))
+    }
+
+    @Test
+    fun isCipherInfoTextCorrect_selectSalsa20MenuItem() {
+        //create the actual info text
+        var infoText = ""
+        activityScenario.onActivity {
+            val textView = it.findViewById<TextView>(R.id.textView_cipher_info)
+            infoText = textView.text.toString().plus(context.getText(R.string.text_salsa20))
+        }
+
+        //select the first menu and the first algorithm
+        openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.text_symmetric_ciphers)).perform(click())
+        onView(withText(R.string.text_salsa20)).perform(click())
+
+        //text here
+        onView(withId(R.id.textView_cipher_info)).check(matches(withText(infoText)))
+    }
+
+    @Test
+    fun isCipherInfoTextCorrect_selectRSAMenuItem() {
+        //create the actual info text
+        var infoText = ""
+        activityScenario.onActivity {
+            val textView = it.findViewById<TextView>(R.id.textView_cipher_info)
+            infoText = textView.text.toString().plus(context.getText(R.string.text_rsa_long))
+        }
+
+        //select the first menu and the first algorithm
+        openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.text_asymmetric_ciphers)).perform(click())
+        onView(withText(R.string.text_rsa_short)).perform(click())
+
+        //text here
+        onView(withId(R.id.textView_cipher_info)).check(matches(withText(infoText)))
+    }
+
+    @Test
+    fun isCipherInfoTextCorrect_selectDHKEMenuItem() {
+        //create the actual info text
+        var infoText = ""
+        activityScenario.onActivity {
+            val textView = it.findViewById<TextView>(R.id.textView_cipher_info)
+            infoText = textView.text.toString().plus(context.getText(R.string.text_dhke_long))
+        }
+
+        //select the first menu and the first algorithm
+        openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.text_asymmetric_ciphers)).perform(click())
+        onView(withText(R.string.text_dhke_short)).perform(click())
+
+        //text here
+        onView(withId(R.id.textView_cipher_info)).check(matches(withText(infoText)))
     }
 }
