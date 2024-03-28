@@ -36,6 +36,7 @@ import org.junit.runner.RunWith
 class MainActivityInstrumentedTest {
     private lateinit var activityScenario: ActivityScenario<MainActivity>
     private lateinit var context: Context
+
     @Before
     fun setUp() {
         //get the current scenario
@@ -44,7 +45,7 @@ class MainActivityInstrumentedTest {
         //get the target context
         context = InstrumentationRegistry.getInstrumentation().targetContext
     }
-    
+
     @Test
     fun isVisible_textView_privateKey_label() {
         onView(withId(R.id.textView_privateKey_label)).check(matches(not(isDisplayed())))
@@ -122,7 +123,7 @@ class MainActivityInstrumentedTest {
             infoText = textView.text.toString().plus(context.getText(R.string.text_salsa20))
         }
 
-        //select the first menu and the first algorithm
+        //select the first menu and the second algorithm
         openActionBarOverflowOrOptionsMenu(context)
         onView(withText(R.string.text_symmetric_ciphers)).perform(click())
         onView(withText(R.string.text_salsa20)).perform(click())
@@ -140,7 +141,7 @@ class MainActivityInstrumentedTest {
             infoText = textView.text.toString().plus(context.getText(R.string.text_rsa_long))
         }
 
-        //select the first menu and the first algorithm
+        //select the second menu and the first algorithm
         openActionBarOverflowOrOptionsMenu(context)
         onView(withText(R.string.text_asymmetric_ciphers)).perform(click())
         onView(withText(R.string.text_rsa_short)).perform(click())
@@ -158,12 +159,61 @@ class MainActivityInstrumentedTest {
             infoText = textView.text.toString().plus(context.getText(R.string.text_dhke_long))
         }
 
-        //select the first menu and the first algorithm
+        //select the second menu and the second algorithm
         openActionBarOverflowOrOptionsMenu(context)
         onView(withText(R.string.text_asymmetric_ciphers)).perform(click())
         onView(withText(R.string.text_dhke_short)).perform(click())
 
         //text here
         onView(withId(R.id.textView_cipher_info)).check(matches(withText(infoText)))
+    }
+
+    @Test
+    fun isPrivateKeyNotVisible_onAESMenuItemSelected() {
+        //select the first menu and the first algorithm
+        openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.text_symmetric_ciphers)).perform(click())
+        onView(withText(R.string.text_aes_short)).perform(click())
+
+        //test the private key views visibility
+        onView(withId(R.id.textView_privateKey_label)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editText_privateKey)).check(matches(not(isDisplayed())))
+    }
+
+    @Test
+    fun isPrivateKeyNotVisible_onSalsa20MenuItemSelected() {
+        //select the first menu and the second algorithm
+        openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.text_symmetric_ciphers)).perform(click())
+        onView(withText(R.string.text_salsa20)).perform(click())
+
+        //test the private key views visibility
+        onView(withId(R.id.textView_privateKey_label)).check(matches(not(isDisplayed())))
+        onView(withId(R.id.editText_privateKey)).check(matches(not(isDisplayed())))
+
+    }
+
+    @Test
+    fun isPrivateKeyVisible_onRSAMenuItemSelected() {
+        //select the second menu and the first algorithm
+        openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.text_asymmetric_ciphers)).perform(click())
+        onView(withText(R.string.text_rsa_short)).perform(click())
+
+        //test the private key views visibility
+        onView(withId(R.id.textView_privateKey_label)).check(matches(isDisplayed()))
+        onView(withId(R.id.editText_privateKey)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isPrivateKeyVisible_onDHKEMenuItemSelected() {
+        //select the second menu and the second algorithm
+        openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(R.string.text_asymmetric_ciphers)).perform(click())
+        onView(withText(R.string.text_dhke_short)).perform(click())
+
+        //test the private key views visibility
+        onView(withId(R.id.textView_privateKey_label)).check(matches(isDisplayed()))
+        onView(withId(R.id.editText_privateKey)).check(matches(isDisplayed()))
     }
 }

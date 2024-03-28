@@ -18,9 +18,10 @@ package gparap.apps.cipher_manager
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity() {
                         getString(R.string.text_aes_long)
                     )
                 }
+                handleViewVisibility(R.id.menu_item_aes)
             }
 
             //Salsa20 algorithm
@@ -52,6 +54,7 @@ class MainActivity : AppCompatActivity() {
                         getString(R.string.text_salsa20)
                     )
                 }
+                handleViewVisibility(R.id.menu_item_salsa20)
             }
 
             //Rivest-Shamir-Adleman algorithm
@@ -61,6 +64,7 @@ class MainActivity : AppCompatActivity() {
                         getString(R.string.text_rsa_long)
                     )
                 }
+                handleViewVisibility(R.id.menu_item_rsa)
             }
 
             //Diffie–Hellman key exchange algorithm
@@ -70,8 +74,50 @@ class MainActivity : AppCompatActivity() {
                         getString(R.string.text_dhke_long)
                     )
                 }
+                handleViewVisibility(R.id.menu_item_dhke)
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    /** Shows and Hides the private key's label and input text based on algorithm selected. */
+    private fun handleViewVisibility(id: Int) {
+        when (id) {
+            R.id.menu_item_aes -> {
+                //hide private key
+                findViewById<TextView>(R.id.textView_privateKey_label).apply {
+                    this.visibility = View.GONE
+                }
+                findViewById<EditText>(R.id.editText_privateKey).apply {
+                    this.visibility = View.GONE
+                }
+            }
+            R.id.menu_item_salsa20 -> {
+                findViewById<TextView>(R.id.textView_privateKey_label).apply {
+                    this.visibility = View.GONE
+                }
+                findViewById<EditText>(R.id.editText_privateKey).apply {
+                    this.visibility = View.GONE
+                }
+            }
+            R.id.menu_item_rsa -> {
+                //show private key
+                findViewById<TextView>(R.id.textView_privateKey_label).apply {
+                    this.visibility = View.VISIBLE
+                }
+                findViewById<EditText>(R.id.editText_privateKey).apply {
+                    this.visibility = View.VISIBLE
+                }
+            }
+            R.id.menu_item_dhke -> {
+                //show private key
+                findViewById<TextView>(R.id.textView_privateKey_label).apply {
+                    this.visibility = View.VISIBLE
+                }
+                findViewById<EditText>(R.id.editText_privateKey).apply {
+                    this.visibility = View.VISIBLE
+                }
+            }
+        }
     }
 }
