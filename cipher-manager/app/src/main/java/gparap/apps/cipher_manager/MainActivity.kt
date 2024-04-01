@@ -19,14 +19,54 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import gparap.apps.cipher_manager.utils.Algorithm
+import gparap.apps.cipher_manager.utils.Utils
 
 class MainActivity : AppCompatActivity() {
+    private var currentAlgorithm = Algorithm.AES  //default cipher
+    private var publicKey = ""
+    private var textToBeEncrypted = ""
+    private var textToBeDecrypted = ""
+    private var encryptedText = ""
+    private var decryptedText = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //encrypt
+        findViewById<Button>(R.id.button_encrypt).setOnClickListener {
+            getSecretKeys()
+
+            //get the text to be encrypted TODO: validate input
+            findViewById<EditText>(R.id.editText_cipher_value).apply {
+                textToBeEncrypted = this.text.toString().trim()
+            }
+
+            //encrypt text
+            if (currentAlgorithm == Algorithm.AES) {
+                encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
+            }
+        }
+
+        //decrypt
+        findViewById<Button>(R.id.button_decrypt).setOnClickListener {
+            getSecretKeys()
+
+            //get the text to be decrypted TODO: validate input
+            findViewById<EditText>(R.id.editText_cipher_value).apply {
+                textToBeDecrypted = this.text.toString().trim()
+            }
+
+            //decrypt text
+            if (currentAlgorithm == Algorithm.AES) {
+                decryptedText = decrypt(publicKey.toByteArray(), encryptedText)
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -116,5 +156,38 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    /* Gets the public and/or private key form the user TODO: validate keys */
+    private fun getSecretKeys() {
+        if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.Salsa20) {
+            findViewById<EditText>(R.id.editText_publicKey).apply {
+                publicKey = this.text.toString().trim() //16 chars (key length: 128/192/256 bits)
+            }
+        }else{
+            TODO("Not implemented yet: Private key")
+        }
+    }
+
+    /* Encrypts the input value based on the current algorithm. */
+    private fun encrypt(key: ByteArray, value: String): String {
+        var encryptedText = ""
+
+        if (currentAlgorithm == Algorithm.AES) {
+            encryptedText = Utils.encryptWithAES(key, value)
+        }
+
+        return encryptedText
+    }
+
+    /* Decrypts the input value based on the current algorithm. */
+    private fun decrypt(key: ByteArray, value: String): String {
+        var decryptedText = ""
+
+        if (currentAlgorithm == Algorithm.AES) {
+            decryptedText = Utils.decryptWithAES(key, value)
+        }
+
+        return decryptedText
     }
 }
