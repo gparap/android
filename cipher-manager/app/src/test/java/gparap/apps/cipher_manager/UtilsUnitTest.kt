@@ -16,9 +16,8 @@
 package gparap.apps.cipher_manager
 
 import gparap.apps.cipher_manager.utils.Utils
+import org.junit.Assert.assertEquals
 import org.junit.Test
-
-import org.junit.Assert.*
 
 class UtilsUnitTest {
     @Test
@@ -36,6 +35,24 @@ class UtilsUnitTest {
         val textInput = "AAAAAAAAAAAAAAAAAAAAACGNaHWBhySF6MY9S4ZrsPU="
         val expectedValue ="Hello World!"
         val actualValue = Utils.decryptWithAES(publicKey, textInput)
+        assertEquals(expectedValue, actualValue)
+    }
+
+    @Test
+    fun encryptTextWithSalsa20_isCorrect() {
+        val publicKey = "publicKey0123456".toByteArray()
+        val textInput = "Hello World!"
+        val expectedValue ="iVbPOmRkVvzt4AkM"
+        val actualValue = Utils.encryptWithSalsa20(publicKey, textInput)
+        assertEquals(expectedValue, actualValue)
+    }
+
+    @Test
+    fun decryptTextWithSalsa20_isCorrect() {
+        val publicKey = "publicKey0123456".toByteArray()
+        val textInput = "iVbPOmRkVvzt4AkM"
+        val expectedValue ="Hello World!"
+        val actualValue = Utils.decryptWithSalsa20(publicKey, textInput)
         assertEquals(expectedValue, actualValue)
     }
 }

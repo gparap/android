@@ -50,6 +50,8 @@ class MainActivity : AppCompatActivity() {
             //encrypt text
             if (currentAlgorithm == Algorithm.AES) {
                 encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
+            }else if (currentAlgorithm == Algorithm.Salsa20) {
+                encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
             }
         }
 
@@ -175,6 +177,8 @@ class MainActivity : AppCompatActivity() {
 
         if (currentAlgorithm == Algorithm.AES) {
             encryptedText = Utils.encryptWithAES(key, value)
+        }else if(currentAlgorithm == Algorithm.Salsa20) {
+            encryptedText = Utils.encryptWithSalsa20(key, value)
         }
 
         return encryptedText
@@ -186,6 +190,8 @@ class MainActivity : AppCompatActivity() {
 
         if (currentAlgorithm == Algorithm.AES) {
             decryptedText = Utils.decryptWithAES(key, value)
+        }else if(currentAlgorithm == Algorithm.Salsa20) {
+            decryptedText = Utils.decryptWithSalsa20(key, value)
         }
 
         return decryptedText

@@ -15,6 +15,9 @@
  */
 package gparap.apps.cipher_manager.utils
 
+import org.bouncycastle.crypto.engines.Salsa20Engine
+import org.bouncycastle.crypto.params.KeyParameter
+import org.bouncycastle.crypto.params.ParametersWithIV
 import java.util.Base64
 import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
@@ -71,4 +74,42 @@ object Utils {
         return String(decryptedBytes)
     }
 
+    /* Encrypts the input value based on the Salsa20 algorithm. */
+    fun encryptWithSalsa20(publicKey: ByteArray, inputText: String): String {
+        //get the Cipher instance of Salsa20
+        val cipher = Salsa20Engine()
+
+        //setup the cipher for encryption and/or decryption //TODO: randomize Initialization Vector
+        val iv = ByteArray(8) //use the default Initialization Vector of 8 bytes
+        val keyParam = KeyParameter(publicKey)
+        val params = ParametersWithIV(keyParam, iv)
+        cipher.init(true, params)
+
+        //encrypt the byte array
+        val inputBytes = inputText.toByteArray()
+        val cipheredBytes = ByteArray(inputBytes.size)
+        cipher.processBytes(inputBytes, 0, inputBytes.size, cipheredBytes, 0)
+
+        //return the encrypted byte array into a string using the Base64 encoding scheme
+        return Base64.getEncoder().encodeToString(cipheredBytes)
+    }
+
+    /* Decrypts the text input value based on the Salsa20 algorithm. */
+    fun decryptWithSalsa20(publicKey: ByteArray, inputText: String): String {
+        //get the Cipher instance of Salsa20
+        val cipher = Salsa20Engine()
+
+        //setup the cipher for encryption and/or decryption //TODO: randomize Initialization Vector
+        val iv = ByteArray(8) // Default IV of 8 bytes
+        val params = ParametersWithIV(KeyParameter(publicKey), iv)
+        cipher.init(false, params)
+
+        //decrypt the byte array
+        val encryptedBytes = Base64.getDecoder().decode(inputText)
+        val decryptedBytes = ByteArray(encryptedBytes.size)
+        cipher.processBytes(encryptedBytes, 0, encryptedBytes.size, decryptedBytes, 0)
+
+        //return the decrypted byte array into a string
+        return String(decryptedBytes)
+    }
 }
