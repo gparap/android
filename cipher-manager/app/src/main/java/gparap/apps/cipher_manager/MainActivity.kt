@@ -54,6 +54,14 @@ class MainActivity : AppCompatActivity() {
             }else if (currentAlgorithm == Algorithm.Salsa20) {
                 encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
             }
+            else if (currentAlgorithm == Algorithm.RSA) {
+                encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
+            }
+
+            //update the UI with the encrypted text
+            findViewById<EditText>(R.id.editText_cipher_value).apply {
+                this.setText(encryptedText)
+            }
         }
 
         //decrypt
@@ -68,6 +76,17 @@ class MainActivity : AppCompatActivity() {
             //decrypt text
             if (currentAlgorithm == Algorithm.AES) {
                 decryptedText = decrypt(publicKey.toByteArray(), encryptedText)
+            }
+            else if (currentAlgorithm == Algorithm.Salsa20) {
+                decryptedText = decrypt(publicKey.toByteArray(), textToBeEncrypted)
+            }
+            else if (currentAlgorithm == Algorithm.RSA) {
+                decryptedText = decrypt(publicKey.toByteArray(), textToBeDecrypted)
+            }
+
+            //update the UI with the decrypted text
+            findViewById<EditText>(R.id.editText_cipher_value).apply {
+                this.setText(decryptedText)
             }
         }
     }
@@ -84,24 +103,28 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_item_aes -> {
                 updateCipherInfoText(R.string.text_aes_long)
                 handlePrivateKeyVisibility(R.id.menu_item_aes)
+                currentAlgorithm = Algorithm.AES
             }
 
             //Salsa20 algorithm
             R.id.menu_item_salsa20 -> {
                 updateCipherInfoText(R.string.text_salsa20)
                 handlePrivateKeyVisibility(R.id.menu_item_salsa20)
+                currentAlgorithm = Algorithm.Salsa20
             }
 
             //Rivest-Shamir-Adleman algorithm
             R.id.menu_item_rsa -> {
                 updateCipherInfoText(R.string.text_rsa_long)
                 handlePrivateKeyVisibility(R.id.menu_item_rsa)
+                currentAlgorithm = Algorithm.RSA
             }
 
             //Diffie–Hellman key exchange algorithm
             R.id.menu_item_dhke -> {
                 updateCipherInfoText(R.string.text_dhke_long)
                 handlePrivateKeyVisibility(R.id.menu_item_dhke)
+                currentAlgorithm = Algorithm.DHKE
             }
         }
         return super.onOptionsItemSelected(item)
