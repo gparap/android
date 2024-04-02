@@ -18,6 +18,9 @@ package gparap.apps.cipher_manager.utils
 import org.bouncycastle.crypto.engines.Salsa20Engine
 import org.bouncycastle.crypto.params.KeyParameter
 import org.bouncycastle.crypto.params.ParametersWithIV
+import java.security.KeyFactory
+import java.security.spec.PKCS8EncodedKeySpec
+import java.security.spec.X509EncodedKeySpec
 import java.util.Base64
 import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
@@ -26,7 +29,7 @@ import javax.crypto.spec.SecretKeySpec
 object Utils {
 
     /* Encrypts the input value based on the AES (Advanced Encryption Standard) algorithm. */
-    fun encryptWithAES(publicKey: ByteArray, inputText: String) : String {
+    fun encryptWithAES(publicKey: ByteArray, inputText: String): String {
         //get a Cipher instance to implement the specified transformation
         val cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
 
@@ -48,7 +51,7 @@ object Utils {
     }
 
     /* Decrypts the text input value based on the AES (Advanced Encryption Standard) algorithm. */
-    fun decryptWithAES(publicKey: ByteArray, inputText: String) : String {
+    fun decryptWithAES(publicKey: ByteArray, inputText: String): String {
         //get a Cipher instance to implement the specified transformation
         val cipher = Cipher.getInstance("AES/CBC/PKCS5Padding")
 
@@ -110,6 +113,43 @@ object Utils {
         cipher.processBytes(encryptedBytes, 0, encryptedBytes.size, decryptedBytes, 0)
 
         //return the decrypted byte array into a string
+        return String(decryptedBytes)
+    }
+
+    /* Encrypts the input value based on the RSA (Rivest–Shamir–Adleman) algorithm. */
+    fun encryptWithRSA(key: String, inputText: String): String {
+        //get the Cipher instance of RSA
+        val cipher = Cipher.getInstance("RSA")
+
+        //convert Base64 encoded public key string to a public key object
+        val publicKeyBytes = Base64.getDecoder().decode(key)
+        val keySpec = X509EncodedKeySpec(publicKeyBytes)
+        val publicKey = KeyFactory.getInstance("RSA").generatePublic(keySpec)
+
+        //encrypt the input text into a byte array
+        cipher.init(Cipher.ENCRYPT_MODE, publicKey)
+        val encryptedBytes = cipher.doFinal(inputText.toByteArray())
+
+        //return the encrypted byte array into a string using the Base64 encoding scheme
+        return Base64.getEncoder().encodeToString(encryptedBytes)
+    }
+
+    /* Decrypts the text input value based on the RSA (Rivest–Shamir–Adleman) algorithm. */
+    fun decryptWithRSA(key: String, inputText: String): String {
+        //get the Cipher instance of RSA
+        val cipher = Cipher.getInstance("RSA")
+
+        //convert Base64 encoded public key string to PrivateKey
+        val privateKeyBytes = Base64.getDecoder().decode(key)
+        val keySpec = PKCS8EncodedKeySpec(privateKeyBytes)
+        val privateKey = KeyFactory.getInstance("RSA").generatePrivate(keySpec)
+
+        //decrypt the input text into a byte array
+        val encryptedBytes = Base64.getDecoder().decode(inputText)
+        cipher.init(Cipher.DECRYPT_MODE, privateKey)
+        val decryptedBytes = cipher.doFinal(encryptedBytes)
+
+        //return the encrypted byte array into a string the using the UTF-8 character set
         return String(decryptedBytes)
     }
 }

@@ -29,6 +29,7 @@ import gparap.apps.cipher_manager.utils.Utils
 class MainActivity : AppCompatActivity() {
     private var currentAlgorithm = Algorithm.AES  //default cipher
     private var publicKey = ""
+    private var privateKey = ""
     private var textToBeEncrypted = ""
     private var textToBeDecrypted = ""
     private var encryptedText = ""
@@ -160,14 +161,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /* Gets the public and/or private key form the user TODO: validate keys */
+    /* Gets the public and/or private key from the user TODO: validate keys */
     private fun getSecretKeys() {
         if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.Salsa20) {
             findViewById<EditText>(R.id.editText_publicKey).apply {
                 publicKey = this.text.toString().trim() //16 chars (key length: 128/192/256 bits)
             }
         }else{
-            TODO("Not implemented yet: Private key")
+            findViewById<EditText>(R.id.editText_privateKey).apply {
+                privateKey = this.text.toString().trim()    //2048-bit RSA key (Base64 formatting)
+            }
+            findViewById<EditText>(R.id.editText_publicKey).apply {
+                publicKey = this.text.toString().trim()     //2048-bit RSA key (Base64 formatting)
+            }
         }
     }
 
@@ -179,6 +185,8 @@ class MainActivity : AppCompatActivity() {
             encryptedText = Utils.encryptWithAES(key, value)
         }else if(currentAlgorithm == Algorithm.Salsa20) {
             encryptedText = Utils.encryptWithSalsa20(key, value)
+        }else if(currentAlgorithm == Algorithm.RSA) {
+            encryptedText = Utils.encryptWithRSA(publicKey, value)
         }
 
         return encryptedText
@@ -192,6 +200,9 @@ class MainActivity : AppCompatActivity() {
             decryptedText = Utils.decryptWithAES(key, value)
         }else if(currentAlgorithm == Algorithm.Salsa20) {
             decryptedText = Utils.decryptWithSalsa20(key, value)
+        }
+        else if(currentAlgorithm == Algorithm.RSA) {
+            decryptedText = Utils.decryptWithRSA(privateKey, value)
         }
 
         return decryptedText
