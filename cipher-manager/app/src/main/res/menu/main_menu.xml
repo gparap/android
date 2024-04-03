@@ -30,8 +30,8 @@
                 android:id="@+id/menu_item_rsa"
                 android:title="@string/text_rsa_short" />
             <item
-                android:id="@+id/menu_item_dhke"
-                android:title="@string/text_dhke_short" />
+                android:id="@+id/menu_item_elgamal"
+                android:title="@string/text_elgamal" />
         </menu>
     </item>
 </menu>
