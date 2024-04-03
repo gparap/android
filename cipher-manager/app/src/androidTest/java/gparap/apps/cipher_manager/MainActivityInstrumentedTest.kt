@@ -135,10 +135,10 @@ class MainActivityInstrumentedTest {
     @Test
     fun isCipherInfoTextCorrect_selectDHKEMenuItem() {
         //create the actual info text
-        val infoText = getCipherInfoText(R.string.text_dhke_long)
+        val infoText = getCipherInfoText(R.string.text_elgamal)
 
         //select the DHKE algorithm from the menu
-        selectCipher(R.string.text_asymmetric_ciphers, R.string.text_dhke_short)
+        selectCipher(R.string.text_asymmetric_ciphers, R.string.text_elgamal)
 
         //test here
         onView(withId(R.id.textView_cipher_info)).check(matches(withText(infoText)))
@@ -178,7 +178,7 @@ class MainActivityInstrumentedTest {
     @Test
     fun isPrivateKeyVisible_onDHKEMenuItemSelected() {
         //select the DHKE algorithm from the menu
-        selectCipher(R.string.text_asymmetric_ciphers, R.string.text_dhke_short)
+        selectCipher(R.string.text_asymmetric_ciphers, R.string.text_elgamal)
 
         //test the private key views visibility
         onView(withId(R.id.textView_privateKey_label)).check(matches(isDisplayed()))

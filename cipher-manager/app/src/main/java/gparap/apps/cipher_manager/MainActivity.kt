@@ -120,11 +120,11 @@ class MainActivity : AppCompatActivity() {
                 currentAlgorithm = Algorithm.RSA
             }
 
-            //Diffie–Hellman key exchange algorithm
-            R.id.menu_item_dhke -> {
-                updateCipherInfoText(R.string.text_dhke_long)
-                handlePrivateKeyVisibility(R.id.menu_item_dhke)
-                currentAlgorithm = Algorithm.DHKE
+            //ElGamal
+            R.id.menu_item_elgamal -> {
+                updateCipherInfoText(R.string.text_elgamal)
+                handlePrivateKeyVisibility(R.id.menu_item_elgamal)
+                currentAlgorithm = Algorithm.ElGamal
             }
         }
         return super.onOptionsItemSelected(item)
@@ -173,7 +173,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             //show private key
-            R.id.menu_item_dhke -> {
+            R.id.menu_item_elgamal -> {
                 findViewById<TextView>(R.id.textView_privateKey_label).apply {
                     this.visibility = View.VISIBLE
                 }
