@@ -16,6 +16,7 @@
 package gparap.apps.cipher_manager
 
 import gparap.apps.cipher_manager.utils.Utils
+import org.bouncycastle.crypto.params.ElGamalKeyParameters
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -63,6 +64,15 @@ class UtilsUnitTest {
         val textInput = "Hello World!"
         val encryptedValue = Utils.encryptWithRSA(publicKey, textInput)
         val decryptedValue = Utils.decryptWithRSA(privateKey, encryptedValue)
+        assertEquals(decryptedValue, textInput)
+    }
+
+    @Test
+    fun doCipherWithElGamal() {
+        val keyPair = Utils.generateElGamalKeys()
+        val textInput = "Hello, world!"
+        val encryptedValue = Utils.encryptWithElGamal(keyPair.public as ElGamalKeyParameters, textInput)
+        val decryptedValue = Utils.decryptWithElGamal(keyPair.private as ElGamalKeyParameters, encryptedValue)
         assertEquals(decryptedValue, textInput)
     }
 }

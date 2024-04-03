@@ -25,6 +25,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import gparap.apps.cipher_manager.utils.Algorithm
 import gparap.apps.cipher_manager.utils.Utils
+import org.bouncycastle.crypto.AsymmetricCipherKeyPair
+import org.bouncycastle.crypto.params.ElGamalKeyParameters
 
 class MainActivity : AppCompatActivity() {
     private var currentAlgorithm = Algorithm.AES  //default cipher
@@ -34,6 +36,8 @@ class MainActivity : AppCompatActivity() {
     private var textToBeDecrypted = ""
     private var encryptedText = ""
     private var decryptedText = ""
+    private lateinit var publicKeyElGamal: ElGamalKeyParameters
+    private lateinit var privateKeyElGamal: ElGamalKeyParameters
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +60,9 @@ class MainActivity : AppCompatActivity() {
             }
             else if (currentAlgorithm == Algorithm.RSA) {
                 encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
+            }else if (currentAlgorithm == Algorithm.ElGamal){
+                //we're not using the byte array parameter  //TODO: fix
+                encryptedText = encrypt(ByteArray(0), textToBeEncrypted)
             }
 
             //update the UI with the encrypted text
@@ -82,6 +89,9 @@ class MainActivity : AppCompatActivity() {
             }
             else if (currentAlgorithm == Algorithm.RSA) {
                 decryptedText = decrypt(publicKey.toByteArray(), textToBeDecrypted)
+            } else if (currentAlgorithm == Algorithm.ElGamal){
+                //we're not using the byte array parameter  //TODO: fix
+                decryptedText = decrypt(ByteArray(0), textToBeDecrypted)
             }
 
             //update the UI with the decrypted text
@@ -190,13 +200,19 @@ class MainActivity : AppCompatActivity() {
             findViewById<EditText>(R.id.editText_publicKey).apply {
                 publicKey = this.text.toString().trim() //16 chars (key length: 128/192/256 bits)
             }
-        }else{
+        }else if (currentAlgorithm == Algorithm.RSA){
             findViewById<EditText>(R.id.editText_privateKey).apply {
                 privateKey = this.text.toString().trim()    //2048-bit RSA key (Base64 formatting)
             }
             findViewById<EditText>(R.id.editText_publicKey).apply {
                 publicKey = this.text.toString().trim()     //2048-bit RSA key (Base64 formatting)
             }
+        }
+        else if (currentAlgorithm == Algorithm.ElGamal) {
+            //generate keys for ElGamal algorithm
+            val akp: AsymmetricCipherKeyPair = Utils.generateElGamalKeys()
+            publicKeyElGamal = akp.public as ElGamalKeyParameters
+            privateKeyElGamal = akp.private as ElGamalKeyParameters
         }
     }
 
@@ -210,6 +226,8 @@ class MainActivity : AppCompatActivity() {
             encryptedText = Utils.encryptWithSalsa20(key, value)
         }else if(currentAlgorithm == Algorithm.RSA) {
             encryptedText = Utils.encryptWithRSA(publicKey, value)
+        }else if(currentAlgorithm == Algorithm.ElGamal) {
+            encryptedText = Utils.encryptWithElGamal(publicKeyElGamal, value)
         }
 
         return encryptedText
@@ -226,6 +244,8 @@ class MainActivity : AppCompatActivity() {
         }
         else if(currentAlgorithm == Algorithm.RSA) {
             decryptedText = Utils.decryptWithRSA(privateKey, value)
+        }else if(currentAlgorithm == Algorithm.ElGamal) {
+            decryptedText = Utils.decryptWithElGamal(privateKeyElGamal, encryptedText)
         }
 
         return decryptedText
