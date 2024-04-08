@@ -74,6 +74,43 @@ object Utils {
         return String(decryptedBytes)
     }
 
+    /* Encrypts the input value based on the ARC4 (Rivest Cipher 4) algorithm. */
+    fun encryptWithARC4(publicKey: ByteArray, inputText: String): String {
+        //get a Cipher instance to implement the specified transformation
+        val cipher = Cipher.getInstance("RC4")
+
+        //create a secret key from the byte array input
+        val secretKey = SecretKeySpec(publicKey, "RC4")
+
+        //setup the cipher for encryption
+        cipher.init(Cipher.ENCRYPT_MODE, secretKey)
+
+        //encrypt the byte array
+        val encryptedBytes = cipher.doFinal(inputText.toByteArray())
+
+        //return the encrypted byte array into a string using the Base64 encoding scheme
+        return Base64.getEncoder().encodeToString(encryptedBytes)
+    }
+
+    /* Decrypts the text input value based on the ARC4 (Rivest Cipher 4) algorithm. */
+    fun decryptWithARC4(publicKey: ByteArray, inputText: String): String {
+        //get a Cipher instance to implement the specified transformation
+        val cipher = Cipher.getInstance("RC4")
+
+        //decode the Base64-encoded input string into an array of bytes
+        val decodedBytes: ByteArray = Base64.getDecoder().decode(inputText)
+
+        //setup the cipher for decryption
+        val secretKey = SecretKeySpec(publicKey, "RC4")
+        cipher.init(Cipher.DECRYPT_MODE, secretKey)
+
+        //decrypt the byte array
+        val decryptedBytes = cipher.doFinal(decodedBytes)
+
+        //return the decrypted byte array into a string
+        return String(decryptedBytes)
+    }
+
     /* Encrypts the input value based on the RSA (Rivest–Shamir–Adleman) algorithm. */
     fun encryptWithRSA(key: String, inputText: String): String {
         //get the Cipher instance of RSA

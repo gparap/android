@@ -49,10 +49,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             //encrypt text
-            if (currentAlgorithm == Algorithm.AES) {
+            if (currentAlgorithm == Algorithm.AES  || currentAlgorithm == Algorithm.ARC4) {
                 encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
-            }else if (currentAlgorithm == Algorithm.ARC4) {
-                TODO("Not implemented yet.")
             }
             else if (currentAlgorithm == Algorithm.RSA) {
                 encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
@@ -74,13 +72,9 @@ class MainActivity : AppCompatActivity() {
             }
 
             //decrypt text
-            if (currentAlgorithm == Algorithm.AES) {
+            if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4) {
                 decryptedText = decrypt(publicKey.toByteArray(), encryptedText)
-            }
-            else if (currentAlgorithm == Algorithm.ARC4) {
-                TODO("Not implemented yet.")
-            }
-            else if (currentAlgorithm == Algorithm.RSA) {
+            }else if (currentAlgorithm == Algorithm.RSA) {
                 decryptedText = decrypt(publicKey.toByteArray(), textToBeDecrypted)
             }
 
@@ -160,7 +154,7 @@ class MainActivity : AppCompatActivity() {
 
     /* Gets the public and/or private key from the user TODO: validate keys */
     private fun getSecretKeys() {
-        if (currentAlgorithm == Algorithm.AES) {
+        if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4) {
             findViewById<EditText>(R.id.editText_publicKey).apply {
                 publicKey = this.text.toString().trim() //16 chars (key length: 128/192/256 bits)
             }
@@ -178,7 +172,7 @@ class MainActivity : AppCompatActivity() {
     private fun encrypt(key: ByteArray, value: String): String {
         var encryptedText = ""
 
-        if (currentAlgorithm == Algorithm.AES) {
+        if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4) {
             encryptedText = Utils.encryptWithAES(key, value)
         }else if(currentAlgorithm == Algorithm.RSA) {
             encryptedText = Utils.encryptWithRSA(publicKey, value)
@@ -191,7 +185,7 @@ class MainActivity : AppCompatActivity() {
     private fun decrypt(key: ByteArray, value: String): String {
         var decryptedText = ""
 
-        if (currentAlgorithm == Algorithm.AES) {
+        if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4) {
             decryptedText = Utils.decryptWithAES(key, value)
         }
         else if(currentAlgorithm == Algorithm.RSA) {
