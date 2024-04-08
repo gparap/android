@@ -51,8 +51,8 @@ class MainActivity : AppCompatActivity() {
             //encrypt text
             if (currentAlgorithm == Algorithm.AES) {
                 encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
-            }else if (currentAlgorithm == Algorithm.Salsa20) {
-                encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
+            }else if (currentAlgorithm == Algorithm.ARC4) {
+                TODO("Not implemented yet.")
             }
             else if (currentAlgorithm == Algorithm.RSA) {
                 encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
@@ -77,8 +77,8 @@ class MainActivity : AppCompatActivity() {
             if (currentAlgorithm == Algorithm.AES) {
                 decryptedText = decrypt(publicKey.toByteArray(), encryptedText)
             }
-            else if (currentAlgorithm == Algorithm.Salsa20) {
-                decryptedText = decrypt(publicKey.toByteArray(), textToBeEncrypted)
+            else if (currentAlgorithm == Algorithm.ARC4) {
+                TODO("Not implemented yet.")
             }
             else if (currentAlgorithm == Algorithm.RSA) {
                 decryptedText = decrypt(publicKey.toByteArray(), textToBeDecrypted)
@@ -106,6 +106,13 @@ class MainActivity : AppCompatActivity() {
                 currentAlgorithm = Algorithm.AES
             }
 
+            //Rivest Cipher 4 algorithm
+            R.id.menu_item_arc4 -> {
+                updateCipherInfoText(R.string.text_arc4_long)
+                handlePrivateKeyVisibility(R.id.menu_item_arc4)
+                currentAlgorithm = Algorithm.ARC4
+            }
+
             //Rivest-Shamir-Adleman algorithm
             R.id.menu_item_rsa -> {
                 updateCipherInfoText(R.string.text_rsa_long)
@@ -121,6 +128,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.textView_cipher_info).apply {
             this.text = getString(R.string.text_current_cipher_algorithm).plus(
                 getString(resId)
+
             )
         }
     }
@@ -152,7 +160,7 @@ class MainActivity : AppCompatActivity() {
 
     /* Gets the public and/or private key from the user TODO: validate keys */
     private fun getSecretKeys() {
-        if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.Salsa20) {
+        if (currentAlgorithm == Algorithm.AES) {
             findViewById<EditText>(R.id.editText_publicKey).apply {
                 publicKey = this.text.toString().trim() //16 chars (key length: 128/192/256 bits)
             }
