@@ -12,6 +12,9 @@
             <item
                 android:id="@+id/menu_item_aes"
                 android:title="@string/text_aes_short" />
+            <item
+                android:id="@+id/menu_item_arc4"
+                android:title="@string/text_arc4_short" />
         </menu>
     </item>
 

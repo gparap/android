@@ -109,6 +109,18 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
+    fun isCipherInfoTextCorrect_selectARC4MenuItem() {
+        //create the actual info text
+        val infoText = getCipherInfoText(R.string.text_arc4_long)
+
+        //select the ARC4 algorithm from the menu
+        selectCipher(R.string.text_symmetric_ciphers, R.string.text_arc4_short)
+
+        //test here
+        onView(withId(R.id.textView_cipher_info)).check(matches(withText(infoText)))
+    }
+
+    @Test
     fun isCipherInfoTextCorrect_selectRSAMenuItem() {
         //create the actual info text
         val infoText = getCipherInfoText(R.string.text_rsa_long)
