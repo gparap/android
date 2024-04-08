@@ -109,36 +109,12 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
-    fun isCipherInfoTextCorrect_selectSalsa20MenuItem() {
-        //create the actual info text
-        val infoText = getCipherInfoText(R.string.text_salsa20)
-
-        //select the Salsa20 algorithm from the menu
-        selectCipher(R.string.text_symmetric_ciphers, R.string.text_salsa20)
-
-        //test here
-        onView(withId(R.id.textView_cipher_info)).check(matches(withText(infoText)))
-    }
-
-    @Test
     fun isCipherInfoTextCorrect_selectRSAMenuItem() {
         //create the actual info text
         val infoText = getCipherInfoText(R.string.text_rsa_long)
 
         //select the RSA algorithm from the menu
         selectCipher(R.string.text_asymmetric_ciphers, R.string.text_rsa_short)
-
-        //test here
-        onView(withId(R.id.textView_cipher_info)).check(matches(withText(infoText)))
-    }
-
-    @Test
-    fun isCipherInfoTextCorrect_selectDHKEMenuItem() {
-        //create the actual info text
-        val infoText = getCipherInfoText(R.string.text_elgamal)
-
-        //select the DHKE algorithm from the menu
-        selectCipher(R.string.text_asymmetric_ciphers, R.string.text_elgamal)
 
         //test here
         onView(withId(R.id.textView_cipher_info)).check(matches(withText(infoText)))
@@ -155,30 +131,9 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
-    fun isPrivateKeyNotVisible_onSalsa20MenuItemSelected() {
-        //select the Salsa20 algorithm from the menu
-        selectCipher(R.string.text_symmetric_ciphers, R.string.text_salsa20)
-
-        //test the private key views visibility
-        onView(withId(R.id.textView_privateKey_label)).check(matches(not(isDisplayed())))
-        onView(withId(R.id.editText_privateKey)).check(matches(not(isDisplayed())))
-
-    }
-
-    @Test
     fun isPrivateKeyVisible_onRSAMenuItemSelected() {
         //select the RSA algorithm from the menu
         selectCipher(R.string.text_asymmetric_ciphers, R.string.text_rsa_short)
-
-        //test the private key views visibility
-        onView(withId(R.id.textView_privateKey_label)).check(matches(isDisplayed()))
-        onView(withId(R.id.editText_privateKey)).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun isPrivateKeyVisible_onDHKEMenuItemSelected() {
-        //select the DHKE algorithm from the menu
-        selectCipher(R.string.text_asymmetric_ciphers, R.string.text_elgamal)
 
         //test the private key views visibility
         onView(withId(R.id.textView_privateKey_label)).check(matches(isDisplayed()))

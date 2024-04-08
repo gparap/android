@@ -15,18 +15,7 @@
  */
 package gparap.apps.cipher_manager.utils
 
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair
-import org.bouncycastle.crypto.engines.ElGamalEngine
-import org.bouncycastle.crypto.engines.Salsa20Engine
-import org.bouncycastle.crypto.generators.ElGamalKeyPairGenerator
-import org.bouncycastle.crypto.params.ElGamalKeyGenerationParameters
-import org.bouncycastle.crypto.params.ElGamalKeyParameters
-import org.bouncycastle.crypto.params.ElGamalParameters
-import org.bouncycastle.crypto.params.KeyParameter
-import org.bouncycastle.crypto.params.ParametersWithIV
-import java.math.BigInteger
 import java.security.KeyFactory
-import java.security.SecureRandom
 import java.security.spec.PKCS8EncodedKeySpec
 import java.security.spec.X509EncodedKeySpec
 import java.util.Base64
@@ -85,45 +74,6 @@ object Utils {
         return String(decryptedBytes)
     }
 
-    /* Encrypts the input value based on the Salsa20 algorithm. */
-    fun encryptWithSalsa20(publicKey: ByteArray, inputText: String): String {
-        //get the Cipher instance of Salsa20
-        val cipher = Salsa20Engine()
-
-        //setup the cipher for encryption and/or decryption //TODO: randomize Initialization Vector
-        val iv = ByteArray(8) //use the default Initialization Vector of 8 bytes
-        val keyParam = KeyParameter(publicKey)
-        val params = ParametersWithIV(keyParam, iv)
-        cipher.init(true, params)
-
-        //encrypt the byte array
-        val inputBytes = inputText.toByteArray()
-        val cipheredBytes = ByteArray(inputBytes.size)
-        cipher.processBytes(inputBytes, 0, inputBytes.size, cipheredBytes, 0)
-
-        //return the encrypted byte array into a string using the Base64 encoding scheme
-        return Base64.getEncoder().encodeToString(cipheredBytes)
-    }
-
-    /* Decrypts the text input value based on the Salsa20 algorithm. */
-    fun decryptWithSalsa20(publicKey: ByteArray, inputText: String): String {
-        //get the Cipher instance of Salsa20
-        val cipher = Salsa20Engine()
-
-        //setup the cipher for encryption and/or decryption //TODO: randomize Initialization Vector
-        val iv = ByteArray(8) // Default IV of 8 bytes
-        val params = ParametersWithIV(KeyParameter(publicKey), iv)
-        cipher.init(false, params)
-
-        //decrypt the byte array
-        val encryptedBytes = Base64.getDecoder().decode(inputText)
-        val decryptedBytes = ByteArray(encryptedBytes.size)
-        cipher.processBytes(encryptedBytes, 0, encryptedBytes.size, decryptedBytes, 0)
-
-        //return the decrypted byte array into a string
-        return String(decryptedBytes)
-    }
-
     /* Encrypts the input value based on the RSA (Rivest–Shamir–Adleman) algorithm. */
     fun encryptWithRSA(key: String, inputText: String): String {
         //get the Cipher instance of RSA
@@ -159,54 +109,5 @@ object Utils {
 
         //return the encrypted byte array into a string the using the UTF-8 character set
         return String(decryptedBytes)
-    }
-
-    /* Encrypts the input value based on the ElGamal algorithm. */
-    fun encryptWithElGamal(key: ElGamalKeyParameters, inputText: String): String {
-        //initialize the ElGamal engine for encryption
-        val engine = ElGamalEngine()
-        engine.init(true, key)
-
-        //encrypt into a byte array
-        val inputBytes = inputText.toByteArray()
-        val encodedBytes = engine.processBlock(inputBytes, 0, inputBytes.size)
-
-        //return the encrypted byte array into a string using the Base64 encoding scheme
-        return Base64.getEncoder().encodeToString(encodedBytes)
-    }
-
-    /* Decrypts the text input value based on the ElGamal algorithm. */
-    fun decryptWithElGamal(key: ElGamalKeyParameters, inputText: String): String {
-        //initialize the ElGamal engine for decryption
-        val engine = ElGamalEngine()
-        engine.init(false, key)
-
-        //convert Base64 encoded cipher text string to a byte array
-        val encryptedBytes = Base64.getDecoder().decode(inputText)
-
-        //encrypt
-        val decryptedBytes: ByteArray = engine.processBlock(encryptedBytes, 0, encryptedBytes.size)
-
-        //return the decrypted byte array into a string
-        return String(decryptedBytes)
-    }
-
-    /* Generates ElGamal cipher key parameters. */
-    fun generateElGamalKeys() : AsymmetricCipherKeyPair  {
-        //the prime modulus "p" and generator "g" of the algorithm TODO: create a keygen for p and g
-        val prime = BigInteger("29402321462549794870346923930564195495056844808102479517168551703935695144527989230942403020984375357298740354856025275944700803888506019799419462561321310286311317948418891892921641523409032696495572114082942626562209992190127682280489794835835057746380776743979767755692323840044847020340844631586205886281")
-        val generator = BigInteger("3")
-
-        //generate key pair parameters
-        val random = SecureRandom()
-        val elGamalParams = ElGamalParameters(prime, generator)
-        val keyGenParams = ElGamalKeyGenerationParameters(random, elGamalParams)
-
-        //initialize the key pair generator
-        val keyPairGenerator = ElGamalKeyPairGenerator()
-        keyPairGenerator.init(keyGenParams)
-
-        //return the generated the key pair
-        return keyPairGenerator.generateKeyPair()
     }
 }
