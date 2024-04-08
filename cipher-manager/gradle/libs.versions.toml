@@ -13,7 +13,6 @@ material = "1.10.0"
 #noinspection GradleDependency
 activity = "1.8.0"
 constraintlayout = "2.1.4"
-bcprovJdk15on = "1.70"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -24,7 +23,6 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
-bcprov-jdk15on = { group = "org.bouncycastle", name = "bcprov-jdk15on", version.ref = "bcprovJdk15on" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

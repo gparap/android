@@ -11,9 +11,7 @@
     <string name="text_symmetric_ciphers">Symmetric Ciphers</string>
     <string name="text_aes_short">AES</string>
     <string name="text_aes_long">AES (Advanced Encryption Standard)</string>
-    <string name="text_salsa20">Salsa20</string>
     <string name="text_asymmetric_ciphers">Asymmetric Ciphers</string>
     <string name="text_rsa_short">RSA</string>
     <string name="text_rsa_long">RSA (Rivest–Shamir–Adleman)</string>
-    <string name="text_elgamal">ElGamal</string>
 </resources>

@@ -45,7 +45,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    //Salsa20 cipher algorithm
-    implementation(libs.bcprov.jdk15on)
 }

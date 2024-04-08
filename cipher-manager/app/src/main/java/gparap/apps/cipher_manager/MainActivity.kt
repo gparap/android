@@ -25,8 +25,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import gparap.apps.cipher_manager.utils.Algorithm
 import gparap.apps.cipher_manager.utils.Utils
-import org.bouncycastle.crypto.AsymmetricCipherKeyPair
-import org.bouncycastle.crypto.params.ElGamalKeyParameters
 
 class MainActivity : AppCompatActivity() {
     private var currentAlgorithm = Algorithm.AES  //default cipher
@@ -36,8 +34,6 @@ class MainActivity : AppCompatActivity() {
     private var textToBeDecrypted = ""
     private var encryptedText = ""
     private var decryptedText = ""
-    private lateinit var publicKeyElGamal: ElGamalKeyParameters
-    private lateinit var privateKeyElGamal: ElGamalKeyParameters
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,9 +56,6 @@ class MainActivity : AppCompatActivity() {
             }
             else if (currentAlgorithm == Algorithm.RSA) {
                 encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
-            }else if (currentAlgorithm == Algorithm.ElGamal){
-                //we're not using the byte array parameter  //TODO: fix
-                encryptedText = encrypt(ByteArray(0), textToBeEncrypted)
             }
 
             //update the UI with the encrypted text
@@ -89,9 +82,6 @@ class MainActivity : AppCompatActivity() {
             }
             else if (currentAlgorithm == Algorithm.RSA) {
                 decryptedText = decrypt(publicKey.toByteArray(), textToBeDecrypted)
-            } else if (currentAlgorithm == Algorithm.ElGamal){
-                //we're not using the byte array parameter  //TODO: fix
-                decryptedText = decrypt(ByteArray(0), textToBeDecrypted)
             }
 
             //update the UI with the decrypted text
@@ -116,25 +106,11 @@ class MainActivity : AppCompatActivity() {
                 currentAlgorithm = Algorithm.AES
             }
 
-            //Salsa20 algorithm
-            R.id.menu_item_salsa20 -> {
-                updateCipherInfoText(R.string.text_salsa20)
-                handlePrivateKeyVisibility(R.id.menu_item_salsa20)
-                currentAlgorithm = Algorithm.Salsa20
-            }
-
             //Rivest-Shamir-Adleman algorithm
             R.id.menu_item_rsa -> {
                 updateCipherInfoText(R.string.text_rsa_long)
                 handlePrivateKeyVisibility(R.id.menu_item_rsa)
                 currentAlgorithm = Algorithm.RSA
-            }
-
-            //ElGamal
-            R.id.menu_item_elgamal -> {
-                updateCipherInfoText(R.string.text_elgamal)
-                handlePrivateKeyVisibility(R.id.menu_item_elgamal)
-                currentAlgorithm = Algorithm.ElGamal
             }
         }
         return super.onOptionsItemSelected(item)
@@ -162,28 +138,8 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            //hide private key
-            R.id.menu_item_salsa20 -> {
-                findViewById<TextView>(R.id.textView_privateKey_label).apply {
-                    this.visibility = View.GONE
-                }
-                findViewById<EditText>(R.id.editText_privateKey).apply {
-                    this.visibility = View.GONE
-                }
-            }
-
             //show private key
             R.id.menu_item_rsa -> {
-                findViewById<TextView>(R.id.textView_privateKey_label).apply {
-                    this.visibility = View.VISIBLE
-                }
-                findViewById<EditText>(R.id.editText_privateKey).apply {
-                    this.visibility = View.VISIBLE
-                }
-            }
-
-            //show private key
-            R.id.menu_item_elgamal -> {
                 findViewById<TextView>(R.id.textView_privateKey_label).apply {
                     this.visibility = View.VISIBLE
                 }
@@ -208,12 +164,6 @@ class MainActivity : AppCompatActivity() {
                 publicKey = this.text.toString().trim()     //2048-bit RSA key (Base64 formatting)
             }
         }
-        else if (currentAlgorithm == Algorithm.ElGamal) {
-            //generate keys for ElGamal algorithm
-            val akp: AsymmetricCipherKeyPair = Utils.generateElGamalKeys()
-            publicKeyElGamal = akp.public as ElGamalKeyParameters
-            privateKeyElGamal = akp.private as ElGamalKeyParameters
-        }
     }
 
     /* Encrypts the input value based on the current algorithm. */
@@ -222,12 +172,8 @@ class MainActivity : AppCompatActivity() {
 
         if (currentAlgorithm == Algorithm.AES) {
             encryptedText = Utils.encryptWithAES(key, value)
-        }else if(currentAlgorithm == Algorithm.Salsa20) {
-            encryptedText = Utils.encryptWithSalsa20(key, value)
         }else if(currentAlgorithm == Algorithm.RSA) {
             encryptedText = Utils.encryptWithRSA(publicKey, value)
-        }else if(currentAlgorithm == Algorithm.ElGamal) {
-            encryptedText = Utils.encryptWithElGamal(publicKeyElGamal, value)
         }
 
         return encryptedText
@@ -239,13 +185,9 @@ class MainActivity : AppCompatActivity() {
 
         if (currentAlgorithm == Algorithm.AES) {
             decryptedText = Utils.decryptWithAES(key, value)
-        }else if(currentAlgorithm == Algorithm.Salsa20) {
-            decryptedText = Utils.decryptWithSalsa20(key, value)
         }
         else if(currentAlgorithm == Algorithm.RSA) {
             decryptedText = Utils.decryptWithRSA(privateKey, value)
-        }else if(currentAlgorithm == Algorithm.ElGamal) {
-            decryptedText = Utils.decryptWithElGamal(privateKeyElGamal, encryptedText)
         }
 
         return decryptedText
