@@ -5,4 +5,5 @@ enum class Algorithm {
     ARC4,       //Rivest Cipher 4
     RSA,        //Rivest–Shamir–Adleman
     Blowfish,
+    DES,        //Date Encryption Standard
 }
