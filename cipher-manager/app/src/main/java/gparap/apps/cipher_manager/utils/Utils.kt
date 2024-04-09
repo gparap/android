@@ -111,7 +111,7 @@ object Utils {
         return String(decryptedBytes)
     }
 
-    /* Encrypts the input value based on the AES (Advanced Encryption Standard) algorithm. */
+    /* Encrypts the input value based on the Blowfish algorithm. */
     fun encryptWithBlowfish(publicKey: ByteArray, inputText: String): String {
         //get a Cipher instance to implement the specified transformation
         val cipher = Cipher.getInstance("Blowfish/CBC/PKCS5Padding")
@@ -133,7 +133,7 @@ object Utils {
         return Base64.getEncoder().encodeToString(iv + encryptedBytes)
     }
 
-    /* Decrypts the text input value based on the AES (Advanced Encryption Standard) algorithm. */
+    /* Decrypts the text input value based on the Blowfish. */
     fun decryptWithBlowfish(publicKey: ByteArray, inputText: String): String {
         //get a Cipher instance to implement the specified transformation
         val cipher = Cipher.getInstance("Blowfish/CBC/PKCS5Padding")
@@ -160,7 +160,7 @@ object Utils {
         return String(decryptedBytes)
     }
 
-    /* Encrypts the input value based on the AES (Advanced Encryption Standard) algorithm. */
+    /* Encrypts the input value based on the DES (Data Encryption Standard) algorithm. */
     fun encryptWithDES(publicKey: ByteArray, inputText: String): String {
         //get a Cipher instance to implement the specified transformation
         val cipher = Cipher.getInstance("DES/CBC/PKCS5Padding")
@@ -182,7 +182,7 @@ object Utils {
         return Base64.getEncoder().encodeToString(iv + encryptedBytes)
     }
 
-    /* Decrypts the text input value based on the AES (Advanced Encryption Standard) algorithm. */
+    /* Decrypts the text input value based on the DES (Data Encryption Standard) algorithm. */
     fun decryptWithDES(publicKey: ByteArray, inputText: String): String {
         //get a Cipher instance to implement the specified transformation
         val cipher = Cipher.getInstance("DES/CBC/PKCS5Padding")
@@ -199,6 +199,55 @@ object Utils {
 
         //setup the cipher for decryption
         val secretKey = SecretKeySpec(publicKey, "DES")
+        val ivParams = IvParameterSpec(iv)
+        cipher.init(Cipher.DECRYPT_MODE, secretKey, ivParams)
+
+        //decrypt the byte array
+        val decryptedBytes = cipher.doFinal(encryptedBytes)
+
+        //return the decrypted byte array into a string
+        return String(decryptedBytes)
+    }
+
+    /* Encrypts the input value based on the Triple DES (Data Encryption Standard) algorithm. */
+    fun encryptWithTripleDES(publicKey: ByteArray, inputText: String): String {
+        //get a Cipher instance to implement the specified transformation
+        val cipher = Cipher.getInstance("DESede/CBC/PKCS5Padding")
+
+        //create a secret key from the byte array input
+        val secretKey = SecretKeySpec(publicKey, "DESede")
+
+        //get the Initialization Vector array and create an IvParameterSpec object
+        val iv = ByteArray(cipher.blockSize)
+        val ivParams = IvParameterSpec(iv)
+
+        //setup the cipher for encryption
+        cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivParams)
+
+        //encrypt the byte array
+        val encryptedBytes = cipher.doFinal(inputText.toByteArray())
+
+        //return the encrypted byte array into a string using the Base64 encoding scheme
+        return Base64.getEncoder().encodeToString(iv + encryptedBytes)
+    }
+
+    /* Decrypts the text input value based on the Triple DES (Data Encryption Standard) algorithm. */
+    fun decryptWithTripleDES(publicKey: ByteArray, inputText: String): String {
+        //get a Cipher instance to implement the specified transformation
+        val cipher = Cipher.getInstance("DESede/CBC/PKCS5Padding")
+
+        //decode the Base64-encoded input string into an array of bytes
+        val decodedBytes: ByteArray = Base64.getDecoder().decode(inputText)
+
+        //extract the Initialization Vector array from the decoded bytes
+        val ivSize = cipher.blockSize
+        val iv = decodedBytes.copyOfRange(0, ivSize)
+
+        //extract the encrypted bytes
+        val encryptedBytes = decodedBytes.copyOfRange(ivSize, decodedBytes.size)
+
+        //setup the cipher for decryption
+        val secretKey = SecretKeySpec(publicKey, "DESede")
         val ivParams = IvParameterSpec(iv)
         cipher.init(Cipher.DECRYPT_MODE, secretKey, ivParams)
 
