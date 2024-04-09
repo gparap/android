@@ -21,6 +21,9 @@
             <item
                 android:id="@+id/menu_item_des"
                 android:title="@string/text_des_short" />
+            <item
+                android:id="@+id/menu_item_desede"
+                android:title="@string/text_desede_short" />
         </menu>
     </item>
 

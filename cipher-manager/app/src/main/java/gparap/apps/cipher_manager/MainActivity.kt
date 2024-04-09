@@ -50,7 +50,8 @@ class MainActivity : AppCompatActivity() {
 
             //encrypt text
             if (currentAlgorithm == Algorithm.AES  || currentAlgorithm == Algorithm.ARC4
-                || currentAlgorithm == Algorithm.Blowfish || currentAlgorithm == Algorithm.DES) {
+                || currentAlgorithm == Algorithm.Blowfish || currentAlgorithm == Algorithm.DES
+                || currentAlgorithm == Algorithm.DESede) {
                 encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
             }
             else if (currentAlgorithm == Algorithm.RSA) {
@@ -74,7 +75,8 @@ class MainActivity : AppCompatActivity() {
 
             //decrypt text
             if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4
-                || currentAlgorithm == Algorithm.Blowfish || currentAlgorithm == Algorithm.DES) {
+                || currentAlgorithm == Algorithm.Blowfish || currentAlgorithm == Algorithm.DES
+                || currentAlgorithm == Algorithm.DESede) {
                 decryptedText = decrypt(publicKey.toByteArray(), encryptedText)
             }else if (currentAlgorithm == Algorithm.RSA) {
                 decryptedText = decrypt(publicKey.toByteArray(), textToBeDecrypted)
@@ -116,13 +118,19 @@ class MainActivity : AppCompatActivity() {
                 currentAlgorithm = Algorithm.Blowfish
             }
 
-            //Advanced Encryption Standard algorithm
+            //Data Encryption Standard algorithm
             R.id.menu_item_des -> {
                 updateCipherInfoText(R.string.text_des_long)
                 handlePrivateKeyVisibility(R.id.menu_item_des)
                 currentAlgorithm = Algorithm.DES
             }
 
+            //Triple Data Encryption Standard algorithm
+            R.id.menu_item_desede -> {
+                updateCipherInfoText(R.string.text_desede_long)
+                handlePrivateKeyVisibility(R.id.menu_item_des)
+                currentAlgorithm = Algorithm.DESede
+            }
 
             //Rivest-Shamir-Adleman algorithm
             R.id.menu_item_rsa -> {
@@ -172,9 +180,10 @@ class MainActivity : AppCompatActivity() {
     /* Gets the public and/or private key from the user TODO: validate keys */
     private fun getSecretKeys() {
         if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4 ||
-            currentAlgorithm == Algorithm.Blowfish || currentAlgorithm == Algorithm.DES) {
+            currentAlgorithm == Algorithm.Blowfish || currentAlgorithm == Algorithm.DES
+            || currentAlgorithm == Algorithm.DESede) {
             findViewById<EditText>(R.id.editText_publicKey).apply {
-                publicKey = this.text.toString().trim() //16 chars (key length: 128/192/256 bits)
+                publicKey = this.text.toString().trim()
             }
         }else if (currentAlgorithm == Algorithm.RSA){
             findViewById<EditText>(R.id.editText_privateKey).apply {
@@ -193,6 +202,7 @@ class MainActivity : AppCompatActivity() {
             Algorithm.ARC4 -> Utils.encryptWithARC4(key, value)
             Algorithm.Blowfish -> Utils.encryptWithBlowfish(key, value)
             Algorithm.DES -> Utils.encryptWithDES(key, value)
+            Algorithm.DESede -> Utils.encryptWithTripleDES(key, value)
             Algorithm.RSA -> Utils.encryptWithRSA(publicKey, value)
         }
 
@@ -206,6 +216,7 @@ class MainActivity : AppCompatActivity() {
             Algorithm.ARC4 -> Utils.decryptWithARC4(key, value)
             Algorithm.Blowfish -> Utils.decryptWithBlowfish(key, value)
             Algorithm.DES -> Utils.decryptWithDES(key, value)
+            Algorithm.DESede -> Utils.decryptWithTripleDES(key, value)
             Algorithm.RSA -> Utils.decryptWithRSA(privateKey, value)
         }
 

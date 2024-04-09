@@ -16,6 +16,8 @@
     <string name="text_blowfish">Blowfish</string>
     <string name="text_des_short">DES</string>
     <string name="text_des_long">DES (Data Encryption Standard)</string>
+    <string name="text_desede_short">Triple DES</string>
+    <string name="text_desede_long">Triple DES (Triple Data Encryption Standard)</string>
     <string name="text_asymmetric_ciphers">Asymmetric Cryptography</string>
     <string name="text_rsa_short">RSA</string>
     <string name="text_rsa_long">RSA (Rivest–Shamir–Adleman)</string>
