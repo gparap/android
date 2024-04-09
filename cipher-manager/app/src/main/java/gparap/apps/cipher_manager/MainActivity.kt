@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
             //encrypt text
             if (currentAlgorithm == Algorithm.AES  || currentAlgorithm == Algorithm.ARC4
-                || currentAlgorithm == Algorithm.Blowfish) {
+                || currentAlgorithm == Algorithm.Blowfish || currentAlgorithm == Algorithm.DES) {
                 encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
             }
             else if (currentAlgorithm == Algorithm.RSA) {
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
 
             //decrypt text
             if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4
-                || currentAlgorithm == Algorithm.Blowfish) {
+                || currentAlgorithm == Algorithm.Blowfish || currentAlgorithm == Algorithm.DES) {
                 decryptedText = decrypt(publicKey.toByteArray(), encryptedText)
             }else if (currentAlgorithm == Algorithm.RSA) {
                 decryptedText = decrypt(publicKey.toByteArray(), textToBeDecrypted)
@@ -115,6 +115,14 @@ class MainActivity : AppCompatActivity() {
                 handlePrivateKeyVisibility(R.id.menu_item_blowfish)
                 currentAlgorithm = Algorithm.Blowfish
             }
+
+            //Advanced Encryption Standard algorithm
+            R.id.menu_item_des -> {
+                updateCipherInfoText(R.string.text_des_long)
+                handlePrivateKeyVisibility(R.id.menu_item_des)
+                currentAlgorithm = Algorithm.DES
+            }
+
 
             //Rivest-Shamir-Adleman algorithm
             R.id.menu_item_rsa -> {
@@ -164,7 +172,7 @@ class MainActivity : AppCompatActivity() {
     /* Gets the public and/or private key from the user TODO: validate keys */
     private fun getSecretKeys() {
         if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4 ||
-            currentAlgorithm == Algorithm.Blowfish) {
+            currentAlgorithm == Algorithm.Blowfish || currentAlgorithm == Algorithm.DES) {
             findViewById<EditText>(R.id.editText_publicKey).apply {
                 publicKey = this.text.toString().trim() //16 chars (key length: 128/192/256 bits)
             }
@@ -180,13 +188,12 @@ class MainActivity : AppCompatActivity() {
 
     /* Encrypts the input value based on the current algorithm. */
     private fun encrypt(key: ByteArray, value: String): String {
-        var encryptedText = ""
-
-        if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4
-            || currentAlgorithm == Algorithm.Blowfish) {
-            encryptedText = Utils.encryptWithAES(key, value)
-        }else if(currentAlgorithm == Algorithm.RSA) {
-            encryptedText = Utils.encryptWithRSA(publicKey, value)
+        val encryptedText = when (currentAlgorithm) {
+            Algorithm.AES -> Utils.encryptWithAES(key, value)
+            Algorithm.ARC4 -> Utils.encryptWithARC4(key, value)
+            Algorithm.Blowfish -> Utils.encryptWithBlowfish(key, value)
+            Algorithm.DES -> Utils.encryptWithDES(key, value)
+            Algorithm.RSA -> Utils.encryptWithRSA(publicKey, value)
         }
 
         return encryptedText
@@ -194,14 +201,12 @@ class MainActivity : AppCompatActivity() {
 
     /* Decrypts the input value based on the current algorithm. */
     private fun decrypt(key: ByteArray, value: String): String {
-        var decryptedText = ""
-
-        if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4 ||
-            currentAlgorithm == Algorithm.Blowfish) {
-            decryptedText = Utils.decryptWithAES(key, value)
-        }
-        else if(currentAlgorithm == Algorithm.RSA) {
-            decryptedText = Utils.decryptWithRSA(privateKey, value)
+        val decryptedText = when (currentAlgorithm) {
+            Algorithm.AES -> Utils.decryptWithAES(key, value)
+            Algorithm.ARC4 -> Utils.decryptWithARC4(key, value)
+            Algorithm.Blowfish -> Utils.decryptWithBlowfish(key, value)
+            Algorithm.DES -> Utils.decryptWithDES(key, value)
+            Algorithm.RSA -> Utils.decryptWithRSA(privateKey, value)
         }
 
         return decryptedText

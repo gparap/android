@@ -18,6 +18,9 @@
             <item
                 android:id="@+id/menu_item_blowfish"
                 android:title="@string/text_blowfish" />
+            <item
+                android:id="@+id/menu_item_des"
+                android:title="@string/text_des_short" />
         </menu>
     </item>
 

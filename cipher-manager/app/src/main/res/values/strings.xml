@@ -14,6 +14,8 @@
     <string name="text_arc4_short">ARC4</string>
     <string name="text_arc4_long">ARC4 (Rivest Cipher 4)</string>
     <string name="text_blowfish">Blowfish</string>
+    <string name="text_des_short">DES</string>
+    <string name="text_des_long">DES (Data Encryption Standard)</string>
     <string name="text_asymmetric_ciphers">Asymmetric Cryptography</string>
     <string name="text_rsa_short">RSA</string>
     <string name="text_rsa_long">RSA (Rivest–Shamir–Adleman)</string>
