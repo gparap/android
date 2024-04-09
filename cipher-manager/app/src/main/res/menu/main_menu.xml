@@ -15,6 +15,9 @@
             <item
                 android:id="@+id/menu_item_arc4"
                 android:title="@string/text_arc4_short" />
+            <item
+                android:id="@+id/menu_item_blowfish"
+                android:title="@string/text_blowfish" />
         </menu>
     </item>
 

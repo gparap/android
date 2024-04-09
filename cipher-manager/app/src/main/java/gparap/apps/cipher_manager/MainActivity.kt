@@ -49,7 +49,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             //encrypt text
-            if (currentAlgorithm == Algorithm.AES  || currentAlgorithm == Algorithm.ARC4) {
+            if (currentAlgorithm == Algorithm.AES  || currentAlgorithm == Algorithm.ARC4
+                || currentAlgorithm == Algorithm.Blowfish) {
                 encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
             }
             else if (currentAlgorithm == Algorithm.RSA) {
@@ -72,7 +73,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             //decrypt text
-            if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4) {
+            if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4
+                || currentAlgorithm == Algorithm.Blowfish) {
                 decryptedText = decrypt(publicKey.toByteArray(), encryptedText)
             }else if (currentAlgorithm == Algorithm.RSA) {
                 decryptedText = decrypt(publicKey.toByteArray(), textToBeDecrypted)
@@ -105,6 +107,13 @@ class MainActivity : AppCompatActivity() {
                 updateCipherInfoText(R.string.text_arc4_long)
                 handlePrivateKeyVisibility(R.id.menu_item_arc4)
                 currentAlgorithm = Algorithm.ARC4
+            }
+
+            //Blowfish algorithm
+            R.id.menu_item_blowfish -> {
+                updateCipherInfoText(R.string.text_blowfish)
+                handlePrivateKeyVisibility(R.id.menu_item_blowfish)
+                currentAlgorithm = Algorithm.Blowfish
             }
 
             //Rivest-Shamir-Adleman algorithm
@@ -154,7 +163,8 @@ class MainActivity : AppCompatActivity() {
 
     /* Gets the public and/or private key from the user TODO: validate keys */
     private fun getSecretKeys() {
-        if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4) {
+        if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4 ||
+            currentAlgorithm == Algorithm.Blowfish) {
             findViewById<EditText>(R.id.editText_publicKey).apply {
                 publicKey = this.text.toString().trim() //16 chars (key length: 128/192/256 bits)
             }
@@ -172,7 +182,8 @@ class MainActivity : AppCompatActivity() {
     private fun encrypt(key: ByteArray, value: String): String {
         var encryptedText = ""
 
-        if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4) {
+        if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4
+            || currentAlgorithm == Algorithm.Blowfish) {
             encryptedText = Utils.encryptWithAES(key, value)
         }else if(currentAlgorithm == Algorithm.RSA) {
             encryptedText = Utils.encryptWithRSA(publicKey, value)
@@ -185,7 +196,8 @@ class MainActivity : AppCompatActivity() {
     private fun decrypt(key: ByteArray, value: String): String {
         var decryptedText = ""
 
-        if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4) {
+        if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4 ||
+            currentAlgorithm == Algorithm.Blowfish) {
             decryptedText = Utils.decryptWithAES(key, value)
         }
         else if(currentAlgorithm == Algorithm.RSA) {
