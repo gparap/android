@@ -21,4 +21,11 @@
     <string name="text_asymmetric_ciphers">Asymmetric Cryptography</string>
     <string name="text_rsa_short">RSA</string>
     <string name="text_rsa_long">RSA (Rivest–Shamir–Adleman)</string>
+    
+    <!--Hints for public key input in symmetric algorithms-->
+    <string name="hint_cipherKey_aes">enter a key of 16, 24, or 32 characters</string>
+    <string name="hint_cipherKey_arc4">enter a key between 5 and 128 characters</string>
+    <string name="hint_cipherKey_blowfish">enter a key between 1 and 56 characters</string>
+    <string name="hint_cipherKey_des">enter a key of 8 characters</string>
+    <string name="hint_cipherKey_desede">enter a key of 24 characters</string>
 </resources>

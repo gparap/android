@@ -49,12 +49,12 @@ class MainActivity : AppCompatActivity() {
             }
 
             //encrypt text
-            if (currentAlgorithm == Algorithm.AES  || currentAlgorithm == Algorithm.ARC4
+            if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4
                 || currentAlgorithm == Algorithm.Blowfish || currentAlgorithm == Algorithm.DES
-                || currentAlgorithm == Algorithm.DESede) {
+                || currentAlgorithm == Algorithm.DESede
+            ) {
                 encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
-            }
-            else if (currentAlgorithm == Algorithm.RSA) {
+            } else if (currentAlgorithm == Algorithm.RSA) {
                 encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
             }
 
@@ -76,9 +76,10 @@ class MainActivity : AppCompatActivity() {
             //decrypt text
             if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4
                 || currentAlgorithm == Algorithm.Blowfish || currentAlgorithm == Algorithm.DES
-                || currentAlgorithm == Algorithm.DESede) {
+                || currentAlgorithm == Algorithm.DESede
+            ) {
                 decryptedText = decrypt(publicKey.toByteArray(), encryptedText)
-            }else if (currentAlgorithm == Algorithm.RSA) {
+            } else if (currentAlgorithm == Algorithm.RSA) {
                 decryptedText = decrypt(publicKey.toByteArray(), textToBeDecrypted)
             }
 
@@ -101,6 +102,7 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_item_aes -> {
                 updateCipherInfoText(R.string.text_aes_long)
                 handlePrivateKeyVisibility(R.id.menu_item_aes)
+                updateInputHintText(R.id.menu_item_aes)
                 currentAlgorithm = Algorithm.AES
             }
 
@@ -108,6 +110,7 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_item_arc4 -> {
                 updateCipherInfoText(R.string.text_arc4_long)
                 handlePrivateKeyVisibility(R.id.menu_item_arc4)
+                updateInputHintText(R.id.menu_item_arc4)
                 currentAlgorithm = Algorithm.ARC4
             }
 
@@ -115,6 +118,7 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_item_blowfish -> {
                 updateCipherInfoText(R.string.text_blowfish)
                 handlePrivateKeyVisibility(R.id.menu_item_blowfish)
+                updateInputHintText(R.id.menu_item_blowfish)
                 currentAlgorithm = Algorithm.Blowfish
             }
 
@@ -122,13 +126,15 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_item_des -> {
                 updateCipherInfoText(R.string.text_des_long)
                 handlePrivateKeyVisibility(R.id.menu_item_des)
+                updateInputHintText(R.id.menu_item_des)
                 currentAlgorithm = Algorithm.DES
             }
 
             //Triple Data Encryption Standard algorithm
             R.id.menu_item_desede -> {
                 updateCipherInfoText(R.string.text_desede_long)
-                handlePrivateKeyVisibility(R.id.menu_item_des)
+                handlePrivateKeyVisibility(R.id.menu_item_desede)
+                updateInputHintText(R.id.menu_item_desede)
                 currentAlgorithm = Algorithm.DESede
             }
 
@@ -177,15 +183,33 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /** Updates the hint text of the the public key user input. */
+    private fun updateInputHintText(id: Int) {
+        var hint = ""
+        when (id) {
+            R.id.menu_item_aes -> hint = resources.getString(R.string.hint_cipherKey_aes)
+            R.id.menu_item_arc4 -> hint = resources.getString(R.string.hint_cipherKey_arc4)
+            R.id.menu_item_blowfish -> hint = resources.getString(R.string.hint_cipherKey_blowfish)
+            R.id.menu_item_des -> hint = resources.getString(R.string.hint_cipherKey_des)
+            R.id.menu_item_desede -> hint = resources.getString(R.string.hint_cipherKey_desede)
+            else -> {}
+        }.apply {
+            findViewById<EditText>(R.id.editText_publicKey).apply {
+                this.hint = hint
+            }
+        }
+    }
+
     /* Gets the public and/or private key from the user TODO: validate keys */
     private fun getSecretKeys() {
         if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4 ||
             currentAlgorithm == Algorithm.Blowfish || currentAlgorithm == Algorithm.DES
-            || currentAlgorithm == Algorithm.DESede) {
+            || currentAlgorithm == Algorithm.DESede
+        ) {
             findViewById<EditText>(R.id.editText_publicKey).apply {
                 publicKey = this.text.toString().trim()
             }
-        }else if (currentAlgorithm == Algorithm.RSA){
+        } else if (currentAlgorithm == Algorithm.RSA) {
             findViewById<EditText>(R.id.editText_privateKey).apply {
                 privateKey = this.text.toString().trim()    //2048-bit RSA key (Base64 formatting)
             }
