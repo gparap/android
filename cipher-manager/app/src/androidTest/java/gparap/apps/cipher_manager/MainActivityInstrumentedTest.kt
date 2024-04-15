@@ -16,6 +16,7 @@
 package gparap.apps.cipher_manager
 
 import android.content.Context
+import android.widget.EditText
 import android.widget.TextView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
@@ -28,6 +29,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import org.hamcrest.CoreMatchers.not
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -152,6 +154,46 @@ class MainActivityInstrumentedTest {
         onView(withId(R.id.editText_privateKey)).check(matches(isDisplayed()))
     }
 
+    @Test
+    fun isUserHintCorrect_onAESMenuItemSelected() {
+        val expectedHint = context.getText(R.string.hint_cipherKey_aes)
+        selectCipher(R.string.text_symmetric_ciphers, R.string.text_aes_short)
+        val actualHInt = getPublicKeyViewHint()
+        assertEquals(expectedHint, actualHInt)
+    }
+
+    @Test
+    fun isUserHintCorrect_onARC4MenuItemSelected() {
+        val expectedHint = context.getText(R.string.hint_cipherKey_arc4)
+        selectCipher(R.string.text_symmetric_ciphers, R.string.text_arc4_short)
+        val actualHInt = getPublicKeyViewHint()
+        assertEquals(expectedHint, actualHInt)
+    }
+
+    @Test
+    fun isUserHintCorrect_onBlowfishMenuItemSelected() {
+        val expectedHint = context.getText(R.string.hint_cipherKey_blowfish)
+        selectCipher(R.string.text_symmetric_ciphers, R.string.text_blowfish)
+        val actualHInt = getPublicKeyViewHint()
+        assertEquals(expectedHint, actualHInt)
+    }
+
+    @Test
+    fun isUserHintCorrect_onDESMenuItemSelected() {
+        val expectedHint = context.getText(R.string.hint_cipherKey_des)
+        selectCipher(R.string.text_symmetric_ciphers, R.string.text_des_short)
+        val actualHInt = getPublicKeyViewHint()
+        assertEquals(expectedHint, actualHInt)
+    }
+
+    @Test
+    fun isUserHintCorrect_onDESedeMenuItemSelected() {
+        val expectedHint = context.getText(R.string.hint_cipherKey_desede)
+        selectCipher(R.string.text_symmetric_ciphers, R.string.text_desede_short)
+        val actualHInt = getPublicKeyViewHint()
+        assertEquals(expectedHint, actualHInt)
+    }
+
     /** Returns the text of the cipher info TextView in conjunction with the algorithm full name. */
     private fun getCipherInfoText(id: Int) : String {
         var infoText = ""
@@ -167,5 +209,15 @@ class MainActivityInstrumentedTest {
         openActionBarOverflowOrOptionsMenu(context)
         onView(withText(cipherTypeResId)).perform(click())
         onView(withText(cipherNameResId)).perform(click())
+    }
+
+    /** Returns the hint of the EditText view that accepts/displays the public key. */
+    private fun getPublicKeyViewHint() : String {
+        var hint = ""
+        activityScenario.onActivity {
+            val editText = it.findViewById<EditText>(R.id.editText_publicKey)
+            hint =  editText.hint.toString()
+        }
+        return hint
     }
 }
