@@ -294,4 +294,58 @@ object Utils {
         //return the encrypted byte array into a string the using the UTF-8 character set
         return String(decryptedBytes)
     }
+
+    /* Checks the validity of the public & private keys, based on the algorithm. */
+    fun areSecretKeysValid(
+        publicKey: String? = null,
+        privateKey: String? = null,
+        algorithm: Algorithm
+    ): Pair<Boolean, String> {
+        //1st property: valid or not
+        //2nd property: any error message
+        //3rd property: algorithm
+        var validationResult = Pair(true, "")
+
+        //public key must NOT be empty
+        if (publicKey?.isEmpty() == true) {
+            validationResult = Pair(false, "empty key")
+        }
+
+        //validate the key length of each algorithm
+        when (algorithm) {
+            Algorithm.AES -> {
+                if (publicKey?.length != 16 && publicKey?.length != 24 && publicKey?.length != 32) {
+                    validationResult = Pair(false, "invalid key length: $algorithm")
+                }
+            }
+
+            Algorithm.ARC4 -> {
+                if (publicKey?.length!! < 5 || publicKey.length > 128) {
+                    validationResult = Pair(false, "invalid key length: $algorithm")
+                }
+            }
+
+            Algorithm.Blowfish -> {
+                if (publicKey?.length!!  > 56) {
+                    validationResult = Pair(false, "invalid key length: $algorithm")
+                }
+            }
+
+            Algorithm.DES -> {
+                if (publicKey?.length != 8) {
+                    validationResult = Pair(false, "invalid key length: $algorithm")
+                }
+            }
+
+            Algorithm.DESede -> {
+                if (publicKey?.length != 24) {
+                    validationResult = Pair(false, "invalid key length: $algorithm")
+                }
+            }
+
+            Algorithm.RSA -> TODO("Not implemented yet.")
+        }
+
+        return validationResult
+    }
 }

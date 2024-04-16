@@ -15,8 +15,11 @@
  */
 package gparap.apps.cipher_manager
 
+import gparap.apps.cipher_manager.utils.Algorithm
 import gparap.apps.cipher_manager.utils.Utils
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class UtilsUnitTest {
@@ -118,5 +121,118 @@ class UtilsUnitTest {
         val encryptedValue = Utils.encryptWithRSA(publicKey, textInput)
         val decryptedValue = Utils.decryptWithRSA(privateKey, encryptedValue)
         assertEquals(decryptedValue, textInput)
+    }
+
+    @Test
+    fun isPublicKeyValid_AES() {
+        val emptyKey = ""
+        val wrongKey = "1234567890"
+        val correctKey16 = "1234567890123456"
+        val correctKey24 = "123456789012345678901234"
+        val correctKey32 = "12345678901234567890123456789012"
+        val expectedMsg = "invalid key length: AES"
+
+        //test length
+        var validationResult = Utils.areSecretKeysValid(emptyKey,null, Algorithm.AES)
+        assertFalse("Condition failed: emptyKey", validationResult.first)
+        validationResult = Utils.areSecretKeysValid(wrongKey,null, Algorithm.AES)
+        assertFalse("Condition failed: wrongKey", validationResult.first)
+        validationResult = Utils.areSecretKeysValid(correctKey16,null, Algorithm.AES)
+        assertTrue("Condition failed: correctKey16", validationResult.first)
+        validationResult = Utils.areSecretKeysValid(correctKey24,null, Algorithm.AES)
+        assertTrue("Condition failed: correctKey24", validationResult.first)
+        validationResult = Utils.areSecretKeysValid(correctKey32,null, Algorithm.AES)
+        assertTrue("Condition failed: correctKey32", validationResult.first)
+
+        //test msg
+        validationResult = Utils.areSecretKeysValid(wrongKey,null, Algorithm.AES)
+        assertTrue("Condition failed: expectedMsg", validationResult.second == expectedMsg)
+    }
+
+    @Test
+    fun isPublicKeyValid_ARC4() {
+        val emptyKey = ""
+        val wrongKey5min = "1234"
+        val wrongKey128max = "12345678901234567890123456789012345678901234567890" +
+                "12345678901234567890123456789012345678901234567890" +
+                "12345678901234567890123456789"
+        val correctKey = "1234567890"
+        val expectedMsg = "invalid key length: ARC4"
+
+        //test length
+        var validationResult = Utils.areSecretKeysValid(emptyKey,null, Algorithm.ARC4)
+        assertFalse("Condition failed: emptyKey", validationResult.first)
+        validationResult = Utils.areSecretKeysValid(wrongKey5min,null, Algorithm.ARC4)
+        assertFalse("Condition failed: wrongKey5min", validationResult.first)
+        validationResult = Utils.areSecretKeysValid(wrongKey128max,null, Algorithm.ARC4)
+        assertFalse("Condition failed: wrongKey128max", validationResult.first)
+        validationResult = Utils.areSecretKeysValid(correctKey,null, Algorithm.ARC4)
+        assertTrue("Condition failed: correctKey", validationResult.first)
+
+        //test msg
+        validationResult = Utils.areSecretKeysValid(wrongKey5min,null, Algorithm.ARC4)
+        assertTrue("Condition failed: expectedMsg", validationResult.second == expectedMsg)
+    }
+
+    @Test
+    fun isPublicKeyValid_Blowfish() {
+        val emptyKey = ""
+        val wrongKey56max = "12345678901234567890123456789012345678901234567890" +
+                "1234567"
+        val correctKey = "12345678901234567890123456789012345678901234567890" +
+                "123456"
+        val expectedMsg = "invalid key length: Blowfish"
+
+        //test length
+        var validationResult = Utils.areSecretKeysValid(emptyKey,null, Algorithm.Blowfish)
+        assertFalse("Condition failed: emptyKey", validationResult.first)
+        validationResult = Utils.areSecretKeysValid(wrongKey56max,null, Algorithm.Blowfish)
+        assertFalse("Condition failed: wrongKey56max", validationResult.first)
+        validationResult = Utils.areSecretKeysValid(correctKey,null, Algorithm.Blowfish)
+        assertTrue("Condition failed: correctKey", validationResult.first)
+
+        //test msg
+        validationResult = Utils.areSecretKeysValid(wrongKey56max,null, Algorithm.Blowfish)
+        assertTrue("Condition failed: expectedMsg", validationResult.second == expectedMsg)
+    }
+
+    @Test
+    fun isPublicKeyValid_DES() {
+        val emptyKey = ""
+        val wrongKey = "123456789"
+        val correctKey = "12345678"
+        val expectedMsg = "invalid key length: DES"
+
+        //test length
+        var validationResult = Utils.areSecretKeysValid(emptyKey,null, Algorithm.DES)
+        assertFalse("Condition failed: emptyKey", validationResult.first)
+        validationResult = Utils.areSecretKeysValid(wrongKey,null, Algorithm.DES)
+        assertFalse("Condition failed: wrongKey", validationResult.first)
+        validationResult = Utils.areSecretKeysValid(correctKey,null, Algorithm.DES)
+        assertTrue("Condition failed: correctKey", validationResult.first)
+
+        //test msg
+        validationResult = Utils.areSecretKeysValid(wrongKey,null, Algorithm.DES)
+        assertTrue("Condition failed: expectedMsg", validationResult.second == expectedMsg)
+    }
+
+    @Test
+    fun isPublicKeyValid_DESede() {
+        val emptyKey = ""
+        val wrongKey = "1234567890123456789012345"
+        val correctKey = "123456789012345678901234"
+        val expectedMsg = "invalid key length: DESede"
+
+        //test length
+        var validationResult = Utils.areSecretKeysValid(emptyKey,null, Algorithm.DESede)
+        assertFalse("Condition failed: emptyKey", validationResult.first)
+        validationResult = Utils.areSecretKeysValid(wrongKey,null, Algorithm.DESede)
+        assertFalse("Condition failed: wrongKey", validationResult.first)
+        validationResult = Utils.areSecretKeysValid(correctKey,null, Algorithm.DESede)
+        assertTrue("Condition failed: correctKey", validationResult.first)
+
+        //test msg
+        validationResult = Utils.areSecretKeysValid(wrongKey,null, Algorithm.DESede)
+        assertTrue("Condition failed: expectedMsg", validationResult.second == expectedMsg)
     }
 }
