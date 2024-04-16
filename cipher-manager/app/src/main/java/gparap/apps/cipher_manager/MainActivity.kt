@@ -43,7 +43,9 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.button_encrypt).setOnClickListener {
             getSecretKeys()
 
-            //get the text to be encrypted TODO: validate input
+            //TODO: validate input keys
+
+            //get the text to be encrypted
             findViewById<EditText>(R.id.editText_cipher_value).apply {
                 textToBeEncrypted = this.text.toString().trim()
             }
@@ -200,8 +202,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /* Gets the public and/or private key from the user TODO: validate keys */
+    /* Gets the public and/or private key from the user. */
     private fun getSecretKeys() {
+        //get the public key (symmetric)
         if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4 ||
             currentAlgorithm == Algorithm.Blowfish || currentAlgorithm == Algorithm.DES
             || currentAlgorithm == Algorithm.DESede
@@ -209,12 +212,15 @@ class MainActivity : AppCompatActivity() {
             findViewById<EditText>(R.id.editText_publicKey).apply {
                 publicKey = this.text.toString().trim()
             }
-        } else if (currentAlgorithm == Algorithm.RSA) {
+        }
+
+        //get the public & private keys (assymetric)
+        else if (currentAlgorithm == Algorithm.RSA) {
             findViewById<EditText>(R.id.editText_privateKey).apply {
-                privateKey = this.text.toString().trim()    //2048-bit RSA key (Base64 formatting)
+                privateKey = this.text.toString().trim()
             }
             findViewById<EditText>(R.id.editText_publicKey).apply {
-                publicKey = this.text.toString().trim()     //2048-bit RSA key (Base64 formatting)
+                publicKey = this.text.toString().trim()
             }
         }
     }
