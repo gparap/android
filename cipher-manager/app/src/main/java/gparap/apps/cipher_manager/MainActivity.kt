@@ -22,6 +22,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import gparap.apps.cipher_manager.utils.Algorithm
 import gparap.apps.cipher_manager.utils.Utils
@@ -43,8 +44,6 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.button_encrypt).setOnClickListener {
             getSecretKeys()
 
-            //TODO: validate input keys
-
             //get the text to be encrypted
             findViewById<EditText>(R.id.editText_cipher_value).apply {
                 textToBeEncrypted = this.text.toString().trim()
@@ -55,6 +54,63 @@ class MainActivity : AppCompatActivity() {
                 || currentAlgorithm == Algorithm.Blowfish || currentAlgorithm == Algorithm.DES
                 || currentAlgorithm == Algorithm.DESede
             ) {
+                //validate input keys
+                val validationResult =
+                    Utils.areSecretKeysValid(publicKey, privateKey = null, currentAlgorithm)
+                if (!validationResult.first) {
+                    val errorMessage = validationResult.second
+
+                    //check if key is empty
+                    if (errorMessage.contains("empty")) {
+                        Toast.makeText(
+                            this,
+                            this.resources.getString(R.string.toast_cipherKey_empty),
+                            Toast.LENGTH_LONG
+                        ).show().apply {
+                            return@setOnClickListener
+                        }
+                    }
+
+                    //get the toast message for the current algorithm's key length to inform the user
+                    when (currentAlgorithm) {
+                        Algorithm.AES -> Toast.makeText(
+                            this,
+                            this.resources.getString(R.string.toast_cipherKey_aes),
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        Algorithm.ARC4 -> Toast.makeText(
+                            this,
+                            this.resources.getString(R.string.toast_cipherKey_arc4),
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        Algorithm.Blowfish -> Toast.makeText(
+                            this,
+                            this.resources.getString(R.string.toast_cipherKey_blowfish),
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        Algorithm.DES -> Toast.makeText(
+                            this,
+                            this.resources.getString(R.string.toast_cipherKey_des),
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        Algorithm.DESede -> Toast.makeText(
+                            this,
+                            this.resources.getString(R.string.toast_cipherKey_desede),
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        else -> {}
+                    }
+
+                    //do not proceed with encrption
+                    return@setOnClickListener
+                }
+
+                //perform encryption
                 encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
             } else if (currentAlgorithm == Algorithm.RSA) {
                 encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)

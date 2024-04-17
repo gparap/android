@@ -309,6 +309,7 @@ object Utils {
         //public key must NOT be empty
         if (publicKey?.isEmpty() == true) {
             validationResult = Pair(false, "empty key")
+            return validationResult
         }
 
         //validate the key length of each algorithm

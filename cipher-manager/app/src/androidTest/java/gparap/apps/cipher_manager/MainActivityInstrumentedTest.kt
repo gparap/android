@@ -16,6 +16,7 @@
 package gparap.apps.cipher_manager
 
 import android.content.Context
+import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import androidx.test.core.app.ActivityScenario
@@ -23,7 +24,9 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.RootMatchers.withDecorView
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.isRoot
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -31,6 +34,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import org.hamcrest.CoreMatchers.not
 import org.junit.Assert.assertEquals
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -38,6 +42,7 @@ import org.junit.runner.RunWith
 class MainActivityInstrumentedTest {
     private lateinit var activityScenario: ActivityScenario<MainActivity>
     private lateinit var context: Context
+    private lateinit var decorView: View
 
     @Before
     fun setUp() {
@@ -46,6 +51,11 @@ class MainActivityInstrumentedTest {
 
         //get the target context
         context = InstrumentationRegistry.getInstrumentation().targetContext
+
+        //get the the top-level window decor view
+        activityScenario.onActivity {
+            decorView = it.window.decorView
+        }
     }
 
     @Test
@@ -192,6 +202,55 @@ class MainActivityInstrumentedTest {
         selectCipher(R.string.text_symmetric_ciphers, R.string.text_desede_short)
         val actualHInt = getPublicKeyViewHint()
         assertEquals(expectedHint, actualHInt)
+    }
+
+    @Test
+    @Ignore("see: https://github.com/android/android-test/issues/803")
+    fun isPublicKeyEmpty_displayToastMessage() {
+        onView(withId(R.id.button_encrypt)).perform(click())
+        onView(withText(R.string.toast_cipherKey_empty))
+            .inRoot(withDecorView(not(isRoot())))
+            .check(matches(isDisplayed()))
+    }
+
+    @Test
+    @Ignore("see: https://github.com/android/android-test/issues/803")
+    fun isPublicKeyLengthWrong_displayToastMessageAES() {
+        selectCipher(R.string.text_symmetric_ciphers, R.string.text_aes_short)
+        onView(withId(R.id.button_encrypt)).perform(click())
+        onView(withText(R.string.toast_cipherKey_aes))
+            .inRoot(withDecorView(not(isRoot())))
+            .check(matches(isDisplayed()))
+    }
+
+    @Test
+    @Ignore("see: https://github.com/android/android-test/issues/803")
+    fun isPublicKeyLengthWrong_displayToastMessageARC4() {
+        selectCipher(R.string.text_symmetric_ciphers, R.string.text_arc4_short)
+        onView(withId(R.id.button_encrypt)).perform(click())
+        onView(withText(R.string.toast_cipherKey_arc4))
+            .inRoot(withDecorView(not(isRoot())))
+            .check(matches(isDisplayed()))
+    }
+
+    @Test
+    @Ignore("see: https://github.com/android/android-test/issues/803")
+    fun isPublicKeyLengthWrong_displayToastMessageDES() {
+        selectCipher(R.string.text_symmetric_ciphers, R.string.text_des_short)
+        onView(withId(R.id.button_encrypt)).perform(click())
+        onView(withText(R.string.toast_cipherKey_des))
+            .inRoot(withDecorView(not(isRoot())))
+            .check(matches(isDisplayed()))
+    }
+
+    @Test
+    @Ignore("see: https://github.com/android/android-test/issues/803")
+    fun isPublicKeyLengthWrong_displayToastMessageDESede() {
+        selectCipher(R.string.text_symmetric_ciphers, R.string.text_desede_short)
+        onView(withId(R.id.button_encrypt)).perform(click())
+        onView(withText(R.string.toast_cipherKey_desede))
+            .inRoot(withDecorView(not(isRoot())))
+            .check(matches(isDisplayed()))
     }
 
     /** Returns the text of the cipher info TextView in conjunction with the algorithm full name. */
