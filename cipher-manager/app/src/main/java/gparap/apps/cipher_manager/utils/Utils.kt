@@ -327,7 +327,7 @@ object Utils {
             }
 
             Algorithm.Blowfish -> {
-                if (publicKey?.length!!  > 56) {
+                if (publicKey?.length!! > 56) {
                     validationResult = Pair(false, "invalid key length: $algorithm")
                 }
             }
@@ -344,9 +344,27 @@ object Utils {
                 }
             }
 
-            Algorithm.RSA -> TODO("Not implemented yet.")
+            Algorithm.RSA -> {
+                if (!secretKeysValidatorRSA(privateKey!!, publicKey!!)) {
+                    validationResult = Pair(false, "invalid keys: $algorithm")
+                }
+            }
         }
 
         return validationResult
+    }
+
+    /* Validates the (inputted) secret keys of the RSA algorithm with a default message. */
+    fun secretKeysValidatorRSA(privateKey: String, publicKey: String): Boolean {
+        val textInput = "Hello World!"
+        var encryptedValue = ""
+        var decryptedValue = ""
+        try {
+            encryptedValue = encryptWithRSA(publicKey, textInput)
+            decryptedValue = decryptWithRSA(privateKey, encryptedValue)
+        }catch (e: Exception) {
+            return false
+        }
+        return (textInput == decryptedValue)
     }
 }

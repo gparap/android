@@ -23,6 +23,7 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.RootMatchers.withDecorView
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
@@ -249,6 +250,18 @@ class MainActivityInstrumentedTest {
         selectCipher(R.string.text_symmetric_ciphers, R.string.text_desede_short)
         onView(withId(R.id.button_encrypt)).perform(click())
         onView(withText(R.string.toast_cipherKey_desede))
+            .inRoot(withDecorView(not(isRoot())))
+            .check(matches(isDisplayed()))
+    }
+
+    @Test
+    @Ignore("see: https://github.com/android/android-test/issues/803")
+    fun areSecretKeysWrong_displayToastMessageRSA() {
+        selectCipher(R.string.text_asymmetric_ciphers, R.string.text_rsa_short)
+        onView(withId(R.id.editText_privateKey)).perform(typeText("wrong key"))
+        onView(withId(R.id.editText_publicKey)).perform(typeText("wrong key"))
+        onView(withId(R.id.button_encrypt)).perform(click())
+        onView(withText(R.string.toast_cipherKeys_rsa))
             .inRoot(withDecorView(not(isRoot())))
             .check(matches(isDisplayed()))
     }
