@@ -31,9 +31,11 @@
 
     <!--Error messages for algorithms' secret keys -->
     <string name="toast_cipherKey_empty">Public key must not be empty.</string>
+    <string name="toast_cipherKeys_empty">Secret keys must not be empty.</string>
     <string name="toast_cipherKey_aes">Public key must be of 16, 24, or 32 characters long.</string>
     <string name="toast_cipherKey_arc4">Public key must be between 5 and 128 characters long.</string>
     <string name="toast_cipherKey_blowfish">Public key must not be more than 56 characters long.</string>
     <string name="toast_cipherKey_des">Public key must be 8 characters long.</string>
     <string name="toast_cipherKey_desede">Public key must be 24 characters long.</string>
+    <string name="toast_cipherKeys_rsa">Secret keys are invalid.</string>
 </resources>

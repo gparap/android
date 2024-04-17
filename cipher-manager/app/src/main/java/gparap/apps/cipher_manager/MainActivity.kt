@@ -109,12 +109,38 @@ class MainActivity : AppCompatActivity() {
                     //do not proceed with encrption
                     return@setOnClickListener
                 }
-
-                //perform encryption
-                encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
             } else if (currentAlgorithm == Algorithm.RSA) {
-                encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
+                //validate input keys
+                val validationResult =
+                    Utils.areSecretKeysValid(publicKey, privateKey, currentAlgorithm)
+                if (!validationResult.first) {
+                    val errorMessage = validationResult.second
+
+                    //check if key is empty
+                    if (errorMessage.contains("empty")) {
+                        Toast.makeText(
+                            this,
+                            this.resources.getString(R.string.toast_cipherKeys_empty),
+                            Toast.LENGTH_LONG
+                        ).show().apply {
+                            return@setOnClickListener
+                        }
+                    }
+
+                    //display the toast message for the validity of the secret keys to the user
+                    Toast.makeText(
+                        this,
+                        this.resources.getString(R.string.toast_cipherKeys_rsa),
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    //do not proceed with encrption
+                    return@setOnClickListener
+                }
             }
+
+            //perform encryption
+            encryptedText = encrypt(publicKey.toByteArray(), textToBeEncrypted)
 
             //update the UI with the encrypted text
             findViewById<EditText>(R.id.editText_cipher_value).apply {
