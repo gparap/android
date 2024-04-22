@@ -20,6 +20,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import androidx.test.core.app.ActivityScenario
+import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
 import androidx.test.espresso.action.ViewActions.click
@@ -203,6 +204,86 @@ class MainActivityInstrumentedTest {
         selectCipher(R.string.text_symmetric_ciphers, R.string.text_desede_short)
         val actualHInt = getPublicKeyViewHint()
         assertEquals(expectedHint, actualHInt)
+    }
+
+    @Test
+    fun onClearInputText_isHintCorrectAES() {
+        selectCipher(R.string.text_symmetric_ciphers, R.string.text_aes_short)
+        onView(withId(R.id.editText_publicKey)).perform(typeText("any"))
+        closeSoftKeyboard()
+        onView(withId(R.id.editText_cipher_value)).perform(typeText("any"))
+        closeSoftKeyboard()
+        onView(withId(R.id.button_clear)).perform(click())
+        val expectedHint = context.resources.getString(R.string.hint_cipherKey_aes)
+        activityScenario.onActivity {
+            val editText = it.findViewById<EditText>(R.id.editText_publicKey)
+            val actualHint = editText.hint
+            assertEquals(expectedHint, actualHint)
+        }
+    }
+
+    @Test
+    fun onClearInputText_isHintCorrectARC4() {
+        selectCipher(R.string.text_symmetric_ciphers, R.string.text_arc4_short)
+        onView(withId(R.id.editText_publicKey)).perform(typeText("any"))
+        closeSoftKeyboard()
+        onView(withId(R.id.editText_cipher_value)).perform(typeText("any"))
+        closeSoftKeyboard()
+        onView(withId(R.id.button_clear)).perform(click())
+        val expectedHint = context.resources.getString(R.string.hint_cipherKey_arc4)
+        activityScenario.onActivity {
+            val editText = it.findViewById<EditText>(R.id.editText_publicKey)
+            val actualHint = editText.hint
+            assertEquals(expectedHint, actualHint)
+        }
+    }
+
+    @Test
+    fun onClearInputText_isHintCorrectBlowfish() {
+        selectCipher(R.string.text_symmetric_ciphers, R.string.text_blowfish)
+        onView(withId(R.id.editText_publicKey)).perform(typeText("any"))
+        closeSoftKeyboard()
+        onView(withId(R.id.editText_cipher_value)).perform(typeText("any"))
+        closeSoftKeyboard()
+        onView(withId(R.id.button_clear)).perform(click())
+        val expectedHint = context.resources.getString(R.string.hint_cipherKey_blowfish)
+        activityScenario.onActivity {
+            val editText = it.findViewById<EditText>(R.id.editText_publicKey)
+            val actualHint = editText.hint
+            assertEquals(expectedHint, actualHint)
+        }
+    }
+
+    @Test
+    fun onClearInputText_isHintCorrectDES() {
+        selectCipher(R.string.text_symmetric_ciphers, R.string.text_des_short)
+        onView(withId(R.id.editText_publicKey)).perform(typeText("any"))
+        closeSoftKeyboard()
+        onView(withId(R.id.editText_cipher_value)).perform(typeText("any"))
+        closeSoftKeyboard()
+        onView(withId(R.id.button_clear)).perform(click())
+        val expectedHint = context.resources.getString(R.string.hint_cipherKey_des)
+        activityScenario.onActivity {
+            val editText = it.findViewById<EditText>(R.id.editText_publicKey)
+            val actualHint = editText.hint
+            assertEquals(expectedHint, actualHint)
+        }
+    }
+
+    @Test
+    fun onClearInputText_isHintCorrectDESede() {
+        selectCipher(R.string.text_symmetric_ciphers, R.string.text_desede_short)
+        onView(withId(R.id.editText_publicKey)).perform(typeText("any"))
+        closeSoftKeyboard()
+        onView(withId(R.id.editText_cipher_value)).perform(typeText("any"))
+        closeSoftKeyboard()
+        onView(withId(R.id.button_clear)).perform(click())
+        val expectedHint = context.resources.getString(R.string.hint_cipherKey_desede)
+        activityScenario.onActivity {
+            val editText = it.findViewById<EditText>(R.id.editText_publicKey)
+            val actualHint = editText.hint
+            assertEquals(expectedHint, actualHint)
+        }
     }
 
     @Test
