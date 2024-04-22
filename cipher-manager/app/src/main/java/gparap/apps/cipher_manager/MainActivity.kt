@@ -49,94 +49,9 @@ class MainActivity : AppCompatActivity() {
                 textToBeEncrypted = this.text.toString().trim()
             }
 
-            //encrypt text
-            if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4
-                || currentAlgorithm == Algorithm.Blowfish || currentAlgorithm == Algorithm.DES
-                || currentAlgorithm == Algorithm.DESede
-            ) {
-                //validate input keys
-                val validationResult =
-                    Utils.areSecretKeysValid(publicKey, privateKey = null, currentAlgorithm)
-                if (!validationResult.first) {
-                    val errorMessage = validationResult.second
-
-                    //check if key is empty
-                    if (errorMessage.contains("empty")) {
-                        Toast.makeText(
-                            this,
-                            this.resources.getString(R.string.toast_cipherKey_empty),
-                            Toast.LENGTH_LONG
-                        ).show().apply {
-                            return@setOnClickListener
-                        }
-                    }
-
-                    //get the toast message for the current algorithm's key length to inform the user
-                    when (currentAlgorithm) {
-                        Algorithm.AES -> Toast.makeText(
-                            this,
-                            this.resources.getString(R.string.toast_cipherKey_aes),
-                            Toast.LENGTH_SHORT
-                        ).show()
-
-                        Algorithm.ARC4 -> Toast.makeText(
-                            this,
-                            this.resources.getString(R.string.toast_cipherKey_arc4),
-                            Toast.LENGTH_SHORT
-                        ).show()
-
-                        Algorithm.Blowfish -> Toast.makeText(
-                            this,
-                            this.resources.getString(R.string.toast_cipherKey_blowfish),
-                            Toast.LENGTH_SHORT
-                        ).show()
-
-                        Algorithm.DES -> Toast.makeText(
-                            this,
-                            this.resources.getString(R.string.toast_cipherKey_des),
-                            Toast.LENGTH_SHORT
-                        ).show()
-
-                        Algorithm.DESede -> Toast.makeText(
-                            this,
-                            this.resources.getString(R.string.toast_cipherKey_desede),
-                            Toast.LENGTH_SHORT
-                        ).show()
-
-                        else -> {}
-                    }
-
-                    //do not proceed with encrption
-                    return@setOnClickListener
-                }
-            } else if (currentAlgorithm == Algorithm.RSA) {
-                //validate input keys
-                val validationResult =
-                    Utils.areSecretKeysValid(publicKey, privateKey, currentAlgorithm)
-                if (!validationResult.first) {
-                    val errorMessage = validationResult.second
-
-                    //check if key is empty
-                    if (errorMessage.contains("empty")) {
-                        Toast.makeText(
-                            this,
-                            this.resources.getString(R.string.toast_cipherKeys_empty),
-                            Toast.LENGTH_LONG
-                        ).show().apply {
-                            return@setOnClickListener
-                        }
-                    }
-
-                    //display the toast message for the validity of the secret keys to the user
-                    Toast.makeText(
-                        this,
-                        this.resources.getString(R.string.toast_cipherKeys_rsa),
-                        Toast.LENGTH_SHORT
-                    ).show()
-
-                    //do not proceed with encrption
-                    return@setOnClickListener
-                }
+            //do not proceed with encryption if user input is invalid
+            if (!validateInput()) {
+                return@setOnClickListener
             }
 
             //perform encryption
@@ -155,6 +70,11 @@ class MainActivity : AppCompatActivity() {
             //get the text to be decrypted TODO: validate input
             findViewById<EditText>(R.id.editText_cipher_value).apply {
                 textToBeDecrypted = this.text.toString().trim()
+            }
+
+            //do not proceed with decryption if user input is invalid
+            if (!validateInput()) {
+                return@setOnClickListener
             }
 
             //decrypt text
@@ -305,6 +225,102 @@ class MainActivity : AppCompatActivity() {
                 publicKey = this.text.toString().trim()
             }
         }
+    }
+
+    /* Validates the public and/or private key from the user
+     & Informs them of what is invalid in their input. */
+    private fun validateInput(): Boolean {
+        if (currentAlgorithm == Algorithm.AES || currentAlgorithm == Algorithm.ARC4
+            || currentAlgorithm == Algorithm.Blowfish || currentAlgorithm == Algorithm.DES
+            || currentAlgorithm == Algorithm.DESede
+        ) {
+            //validate input keys
+            val validationResult =
+                Utils.areSecretKeysValid(publicKey, privateKey = null, currentAlgorithm)
+            if (!validationResult.first) {
+                val errorMessage = validationResult.second
+
+                //check if key is empty
+                if (errorMessage.contains("empty")) {
+                    Toast.makeText(
+                        this,
+                        this.resources.getString(R.string.toast_cipherKey_empty),
+                        Toast.LENGTH_LONG
+                    ).show().apply {
+                        return false
+                    }
+                }
+
+                //get the toast message for the current algorithm's key length to inform the user
+                when (currentAlgorithm) {
+                    Algorithm.AES -> Toast.makeText(
+                        this,
+                        this.resources.getString(R.string.toast_cipherKey_aes),
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    Algorithm.ARC4 -> Toast.makeText(
+                        this,
+                        this.resources.getString(R.string.toast_cipherKey_arc4),
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    Algorithm.Blowfish -> Toast.makeText(
+                        this,
+                        this.resources.getString(R.string.toast_cipherKey_blowfish),
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    Algorithm.DES -> Toast.makeText(
+                        this,
+                        this.resources.getString(R.string.toast_cipherKey_des),
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    Algorithm.DESede -> Toast.makeText(
+                        this,
+                        this.resources.getString(R.string.toast_cipherKey_desede),
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    else -> {}
+                }
+
+                //validation failed
+                return false
+            }
+        } else if (currentAlgorithm == Algorithm.RSA) {
+            //validate input keys
+            val validationResult =
+                Utils.areSecretKeysValid(publicKey, privateKey, currentAlgorithm)
+            if (!validationResult.first) {
+                val errorMessage = validationResult.second
+
+                //check if key is empty
+                if (errorMessage.contains("empty")) {
+                    Toast.makeText(
+                        this,
+                        this.resources.getString(R.string.toast_cipherKeys_empty),
+                        Toast.LENGTH_LONG
+                    ).show().apply {
+                        return false
+                    }
+                }
+
+                //display the toast message for the validity of the secret keys to the user
+                Toast.makeText(
+                    this,
+                    this.resources.getString(R.string.toast_cipherKeys_rsa),
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                //validation failed
+                return false
+            }
+        }
+
+        //validation succeeded
+        return true
     }
 
     /* Encrypts the input value based on the current algorithm. */
