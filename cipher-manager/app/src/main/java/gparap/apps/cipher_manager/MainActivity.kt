@@ -92,6 +92,31 @@ class MainActivity : AppCompatActivity() {
                 this.setText(decryptedText)
             }
         }
+
+        //clear input fields & update hints
+        findViewById<Button>(R.id.button_clear).setOnClickListener {
+            clearInput()
+            when (currentAlgorithm) {
+                Algorithm.AES -> findViewById<EditText>(R.id.editText_publicKey).apply {
+                    this.hint = resources.getString(R.string.hint_cipherKey_aes)
+                }
+                Algorithm.ARC4 -> findViewById<EditText>(R.id.editText_publicKey).apply {
+                    this.hint = resources.getString(R.string.hint_cipherKey_arc4)
+                }
+                Algorithm.Blowfish -> findViewById<EditText>(R.id.editText_publicKey).apply {
+                    this.hint = resources.getString(R.string.hint_cipherKey_blowfish)
+                }
+                Algorithm.DES -> findViewById<EditText>(R.id.editText_publicKey).apply {
+                    this.hint = resources.getString(R.string.hint_cipherKey_des)
+                }
+                Algorithm.DESede -> findViewById<EditText>(R.id.editText_publicKey).apply {
+                    this.hint = resources.getString(R.string.hint_cipherKey_desede)
+                }
+                Algorithm.RSA -> {
+                    TODO("Hints not implemented yet.")
+                }
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -349,5 +374,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         return decryptedText
+    }
+
+    /* Clears the input fields of secret keys & message. */
+    private fun clearInput() {
+        findViewById<EditText>(R.id.editText_privateKey).apply {
+            this.text.clear()
+        }
+        findViewById<EditText>(R.id.editText_publicKey).apply {
+            this.text.clear()
+        }
+        findViewById<EditText>(R.id.editText_cipher_value).apply {
+            this.text.clear()
+        }
     }
 }
