@@ -21,6 +21,8 @@
     <string name="text_asymmetric_ciphers">Asymmetric Cryptography</string>
     <string name="text_rsa_short">RSA</string>
     <string name="text_rsa_long">RSA (Rivest–Shamir–Adleman)</string>
+    <string name="desc_generate_key">Generate key</string>
+    <string name="copy_key">Copy key</string>
     
     <!--Hints for public key input in symmetric algorithms-->
     <string name="hint_cipherKey_aes">enter a key of 16, 24, or 32 characters</string>

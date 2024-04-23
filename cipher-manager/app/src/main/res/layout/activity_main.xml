@@ -33,14 +33,42 @@
         android:background="?attr/colorSecondaryContainer"
         android:gravity="center"
         android:inputType="text"
+        android:minHeight="48dp"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_generatePrivateKey"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_privateKey_label"
         tools:ignore="Autofill,LabelFor"
         tools:text="private key Name"
         tools:visibility="visible" />
+
+    <!--Generate Private Key Icon-->
+    <ImageView
+        android:id="@+id/imageView_generatePrivateKey"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="2dp"
+        android:contentDescription="@string/desc_generate_key"
+        android:padding="2dp"
+        android:src="@drawable/ic_key_generate_24"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_privateKey"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_copyPrivateKey"
+        app:layout_constraintTop_toTopOf="@+id/editText_privateKey" />
+
+    <!--Copy Private Key Icon-->
+    <ImageView
+        android:id="@+id/imageView_copyPrivateKey"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/copy_key"
+        android:padding="2dp"
+        android:src="@drawable/ic_content_copy_24"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_privateKey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editText_privateKey" />
 
     <!--Public Key (label)-->
     <TextView
@@ -64,12 +92,39 @@
         android:background="?attr/colorSecondaryContainer"
         android:gravity="center"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_generatePublicKey"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_publicKey_label"
         tools:ignore="Autofill,LabelFor"
         tools:text="public key Name" />
+
+    <!--Generate Public Key icon-->
+    <ImageView
+        android:id="@+id/imageView_generatePublicKey"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="2dp"
+        android:contentDescription="@string/desc_generate_key"
+        android:padding="2dp"
+        android:src="@drawable/ic_key_generate_24"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_publicKey"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_copyPublicKey"
+        app:layout_constraintTop_toTopOf="@+id/editText_publicKey" />
+
+    <!--Copy Public Key icon-->
+    <ImageView
+        android:id="@+id/imageView_copyPublicKey"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/copy_key"
+        android:padding="2dp"
+        android:src="@drawable/ic_content_copy_24"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_publicKey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editText_publicKey" />
 
     <!--Encryption button-->
     <Button
@@ -116,7 +171,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
-        android:layout_marginBottom="115dp"
         android:autofillHints="false"
         android:background="?attr/colorSecondaryContainer"
         android:ems="10"
@@ -128,6 +182,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_cipher_value_label"
         tools:ignore="Autofill,LabelFor" />
+
+    <!--Copy Encrypted/Decrypted value icon-->
+    <ImageView
+        android:id="@+id/imageView_copyCipherValue"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:contentDescription="@string/copy_key"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_content_copy_24"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_cipher_value"
+        app:layout_constraintEnd_toEndOf="@+id/editText_cipher_value" />
 
     <!--Clear Encrypted/Decrypted value button-->
     <Button
@@ -161,7 +227,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_begin="206dp"
+        app:layout_constraintGuide_percent="0.5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 

@@ -71,6 +71,16 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
+    fun isVisible_imageView_privateKey_generateIcon() {
+        onView(withId(R.id.imageView_generatePrivateKey)).check(matches(not(isDisplayed())))
+    }
+
+    @Test
+    fun isVisible_imageView_privateKey_copyContentIcon() {
+        onView(withId(R.id.imageView_copyPrivateKey)).check(matches(not(isDisplayed())))
+    }
+
+    @Test
     fun isVisible_textView_publicKey_label() {
         onView(withId(R.id.textView_publicKey_label)).check(matches(isDisplayed()))
     }
@@ -78,6 +88,16 @@ class MainActivityInstrumentedTest {
     @Test
     fun isVisible_editText_publicKey() {
         onView(withId(R.id.editText_publicKey)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isVisible_imageView_publicKey_generateIcon() {
+        onView(withId(R.id.imageView_generatePublicKey)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isVisible_editText_publicKey_copyContentIcon() {
+        onView(withId(R.id.imageView_copyPublicKey)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -98,6 +118,11 @@ class MainActivityInstrumentedTest {
     @Test
     fun isVisible_editText_cipher_value() {
         onView(withId(R.id.editText_cipher_value)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isVisible_imageView_cipher_value_copyContentIcon() {
+        onView(withId(R.id.imageView_copyCipherValue)).check(matches(isDisplayed()))
     }
 
     @Test
