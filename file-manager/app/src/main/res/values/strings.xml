@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FileMaster Pro</string>
+    <string name="button_scan_media_files">Scan Media Files</string>
+    <string name="toast_media_permissions_denied">Media file permissions denied.</string>
 </resources>
