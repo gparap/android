@@ -29,6 +29,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotEquals
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -49,7 +50,7 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun isVisible_recyclerView_mediaFiles() {
-        onView(withId(R.id.recyclerView_mediaFiles)).check(matches(isDisplayed()))
+        onView(withId(R.id.recyclerView_deviceFiles)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -69,9 +70,9 @@ class MainActivityInstrumentedTest {
         grantPermission(android.Manifest.permission.READ_MEDIA_VIDEO)
         grantPermission(android.Manifest.permission.READ_MEDIA_AUDIO)
 
-        //et recycler view count before scan
+        //get recycler view count before scan
         activityScenario.onActivity {
-            val recyclerView = it.findViewById<RecyclerView>(R.id.recyclerView_mediaFiles)
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recyclerView_deviceFiles)
             assertEquals(recyclerView.adapter?.itemCount, itemsBeforeScan)
         }
 
@@ -80,7 +81,34 @@ class MainActivityInstrumentedTest {
 
         //get recycler view count after scan
         activityScenario.onActivity {
-            val recyclerView = it.findViewById<RecyclerView>(R.id.recyclerView_mediaFiles)
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recyclerView_deviceFiles)
+            itemsAfterScan = recyclerView.adapter?.itemCount!!
+        }
+
+        //test here
+        assertNotEquals(itemsBeforeScan, itemsAfterScan)
+    }
+
+    @Test
+    @Ignore("!!! Make sure this special permission is granted manually before testing !!!")
+    @TestInfo("!!! Make sure there are media files on device !!!")
+    @SdkSuppress(minSdkVersion = Build.VERSION_CODES.R)
+    fun onAllFilesScanClick_recyclerViewIsNotEmpty() {
+        val itemsBeforeScan = 0
+        var itemsAfterScan = 0
+
+        //get recycler view count before scan
+        activityScenario.onActivity {
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recyclerView_deviceFiles)
+            assertEquals(recyclerView.adapter?.itemCount, itemsBeforeScan)
+        }
+
+        //scan for files
+        onView(withId(R.id.button_scanAllFiles)).perform(click())
+
+        //get recycler view count after scan
+        activityScenario.onActivity {
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recyclerView_deviceFiles)
             itemsAfterScan = recyclerView.adapter?.itemCount!!
         }
 
