@@ -121,9 +121,35 @@ class MainActivity : AppCompatActivity() {
             }
         }
         if (requestCode == REQUEST_CODE_BROWSE_FILES) {
-            //get file details from URI TODO: fix naming
-            val name = data?.data?.path.toString()
-            val path = data?.data
+            val uri = data?.data
+
+            //revert the conversion of the encoded characters
+            val encodedUriString = uri.toString()
+            val decodedUriString = Uri.decode(encodedUriString)
+
+            //get the last segment as the file name
+            val segments = decodedUriString.split("/")
+            val name = segments[segments.size - 1]
+
+            //list that contains android file directories
+            val deviceDirsList = arrayOf(
+                "Audiobooks", "Music", "Podcasts", "Recordings", "Ringtones", //audio files
+                "Documents",
+                "Download",
+                "Movies",
+                "Pictures"
+            )
+
+            //get the file path name
+            var path = ""
+            run deviceDirsListLoop@{
+                deviceDirsList.forEach {
+                    if (encodedUriString.contains(it)) {
+                        path = it
+                        return@deviceDirsListLoop
+                    }
+                }
+            }
             val fileUri = Uri.parse("file://$path/$name")
 
             //update recycler view with the file details
