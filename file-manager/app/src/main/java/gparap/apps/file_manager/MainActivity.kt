@@ -77,6 +77,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+        //browse files
+        findViewById<Button>(R.id.button_browseFiles).setOnClickListener {
+            browseFiles()
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -97,6 +102,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @RequiresApi(Build.VERSION_CODES.R)
     @Deprecated("Method deprecated, use Activity Result API")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -113,6 +119,17 @@ class MainActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+        }
+        if (requestCode == REQUEST_CODE_BROWSE_FILES) {
+            //get file details from URI TODO: fix naming
+            val name = data?.data?.path.toString()
+            val path = data?.data
+            val fileUri = Uri.parse("file://$path/$name")
+
+            //update recycler view with the file details
+            deviceFiles.clear()
+            deviceFiles.add(FileModel(name, fileUri!!))
+            fileAdapter.notifyDataSetChanged()
         }
     }
 
@@ -225,8 +242,18 @@ class MainActivity : AppCompatActivity() {
         fileAdapter.notifyDataSetChanged()
     }
 
+    /** Browse the device files. */
+    private fun browseFiles() {
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+        intent.addCategory(Intent.CATEGORY_OPENABLE)
+        intent.setType("*/*")
+        @Suppress("DEPRECATION")
+        startActivityForResult(intent, REQUEST_CODE_BROWSE_FILES)
+    }
+
     companion object {
         const val REQUEST_CODE_MEDIA_FILES = 999 /* request code for media file permissions */
         const val REQUEST_CODE_ALL_FILES = 888 /* request code for all file access permission */
+        const val REQUEST_CODE_BROWSE_FILES = 777 /* request code for browsing files */
     }
 }

@@ -59,6 +59,11 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
+    fun isVisible_button_browseFiles() {
+        onView(withId(R.id.button_browseFiles)).check(matches(isDisplayed()))
+    }
+
+    @Test
     @TestInfo("!!! Make sure there are media files on device !!!")
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU)
     fun onMediaFilesScanClick_recyclerViewIsNotEmpty() {
