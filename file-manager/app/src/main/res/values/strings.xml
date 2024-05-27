@@ -2,6 +2,7 @@
     <string name="app_name">FileMaster Pro</string>
     <string name="button_scan_media_files">Scan Media Files</string>
     <string name="button_scan_all_files">Scan All Files</string>
+    <string name="button_browse_files">Browse Files</string>
     <string name="toast_media_permissions_denied">Media file permissions denied.</string>
     <string name="toast_all_files_permission_denied">All files access permission denied.</string>
 </resources>
