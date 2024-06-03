@@ -30,11 +30,14 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.file_manager.adapters.FileAdapter
 import gparap.apps.file_manager.data.FileModel
 import java.io.File
+import java.security.Permission
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -86,6 +89,27 @@ class MainActivity : AppCompatActivity() {
                         requestAllFilesPermission()
                     }
                 }
+
+                //NOUGAT to QUINCE TART
+                if (Build.VERSION.SDK_INT in 24..29) {
+                    //check for all files permissions and if granted, perform scan
+                    if (ContextCompat.checkSelfPermission(
+                            this,
+                            android.Manifest.permission.READ_EXTERNAL_STORAGE
+                        ) != PackageManager.PERMISSION_GRANTED
+                    ) {
+                        ActivityCompat.requestPermissions(
+                            this,
+                            arrayOf(
+                                android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                                android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+                            ), REQUEST_CODE_ALL_FILES
+                        )
+                    } else {
+                        val rootDirectory = Environment.getExternalStorageDirectory()
+                        scanAllFiles(rootDirectory)
+                    }
+                }
             }
 
             //browse files
@@ -96,21 +120,37 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQUEST_CODE_MEDIA_FILES && areMediaPermissionsGranted()) {
-            scanMediaFiles()
-        } else {
-            Toast.makeText(
-                this,
-                getString(R.string.toast_media_permissions_denied),
-                Toast.LENGTH_SHORT
-            ).show()
+        //TIRAMISU and beyond
+        if (Build.VERSION.SDK_INT >= 33) {
+            if (requestCode == REQUEST_CODE_MEDIA_FILES && areMediaPermissionsGranted()) {
+                scanMediaFiles()
+            } else {
+                Toast.makeText(
+                    this,
+                    getString(R.string.toast_media_permissions_denied),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+
+        //NOUGAT to QUINCE TART
+        if (Build.VERSION.SDK_INT in 24..29) {
+            if (requestCode == REQUEST_CODE_ALL_FILES && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                val rootDirectory = Environment.getExternalStorageDirectory()
+                scanAllFiles(rootDirectory)
+            } else {
+                Toast.makeText(
+                    this,
+                    getString(R.string.toast_all_files_permission_denied),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 
