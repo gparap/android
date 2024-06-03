@@ -18,11 +18,13 @@ package gparap.apps.file_manager
 import android.os.Build
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
+import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
@@ -54,16 +56,6 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
-    fun isVisible_button_scanMediaFiles() {
-        onView(withId(R.id.button_scanMediaFiles)).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun isVisible_button_browseFiles() {
-        onView(withId(R.id.button_browseFiles)).check(matches(isDisplayed()))
-    }
-
-    @Test
     @TestInfo("!!! Make sure there are media files on device !!!")
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.TIRAMISU)
     fun onMediaFilesScanClick_recyclerViewIsNotEmpty() {
@@ -82,7 +74,8 @@ class MainActivityInstrumentedTest {
         }
 
         //scan for media files
-        onView(withId(R.id.button_scanMediaFiles)).perform(click())
+        Espresso.openContextualActionModeOverflowMenu()
+        onView(withText(R.string.text_scan_media_files)).perform(click())
 
         //get recycler view count after scan
         activityScenario.onActivity {
@@ -109,7 +102,8 @@ class MainActivityInstrumentedTest {
         }
 
         //scan for files
-        onView(withId(R.id.button_scanAllFiles)).perform(click())
+        Espresso.openContextualActionModeOverflowMenu()
+        onView(withText(R.string.text_scan_media_files)).perform(click())
 
         //get recycler view count after scan
         activityScenario.onActivity {
