@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--Scan All Files-->
+    <item
+        android:id="@+id/menu_item_scan_all_files"
+        android:title="@string/text_scan_all_files"
+        app:showAsAction="never" />
+
+    <!--Scan Media Files-->
+    <item
+        android:id="@+id/menu_item_scan_media_files"
+        android:title="@string/text_scan_media_files"
+        app:showAsAction="never" />
+
+    <!--Browse Files-->
+    <item
+        android:id="@+id/menu_item_browse_files"
+        android:icon="@drawable/ic_file_open_24px"
+        android:title="@string/text_browse_files"
+        app:showAsAction="ifRoom" />
+</menu>

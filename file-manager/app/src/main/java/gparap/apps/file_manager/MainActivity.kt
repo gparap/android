@@ -24,7 +24,8 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.provider.Settings
-import android.widget.Button
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -49,39 +50,50 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         fileAdapter = FileAdapter(deviceFiles)
         recyclerView.adapter = fileAdapter
+    }
 
-        //display media files
-        findViewById<Button>(R.id.button_scanMediaFiles).setOnClickListener {
-            //TIRAMISU and beyond
-            if (Build.VERSION.SDK_INT >= 33) {
-                //check for required media files permissions and if granted, perform scan
-                if (areMediaPermissionsGranted()) {
-                    scanMediaFiles()
-                } else {
-                    requestMediaFilesPermissions()
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+
+            //display media files
+            R.id.menu_item_scan_media_files -> {
+                //TIRAMISU and beyond
+                if (Build.VERSION.SDK_INT >= 33) {
+                    //check for required media files permissions and if granted, perform scan
+                    if (areMediaPermissionsGranted()) {
+                        scanMediaFiles()
+                    } else {
+                        requestMediaFilesPermissions()
+                    }
+                }
+                //TODO: lesser versions
+            }
+
+            //display all files
+            R.id.menu_item_scan_all_files -> {
+                //RED VELVET CAKE and beyond
+                if (Build.VERSION.SDK_INT >= 30) {
+                    //check for managed files permission internally and if granted, perform scan
+                    if (Environment.isExternalStorageManager()) {
+                        val rootDirectory = Environment.getExternalStorageDirectory()
+                        scanAllFiles(rootDirectory)
+                    } else {
+                        requestAllFilesPermission()
+                    }
                 }
             }
-            //TODO: lesser versions
-        }
 
-        //display all files
-        findViewById<Button>(R.id.button_scanAllFiles).setOnClickListener {
-            //RED VELVET CAKE and beyond
-            if (Build.VERSION.SDK_INT >= 30) {
-                //check for managed files permission internally and if granted, perform scan
-                if (Environment.isExternalStorageManager()) {
-                    val rootDirectory = Environment.getExternalStorageDirectory()
-                    scanAllFiles(rootDirectory)
-                } else {
-                    requestAllFilesPermission()
-                }
+            //browse files
+            R.id.menu_item_browse_files -> {
+                browseFiles()
             }
         }
-
-        //browse files
-        findViewById<Button>(R.id.button_browseFiles).setOnClickListener {
-            browseFiles()
-        }
+        return super.onOptionsItemSelected(item)
     }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)

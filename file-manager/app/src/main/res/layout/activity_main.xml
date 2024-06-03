@@ -11,38 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_scanMediaFiles"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <!--Files scanner (media)-->
-    <Button
-        android:id="@+id/button_scanMediaFiles"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_scan_media_files"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!--Files scanner (all)-->
-    <Button
-        android:id="@+id/button_scanAllFiles"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_scan_all_files"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!--Files browser-->
-    <Button
-        android:id="@+id/button_browseFiles"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/button_browse_files"
-        android:textAlignment="center"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/button_scanMediaFiles"
-        app:layout_constraintEnd_toStartOf="@+id/button_scanAllFiles"
-        app:layout_constraintStart_toEndOf="@+id/button_scanMediaFiles"
-        app:layout_constraintTop_toTopOf="@+id/button_scanMediaFiles" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
