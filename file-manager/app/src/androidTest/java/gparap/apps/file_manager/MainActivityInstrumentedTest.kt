@@ -89,7 +89,7 @@ class MainActivityInstrumentedTest {
 
     @Test
     @Ignore("!!! Make sure this special permission is granted manually before testing !!!")
-    @TestInfo("!!! Make sure there are media files on device !!!")
+    @TestInfo("!!! Make sure there are files on device !!!")
     @SdkSuppress(minSdkVersion = Build.VERSION_CODES.R)
     fun onAllFilesScanClick_recyclerViewIsNotEmpty() {
         val itemsBeforeScan = 0
@@ -103,7 +103,37 @@ class MainActivityInstrumentedTest {
 
         //scan for files
         Espresso.openContextualActionModeOverflowMenu()
-        onView(withText(R.string.text_scan_media_files)).perform(click())
+        onView(withText(R.string.text_scan_all_files)).perform(click())
+
+        //get recycler view count after scan
+        activityScenario.onActivity {
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recyclerView_deviceFiles)
+            itemsAfterScan = recyclerView.adapter?.itemCount!!
+        }
+
+        //test here
+        assertNotEquals(itemsBeforeScan, itemsAfterScan)
+    }
+
+    @Test
+    @TestInfo("!!! Make sure there are files on device !!!")
+    fun onAllFilesScanClick_recyclerViewIsNotEmpty_APIs24to29() {
+        val itemsBeforeScan = 0
+        var itemsAfterScan = 0
+
+        //get recycler view count before scan
+        activityScenario.onActivity {
+            val recyclerView = it.findViewById<RecyclerView>(R.id.recyclerView_deviceFiles)
+            assertEquals(recyclerView.adapter?.itemCount, itemsBeforeScan)
+        }
+
+        //grant media file permissions
+        grantPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+        grantPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
+        //scan for files
+        Espresso.openContextualActionModeOverflowMenu()
+        onView(withText(R.string.text_scan_all_files)).perform(click())
 
         //get recycler view count after scan
         activityScenario.onActivity {
