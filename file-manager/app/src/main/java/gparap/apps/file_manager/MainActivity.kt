@@ -35,9 +35,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.file_manager.adapters.FileAdapter
 import gparap.apps.file_manager.data.FileModel
+import gparap.apps.file_manager.utils.Utils
 import java.io.File
-import java.security.Permission
-
 
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -307,10 +306,17 @@ class MainActivity : AppCompatActivity() {
             //loop over each pathname and if it is a directory, scan its contents
             for (pathname in pathnames) {
                 if (pathname.isDirectory) {
+                    //exclude system directory
+                    if (Utils.isSystemDirectory(pathname.toString())) {
+                        continue
+                    }
                     //use recursion to scan subdirectory
                     scanAllFiles(pathname, true)
                 } else {
-                    //TODO: handle .thumbnail files and others that should not be included
+                    //exclude hidden and database files
+                    if (Utils.isHiddenFile(pathname.name) || Utils.isDatabaseFile(pathname.name)) {
+                        continue
+                    }
                     deviceFiles.add(FileModel(pathname.name, Uri.parse(pathname.path)))
                 }
             }
