@@ -73,6 +73,14 @@ class MainActivity : AppCompatActivity() {
                         requestMediaFilesPermissions()
                     }
                 }
+                if (Build.VERSION.SDK_INT in 29..32) {
+                    //check for required media files permissions and if granted, perform scan
+                    if (areMediaPermissionsGranted()) {
+                        scanMediaFiles()
+                    } else {
+                        requestMediaFilesPermissions()
+                    }
+                }
                 //TODO: lesser versions
             }
 
@@ -127,6 +135,19 @@ class MainActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         //TIRAMISU and beyond
         if (Build.VERSION.SDK_INT >= 33) {
+            if (requestCode == REQUEST_CODE_MEDIA_FILES && areMediaPermissionsGranted()) {
+                scanMediaFiles()
+            } else {
+                Toast.makeText(
+                    this,
+                    getString(R.string.toast_media_permissions_denied),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+
+        //QUINCE TART to SNOW CONE
+        if (Build.VERSION.SDK_INT in 29 .. 32) {
             if (requestCode == REQUEST_CODE_MEDIA_FILES && areMediaPermissionsGranted()) {
                 scanMediaFiles()
             } else {
@@ -211,37 +232,73 @@ class MainActivity : AppCompatActivity() {
     }
 
     /** Checks for media file permissions. */
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun areMediaPermissionsGranted(): Boolean {
-        val readImagesGranted = ActivityCompat.checkSelfPermission(
-            this,
-            android.Manifest.permission.READ_MEDIA_IMAGES
-        ) == PackageManager.PERMISSION_GRANTED
-        val readVideosGranted = ActivityCompat.checkSelfPermission(
-            this,
-            android.Manifest.permission.READ_MEDIA_VIDEO
-        ) == PackageManager.PERMISSION_GRANTED
-        val readAudioGranted = ActivityCompat.checkSelfPermission(
-            this,
-            android.Manifest.permission.READ_MEDIA_AUDIO
-        ) == PackageManager.PERMISSION_GRANTED
+        var arePermissionsGranted = false
 
-        //all 3 permissions should be granted TODO: make granular functionality
-        return readImagesGranted && readVideosGranted && readAudioGranted
+        //TIRAMISU and beyond
+        if (Build.VERSION.SDK_INT >= 33) {
+            val readImagesGranted = ActivityCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.READ_MEDIA_IMAGES
+            ) == PackageManager.PERMISSION_GRANTED
+            val readVideosGranted = ActivityCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.READ_MEDIA_VIDEO
+            ) == PackageManager.PERMISSION_GRANTED
+            val readAudioGranted = ActivityCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.READ_MEDIA_AUDIO
+            ) == PackageManager.PERMISSION_GRANTED
+
+            //all 3 permissions should be granted
+            arePermissionsGranted = readImagesGranted && readVideosGranted && readAudioGranted
+        }
+
+        //QUINCE TART to SNOW CONE
+        if (Build.VERSION.SDK_INT in 29..32) {
+            val readExternalStorageGranted = ActivityCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED
+            val writeExternalStorageGranted = ActivityCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED
+
+
+            //all 2 permissions should be granted
+            arePermissionsGranted = readExternalStorageGranted && writeExternalStorageGranted
+        }
+
+        return arePermissionsGranted
     }
 
     /** Requests media file permissions. */
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun requestMediaFilesPermissions() {
-        ActivityCompat.requestPermissions(
-            this,
-            arrayOf(
-                android.Manifest.permission.READ_MEDIA_IMAGES,
-                android.Manifest.permission.READ_MEDIA_VIDEO,
-                android.Manifest.permission.READ_MEDIA_AUDIO
-            ),
-            REQUEST_CODE_MEDIA_FILES
-        )
+        //TIRAMISU and beyond
+        if (Build.VERSION.SDK_INT >= 33) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(
+                    android.Manifest.permission.READ_MEDIA_IMAGES,
+                    android.Manifest.permission.READ_MEDIA_VIDEO,
+                    android.Manifest.permission.READ_MEDIA_AUDIO
+                ),
+                REQUEST_CODE_MEDIA_FILES
+            )
+        }
+
+        //QUINCE TART to SNOW CONE
+        if (Build.VERSION.SDK_INT in 29..32) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ),
+                REQUEST_CODE_MEDIA_FILES
+            )
+        }
     }
 
     /** Requests special permission to access all files of the device . */
