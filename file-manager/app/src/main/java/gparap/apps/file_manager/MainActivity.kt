@@ -73,6 +73,7 @@ class MainActivity : AppCompatActivity() {
                         requestMediaFilesPermissions()
                     }
                 }
+                //QUINCE TART to SNOW CONE
                 if (Build.VERSION.SDK_INT in 29..32) {
                     //check for required media files permissions and if granted, perform scan
                     if (areMediaPermissionsGranted()) {
@@ -81,7 +82,15 @@ class MainActivity : AppCompatActivity() {
                         requestMediaFilesPermissions()
                     }
                 }
-                //TODO: lesser versions
+                //NOUGAT to PIE
+                if (Build.VERSION.SDK_INT in 24..28) {
+                    //check for required media files permissions and if granted, perform scan
+                    if (areMediaPermissionsGranted()) {
+                        scanMediaFiles()
+                    } else {
+                        requestMediaFilesPermissions()
+                    }
+                }
             }
 
             //display all files
@@ -147,7 +156,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //QUINCE TART to SNOW CONE
-        if (Build.VERSION.SDK_INT in 29 .. 32) {
+        if (Build.VERSION.SDK_INT in 29..32) {
             if (requestCode == REQUEST_CODE_MEDIA_FILES && areMediaPermissionsGranted()) {
                 scanMediaFiles()
             } else {
@@ -161,15 +170,33 @@ class MainActivity : AppCompatActivity() {
 
         //NOUGAT to QUINCE TART
         if (Build.VERSION.SDK_INT in 24..29) {
-            if (requestCode == REQUEST_CODE_ALL_FILES && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                val rootDirectory = Environment.getExternalStorageDirectory()
-                scanAllFiles(rootDirectory)
-            } else {
-                Toast.makeText(
-                    this,
-                    getString(R.string.toast_all_files_permission_denied),
-                    Toast.LENGTH_SHORT
-                ).show()
+            when (requestCode) {
+                //all files permission(s)
+                REQUEST_CODE_ALL_FILES -> {
+                    if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        val rootDirectory = Environment.getExternalStorageDirectory()
+                        scanAllFiles(rootDirectory)
+                    } else {
+                        Toast.makeText(
+                            this,
+                            getString(R.string.toast_all_files_permission_denied),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+
+                //media files permission(s)
+                REQUEST_CODE_MEDIA_FILES -> {
+                    if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                        scanMediaFiles()
+                    } else {
+                        Toast.makeText(
+                            this,
+                            getString(R.string.toast_media_permissions_denied),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
             }
         }
     }
@@ -270,6 +297,17 @@ class MainActivity : AppCompatActivity() {
             arePermissionsGranted = readExternalStorageGranted && writeExternalStorageGranted
         }
 
+        //NOUGAT to PIE
+        if (Build.VERSION.SDK_INT in 24..28) {
+            val readExternalStorageGranted = ActivityCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED
+
+            //single permission should be granted
+            arePermissionsGranted = readExternalStorageGranted
+        }
+
         return arePermissionsGranted
     }
 
@@ -299,6 +337,15 @@ class MainActivity : AppCompatActivity() {
                 REQUEST_CODE_MEDIA_FILES
             )
         }
+
+        //NOUGAT to PIE
+        if (Build.VERSION.SDK_INT in 24..28) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                REQUEST_CODE_MEDIA_FILES
+            )
+        }
     }
 
     /** Requests special permission to access all files of the device . */
@@ -312,38 +359,45 @@ class MainActivity : AppCompatActivity() {
     }
 
     /** Scans the device for all media files (images, video & audio). */
-    @RequiresApi(Build.VERSION_CODES.Q)
     @SuppressLint("NotifyDataSetChanged")
     private fun scanMediaFiles() {
         deviceFiles.clear()
 
-        //get the content URI for the device volume (shared)
-        val uri = MediaStore.Files.getContentUri(MediaStore.VOLUME_EXTERNAL)
+        //QUINCE TART and beyond
+        if (Build.VERSION.SDK_INT >= 29) {
+            //get the content URI for the device volume (shared)
+            val uri = MediaStore.Files.getContentUri(MediaStore.VOLUME_EXTERNAL)
 
-        //define the columns to retrieve from the MediaStore
-        val projection = arrayOf(
-            MediaStore.Files.FileColumns.DISPLAY_NAME,  //file name
-            MediaStore.Files.FileColumns.RELATIVE_PATH  //relative path
-        )
+            //define the columns to retrieve from the MediaStore
+            val projection = arrayOf(
+                MediaStore.Files.FileColumns.DISPLAY_NAME,  //file name
+                MediaStore.Files.FileColumns.RELATIVE_PATH  //relative path
+            )
 
-        //filter out non-media files from the selection
-        val selection =
-            "${MediaStore.Files.FileColumns.MEDIA_TYPE} != ${MediaStore.Files.FileColumns.MEDIA_TYPE_NONE}"
+            //filter out non-media files from the selection
+            val selection =
+                "${MediaStore.Files.FileColumns.MEDIA_TYPE} != ${MediaStore.Files.FileColumns.MEDIA_TYPE_NONE}"
 
-        //use ascending order for the query results
-        val sortOrder = "${MediaStore.Files.FileColumns.DISPLAY_NAME} ASC"
+            //use ascending order for the query results
+            val sortOrder = "${MediaStore.Files.FileColumns.DISPLAY_NAME} ASC"
 
-        //query the MediaStore and add files to media files list
-        val cursor = contentResolver.query(uri, projection, selection, null, sortOrder)
-        cursor?.use {
-            val nameColumn = it.getColumnIndex(MediaStore.Files.FileColumns.DISPLAY_NAME)
-            val pathColumn = it.getColumnIndex(MediaStore.Files.FileColumns.RELATIVE_PATH)
-            while (it.moveToNext()) {
-                val name = it.getString(nameColumn)
-                val path = it.getString(pathColumn)
-                val fileUri = Uri.parse("file://$path/$name")
-                deviceFiles.add(FileModel(name, fileUri))
+            //query the MediaStore and add files to media files list
+            val cursor = contentResolver.query(uri, projection, selection, null, sortOrder)
+            cursor?.use {
+                val nameColumn = it.getColumnIndex(MediaStore.Files.FileColumns.DISPLAY_NAME)
+                val pathColumn = it.getColumnIndex(MediaStore.Files.FileColumns.RELATIVE_PATH)
+                while (it.moveToNext()) {
+                    val name = it.getString(nameColumn)
+                    val path = it.getString(pathColumn)
+                    val fileUri = Uri.parse("file://$path/$name")
+                    deviceFiles.add(FileModel(name, fileUri))
+                }
             }
+        }
+
+        //NOUGAT to PIE
+        if (Build.VERSION.SDK_INT in 24..28) {
+            //TODO: check for images, audio & video files
         }
 
         //notify the adapter that the media files list has changed
