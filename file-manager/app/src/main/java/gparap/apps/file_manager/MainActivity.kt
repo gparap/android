@@ -18,6 +18,7 @@ package gparap.apps.file_manager
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -397,7 +398,9 @@ class MainActivity : AppCompatActivity() {
 
         //NOUGAT to PIE
         if (Build.VERSION.SDK_INT in 24..28) {
-            //TODO: check for images, audio & video files
+            deviceFiles.addAll(getImageFiles())
+            deviceFiles.addAll(getAudioFiles())
+            deviceFiles.addAll(getVideoFiles())
         }
 
         //notify the adapter that the media files list has changed
@@ -444,6 +447,101 @@ class MainActivity : AppCompatActivity() {
         intent.setType("*/*")
         @Suppress("DEPRECATION")
         startActivityForResult(intent, REQUEST_CODE_BROWSE_FILES)
+    }
+
+    /** Returns a collection of the device image files. */
+    private fun getImageFiles(): MutableList<FileModel> {
+        val imageFiles = mutableListOf<FileModel>()
+
+        //get all images from external storage
+        val projection = arrayOf(
+            MediaStore.Images.Media.DISPLAY_NAME,
+            MediaStore.Images.Media.DATA
+        )
+        val selection: String? = null
+        val selectionArgs: Array<String>? = null
+        val sortOrder = "${MediaStore.Images.Media.DISPLAY_NAME} ASC"
+        val cursor = contentResolver.query(
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+            projection,
+            selection,
+            selectionArgs,
+            sortOrder
+        )
+
+        //add images to the collection
+        getFilesFromCursor(cursor, imageFiles)
+
+        //return the collection
+        return imageFiles
+    }
+
+    /** Returns a collection of the device audio files. */
+    private fun getAudioFiles(): MutableList<FileModel> {
+        val audioFiles = mutableListOf<FileModel>()
+
+        //get all audio files from external storage
+        val projection = arrayOf(
+            MediaStore.Audio.Media.DISPLAY_NAME,
+            MediaStore.Audio.Media.DATA
+        )
+        val selection: String? = null
+        val selectionArgs: Array<String>? = null
+        val sortOrder = "${MediaStore.Audio.Media.DISPLAY_NAME} ASC"
+        val cursor = contentResolver.query(
+            MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+            projection,
+            selection,
+            selectionArgs,
+            sortOrder
+        )
+
+        //add audio files to the collection
+        getFilesFromCursor(cursor, audioFiles)
+
+        //return the collection
+        return audioFiles
+    }
+
+    /** Returns a collection of the device video files. */
+    private fun getVideoFiles(): MutableList<FileModel> {
+        val videoFiles = mutableListOf<FileModel>()
+
+        //get all video files from external storage
+        val projection = arrayOf(
+            MediaStore.Video.Media.DISPLAY_NAME,
+            MediaStore.Video.Media.DATA
+        )
+        val selection: String? = null
+        val selectionArgs: Array<String>? = null
+        val sortOrder = "${MediaStore.Video.Media.DISPLAY_NAME} ASC"
+        val cursor = contentResolver.query(
+            MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
+            projection,
+            selection,
+            selectionArgs,
+            sortOrder
+        )
+
+        //add video files to the collection
+        getFilesFromCursor(cursor, videoFiles)
+
+        //return the collection
+        return videoFiles
+    }
+
+    /** Returns a collection of FileModel objects based on information from a Cursor object. */
+    private fun getFilesFromCursor(cursor: Cursor?, collection: MutableList<FileModel>) {
+        cursor?.use {
+            val nameColumn = it.getColumnIndex(MediaStore.Files.FileColumns.DISPLAY_NAME)
+            val pathColumn = it.getColumnIndex(MediaStore.Files.FileColumns.DATA)
+            while (it.moveToNext()) {
+                val name = it.getString(nameColumn)
+                val path = it.getString(pathColumn)
+                val fileUri = Uri.parse("file://$path/$name")
+                collection.add(FileModel(name, fileUri))
+            }
+        }
     }
 
     companion object {
