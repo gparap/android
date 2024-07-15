@@ -2,8 +2,8 @@ Painter:
 ---------
 A digital canvas for drawing on android phones and tablets using touch.
 
-Its funtionality consists of:
-a canvas to draw to and a color pallette, 
+Its functionality consists of:
+a canvas to draw to and a color palette, 
 saving and loading a painting, 
 options to customize the size of the brush and erase paths.
 

@@ -62,11 +62,11 @@ class CanvasView : View {
         }
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
         //save canvas before drawing
-        canvas?.save()
+        canvas.save()
 
         //draw all paths
         for (p in paths) {
@@ -77,7 +77,7 @@ class CanvasView : View {
         }
 
         //draw the specified bitmap to canvas
-        canvas?.drawBitmap(
+        canvas.drawBitmap(
             bitmap,
             BITMAP_POSITION_LEFT,
             BITMAP_POSITION_TOP,
@@ -85,7 +85,7 @@ class CanvasView : View {
         )
 
         //restore canvas after drawing
-        canvas?.restore()
+        canvas.restore()
     }
 
     @SuppressLint("ClickableViewAccessibility")
