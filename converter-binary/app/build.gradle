@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "gparap.apps.converter_binary"
         minSdkVersion 16
-        targetSdkVersion 33
-        versionCode 1
+        targetSdkVersion 34
+        versionCode 3
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
