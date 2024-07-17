@@ -5,13 +5,13 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "gparap.apps.shopping_list"
         minSdk 21
-        targetSdk 33
-        versionCode 2
+        targetSdk 34
+        versionCode 3
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -31,6 +31,7 @@ android {
     kotlinOptions {
         jvmTarget = '11'
     }
+    namespace 'gparap.apps.shopping_list'
 }
 
 dependencies {
@@ -63,5 +64,5 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
     //Mobile Ads SDK
-    implementation 'com.google.android.gms:play-services-ads:20.5.0'
+    implementation 'com.google.android.gms:play-services-ads:21.0.0'
 }
