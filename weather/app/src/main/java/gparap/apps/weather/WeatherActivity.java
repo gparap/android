@@ -81,7 +81,7 @@ public class WeatherActivity extends AppCompatActivity {
         //search a city for weather
         iconCitySearch.setOnClickListener(v -> {
             if (!isCitySearchEmpty()) {
-                city = editTextCity.getText().toString();
+                city = editTextCity.getText().toString().trim();
                 hideSoftKeyboard(v);
                 getCurrentWeather(false);
             }
