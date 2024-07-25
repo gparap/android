@@ -10,13 +10,13 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "gparap.apps.movies"
         minSdk 24
-        targetSdk 33
-        versionCode 4
+        targetSdk 34
+        versionCode 5
         versionName "2.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
