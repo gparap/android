@@ -48,4 +48,8 @@ dependencies {
 
     //Glide image loading library
     implementation(libs.glide)
+
+    //Retrofit HTTP client with converter
+    implementation(libs.retrofit2.retrofit)
+    implementation(libs.converter.gson)
 }

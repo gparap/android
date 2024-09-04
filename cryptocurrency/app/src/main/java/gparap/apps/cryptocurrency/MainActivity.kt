@@ -16,39 +16,57 @@
 package gparap.apps.cryptocurrency
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.cryptocurrency.adapters.CoinAdapter
 import gparap.apps.cryptocurrency.data.CoinModel
+import gparap.apps.cryptocurrency.data.HttpResponseModel
+import gparap.apps.cryptocurrency.services.CryptocurrencyService
+import gparap.apps.cryptocurrency.services.RetrofitClient
+import gparap.apps.cryptocurrency.utils.AppConstants
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
+    private var coins: List<CoinModel>? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.title = getString(R.string.txt_mainActivity_actionBar_title)
 
-        //TODO: call the actual web service
+        //create the web service
+        val webService = RetrofitClient().build(AppConstants.BASE_URL).create(CryptocurrencyService::class.java)
 
-        //create a test list of cryptocurrencies
-        val coins = listOf(
-            CoinModel("1", "BTC", "Bitcoin", "#f7931A", "https://cdn.pixabay.com/photo/2015/08/27/11/20/bitcoin-910307_1280.png","1164623660707", "60000.00", "1.01", "1","23342784016"),
-            CoinModel("2", "BTC", "Bitcoin", "#f7931A","https://cdn.pixabay.com/photo/2015/08/27/11/20/bitcoin-910307_1280.png","1164623660707", "60000.00", "1.01", "1","23342784016"),
-            CoinModel("3", "BTC", "Bitcoin", "#f7931A","https://cdn.pixabay.com/photo/2015/08/27/11/20/bitcoin-910307_1280.png","1164623660707", "60000.00", "1.01", "1","23342784016"),
-            CoinModel("4", "BTC", "Bitcoin", "#f7931A","https://cdn.pixabay.com/photo/2015/08/27/11/20/bitcoin-910307_1280.png","1164623660707", "60000.00", "1.01", "1","23342784016"),
-            CoinModel("5", "BTC", "Bitcoin", "#f7931A","https://cdn.pixabay.com/photo/2015/08/27/11/20/bitcoin-910307_1280.png","1164623660707", "60000.00", "1.01", "1","23342784016"),
-            CoinModel("5", "BTC", "Bitcoin", "#f7931A","https://cdn.pixabay.com/photo/2015/08/27/11/20/bitcoin-910307_1280.png","1164623660707", "60000.00", "1.01", "1","23342784016"),
-            CoinModel("5", "BTC", "Bitcoin", "#f7931A","https://cdn.pixabay.com/photo/2015/08/27/11/20/bitcoin-910307_1280.png","1164623660707", "60000.00", "1.01", "1","23342784016"),
-            CoinModel("5", "BTC", "Bitcoin", "#f7931A","https://cdn.pixabay.com/photo/2015/08/27/11/20/bitcoin-910307_1280.png","1164623660707", "60000.00", "1.01", "1","23342784016"),
-            CoinModel("5", "BTC", "Bitcoin", "#f7931A","https://cdn.pixabay.com/photo/2015/08/27/11/20/bitcoin-910307_1280.png","1164623660707", "60000.00", "1.01", "1","23342784016"),
-            CoinModel("5", "BTC", "Bitcoin", "#f7931A","https://cdn.pixabay.com/photo/2015/08/27/11/20/bitcoin-910307_1280.png","1164623660707", "60000.00", "1.01", "1","23342784016"),
-        )
+        //consume the web service (get cryptocurrencies)
+        val httpResponse: Call<HttpResponseModel?>? = webService.getCoins
+        httpResponse?.enqueue(object : Callback<HttpResponseModel?> {
+            override fun onResponse(
+                request: Call<HttpResponseModel?>,
+                response: Response<HttpResponseModel?>
+            ) {
+                if (response.body()?.statusCode.equals("200") || response.body()?.statusCode.equals("success")) {
+                    coins = response.body()?.cryptoData
+                } else {
+                    Log.d("API_MSG", "this shouldn't have happened!")
+                }
+            }
+
+            override fun onFailure(request: Call<HttpResponseModel?>, response: Throwable) {
+                Log.d("ERROR", response.message.toString())
+            }
+        })
+
+        //TODO: display the cryptocurrencies
 
         //initialize recycler view with adapter
         val recyclerViewCryptos: RecyclerView = findViewById(R.id.recycler_view_cryptos)
         recyclerViewCryptos.layoutManager = LinearLayoutManager(this)
         val coinAdapter = CoinAdapter()
-        coinAdapter.setCoins(coins)
+        coins?.let { coinAdapter.setCoins(it) }
         recyclerViewCryptos.adapter = coinAdapter
     }
 }
