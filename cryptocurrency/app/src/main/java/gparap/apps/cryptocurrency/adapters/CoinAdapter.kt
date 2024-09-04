@@ -31,7 +31,7 @@ import gparap.apps.cryptocurrency.data.CoinModel
 
 class CoinAdapter : RecyclerView.Adapter<CoinAdapter.CoinViewHolder>() {
     private lateinit var context: Context
-    private lateinit var coins: List<CoinModel>
+    private var coins: List<CoinModel>? = null
 
     @SuppressLint("NotifyDataSetChanged")
     fun setCoins(coins: List<CoinModel>) {
@@ -57,13 +57,13 @@ class CoinAdapter : RecyclerView.Adapter<CoinAdapter.CoinViewHolder>() {
 
     //return the cryptocurrencies count
     override fun getItemCount(): Int {
-        return coins.size
+        return coins?.size ?: 0
     }
 
     //display the item view details
     override fun onBindViewHolder(holder: CoinViewHolder, position: Int) {
-        Glide.with(context).load(Uri.parse(coins[position].iconUrl)).into(holder.coinIcon)
-        holder.coinSymbol.text = coins[position].symbol
-        holder.coinPrice.text = coins[position].price
+        Glide.with(context).load(Uri.parse(coins?.get(position)?.iconUrl ?: "")).into(holder.coinIcon)
+        holder.coinSymbol.text = coins?.get(position)?.symbol ?: ""
+        holder.coinPrice.text = coins?.get(position)?.price ?: ""
     }
 }
