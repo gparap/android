@@ -27,6 +27,7 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun notEmpty_recycler_view_cryptos() {
+        Thread.sleep(1667)  //!!! wait for the web service response (adjust millis)
         activityScenario.onActivity {
             val recyclerView = it.findViewById<RecyclerView>(R.id.recycler_view_cryptos)
             val adapter = recyclerView.adapter

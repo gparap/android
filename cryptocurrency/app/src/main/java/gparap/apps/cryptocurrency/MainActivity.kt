@@ -32,6 +32,7 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private var coins: List<CoinModel>? = null
+    private var coinAdapter = CoinAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +51,7 @@ class MainActivity : AppCompatActivity() {
             ) {
                 if (response.body()?.statusCode.equals("200") || response.body()?.statusCode.equals("success")) {
                     coins = response.body()?.cryptoData
+                    coins?.let { coinAdapter.setCoins(it) }
                 } else {
                     Log.d("API_MSG", "this shouldn't have happened!")
                 }
@@ -60,12 +62,9 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        //TODO: display the cryptocurrencies
-
-        //initialize recycler view with adapter
+        //initialize recycler view with adapter to display the cryptocurrencies
         val recyclerViewCryptos: RecyclerView = findViewById(R.id.recycler_view_cryptos)
         recyclerViewCryptos.layoutManager = LinearLayoutManager(this)
-        val coinAdapter = CoinAdapter()
         coins?.let { coinAdapter.setCoins(it) }
         recyclerViewCryptos.adapter = coinAdapter
     }
