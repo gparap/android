@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Design Dimensions (411 x 731 dp, 420dpi)  -->
+    <!-- Design Dimensions (411 x 731 dp, 420dpi) -->
     <dimen name="grid_layout_margin">16dp</dimen>
     <dimen name="grid_padding">16dp</dimen>
     <dimen name="card_layout_height">96dp</dimen>
     <dimen name="card_layout_margin">8dp</dimen>
     <dimen name="card_padding">8dp</dimen>
+
+    <!-- Design Dimensions (411 x 731 dp, 420dpi - Landscape Variation) -->
+    <dimen name="grid_layout_margin_land">0dp</dimen>
+    <dimen name="grid_padding_land">32dp</dimen>
+    <dimen name="card_layout_height_land">80dp</dimen>
+    <dimen name="card_layout_margin_land">8dp</dimen>
+    <dimen name="card_padding_land">8dp</dimen>
 </resources>
