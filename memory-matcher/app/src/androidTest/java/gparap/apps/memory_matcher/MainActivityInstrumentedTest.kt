@@ -7,6 +7,7 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -23,6 +24,7 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
+    @Ignore("Run only in portrait mode")
     fun areVisible_gridCards_2x4() {
         onView(withId(R.id.grid_row_0_col_0)).check(matches(isDisplayed()))
         onView(withId(R.id.grid_row_0_col_1)).check(matches(isDisplayed()))
@@ -32,5 +34,18 @@ class MainActivityInstrumentedTest {
         onView(withId(R.id.grid_row_2_col_1)).check(matches(isDisplayed()))
         onView(withId(R.id.grid_row_3_col_0)).check(matches(isDisplayed()))
         onView(withId(R.id.grid_row_3_col_1)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    @Ignore("Run only in landscape mode")
+    fun areVisible_gridCards_4x2_land() {
+        onView(withId(R.id.grid_row_0_col_0)).check(matches(isDisplayed()))
+        onView(withId(R.id.grid_row_0_col_1)).check(matches(isDisplayed()))
+        onView(withId(R.id.grid_row_0_col_2)).check(matches(isDisplayed()))
+        onView(withId(R.id.grid_row_0_col_3)).check(matches(isDisplayed()))
+        onView(withId(R.id.grid_row_1_col_0)).check(matches(isDisplayed()))
+        onView(withId(R.id.grid_row_1_col_1)).check(matches(isDisplayed()))
+        onView(withId(R.id.grid_row_1_col_2)).check(matches(isDisplayed()))
+        onView(withId(R.id.grid_row_1_col_3)).check(matches(isDisplayed()))
     }
 }

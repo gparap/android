@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Memory Card for the 2x4 Grid-->
+    <!-- Memory Card for the 2x4 Grid -->
     <style name="memory_card_2x4">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">@dimen/card_layout_height</item>
         <item name="android:layout_margin">@dimen/card_layout_margin</item>
         <item name="android:background">@color/gray_dark</item>
         <item name="android:padding">@dimen/card_padding</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+
+    <!-- Memory Card for the 4x2 Grid (land) -->
+    <style name="memory_card_4x2">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/card_layout_height_land</item>
+        <item name="android:layout_margin">@dimen/card_layout_margin_land</item>
+        <item name="android:background">@color/gray_dark</item>
+        <item name="android:padding">@dimen/card_padding_land</item>
         <item name="android:scaleType">fitXY</item>
     </style>
 </resources>
