@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">My Memory Matcher App</string>
+    <string name="desc_memory_card">Memory Card</string>
 </resources>

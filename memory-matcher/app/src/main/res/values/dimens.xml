@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Design Dimensions (411 x 731 dp, 420dpi)  -->
+    <dimen name="grid_layout_margin">16dp</dimen>
+    <dimen name="grid_padding">16dp</dimen>
+    <dimen name="card_layout_height">96dp</dimen>
+    <dimen name="card_layout_margin">8dp</dimen>
+    <dimen name="card_padding">8dp</dimen>
+</resources>
