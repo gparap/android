@@ -13,3 +13,7 @@
 .externalNativeBuild
 .cxx
 local.properties
+/app/src/main/assets/planets/planet_01.png
+/app/src/main/assets/planets/planet_02.png
+/app/src/main/assets/planets/planet_03.png
+/app/src/main/assets/planets/planet_04.png
