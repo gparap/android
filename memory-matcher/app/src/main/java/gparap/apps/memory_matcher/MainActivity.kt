@@ -1,3 +1,18 @@
+/*
+ * Copyright 2024 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.memory_matcher
 
 import android.content.res.Configuration
@@ -9,8 +24,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import gparap.apps.memory_matcher.data.CardModel
+import gparap.apps.memory_matcher.data.GridModel
 
 class MainActivity : AppCompatActivity() {
+    private var grid: GridModel? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -48,28 +67,79 @@ class MainActivity : AppCompatActivity() {
             images = arrayOf(grid00, grid01, grid02, grid03, grid10, grid11, grid12, grid13)
         }
 
-        //get a list of decoded images inside a bitmap array
-        val bitmaps = ArrayList<Bitmap>()
-        assets.list("planets")!!.forEach { asset ->
-            //decode images
-            val inputStream = assets.open("planets/$asset")
-            bitmaps.add(BitmapFactory.decodeStream(inputStream))
-        }
+        //display the grid, if it is filled
+        if (savedInstanceState?.getBoolean("is_grid_filled") == true) {
+            @Suppress("deprecation")
+            grid = savedInstanceState.getParcelable("grid")!!
 
-        //display on the grid the first pair of images, shuffled
-        bitmaps.shuffle()
-        for (i in 0 until bitmaps.size) {
-            images[i]?.setImageBitmap(bitmaps[i]).apply {
-                images[i]?.setOnClickListener { println("grid position $i clicked.") }
+            //display on the grid
+            grid!!.list.forEach { card ->
+                images[card.position]?.setImageBitmap(card.bitmap).apply {
+                    images[card.position]?.setOnClickListener { println("grid ${card.position} clicked.") }
+                }
             }
         }
 
-        //display on the grid the second pair of images, shuffled
-        bitmaps.shuffle()
-        for (i in 0 until bitmaps.size) {
-            images[i + bitmaps.size]?.setImageBitmap(bitmaps[i]).apply {
-                images[i + bitmaps.size]?.setOnClickListener { println("grid position ${i + bitmaps.size} clicked.") }
+        //fill & display the grid
+        if (savedInstanceState == null) {
+            //get a list of decoded images inside a bitmap array
+            val bitmaps = ArrayList<Bitmap>()
+            assets.list("planets")!!.forEach { asset ->
+                //decode images
+                val inputStream = assets.open("planets/$asset")
+                bitmaps.add(BitmapFactory.decodeStream(inputStream))
             }
+
+            //initialize the grid
+            grid = GridModel(0, false, ArrayList())
+            grid!!.size = images.size
+            grid!!.list = ArrayList()
+
+            //set grid card positioning
+            for (i in images.indices) {
+                grid!!.list.add(CardModel(0, 0, null))
+                grid!!.list[i].position = i
+            }
+
+            //update the grid with the first pair of images, shuffled
+            bitmaps.shuffle()
+            for (i in 0 until bitmaps.size) {
+                images[i]?.setImageBitmap(bitmaps[i]).apply {
+                    images[i]?.setOnClickListener { println("grid position $i clicked.") }
+                }
+
+                //set grid card bitmaps
+                grid!!.list[i].bitmap = bitmaps[i]
+            }
+
+            //update the grid with the second pair of images, shuffled
+            bitmaps.shuffle()
+            for (i in 0 until bitmaps.size) {
+                images[i + bitmaps.size]?.setImageBitmap(bitmaps[i]).apply {
+                    images[i + bitmaps.size]?.setOnClickListener { println("grid position ${i + bitmaps.size} clicked.") }
+                }
+
+                //set grid card bitmaps
+                grid!!.list[i + bitmaps.size].bitmap = bitmaps[i]
+            }
+
+            //display the grid
+            grid!!.list.forEach { card ->
+                images[card.position]?.setImageBitmap(card.bitmap).apply {
+                    images[card.position]?.setOnClickListener { println("grid ${card.position} clicked.") }
+                }
+            }
+
+            //update the grid flag
+            grid!!.isFilled = true
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        //save the grid state
+        outState.putBoolean("is_grid_filled", grid!!.isFilled)
+        outState.putParcelable("grid", grid)
     }
 }
