@@ -74,7 +74,15 @@ class MainActivity : AppCompatActivity() {
 
             //display on the grid
             grid!!.list.forEach { card ->
-                images[card.position]?.setImageBitmap(card.bitmap).apply {
+                //choose the card bitmap based on its visibility status
+                val cardBitmap = if (card.isVisible) {
+                    card.bitmapFront
+                } else {
+                    card.bitmapBack
+                }
+
+                //set the card bitmap
+                images[card.position]?.setImageBitmap(cardBitmap).apply {
                     images[card.position]?.setOnClickListener { println("grid ${card.position} clicked.") }
                 }
             }
@@ -85,6 +93,11 @@ class MainActivity : AppCompatActivity() {
             //get a list of decoded images inside a bitmap array
             val bitmaps = ArrayList<Bitmap>()
             assets.list("planets")!!.forEach { asset ->
+                //skip the cardback
+                if (asset.contains("cardback.png")) {
+                    return@forEach
+                }
+
                 //decode images
                 val inputStream = assets.open("planets/$asset")
                 bitmaps.add(BitmapFactory.decodeStream(inputStream))
@@ -97,7 +110,13 @@ class MainActivity : AppCompatActivity() {
 
             //set grid card positioning
             for (i in images.indices) {
-                grid!!.list.add(CardModel(0, 0, null))
+                //decode the back of the card image
+                val inputStream = assets.open("planets/cardback.png")
+                val cardback = BitmapFactory.decodeStream(inputStream)
+                val cardBitmap = CardModel(0, 0, null, cardback)
+
+                //set card position in grid
+                grid!!.list.add(cardBitmap)
                 grid!!.list[i].position = i
             }
 
@@ -109,7 +128,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 //set grid card bitmaps
-                grid!!.list[i].bitmap = bitmaps[i]
+                grid!!.list[i].bitmapFront = bitmaps[i]
             }
 
             //update the grid with the second pair of images, shuffled
@@ -120,12 +139,20 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 //set grid card bitmaps
-                grid!!.list[i + bitmaps.size].bitmap = bitmaps[i]
+                grid!!.list[i + bitmaps.size].bitmapFront = bitmaps[i]
             }
 
             //display the grid
             grid!!.list.forEach { card ->
-                images[card.position]?.setImageBitmap(card.bitmap).apply {
+                //choose the card bitmap based on its visibility status
+                val cardBitmap = if (card.isVisible) {
+                    card.bitmapFront
+                } else {
+                    card.bitmapBack
+                }
+
+                //set the card bitmap
+                images[card.position]?.setImageBitmap(cardBitmap).apply {
                     images[card.position]?.setOnClickListener { println("grid ${card.position} clicked.") }
                 }
             }
