@@ -83,7 +83,15 @@ class MainActivity : AppCompatActivity() {
 
                 //set the card bitmap
                 images[card.position]?.setImageBitmap(cardBitmap).apply {
-                    images[card.position]?.setOnClickListener { println("grid ${card.position} clicked.") }
+                    images[card.position]?.setOnClickListener {
+                        //flip the card
+                        card.isVisible = !card.isVisible
+                        if (card.isVisible){
+                            images[card.position]?.setImageBitmap(card.bitmapFront)
+                        }else{
+                            images[card.position]?.setImageBitmap(card.bitmapBack)
+                        }
+                    }
                 }
             }
         }
@@ -153,7 +161,15 @@ class MainActivity : AppCompatActivity() {
 
                 //set the card bitmap
                 images[card.position]?.setImageBitmap(cardBitmap).apply {
-                    images[card.position]?.setOnClickListener { println("grid ${card.position} clicked.") }
+                    images[card.position]?.setOnClickListener {
+                        //flip the card
+                        card.isVisible = !card.isVisible
+                        if (card.isVisible){
+                            images[card.position]?.setImageBitmap(card.bitmapFront)
+                        }else{
+                            images[card.position]?.setImageBitmap(card.bitmapBack)
+                        }
+                    }
                 }
             }
 
