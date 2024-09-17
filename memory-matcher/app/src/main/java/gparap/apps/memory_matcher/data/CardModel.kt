@@ -24,5 +24,7 @@ import kotlinx.parcelize.Parcelize
 data class CardModel(
     val pairId: Int,
     var position: Int,
-    var bitmap: Bitmap?,
+    var bitmapFront: Bitmap?,
+    var bitmapBack: Bitmap, //generic card bitmap, same for all cards
+    var isVisible: Boolean = false
 ) : Parcelable
