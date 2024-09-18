@@ -17,7 +17,6 @@ package gparap.apps.memory_matcher
 
 import android.content.res.Configuration
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
@@ -26,6 +25,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import gparap.apps.memory_matcher.data.CardModel
 import gparap.apps.memory_matcher.data.GridModel
+import gparap.apps.memory_matcher.utils.AppConstants
+import gparap.apps.memory_matcher.utils.AppConstants.KEY_GRID
+import gparap.apps.memory_matcher.utils.AppConstants.KEY_IS_GRID_FILLED
+import gparap.apps.memory_matcher.utils.Utils
 
 class MainActivity : AppCompatActivity() {
     private var grid: GridModel? = null
@@ -68,29 +71,20 @@ class MainActivity : AppCompatActivity() {
         }
 
         //display the grid, if it is filled
-        if (savedInstanceState?.getBoolean("is_grid_filled") == true) {
+        if (savedInstanceState?.getBoolean(KEY_IS_GRID_FILLED) == true) {
             @Suppress("deprecation")
-            grid = savedInstanceState.getParcelable("grid")!!
+            grid = savedInstanceState.getParcelable(KEY_GRID)!!
 
             //display on the grid
             grid!!.list.forEach { card ->
                 //choose the card bitmap based on its visibility status
-                val cardBitmap = if (card.isVisible) {
-                    card.bitmapFront
-                } else {
-                    card.bitmapBack
-                }
+                val cardBitmap = Utils.getCardBitmap(card)
 
                 //set the card bitmap
                 images[card.position]?.setImageBitmap(cardBitmap).apply {
                     images[card.position]?.setOnClickListener {
                         //flip the card
-                        card.isVisible = !card.isVisible
-                        if (card.isVisible){
-                            images[card.position]?.setImageBitmap(card.bitmapFront)
-                        }else{
-                            images[card.position]?.setImageBitmap(card.bitmapBack)
-                        }
+                        Utils.flipCard(card, images)
                     }
                 }
             }
@@ -102,13 +96,12 @@ class MainActivity : AppCompatActivity() {
             val bitmaps = ArrayList<Bitmap>()
             assets.list("planets")!!.forEach { asset ->
                 //skip the cardback
-                if (asset.contains("cardback.png")) {
+                if (asset.contains(AppConstants.PATH_CARDBACK)) {
                     return@forEach
                 }
 
                 //decode images
-                val inputStream = assets.open("planets/$asset")
-                bitmaps.add(BitmapFactory.decodeStream(inputStream))
+                bitmaps.add(Utils.getCardBitmap(assets, AppConstants.PATH_PLANETS.plus("/$asset")))
             }
 
             //initialize the grid
@@ -119,8 +112,7 @@ class MainActivity : AppCompatActivity() {
             //set grid card positioning
             for (i in images.indices) {
                 //decode the back of the card image
-                val inputStream = assets.open("planets/cardback.png")
-                val cardback = BitmapFactory.decodeStream(inputStream)
+                val cardback = Utils.getCardBitmap(assets, AppConstants.PATH_PLANETS_CARDBACK)
                 val cardBitmap = CardModel(0, 0, null, cardback)
 
                 //set card position in grid
@@ -153,22 +145,13 @@ class MainActivity : AppCompatActivity() {
             //display the grid
             grid!!.list.forEach { card ->
                 //choose the card bitmap based on its visibility status
-                val cardBitmap = if (card.isVisible) {
-                    card.bitmapFront
-                } else {
-                    card.bitmapBack
-                }
+                val cardBitmap = Utils.getCardBitmap(card)
 
                 //set the card bitmap
                 images[card.position]?.setImageBitmap(cardBitmap).apply {
                     images[card.position]?.setOnClickListener {
                         //flip the card
-                        card.isVisible = !card.isVisible
-                        if (card.isVisible){
-                            images[card.position]?.setImageBitmap(card.bitmapFront)
-                        }else{
-                            images[card.position]?.setImageBitmap(card.bitmapBack)
-                        }
+                        Utils.flipCard(card, images)
                     }
                 }
             }
@@ -182,7 +165,7 @@ class MainActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState)
 
         //save the grid state
-        outState.putBoolean("is_grid_filled", grid!!.isFilled)
-        outState.putParcelable("grid", grid)
+        outState.putBoolean(KEY_IS_GRID_FILLED, grid!!.isFilled)
+        outState.putParcelable(KEY_GRID, grid)
     }
 }
