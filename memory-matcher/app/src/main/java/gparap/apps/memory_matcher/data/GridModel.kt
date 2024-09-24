@@ -23,5 +23,5 @@ import kotlinx.parcelize.Parcelize
 data class GridModel(
     var size: Int,
     var isFilled: Boolean,
-    var list: ArrayList<CardModel>
+    var cards: ArrayList<CardModel>
 ) : Parcelable

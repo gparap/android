@@ -24,14 +24,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import gparap.apps.memory_matcher.data.CardModel
-import gparap.apps.memory_matcher.data.GridModel
+import gparap.apps.memory_matcher.managers.GridManager
 import gparap.apps.memory_matcher.utils.AppConstants
-import gparap.apps.memory_matcher.utils.AppConstants.KEY_GRID
+import gparap.apps.memory_matcher.utils.AppConstants.KEY_GRID_CARD_LIST
+import gparap.apps.memory_matcher.utils.AppConstants.KEY_GRID_SIZE
 import gparap.apps.memory_matcher.utils.AppConstants.KEY_IS_GRID_FILLED
 import gparap.apps.memory_matcher.utils.Utils
 
 class MainActivity : AppCompatActivity() {
-    private var grid: GridModel? = null
+    private lateinit var gridManager: GridManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,13 +71,20 @@ class MainActivity : AppCompatActivity() {
             images = arrayOf(grid00, grid01, grid02, grid03, grid10, grid11, grid12, grid13)
         }
 
+        //create a grid manager object to handle the state of the grid
+        gridManager = GridManager()
+
         //display the grid, if it is filled
         if (savedInstanceState?.getBoolean(KEY_IS_GRID_FILLED) == true) {
             @Suppress("deprecation")
-            grid = savedInstanceState.getParcelable(KEY_GRID)!!
+            gridManager.initGrid(
+                savedInstanceState.getInt(KEY_GRID_SIZE),
+                savedInstanceState.getBoolean(KEY_IS_GRID_FILLED),
+                savedInstanceState.getParcelableArrayList(KEY_GRID_CARD_LIST)!!
+            )
 
             //display on the grid
-            grid!!.list.forEach { card ->
+            gridManager.getCards().forEach { card ->
                 //choose the card bitmap based on its visibility status
                 val cardBitmap = Utils.getCardBitmap(card)
 
@@ -105,9 +113,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             //initialize the grid
-            grid = GridModel(0, false, ArrayList())
-            grid!!.size = images.size
-            grid!!.list = ArrayList()
+            gridManager.initGrid()
+            gridManager.setGridSize(images.size)
 
             //set grid card positioning
             for (i in images.indices) {
@@ -116,8 +123,7 @@ class MainActivity : AppCompatActivity() {
                 val cardBitmap = CardModel(0, 0, null, cardback)
 
                 //set card position in grid
-                grid!!.list.add(cardBitmap)
-                grid!!.list[i].position = i
+                gridManager.setCardPosition(cardBitmap, i)
             }
 
             //update the grid with the first pair of images, shuffled
@@ -128,7 +134,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 //set grid card bitmaps
-                grid!!.list[i].bitmapFront = bitmaps[i]
+                gridManager.getCards()[i].bitmapFront = bitmaps[i]
             }
 
             //update the grid with the second pair of images, shuffled
@@ -139,11 +145,11 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 //set grid card bitmaps
-                grid!!.list[i + bitmaps.size].bitmapFront = bitmaps[i]
+                gridManager.getCards()[i + bitmaps.size].bitmapFront = bitmaps[i]
             }
 
             //display the grid
-            grid!!.list.forEach { card ->
+            gridManager.getCards().forEach { card ->
                 //choose the card bitmap based on its visibility status
                 val cardBitmap = Utils.getCardBitmap(card)
 
@@ -157,7 +163,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             //update the grid flag
-            grid!!.isFilled = true
+            gridManager.setGridFilled()
         }
     }
 
@@ -165,7 +171,8 @@ class MainActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState)
 
         //save the grid state
-        outState.putBoolean(KEY_IS_GRID_FILLED, grid!!.isFilled)
-        outState.putParcelable(KEY_GRID, grid)
+        outState.putBoolean(KEY_IS_GRID_FILLED, gridManager.isGridFilled())
+        outState.putInt(KEY_GRID_SIZE, gridManager.getGridSize())
+        outState.putParcelableArrayList(KEY_GRID_CARD_LIST, gridManager.getCards())
     }
 }
