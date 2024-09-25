@@ -21,6 +21,13 @@ import gparap.apps.memory_matcher.data.GridModel
 /** This manager class handles the state of the memory grid, overall. */
 class GridManager {
     private lateinit var grid: GridModel
+    private lateinit var activePairCard: CardModel  //the 1st card of a pair
+    fun getActivePairCard() : CardModel{
+        return activePairCard
+    }
+    fun setActivePairCard(card: CardModel) {
+        activePairCard = card
+    }
 
     fun initGrid() {
         grid = GridModel(0, false, ArrayList())
