@@ -18,12 +18,15 @@ package gparap.apps.memory_matcher
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import gparap.apps.memory_matcher.data.CardModel
+import gparap.apps.memory_matcher.managers.AppManager
 import gparap.apps.memory_matcher.managers.GridManager
 import gparap.apps.memory_matcher.utils.AppConstants
 import gparap.apps.memory_matcher.utils.AppConstants.KEY_GRID_CARD_LIST
@@ -33,6 +36,7 @@ import gparap.apps.memory_matcher.utils.Utils
 
 class MainActivity : AppCompatActivity() {
     private lateinit var gridManager: GridManager
+    private lateinit var appManager: AppManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,6 +74,9 @@ class MainActivity : AppCompatActivity() {
             val grid13 = findViewById<ImageView>(R.id.grid_row_1_col_3)
             images = arrayOf(grid00, grid01, grid02, grid03, grid10, grid11, grid12, grid13)
         }
+
+        //create an application manager object to handle the state of the memory matcher application
+        appManager = AppManager()
 
         //create a grid manager object to handle the state of the grid
         gridManager = GridManager()
@@ -156,8 +163,38 @@ class MainActivity : AppCompatActivity() {
                 //set the card bitmap
                 images[card.position]?.setImageBitmap(cardBitmap).apply {
                     images[card.position]?.setOnClickListener {
-                        //flip the card
-                        Utils.flipCard(card, images)
+                        //handle the application state
+                        if (!appManager.areMovesCompleted() && !card.isVisible) {
+                            //flip the card
+                            Utils.flipCard(card, images)
+
+                            //we are in the 1st move, keep the card as an active pair card
+                            if (!appManager.isMove1Complete()) {
+                                gridManager.setActivePairCard(card)
+                                appManager.setMove1Complete()
+                            }
+
+                            //we are in the 2nd move, this round is over
+                            else if (!appManager.isMove2Complete()) {
+                                appManager.setMove2Complete()
+                                //if both the moves are finished, hide the cards
+                                if (card.isVisible) {
+                                    println("Hiding the cards...")
+                                    //delay the hiding of the cards
+                                    Handler(Looper.getMainLooper()).postDelayed({
+                                        //hide this (2nd of the pair) card
+                                        Utils.flipCard(card, images)
+                                        card.isVisible = false
+                                        //hide the 1st card of the pair
+                                        Utils.flipCard(gridManager.getActivePairCard(), images)
+                                        gridManager.getActivePairCard().isVisible = false
+                                    }, 1667).apply {
+                                        //update the moves
+                                        appManager.resetMoves()
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
