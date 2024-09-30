@@ -33,7 +33,7 @@ object Utils {
     }
 
     /** Returns a bitmap based on a memory card's name. */
-    fun getCardBitmap(assets: AssetManager, fileName: String) : Bitmap{
+    fun getCardBitmap(assets: AssetManager, fileName: String): Bitmap {
         val inputStream = assets.open(fileName)
         return BitmapFactory.decodeStream(inputStream)
     }
@@ -48,4 +48,8 @@ object Utils {
         }
     }
 
+    /** Compares two bitmaps for equality. */
+    fun isCardPair(card1: CardModel, card2: CardModel): Boolean {
+        return card1.bitmapFront!!.sameAs(card2.bitmapFront)
+    }
 }

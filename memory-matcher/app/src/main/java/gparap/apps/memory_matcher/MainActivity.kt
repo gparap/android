@@ -21,6 +21,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -35,6 +37,7 @@ import gparap.apps.memory_matcher.utils.AppConstants.KEY_IS_GRID_FILLED
 import gparap.apps.memory_matcher.utils.Utils
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var images: Array<ImageView?>
     private lateinit var gridManager: GridManager
     private lateinit var appManager: AppManager
 
@@ -52,7 +55,6 @@ class MainActivity : AppCompatActivity() {
         val orientation = resources.configuration.orientation
 
         //get all the image views for this orientation and put them inside an array
-        val images: Array<ImageView?>?
         if (orientation == Configuration.ORIENTATION_PORTRAIT) {
             val grid00 = findViewById<ImageView>(R.id.grid_row_0_col_0)
             val grid01 = findViewById<ImageView>(R.id.grid_row_0_col_1)
@@ -76,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //create an application manager object to handle the state of the memory matcher application
-        appManager = AppManager()
+        appManager = AppManager(images.size).apply { initApp() }
 
         //create a grid manager object to handle the state of the grid
         gridManager = GridManager()
@@ -90,19 +92,14 @@ class MainActivity : AppCompatActivity() {
                 savedInstanceState.getParcelableArrayList(KEY_GRID_CARD_LIST)!!
             )
 
-            //display on the grid
-            gridManager.getCards().forEach { card ->
-                //choose the card bitmap based on its visibility status
-                val cardBitmap = Utils.getCardBitmap(card)
+            //TODO: FIX
+            //get the app manager values & update the UI
+            appManager.initApp(savedInstanceState.getInt("total_moves"), savedInstanceState.getInt("matched_pairs"))
+            findViewById<TextView>(R.id.textViewTotalMoves).apply { text =  appManager.getTotalMoves().toString() }
+            findViewById<TextView>(R.id.textViewMatchedPairs).apply { text =  appManager.getMatchedPairs().toString()  }
 
-                //set the card bitmap
-                images[card.position]?.setImageBitmap(cardBitmap).apply {
-                    images[card.position]?.setOnClickListener {
-                        //flip the card
-                        Utils.flipCard(card, images)
-                    }
-                }
-            }
+            //start round
+            startApplication()
         }
 
         //fill & display the grid
@@ -155,49 +152,8 @@ class MainActivity : AppCompatActivity() {
                 gridManager.getCards()[i + bitmaps.size].bitmapFront = bitmaps[i]
             }
 
-            //display the grid
-            gridManager.getCards().forEach { card ->
-                //choose the card bitmap based on its visibility status
-                val cardBitmap = Utils.getCardBitmap(card)
-
-                //set the card bitmap
-                images[card.position]?.setImageBitmap(cardBitmap).apply {
-                    images[card.position]?.setOnClickListener {
-                        //handle the application state
-                        if (!appManager.areMovesCompleted() && !card.isVisible) {
-                            //flip the card
-                            Utils.flipCard(card, images)
-
-                            //we are in the 1st move, keep the card as an active pair card
-                            if (!appManager.isMove1Complete()) {
-                                gridManager.setActivePairCard(card)
-                                appManager.setMove1Complete()
-                            }
-
-                            //we are in the 2nd move, this round is over
-                            else if (!appManager.isMove2Complete()) {
-                                appManager.setMove2Complete()
-                                //if both the moves are finished, hide the cards
-                                if (card.isVisible) {
-                                    println("Hiding the cards...")
-                                    //delay the hiding of the cards
-                                    Handler(Looper.getMainLooper()).postDelayed({
-                                        //hide this (2nd of the pair) card
-                                        Utils.flipCard(card, images)
-                                        card.isVisible = false
-                                        //hide the 1st card of the pair
-                                        Utils.flipCard(gridManager.getActivePairCard(), images)
-                                        gridManager.getActivePairCard().isVisible = false
-                                    }, 1667).apply {
-                                        //update the moves
-                                        appManager.resetMoves()
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            //start round
+            startApplication()
 
             //update the grid flag
             gridManager.setGridFilled()
@@ -211,5 +167,77 @@ class MainActivity : AppCompatActivity() {
         outState.putBoolean(KEY_IS_GRID_FILLED, gridManager.isGridFilled())
         outState.putInt(KEY_GRID_SIZE, gridManager.getGridSize())
         outState.putParcelableArrayList(KEY_GRID_CARD_LIST, gridManager.getCards())
+
+        //save the application state
+        outState.putInt("total_moves", appManager.getTotalMoves())
+        outState.putInt("matched_pairs", appManager.getMatchedPairs())
+    }
+
+    /** Starts a new round of memory matcher application. */
+    private fun startApplication() {
+        //display & handle the grid
+        gridManager.getCards().forEach { card ->
+            //choose the card bitmap based on its visibility status
+            val cardBitmap = Utils.getCardBitmap(card)
+
+            //set the card bitmap
+            images[card.position]?.setImageBitmap(cardBitmap).apply {
+                images[card.position]?.setOnClickListener {
+
+                    //handle the application state
+                    if (!appManager.areMovesCompleted() && !card.isVisible) {
+                        //flip the card
+                        Utils.flipCard(card, images)
+
+                        //we are in the 1st move, keep the card as an active pair card
+                        if (!appManager.isMove1Complete()) {
+                            gridManager.setActivePairCard(card)
+                            appManager.setMove1Complete()
+                        }
+
+                        //we are in the 2nd move, this round is over
+                        else if (!appManager.isMove2Complete()) {
+                            appManager.setMove2Complete()
+
+                            //check if we have a pair of cards (aka identical cards)
+                            if (Utils.isCardPair(gridManager.getActivePairCard(), card)) {
+                                appManager.resetMoves()
+                                //update matched pairs TODO: score
+                                appManager.setPairMatched()
+                                //check if there are no more pairs
+                                if (appManager.getMatchedPairs() == appManager.getTotalPairs()) {
+                                    Toast.makeText(this@MainActivity, "Memory Matcher completed!", Toast.LENGTH_SHORT).show()
+                                }
+
+                            }else if (card.isVisible) { //if both the moves are finished, hide the cards
+                                println("Hiding the cards...")
+                                //delay the hiding of the cards
+                                Handler(Looper.getMainLooper()).postDelayed({
+                                    //hide this (2nd of the pair) card
+                                    Utils.flipCard(card, images)
+                                    card.isVisible = false
+                                    //hide the 1st card of the pair
+                                    Utils.flipCard(gridManager.getActivePairCard(), images)
+                                    gridManager.getActivePairCard().isVisible = false
+                                }, 667).apply {
+                                    //update the moves
+                                    appManager.resetMoves()
+                                }
+                            }
+                        }
+                    }
+
+                    //display the total moves
+                    findViewById<TextView>(R.id.textViewTotalMoves).apply {
+                        text = appManager.getTotalMoves().toString()
+                    }
+
+                    //display the matched pairs
+                    findViewById<TextView>(R.id.textViewMatchedPairs).apply {
+                        text = appManager.getMatchedPairs().toString()
+                    }
+                }
+            }
+        }
     }
 }

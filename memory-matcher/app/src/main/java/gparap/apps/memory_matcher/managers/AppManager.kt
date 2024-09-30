@@ -16,9 +16,19 @@
 package gparap.apps.memory_matcher.managers
 
 /** This manager class handles the state of the memory matcher application. */
-class AppManager {
+class AppManager(private val gridSize: Int) {
     private var move1: Boolean = false //the 1st card that is selected
     private var move2: Boolean = false //the 2nd card that is selected
+    private var totalMoves = 0         //keep track of the total card selections (aka moves)
+    private var totalPairs = 0         //how many pairs of cards are there in total
+    private var matchedPairs = 0       //how many pairs of cards were successfully selected
+
+    /** Initializes the memory matcher application. */
+    fun initApp(totalMoves: Int = 0, matchedPairs: Int = 0) {
+        totalPairs = gridSize.div(2)
+        this.totalMoves = totalMoves
+        this.matchedPairs = matchedPairs
+    }
 
     fun areMovesCompleted(): Boolean {
         return move1 && move2
@@ -34,14 +44,38 @@ class AppManager {
 
     fun setMove1Complete() {
         move1 = true
+        totalMoves += 1
     }
 
     fun setMove2Complete() {
         move2 = true
+        totalMoves += 1
+    }
+
+    fun getTotalMoves() : Int{
+        return totalMoves
+    }
+
+    fun getTotalPairs() : Int{
+        return totalPairs
+    }
+
+    fun getMatchedPairs() : Int{
+        return matchedPairs
+    }
+
+    fun setPairMatched() {
+        matchedPairs += 1
     }
 
     fun resetMoves() {
         move1 = false
         move2 = false
+    }
+
+    /** Resets the whole application to the beginning. */
+    fun reset() {
+        resetMoves()
+        matchedPairs = 0
     }
 }
