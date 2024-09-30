@@ -20,6 +20,8 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -104,60 +106,40 @@ class MainActivity : AppCompatActivity() {
 
         //fill & display the grid
         if (savedInstanceState == null) {
-            //get a list of decoded images inside a bitmap array
-            val bitmaps = ArrayList<Bitmap>()
-            assets.list("planets")!!.forEach { asset ->
-                //skip the cardback
-                if (asset.contains(AppConstants.PATH_CARDBACK)) {
-                    return@forEach
-                }
-
-                //decode images
-                bitmaps.add(Utils.getCardBitmap(assets, AppConstants.PATH_PLANETS.plus("/$asset")))
-            }
-
-            //initialize the grid
-            gridManager.initGrid()
-            gridManager.setGridSize(images.size)
-
-            //set grid card positioning
-            for (i in images.indices) {
-                //decode the back of the card image
-                val cardback = Utils.getCardBitmap(assets, AppConstants.PATH_PLANETS_CARDBACK)
-                val cardBitmap = CardModel(0, 0, null, cardback)
-
-                //set card position in grid
-                gridManager.setCardPosition(cardBitmap, i)
-            }
-
-            //update the grid with the first pair of images, shuffled
-            bitmaps.shuffle()
-            for (i in 0 until bitmaps.size) {
-                images[i]?.setImageBitmap(bitmaps[i]).apply {
-                    images[i]?.setOnClickListener { println("grid position $i clicked.") }
-                }
-
-                //set grid card bitmaps
-                gridManager.getCards()[i].bitmapFront = bitmaps[i]
-            }
-
-            //update the grid with the second pair of images, shuffled
-            bitmaps.shuffle()
-            for (i in 0 until bitmaps.size) {
-                images[i + bitmaps.size]?.setImageBitmap(bitmaps[i]).apply {
-                    images[i + bitmaps.size]?.setOnClickListener { println("grid position ${i + bitmaps.size} clicked.") }
-                }
-
-                //set grid card bitmaps
-                gridManager.getCards()[i + bitmaps.size].bitmapFront = bitmaps[i]
-            }
+            //prepare the grid for new round
+            prepareGrid()
 
             //start round
             startApplication()
-
-            //update the grid flag
-            gridManager.setGridFilled()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate (R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.main_menu_item_restart -> {
+                appManager.reset()
+                //display the total moves
+                findViewById<TextView>(R.id.textViewTotalMoves).apply {
+                    text = appManager.getTotalMoves().toString()
+                }
+                //display the matched pairs
+                findViewById<TextView>(R.id.textViewMatchedPairs).apply {
+                    text = appManager.getMatchedPairs().toString()
+                }
+
+                //prepare the grid for new round
+                prepareGrid()
+
+                //start round
+                startApplication()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -171,6 +153,60 @@ class MainActivity : AppCompatActivity() {
         //save the application state
         outState.putInt("total_moves", appManager.getTotalMoves())
         outState.putInt("matched_pairs", appManager.getMatchedPairs())
+    }
+
+    /* Prepares the grid for a new round of memory matcher. */
+    private fun prepareGrid() {
+        //get a list of decoded images inside a bitmap array
+        val bitmaps = ArrayList<Bitmap>()
+        assets.list("planets")!!.forEach { asset ->
+            //skip the cardback
+            if (asset.contains(AppConstants.PATH_CARDBACK)) {
+                return@forEach
+            }
+
+            //decode images
+            bitmaps.add(Utils.getCardBitmap(assets, AppConstants.PATH_PLANETS.plus("/$asset")))
+        }
+
+        //initialize the grid
+        gridManager.initGrid()
+        gridManager.setGridSize(images.size)
+
+        //set grid card positioning
+        for (i in images.indices) {
+            //decode the back of the card image
+            val cardback = Utils.getCardBitmap(assets, AppConstants.PATH_PLANETS_CARDBACK)
+            val cardBitmap = CardModel(0, 0, null, cardback)
+
+            //set card position in grid
+            gridManager.setCardPosition(cardBitmap, i)
+        }
+
+        //update the grid with the first pair of images, shuffled
+        bitmaps.shuffle()
+        for (i in 0 until bitmaps.size) {
+            images[i]?.setImageBitmap(bitmaps[i]).apply {
+                images[i]?.setOnClickListener { println("grid position $i clicked.") }
+            }
+
+            //set grid card bitmaps
+            gridManager.getCards()[i].bitmapFront = bitmaps[i]
+        }
+
+        //update the grid with the second pair of images, shuffled
+        bitmaps.shuffle()
+        for (i in 0 until bitmaps.size) {
+            images[i + bitmaps.size]?.setImageBitmap(bitmaps[i]).apply {
+                images[i + bitmaps.size]?.setOnClickListener { println("grid position ${i + bitmaps.size} clicked.") }
+            }
+
+            //set grid card bitmaps
+            gridManager.getCards()[i + bitmaps.size].bitmapFront = bitmaps[i]
+        }
+
+        //update the grid flag
+        gridManager.setGridFilled()
     }
 
     /** Starts a new round of memory matcher application. */
