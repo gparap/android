@@ -33,6 +33,8 @@ import gparap.apps.memory_matcher.data.CardModel
 import gparap.apps.memory_matcher.managers.AppManager
 import gparap.apps.memory_matcher.managers.GridManager
 import gparap.apps.memory_matcher.utils.AppConstants
+import gparap.apps.memory_matcher.utils.AppConstants.KEY_APP_MATCHED_PAIRS
+import gparap.apps.memory_matcher.utils.AppConstants.KEY_APP_TOTAL_MOVES
 import gparap.apps.memory_matcher.utils.AppConstants.KEY_GRID_CARD_LIST
 import gparap.apps.memory_matcher.utils.AppConstants.KEY_GRID_SIZE
 import gparap.apps.memory_matcher.utils.AppConstants.KEY_IS_GRID_FILLED
@@ -94,49 +96,34 @@ class MainActivity : AppCompatActivity() {
                 savedInstanceState.getParcelableArrayList(KEY_GRID_CARD_LIST)!!
             )
 
-            //TODO: FIX
             //get the app manager values & update the UI
-            appManager.initApp(savedInstanceState.getInt("total_moves"), savedInstanceState.getInt("matched_pairs"))
-            findViewById<TextView>(R.id.textViewTotalMoves).apply { text =  appManager.getTotalMoves().toString() }
-            findViewById<TextView>(R.id.textViewMatchedPairs).apply { text =  appManager.getMatchedPairs().toString()  }
-
-            //start round
-            startApplication()
+            appManager.initApp(
+                savedInstanceState.getInt(KEY_APP_TOTAL_MOVES),
+                savedInstanceState.getInt(KEY_APP_MATCHED_PAIRS)
+            )
+            updateUI()
+            startNewRound()
         }
 
         //fill & display the grid
         if (savedInstanceState == null) {
-            //prepare the grid for new round
             prepareGrid()
-
-            //start round
-            startApplication()
+            startNewRound()
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate (R.menu.main_menu, menu)
+        menuInflater.inflate(R.menu.main_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.main_menu_item_restart -> {
                 appManager.reset()
-                //display the total moves
-                findViewById<TextView>(R.id.textViewTotalMoves).apply {
-                    text = appManager.getTotalMoves().toString()
-                }
-                //display the matched pairs
-                findViewById<TextView>(R.id.textViewMatchedPairs).apply {
-                    text = appManager.getMatchedPairs().toString()
-                }
-
-                //prepare the grid for new round
+                updateUI()
                 prepareGrid()
-
-                //start round
-                startApplication()
+                startNewRound()
             }
         }
         return super.onOptionsItemSelected(item)
@@ -151,8 +138,8 @@ class MainActivity : AppCompatActivity() {
         outState.putParcelableArrayList(KEY_GRID_CARD_LIST, gridManager.getCards())
 
         //save the application state
-        outState.putInt("total_moves", appManager.getTotalMoves())
-        outState.putInt("matched_pairs", appManager.getMatchedPairs())
+        outState.putInt(KEY_APP_TOTAL_MOVES, appManager.getTotalMoves())
+        outState.putInt(KEY_APP_MATCHED_PAIRS, appManager.getMatchedPairs())
     }
 
     /* Prepares the grid for a new round of memory matcher. */
@@ -186,9 +173,7 @@ class MainActivity : AppCompatActivity() {
         //update the grid with the first pair of images, shuffled
         bitmaps.shuffle()
         for (i in 0 until bitmaps.size) {
-            images[i]?.setImageBitmap(bitmaps[i]).apply {
-                images[i]?.setOnClickListener { println("grid position $i clicked.") }
-            }
+            images[i]?.setImageBitmap(bitmaps[i])
 
             //set grid card bitmaps
             gridManager.getCards()[i].bitmapFront = bitmaps[i]
@@ -197,9 +182,7 @@ class MainActivity : AppCompatActivity() {
         //update the grid with the second pair of images, shuffled
         bitmaps.shuffle()
         for (i in 0 until bitmaps.size) {
-            images[i + bitmaps.size]?.setImageBitmap(bitmaps[i]).apply {
-                images[i + bitmaps.size]?.setOnClickListener { println("grid position ${i + bitmaps.size} clicked.") }
-            }
+            images[i + bitmaps.size]?.setImageBitmap(bitmaps[i])
 
             //set grid card bitmaps
             gridManager.getCards()[i + bitmaps.size].bitmapFront = bitmaps[i]
@@ -210,7 +193,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     /** Starts a new round of memory matcher application. */
-    private fun startApplication() {
+    private fun startNewRound() {
         //display & handle the grid
         gridManager.getCards().forEach { card ->
             //choose the card bitmap based on its visibility status
@@ -238,15 +221,18 @@ class MainActivity : AppCompatActivity() {
                             //check if we have a pair of cards (aka identical cards)
                             if (Utils.isCardPair(gridManager.getActivePairCard(), card)) {
                                 appManager.resetMoves()
-                                //update matched pairs TODO: score
+                                //update matched pairs
                                 appManager.setPairMatched()
                                 //check if there are no more pairs
                                 if (appManager.getMatchedPairs() == appManager.getTotalPairs()) {
-                                    Toast.makeText(this@MainActivity, "Memory Matcher completed!", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(
+                                        this@MainActivity,
+                                        getString(R.string.text_round_completed),
+                                        Toast.LENGTH_SHORT
+                                    ).show()
                                 }
 
-                            }else if (card.isVisible) { //if both the moves are finished, hide the cards
-                                println("Hiding the cards...")
+                            } else if (card.isVisible) { //if both the moves are finished, hide the cards
                                 //delay the hiding of the cards
                                 Handler(Looper.getMainLooper()).postDelayed({
                                     //hide this (2nd of the pair) card
@@ -255,25 +241,22 @@ class MainActivity : AppCompatActivity() {
                                     //hide the 1st card of the pair
                                     Utils.flipCard(gridManager.getActivePairCard(), images)
                                     gridManager.getActivePairCard().isVisible = false
-                                }, 667).apply {
+                                }, AppConstants.CARD_HIDING_TIMEOUT).apply {
                                     //update the moves
                                     appManager.resetMoves()
                                 }
                             }
                         }
                     }
-
-                    //display the total moves
-                    findViewById<TextView>(R.id.textViewTotalMoves).apply {
-                        text = appManager.getTotalMoves().toString()
-                    }
-
-                    //display the matched pairs
-                    findViewById<TextView>(R.id.textViewMatchedPairs).apply {
-                        text = appManager.getMatchedPairs().toString()
-                    }
+                    updateUI()
                 }
             }
         }
+    }
+
+    /* Updates the values of the round's total moves and matched pairs. */
+    private fun updateUI() {
+        findViewById<TextView>(R.id.textViewTotalMoves).apply { text = appManager.getTotalMoves().toString() }
+        findViewById<TextView>(R.id.textViewMatchedPairs).apply { text = appManager.getMatchedPairs().toString() }
     }
 }
