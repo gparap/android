@@ -77,5 +77,6 @@ class AppManager(private val gridSize: Int) {
     fun reset() {
         resetMoves()
         matchedPairs = 0
+        totalMoves = 0
     }
 }
