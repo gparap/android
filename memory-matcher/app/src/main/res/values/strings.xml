@@ -2,4 +2,5 @@
     <string name="app_name">My Memory Matcher App</string>
     <string name="desc_memory_card">Memory Card</string>
     <string name="menu_text_restart">Restart Memory Matcher</string>
+    <string name="text_round_completed">Memory Matcher completed!</string>
 </resources>
