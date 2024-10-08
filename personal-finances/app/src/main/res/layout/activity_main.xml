@@ -7,13 +7,244 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--Top background gradient-->
+    <ImageView
+        android:id="@+id/imageView_topBackgroundGradient"
+        android:layout_width="0dp"
+        android:layout_height="172dp"
+        android:contentDescription="@string/app_logo_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/title_bar_gradient" />
+
+    <!--App Logo-->
+    <ImageView
+        android:id="@+id/imageView_appLogo"
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:contentDescription="@string/app_logo_image"
+        app:layout_constraintBottom_toTopOf="@+id/textView_sectionTitle_current"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <!--App title-->
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/textView_appTitle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_sectionTitle_current" />
+
+    <!--Title for current section of the app-->
+    <TextView
+        android:id="@+id/textView_sectionTitle_current"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/section_text_dashboard"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_topBackgroundGradient" />
+
+    <!--App sections scrollable-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_topBackgroundGradient">
+
+        <!--Container for app sections placeholder-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_topBackgroundGradient">
+
+            <!--App sections placeholder-->
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:columnCount="2"
+                android:padding="16dp"
+                android:rowCount="2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <!--Section #1 placeholder-->
+                <androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!--Section title-->
+                    <TextView
+                        android:id="@+id/textView_section_1_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:elevation="2dp"
+                        android:text="Hello World!"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.75" />
+
+                    <!--Section background image-->
+                    <ImageView
+                        android:id="@+id/imageView_section_1_background"
+                        android:layout_width="172dp"
+                        android:layout_height="172dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:layout_margin="8dp"
+                        android:background="@color/design_default_color_on_primary"
+                        android:contentDescription="@string/app_section_1"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_launcher_foreground"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5"
+                        tools:src="@tools:sample/avatars" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--Section #2 placeholder-->
+                <androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!--Section title-->
+                    <TextView
+                        android:id="@+id/textView_section_2_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:elevation="2dp"
+                        android:text="Hello World!"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.75" />
+
+                    <!--Section background image-->
+                    <ImageView
+                        android:id="@+id/imageView_section_2_background"
+                        android:layout_width="172dp"
+                        android:layout_height="172dp"
+                        android:layout_row="0"
+                        android:layout_column="1"
+                        android:layout_margin="8dp"
+                        android:background="@color/design_default_color_on_primary"
+                        android:contentDescription="@string/app_section_2"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_launcher_foreground"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5"
+                        tools:src="@tools:sample/avatars" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--Section #3 placeholder-->
+                <androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!--Section title-->
+                    <TextView
+                        android:id="@+id/textView_section_3_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:elevation="2dp"
+                        android:text="Hello World!"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.75" />
+
+                    <!--Section background image-->
+                    <ImageView
+                        android:id="@+id/imageView_section_3_background"
+                        android:layout_width="172dp"
+                        android:layout_height="172dp"
+                        android:layout_row="1"
+                        android:layout_column="0"
+                        android:layout_margin="8dp"
+                        android:background="@color/design_default_color_on_primary"
+                        android:contentDescription="@string/app_section_3"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_launcher_foreground"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5"
+                        tools:src="@tools:sample/avatars" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--Section #4 placeholder-->
+                <androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!--Section title-->
+                    <TextView
+                        android:id="@+id/textView_section_4_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:elevation="2dp"
+                        android:text="Hello World!"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.75" />
+
+                    <!--Section background image-->
+                    <ImageView
+                        android:id="@+id/imageView_section_4_background"
+                        android:layout_width="172dp"
+                        android:layout_height="172dp"
+                        android:layout_row="1"
+                        android:layout_column="1"
+                        android:layout_margin="8dp"
+                        android:background="@color/design_default_color_on_primary"
+                        android:contentDescription="@string/app_section_4"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_launcher_foreground"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5"
+                        tools:src="@tools:sample/avatars" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </GridLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

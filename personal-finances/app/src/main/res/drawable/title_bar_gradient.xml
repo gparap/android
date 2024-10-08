@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <corners android:bottomLeftRadius="16dp" />
+            <corners android:bottomRightRadius="16dp" />
+            <gradient android:endColor="@color/cardview_shadow_end_color" android:startColor="@color/cardview_shadow_start_color" />
+        </shape>
+    </item>
+</selector>
