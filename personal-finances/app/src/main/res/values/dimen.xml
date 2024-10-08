@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Design Dimensions: Medium Phone (411 x 891 dp, 420dpi)-->
+<resources>
+    <!--App images & texts-->
+    <dimen name="layout_height_imageView_topBackgroundGradient">172dp</dimen>
+    <dimen name="layout_height_imageView_appLogo">96dp</dimen>
+    <dimen name="textSize_textView_appTitle">22sp</dimen>
+    <dimen name="textSize_textView_sectionTitle_current">16sp</dimen>
+
+    <!--Grid-->
+    <dimen name="layout_margin_GridLayout">16dp</dimen>
+    <dimen name="layout_padding_GridLayout">16dp</dimen>
+
+    <!--Grid texts-->
+    <dimen name="elevation_textView_section_title">2dp</dimen>
+    <dimen name="layout_constraintVertical_bias_0_75_textView_section_title">0.75</dimen>
+    <dimen name="layout_constraintVertical_bias_0_50_textView_section_title">0.5</dimen>
+
+    <!--Grid images-->
+    <dimen name="layout_width_imageView_section_background">172dp</dimen>
+    <dimen name="layout_height_imageView_section_background">172dp</dimen>
+    <dimen name="layout_margin_imageView_section_background">8dp</dimen>
+    <dimen name="padding_imageView_section_background">8dp</dimen>
+</resources>

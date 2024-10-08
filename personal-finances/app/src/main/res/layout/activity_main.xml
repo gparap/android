@@ -11,7 +11,7 @@
     <ImageView
         android:id="@+id/imageView_topBackgroundGradient"
         android:layout_width="0dp"
-        android:layout_height="172dp"
+        android:layout_height="@dimen/layout_height_imageView_topBackgroundGradient"
         android:contentDescription="@string/app_logo_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -23,7 +23,7 @@
     <ImageView
         android:id="@+id/imageView_appLogo"
         android:layout_width="match_parent"
-        android:layout_height="96dp"
+        android:layout_height="@dimen/layout_height_imageView_appLogo"
         android:contentDescription="@string/app_logo_image"
         app:layout_constraintBottom_toTopOf="@+id/textView_sectionTitle_current"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         android:textAlignment="center"
-        android:textSize="22sp"
+        android:textSize="@dimen/textSize_textView_appTitle"
         app:layout_constraintBottom_toTopOf="@+id/textView_sectionTitle_current" />
 
     <!--Title for current section of the app-->
@@ -50,7 +50,7 @@
         android:text="@string/section_text_dashboard"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textSize="16sp"
+        android:textSize="@dimen/textSize_textView_sectionTitle_current"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="@+id/imageView_topBackgroundGradient" />
 
@@ -76,9 +76,9 @@
             <GridLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_margin="@dimen/layout_margin_GridLayout"
                 android:columnCount="2"
-                android:padding="16dp"
+                android:padding="@dimen/layout_padding_GridLayout"
                 android:rowCount="2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -91,36 +91,30 @@
                     <!--Section title-->
                     <TextView
                         android:id="@+id/textView_section_1_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:elevation="2dp"
                         android:text="Hello World!"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.75" />
+                        app:layout_constraintVertical_bias="@dimen/layout_constraintVertical_bias_0_75_textView_section_title"
+                        style="@style/grid_section_title_style" />
 
                     <!--Section background image-->
                     <ImageView
                         android:id="@+id/imageView_section_1_background"
-                        android:layout_width="172dp"
-                        android:layout_height="172dp"
                         android:layout_row="0"
                         android:layout_column="0"
-                        android:layout_margin="8dp"
-                        android:background="@color/design_default_color_on_primary"
                         android:contentDescription="@string/app_section_1"
-                        android:padding="8dp"
                         android:src="@drawable/ic_launcher_foreground"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.5"
-                        tools:src="@tools:sample/avatars" />
+                        app:layout_constraintVertical_bias="@dimen/layout_constraintVertical_bias_0_50_textView_section_title"
+                        tools:src="@tools:sample/avatars"
+                        style="@style/grid_section_image_style" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -130,36 +124,30 @@
                     <!--Section title-->
                     <TextView
                         android:id="@+id/textView_section_2_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:elevation="2dp"
                         android:text="Hello World!"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.75" />
+                        app:layout_constraintVertical_bias="@dimen/layout_constraintVertical_bias_0_75_textView_section_title"
+                        style="@style/grid_section_title_style" />
 
                     <!--Section background image-->
                     <ImageView
                         android:id="@+id/imageView_section_2_background"
-                        android:layout_width="172dp"
-                        android:layout_height="172dp"
                         android:layout_row="0"
                         android:layout_column="1"
-                        android:layout_margin="8dp"
-                        android:background="@color/design_default_color_on_primary"
                         android:contentDescription="@string/app_section_2"
-                        android:padding="8dp"
                         android:src="@drawable/ic_launcher_foreground"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.5"
-                        tools:src="@tools:sample/avatars" />
+                        app:layout_constraintVertical_bias="@dimen/layout_constraintVertical_bias_0_50_textView_section_title"
+                        tools:src="@tools:sample/avatars"
+                        style="@style/grid_section_image_style" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -169,36 +157,30 @@
                     <!--Section title-->
                     <TextView
                         android:id="@+id/textView_section_3_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:elevation="2dp"
                         android:text="Hello World!"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.75" />
+                        app:layout_constraintVertical_bias="@dimen/layout_constraintVertical_bias_0_75_textView_section_title"
+                        style="@style/grid_section_title_style" />
 
                     <!--Section background image-->
                     <ImageView
                         android:id="@+id/imageView_section_3_background"
-                        android:layout_width="172dp"
-                        android:layout_height="172dp"
                         android:layout_row="1"
                         android:layout_column="0"
-                        android:layout_margin="8dp"
-                        android:background="@color/design_default_color_on_primary"
                         android:contentDescription="@string/app_section_3"
-                        android:padding="8dp"
                         android:src="@drawable/ic_launcher_foreground"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.5"
-                        tools:src="@tools:sample/avatars" />
+                        app:layout_constraintVertical_bias="@dimen/layout_constraintVertical_bias_0_50_textView_section_title"
+                        tools:src="@tools:sample/avatars"
+                        style="@style/grid_section_image_style" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -208,36 +190,30 @@
                     <!--Section title-->
                     <TextView
                         android:id="@+id/textView_section_4_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:elevation="2dp"
                         android:text="Hello World!"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.75" />
+                        app:layout_constraintVertical_bias="@dimen/layout_constraintVertical_bias_0_75_textView_section_title"
+                        style="@style/grid_section_title_style" />
 
                     <!--Section background image-->
                     <ImageView
                         android:id="@+id/imageView_section_4_background"
-                        android:layout_width="172dp"
-                        android:layout_height="172dp"
                         android:layout_row="1"
                         android:layout_column="1"
-                        android:layout_margin="8dp"
-                        android:background="@color/design_default_color_on_primary"
                         android:contentDescription="@string/app_section_4"
-                        android:padding="8dp"
                         android:src="@drawable/ic_launcher_foreground"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.5"
-                        tools:src="@tools:sample/avatars" />
+                        app:layout_constraintVertical_bias="@dimen/layout_constraintVertical_bias_0_50_textView_section_title"
+                        tools:src="@tools:sample/avatars"
+                        style="@style/grid_section_image_style" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
