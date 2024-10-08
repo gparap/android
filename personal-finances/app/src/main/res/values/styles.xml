@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    Custom style for grid section titles-->
+    <style name="grid_section_title_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:elevation">@dimen/elevation_textView_section_title</item>
+    </style>
+
+    <!--    Custom style for grid section images-->
+    <style name="grid_section_image_style">
+        <item name="android:layout_width">@dimen/layout_width_imageView_section_background</item>
+        <item name="android:layout_height">@dimen/layout_width_imageView_section_background</item>
+        <item name="android:layout_margin">@dimen/layout_margin_imageView_section_background</item>
+        <item name="android:background">@color/design_default_color_on_primary</item>
+        <item name="android:padding">@dimen/padding_imageView_section_background</item>
+    </style>
+</resources>
