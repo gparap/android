@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">My Personal Finances App</string>
+    <string name="app_logo_label">App Logo</string>
+    <string name="app_logo_image">App Image Logo</string>
+    <string name="app_section_1">App Section #1</string>
+    <string name="app_section_2">App Section #2</string>
+    <string name="app_section_3">App Section #3</string>
+    <string name="app_section_4">App Section #4</string>
+    <string name="section_text_dashboard">Dashboard</string>
 </resources>
