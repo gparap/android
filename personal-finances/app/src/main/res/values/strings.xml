@@ -7,4 +7,6 @@
     <string name="app_section_3">App Section #3</string>
     <string name="app_section_4">App Section #4</string>
     <string name="section_text_dashboard">Dashboard</string>
+    <string name="text_add_transaction">Add Transaction</string>
+    <string name="hint_transaction_type">Enter type for transaction</string>
 </resources>

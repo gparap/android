@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_activity_addTransaction"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.AddTransactionActivity">
+
+    <!--Top background gradient-->
+    <ImageView
+        android:id="@+id/imageView_topBackgroundGradient"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/layout_height_imageView_topBackgroundGradient"
+        android:contentDescription="@string/app_logo_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/title_bar_gradient" />
+
+    <!--App Logo-->
+    <ImageView
+        android:id="@+id/imageView_appLogo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_height_imageView_appLogo"
+        android:contentDescription="@string/app_logo_image"
+        app:layout_constraintBottom_toTopOf="@+id/textView_sectionTitle_current"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <!--App title-->
+    <TextView
+        android:id="@+id/textView_appTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textSize="@dimen/textSize_textView_appTitle"
+        app:layout_constraintBottom_toTopOf="@+id/textView_sectionTitle_current" />
+
+    <!--Title for current section of the app-->
+    <TextView
+        android:id="@+id/textView_sectionTitle_current"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_add_transaction"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="@dimen/textSize_textView_sectionTitle_current"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_topBackgroundGradient" />
+
+    <!--Transaction type-->
+    <EditText
+        android:id="@+id/editText_transaction_type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="@string/hint_transaction_type"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_sectionTitle_current"
+        tools:ignore="Autofill"
+        tools:text="Shopping Groceries" />
+
+    <!--Transaction quantity-->
+    <EditText
+        android:id="@+id/editText_transaction_quantity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="@string/hint_transaction_type"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_transaction_type"
+        tools:ignore="Autofill"
+        tools:text="-10.0" />
+
+    <!--Transaction date-->
+    <EditText
+        android:id="@+id/editText_transaction_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="@string/hint_transaction_type"
+        android:inputType="date"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_transaction_quantity"
+        tools:ignore="Autofill"
+        tools:text="21/31/2024" />
+
+    <!--Transaction details-->
+    <TextView
+        android:id="@+id/editText_transaction_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="@string/hint_transaction_type"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_transaction_date"
+        tools:ignore="Autofill"
+        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
+
+    <!--Add transaction-->
+    <Button
+        android:id="@+id/button_add_transaction"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/text_add_transaction"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
