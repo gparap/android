@@ -15,16 +15,11 @@
  */
 package gparap.apps.personal_finances.data
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.Dao
+import androidx.room.Insert
 
-/** This class describes a user transaction.
- * Transactions can be either of positive (+) or negative (-) balance. */
-@Entity("transaction")
-data class TransactionModel(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val type: String,
-    val quantity: Float,
-    val date: String,
-    val details: String
-)
+@Dao
+interface TransactionDao {
+    @Insert
+    suspend fun addTransaction(vararg transaction: TransactionModel)
+}
