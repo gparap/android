@@ -17,6 +17,7 @@ package gparap.apps.personal_finances
 
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -92,4 +93,9 @@ class MainActivityInstrumentedTest {
         onView(withId(R.id.imageView_section_4_background)).check(matches(isDisplayed()))
     }
 
+    @Test
+    fun isCorrect_redirectToAddTransactionActivity() {
+        onView(withId(R.id.fab_addTransaction)).perform(click())
+        onView(withId(R.id.layout_activity_add_transaction)).check(matches(isDisplayed()))
+    }
 }

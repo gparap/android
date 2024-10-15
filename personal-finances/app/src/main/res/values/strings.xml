@@ -9,5 +9,7 @@
     <string name="section_text_dashboard">Dashboard</string>
     <string name="text_add_transaction">Add Transaction</string>
     <string name="hint_transaction_type">Enter type for transaction</string>
+    <string name="hint_transaction_quantity">Enter quantity for transaction (100.99)</string>
     <string name="hint_transaction_date">Enter date for transaction (YYYY-MM-DD)</string>
+    <string name="hint_transaction_details">Enter transaction details</string>
 </resources>

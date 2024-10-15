@@ -15,22 +15,38 @@
  */
 package gparap.apps.personal_finances
 
+import android.view.View
 import androidx.test.core.app.ActivityScenario
+import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.RootMatchers.withDecorView
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import gparap.apps.personal_finances.ui.AddTransactionActivity
+import org.hamcrest.CoreMatchers.not
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class AddTransactionActivityInstrumentedTest {
+    private lateinit var activityScenario: ActivityScenario<AddTransactionActivity>
+    private lateinit var rootView: View
+
     @Before
     fun setUp() {
-        ActivityScenario.launch(AddTransactionActivity::class.java)
+        //get the scenario for this activity
+        activityScenario = ActivityScenario.launch(AddTransactionActivity::class.java)
+
+        //get the top view for this activity
+        activityScenario.onActivity { activity ->
+            rootView = activity.window.decorView
+        }
     }
 
     @Test
@@ -71,5 +87,19 @@ class AddTransactionActivityInstrumentedTest {
     @Test
     fun isVisible_button_add_transaction() {
         onView(withId(R.id.button_add_transaction)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun isCorrect_addTransaction() {
+        onView(withId(R.id.editText_transaction_type)).perform(typeText("test transaction"))
+        onView(withId(R.id.editText_transaction_quantity)).perform(typeText("100"))
+        onView(withId(R.id.editText_transaction_date)).perform(typeText("2024-12-31"))
+        onView(withId(R.id.editText_transaction_details)).perform(typeText("test details"))
+        closeSoftKeyboard()
+        onView(withId(R.id.button_add_transaction)).perform(click())
+        onView(withText("Transaction added successfully..."))
+            .inRoot(withDecorView(not(rootView)))
+            .check(matches(isDisplayed()))
+        Thread.sleep(2000L) //wait for the Toast to disappear
     }
 }
