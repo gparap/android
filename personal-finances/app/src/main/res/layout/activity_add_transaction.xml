@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_activity_addTransaction"
+    android:id="@+id/layout_activity_add_transaction"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.AddTransactionActivity">
@@ -82,8 +82,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="@string/hint_transaction_type"
-        android:inputType="numberDecimal"
+        android:hint="@string/hint_transaction_quantity"
+        android:inputType="numberSigned"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -112,7 +112,7 @@
         tools:text="12/31/2024" />
 
     <!--Transaction details-->
-    <TextView
+    <EditText
         android:id="@+id/editText_transaction_details"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -120,7 +120,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="@string/hint_transaction_type"
+        android:hint="@string/hint_transaction_details"
+        android:inputType="textMultiLine"
+        android:maxLines="5"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -142,5 +144,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <!--Saving progress-->
+    <ProgressBar
+        android:id="@+id/progressBar_addTransaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
