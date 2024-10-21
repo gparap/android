@@ -63,43 +63,43 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
-    fun isVisible_textView_section_1_title() {
-        onView(withId(R.id.textView_section_1_title)).check(matches(isDisplayed()))
+    fun isVisible_textView_account_balance_title() {
+        onView(withId(R.id.textView_account_balance_title)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun isVisible_imageView_section_1_background() {
-        onView(withId(R.id.imageView_section_1_background)).check(matches(isDisplayed()))
+    fun isVisible_imageView_account_balance_background() {
+        onView(withId(R.id.imageView_account_balance_background)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun isVisible_textView_section_2_title() {
-        onView(withId(R.id.textView_section_2_title)).check(matches(isDisplayed()))
+    fun isVisible_textView_all_transactions_title() {
+        onView(withId(R.id.textView_all_transactions_title)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun isVisible_imageView_section_2_background() {
-        onView(withId(R.id.imageView_section_2_background`)).check(matches(isDisplayed()))
+    fun isVisible_imageView_all_transactions_background() {
+        onView(withId(R.id.imageView_all_transactions_background)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun isVisible_textView_section_3_title() {
-        onView(withId(R.id.textView_section_3_title)).check(matches(isDisplayed()))
+    fun isVisible_textView_top_up_transactions_title() {
+        onView(withId(R.id.textView_top_up_transactions_title)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun isVisible_imageView_section_3_background() {
-        onView(withId(R.id.imageView_section_3_background)).check(matches(isDisplayed()))
+    fun isVisible_imageView_top_up_transactions_background() {
+        onView(withId(R.id.imageView_top_up_transactions_background)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun isVisible_textView_section_4_title() {
-        onView(withId(R.id.textView_section_4_title)).check(matches(isDisplayed()))
+    fun isVisible_textView_expense_transactions_title() {
+        onView(withId(R.id.textView_expense_transactions_title)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun isVisible_imageView_section_4_background() {
-        onView(withId(R.id.imageView_section_4_background)).check(matches(isDisplayed()))
+    fun isVisible_imageView_expense_transactions_background() {
+        onView(withId(R.id.imageView_expense_transactions_background)).check(matches(isDisplayed()))
     }
 
     @Test

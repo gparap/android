@@ -12,7 +12,7 @@
         android:id="@+id/imageView_topBackgroundGradient"
         android:layout_width="0dp"
         android:layout_height="@dimen/layout_height_imageView_topBackgroundGradient"
-        android:contentDescription="@string/app_logo_label"
+        android:contentDescription="@string/desc_app_logo_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +24,7 @@
         android:id="@+id/imageView_appLogo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_height_imageView_appLogo"
-        android:contentDescription="@string/app_logo_image"
+        android:contentDescription="@string/desc_app_logo_image"
         app:layout_constraintBottom_toTopOf="@+id/textView_sectionTitle_current"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -91,9 +91,9 @@
 
                     <!--Section title-->
                     <TextView
-                        android:id="@+id/textView_section_1_title"
+                        android:id="@+id/textView_account_balance_title"
                         style="@style/grid_section_title_style"
-                        android:text="Hello World!"
+                        android:text="@string/desc_account_balance"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -103,11 +103,11 @@
 
                     <!--Section background image-->
                     <ImageView
-                        android:id="@+id/imageView_section_1_background"
+                        android:id="@+id/imageView_account_balance_background"
                         style="@style/grid_section_image_style"
                         android:layout_row="0"
                         android:layout_column="0"
-                        android:contentDescription="@string/app_section_1"
+                        android:contentDescription="@string/desc_account_balance"
                         android:src="@drawable/ic_launcher_foreground"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -124,9 +124,9 @@
 
                     <!--Section title-->
                     <TextView
-                        android:id="@+id/textView_section_2_title"
+                        android:id="@+id/textView_all_transactions_title"
                         style="@style/grid_section_title_style"
-                        android:text="Hello World!"
+                        android:text="@string/desc_all_transactions"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -136,11 +136,11 @@
 
                     <!--Section background image-->
                     <ImageView
-                        android:id="@+id/imageView_section_2_background"
+                        android:id="@+id/imageView_all_transactions_background"
                         style="@style/grid_section_image_style"
                         android:layout_row="0"
                         android:layout_column="1"
-                        android:contentDescription="@string/app_section_2"
+                        android:contentDescription="@string/desc_all_transactions"
                         android:src="@drawable/ic_launcher_foreground"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -157,9 +157,9 @@
 
                     <!--Section title-->
                     <TextView
-                        android:id="@+id/textView_section_3_title"
+                        android:id="@+id/textView_top_up_transactions_title"
                         style="@style/grid_section_title_style"
-                        android:text="Hello World!"
+                        android:text="@string/desc_top_up_transactions"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -169,11 +169,11 @@
 
                     <!--Section background image-->
                     <ImageView
-                        android:id="@+id/imageView_section_3_background"
+                        android:id="@+id/imageView_top_up_transactions_background"
                         style="@style/grid_section_image_style"
                         android:layout_row="1"
                         android:layout_column="0"
-                        android:contentDescription="@string/app_section_3"
+                        android:contentDescription="@string/desc_top_up_transactions"
                         android:src="@drawable/ic_launcher_foreground"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -190,9 +190,9 @@
 
                     <!--Section title-->
                     <TextView
-                        android:id="@+id/textView_section_4_title"
+                        android:id="@+id/textView_expense_transactions_title"
                         style="@style/grid_section_title_style"
-                        android:text="Hello World!"
+                        android:text="@string/desc_expense_transactions"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -202,11 +202,11 @@
 
                     <!--Section background image-->
                     <ImageView
-                        android:id="@+id/imageView_section_4_background"
+                        android:id="@+id/imageView_expense_transactions_background"
                         style="@style/grid_section_image_style"
                         android:layout_row="1"
                         android:layout_column="1"
-                        android:contentDescription="@string/app_section_4"
+                        android:contentDescription="@string/desc_expense_transactions"
                         android:src="@drawable/ic_launcher_foreground"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -232,7 +232,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
-        android:contentDescription="@string/text_add_transaction"
+        android:contentDescription="@string/desc_add_transaction"
         android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

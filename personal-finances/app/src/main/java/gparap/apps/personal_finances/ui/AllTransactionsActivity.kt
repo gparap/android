@@ -47,7 +47,6 @@ class AllTransactionsActivity : AppCompatActivity() {
         val adapter = TransactionAdapter()
         recyclerView.adapter = adapter
 
-        //TODO: rename all "sections #2" with "All Transactions" & all other "sections"
         //display transactions
         val roomDb = PersonalFinancesDatabase.getInstance(this)
         lifecycleScope.launch {
