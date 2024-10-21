@@ -60,17 +60,14 @@ class AddTransactionActivity : AppCompatActivity() {
                 progressBar.visibility = View.VISIBLE
                 try {
                     roomDB?.transactionDao()?.addTransaction(transactionModel).apply {
-                        Toast.makeText(
-                            this@AddTransactionActivity,
-                            "Transaction added successfully...",
-                            Toast.LENGTH_SHORT
-                        )
+                        Toast.makeText(this@AddTransactionActivity, "Transaction added successfully...", Toast.LENGTH_SHORT)
                             .show()
                     }
-                } catch (_: Exception) {
+                }catch (_: Exception){
                     Toast.makeText(this@AddTransactionActivity, "Transaction could not be added...", Toast.LENGTH_SHORT)
                         .show()
-                } finally {
+                }
+                finally {
                     progressBar.visibility = View.INVISIBLE
                 }
             }

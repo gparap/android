@@ -12,4 +12,7 @@
     <string name="hint_transaction_quantity">Enter quantity for transaction (100.99)</string>
     <string name="hint_transaction_date">Enter date for transaction (YYYY-MM-DD)</string>
     <string name="hint_transaction_details">Enter transaction details</string>
+    <string name="label_transaction_type">Type:</string>
+    <string name="label_transaction_quantity">Quantity:</string>
+    <string name="label_transaction_date">Date:</string>
 </resources>
