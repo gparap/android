@@ -142,4 +142,14 @@ class MainActivityInstrumentedTest {
         assertFalse(transactionsCountBefore == 0 && transactionsCountAfter == 0)
         assert(transactionsCountBefore != transactionsCountAfter)
     }
+
+    @Test
+    fun isCorrect_addTopUpTransaction() {
+        TODO("Will be implemented after delete transaction functionality completes.")
+    }
+
+    @Test
+    fun isCorrect_addExpenseTransaction() {
+        TODO("Will be implemented after delete transaction functionality completes.")
+    }
 }

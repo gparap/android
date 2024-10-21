@@ -26,4 +26,10 @@ interface TransactionDao {
 
     @Query("SELECT * FROM `transaction`")
     suspend fun getAllTransactions() : List<TransactionModel>
+
+    @Query("SELECT * FROM `transaction` WHERE `quantity` > 0")
+    suspend fun getTopUpTransactions() : List<TransactionModel>
+
+    @Query("SELECT * FROM `transaction` WHERE `quantity` < 0")
+    suspend fun getExpenseTransactions() : List<TransactionModel>
 }

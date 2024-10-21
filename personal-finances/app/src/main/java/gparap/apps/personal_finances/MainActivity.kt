@@ -10,6 +10,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.personal_finances.ui.AddTransactionActivity
 import gparap.apps.personal_finances.ui.AllTransactionsActivity
+import gparap.apps.personal_finances.ui.ExpenseTransactionsActivity
+import gparap.apps.personal_finances.ui.TopUpTransactionsActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +32,16 @@ class MainActivity : AppCompatActivity() {
         //redirect to all transactions screen
         findViewById<ImageView>(R.id.imageView_all_transactions_background).setOnClickListener {
             startActivity(Intent(this, AllTransactionsActivity::class.java))
+        }
+
+        //redirect to top-up transactions screen
+        findViewById<ImageView>(R.id.imageView_top_up_transactions_background).setOnClickListener {
+            startActivity(Intent(this, TopUpTransactionsActivity::class.java))
+        }
+
+        //redirect to expense transactions screen
+        findViewById<ImageView>(R.id.imageView_expense_transactions_background).setOnClickListener {
+            startActivity(Intent(this, ExpenseTransactionsActivity::class.java))
         }
     }
 }
