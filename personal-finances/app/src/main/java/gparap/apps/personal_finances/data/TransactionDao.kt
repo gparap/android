@@ -17,9 +17,13 @@ package gparap.apps.personal_finances.data
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.Query
 
 @Dao
 interface TransactionDao {
     @Insert
     suspend fun addTransaction(vararg transaction: TransactionModel)
+
+    @Query("SELECT * FROM `transaction`")
+    suspend fun getAllTransactions() : List<TransactionModel>
 }
