@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ExpenseTransactionsActivity">
+
+    <!--Top background gradient-->
+    <ImageView
+        android:id="@+id/imageView_topBackgroundGradient"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/layout_height_imageView_topBackgroundGradient"
+        android:contentDescription="@string/desc_app_logo_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/title_bar_gradient" />
+
+    <!--App Logo-->
+    <ImageView
+        android:id="@+id/imageView_appLogo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_height_imageView_appLogo"
+        android:contentDescription="@string/desc_app_logo_image"
+        app:layout_constraintBottom_toTopOf="@+id/textView_sectionTitle_current"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <!--App title-->
+    <TextView
+        android:id="@+id/textView_appTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textSize="@dimen/textSize_textView_appTitle"
+        app:layout_constraintBottom_toTopOf="@+id/textView_sectionTitle_current" />
+
+    <!--Title for current section of the app-->
+    <TextView
+        android:id="@+id/textView_sectionTitle_current"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/desc_top_up_transactions"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="@dimen/textSize_textView_sectionTitle_current"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_topBackgroundGradient" />
+
+    <!--Placeholder for expense transactions-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_expenseTransactions"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_sectionTitle_current" />
+
+    <!--Add expense transaction button-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_addExpenseTransaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:contentDescription="@string/desc_add_transaction"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
