@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">My Personal Finances App</string>
-    <string name="app_logo_label">App Logo</string>
-    <string name="app_logo_image">App Image Logo</string>
-    <string name="app_section_1">App Section #1</string>
-    <string name="app_section_2">App Section #2</string>
-    <string name="app_section_3">App Section #3</string>
-    <string name="app_section_4">App Section #4</string>
+    <string name="desc_app_logo_label">App Logo</string>
+    <string name="desc_app_logo_image">App Image Logo</string>
+    <string name="desc_account_balance">Account Balance</string>
+    <string name="desc_all_transactions">All Transactions</string>
+    <string name="desc_top_up_transactions">Top-Up Transactions</string>
+    <string name="desc_expense_transactions">Expense Transactions</string>
     <string name="section_text_dashboard">Dashboard</string>
-    <string name="text_add_transaction">Add Transaction</string>
+    <string name="desc_add_transaction">Add Transaction</string>
     <string name="hint_transaction_type">Enter type for transaction</string>
     <string name="hint_transaction_quantity">Enter quantity for transaction (100.99)</string>
     <string name="hint_transaction_date">Enter date for transaction (YYYY-MM-DD)</string>

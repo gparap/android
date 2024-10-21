@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //redirect to all transactions screen
-        findViewById<ImageView>(R.id.imageView_section_2_background).setOnClickListener {
+        findViewById<ImageView>(R.id.imageView_all_transactions_background).setOnClickListener {
             startActivity(Intent(this, AllTransactionsActivity::class.java))
         }
     }
