@@ -28,6 +28,7 @@ import gparap.apps.personal_finances.R
 import gparap.apps.personal_finances.adapters.TransactionAdapter
 import gparap.apps.personal_finances.data.PersonalFinancesDatabase
 import gparap.apps.personal_finances.data.TransactionModel
+import gparap.apps.personal_finances.utils.Utils
 import kotlinx.coroutines.launch
 
 class AllTransactionsActivity : AppCompatActivity() {
@@ -40,6 +41,7 @@ class AllTransactionsActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        Utils.updateAppSectionTitle(this@AllTransactionsActivity)
 
         //setup recycler view with adapter
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView_allTransactions)
@@ -54,7 +56,15 @@ class AllTransactionsActivity : AppCompatActivity() {
             if (transactions != null) {
                 for (transaction in transactions) {
                     //add transaction object to adapter
-                    adapter.transactions.add(TransactionModel(transaction.id, transaction.type, transaction.quantity, transaction.date, transaction.details))
+                    adapter.transactions.add(
+                        TransactionModel(
+                            transaction.id,
+                            transaction.type,
+                            transaction.quantity,
+                            transaction.date,
+                            transaction.details
+                        )
+                    )
                 }
             }
             //notify adapter that the data set has changed

@@ -15,4 +15,7 @@
     <string name="label_transaction_type">Type:</string>
     <string name="label_transaction_quantity">Quantity:</string>
     <string name="label_transaction_date">Date:</string>
+    <string name="placeholder_app_section_title">placeholder</string>
+    <string name="toast_add_transaction_success">Transaction added successfully…</string>
+    <string name="toast_add_transaction_failure">Transaction could not be added…</string>
 </resources>
