@@ -7,52 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".ui.ExpenseTransactionsActivity">
 
-    <!--Top background gradient-->
-    <ImageView
-        android:id="@+id/imageView_topBackgroundGradient"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/layout_height_imageView_topBackgroundGradient"
-        android:contentDescription="@string/desc_app_logo_label"
+    <!--Placeholder for app logo-->
+    <include
+        android:id="@+id/layout_appLogoWithSectionTitle"
+        layout="@layout/layout_app_logo_with_section_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/title_bar_gradient" />
-
-    <!--App Logo-->
-    <ImageView
-        android:id="@+id/imageView_appLogo"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_height_imageView_appLogo"
-        android:contentDescription="@string/desc_app_logo_image"
-        app:layout_constraintBottom_toTopOf="@+id/textView_sectionTitle_current"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
-
-    <!--App title-->
-    <TextView
-        android:id="@+id/textView_appTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textAlignment="center"
-        android:textSize="@dimen/textSize_textView_appTitle"
-        app:layout_constraintBottom_toTopOf="@+id/textView_sectionTitle_current" />
-
-    <!--Title for current section of the app-->
-    <TextView
-        android:id="@+id/textView_sectionTitle_current"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/desc_top_up_transactions"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textSize="@dimen/textSize_textView_sectionTitle_current"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView_topBackgroundGradient" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!--Placeholder for expense transactions-->
     <androidx.recyclerview.widget.RecyclerView
@@ -64,7 +25,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_sectionTitle_current" />
+        app:layout_constraintTop_toBottomOf="@+id/layout_appLogoWithSectionTitle" />
 
     <!--Add expense transaction button-->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
