@@ -17,4 +17,8 @@ package gparap.apps.personal_finances.utils
 
 object AppConstants {
     const val INTENT_EXTRA_TRANSACTION_TYPE = "transaction_type"
+
+    const val APP_SHARED_PREFERENCES        = "app_shared_prefs"
+    const val SHARED_PREF_ACCOUNT_BALANCE   = "account_balance"
+    const val ZERO_ACCOUNT_BALANCE          = 0f
 }

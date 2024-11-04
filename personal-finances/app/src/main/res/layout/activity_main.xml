@@ -101,6 +101,17 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="@dimen/layout_constraintVertical_bias_0_75_textView_section_title" />
 
+                    <!--Account Balance-->
+                    <TextView
+                        android:id="@+id/textView_account_balance"
+                        style="@style/grid_section_title_style"
+                        android:text=""
+                        tools:text="0.0"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView_account_balance_title" />
+
                     <!--Section background image-->
                     <ImageView
                         android:id="@+id/imageView_account_balance_background"
