@@ -15,6 +15,7 @@
  */
 package gparap.apps.personal_finances
 
+import android.content.Intent
 import android.view.View
 import androidx.room.Ignore
 import androidx.test.core.app.ActivityScenario
@@ -28,7 +29,10 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import gparap.apps.personal_finances.ui.AddTransactionActivity
+import gparap.apps.personal_finances.utils.AppConstants
+import gparap.apps.personal_finances.utils.TransactionType
 import org.hamcrest.CoreMatchers.not
 import org.junit.Before
 import org.junit.Test
@@ -93,15 +97,65 @@ class AddTransactionActivityInstrumentedTest {
     @Test
     @Ignore
     fun isCorrect_addTransaction() {
-        onView(withId(R.id.editText_transaction_type)).perform(typeText("test transaction"))
-        onView(withId(R.id.editText_transaction_quantity)).perform(typeText("100"))
-        onView(withId(R.id.editText_transaction_date)).perform(typeText("2024-10-14"))
-        onView(withId(R.id.editText_transaction_details)).perform(typeText("test details"))
-        closeSoftKeyboard()
-        onView(withId(R.id.button_add_transaction)).perform(click())
+        enterTestTransaction(isQuantityPositive = true)
         onView(withText(R.string.toast_add_transaction_success))
             .inRoot(withDecorView(not(rootView)))
             .check(matches(isDisplayed()))
         Thread.sleep(2000L) //wait for the Toast to disappear
+    }
+
+    @Test
+    @Ignore
+    fun isErroneous_addTopUpTransaction() {
+        //get the context of this activity
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+
+        //start a new scenario with intent
+        activityScenario.close()
+        val intent = Intent(context, AddTransactionActivity::class.java)
+        intent.putExtra(AppConstants.INTENT_EXTRA_TRANSACTION_TYPE, TransactionType.EXPENSES)
+        ActivityScenario<AddTransactionActivity>.launch<AddTransactionActivity>(intent)
+
+        //add transaction
+        enterTestTransaction(isQuantityPositive = false)
+        onView(withText(R.string.toast_add_transaction_require_positive))
+            .inRoot(withDecorView(not(rootView)))
+            .check(matches(isDisplayed()))
+        Thread.sleep(2000L) //wait for the Toast to disappear
+
+    }
+
+    @Test
+    @Ignore
+    fun isErroneous_addTExpenseTransaction() {
+        //get the context of this activity
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+
+        //start a new scenario with intent
+        activityScenario.close()
+        val intent = Intent(context, AddTransactionActivity::class.java)
+        intent.putExtra(AppConstants.INTENT_EXTRA_TRANSACTION_TYPE, TransactionType.EXPENSES)
+        ActivityScenario<AddTransactionActivity>.launch<AddTransactionActivity>(intent)
+
+        //add transaction
+        enterTestTransaction(isQuantityPositive = true)
+        onView(withText(R.string.toast_add_transaction_require_negative))
+            .inRoot(withDecorView(not(rootView)))
+            .check(matches(isDisplayed()))
+        Thread.sleep(2000L) //wait for the Toast to disappear
+
+    }
+
+    private fun enterTestTransaction(isQuantityPositive: Boolean) {
+        var quantity = "-100"
+        if (isQuantityPositive) {
+            quantity = "100"
+        }
+        onView(withId(R.id.editText_transaction_type)).perform(typeText("test transaction"))
+        onView(withId(R.id.editText_transaction_quantity)).perform(typeText(quantity))
+        onView(withId(R.id.editText_transaction_date)).perform(typeText("2024-10-14"))
+        onView(withId(R.id.editText_transaction_details)).perform(typeText("test details"))
+        closeSoftKeyboard()
+        onView(withId(R.id.button_add_transaction)).perform(click())
     }
 }

@@ -16,6 +16,7 @@
 package gparap.apps.personal_finances.ui
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -24,10 +25,13 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.personal_finances.R
 import gparap.apps.personal_finances.adapters.TransactionAdapter
 import gparap.apps.personal_finances.data.PersonalFinancesDatabase
 import gparap.apps.personal_finances.data.TransactionModel
+import gparap.apps.personal_finances.utils.AppConstants
+import gparap.apps.personal_finances.utils.TransactionType
 import gparap.apps.personal_finances.utils.Utils
 import kotlinx.coroutines.launch
 
@@ -70,6 +74,13 @@ class TopUpTransactionsActivity : AppCompatActivity() {
             //notify adapter that the data set has changed
             @SuppressLint("NotifyDataSetChanged")
             adapter.notifyDataSetChanged()
+        }
+
+        //redirect to add transaction screen
+        findViewById<FloatingActionButton>(R.id.fab_addTopUpTransaction).setOnClickListener {
+            val intent = Intent(this, AddTransactionActivity::class.java)
+            intent.putExtra(AppConstants.INTENT_EXTRA_TRANSACTION_TYPE, TransactionType.TOP_UP.toString())
+            startActivity(intent)
         }
     }
 }

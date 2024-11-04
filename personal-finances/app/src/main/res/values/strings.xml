@@ -18,4 +18,6 @@
     <string name="placeholder_app_section_title">placeholder</string>
     <string name="toast_add_transaction_success">Transaction added successfully…</string>
     <string name="toast_add_transaction_failure">Transaction could not be added…</string>
+    <string name="toast_add_transaction_require_positive">Transaction must be positive…</string>
+    <string name="toast_add_transaction_require_negative">Transaction must be negative…</string>
 </resources>
