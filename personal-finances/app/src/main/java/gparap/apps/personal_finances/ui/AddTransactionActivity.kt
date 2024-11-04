@@ -14,6 +14,8 @@ import androidx.lifecycle.lifecycleScope
 import gparap.apps.personal_finances.R
 import gparap.apps.personal_finances.data.PersonalFinancesDatabase
 import gparap.apps.personal_finances.data.TransactionModel
+import gparap.apps.personal_finances.utils.AppConstants
+import gparap.apps.personal_finances.utils.TransactionType
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -30,6 +32,9 @@ class AddTransactionActivity : AppCompatActivity() {
             insets
         }
 
+        //get transaction type from intent, if any
+        val transactionType: String? = intent.getStringExtra(AppConstants.INTENT_EXTRA_TRANSACTION_TYPE)
+
         //hide saving transaction progress
         val progressBar: ProgressBar = findViewById(R.id.progressBar_addTransaction)
         progressBar.visibility = View.INVISIBLE
@@ -42,10 +47,33 @@ class AddTransactionActivity : AppCompatActivity() {
             val date = findViewById<EditText>(R.id.editText_transaction_date).text.toString()
             val details = findViewById<EditText>(R.id.editText_transaction_details).text.toString()
 
+            //check if target quantity is permitted, based on transaction type
+            if (transactionType != TransactionType.ALL.toString()) {
+                if (transactionType == TransactionType.TOP_UP.toString()) {
+                    if (quantity.toFloat() < 0) {
+                        Toast.makeText(
+                            this@AddTransactionActivity,
+                            resources.getString(R.string.toast_add_transaction_require_positive),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        return@setOnClickListener
+                    }
+
+                }else if (transactionType == TransactionType.EXPENSES.toString()) {
+                    if (quantity.toFloat() > 0) {
+                        Toast.makeText(
+                            this@AddTransactionActivity,
+                            resources.getString(R.string.toast_add_transaction_require_negative),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    return@setOnClickListener
+                }
+            }
+
             //create a date formatter TODO: use a date/calendar widget
-            val sdf: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
-            var dateFormatted: Date? = Date()
-            dateFormatted = sdf.parse(date)
+            val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+            val dateFormatted: Date? = sdf.parse(date)
 
             //create a transaction
             val transactionModel = TransactionModel(
