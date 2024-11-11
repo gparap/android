@@ -20,4 +20,10 @@
     <string name="toast_add_transaction_failure">Transaction could not be added…</string>
     <string name="toast_add_transaction_require_positive">Transaction must be positive…</string>
     <string name="toast_add_transaction_require_negative">Transaction must be negative…</string>
+    <string name="desc_delete_transaction">Delete Transaction</string>
+    <string name="alert_delete_transaction_message">The selected transaction will be deleted. Are you sure?</string>
+    <string name="alert_delete_transaction_ok">Delete</string>
+    <string name="alert_delete_transaction_cancel">@android:string/cancel</string>
+    <string name="toast_transaction_deletion_success">Transaction deleted successfully</string>
+    <string name="toast_transaction_deletion_failure">Could not delete transaction</string>
 </resources>

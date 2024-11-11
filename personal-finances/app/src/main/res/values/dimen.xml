@@ -21,4 +21,7 @@
     <dimen name="layout_height_imageView_section_background">172dp</dimen>
     <dimen name="layout_margin_imageView_section_background">8dp</dimen>
     <dimen name="padding_imageView_section_background">8dp</dimen>
+
+    <!--Other(s)-->
+    <dimen name="padding_imageView_deleteTransaction">2dp</dimen>
 </resources>
