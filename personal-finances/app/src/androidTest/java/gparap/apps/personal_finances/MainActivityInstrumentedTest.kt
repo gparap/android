@@ -135,6 +135,33 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
+    fun isCorrect_deleteTransaction() {
+        @Suppress("VARIABLE_WITH_REDUNDANT_INITIALIZER") var transactionsCountBefore = 0
+        @Suppress("VARIABLE_WITH_REDUNDANT_INITIALIZER") var transactionsCountAfter = 0
+
+        //add a new transaction
+        activityScenario = ActivityScenario.launch(MainActivity::class.java)
+        addTransaction("100")
+        activityScenario.close()
+
+        //get all the transactions before deleting one
+        activityScenarioAllTransactions = ActivityScenario.launch(AllTransactionsActivity::class.java)
+        transactionsCountBefore = getTransactionsCount()
+
+        //delete a transaction
+        onView(withId(R.id.imageView_deleteTransaction)).perform(click())
+        onView(withText(R.string.alert_delete_transaction_ok)).perform(click())
+
+        //get all the transactions after deleting one
+        activityScenarioAllTransactions = ActivityScenario.launch(AllTransactionsActivity::class.java)
+        transactionsCountAfter = getTransactionsCount()
+
+        //assert that recycler view has one less transaction
+        assertFalse(transactionsCountBefore == 0 && transactionsCountAfter == 0)
+        assert(transactionsCountBefore > transactionsCountAfter)
+    }
+
+    @Test
     fun isCorrect_addTopUpTransaction() {
         TODO("Will be implemented after delete transaction functionality completes.")
     }

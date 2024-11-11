@@ -19,16 +19,26 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
+import gparap.apps.personal_finances.R
 import gparap.apps.personal_finances.adapters.TransactionAdapter.TransactionViewHolder
 import gparap.apps.personal_finances.data.TransactionModel
-import gparap.apps.personal_finances.R
+import gparap.apps.personal_finances.utils.DeleteTransactionCallback
 
-class TransactionAdapter : RecyclerView.Adapter<TransactionViewHolder>() {
+class TransactionAdapter(private val deleteTransactionCallback: DeleteTransactionCallback) :
+    RecyclerView.Adapter<TransactionViewHolder>() {
     var transactions: ArrayList<TransactionModel> = ArrayList()
+    private lateinit var context: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionViewHolder {
+        //get context
+        context = parent.context
+
+        //create view
         val layoutInflater =
             parent.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view = layoutInflater.inflate(R.layout.cardview_transaction_item, parent, false)
@@ -39,6 +49,28 @@ class TransactionAdapter : RecyclerView.Adapter<TransactionViewHolder>() {
         holder.type.text = transactions[position].type.toString()
         holder.quantity.text = transactions[position].quantity.toString()
         holder.date.text = transactions[position].date.toString()
+
+        //pass a callback to delete the transaction
+        holder.deleteTransaction.setOnClickListener {
+            AlertDialog.Builder(context)
+                .setIcon(AppCompatResources.getDrawable(context, R.drawable.ic_delete_24px))
+                .setTitle(context.getString(R.string.desc_delete_transaction))
+                .setMessage(context.getString(R.string.alert_delete_transaction_message))
+                .setPositiveButton(context.getString(R.string.alert_delete_transaction_ok)) { dialog, _ ->
+                    deleteTransactionCallback.onDeleteTransaction(
+                        transactions[position].id,
+                        transactions[position].quantity
+                    )
+                    dialog.dismiss()
+                }
+                .setNegativeButton(context.getString(R.string.alert_delete_transaction_cancel)) { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .create()
+                .apply {
+                    show()
+                }
+        }
     }
 
     override fun getItemCount(): Int {
@@ -52,5 +84,6 @@ class TransactionAdapter : RecyclerView.Adapter<TransactionViewHolder>() {
         var quantity = itemView.findViewById<TextView>(R.id.cardView_transactionQuantity)
         var dateLabel = itemView.findViewById<TextView>(R.id.cardView_transactionDate_label)
         var date = itemView.findViewById<TextView>(R.id.cardView_transactionDate)
+        var deleteTransaction = itemView.findViewById<ImageView>(R.id.imageView_deleteTransaction)
     }
 }

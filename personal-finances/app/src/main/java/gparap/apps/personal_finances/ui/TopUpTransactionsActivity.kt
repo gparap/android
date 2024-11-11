@@ -31,6 +31,7 @@ import gparap.apps.personal_finances.adapters.TransactionAdapter
 import gparap.apps.personal_finances.data.PersonalFinancesDatabase
 import gparap.apps.personal_finances.data.TransactionModel
 import gparap.apps.personal_finances.utils.AppConstants
+import gparap.apps.personal_finances.utils.DeleteTransactionCallback
 import gparap.apps.personal_finances.utils.TransactionType
 import gparap.apps.personal_finances.utils.Utils
 import kotlinx.coroutines.launch
@@ -50,7 +51,7 @@ class TopUpTransactionsActivity : AppCompatActivity() {
         //setup recycler view with adapter
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView_topUpTransactions)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        val adapter = TransactionAdapter()
+        val adapter = TransactionAdapter(deleteTransactionCallback)
         recyclerView.adapter = adapter
 
         //display top-up transactions
@@ -81,6 +82,12 @@ class TopUpTransactionsActivity : AppCompatActivity() {
             val intent = Intent(this, AddTransactionActivity::class.java)
             intent.putExtra(AppConstants.INTENT_EXTRA_TRANSACTION_TYPE, TransactionType.TOP_UP.toString())
             startActivity(intent)
+        }
+    }
+
+    private val deleteTransactionCallback = object : DeleteTransactionCallback {
+        override fun onDeleteTransaction(id: Int, quantity: Float) {
+            TODO("Not yet implemented")
         }
     }
 }

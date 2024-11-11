@@ -84,6 +84,15 @@
                 tools:text="2024-12-31" />
         </LinearLayout>
 
+        <!--Delete Transaction-->
+        <ImageView
+            android:id="@+id/imageView_deleteTransaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:contentDescription="@string/desc_delete_transaction"
+            android:padding="@dimen/padding_imageView_deleteTransaction"
+            app:srcCompat="@drawable/ic_delete_24px" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

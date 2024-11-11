@@ -32,4 +32,7 @@ interface TransactionDao {
 
     @Query("SELECT * FROM `transaction` WHERE `quantity` < 0")
     suspend fun getExpenseTransactions() : List<TransactionModel>
+
+    @Query("DELETE FROM `transaction` WHERE `id` = :id")
+    suspend fun deleteTransaction(id: Int) : Int
 }
