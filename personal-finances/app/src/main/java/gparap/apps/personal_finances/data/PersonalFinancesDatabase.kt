@@ -19,6 +19,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import gparap.apps.personal_finances.utils.AppConstants
 
 @Database(entities = [TransactionModel::class], version = 1, exportSchema = false)
 abstract class PersonalFinancesDatabase : RoomDatabase() {
@@ -32,7 +33,7 @@ abstract class PersonalFinancesDatabase : RoomDatabase() {
                 instance = Room.databaseBuilder(
                     context,
                     PersonalFinancesDatabase::class.java,
-                    "PersonalFinancesDB"
+                    AppConstants.APP_DATABASE
                 ).build()
             }
             return instance

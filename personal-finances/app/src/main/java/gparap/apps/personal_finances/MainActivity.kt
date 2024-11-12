@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             val editor = sharedPreferences.edit()
             editor.putFloat(SHARED_PREF_ACCOUNT_BALANCE, ZERO_ACCOUNT_BALANCE)
             editor.apply()
-        }else{
+        } else {
             accountBalance = sharedPreferences.getFloat(SHARED_PREF_ACCOUNT_BALANCE, ZERO_ACCOUNT_BALANCE)
         }
 

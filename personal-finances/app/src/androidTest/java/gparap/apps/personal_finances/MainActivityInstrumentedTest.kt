@@ -162,16 +162,6 @@ class MainActivityInstrumentedTest {
     }
 
     @Test
-    fun isCorrect_addTopUpTransaction() {
-        TODO("Will be implemented after delete transaction functionality completes.")
-    }
-
-    @Test
-    fun isCorrect_addExpenseTransaction() {
-        TODO("Will be implemented after delete transaction functionality completes.")
-    }
-
-    @Test
     fun isCorrect_updateAppSectionTitle() {
         //we are in dashboard
         onView(withText(R.string.section_text_dashboard)).check(matches(isDisplayed()))

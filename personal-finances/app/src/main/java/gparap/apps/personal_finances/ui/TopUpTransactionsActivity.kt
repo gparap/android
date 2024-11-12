@@ -36,6 +36,7 @@ import gparap.apps.personal_finances.utils.TransactionType
 import gparap.apps.personal_finances.utils.Utils
 import kotlinx.coroutines.launch
 
+@SuppressLint("NotifyDataSetChanged")
 class TopUpTransactionsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,7 +74,6 @@ class TopUpTransactionsActivity : AppCompatActivity() {
                 }
             }
             //notify adapter that the data set has changed
-            @SuppressLint("NotifyDataSetChanged")
             adapter.notifyDataSetChanged()
         }
 
@@ -86,8 +86,8 @@ class TopUpTransactionsActivity : AppCompatActivity() {
     }
 
     private val deleteTransactionCallback = object : DeleteTransactionCallback {
-        override fun onDeleteTransaction(id: Int, quantity: Float) {
-            TODO("Not yet implemented")
+        override fun onDeleteTransaction(transaction: TransactionModel) {
+            Utils.deleteTransaction(transaction, this@TopUpTransactionsActivity, lifecycleScope)
         }
     }
 }

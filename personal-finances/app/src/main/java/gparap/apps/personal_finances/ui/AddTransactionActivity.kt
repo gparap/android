@@ -30,8 +30,8 @@ import gparap.apps.personal_finances.R
 import gparap.apps.personal_finances.data.PersonalFinancesDatabase
 import gparap.apps.personal_finances.data.TransactionModel
 import gparap.apps.personal_finances.utils.AppConstants
-import gparap.apps.personal_finances.utils.AppConstants.SHARED_PREF_ACCOUNT_BALANCE
 import gparap.apps.personal_finances.utils.TransactionType
+import gparap.apps.personal_finances.utils.Utils
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -75,7 +75,7 @@ class AddTransactionActivity : AppCompatActivity() {
                         return@setOnClickListener
                     }
 
-                }else if (transactionType == TransactionType.EXPENSES.toString()) {
+                } else if (transactionType == TransactionType.EXPENSES.toString()) {
                     if (quantity.toFloat() > 0) {
                         Toast.makeText(
                             this@AddTransactionActivity,
@@ -121,11 +121,7 @@ class AddTransactionActivity : AppCompatActivity() {
 
                     //update account balance in shared preferences
                     val sharedPrefs = getSharedPreferences(AppConstants.APP_SHARED_PREFERENCES, MODE_PRIVATE)
-                    var accountBalance = sharedPrefs.getFloat(SHARED_PREF_ACCOUNT_BALANCE, AppConstants.ZERO_ACCOUNT_BALANCE)
-                    accountBalance += quantity.toFloat()
-                    val editor = sharedPrefs.edit()
-                    editor.putFloat(SHARED_PREF_ACCOUNT_BALANCE, accountBalance)
-                    editor.apply()
+                    Utils.updateAccountBalance(sharedPrefs, quantity.toFloat())
                 }
             }
         }
