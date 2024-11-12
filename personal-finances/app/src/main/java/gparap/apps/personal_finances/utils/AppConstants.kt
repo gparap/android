@@ -16,6 +16,8 @@
 package gparap.apps.personal_finances.utils
 
 object AppConstants {
+    const val APP_DATABASE                  = "PersonalFinancesDB"
+
     const val INTENT_EXTRA_TRANSACTION_TYPE = "transaction_type"
 
     const val APP_SHARED_PREFERENCES        = "app_shared_prefs"

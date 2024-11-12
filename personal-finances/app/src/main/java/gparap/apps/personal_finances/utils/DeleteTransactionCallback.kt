@@ -15,6 +15,8 @@
  */
 package gparap.apps.personal_finances.utils
 
+import gparap.apps.personal_finances.data.TransactionModel
+
 interface DeleteTransactionCallback {
-    fun onDeleteTransaction(id: Int, quantity: Float)
+    fun onDeleteTransaction(transaction: TransactionModel)
 }

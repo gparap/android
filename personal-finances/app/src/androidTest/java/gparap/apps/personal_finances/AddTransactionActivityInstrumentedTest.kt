@@ -113,8 +113,8 @@ class AddTransactionActivityInstrumentedTest {
         //start a new scenario with intent
         activityScenario.close()
         val intent = Intent(context, AddTransactionActivity::class.java)
-        intent.putExtra(AppConstants.INTENT_EXTRA_TRANSACTION_TYPE, TransactionType.EXPENSES)
-        ActivityScenario<AddTransactionActivity>.launch<AddTransactionActivity>(intent)
+        intent.putExtra(AppConstants.INTENT_EXTRA_TRANSACTION_TYPE, TransactionType.TOP_UP)
+        ActivityScenario.launch<AddTransactionActivity>(intent)
 
         //add transaction
         enterTestTransaction(isQuantityPositive = false)
@@ -135,7 +135,7 @@ class AddTransactionActivityInstrumentedTest {
         activityScenario.close()
         val intent = Intent(context, AddTransactionActivity::class.java)
         intent.putExtra(AppConstants.INTENT_EXTRA_TRANSACTION_TYPE, TransactionType.EXPENSES)
-        ActivityScenario<AddTransactionActivity>.launch<AddTransactionActivity>(intent)
+        ActivityScenario.launch<AddTransactionActivity>(intent)
 
         //add transaction
         enterTestTransaction(isQuantityPositive = true)

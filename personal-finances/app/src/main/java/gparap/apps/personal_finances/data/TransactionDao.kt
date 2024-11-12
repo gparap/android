@@ -25,14 +25,14 @@ interface TransactionDao {
     suspend fun addTransaction(vararg transaction: TransactionModel)
 
     @Query("SELECT * FROM `transaction`")
-    suspend fun getAllTransactions() : List<TransactionModel>
+    suspend fun getAllTransactions(): List<TransactionModel>
 
     @Query("SELECT * FROM `transaction` WHERE `quantity` > 0")
-    suspend fun getTopUpTransactions() : List<TransactionModel>
+    suspend fun getTopUpTransactions(): List<TransactionModel>
 
     @Query("SELECT * FROM `transaction` WHERE `quantity` < 0")
-    suspend fun getExpenseTransactions() : List<TransactionModel>
+    suspend fun getExpenseTransactions(): List<TransactionModel>
 
     @Query("DELETE FROM `transaction` WHERE `id` = :id")
-    suspend fun deleteTransaction(id: Int) : Int
+    suspend fun deleteTransaction(id: Int): Int
 }

@@ -28,6 +28,7 @@ import gparap.apps.personal_finances.R
 import gparap.apps.personal_finances.adapters.TransactionAdapter.TransactionViewHolder
 import gparap.apps.personal_finances.data.TransactionModel
 import gparap.apps.personal_finances.utils.DeleteTransactionCallback
+import java.util.Locale
 
 class TransactionAdapter(private val deleteTransactionCallback: DeleteTransactionCallback) :
     RecyclerView.Adapter<TransactionViewHolder>() {
@@ -46,9 +47,9 @@ class TransactionAdapter(private val deleteTransactionCallback: DeleteTransactio
     }
 
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
-        holder.type.text = transactions[position].type.toString()
-        holder.quantity.text = transactions[position].quantity.toString()
-        holder.date.text = transactions[position].date.toString()
+        holder.type.text = transactions[position].type
+        holder.quantity.text = String.format(Locale.getDefault(), transactions[position].quantity.toString())
+        holder.date.text = transactions[position].date
 
         //pass a callback to delete the transaction
         holder.deleteTransaction.setOnClickListener {
@@ -57,10 +58,7 @@ class TransactionAdapter(private val deleteTransactionCallback: DeleteTransactio
                 .setTitle(context.getString(R.string.desc_delete_transaction))
                 .setMessage(context.getString(R.string.alert_delete_transaction_message))
                 .setPositiveButton(context.getString(R.string.alert_delete_transaction_ok)) { dialog, _ ->
-                    deleteTransactionCallback.onDeleteTransaction(
-                        transactions[position].id,
-                        transactions[position].quantity
-                    )
+                    deleteTransactionCallback.onDeleteTransaction(transactions[position])
                     dialog.dismiss()
                 }
                 .setNegativeButton(context.getString(R.string.alert_delete_transaction_cancel)) { dialog, _ ->
@@ -78,12 +76,9 @@ class TransactionAdapter(private val deleteTransactionCallback: DeleteTransactio
     }
 
     inner class TransactionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var typeLabel = itemView.findViewById<TextView>(R.id.cardView_transactionType_label)
-        var type = itemView.findViewById<TextView>(R.id.cardView_transactionType)
-        var quantityLabel = itemView.findViewById<TextView>(R.id.cardView_transactionQuantity_label)
-        var quantity = itemView.findViewById<TextView>(R.id.cardView_transactionQuantity)
-        var dateLabel = itemView.findViewById<TextView>(R.id.cardView_transactionDate_label)
-        var date = itemView.findViewById<TextView>(R.id.cardView_transactionDate)
-        var deleteTransaction = itemView.findViewById<ImageView>(R.id.imageView_deleteTransaction)
+        var type: TextView = itemView.findViewById(R.id.cardView_transactionType)
+        var quantity: TextView = itemView.findViewById(R.id.cardView_transactionQuantity)
+        var date: TextView = itemView.findViewById(R.id.cardView_transactionDate)
+        var deleteTransaction: ImageView = itemView.findViewById(R.id.imageView_deleteTransaction)
     }
 }
