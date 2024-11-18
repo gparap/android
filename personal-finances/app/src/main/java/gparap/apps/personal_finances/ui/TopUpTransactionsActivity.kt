@@ -28,16 +28,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import gparap.apps.personal_finances.R
 import gparap.apps.personal_finances.adapters.TransactionAdapter
-import gparap.apps.personal_finances.data.PersonalFinancesDatabase
 import gparap.apps.personal_finances.data.TransactionModel
 import gparap.apps.personal_finances.utils.AppConstants
 import gparap.apps.personal_finances.utils.DeleteTransactionCallback
 import gparap.apps.personal_finances.utils.TransactionType
 import gparap.apps.personal_finances.utils.Utils
-import kotlinx.coroutines.launch
 
 @SuppressLint("NotifyDataSetChanged")
 class TopUpTransactionsActivity : AppCompatActivity() {
+    private lateinit var adapter: TransactionAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -52,30 +52,8 @@ class TopUpTransactionsActivity : AppCompatActivity() {
         //setup recycler view with adapter
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView_topUpTransactions)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        val adapter = TransactionAdapter(deleteTransactionCallback)
+        adapter = TransactionAdapter(deleteTransactionCallback)
         recyclerView.adapter = adapter
-
-        //display top-up transactions
-        val roomDb = PersonalFinancesDatabase.getInstance(this)
-        lifecycleScope.launch {
-            val transactions = roomDb?.transactionDao()?.getTopUpTransactions()
-            if (transactions != null) {
-                for (transaction in transactions) {
-                    //add transaction object to adapter
-                    adapter.transactions.add(
-                        TransactionModel(
-                            transaction.id,
-                            transaction.type,
-                            transaction.quantity,
-                            transaction.date,
-                            transaction.details
-                        )
-                    )
-                }
-            }
-            //notify adapter that the data set has changed
-            adapter.notifyDataSetChanged()
-        }
 
         //redirect to add transaction screen
         findViewById<FloatingActionButton>(R.id.fab_addTopUpTransaction).setOnClickListener {
@@ -83,6 +61,14 @@ class TopUpTransactionsActivity : AppCompatActivity() {
             intent.putExtra(AppConstants.INTENT_EXTRA_TRANSACTION_TYPE, TransactionType.TOP_UP.toString())
             startActivity(intent)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        //display top-up transactions
+        adapter.transactions.clear()
+        Utils.displayTransactions(this, TransactionType.TOP_UP, adapter)
     }
 
     private val deleteTransactionCallback = object : DeleteTransactionCallback {

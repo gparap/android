@@ -15,6 +15,7 @@
  */
 package gparap.apps.personal_finances.utils
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
@@ -23,7 +24,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity.MODE_PRIVATE
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.LifecycleCoroutineScope
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
 import gparap.apps.personal_finances.R
+import gparap.apps.personal_finances.adapters.TransactionAdapter
 import gparap.apps.personal_finances.data.PersonalFinancesDatabase
 import gparap.apps.personal_finances.data.TransactionModel
 import gparap.apps.personal_finances.utils.AppConstants.SHARED_PREF_ACCOUNT_BALANCE
@@ -79,6 +83,36 @@ object Utils {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+            }
+        }
+    }
+
+    /** Displays all the transactions of a specific type. */
+    @SuppressLint("NotifyDataSetChanged")
+    fun displayTransactions(context: Context, type: TransactionType, adapter: TransactionAdapter) {
+        val roomDb = PersonalFinancesDatabase.getInstance(context)
+        (context as LifecycleOwner).lifecycleScope.launch {
+            //get transactions by type
+            val transactions: List<TransactionModel>? = when (type) {
+                TransactionType.ALL -> roomDb?.transactionDao()?.getAllTransactions()
+                TransactionType.TOP_UP -> roomDb?.transactionDao()?.getTopUpTransactions()
+                TransactionType.EXPENSES -> roomDb?.transactionDao()?.getExpenseTransactions()
+            }
+            //add transactions to adapter
+            if (transactions != null) {
+                for (transaction in transactions) {
+                    adapter.transactions.add(
+                        TransactionModel(
+                            transaction.id,
+                            transaction.type,
+                            transaction.quantity,
+                            transaction.date,
+                            transaction.details
+                        )
+                    )
+                }
+                //notify adapter that the data set has changed
+                adapter.notifyDataSetChanged()
             }
         }
     }
