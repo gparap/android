@@ -22,7 +22,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -73,7 +72,8 @@ class TopUpTransactionsActivity : AppCompatActivity() {
 
     private val deleteTransactionCallback = object : DeleteTransactionCallback {
         override fun onDeleteTransaction(transaction: TransactionModel) {
-            Utils.deleteTransaction(transaction, this@TopUpTransactionsActivity, lifecycleScope)
+            Utils.deleteTransaction(transaction, this@TopUpTransactionsActivity)
+            this@TopUpTransactionsActivity.recreate()
         }
     }
 }
