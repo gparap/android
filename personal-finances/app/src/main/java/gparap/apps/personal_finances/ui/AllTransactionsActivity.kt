@@ -26,14 +26,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.personal_finances.R
 import gparap.apps.personal_finances.adapters.TransactionAdapter
-import gparap.apps.personal_finances.data.PersonalFinancesDatabase
 import gparap.apps.personal_finances.data.TransactionModel
 import gparap.apps.personal_finances.utils.DeleteTransactionCallback
+import gparap.apps.personal_finances.utils.TransactionType
 import gparap.apps.personal_finances.utils.Utils
-import kotlinx.coroutines.launch
 
 @SuppressLint("NotifyDataSetChanged")
 class AllTransactionsActivity : AppCompatActivity() {
+    private lateinit var adapter: TransactionAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -48,30 +49,16 @@ class AllTransactionsActivity : AppCompatActivity() {
         //setup recycler view with adapter
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView_allTransactions)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        val adapter = TransactionAdapter(deleteTransactionCallback)
+        adapter = TransactionAdapter(deleteTransactionCallback)
         recyclerView.adapter = adapter
+    }
 
-        //display transactions
-        val roomDb = PersonalFinancesDatabase.getInstance(this)
-        lifecycleScope.launch {
-            val transactions = roomDb?.transactionDao()?.getAllTransactions()
-            if (transactions != null) {
-                for (transaction in transactions) {
-                    //add transaction object to adapter
-                    adapter.transactions.add(
-                        TransactionModel(
-                            transaction.id,
-                            transaction.type,
-                            transaction.quantity,
-                            transaction.date,
-                            transaction.details
-                        )
-                    )
-                }
-            }
-            //notify adapter that the data set has changed
-            adapter.notifyDataSetChanged()
-        }
+    override fun onStart() {
+        super.onStart()
+
+        //display all transactions
+        adapter.transactions.clear()
+        Utils.displayTransactions(this, TransactionType.ALL, adapter)
     }
 
     private val deleteTransactionCallback = object : DeleteTransactionCallback {
