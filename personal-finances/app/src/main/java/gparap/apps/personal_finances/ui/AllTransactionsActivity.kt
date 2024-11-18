@@ -21,7 +21,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import gparap.apps.personal_finances.R
@@ -63,7 +62,8 @@ class AllTransactionsActivity : AppCompatActivity() {
 
     private val deleteTransactionCallback = object : DeleteTransactionCallback {
         override fun onDeleteTransaction(transaction: TransactionModel) {
-            Utils.deleteTransaction(transaction, this@AllTransactionsActivity, lifecycleScope)
+            Utils.deleteTransaction(transaction, this@AllTransactionsActivity)
+            this@AllTransactionsActivity.recreate()
         }
     }
 }

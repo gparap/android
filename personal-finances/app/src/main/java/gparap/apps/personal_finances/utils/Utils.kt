@@ -23,7 +23,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity.MODE_PRIVATE
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import gparap.apps.personal_finances.R
@@ -60,9 +59,9 @@ object Utils {
         editor.apply()
     }
 
-    fun deleteTransaction(transaction: TransactionModel, context: Context, lifecycleScope: LifecycleCoroutineScope) {
+    fun deleteTransaction(transaction: TransactionModel, context: Context) {
         val roomDb = PersonalFinancesDatabase.getInstance(context)
-        lifecycleScope.launch {
+        (context as LifecycleOwner).lifecycleScope.launch {
             val rowsDeleted = roomDb?.transactionDao()?.deleteTransaction(transaction.id)
             if (rowsDeleted != null) {
                 if (rowsDeleted > 0) {
