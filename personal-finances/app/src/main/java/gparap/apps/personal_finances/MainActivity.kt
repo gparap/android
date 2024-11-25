@@ -16,6 +16,7 @@
 package gparap.apps.personal_finances
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
@@ -35,6 +36,7 @@ import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
     private var accountBalance: Float = ZERO_ACCOUNT_BALANCE
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //initialize account balance as a shared preference, if not exists
-        val sharedPreferences = getSharedPreferences(AppConstants.APP_SHARED_PREFERENCES, MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences(AppConstants.APP_SHARED_PREFERENCES, MODE_PRIVATE)
         if (!sharedPreferences.contains(SHARED_PREF_ACCOUNT_BALANCE)) {
             val editor = sharedPreferences.edit()
             editor.putFloat(SHARED_PREF_ACCOUNT_BALANCE, ZERO_ACCOUNT_BALANCE)
@@ -79,6 +81,16 @@ class MainActivity : AppCompatActivity() {
         //redirect to expense transactions screen
         findViewById<ImageView>(R.id.imageView_expense_transactions_background).setOnClickListener {
             startActivity(Intent(this, ExpenseTransactionsActivity::class.java))
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        //sync account balance
+        accountBalance = sharedPreferences.getFloat(SHARED_PREF_ACCOUNT_BALANCE, ZERO_ACCOUNT_BALANCE)
+        findViewById<TextView>(R.id.textView_account_balance).apply {
+            text = String.format(Locale.getDefault(), accountBalance.toString())
         }
     }
 }
