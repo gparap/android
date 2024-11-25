@@ -15,6 +15,7 @@
  */
 package gparap.apps.personal_finances.ui
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -34,6 +35,7 @@ import gparap.apps.personal_finances.utils.TransactionType
 import gparap.apps.personal_finances.utils.Utils
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
@@ -54,6 +56,30 @@ class AddTransactionActivity : AppCompatActivity() {
         //hide saving transaction progress
         val progressBar: ProgressBar = findViewById(R.id.progressBar_addTransaction)
         progressBar.visibility = View.INVISIBLE
+
+        //set the date for the transaction
+        findViewById<EditText>(R.id.editText_transaction_date).setOnClickListener { view ->
+            //get a reference to this EditText
+            val thisEditText = view as EditText
+
+            //get the date (today)
+            val dateNowTimestamp = Date()
+            val calendar = Calendar.getInstance()
+            calendar.time = dateNowTimestamp
+
+            //display a dialog to select the transaction date
+            DatePickerDialog(
+                this@AddTransactionActivity,
+                android.R.style.Widget_DeviceDefault_DatePicker,
+                { _, year, month, dayOfMonth ->
+                    //set the transaction date
+                    val transactionDate = "$year-$month-$dayOfMonth"
+                    thisEditText.setText(transactionDate)
+                },
+                //initialize the dialog with today's date
+                calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE)
+            ).show()
+        }
 
         //add transaction TODO: input data validation
         findViewById<Button>(R.id.button_add_transaction).setOnClickListener {
@@ -87,7 +113,7 @@ class AddTransactionActivity : AppCompatActivity() {
                 }
             }
 
-            //create a date formatter TODO: use a date/calendar widget
+            //create a date formatter
             val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.US)
             val dateFormatted: Date? = sdf.parse(date)
 
