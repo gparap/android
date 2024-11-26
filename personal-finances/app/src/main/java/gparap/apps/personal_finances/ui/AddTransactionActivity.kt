@@ -21,6 +21,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -58,9 +59,9 @@ class AddTransactionActivity : AppCompatActivity() {
         progressBar.visibility = View.INVISIBLE
 
         //set the date for the transaction
-        findViewById<EditText>(R.id.editText_transaction_date).setOnClickListener { view ->
+        findViewById<TextView>(R.id.textView_transaction_date).setOnClickListener { view ->
             //get a reference to this EditText
-            val thisEditText = view as EditText
+            val thisTextView = view as TextView
 
             //get the date (today)
             val dateNowTimestamp = Date()
@@ -74,20 +75,36 @@ class AddTransactionActivity : AppCompatActivity() {
                 { _, year, month, dayOfMonth ->
                     //set the transaction date
                     val transactionDate = "$year-$month-$dayOfMonth"
-                    thisEditText.setText(transactionDate)
+                    thisTextView.text = transactionDate
                 },
                 //initialize the dialog with today's date
                 calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE)
             ).show()
         }
 
-        //add transaction TODO: input data validation
+        //add transaction
         findViewById<Button>(R.id.button_add_transaction).setOnClickListener {
             //get the transaction input data
             val type = findViewById<EditText>(R.id.editText_transaction_type).text.toString()
             val quantity = findViewById<EditText>(R.id.editText_transaction_quantity).text.toString()
-            val date = findViewById<EditText>(R.id.editText_transaction_date).text.toString()
+            val date = findViewById<TextView>(R.id.textView_transaction_date).text.toString()
             val details = findViewById<EditText>(R.id.editText_transaction_details).text.toString()
+
+            //perform basic input data validation
+            if (type.isEmpty() || quantity.isEmpty() || date.isEmpty()) {
+                var validationMsg = ""
+                if (date.isEmpty()) {
+                    validationMsg = resources.getString(R.string.toast_add_transaction_require_date)
+                }
+                if (quantity.isEmpty()) {
+                    validationMsg = resources.getString(R.string.toast_add_transaction_require_quantity)
+                }
+                if (type.isEmpty()) {
+                    validationMsg = resources.getString(R.string.toast_add_transaction_require_type)
+                }
+                Toast.makeText(this@AddTransactionActivity, validationMsg, Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
             //check if target quantity is permitted, based on transaction type
             if (transactionType != TransactionType.ALL.toString()) {

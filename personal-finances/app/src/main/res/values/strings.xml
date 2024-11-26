@@ -10,7 +10,7 @@
     <string name="desc_add_transaction">Add Transaction</string>
     <string name="hint_transaction_type">Enter type for transaction</string>
     <string name="hint_transaction_quantity">Enter quantity for transaction (100.99)</string>
-    <string name="hint_transaction_date">Enter date for transaction (YYYY-MM-DD)</string>
+    <string name="hint_transaction_date">Pick date for transaction (YYYY-MM-DD)</string>
     <string name="hint_transaction_details">Enter transaction details</string>
     <string name="label_transaction_type">Type:</string>
     <string name="label_transaction_quantity">Quantity:</string>
@@ -20,6 +20,9 @@
     <string name="toast_add_transaction_failure">Transaction could not be added…</string>
     <string name="toast_add_transaction_require_positive">Transaction must be positive…</string>
     <string name="toast_add_transaction_require_negative">Transaction must be negative…</string>
+    <string name="toast_add_transaction_require_type">Transaction must have a type…</string>
+    <string name="toast_add_transaction_require_quantity">Transaction must have a quantity…</string>
+    <string name="toast_add_transaction_require_date">Transaction must have a date…</string>
     <string name="desc_delete_transaction">Delete Transaction</string>
     <string name="alert_delete_transaction_message">The selected transaction will be deleted. Are you sure?</string>
     <string name="alert_delete_transaction_ok">Delete</string>
