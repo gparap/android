@@ -80,8 +80,8 @@ class AddTransactionActivityInstrumentedTest {
     }
 
     @Test
-    fun isVisible_editText_transaction_date() {
-        onView(withId(R.id.editText_transaction_date)).check(matches(isDisplayed()))
+    fun isVisible_textView_transaction_date() {
+        onView(withId(R.id.textView_transaction_date)).check(matches(isDisplayed()))
     }
 
     @Test
@@ -122,7 +122,6 @@ class AddTransactionActivityInstrumentedTest {
             .inRoot(withDecorView(not(rootView)))
             .check(matches(isDisplayed()))
         Thread.sleep(2000L) //wait for the Toast to disappear
-
     }
 
     @Test
@@ -147,13 +146,15 @@ class AddTransactionActivityInstrumentedTest {
     }
 
     private fun enterTestTransaction(isQuantityPositive: Boolean) {
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
         var quantity = "-100"
         if (isQuantityPositive) {
             quantity = "100"
         }
         onView(withId(R.id.editText_transaction_type)).perform(typeText("test transaction"))
         onView(withId(R.id.editText_transaction_quantity)).perform(typeText(quantity))
-        onView(withId(R.id.editText_transaction_date)).perform(typeText("2024-10-14"))
+        onView(withId(R.id.textView_transaction_date)).perform(click())
+        onView(withText(context.resources.getString(android.R.string.ok))).perform(click())
         onView(withId(R.id.editText_transaction_details)).perform(typeText("test details"))
         closeSoftKeyboard()
         onView(withId(R.id.button_add_transaction)).perform(click())

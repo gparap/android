@@ -231,7 +231,7 @@ class MainActivityInstrumentedTest {
         onView(withId(R.id.fab_addTransaction)).perform(click())
         onView(withId(R.id.editText_transaction_type)).perform(typeText("test transaction"))
         onView(withId(R.id.editText_transaction_quantity)).perform(typeText(quantity))
-        onView(withId(R.id.editText_transaction_date)).perform(typeText("2024-12-31"))
+        onView(withId(R.id.textView_transaction_date)).perform(typeText("2024-12-31"))
         onView(withId(R.id.editText_transaction_details)).perform(typeText("test details"))
         closeSoftKeyboard()
         onView(withId(R.id.button_add_transaction)).perform(click())
