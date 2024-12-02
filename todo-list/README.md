@@ -17,3 +17,15 @@ Tasks can contain a deadline reminder for specific time/date that they must be d
 View on Google Play:
 --------------------
 https://play.google.com/store/apps/details?id=gparap.apps.todo_list
+
+View on Uptodown:
+-----------------
+https://my-to-do-list.uptodown.com/android
+
+Releases:
+---------
+version 1.0
+
+- My To-Do List
+- Supports 22 languages.
+- Supports android 14 devices (UpsideDownCake).
