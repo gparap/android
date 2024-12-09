@@ -12,7 +12,7 @@ android {
         minSdkVersion 21
         //noinspection OldTargetApi
         targetSdkVersion 34
-        versionCode 3
+        versionCode 4
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -58,7 +58,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     //Google Mobile Ads SDK
-    dependencies {
-        implementation 'com.google.android.gms:play-services-ads:21.0.0'
-    }
+    implementation 'com.google.android.gms:play-services-ads:21.0.0'
 }
