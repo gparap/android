@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 gparap
+ * Copyright 2024 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,13 +17,18 @@ package gparap.apps.painter
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.ContentValues
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.os.*
+import android.os.Build
+import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
 import android.widget.ImageView
 import android.widget.SeekBar
@@ -32,24 +37,28 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.google.android.gms.ads.*
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import gparap.apps.painter.canvas.CanvasView
 import gparap.apps.painter.color_picker.ColorPickerDialog
 import gparap.apps.painter.color_picker.ColorPickerListener
 import gparap.apps.painter.utils.Utils
+import java.io.IOException
 import java.io.InputStream
 
-
 @Suppress("PrivatePropertyName")
-class MainActivity : AppCompatActivity(), ColorPickerListener {
+class MainActivity : AppCompatActivity(), ColorPickerListener { //TODO: Refactor code
     private lateinit var canvasLayout: ConstraintLayout
     private lateinit var canvasView: CanvasView
     private lateinit var dialog: ColorPickerDialog
     private val REQUEST_CODE_WRITE_EXTERNAL_STORAGE = 111
     private val REQUEST_CODE_ACTION_GET_CONTENT = 222
+    private val REQUEST_CODE_READ_MEDIA_IMAGES = 333
     private var interstitialAd: InterstitialAd? = null
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -110,7 +119,6 @@ class MainActivity : AppCompatActivity(), ColorPickerListener {
             dialog = ColorPickerDialog(this)
             dialog.setColorPickerListener(this)
             dialog.show()
-
         }
 
         //save painting to a .png file on a top-level shared storage directory
@@ -127,22 +135,45 @@ class MainActivity : AppCompatActivity(), ColorPickerListener {
                 } else {
                     savePainting()  //permission granted
                 }
+            }
 
-            } else {
-                savePainting()  //not a legacy API
+            //no need permissions when saving with MediaStore on modern APIs
+            else {
+                savePainting(this)
             }
         }
 
         //open existing painting from filesystem
         val imageViewOpen = findViewById<ImageView>(R.id.imageViewOpen)
         imageViewOpen.setOnClickListener {
-            //create an action to open image files
-            val intent = Intent(Intent.ACTION_GET_CONTENT)
-            intent.type = "image/*"
-            startActivityForResult(
-                Intent.createChooser(intent, resources.getString(R.string.title_file_picker)),
-                REQUEST_CODE_ACTION_GET_CONTENT
-            )
+            //!!! API >=33
+            if (Build.VERSION.SDK_INT >= 33) {
+                if (isPermissionGranted33Plus()) {
+                    val intent = Intent(Intent.ACTION_PICK).apply {
+                        type = "image/*"
+                        putExtra(Intent.EXTRA_MIME_TYPES, arrayOf("image/jpeg", "image/jpg", "image/png"))
+                    }
+                    startActivityForResult(intent, REQUEST_CODE_READ_MEDIA_IMAGES)
+                } else {
+                    //request permissions to read image files
+                    ActivityCompat.requestPermissions(
+                        this,
+                        arrayOf(Manifest.permission.READ_MEDIA_IMAGES),
+                        REQUEST_CODE_READ_MEDIA_IMAGES
+                    )
+                }
+            }
+
+            //!!! API <33
+            else {
+                //create an action to open image files
+                val intent = Intent(Intent.ACTION_GET_CONTENT)
+                intent.type = "image/*"
+                startActivityForResult(
+                    Intent.createChooser(intent, resources.getString(R.string.title_file_picker)),
+                    REQUEST_CODE_ACTION_GET_CONTENT
+                )
+            }
         }
 
         //initialize the Google Mobile Ads SDK
@@ -179,7 +210,7 @@ class MainActivity : AppCompatActivity(), ColorPickerListener {
         if (resultCode != RESULT_OK) {
             return
         }
-        if (requestCode == REQUEST_CODE_ACTION_GET_CONTENT) {
+        if (requestCode == REQUEST_CODE_ACTION_GET_CONTENT || requestCode == REQUEST_CODE_READ_MEDIA_IMAGES) {
             //get file path and decode file to bitmap
             val uri = intentData?.data
             val inputStream: InputStream? = contentResolver.openInputStream(uri!!)
@@ -210,9 +241,22 @@ class MainActivity : AppCompatActivity(), ColorPickerListener {
                 }
                 return
             }
+
+            REQUEST_CODE_READ_MEDIA_IMAGES -> {
+                //if request is cancelled, the result arrays are empty
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    val intent = Intent(Intent.ACTION_PICK).apply {
+                        type = "image/*"
+                        putExtra(Intent.EXTRA_MIME_TYPES, arrayOf("image/jpeg", "image/jpg", "image/png"))
+                    }
+                    startActivityForResult(intent, REQUEST_CODE_READ_MEDIA_IMAGES)
+                }
+                return
+            }
         }
     }
 
+    //TODO: Refactor isPermissionGranted methods
     //check if permission to write storage is granted (for API < 29)
     private fun isPermissionGranted(): Boolean {
         if (ContextCompat.checkSelfPermission(
@@ -225,6 +269,19 @@ class MainActivity : AppCompatActivity(), ColorPickerListener {
         return false
     }
 
+    //check if permission to read media images is granted (for API >= 33)
+    private fun isPermissionGranted33Plus(): Boolean {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_MEDIA_IMAGES
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            return true
+        }
+        return false
+    }
+
+    //TODO: Refactor savePainting methods
     //save painting to device's public directory, "pictures"
     private fun savePainting() {
         Utils.writeDataToFile(
@@ -234,8 +291,41 @@ class MainActivity : AppCompatActivity(), ColorPickerListener {
                 Utils.generateFilenameSuffix("yyMMddHHmmss")
             ), Utils.getByteArray(canvasView.bitmap)
         )
+        //notify user
         Toast.makeText(this, resources.getString(R.string.text_file_saved), Toast.LENGTH_SHORT)
             .show()
+    }
+
+    //save painting to device's public directory, "pictures" using the MediaStore API
+    private fun savePainting(context: Context) {
+        //bitmap
+        val imageByteArray = Utils.getByteArray(canvasView.bitmap)
+
+        //image name
+        val imageName = "painting".plus(Utils.generateFilenameSuffix("yyMMddHHmmss")).plus(".png")
+
+        //prepare the content values for the image
+        val values = ContentValues()
+        values.put(MediaStore.Images.Media.DISPLAY_NAME, imageName)
+        values.put(MediaStore.Images.Media.MIME_TYPE, "image/png")
+        values.put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures")
+
+        //insert the image into MediaStore and get the URI
+        val uri = context.contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
+        if (uri != null) {
+            try {
+                context.contentResolver.openOutputStream(uri).use { outputStream ->
+                    //write the byte array (image data) to the output stream
+                    outputStream?.write(imageByteArray)
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            } finally {
+                //notify user
+                Toast.makeText(this, resources.getString(R.string.text_file_saved), Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
     }
 
     //pick a color as the current color
