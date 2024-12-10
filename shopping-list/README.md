@@ -12,3 +12,14 @@ An app to help you with your shopping:
 View on Google Play:
 --------------------
 https://play.google.com/store/apps/details?id=gparap.apps.shopping_list
+
+View on Uptodown:
+-----------------
+https://my-shopping-list.uptodown.com/android
+
+Releases:
+---------
+version 1.0
+
+- My Shopping List
+- Supports 28 languages.

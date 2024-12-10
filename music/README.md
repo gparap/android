@@ -18,4 +18,18 @@ View on Google Play:
 --------------------
 https://play.google.com/store/apps/details?id=gparap.apps.music
 
-![96](https://user-images.githubusercontent.com/54770777/224647385-36bba7c9-39c6-4c91-82c0-bc5d974515d8.png)
+View on Amazon Appstore:
+------------------------
+https://www.amazon.com/gp/product/B0DQKQFDF3
+
+View on Uptodown:
+-----------------
+https://music-world.uptodown.com/android
+
+Releases:
+---------
+version 1.0
+
+- Music World
+- Over 200 songs.
+- Supports 26 languages.
