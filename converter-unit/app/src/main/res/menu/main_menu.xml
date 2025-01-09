@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+   <!--Temporary menu template for Unit Categories-->
+    
+    <!--Main Menu Item 1-->
+    <item
+        android:id="@+id/menu_item_1"
+        android:title="Menu 1">
+        <menu>
+            <!--Submenu for Menu 1-->
+            <item
+                android:id="@+id/submenu_item_1_1"
+                android:title="Sub Menu 1-1"/>
+            <item
+                android:id="@+id/submenu_item_1_2"
+                android:title="Sub Menu 1-2"/>
+            <item
+                android:id="@+id/submenu_item_1_3"
+                android:title="Sub Menu 1-3"/>
+            <item
+                android:id="@+id/submenu_item_1_4"
+                android:title="Sub Menu 1-4"/>
+            <item
+                android:id="@+id/submenu_item_1_5"
+                android:title="Sub Menu 1-5"/>
+        </menu>
+    </item>
+
+    <!--Main Menu Item 2-->
+    <item
+        android:id="@+id/menu_item_2"
+        android:title="Menu 2">
+        <menu>
+            <!--Submenu for Menu 2-->
+            <item
+                android:id="@+id/submenu_item_2_1"
+                android:title="Sub Menu 2-1"/>
+            <item
+                android:id="@+id/submenu_item_2_2"
+                android:title="Sub Menu 2-2"/>
+            <item
+                android:id="@+id/submenu_item_2_3"
+                android:title="Sub Menu 2-3"/>
+            <item
+                android:id="@+id/submenu_item_2_4"
+                android:title="Sub Menu 2-4"/>
+            <item
+                android:id="@+id/submenu_item_2_5"
+                android:title="Sub Menu 2-5"/>
+        </menu>
+    </item>
+
+    <!--Main Menu Item 3-->
+    <item
+        android:id="@+id/menu_item_3"
+        android:title="Menu 3">
+        <menu>
+            <!--Submenu for Menu 3-->
+            <item
+                android:id="@+id/submenu_item_3_1"
+                android:title="Sub Menu 3-1"/>
+            <item
+                android:id="@+id/submenu_item_3_2"
+                android:title="Sub Menu 3-2"/>
+            <item
+                android:id="@+id/submenu_item_3_3"
+                android:title="Sub Menu 3-3"/>
+            <item
+                android:id="@+id/submenu_item_3_4"
+                android:title="Sub Menu 3-4"/>
+            <item
+                android:id="@+id/submenu_item_3_5"
+                android:title="Sub Menu 3-5"/>
+        </menu>
+    </item>
+
+    <!--Main Menu Item 4-->
+    <item
+        android:id="@+id/menu_item_4"
+        android:title="Menu 4">
+        <menu>
+            <!--Submenu for Menu 4-->
+            <item
+                android:id="@+id/submenu_item_4_1"
+                android:title="Sub Menu 4-1"/>
+            <item
+                android:id="@+id/submenu_item_4_2"
+                android:title="Sub Menu 4-2"/>
+            <item
+                android:id="@+id/submenu_item_4_3"
+                android:title="Sub Menu 4-3"/>
+            <item
+                android:id="@+id/submenu_item_4_4"
+                android:title="Sub Menu 4-4"/>
+            <item
+                android:id="@+id/submenu_item_4_5"
+                android:title="Sub Menu 4-5"/>
+        </menu>
+    </item>
+
+    <!--Main Menu Item 5-->
+    <item
+        android:id="@+id/menu_item_5"
+        android:title="Menu 5">
+        <menu>
+            <!--Submenu for Menu 5-->
+            <item
+                android:id="@+id/submenu_item_5_1"
+                android:title="Sub Menu 5-1"/>
+            <item
+                android:id="@+id/submenu_item_5_2"
+                android:title="Sub Menu 5-2"/>
+            <item
+                android:id="@+id/submenu_item_5_3"
+                android:title="Sub Menu 5-3"/>
+            <item
+                android:id="@+id/submenu_item_5_4"
+                android:title="Sub Menu 5-4"/>
+            <item
+                android:id="@+id/submenu_item_5_5"
+                android:title="Sub Menu 5-5"/>
+        </menu>
+    </item>
+
+    <!--Main Menu Item 6-->
+    <item
+        android:id="@+id/menu_item_6"
+        android:title="Menu 6">
+        <menu>
+            <!--Submenu for Menu 6-->
+            <item
+                android:id="@+id/submenu_item_6_1"
+                android:title="Sub Menu 6-1"/>
+            <item
+                android:id="@+id/submenu_item_6_2"
+                android:title="Sub Menu 6-2"/>
+            <item
+                android:id="@+id/submenu_item_6_3"
+                android:title="Sub Menu 6-3"/>
+            <item
+                android:id="@+id/submenu_item_6_4"
+                android:title="Sub Menu 6-4"/>
+            <item
+                android:id="@+id/submenu_item_6_5"
+                android:title="Sub Menu 6-5"/>
+        </menu>
+    </item>
+
+    <!--Main Menu Item 7-->
+    <item
+        android:id="@+id/menu_item_7"
+        android:title="Menu 7">
+        <menu>
+            <!--Submenu for Menu 7-->
+            <item
+                android:id="@+id/submenu_item_7_1"
+                android:title="Sub Menu 7-1"/>
+            <item
+                android:id="@+id/submenu_item_7_2"
+                android:title="Sub Menu 7-2"/>
+            <item
+                android:id="@+id/submenu_item_7_3"
+                android:title="Sub Menu 7-3"/>
+            <item
+                android:id="@+id/submenu_item_7_4"
+                android:title="Sub Menu 7-4"/>
+            <item
+                android:id="@+id/submenu_item_7_5"
+                android:title="Sub Menu 7-5"/>
+        </menu>
+    </item>
+
+    <!--Main Menu Item 8-->
+    <item
+        android:id="@+id/menu_item_8"
+        android:title="Menu 8">
+        <menu>
+            <!--Submenu for Menu 8-->
+            <item
+                android:id="@+id/submenu_item_8_1"
+                android:title="Sub Menu 8-1"/>
+            <item
+                android:id="@+id/submenu_item_8_2"
+                android:title="Sub Menu 8-2"/>
+            <item
+                android:id="@+id/submenu_item_8_3"
+                android:title="Sub Menu 8-3"/>
+            <item
+                android:id="@+id/submenu_item_8_4"
+                android:title="Sub Menu 8-4"/>
+            <item
+                android:id="@+id/submenu_item_8_5"
+                android:title="Sub Menu 8-5"/>
+        </menu>
+    </item>
+
+    <!--Main Menu Item 9-->
+    <item
+        android:id="@+id/menu_item_9"
+        android:title="Menu 9">
+        <menu>
+            <!--Submenu for Menu 9-->
+            <item
+                android:id="@+id/submenu_item_9_1"
+                android:title="Sub Menu 9-1"/>
+            <item
+                android:id="@+id/submenu_item_9_2"
+                android:title="Sub Menu 9-2"/>
+            <item
+                android:id="@+id/submenu_item_9_3"
+                android:title="Sub Menu 9-3"/>
+            <item
+                android:id="@+id/submenu_item_9_4"
+                android:title="Sub Menu 9-4"/>
+            <item
+                android:id="@+id/submenu_item_9_5"
+                android:title="Sub Menu 9-5"/>
+        </menu>
+    </item>
+
+    <!--Main Menu Item 10-->
+    <item
+        android:id="@+id/menu_item_10"
+        android:title="Menu 10">
+        <menu>
+            <!--Submenu for Menu 10-->
+            <item
+                android:id="@+id/submenu_item_10_1"
+                android:title="Sub Menu 10-1"/>
+            <item
+                android:id="@+id/submenu_item_10_2"
+                android:title="Sub Menu 10-2"/>
+            <item
+                android:id="@+id/submenu_item_10_3"
+                android:title="Sub Menu 10-3"/>
+            <item
+                android:id="@+id/submenu_item_10_4"
+                android:title="Sub Menu 10-4"/>
+            <item
+                android:id="@+id/submenu_item_10_5"
+                android:title="Sub Menu 10-5"/>
+        </menu>
+    </item>
+
+</menu>
