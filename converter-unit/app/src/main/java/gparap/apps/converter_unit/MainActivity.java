@@ -1,5 +1,21 @@
+/*
+ * Copyright 2025 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.converter_unit;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         //get the id of the selected item
@@ -45,124 +62,160 @@ public class MainActivity extends AppCompatActivity {
         //Handle the selected item TODO: replace with actual Unit Converter Category Items
         switch (itemId) {
 
-            //Category #1
-            case R.id.submenu_item_1_1:testingItemSelected.setText("Sub Menu 1-1");
+            //Category Length/Distance
+            case R.id.submenu_item_meter:testingItemSelected.setText(R.string.subcategory_meter);
                 break;
-            case R.id.submenu_item_1_2:testingItemSelected.setText("Sub Menu 1-2");
+            case R.id.submenu_item_kilometer:testingItemSelected.setText(R.string.subcategory_kilometer);
                 break;
-            case R.id.submenu_item_1_3:testingItemSelected.setText("Sub Menu 1-3");
+            case R.id.submenu_item_mile:testingItemSelected.setText(R.string.subcategory_mile);
                 break;
-            case R.id.submenu_item_1_4:testingItemSelected.setText("Sub Menu 1-4");
+            case R.id.submenu_item_yard:testingItemSelected.setText(R.string.subcategory_yard);
                 break;
-            case R.id.submenu_item_1_5:testingItemSelected.setText("Sub Menu 1-5");
+            case R.id.submenu_item_foot:testingItemSelected.setText(R.string.subcategory_foot);
                 break;
-
-            //Category #2
-            case R.id.submenu_item_2_1:testingItemSelected.setText("Sub Menu 2-1");
-                break;
-            case R.id.submenu_item_2_2:testingItemSelected.setText("Sub Menu 2-2");
-                break;
-            case R.id.submenu_item_2_3:testingItemSelected.setText("Sub Menu 2-3");
-                break;
-            case R.id.submenu_item_2_4:testingItemSelected.setText("Sub Menu 2-4");
-                break;
-            case R.id.submenu_item_2_5:testingItemSelected.setText("Sub Menu 2-5");
+            case R.id.submenu_item_inch:testingItemSelected.setText(R.string.subcategory_inch);
                 break;
 
-            //Category #3
-            case R.id.submenu_item_3_1:testingItemSelected.setText("Sub Menu 3-1");
+            //Category Area
+            case R.id.submenu_item_square_meter:testingItemSelected.setText(R.string.subcategory_square_meter);
                 break;
-            case R.id.submenu_item_3_2:testingItemSelected.setText("Sub Menu 3-2");
+            case R.id.submenu_item_square_kilometer:testingItemSelected.setText(R.string.subcategory_square_kilometer);
                 break;
-            case R.id.submenu_item_3_3:testingItemSelected.setText("Sub Menu 3-3");
+            case R.id.submenu_item_square_mile:testingItemSelected.setText(R.string.subcategory_square_mile);
                 break;
-            case R.id.submenu_item_3_4:testingItemSelected.setText("Sub Menu 3-4");
+            case R.id.submenu_item_hectare:testingItemSelected.setText(R.string.subcategory_hectare);
                 break;
-            case R.id.submenu_item_3_5:testingItemSelected.setText("Sub Menu 3-5");
-                break;
-
-            //Category #4
-            case R.id.submenu_item_4_1:testingItemSelected.setText("Sub Menu 4-1");
-                break;
-            case R.id.submenu_item_4_2:testingItemSelected.setText("Sub Menu 4-2");
-                break;
-            case R.id.submenu_item_4_3:testingItemSelected.setText("Sub Menu 4-3");
-                break;
-            case R.id.submenu_item_4_4:testingItemSelected.setText("Sub Menu 4-4");
-                break;
-            case R.id.submenu_item_4_5:testingItemSelected.setText("Sub Menu 4-5");
+            case R.id.submenu_item_acre:testingItemSelected.setText(R.string.subcategory_acre);
                 break;
 
-            //Category #5
-            case R.id.submenu_item_5_1:testingItemSelected.setText("Sub Menu 5-1");
+            //Category Volume
+            case R.id.submenu_item_cubic_meter:testingItemSelected.setText(R.string.subcategory_cubic_meter);
                 break;
-            case R.id.submenu_item_5_2:testingItemSelected.setText("Sub Menu 5-2");
+            case R.id.submenu_item_liter:testingItemSelected.setText(R.string.subcategory_liter);
                 break;
-            case R.id.submenu_item_5_3:testingItemSelected.setText("Sub Menu 5-3");
+            case R.id.submenu_item_milliliter:testingItemSelected.setText(R.string.subcategory_milliliter);
                 break;
-            case R.id.submenu_item_5_4:testingItemSelected.setText("Sub Menu 5-4");
+            case R.id.submenu_item_gallon_us:testingItemSelected.setText(R.string.subcategory_gallon_us);
                 break;
-            case R.id.submenu_item_5_5:testingItemSelected.setText("Sub Menu 5-5");
+            case R.id.submenu_item_gallon_imperial:testingItemSelected.setText(R.string.subcategory_gallon_imperial);
                 break;
-
-            //Category #6
-            case R.id.submenu_item_6_1:testingItemSelected.setText("Sub Menu 6-1");
+            case R.id.submenu_item_quart_us:testingItemSelected.setText(R.string.subcategory_quart_us);
                 break;
-            case R.id.submenu_item_6_2:testingItemSelected.setText("Sub Menu 6-2");
+            case R.id.submenu_item_quart_imperial:testingItemSelected.setText(R.string.subcategory_quart_imperial);
                 break;
-            case R.id.submenu_item_6_3:testingItemSelected.setText("Sub Menu 6-3");
+            case R.id.submenu_item_pint_us:testingItemSelected.setText(R.string.subcategory_pint_us);
                 break;
-            case R.id.submenu_item_6_4:testingItemSelected.setText("Sub Menu 6-4");
+            case R.id.submenu_item_pint_imperial:testingItemSelected.setText(R.string.subcategory_pint_imperial);
                 break;
-            case R.id.submenu_item_6_5:testingItemSelected.setText("Sub Menu 6-5");
+            case R.id.submenu_item_fluid_ounce_us:testingItemSelected.setText(R.string.subcategory_fluid_ounce_us);
                 break;
-
-            //Category #7
-            case R.id.submenu_item_7_1:testingItemSelected.setText("Sub Menu 7-1");
-                break;
-            case R.id.submenu_item_7_2:testingItemSelected.setText("Sub Menu 7-2");
-                break;
-            case R.id.submenu_item_7_3:testingItemSelected.setText("Sub Menu 7-3");
-                break;
-            case R.id.submenu_item_7_4:testingItemSelected.setText("Sub Menu 7-4");
-                break;
-            case R.id.submenu_item_7_5:testingItemSelected.setText("Sub Menu 7-5");
+            case R.id.submenu_item_fluid_ounce_imperial:testingItemSelected.setText(R.string.subcategory_fluid_ounce_imperial);
                 break;
 
-            //Category #8
-            case R.id.submenu_item_8_1:testingItemSelected.setText("Sub Menu 8-1");
+            //Category MassWeight
+            case R.id.submenu_item_kilogram:testingItemSelected.setText(R.string.subcategory_kilometer);
                 break;
-            case R.id.submenu_item_8_2:testingItemSelected.setText("Sub Menu 8-2");
+            case R.id.submenu_item_gram:testingItemSelected.setText(R.string.subcategory_gram);
                 break;
-            case R.id.submenu_item_8_3:testingItemSelected.setText("Sub Menu 8-3");
+            case R.id.submenu_item_milligram:testingItemSelected.setText(R.string.subcategory_milligram);
                 break;
-            case R.id.submenu_item_8_4:testingItemSelected.setText("Sub Menu 8-4");
+            case R.id.submenu_item_metric_ton:testingItemSelected.setText(R.string.subcategory_metric_ton);
                 break;
-            case R.id.submenu_item_8_5:testingItemSelected.setText("Sub Menu 8-5");
+            case R.id.submenu_item_ton_us:testingItemSelected.setText(R.string.subcategory_ton_us);
+                break;
+            case R.id.submenu_item_ton_imperial:testingItemSelected.setText(R.string.subcategory_ton_imperial);
+                break;
+            case R.id.submenu_item_pound:testingItemSelected.setText(R.string.subcategory_pound);
+                break;
+            case R.id.submenu_item_ounce_us:testingItemSelected.setText(R.string.subcategory_ounce_us);
+                break;
+            case R.id.submenu_item_ounce_imperial:testingItemSelected.setText(R.string.subcategory_ounce_imperial);
+                break;
+            case R.id.submenu_item_stone:testingItemSelected.setText(R.string.subcategory_stone);
+                break;
+            case R.id.submenu_item_carat:testingItemSelected.setText(R.string.subcategory_carat);
                 break;
 
-                //Category #9
-            case R.id.submenu_item_9_1:testingItemSelected.setText("Sub Menu 9-1");
+            //Category Temperature
+            case R.id.submenu_item_celsius:testingItemSelected.setText(R.string.subcategory_celsius);
                 break;
-            case R.id.submenu_item_9_2:testingItemSelected.setText("Sub Menu 9-2");
+            case R.id.submenu_item_fahrenheit:testingItemSelected.setText(R.string.subcategory_fahrenheit);
                 break;
-            case R.id.submenu_item_9_3:testingItemSelected.setText("Sub Menu 9-3");
+            case R.id.submenu_item_kelvin:testingItemSelected.setText(R.string.subcategory_kelvin);
                 break;
-            case R.id.submenu_item_9_4:testingItemSelected.setText("Sub Menu 9-4");
+            case R.id.submenu_item_rankine:testingItemSelected.setText(R.string.subcategory_rankine);
                 break;
-            case R.id.submenu_item_9_5:testingItemSelected.setText("Sub Menu 9-5");
+
+            //Category Pressure
+            case R.id.submenu_item_pascal:testingItemSelected.setText(R.string.subcategory_pascal);
+                break;
+            case R.id.submenu_item_bar:testingItemSelected.setText(R.string.subcategory_bar);
+                break;
+            case R.id.submenu_item_atmosphere:testingItemSelected.setText(R.string.subcategory_atmosphere);
+                break;
+            case R.id.submenu_item_torr:testingItemSelected.setText(R.string.subcategory_torr);
+                break;
+            case R.id.submenu_item_pound_per_square_inch:testingItemSelected.setText(R.string.subcategory_pound_per_square_inch);
+                break;
+            case R.id.submenu_item_kilopascal:testingItemSelected.setText(R.string.subcategory_kilopascal);
+                break;
+            case R.id.submenu_item_millimeter_of_mercury:testingItemSelected.setText(R.string.subcategory_millimeter_of_mercury);
+                break;
+
+            //Category Energy
+            case R.id.submenu_item_joule:testingItemSelected.setText(R.string.subcategory_joule);
+                break;
+            case R.id.submenu_item_calorie:testingItemSelected.setText(R.string.subcategory_calorie);
+                break;
+            case R.id.submenu_item_kilocalorie:testingItemSelected.setText(R.string.subcategory_kilocalorie);
+                break;
+            case R.id.submenu_item_electronvolt:testingItemSelected.setText(R.string.subcategory_electronvolt);
+                break;
+            case R.id.submenu_item_watt_hour:testingItemSelected.setText(R.string.subcategory_watt_hour);
+                break;
+            case R.id.submenu_item_british_thermal_unit:testingItemSelected.setText(R.string.subcategory_british_thermal_unit);
+                break;
+            case R.id.submenu_item_kilowatt_hour:testingItemSelected.setText(R.string.subcategory_kilowatt_hour);
+                break;
+
+            //Category Power
+            case R.id.submenu_item_watt:testingItemSelected.setText(R.string.subcategory_watt);
+                break;
+            case R.id.submenu_item_kilowatt:testingItemSelected.setText(R.string.subcategory_kilowatt);
+                break;
+            case R.id.submenu_item_megawatt:testingItemSelected.setText(R.string.subcategory_megawatt);
+                break;
+            case R.id.submenu_item_horsepower_metric:testingItemSelected.setText(R.string.subcategory_horsepower_metric);
+                break;
+            case R.id.submenu_item_horsepower_imperial:testingItemSelected.setText(R.string.subcategory_horsepower_imperial);
+                break;
+
+            case R.id.submenu_item_volt_ampere:testingItemSelected.setText(R.string.subcategory_volt_ampere);
+                break;
+
+            case R.id.submenu_item_kilovolt_ampere:testingItemSelected.setText(R.string.subcategory_kilovolt_ampere);
+                break;
+
+                //Category Angles
+            case R.id.submenu_item_degree:testingItemSelected.setText(R.string.subcategory_degree);
+                break;
+            case R.id.submenu_item_radian:testingItemSelected.setText(R.string.subcategory_radian);
+                break;
+            case R.id.submenu_item_gradian:testingItemSelected.setText(R.string.subcategory_gradian);
                 break;
 
             //Category #10
-            case R.id.submenu_item_10_1:testingItemSelected.setText("Sub Menu 10-1");
+            case R.id.submenu_item_newton:testingItemSelected.setText(R.string.subcategory_newton);
                 break;
-            case R.id.submenu_item_10_2:testingItemSelected.setText("Sub Menu 10-2");
+            case R.id.submenu_item_pound_force:testingItemSelected.setText(R.string.subcategory_pound_force);
                 break;
-            case R.id.submenu_item_10_3:testingItemSelected.setText("Sub Menu 10-3");
+            case R.id.submenu_item_kilogram_force:testingItemSelected.setText(R.string.subcategory_kilogram_force);
                 break;
-            case R.id.submenu_item_10_4:testingItemSelected.setText("Sub Menu 10-4");
+            case R.id.submenu_item_dyne:testingItemSelected.setText(R.string.subcategory_dyne);
                 break;
-            case R.id.submenu_item_10_5:testingItemSelected.setText("Sub Menu 10-5");
+            case R.id.submenu_item_ton_force_metric:testingItemSelected.setText(R.string.subcategory_ton_force_metric);
+                break;
+            case R.id.submenu_item_ton_force_us:testingItemSelected.setText(R.string.subcategory_ton_force_us);
                 break;
         }
 

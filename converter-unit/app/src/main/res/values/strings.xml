@@ -12,4 +12,91 @@
     <string name="category_power">Power</string>
     <string name="category_angles">Angles</string>
     <string name="category_force">Force</string>
+
+    <!--Sub-Categories of Length/Distance-->
+    <string name="subcategory_meter">Meter (m)</string>
+    <string name="subcategory_kilometer">Kilometer (km)</string>
+    <string name="subcategory_mile">Mile (mi)</string>
+    <string name="subcategory_yard">Yard (yd)</string>
+    <string name="subcategory_foot">Foot (ft)</string>
+    <string name="subcategory_inch">Inch (in)</string>
+
+    <!--Sub-Categories of Area-->
+    <string name="subcategory_square_meter">Square Meter (m²)</string>
+    <string name="subcategory_square_kilometer">Square Kilometer (km²)</string>
+    <string name="subcategory_square_mile">Square Mile (mi²)</string>
+    <string name="subcategory_hectare">Hectare (ha)</string>
+    <string name="subcategory_acre">Acre (ac)</string>
+
+    <!--Sub-Categories of Volume-->
+    <string name="subcategory_cubic_meter">Cubic Meter (m³)</string>
+    <string name="subcategory_liter">Liter (L)</string>
+    <string name="subcategory_milliliter">Milliliter (mL)</string>
+    <string name="subcategory_gallon_us">US Gallon (gal)</string>
+    <string name="subcategory_gallon_imperial">Imperial Gallon (gal)</string>
+    <string name="subcategory_quart_us">US Quart (qt)</string>
+    <string name="subcategory_quart_imperial">Imperial Quart (qt)</string>
+    <string name="subcategory_pint_us">US Pint (pt)</string>
+    <string name="subcategory_pint_imperial">Imperial Pint (pt)</string>
+    <string name="subcategory_fluid_ounce_us">US Fluid Ounce (fl oz)</string>
+    <string name="subcategory_fluid_ounce_imperial">Imperial Fluid Ounce (fl oz)</string>
+
+    <!--Sub-Categories of Mass/Weight-->
+    <string name="subcategory_kilogram">Kilogram (kg)</string>
+    <string name="subcategory_gram">Gram (g)</string>
+    <string name="subcategory_milligram">Milligram (mg)</string>
+    <string name="subcategory_metric_ton">Metric Ton (t)</string>
+    <string name="subcategory_ton_us">US (Long) Ton (t)</string>
+    <string name="subcategory_ton_imperial">Imperial Ton (t)</string>
+    <string name="subcategory_pound">Pound (lb)</string>
+    <string name="subcategory_ounce_us">US Ounce (oz)</string>
+    <string name="subcategory_ounce_imperial">Imperial Ounce (oz)</string>
+    <string name="subcategory_stone">Stone (st)</string>
+    <string name="subcategory_carat">Carat (ct)</string>
+
+    <!--Sub-Categories of Temperature-->
+    <string name="subcategory_celsius">Celsius (°C)</string>
+    <string name="subcategory_fahrenheit">Fahrenheit (°F)</string>
+    <string name="subcategory_kelvin">Kelvin (K)</string>
+    <string name="subcategory_rankine">Rankine (°R)</string>
+
+    <!--Sub-Categories of Pressure-->
+    <string name="subcategory_pascal">Pascal (Pa)</string>
+    <string name="subcategory_bar">Bar (bar)</string>
+    <string name="subcategory_atmosphere">Atmosphere (atm)</string>
+    <string name="subcategory_torr">Torr (Torr)</string>
+    <string name="subcategory_pound_per_square_inch">Pound per Square Inch (psi)</string>
+    <string name="subcategory_kilopascal">Kilopascal (kPa)</string>
+    <string name="subcategory_millimeter_of_mercury">Millimeter of Mercury (mmHg)</string>
+
+    <!--Sub-Categories of Energy-->
+    <string name="subcategory_joule">Joule (J)</string>
+    <string name="subcategory_calorie">Calorie (cal)</string>
+    <string name="subcategory_kilocalorie">Kilocalorie (kcal)</string>
+    <string name="subcategory_electronvolt">Electronvolt (eV)</string>
+    <string name="subcategory_watt_hour">Watt-hour (Wh)</string>
+    <string name="subcategory_british_thermal_unit">British Thermal Unit (BTU)</string>
+    <string name="subcategory_kilowatt_hour">Kilowatt-hour (kWh)</string>
+
+    <!--Sub-Categories of Power-->
+    <string name="subcategory_watt">Watt (W)</string>
+    <string name="subcategory_kilowatt">Kilowatt (kW)</string>
+    <string name="subcategory_megawatt">Megawatt (MW)</string>
+    <string name="subcategory_horsepower_metric">Metric Horsepower (hp)</string>
+    <string name="subcategory_horsepower_imperial">Imperial Horsepower (hp)</string>
+    <string name="subcategory_volt_ampere">Volt-ampere (VA)</string>
+    <string name="subcategory_kilovolt_ampere">Kilovolt-ampere (kVA)</string>
+
+    <!--Sub-Categories of Angles-->
+    <string name="subcategory_degree">Degree (°)</string>
+    <string name="subcategory_radian">Radian (rad)</string>
+    <string name="subcategory_gradian">Gradian (gon)</string>
+
+    <!--Sub-Categories of Force-->
+    <string name="subcategory_newton">Newton (N)</string>
+    <string name="subcategory_pound_force">Pound-force (lbf)</string>
+    <string name="subcategory_kilogram_force">Kilogram-force (kgf)</string>
+    <string name="subcategory_dyne">Dyne (dyn)</string>
+    <string name="subcategory_ton_force_metric">Metric Ton-force (tf)</string>
+    <string name="subcategory_ton_force_us">US (Short) Ton-force (tf)</string>
 </resources>
