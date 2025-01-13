@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    
-   <!--Temporary menu template for Unit Categories-->
-    
-    <!--Main Menu Item 1-->
+
+    <!--Length/Distance-->
     <item
-        android:id="@+id/menu_item_1"
-        android:title="Menu 1">
+        android:id="@+id/menu_item_length_distance"
+        android:title="Length/Distance">
         <menu>
             <!--Submenu for Menu 1-->
             <item
@@ -28,10 +26,10 @@
         </menu>
     </item>
 
-    <!--Main Menu Item 2-->
+    <!--Area-->
     <item
-        android:id="@+id/menu_item_2"
-        android:title="Menu 2">
+        android:id="@+id/menu_item_area"
+        android:title="Area">
         <menu>
             <!--Submenu for Menu 2-->
             <item
@@ -52,10 +50,10 @@
         </menu>
     </item>
 
-    <!--Main Menu Item 3-->
+    <!--Volume-->
     <item
-        android:id="@+id/menu_item_3"
-        android:title="Menu 3">
+        android:id="@+id/menu_item_volume"
+        android:title="Volume">
         <menu>
             <!--Submenu for Menu 3-->
             <item
@@ -76,10 +74,10 @@
         </menu>
     </item>
 
-    <!--Main Menu Item 4-->
+    <!--Mass/Weight-->
     <item
-        android:id="@+id/menu_item_4"
-        android:title="Menu 4">
+        android:id="@+id/menu_item_mass_weight"
+        android:title="Mass/Weight">
         <menu>
             <!--Submenu for Menu 4-->
             <item
@@ -100,10 +98,10 @@
         </menu>
     </item>
 
-    <!--Main Menu Item 5-->
+    <!--Temperature-->
     <item
-        android:id="@+id/menu_item_5"
-        android:title="Menu 5">
+        android:id="@+id/menu_item_temperature"
+        android:title="Temperature">
         <menu>
             <!--Submenu for Menu 5-->
             <item
@@ -124,10 +122,10 @@
         </menu>
     </item>
 
-    <!--Main Menu Item 6-->
+    <!--Pressure-->
     <item
-        android:id="@+id/menu_item_6"
-        android:title="Menu 6">
+        android:id="@+id/menu_item_pressure"
+        android:title="Pressure">
         <menu>
             <!--Submenu for Menu 6-->
             <item
@@ -148,10 +146,10 @@
         </menu>
     </item>
 
-    <!--Main Menu Item 7-->
+    <!--Energy-->
     <item
-        android:id="@+id/menu_item_7"
-        android:title="Menu 7">
+        android:id="@+id/menu_item_energy"
+        android:title="Energy">
         <menu>
             <!--Submenu for Menu 7-->
             <item
@@ -172,10 +170,10 @@
         </menu>
     </item>
 
-    <!--Main Menu Item 8-->
+    <!--Power-->
     <item
-        android:id="@+id/menu_item_8"
-        android:title="Menu 8">
+        android:id="@+id/menu_item_power"
+        android:title="Power">
         <menu>
             <!--Submenu for Menu 8-->
             <item
@@ -196,10 +194,10 @@
         </menu>
     </item>
 
-    <!--Main Menu Item 9-->
+    <!--Angles-->
     <item
-        android:id="@+id/menu_item_9"
-        android:title="Menu 9">
+        android:id="@+id/menu_item_angles"
+        android:title="Angles">
         <menu>
             <!--Submenu for Menu 9-->
             <item
@@ -220,10 +218,10 @@
         </menu>
     </item>
 
-    <!--Main Menu Item 10-->
+    <!--Force-->
     <item
-        android:id="@+id/menu_item_10"
-        android:title="Menu 10">
+        android:id="@+id/menu_item_force"
+        android:title="Force">
         <menu>
             <!--Submenu for Menu 10-->
             <item
