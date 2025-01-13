@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Unit Converter App</string>
+
+    <!--Unit Categories-->
+    <string name="category_length_distance">Length/Distance</string>
+    <string name="category_area">Area</string>
+    <string name="category_volume">Volume</string>
+    <string name="category_mass_weight">Mass/Weight</string>
+    <string name="category_temperature">Temperature</string>
+    <string name="category_pressure">Pressure</string>
+    <string name="category_energy">Energy</string>
+    <string name="category_power">Power</string>
+    <string name="category_angles">Angles</string>
+    <string name="category_force">Force</string>
 </resources>
