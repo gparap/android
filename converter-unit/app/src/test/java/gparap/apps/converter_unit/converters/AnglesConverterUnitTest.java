@@ -15,16 +15,38 @@
  */
 package gparap.apps.converter_unit.converters;
 
-public class AnglesConverter {
+import org.junit.Test;
 
-    //TODO: replace stubs with actual methods
+import static org.junit.Assert.*;
 
-    public int convertDegreeToRadian() { return 0;}
-    public int convertDegreeToGradian() { return 0;}
+public class AnglesConverterUnitTest {
+    @Test
+    public void isCorrect_convertDegreeToRadian() {
+        fail();
+    }
 
-    public int convertRadianToDegree() { return 0;}
-    public int convertRadianToGradian() { return 0;}
+    @Test
+    public void isCorrect_convertDegreeToGradian() {
+        fail();
+    }
 
-    public int convertGradianToDegree() { return 0;}
-    public int convertGradianToRadian() { return 0;}
+    @Test
+    public void isCorrect_convertRadianToDegrees() {
+        fail();
+    }
+
+    @Test
+    public void isCorrect_convertRadianToGradian() {
+        fail();
+    }
+
+    @Test
+    public void isCorrect_convertGradianToDegrees() {
+        fail();
+    }
+
+    @Test
+    public void isCorrect_convertGradianToRadian() {
+        fail();
+    }
 }
