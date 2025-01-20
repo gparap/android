@@ -16,15 +16,12 @@
 package gparap.apps.converter_unit.converters;
 
 public class AnglesConverter {
+    public double convertDegreeToRadian(double degrees) { return degrees * (Math.PI / 180); }
+    public double convertDegreeToGradian(double degrees) { return degrees * ((double) 200 / 180); }
 
-    //TODO: replace stubs with actual methods
+    public double convertRadianToDegree(double radians) { return radians * (180 / Math.PI); }
+    public double convertRadianToGradian(double radians) { return radians * (200 / Math.PI); }
 
-    public int convertDegreeToRadian() { return 0;}
-    public int convertDegreeToGradian() { return 0;}
-
-    public int convertRadianToDegree() { return 0;}
-    public int convertRadianToGradian() { return 0;}
-
-    public int convertGradianToDegree() { return 0;}
-    public int convertGradianToRadian() { return 0;}
+    public double convertGradianToDegree(double gradians) { return gradians * ((double) 180 / 200); }
+    public double convertGradianToRadian(double gradians) { return gradians * (Math.PI / 200); }
 }

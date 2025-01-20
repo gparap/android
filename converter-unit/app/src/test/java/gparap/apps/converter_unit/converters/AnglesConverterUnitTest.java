@@ -17,36 +17,48 @@ package gparap.apps.converter_unit.converters;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class AnglesConverterUnitTest {
+    private final AnglesConverter converter = new AnglesConverter();
+
     @Test
     public void isCorrect_convertDegreeToRadian() {
-        fail();
+        double degrees = 1;
+        double radiansExpected = 0.017453292519943295;
+        assert radiansExpected == converter.convertDegreeToRadian(degrees);
     }
 
     @Test
     public void isCorrect_convertDegreeToGradian() {
-        fail();
+        double degrees = 1;
+        double gradiansExpected = 1.1111111111111112;
+        assert gradiansExpected == converter.convertDegreeToGradian(degrees);
     }
 
     @Test
-    public void isCorrect_convertRadianToDegrees() {
-        fail();
+    public void isCorrect_convertRadianToDegree() {
+        double radians =  0.017453292519943295;
+        double degreesExpected = 1;
+        assert degreesExpected == converter.convertRadianToDegree(radians);
     }
 
     @Test
     public void isCorrect_convertRadianToGradian() {
-        fail();
+        double radians =  0.017453292519943295;
+        double gradiansExpected = 1.1111111111111112;
+        assert gradiansExpected == converter.convertRadianToGradian(radians);
     }
 
     @Test
-    public void isCorrect_convertGradianToDegrees() {
-        fail();
+    public void isCorrect_convertGradianToDegree() {
+        double gradians = 1.1111111111111112;
+        double degreesExpected = 1;
+        assert degreesExpected == converter.convertGradianToDegree(gradians);
     }
 
     @Test
     public void isCorrect_convertGradianToRadian() {
-        fail();
+        double gradians = 1.1111111111111112;
+        double radiansExpected = 0.017453292519943295;
+        assert radiansExpected == converter.convertGradianToRadian(gradians);
     }
 }
