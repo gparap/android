@@ -17,54 +17,52 @@ package gparap.apps.converter_unit.converters;
 
 public class EnergyConverter {
 
-    //TODO: replace stubs with actual methods
+    public double convertJouleToCalorie(double joules) { return joules / 4.184; }
+    public double convertJouleToKilocalorie(double joules) { return joules / (double)4184; }
+    public double convertJouleToElectronvolt(double joules) { return joules / 1.60218 * 1.0e-19; }
+    public double convertJouleToWattHour(double joules) { return joules / (double)3600; }
+    public double convertJouleToBritishThermalUnit(double joules) { return joules / 1055.06; }
+    public double convertJouleToKilowattHour(double joules) { return joules * (double)3600000; }
 
-    public int convertJouleToCalorie() { return 0; }
-    public int convertJouleToKilocalorie() { return 0; }
-    public int convertJouleToElectronvolt() { return 0; }
-    public int convertJouleToWattHour() { return 0; }
-    public int convertJouleToBritishThermalUnit() { return 0; }
-    public int convertJouleToKilowattHour() { return 0; }
-    
-    public int convertCalorieToJoule() { return 0; }
-    public int convertCalorieToKilocalorie() { return 0; }
-    public int convertCalorieToElectronvolt() { return 0; }
-    public int convertCalorieToWattHour() { return 0; }
-    public int convertCalorieToBritishThermalUnit() { return 0; }
-    public int convertCalorieToKilowattHour() { return 0; }
-    
-    public int convertKilocalorieToJoule() { return 0; }
-    public int convertKilocalorieToCalorie() { return 0; }
-    public int convertKilocalorieToElectronvolt() { return 0; }
-    public int convertKilocalorieToWattHour() { return 0; }
-    public int convertKilocalorieToBritishThermalUnit() { return 0; }
-    public int convertKilocalorieToKilowattHour() { return 0; }
-    
-    public int convertElectronvoltToJoule() { return 0; }
-    public int convertElectronvoltToCalorie() { return 0; }
-    public int convertElectronvoltToKilocalorie() { return 0; }
-    public int convertElectronvoltToWattHour() { return 0; }
-    public int convertElectronvoltToBritishThermalUnit() { return 0; }
-    public int convertElectronvoltToKilowattHour() { return 0; }
-    
-    public int convertWattHourToJoule() { return 0; }
-    public int convertWattHourToCalorie() { return 0; }
-    public int convertWattHourToKilocalorie() { return 0; }
-    public int convertWattHourToElectronvolt() { return 0; }
-    public int convertWattHourToBritishThermalUnit() { return 0; }
-    public int convertWattHourToKilowattHour() { return 0; }
-    
-    public int convertBritishThermalUnitToJoule() { return 0; }
-    public int convertBritishThermalUnitToCalorie() { return 0; }
-    public int convertBritishThermalUnitToKilocalorie() { return 0; }
-    public int convertBritishThermalUnitToElectronvolt() { return 0; }
-    public int convertBritishThermalUnitToWattHour() { return 0; }
-    public int convertBritishThermalUnitToKilowattHour() { return 0; }
-    
-    public int convertKilowattHourToJoule() { return 0; }
-    public int convertKilowattHourToCalorie() { return 0; }
-    public int convertKilowattHourToKilocalorie() { return 0; }
-    public int convertKilowattHourToElectronvolt() { return 0; }
-    public int convertKilowattHourToWattHour() { return 0; }
-    public int convertKilowattHourToBritishThermalUnit() { return 0; }
+    public double convertCalorieToJoule(double calories) { return calories * 4.184; }
+    public double convertCalorieToKilocalorie(double calories) { return calories / (double)1000; }
+    public double convertCalorieToElectronvolt(double calories) { return calories * 4.184 / 1.60218 * 1.0e-19; }
+    public double convertCalorieToWattHour(double calories) { return calories / 860.421; }
+    public double convertCalorieToBritishThermalUnit(double calories) { return calories / 252.164; }
+    public double convertCalorieToKilowattHour(double calories) { return calories / (double)860421; }
+
+    public double convertKilocalorieToJoule(double kilocalories) { return kilocalories * (double)4184; }
+    public double convertKilocalorieToCalorie(double kilocalories) { return kilocalories / (double)1000; }
+    public double convertKilocalorieToElectronvolt(double kilocalories) { return kilocalories * 4184 / 1.60218 * 1.0e-19; }
+    public double convertKilocalorieToWattHour(double kilocalories) { return kilocalories / 860.421; }
+    public double convertKilocalorieToBritishThermalUnit(double kilocalories) { return kilocalories / 1.05506; }
+    public double convertKilocalorieToKilowattHour(double kilocalories) { return kilocalories / (double)860421; }
+
+    public double convertElectronvoltToJoule(double electronvolts) { return electronvolts * 1.60218 * 1.0e-19; }
+    public double convertElectronvoltToCalorie(double electronvolts) { return electronvolts * 1.60218 * 1.60218 * 1.0e-19 / 4.184; }
+    public double convertElectronvoltToKilocalorie(double electronvolts) { return electronvolts * 1.60218 * 1.0e-19 / 4184; }
+    public double convertElectronvoltToWattHour(double electronvolts) { return electronvolts * 1.60218 * 1.0e-19 / 3600; }
+    public double convertElectronvoltToBritishThermalUnit(double electronvolts) { return electronvolts * 1.60218 * 1.0e-19 / 1055.06; }
+    public double convertElectronvoltToKilowattHour(double electronvolts) { return electronvolts * 1.60218 * 1.0e-19 / 3600000; }
+
+    public double convertWattHourToJoule(double wattHours) { return wattHours * (double)3600; }
+    public double convertWattHourToCalorie(double wattHours) { return wattHours * 860.421; }
+    public double convertWattHourToKilocalorie(double wattHours) { return wattHours / 860.421; }
+    public double convertWattHourToElectronvolt(double wattHours) { return wattHours * 3600 / 1.60218 * 1.0e-19; }
+    public double convertWattHourToBritishThermalUnit(double wattHours) { return wattHours / 1.05506; }
+    public double convertWattHourToKilowattHour(double wattHours) { return wattHours / (double)1000; }
+
+    public double convertBritishThermalUnitToJoule(double britishThermalUnits) { return britishThermalUnits * 1055.06; }
+    public double convertBritishThermalUnitToCalorie(double britishThermalUnits) { return britishThermalUnits * 252.164; }
+    public double convertBritishThermalUnitToKilocalorie(double britishThermalUnits) { return britishThermalUnits / 1.05506; }
+    public double convertBritishThermalUnitToElectronvolt(double britishThermalUnits) { return britishThermalUnits * 1055.06 / 1.60218 * 1.0e-19; }
+    public double convertBritishThermalUnitToWattHour(double britishThermalUnits) { return britishThermalUnits / 3.41214; }
+    public double convertBritishThermalUnitToKilowattHour(double britishThermalUnits) { return britishThermalUnits / 3412.14; }
+
+    public double convertKilowattHourToJoule(double kilowattHours) { return kilowattHours * (double)3600000; }
+    public double convertKilowattHourToCalorie(double kilowattHours) { return kilowattHours * (double)860421; }
+    public double convertKilowattHourToKilocalorie(double kilowattHours) { return kilowattHours * 860.421; }
+    public double convertKilowattHourToElectronvolt(double kilowattHours) { return kilowattHours * 3600000 / 1.60218 * 1.0e-19; }
+    public double convertKilowattHourToWattHour(double kilowattHours) { return kilowattHours * (double)1000; }
+    public double convertKilowattHourToBritishThermalUnit(double kilowattHours) { return kilowattHours * 3412.14; }
 }
