@@ -15,159 +15,216 @@
  */
 package gparap.apps.converter_unit.converters;
 
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 
 public class ForceConverterUnitTest {
     @Test
     public void isCorrect_convertNewtonToPoundForce() {
-        fail();
+        int newtons = 1;
+        double poundsForceExpected = 0.2248090247334889;
+        assert poundsForceExpected == newtons / 4.44822;
     }
 
     @Test
     public void isCorrect_convertNewtonToKilogramForce() {
-        fail();
+        int newtons = 1;
+        double kilogramsForceExpected = 0.10197162129779283;
+        assert kilogramsForceExpected == newtons / 9.80665;
     }
 
     @Test
     public void isCorrect_convertNewtonToDyne() {
-        fail();
+        int newtons = 1;
+        int dynesExpected = 100000;
+        assert dynesExpected == newtons * 1e5;
     }
 
     @Test
     public void isCorrect_convertNewtonToMetricTonForce() {
-        fail();
+        int newtons = 1;
+        double metricTonForceExpected = 1.0197162129779283E-4;
+        assert metricTonForceExpected == newtons / 9806.65;
     }
 
     @Test
     public void isCorrect_convertNewtonToUSTonForce() {
-        fail();
+        int newtons = 1;
+        double usTonForceExpected = 1.1240451236674444E-4;
+        assert usTonForceExpected == newtons / 8896.44;
     }
 
     @Test
     public void isCorrect_convertPoundForceToNewton() {
-        fail();
+        int poundsForce = 1;
+        double newtonsExpected = 4.44822;
+        assert newtonsExpected == poundsForce * 4.44822;
     }
 
     @Test
     public void isCorrect_convertPoundForceToKilogramForce() {
-        fail();
+        int poundsForce = 1;
+        double kilogramsForceExpected = 0.453592;
+        assert kilogramsForceExpected == poundsForce * 0.453592;
     }
 
     @Test
     public void isCorrect_convertPoundForceToDyne() {
-        fail();
+        int poundsForce = 1;
+        int dynesExpected = 444822;
+        assert dynesExpected == poundsForce * 4.44822 * 1e5;
     }
 
     @Test
     public void isCorrect_convertPoundForceToMetricTonForce() {
-        fail();
+        int poundsForce = 1;
+        double metricTonForceExpected = 4.53592E-4;
+        assert metricTonForceExpected == poundsForce * 0.000453592;
     }
 
     @Test
     public void isCorrect_convertPoundForceToUSTonForce() {
-        fail();
+        int poundsForce = 1;
+        double usTonForceExpected = 5.0E-4;
+        assert usTonForceExpected == poundsForce / (double) 2000;
     }
 
     @Test
     public void isCorrect_convertKilogramForceToNewton() {
-        fail();
+        int kilogramsForce = 1;
+        double newtonsExpected = 9.80665;
+        assert newtonsExpected == kilogramsForce * 9.80665;
     }
 
     @Test
     public void isCorrect_convertKilogramForceToPoundForce() {
-        fail();
+        int kilogramsForce = 1;
+        double poundsForceExpected = 2.2046244201837775;
+        assert poundsForceExpected == kilogramsForce / 0.453592;
     }
 
     @Test
     public void isCorrect_convertKilogramForceToDyne() {
-        fail();
+        int kilogramsForce = 1;
+        int dynesExpected = 980665;
+        assert dynesExpected == kilogramsForce * 9.80665 * 1e5;
     }
 
     @Test
     public void isCorrect_convertKilogramForceToMetricTonForce() {
-        fail();
+        int kilogramsForce = 1;
+        double metricTonForceExpected = 0.001;
+        assert metricTonForceExpected == kilogramsForce / (double) 1000;
     }
 
     @Test
     public void isCorrect_convertKilogramForceToUSTonForce() {
-        fail();
+        int kilogramsForce = 1;
+        double usTonForceExpected = 0.001102311359527999;
+        assert usTonForceExpected == kilogramsForce / 907.1847;
     }
 
     @Test
     public void isCorrect_convertDyneToNewton() {
-        fail();
+        int dynes = 1;
+        double newtonsExpected = 1.0E-5;
+        assert newtonsExpected == dynes / 1e5;
     }
 
     @Test
     public void isCorrect_convertDyneToPoundForce() {
-        fail();
+        int dynes = 1;
+        double poundsForceExpected = 2.248090247334889E-6;
+        assert poundsForceExpected == dynes / (4.44822 * 1e5);
     }
 
     @Test
     public void isCorrect_convertDyneToKilogramForce() {
-        fail();
+        int dynes = 1;
+        double kilogramsForceExpected = 1.0197162129779282E-6;
+        assert kilogramsForceExpected == dynes / (9.80665 * 1e5);
     }
 
     @Test
     public void isCorrect_convertDyneToMetricTonForce() {
-        fail();
+        int dynes = 1;
+        double metricTonForceExpected = 1.0197162129779283E-9;
+        assert metricTonForceExpected == dynes / (9.80665 * 1e8);
     }
 
     @Test
     public void isCorrect_convertDyneToUSTonForce() {
-        fail();
+        int dynes = 1;
+        double usTonForceExpected = 1.1240451236674445E-9;
+        assert usTonForceExpected == dynes / (8.89644 * 1e8);
     }
 
     @Test
     public void isCorrect_convertMetricTonForceToNewton() {
-        fail();
+        int metricTonsForce = 1;
+        double newtonsExpected = 9806.65;
+        assert newtonsExpected == metricTonsForce * 9806.65;
     }
 
     @Test
     public void isCorrect_convertMetricTonForceToPoundForce() {
-        fail();
+        int metricTonsForce = 1;
+        double poundsForceExpected = 2204.6244201837776;
+        assert poundsForceExpected == metricTonsForce / 0.000453592;
     }
 
     @Test
     public void isCorrect_convertMetricTonForceToKilogramForce() {
-        fail();
+        int metricTonsForce = 1;
+        int kilogramsForceExpected = 1000;
+        assert kilogramsForceExpected == metricTonsForce * 1000;
     }
 
     @Test
     public void isCorrect_convertMetricTonForceToDyne() {
-        fail();
+        int metricTonsForce = 1;
+        double dynesExpected = 9.80665E8;
+        assert dynesExpected == metricTonsForce * 9.80665 * 1e8;
     }
 
     @Test
     public void isCorrect_convertMetricTonForceToUSTonForce() {
-        fail();
+        int metricTonsForce = 1;
+        double usTonForceExpected = 1.10231;
+        assert usTonForceExpected == metricTonsForce * 1.10231;
     }
 
     @Test
     public void isCorrect_convertUSTonForceToNewton() {
-        fail();
+        int usTonsForce = 1;
+        double newtonsExpected = 8896.44;
+        assert newtonsExpected == usTonsForce * 8896.44;
     }
 
     @Test
     public void isCorrect_convertUSTonForceToPoundForce() {
-        fail();
+        int usTonsForce = 1;
+        int poundsForceExpected = 2000;
+        assert poundsForceExpected == usTonsForce * 2000;
     }
 
     @Test
     public void isCorrect_convertUSTonForceToKilogramForce() {
-        fail();
+        int usTonsForce = 1;
+        double kilogramsForceExpected = 907.1847;
+        assert kilogramsForceExpected == usTonsForce * 907.1847;
     }
 
     @Test
     public void isCorrect_convertUSTonForceToDyne() {
-        fail();
+        int usTonsForce = 1;
+        double dynesExpected = 8.89644E8;
+        assert dynesExpected == usTonsForce * 8.89644 * 1e8;
     }
 
     @Test
     public void isCorrect_convertUSTonForceToMetricTonForce() {
-        fail();
+        int usTonsForce = 1;
+        double metricTonForceExpected = 0.9071858188712795;
+        assert metricTonForceExpected == usTonsForce / 1.10231;
     }
-
 }
