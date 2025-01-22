@@ -16,44 +16,39 @@
 package gparap.apps.converter_unit.converters;
 
 public class ForceConverter {
+    public double convertNewtonToPoundForce(double newtons) { return newtons / 4.44822; }
+    public double convertNewtonToKilogramForce(double newtons) { return newtons / 9.80665; }
+    public double convertNewtonToDyne(double newtons) { return newtons * 1e5; }
+    public double convertNewtonToMetricTonForce(double newtons) { return newtons / 9806.65 ; }
+    public double convertNewtonToUSTonForce(double newtons) { return newtons / 8896.44; }
 
-    //TODO: replace stubs with actual methods
+    public double convertPoundForceToNewton(double poundsForce) { return poundsForce * 4.44822; }
+    public double convertPoundForceToKilogramForce(double poundsForce) { return poundsForce * 0.453592; }
+    public double convertPoundForceToDyne(double poundsForce) { return poundsForce * 4.44822 * 1e5; }
+    public double convertPoundForceToMetricTonForce(double poundsForce) { return poundsForce * 0.000453592; }
+    public double convertPoundForceToUSTonForce(double poundsForce) { return poundsForce / (double)2000; }
 
-    public int convertNewtonToPoundForce() { return 0; }
-    public int convertNewtonToKilogramForce() { return 0; }
-    public int convertNewtonToDyne() { return 0; }
-    public int convertNewtonToMetricTonForce() { return 0; }
-    public int convertNewtonToUSTonForce() { return 0; }
+    public double convertKilogramForceToNewton(double kilogramsForce) { return kilogramsForce * 9.80665; }
+    public double convertKilogramForceToPoundForce(double kilogramsForce) { return kilogramsForce / 0.453592; }
+    public double convertKilogramForceToDyne(double kilogramsForce) { return kilogramsForce * 9.80665 * 1e5; }
+    public double convertKilogramForceToMetricTonForce(double kilogramsForce) { return kilogramsForce / (double)1000; }
+    public double convertKilogramForceToUSTonForce(double kilogramsForce) { return kilogramsForce / 907.1847; }
 
+    public double convertDyneToNewton(double dynes) { return dynes / 1e5; }
+    public double convertDyneToPoundForce(double dynes) { return dynes / (4.44822 * 1e5); }
+    public double convertDyneToKilogramForce(double dynes) { return dynes / (9.80665 * 1e5); }
+    public double convertDyneToMetricTonForce(double dynes) { return dynes / (9.80665 * 1e8); }
+    public double convertDyneToUSTonForce(double dynes) { return dynes / (8.89644 * 1e8); }
 
-    public int convertPoundForceToNewton() { return 0; }
-    public int convertPoundForceToKilogramForce() { return 0; }
-    public int convertPoundForceToDyne() { return 0; }
-    public int convertPoundForceToMetricTonForce() { return 0; }
-    public int convertPoundForceToUSTonForce() { return 0; }
+    public double convertMetricTonForceToNewton(double metricTonsForce) { return metricTonsForce * 9806.65; }
+    public double convertMetricTonForceToPoundForce(double metricTonsForce) { return metricTonsForce / 0.000453592; }
+    public double convertMetricTonForceToKilogramForce(double metricTonsForce) { return metricTonsForce * 1000; }
+    public double convertMetricTonForceToDyne(double metricTonsForce) { return metricTonsForce * 9.80665 * 1e8; }
+    public double convertMetricTonForceToUSTonForce(double metricTonsForce) { return metricTonsForce * 1.10231; }
 
-    public int convertKilogramForceToNewton() { return 0; }
-    public int convertKilogramForceToPoundForce() { return 0; }
-    public int convertKilogramForceToDyne() { return 0; }
-    public int convertKilogramForceToMetricTonForce() { return 0; }
-    public int convertKilogramForceToUSTonForce() { return 0; }
-
-    public int convertDyneToNewton() { return 0; }
-    public int convertDyneToPoundForce() { return 0; }
-    public int convertDyneToKilogramForce() { return 0; }
-    public int convertDyneToMetricTonForce() { return 0; }
-    public int convertDyneToUSTonForce() { return 0; }
-
-    public int convertMetricTonForceToNewton() { return 0; }
-    public int convertMetricTonForceToPoundForce() { return 0; }
-    public int convertMetricTonForceToKilogramForce() { return 0; }
-    public int convertMetricTonForceToDyne() { return 0; }
-    public int convertMetricTonForceToUSTonForce() { return 0; }
-
-    public int convertUSTonForceToNewton() { return 0; }
-    public int convertUSTonForceToPoundForce() { return 0; }
-    public int convertUSTonForceToKilogramForce() { return 0; }
-    public int convertUSTonForceToDyne() { return 0; }
-    public int convertUSTonForceToMetricTonForce() { return 0; }
-
+    public double convertUSTonForceToNewton(double usTonsForce) { return usTonsForce * 8896.44; }
+    public double convertUSTonForceToPoundForce(double usTonsForce) { return usTonsForce * 2000; }
+    public double convertUSTonForceToKilogramForce(double usTonsForce) { return usTonsForce * 907.1847; }
+    public double convertUSTonForceToDyne(double usTonsForce) { return usTonsForce * 8.89644 * 1e8; }
+    public double convertUSTonForceToMetricTonForce(double usTonsForce) { return usTonsForce / 1.10231; }
 }
