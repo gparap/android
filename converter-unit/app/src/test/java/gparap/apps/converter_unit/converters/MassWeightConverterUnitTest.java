@@ -18,12 +18,14 @@ package gparap.apps.converter_unit.converters;
 import org.junit.Test;
 
 public class MassWeightConverterUnitTest {
+    private final MassWeightConverter converter = new MassWeightConverter();
+
     @Test
     public void isCorrect_convertKilogramToGram() {
         int kilograms = 1;
         double gramsExpected = 1000;
         System.out.println(kilograms * 1000);
-        assert gramsExpected == kilograms * 1000;
+        assert gramsExpected == converter.convertKilogramToGram(kilograms);
     }
 
     @Test
@@ -31,7 +33,7 @@ public class MassWeightConverterUnitTest {
         int kilograms = 1;
         double milligramsExpected = 1000000;
         System.out.println(kilograms * 1000000);
-        assert milligramsExpected == kilograms * 1000000;
+        assert milligramsExpected == converter.convertKilogramToMilligram(kilograms);
     }
 
     @Test
@@ -39,7 +41,7 @@ public class MassWeightConverterUnitTest {
         int kilograms = 1;
         double metricTonsExpected = 0.001;
         System.out.println(kilograms * 0.001);
-        assert metricTonsExpected == kilograms * 0.001;
+        assert metricTonsExpected == converter.convertKilogramToMetricTon(kilograms);
     }
 
     @Test
@@ -47,7 +49,7 @@ public class MassWeightConverterUnitTest {
         int kilograms = 1;
         double usTonsExpected = 0.00110231;
         System.out.println(kilograms * 0.00110231);
-        assert usTonsExpected == kilograms * 0.00110231;
+        assert usTonsExpected == converter.convertKilogramToUSTon(kilograms);
     }
 
     @Test
@@ -55,7 +57,7 @@ public class MassWeightConverterUnitTest {
         int kilograms = 1;
         double imperialTonsExpected = 9.84207E-4;
         System.out.println(kilograms * 0.000984207);
-        assert imperialTonsExpected == kilograms * 0.000984207;
+        assert imperialTonsExpected == converter.convertKilogramToImperialTon(kilograms);
     }
 
     @Test
@@ -63,7 +65,7 @@ public class MassWeightConverterUnitTest {
         int kilograms = 1;
         double poundsExpected = 2.20462;
         System.out.println(kilograms * 2.20462);
-        assert poundsExpected == kilograms * 2.20462;
+        assert poundsExpected == converter.convertKilogramToPound(kilograms);
     }
 
     @Test
@@ -71,7 +73,7 @@ public class MassWeightConverterUnitTest {
         int kilograms = 1;
         double usOuncesExpected = 35.274;
         System.out.println(kilograms * 35.274);
-        assert usOuncesExpected == kilograms * 35.274;
+        assert usOuncesExpected == converter.convertKilogramToUSOunce(kilograms);
     }
 
     @Test
@@ -79,7 +81,7 @@ public class MassWeightConverterUnitTest {
         int kilograms = 1;
         double imperialOuncesExpected = 35.195;
         System.out.println(kilograms * 35.195);
-        assert imperialOuncesExpected == kilograms * 35.195;
+        assert imperialOuncesExpected == converter.convertKilogramToImperialOunce(kilograms);
     }
 
     @Test
@@ -87,7 +89,7 @@ public class MassWeightConverterUnitTest {
         int kilograms = 1;
         double stonesExpected = 0.157473;
         System.out.println(kilograms * 0.157473);
-        assert stonesExpected == kilograms * 0.157473;
+        assert stonesExpected == converter.convertKilogramToStone(kilograms);
     }
 
     @Test
@@ -95,7 +97,7 @@ public class MassWeightConverterUnitTest {
         int kilograms = 1;
         double caratsExpected = 5000;
         System.out.println(kilograms * 5000);
-        assert caratsExpected == kilograms * 5000;
+        assert caratsExpected == converter.convertKilogramToCarat(kilograms);
     }
 
     @Test
@@ -103,7 +105,7 @@ public class MassWeightConverterUnitTest {
         int grams = 1;
         double kilogramsExpected = 0.001;
         System.out.println(grams * 0.001);
-        assert kilogramsExpected == grams * 0.001;
+        assert kilogramsExpected == converter.convertGramToKilogram(grams);
     }
 
     @Test
@@ -111,7 +113,7 @@ public class MassWeightConverterUnitTest {
         int grams = 1;
         double milligramsExpected = 1000;
         System.out.println(grams * 1000);
-        assert milligramsExpected == grams * 1000;
+        assert milligramsExpected == converter.convertGramToMilligram(grams);
     }
 
     @Test
@@ -119,7 +121,7 @@ public class MassWeightConverterUnitTest {
         int grams = 1;
         double metricTonsExpected = 1.0E-6;
         System.out.println(grams * 0.000001);
-        assert metricTonsExpected == grams * 0.000001;
+        assert metricTonsExpected == converter.convertGramToMetricTon(grams);
     }
 
     @Test
@@ -127,7 +129,7 @@ public class MassWeightConverterUnitTest {
         int grams = 1;
         double usTonsExpected = 1.10231E-6;
         System.out.println(grams * 0.00000110231);
-        assert usTonsExpected == grams * 0.00000110231;
+        assert usTonsExpected == converter.convertGramToUSTon(grams);
     }
 
     @Test
@@ -135,7 +137,7 @@ public class MassWeightConverterUnitTest {
         int grams = 1;
         double imperialTonsExpected = 9.84207E-7;
         System.out.println(grams * 0.000000984207);
-        assert imperialTonsExpected == grams * 0.000000984207;
+        assert imperialTonsExpected == converter.convertGramToImperialTon(grams);
     }
 
     @Test
@@ -143,7 +145,7 @@ public class MassWeightConverterUnitTest {
         int grams = 1;
         double poundsExpected = 0.00220462;
         System.out.println(grams * 0.00220462);
-        assert poundsExpected == grams * 0.00220462;
+        assert poundsExpected == converter.convertGramToPound(grams);
     }
 
     @Test
@@ -151,7 +153,7 @@ public class MassWeightConverterUnitTest {
         int grams = 1;
         double usOuncesExpected = 0.035274;
         System.out.println(grams * 0.035274);
-        assert usOuncesExpected == grams * 0.035274;
+        assert usOuncesExpected == converter.convertGramToUSOunce(grams);
     }
 
     @Test
@@ -159,7 +161,7 @@ public class MassWeightConverterUnitTest {
         int grams = 1;
         double imperialOuncesExpected = 0.035195;
         System.out.println(grams * 0.035195);
-        assert imperialOuncesExpected == grams * 0.035195;
+        assert imperialOuncesExpected == converter.convertGramToImperialOunce(grams);
     }
 
     @Test
@@ -167,7 +169,7 @@ public class MassWeightConverterUnitTest {
         int grams = 1;
         double stonesExpected = 1.57473E-4;
         System.out.println(grams * 0.000157473);
-        assert stonesExpected == grams * 0.000157473;
+        assert stonesExpected == converter.convertGramToStone(grams);
     }
 
     @Test
@@ -175,7 +177,7 @@ public class MassWeightConverterUnitTest {
         int grams = 1;
         double caratsExpected = 5;
         System.out.println(grams * 5);
-        assert caratsExpected == grams * 5;
+        assert caratsExpected == converter.convertGramToCarat(grams);
     }
 
     @Test
@@ -183,7 +185,7 @@ public class MassWeightConverterUnitTest {
         int milligrams = 1;
         double kilogramsExpected = 1.0E-6;
         System.out.println(milligrams * 0.000001);
-        assert kilogramsExpected == milligrams * 0.000001;
+        assert kilogramsExpected == converter.convertMilligramToKilogram(milligrams);
     }
 
     @Test
@@ -191,7 +193,7 @@ public class MassWeightConverterUnitTest {
         int milligrams = 1;
         double gramsExpected = 0.001;
         System.out.println(milligrams * 0.001);
-        assert gramsExpected == milligrams * 0.001;
+        assert gramsExpected == converter.convertMilligramToGram(milligrams);
     }
 
     @Test
@@ -199,7 +201,7 @@ public class MassWeightConverterUnitTest {
         int milligrams = 1;
         double metricTonsExpected = 1.0E-9;
         System.out.println(milligrams * 0.000000001);
-        assert metricTonsExpected == milligrams * 0.000000001;
+        assert metricTonsExpected == converter.convertMilligramToMetricTon(milligrams);
     }
 
     @Test
@@ -207,7 +209,7 @@ public class MassWeightConverterUnitTest {
         int milligrams = 1;
         double usTonsExpected = 1.10231E-9;
         System.out.println(milligrams * 0.00000000110231);
-        assert usTonsExpected == milligrams * 0.00000000110231;
+        assert usTonsExpected == converter.convertMilligramToUSTon(milligrams);
     }
 
     @Test
@@ -215,7 +217,7 @@ public class MassWeightConverterUnitTest {
         int milligrams = 1;
         double imperialTonsExpected = 9.84207E-10;
         System.out.println(milligrams * 0.000000000984207);
-        assert imperialTonsExpected == milligrams * 0.000000000984207;
+        assert imperialTonsExpected == converter.convertMilligramToImperialTon(milligrams);
     }
 
     @Test
@@ -223,7 +225,7 @@ public class MassWeightConverterUnitTest {
         int milligrams = 1;
         double poundsExpected = 2.20462E-6;
         System.out.println(milligrams * 0.00000220462);
-        assert poundsExpected == milligrams * 0.00000220462;
+        assert poundsExpected == converter.convertMilligramToPound(milligrams);
     }
 
     @Test
@@ -231,7 +233,7 @@ public class MassWeightConverterUnitTest {
         int milligrams = 1;
         double usOuncesExpected = 3.5274E-5;
         System.out.println(milligrams * 0.000035274);
-        assert usOuncesExpected == milligrams * 0.000035274;
+        assert usOuncesExpected == converter.convertMilligramToUSOunce(milligrams);
     }
 
     @Test
@@ -239,7 +241,7 @@ public class MassWeightConverterUnitTest {
         int milligrams = 1;
         double imperialOuncesExpected = 3.5195E-5;
         System.out.println(milligrams * 0.000035195);
-        assert imperialOuncesExpected == milligrams * 0.000035195;
+        assert imperialOuncesExpected == converter.convertMilligramToImperialOunce(milligrams);
     }
 
     @Test
@@ -247,7 +249,7 @@ public class MassWeightConverterUnitTest {
         int milligrams = 1;
         double stonesExpected = 1.57473E-7;
         System.out.println(milligrams * 0.000000157473);
-        assert stonesExpected == milligrams * 0.000000157473;
+        assert stonesExpected == converter.convertMilligramToStone(milligrams);
     }
 
     @Test
@@ -255,7 +257,7 @@ public class MassWeightConverterUnitTest {
         int milligrams = 1;
         double caratsExpected = 0.005;
         System.out.println(milligrams * 0.005);
-        assert caratsExpected == milligrams * 0.005;
+        assert caratsExpected == converter.convertMilligramToCarat(milligrams);
     }
 
     @Test
@@ -263,7 +265,7 @@ public class MassWeightConverterUnitTest {
         int metricTons = 1;
         double kilogramsExpected = 1000;
         System.out.println(metricTons * 1000);
-        assert kilogramsExpected == metricTons * 1000;
+        assert kilogramsExpected == converter.convertMetricTonToKilogram(metricTons);
     }
 
     @Test
@@ -271,7 +273,7 @@ public class MassWeightConverterUnitTest {
         int metricTons = 1;
         double gramsExpected = 1000000;
         System.out.println(metricTons * 1000000);
-        assert gramsExpected == metricTons * 1000000;
+        assert gramsExpected == converter.convertMetricTonToGram(metricTons);
     }
 
     @Test
@@ -279,7 +281,7 @@ public class MassWeightConverterUnitTest {
         int metricTons = 1;
         double milligramsExpected = 1000000000;
         System.out.println(metricTons * 1000000000);
-        assert milligramsExpected == metricTons * 1000000000;
+        assert milligramsExpected == converter.convertMetricTonToMilligram(metricTons);
     }
 
     @Test
@@ -287,7 +289,7 @@ public class MassWeightConverterUnitTest {
         int metricTons = 1;
         double usTonsExpected = 1.10231;
         System.out.println(metricTons * 1.10231);
-        assert usTonsExpected == metricTons * 1.10231;
+        assert usTonsExpected == converter.convertMetricTonToUSTon(metricTons);
     }
 
     @Test
@@ -295,7 +297,7 @@ public class MassWeightConverterUnitTest {
         int metricTons = 1;
         double imperialTonsExpected = 0.984207;
         System.out.println(metricTons * 0.984207);
-        assert imperialTonsExpected == metricTons * 0.984207;
+        assert imperialTonsExpected == converter.convertMetricTonToImperialTon(metricTons);
     }
 
     @Test
@@ -303,7 +305,7 @@ public class MassWeightConverterUnitTest {
         int metricTons = 1;
         double poundsExpected = 2204.62;
         System.out.println(metricTons * 2204.62);
-        assert poundsExpected == metricTons * 2204.62;
+        assert poundsExpected == converter.convertMetricTonToPound(metricTons);
     }
 
     @Test
@@ -311,7 +313,7 @@ public class MassWeightConverterUnitTest {
         int metricTons = 1;
         double usOuncesExpected = 35274;
         System.out.println(metricTons * 35274);
-        assert usOuncesExpected == metricTons * 35274;
+        assert usOuncesExpected == converter.convertMetricTonToUSOunce(metricTons);
     }
 
     @Test
@@ -319,7 +321,7 @@ public class MassWeightConverterUnitTest {
         int metricTons = 1;
         double imperialOuncesExpected = 35195;
         System.out.println(metricTons * 35195);
-        assert imperialOuncesExpected == metricTons * 35195;
+        assert imperialOuncesExpected == converter.convertMetricTonToImperialOunce(metricTons);
     }
 
     @Test
@@ -327,7 +329,7 @@ public class MassWeightConverterUnitTest {
         int metricTons = 1;
         double stonesExpected = 157.473;
         System.out.println(metricTons * 157.473);
-        assert stonesExpected == metricTons * 157.473;
+        assert stonesExpected == converter.convertMetricTonToStone(metricTons);
     }
 
     @Test
@@ -335,7 +337,7 @@ public class MassWeightConverterUnitTest {
         int metricTons = 1;
         double caratsExpected = 5000000;
         System.out.println(metricTons * 5000000);
-        assert caratsExpected == metricTons * 5000000;
+        assert caratsExpected == converter.convertMetricTonToCarat(metricTons);
     }
 
     @Test
@@ -343,7 +345,7 @@ public class MassWeightConverterUnitTest {
         int usTons = 1;
         double kilogramsExpected = 907.18474;
         System.out.println(usTons * 907.18474);
-        assert kilogramsExpected == usTons * 907.18474;
+        assert kilogramsExpected == converter.convertUSTonToKilogram(usTons);
     }
 
     @Test
@@ -351,7 +353,7 @@ public class MassWeightConverterUnitTest {
         int usTons = 1;
         double gramsExpected = 907184.74;
         System.out.println(usTons * 907184.74);
-        assert gramsExpected == usTons * 907184.74;
+        assert gramsExpected == converter.convertUSTonToGram(usTons);
     }
 
     @Test
@@ -359,7 +361,7 @@ public class MassWeightConverterUnitTest {
         int usTons = 1;
         double milligramsExpected = 907184740;
         System.out.println(usTons * 907184740);
-        assert milligramsExpected == usTons * 907184740;
+        assert milligramsExpected == converter.convertUSTonToMilligram(usTons);
     }
 
     @Test
@@ -367,7 +369,7 @@ public class MassWeightConverterUnitTest {
         int usTons = 1;
         double metricTonsExpected = 0.90718474;
         System.out.println(usTons * 0.90718474);
-        assert metricTonsExpected == usTons * 0.90718474;
+        assert metricTonsExpected == converter.convertUSTonToMetricTon(usTons);
     }
 
     @Test
@@ -375,7 +377,7 @@ public class MassWeightConverterUnitTest {
         int usTons = 1;
         double imperialTonsExpected = 0.892857;
         System.out.println(usTons * 0.892857);
-        assert imperialTonsExpected == usTons * 0.892857;
+        assert imperialTonsExpected == converter.convertUSTonToImperialTon(usTons);
     }
 
     @Test
@@ -383,7 +385,7 @@ public class MassWeightConverterUnitTest {
         int usTons = 1;
         double poundsExpected = 2000;
         System.out.println(usTons * 2000);
-        assert poundsExpected == usTons * 2000;
+        assert poundsExpected == converter.convertUSTonToPound(usTons);
     }
 
     @Test
@@ -391,7 +393,7 @@ public class MassWeightConverterUnitTest {
         int usTons = 1;
         double usOuncesExpected = 32000;
         System.out.println(usTons * 32000);
-        assert usOuncesExpected == usTons * 32000;
+        assert usOuncesExpected == converter.convertUSTonToUSOunce(usTons);
     }
 
     @Test
@@ -399,7 +401,7 @@ public class MassWeightConverterUnitTest {
         int usTons = 1;
         double imperialOuncesExpected = 31999.93;
         System.out.println(usTons * 31999.93);
-        assert imperialOuncesExpected == usTons * 31999.93;
+        assert imperialOuncesExpected == converter.convertUSTonToImperialOunce(usTons);
     }
 
     @Test
@@ -407,7 +409,7 @@ public class MassWeightConverterUnitTest {
         int usTons = 1;
         double stonesExpected = 142.857;
         System.out.println(usTons * 142.857);
-        assert stonesExpected == usTons * 142.857;
+        assert stonesExpected == converter.convertUSTonToStone(usTons);
     }
 
     @Test
@@ -415,7 +417,7 @@ public class MassWeightConverterUnitTest {
         int usTons = 1;
         double caratsExpected = 4535923.7;
         System.out.println(usTons * 4535923.7);
-        assert caratsExpected == usTons * 4535923.7;
+        assert caratsExpected == converter.convertUSTonToCarat(usTons);
     }
 
     @Test
@@ -423,7 +425,7 @@ public class MassWeightConverterUnitTest {
         int imperialTons = 1;
         double kilogramsExpected = 1016.04691;
         System.out.println(imperialTons * 1016.04691);
-        assert kilogramsExpected == imperialTons * 1016.04691;
+        assert kilogramsExpected == converter.convertImperialTonToKilogram(imperialTons);
     }
 
     @Test
@@ -431,7 +433,7 @@ public class MassWeightConverterUnitTest {
         int imperialTons = 1;
         double gramsExpected = 1016046.91;
         System.out.println(imperialTons * 1016046.91);
-        assert gramsExpected == imperialTons * 1016046.91;
+        assert gramsExpected == converter.convertImperialTonToGram(imperialTons);
     }
 
     @Test
@@ -439,7 +441,7 @@ public class MassWeightConverterUnitTest {
         int imperialTons = 1;
         double milligramsExpected = 1016046910;
         System.out.println(imperialTons * 1016046910);
-        assert milligramsExpected == imperialTons * 1016046910;
+        assert milligramsExpected == converter.convertImperialTonToMilligram(imperialTons);
     }
 
     @Test
@@ -447,7 +449,7 @@ public class MassWeightConverterUnitTest {
         int imperialTons = 1;
         double metricTonsExpected = 1.01605;
         System.out.println(imperialTons * 1.01605);
-        assert metricTonsExpected == imperialTons * 1.01605;
+        assert metricTonsExpected == converter.convertImperialTonToMetricTon(imperialTons);
     }
 
     @Test
@@ -455,7 +457,7 @@ public class MassWeightConverterUnitTest {
         int imperialTons = 1;
         double usTonsExpected = 1.12;
         System.out.println(imperialTons * 1.12);
-        assert usTonsExpected == imperialTons * 1.12;
+        assert usTonsExpected == converter.convertImperialTonToUSTon(imperialTons);
     }
 
     @Test
@@ -463,7 +465,7 @@ public class MassWeightConverterUnitTest {
         int imperialTons = 1;
         double poundsExpected = 2240;
         System.out.println(imperialTons * 2240);
-        assert poundsExpected == imperialTons * 2240;
+        assert poundsExpected == converter.convertImperialTonToPound(imperialTons);
     }
 
     @Test
@@ -471,7 +473,7 @@ public class MassWeightConverterUnitTest {
         int imperialTons = 1;
         double usOuncesExpected = 35840;
         System.out.println(imperialTons * 35840);
-        assert usOuncesExpected == imperialTons * 35840;
+        assert usOuncesExpected == converter.convertImperialTonToUSOunce(imperialTons);
     }
 
     @Test
@@ -479,7 +481,7 @@ public class MassWeightConverterUnitTest {
         int imperialTons = 1;
         double imperialOuncesExpected = 35839.92;
         System.out.println(imperialTons * 35839.92);
-        assert imperialOuncesExpected == imperialTons * 35839.92;
+        assert imperialOuncesExpected == converter.convertImperialTonToImperialOunce(imperialTons);
     }
 
     @Test
@@ -487,7 +489,7 @@ public class MassWeightConverterUnitTest {
         int imperialTons = 1;
         double stonesExpected = 160;
         System.out.println(imperialTons * 160);
-        assert stonesExpected == imperialTons * 160;
+        assert stonesExpected == converter.convertImperialTonToStone(imperialTons);
     }
 
     @Test
@@ -495,7 +497,7 @@ public class MassWeightConverterUnitTest {
         int imperialTons = 1;
         double caratsExpected = 5080234.55;
         System.out.println(imperialTons * 5080234.55);
-        assert caratsExpected == imperialTons * 5080234.55;
+        assert caratsExpected == converter.convertImperialTonToCarat(imperialTons);
     }
 
     @Test
@@ -503,7 +505,7 @@ public class MassWeightConverterUnitTest {
         int pounds = 1;
         double kilogramsExpected = 0.453592;
         System.out.println(pounds * 0.453592);
-        assert kilogramsExpected == pounds * 0.453592;
+        assert kilogramsExpected == converter.convertPoundToKilogram(pounds);
     }
 
     @Test
@@ -511,7 +513,7 @@ public class MassWeightConverterUnitTest {
         int pounds = 1;
         double gramsExpected = 453.592;
         System.out.println(pounds * 453.592);
-        assert gramsExpected == pounds * 453.592;
+        assert gramsExpected == converter.convertPoundToGram(pounds);
     }
 
     @Test
@@ -519,7 +521,7 @@ public class MassWeightConverterUnitTest {
         int pounds = 1;
         double milligramsExpected = 453592;
         System.out.println(pounds * 453592);
-        assert milligramsExpected == pounds * 453592;
+        assert milligramsExpected == converter.convertPoundToMilligram(pounds);
     }
 
     @Test
@@ -527,7 +529,7 @@ public class MassWeightConverterUnitTest {
         int pounds = 1;
         double metricTonsExpected = 4.53592E-4;
         System.out.println(pounds * 0.000453592);
-        assert metricTonsExpected == pounds * 0.000453592;
+        assert metricTonsExpected == converter.convertPoundToMetricTon(pounds);
     }
 
     @Test
@@ -535,7 +537,7 @@ public class MassWeightConverterUnitTest {
         int pounds = 1;
         double usTonsExpected = 5.0E-4;
         System.out.println(pounds * 0.0005);
-        assert usTonsExpected == pounds * 0.0005;
+        assert usTonsExpected == converter.convertPoundToUSTon(pounds);
     }
 
     @Test
@@ -543,7 +545,7 @@ public class MassWeightConverterUnitTest {
         int pounds = 1;
         double imperialTonsExpected = 4.46429E-4;
         System.out.println(pounds * 0.000446429);
-        assert imperialTonsExpected == pounds * 0.000446429;
+        assert imperialTonsExpected == converter.convertPoundToImperialTon(pounds);
     }
 
     @Test
@@ -551,7 +553,7 @@ public class MassWeightConverterUnitTest {
         int pounds = 1;
         double usOuncesExpected = 16;
         System.out.println(pounds * 16);
-        assert usOuncesExpected == pounds * 16;
+        assert usOuncesExpected == converter.convertPoundToUSOunce(pounds);
     }
 
     @Test
@@ -559,7 +561,7 @@ public class MassWeightConverterUnitTest {
         int pounds = 1;
         double imperialOuncesExpected = 15.999;
         System.out.println(pounds * 15.999);
-        assert imperialOuncesExpected == pounds * 15.999;
+        assert imperialOuncesExpected == converter.convertPoundToImperialOunce(pounds);
     }
 
     @Test
@@ -567,7 +569,7 @@ public class MassWeightConverterUnitTest {
         int pounds = 1;
         double stonesExpected = 0.0714286;
         System.out.println(pounds * 0.0714286);
-        assert stonesExpected == pounds * 0.0714286;
+        assert stonesExpected == converter.convertPoundToStone(pounds);
     }
 
     @Test
@@ -575,7 +577,7 @@ public class MassWeightConverterUnitTest {
         int pounds = 1;
         double caratsExpected = 2267.96;
         System.out.println(pounds * 2267.96);
-        assert caratsExpected == pounds * 2267.96;
+        assert caratsExpected == converter.convertPoundToCarat(pounds);
     }
 
     @Test
@@ -583,7 +585,7 @@ public class MassWeightConverterUnitTest {
         int usOunces = 1;
         double kilogramsExpected = 0.0283495;
         System.out.println(usOunces * 0.0283495);
-        assert kilogramsExpected == usOunces * 0.0283495;
+        assert kilogramsExpected == converter.convertUSOunceToKilogram(usOunces);
     }
 
     @Test
@@ -591,7 +593,7 @@ public class MassWeightConverterUnitTest {
         int usOunces = 1;
         double gramsExpected = 28.3495;
         System.out.println(usOunces * 28.3495);
-        assert gramsExpected == usOunces * 28.3495;
+        assert gramsExpected == converter.convertUSOunceToGram(usOunces);
     }
 
     @Test
@@ -599,7 +601,7 @@ public class MassWeightConverterUnitTest {
         int usOunces = 1;
         double milligramsExpected = 28349.5;
         System.out.println(usOunces * 28349.5);
-        assert milligramsExpected == usOunces * 28349.5;
+        assert milligramsExpected == converter.convertUSOunceToMilligram(usOunces);
     }
 
     @Test
@@ -607,7 +609,7 @@ public class MassWeightConverterUnitTest {
         int usOunces = 1;
         double metricTonsExpected = 2.83495E-5;
         System.out.println(usOunces * 0.0000283495);
-        assert metricTonsExpected == usOunces * 0.0000283495;
+        assert metricTonsExpected == converter.convertUSOunceToMetricTon(usOunces);
     }
 
     @Test
@@ -615,7 +617,7 @@ public class MassWeightConverterUnitTest {
         int usOunces = 1;
         double usTonsExpected = 3.125E-5;
         System.out.println(usOunces * 0.00003125);
-        assert usTonsExpected == usOunces * 0.00003125;
+        assert usTonsExpected == converter.convertUSOunceToUSTon(usOunces);
     }
 
     @Test
@@ -623,7 +625,7 @@ public class MassWeightConverterUnitTest {
         int usOunces = 1;
         double imperialTonsExpected = 2.79018E-5;
         System.out.println(usOunces * 0.0000279018);
-        assert imperialTonsExpected == usOunces * 0.0000279018;
+        assert imperialTonsExpected == converter.convertUSOunceToImperialTon(usOunces);
     }
 
     @Test
@@ -631,7 +633,7 @@ public class MassWeightConverterUnitTest {
         int usOunces = 1;
         double poundsExpected = 0.0625;
         System.out.println(usOunces * 0.0625);
-        assert poundsExpected == usOunces * 0.0625;
+        assert poundsExpected == converter.convertUSOunceToPound(usOunces);
     }
 
     @Test
@@ -639,7 +641,7 @@ public class MassWeightConverterUnitTest {
         int usOunces = 1;
         double imperialOuncesExpected = 0.911458;
         System.out.println(usOunces * 0.911458);
-        assert imperialOuncesExpected == usOunces * 0.911458;
+        assert imperialOuncesExpected == converter.convertUSOunceToImperialOunce(usOunces);
     }
 
     @Test
@@ -647,7 +649,7 @@ public class MassWeightConverterUnitTest {
         int usOunces = 1;
         double stonesExpected = 0.00446429;
         System.out.println(usOunces * 0.00446429);
-        assert stonesExpected == usOunces * 0.00446429;
+        assert stonesExpected == converter.convertUSOunceToStone(usOunces);
     }
 
     @Test
@@ -655,7 +657,7 @@ public class MassWeightConverterUnitTest {
         int usOunces = 1;
         double caratsExpected = 141.748;
         System.out.println(usOunces * 141.748);
-        assert caratsExpected == usOunces * 141.748;
+        assert caratsExpected == converter.convertUSOunceToCarat(usOunces);
     }
 
     @Test
@@ -663,7 +665,7 @@ public class MassWeightConverterUnitTest {
         int imperialOunces = 1;
         double kilogramsExpected = 0.0283495;
         System.out.println(imperialOunces * 0.0283495);
-        assert kilogramsExpected == imperialOunces * 0.0283495;
+        assert kilogramsExpected == converter.convertImperialOunceToKilogram(imperialOunces);
     }
 
     @Test
@@ -671,7 +673,7 @@ public class MassWeightConverterUnitTest {
         int imperialOunces = 1;
         double gramsExpected = 28.3495;
         System.out.println(imperialOunces * 28.3495);
-        assert gramsExpected == imperialOunces * 28.3495;
+        assert gramsExpected == converter.convertImperialOunceToGram(imperialOunces);
     }
 
     @Test
@@ -679,7 +681,7 @@ public class MassWeightConverterUnitTest {
         int imperialOunces = 1;
         double milligramsExpected = 28349.5;
         System.out.println(imperialOunces * 28349.5);
-        assert milligramsExpected == imperialOunces * 28349.5;
+        assert milligramsExpected == converter.convertImperialOunceToMilligram(imperialOunces);
     }
 
     @Test
@@ -687,7 +689,7 @@ public class MassWeightConverterUnitTest {
         int imperialOunces = 1;
         double metricTonsExpected = 2.83495E-5;
         System.out.println(imperialOunces * 0.0000283495);
-        assert metricTonsExpected == imperialOunces * 0.0000283495;
+        assert metricTonsExpected == converter.convertImperialOunceToMetricTon(imperialOunces);
     }
 
     @Test
@@ -695,7 +697,7 @@ public class MassWeightConverterUnitTest {
         int imperialOunces = 1;
         double usTonsExpected = 3.125E-5;
         System.out.println(imperialOunces * 0.00003125);
-        assert usTonsExpected == imperialOunces * 0.00003125;
+        assert usTonsExpected == converter.convertImperialOunceToUSTon(imperialOunces);
     }
 
     @Test
@@ -703,7 +705,7 @@ public class MassWeightConverterUnitTest {
         int imperialOunces = 1;
         double imperialTonsExpected = 2.7902E-5;
         System.out.println(imperialOunces * 0.000027902);
-        assert imperialTonsExpected == imperialOunces * 0.000027902;
+        assert imperialTonsExpected == converter.convertImperialOunceToImperialTon(imperialOunces);
     }
 
     @Test
@@ -711,7 +713,7 @@ public class MassWeightConverterUnitTest {
         int imperialOunces = 1;
         double poundsExpected = 0.0625;
         System.out.println(imperialOunces * 0.0625);
-        assert poundsExpected == imperialOunces * 0.0625;
+        assert poundsExpected == converter.convertImperialOunceToPound(imperialOunces);
     }
 
     @Test
@@ -719,7 +721,7 @@ public class MassWeightConverterUnitTest {
         int imperialOunces = 1;
         double usOuncesExpected = 1.04084;
         System.out.println(imperialOunces * 1.04084);
-        assert usOuncesExpected == imperialOunces * 1.04084;
+        assert usOuncesExpected == converter.convertImperialOunceToUSOunce(imperialOunces);
     }
 
     @Test
@@ -727,7 +729,7 @@ public class MassWeightConverterUnitTest {
         int imperialOunces = 1;
         double stonesExpected = 0.00446429;
         System.out.println(imperialOunces * 0.00446429);
-        assert stonesExpected == imperialOunces * 0.00446429;
+        assert stonesExpected == converter.convertImperialOunceToStone(imperialOunces);
     }
 
     @Test
@@ -735,7 +737,7 @@ public class MassWeightConverterUnitTest {
         int imperialOunces = 1;
         double caratsExpected = 141.748;
         System.out.println(imperialOunces * 141.748);
-        assert caratsExpected == imperialOunces * 141.748;
+        assert caratsExpected == converter.convertImperialOunceToCarat(imperialOunces);
     }
 
     @Test
@@ -743,7 +745,7 @@ public class MassWeightConverterUnitTest {
         int stones = 1;
         double kilogramsExpected = 6.35029;
         System.out.println(stones * 6.35029);
-        assert kilogramsExpected == stones * 6.35029;
+        assert kilogramsExpected == converter.convertStoneToKilogram(stones);
     }
 
     @Test
@@ -751,7 +753,7 @@ public class MassWeightConverterUnitTest {
         int stones = 1;
         double gramsExpected = 6350.29;
         System.out.println(stones * 6350.29);
-        assert gramsExpected == stones * 6350.29;
+        assert gramsExpected == converter.convertStoneToGram(stones);
     }
 
     @Test
@@ -759,7 +761,7 @@ public class MassWeightConverterUnitTest {
         int stones = 1;
         double milligramsExpected = 6350290;
         System.out.println(stones * 6350290);
-        assert milligramsExpected == stones * 6350290;
+        assert milligramsExpected == converter.convertStoneToMilligram(stones);
     }
 
     @Test
@@ -767,7 +769,7 @@ public class MassWeightConverterUnitTest {
         int stones = 1;
         double metricTonsExpected = 0.00635029;
         System.out.println(stones * 0.00635029);
-        assert metricTonsExpected == stones * 0.00635029;
+        assert metricTonsExpected == converter.convertStoneToMetricTon(stones);
     }
 
     @Test
@@ -775,7 +777,7 @@ public class MassWeightConverterUnitTest {
         int stones = 1;
         double usTonsExpected = 0.007;
         System.out.println(stones * 0.007);
-        assert usTonsExpected == stones * 0.007;
+        assert usTonsExpected == converter.convertStoneToUSTon(stones);
     }
 
     @Test
@@ -783,7 +785,7 @@ public class MassWeightConverterUnitTest {
         int stones = 1;
         double imperialTonsExpected = 0.00625;
         System.out.println(stones * 0.00625);
-        assert imperialTonsExpected == stones * 0.00625;
+        assert imperialTonsExpected == converter.convertStoneToImperialTon(stones);
     }
 
     @Test
@@ -791,7 +793,7 @@ public class MassWeightConverterUnitTest {
         int stones = 1;
         double poundsExpected = 14;
         System.out.println(stones * 14);
-        assert poundsExpected == stones * 14;
+        assert poundsExpected == converter.convertStoneToPound(stones);
     }
 
     @Test
@@ -799,7 +801,7 @@ public class MassWeightConverterUnitTest {
         int stones = 1;
         double usOuncesExpected = 224;
         System.out.println(stones * 224);
-        assert usOuncesExpected == stones * 224;
+        assert usOuncesExpected == converter.convertStoneToUSOunce(stones);
     }
 
     @Test
@@ -807,7 +809,7 @@ public class MassWeightConverterUnitTest {
         int stones = 1;
         double imperialOuncesExpected = 224;
         System.out.println(stones * 224);
-        assert imperialOuncesExpected == stones * 224;
+        assert imperialOuncesExpected == converter.convertStoneToImperialOunce(stones);
     }
 
     @Test
@@ -815,7 +817,7 @@ public class MassWeightConverterUnitTest {
         int stones = 1;
         double caratsExpected = 31751.5;
         System.out.println(stones * 31751.5);
-        assert caratsExpected == stones * 31751.5;
+        assert caratsExpected == converter.convertStoneToCarat(stones);
     }
 
     @Test
@@ -823,7 +825,7 @@ public class MassWeightConverterUnitTest {
         int carats = 1;
         double kilogramsExpected = 2.0E-4;
         System.out.println(carats * 0.0002);
-        assert kilogramsExpected == carats * 0.0002;
+        assert kilogramsExpected == converter.convertCaratToKilogram(carats);
     }
 
     @Test
@@ -831,7 +833,7 @@ public class MassWeightConverterUnitTest {
         int carats = 1;
         double gramsExpected = 0.2;
         System.out.println(carats * 0.2);
-        assert gramsExpected == carats * 0.2;
+        assert gramsExpected == converter.convertCaratToGram(carats);
     }
 
     @Test
@@ -839,7 +841,7 @@ public class MassWeightConverterUnitTest {
         int carats = 1;
         double milligramsExpected = 200;
         System.out.println(carats * 200);
-        assert milligramsExpected == carats * 200;
+        assert milligramsExpected == converter.convertCaratToMilligram(carats);
     }
 
     @Test
@@ -847,7 +849,7 @@ public class MassWeightConverterUnitTest {
         int carats = 1;
         double metricTonsExpected = 2.0E-7;
         System.out.println(carats * 0.0000002);
-        assert metricTonsExpected == carats * 0.0000002;
+        assert metricTonsExpected == converter.convertCaratToMetricTon(carats);
     }
 
     @Test
@@ -855,7 +857,7 @@ public class MassWeightConverterUnitTest {
         int carats = 1;
         double usTonsExpected = 2.20462E-7;
         System.out.println(carats * 0.000000220462);
-        assert usTonsExpected == carats * 0.000000220462;
+        assert usTonsExpected == converter.convertCaratToUSTon(carats);
     }
 
     @Test
@@ -863,7 +865,7 @@ public class MassWeightConverterUnitTest {
         int carats = 1;
         double imperialTonsExpected = 1.96841E-7;
         System.out.println(carats * 0.000000196841);
-        assert imperialTonsExpected == carats * 0.000000196841;
+        assert imperialTonsExpected == converter.convertCaratToImperialTon(carats);
     }
 
     @Test
@@ -871,7 +873,7 @@ public class MassWeightConverterUnitTest {
         int carats = 1;
         double poundsExpected = 4.40925E-4;
         System.out.println(carats * 0.000440925);
-        assert poundsExpected == carats * 0.000440925;
+        assert poundsExpected == converter.convertCaratToPound(carats);
     }
 
     @Test
@@ -879,15 +881,15 @@ public class MassWeightConverterUnitTest {
         int carats = 1;
         double usOuncesExpected = 0.00705479;
         System.out.println(carats * 0.00705479);
-        assert usOuncesExpected == carats * 0.00705479;
+        assert usOuncesExpected == converter.convertCaratToUSOunce(carats);
     }
 
     @Test
     public void isCorrect_convertCaratToImperialOunce() {
         int carats = 1;
-        double imperialOuncesExpected = 0070557;
-        System.out.println(carats * 0070557);
-        assert imperialOuncesExpected == carats * 0070557;
+        double imperialOuncesExpected = 0.0070557;
+        System.out.println(carats * 0.0070557);
+        assert imperialOuncesExpected == converter.convertCaratToImperialOunce(carats);
     }
 
     @Test
@@ -895,6 +897,6 @@ public class MassWeightConverterUnitTest {
         int carats = 1;
         double stonesExpected = 3.14961E-5;
         System.out.println(carats * 0.0000314961);
-        assert stonesExpected == carats * 0.0000314961;
+        assert stonesExpected == converter.convertCaratToStone(carats);
     }
 }
