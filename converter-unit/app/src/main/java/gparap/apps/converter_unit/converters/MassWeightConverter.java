@@ -16,127 +16,124 @@
 package gparap.apps.converter_unit.converters;
 
 public class MassWeightConverter {
+    public double convertKilogramToGram(double kilograms) { return kilograms * 1000; }
+    public double convertKilogramToMilligram(double kilograms) { return kilograms * 1000000; }
+    public double convertKilogramToMetricTon(double kilograms) { return kilograms * 0.001; }
+    public double convertKilogramToUSTon(double kilograms) { return kilograms * 0.00110231; }
+    public double convertKilogramToImperialTon(double kilograms) { return kilograms * 0.000984207; }
+    public double convertKilogramToPound(double kilograms) { return kilograms * 2.20462; }
+    public double convertKilogramToUSOunce(double kilograms) { return kilograms * 35.274; }
+    public double convertKilogramToImperialOunce(double kilograms) { return kilograms * 35.195; }
+    public double convertKilogramToStone(double kilograms) { return kilograms * 0.157473; }
+    public double convertKilogramToCarat(double kilograms) { return kilograms * 5000; }
 
-    //TODO: replace stubs with actual methods
+    public double convertGramToKilogram(double grams) { return grams * 0.001; }
+    public double convertGramToMilligram(double grams) { return grams * 1000; }
+    public double convertGramToMetricTon(double grams) { return grams * 0.000001; }
+    public double convertGramToUSTon(double grams) { return grams * 0.00000110231; }
+    public double convertGramToImperialTon(double grams) { return grams * 0.000000984207; }
+    public double convertGramToPound(double grams) { return grams * 0.00220462;  }
+    public double convertGramToUSOunce(double grams) { return grams * 0.035274; }
+    public double convertGramToImperialOunce(double grams) { return grams * 0.035195; }
+    public double convertGramToStone(double grams) { return grams * 0.000157473; }
+    public double convertGramToCarat(double grams) { return grams * 5; }
 
-    public int convertKilogramToGram() { return 0; }
-    public int convertKilogramToMilligram() { return 0; }
-    public int convertKilogramToMetricTon() { return 0; }
-    public int convertKilogramToUSTon() { return 0; }
-    public int convertKilogramToImperialTon() { return 0; }
-    public int convertKilogramToPound() { return 0; }
-    public int convertKilogramToUSOunce() { return 0; }
-    public int convertKilogramToImperialOunce() { return 0; }
-    public int convertKilogramToStone() { return 0; }
-    public int convertKilogramToCarat() { return 0; }
+    public double convertMilligramToKilogram(double milligrams) { return milligrams * 0.000001; }
+    public double convertMilligramToGram(double milligrams) { return milligrams * 0.001; }
+    public double convertMilligramToMetricTon(double milligrams) { return milligrams * 0.000000001;  }
+    public double convertMilligramToUSTon(double milligrams) { return milligrams * 0.00000000110231; }
+    public double convertMilligramToImperialTon(double milligrams) { return milligrams * 0.000000000984207; }
+    public double convertMilligramToPound(double milligrams) { return milligrams * 0.00000220462; }
+    public double convertMilligramToUSOunce(double milligrams) { return milligrams * 0.000035274; }
+    public double convertMilligramToImperialOunce(double milligrams) { return milligrams * 0.000035195;  }
+    public double convertMilligramToStone(double milligrams) { return milligrams * 0.000000157473; }
+    public double convertMilligramToCarat(double milligrams) { return milligrams * 0.005; }
 
-    public int convertGramToKilogram() { return 0; }
-    public int convertGramToMilligram() { return 0; }
-    public int convertGramToMetricTon() { return 0; }
-    public int convertGramToUSTon() { return 0; }
-    public int convertGramToImperialTon() { return 0; }
-    public int convertGramToPound() { return 0; }
-    public int convertGramToUSOunce() { return 0; }
-    public int convertGramToImperialOunce() { return 0; }
-    public int convertGramToStone() { return 0; }
-    public int convertGramToCarat() { return 0; }
+    public double convertMetricTonToKilogram(double metricTons) { return metricTons * 1000; }
+    public double convertMetricTonToGram(double metricTons) { return metricTons * 1000000; }
+    public double convertMetricTonToMilligram(double metricTons) { return metricTons * 1000000000; }
+    public double convertMetricTonToUSTon(double metricTons) { return metricTons * 1.10231; }
+    public double convertMetricTonToImperialTon(double metricTons) { return metricTons * 0.984207; }
+    public double convertMetricTonToPound(double metricTons) { return metricTons * 2204.62; }
+    public double convertMetricTonToUSOunce(double metricTons) { return metricTons * 35274; }
+    public double convertMetricTonToImperialOunce(double metricTons) { return metricTons * 35195;  }
+    public double convertMetricTonToStone(double metricTons) { return metricTons * 157.473; }
+    public double convertMetricTonToCarat(double metricTons) { return metricTons * 5000000; }
 
-    public int convertMilligramToKilogram() { return 0; }
-    public int convertMilligramToGram() { return 0; }
-    public int convertMilligramToMetricTon() { return 0; }
-    public int convertMilligramToUSTon() { return 0; }
-    public int convertMilligramToImperialTon() { return 0; }
-    public int convertMilligramToPound() { return 0; }
-    public int convertMilligramToUSOunce() { return 0; }
-    public int convertMilligramToImperialOunce() { return 0; }
-    public int convertMilligramToStone() { return 0; }
-    public int convertMilligramToCarat() { return 0; }
+    public double convertUSTonToKilogram(double usTons) { return usTons * 907.18474; }
+    public double convertUSTonToGram(double usTons) { return usTons * 907184.74; }
+    public double convertUSTonToMilligram(double usTons) { return usTons * 907184740; }
+    public double convertUSTonToMetricTon(double usTons) { return usTons * 0.90718474; }
+    public double convertUSTonToImperialTon(double usTons) { return usTons * 0.892857; }
+    public double convertUSTonToPound(double usTons) { return usTons * 2000; }
+    public double convertUSTonToUSOunce(double usTons) { return usTons * 32000; }
+    public double convertUSTonToImperialOunce(double usTons) { return usTons * 31999.93; }
+    public double convertUSTonToStone(double usTons) { return usTons * 142.857; }
+    public double convertUSTonToCarat(double usTons) { return usTons * 4535923.7; }
 
-    public int convertMetricTonToKilogram() { return 0; }
-    public int convertMetricTonToGram() { return 0; }
-    public int convertMetricTonToMilligram() { return 0; }
-    public int convertMetricTonToUSTon() { return 0; }
-    public int convertMetricTonToImperialTon() { return 0; }
-    public int convertMetricTonToPound() { return 0; }
-    public int convertMetricTonToUSOunce() { return 0; }
-    public int convertMetricTonToImperialOunce() { return 0; }
-    public int convertMetricTonToStone() { return 0; }
-    public int convertMetricTonToCarat() { return 0; }
+    public double convertImperialTonToKilogram(double imperialTons) { return imperialTons * 1016.04691; }
+    public double convertImperialTonToGram(double imperialTons) { return imperialTons * 1016046.91; }
+    public double convertImperialTonToMilligram(double imperialTons) { return imperialTons * 1016046910; }
+    public double convertImperialTonToMetricTon(double imperialTons) { return imperialTons * 1.01605; }
+    public double convertImperialTonToUSTon(double imperialTons) { return imperialTons * 1.12; }
+    public double convertImperialTonToPound(double imperialTons) { return imperialTons * 2240; }
+    public double convertImperialTonToUSOunce(double imperialTons) { return imperialTons * 35840; }
+    public double convertImperialTonToImperialOunce(double imperialTons) { return imperialTons * 35839.92; }
+    public double convertImperialTonToStone(double imperialTons) { return imperialTons * 160; }
+    public double convertImperialTonToCarat(double imperialTons) { return imperialTons * 5080234.55; }
 
-    public int convertUSTonToKilogram() { return 0; }
-    public int convertUSTonToGram() { return 0; }
-    public int convertUSTonToMilligram() { return 0; }
-    public int convertUSTonToMetricTon() { return 0; }
-    public int convertUSTonToImperialTon() { return 0; }
-    public int convertUSTonToPound() { return 0; }
-    public int convertUSTonToUSOunce() { return 0; }
-    public int convertUSTonToImperialOunce() { return 0; }
-    public int convertUSTonToStone() { return 0; }
-    public int convertUSTonToCarat() { return 0; }
+    public double convertPoundToKilogram(double pounds) { return pounds * 0.453592; }
+    public double convertPoundToGram(double pounds) { return pounds * 453.592; }
+    public double convertPoundToMilligram(double pounds) { return pounds * 453592; }
+    public double convertPoundToMetricTon(double pounds) { return pounds * 0.000453592; }
+    public double convertPoundToUSTon(double pounds) { return pounds * 0.0005; }
+    public double convertPoundToImperialTon(double pounds) { return pounds * 0.000446429; }
+    public double convertPoundToUSOunce(double pounds) { return pounds * 16; }
+    public double convertPoundToImperialOunce(double pounds) { return pounds * 15.999; }
+    public double convertPoundToStone(double pounds) { return pounds * 0.0714286; }
+    public double convertPoundToCarat(double pounds) { return  pounds * 2267.96;}
 
-    public int convertImperialTonToKilogram() { return 0; }
-    public int convertImperialTonToGram() { return 0; }
-    public int convertImperialTonToMilligram() { return 0; }
-    public int convertImperialTonToMetricTon() { return 0; }
-    public int convertImperialTonToUSTon() { return 0; }
-    public int convertImperialTonToPound() { return 0; }
-    public int convertImperialTonToUSOunce() { return 0; }
-    public int convertImperialTonToImperialOunce() { return 0; }
-    public int convertImperialTonToStone() { return 0; }
-    public int convertImperialTonToCarat() { return 0; }
+    public double convertUSOunceToKilogram(double usOunces) { return usOunces * 0.0283495; }
+    public double convertUSOunceToGram(double usOunces) { return usOunces * 28.3495;  }
+    public double convertUSOunceToMilligram(double usOunces) { return usOunces * 28349.5; }
+    public double convertUSOunceToMetricTon(double usOunces) { return usOunces * 0.0000283495 ; }
+    public double convertUSOunceToUSTon(double usOunces) { return usOunces * 0.00003125; }
+    public double convertUSOunceToImperialTon(double usOunces) { return usOunces * 0.0000279018; }
+    public double convertUSOunceToPound(double usOunces) { return usOunces * 0.0625; }
+    public double convertUSOunceToImperialOunce(double usOunces) { return usOunces * 0.911458; }
+    public double convertUSOunceToStone(double usOunces) { return usOunces * 0.00446429; }
+    public double convertUSOunceToCarat(double usOunces) { return usOunces * 141.748; }
 
-    public int convertPoundToKilogram() { return 0; }
-    public int convertPoundToGram() { return 0; }
-    public int convertPoundToMilligram() { return 0; }
-    public int convertPoundToMetricTon() { return 0; }
-    public int convertPoundToUSTon() { return 0; }
-    public int convertPoundToImperialTon() { return 0; }
-    public int convertPoundToUSOunce() { return 0; }
-    public int convertPoundToImperialOunce() { return 0; }
-    public int convertPoundToStone() { return 0; }
-    public int convertPoundToCarat() { return 0; }
+    public double convertImperialOunceToKilogram(double imperialOunces) { return imperialOunces * 0.0283495; }
+    public double convertImperialOunceToGram(double imperialOunces) { return imperialOunces * 28.3495; }
+    public double convertImperialOunceToMilligram(double imperialOunces) { return imperialOunces * 28349.5; }
+    public double convertImperialOunceToMetricTon(double imperialOunces) { return imperialOunces * 0.0000283495; }
+    public double convertImperialOunceToUSTon(double imperialOunces) { return imperialOunces * 0.00003125; }
+    public double convertImperialOunceToImperialTon(double imperialOunces) { return imperialOunces * 0.000027902; }
+    public double convertImperialOunceToPound(double imperialOunces) { return imperialOunces * 0.0625; }
+    public double convertImperialOunceToUSOunce(double imperialOunces) { return imperialOunces * 1.04084; }
+    public double convertImperialOunceToStone(double imperialOunces) { return imperialOunces * 0.00446429; }
+    public double convertImperialOunceToCarat(double imperialOunces) { return imperialOunces * 141.748; }
 
-    public int convertUSOunceToKilogram() { return 0; }
-    public int convertUSOunceToGram() { return 0; }
-    public int convertUSOunceToMilligram() { return 0; }
-    public int convertUSOunceToMetricTon() { return 0; }
-    public int convertUSOunceToUSTon() { return 0; }
-    public int convertUSOunceToImperialTon() { return 0; }
-    public int convertUSOunceToPound() { return 0; }
-    public int convertUSOunceToImperialOunce() { return 0; }
-    public int convertUSOunceToStone() { return 0; }
-    public int convertUSOunceToCarat() { return 0; }
+    public double convertStoneToKilogram(double stones) { return stones * 6.35029; }
+    public double convertStoneToGram(double stones) { return stones * 6350.29; }
+    public double convertStoneToMilligram(double stones) { return stones * 6350290; }
+    public double convertStoneToMetricTon(double stones) { return stones * 0.00635029; }
+    public double convertStoneToUSTon(double stones) { return stones * 0.007; }
+    public double convertStoneToImperialTon(double stones) { return stones * 0.00625; }
+    public double convertStoneToPound(double stones) { return stones * 14; }
+    public double convertStoneToUSOunce(double stones) { return stones * 224; }
+    public double convertStoneToImperialOunce(double stones) { return stones * 224; }
+    public double convertStoneToCarat(double stones) { return stones * 31751.5; }
 
-    public int convertImperialOunceToKilogram() { return 0; }
-    public int convertImperialOunceToGram() { return 0; }
-    public int convertImperialOunceToMilligram() { return 0; }
-    public int convertImperialOunceToMetricTon() { return 0; }
-    public int convertImperialOunceToUSTon() { return 0; }
-    public int convertImperialOunceToImperialTon() { return 0; }
-    public int convertImperialOunceToPound() { return 0; }
-    public int convertImperialOunceToUSOunce() { return 0; }
-    public int convertImperialOunceToStone() { return 0; }
-    public int convertImperialOunceToCarat() { return 0; }
-
-    public int convertStoneToKilogram() { return 0; }
-    public int convertStoneToGram() { return 0; }
-    public int convertStoneToMilligram() { return 0; }
-    public int convertStoneToMetricTon() { return 0; }
-    public int convertStoneToUSTon() { return 0; }
-    public int convertStoneToImperialTon() { return 0; }
-    public int convertStoneToPound() { return 0; }
-    public int convertStoneToUSOunce() { return 0; }
-    public int convertStoneToImperialOunce() { return 0; }
-    public int convertStoneToCarat() { return 0; }
-
-    public int convertCaratToKilogram() { return 0; }
-    public int convertCaratToGram() { return 0; }
-    public int convertCaratToMilligram() { return 0; }
-    public int convertCaratToMetricTon() { return 0; }
-    public int convertCaratToUSTon() { return 0; }
-    public int convertCaratToImperialTon() { return 0; }
-    public int convertCaratToPound() { return 0; }
-    public int convertCaratToUSOunce() { return 0; }
-    public int convertCaratToImperialOunce() { return 0; }
-    public int convertCaratToStone() { return 0; }
+    public double convertCaratToKilogram(double carats) { return carats * 0.0002; }
+    public double convertCaratToGram(double carats) { return carats * 0.2; }
+    public double convertCaratToMilligram(double carats) { return carats * 200; }
+    public double convertCaratToMetricTon(double carats) { return carats * 0.0000002; }
+    public double convertCaratToUSTon(double carats) { return carats * 0.000000220462; }
+    public double convertCaratToImperialTon(double carats) { return carats * 0.000000196841; }
+    public double convertCaratToPound(double carats) { return carats * 0.000440925; }
+    public double convertCaratToUSOunce(double carats) { return carats * 0.00705479; }
+    public double convertCaratToImperialOunce(double carats) { return carats * 0.0070557; }
+    public double convertCaratToStone(double carats) { return carats * 0.0000314961; }
 }
