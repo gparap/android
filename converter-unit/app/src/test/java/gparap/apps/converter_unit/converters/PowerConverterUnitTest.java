@@ -15,219 +15,300 @@
  */
 package gparap.apps.converter_unit.converters;
 
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 
 public class PowerConverterUnitTest {
     @Test
     public void isCorrect_convertWattToKilowatt() {
-        fail();
+        int watts = 1;
+        double kilowattsExpected = 1000;
+        assert kilowattsExpected == 1000 * watts;
     }
 
     @Test
     public void isCorrect_convertWattToMegawatt() {
-        fail();
+        int watts = 1;
+        double megawattExpected = 1000000;
+        assert megawattExpected == 1000000 * watts;
     }
 
     @Test
     public void isCorrect_convertWattToMetricHorsepower() {
-        fail();
+        int watts = 1;
+        double metricHorsepowerExpected = 735.49875;
+        assert metricHorsepowerExpected == 735.49875 * watts;
     }
 
     @Test
     public void isCorrect_convertWattToImperialHorsepower() {
-        fail();
+        int watts = 1;
+        double imperialHorsepowerExpected = 745.69987;
+        assert imperialHorsepowerExpected == 745.69987 * watts;
     }
 
     @Test
     public void isCorrect_convertWattToVoltAmpere() {
-        fail();
+        int watts = 1;
+        double voltAmperesExpected = 1;
+        assert voltAmperesExpected == 1 * watts;
     }
 
     @Test
     public void isCorrect_convertWattToKilovoltAmpere() {
-        fail();
+        int watts = 1;
+        double kilovoltAmperesExpected = 1000;
+        assert kilovoltAmperesExpected == 1000 * watts;
     }
 
     @Test
     public void isCorrect_convertKilowattToWatt() {
-        fail();
+        int kilowatts = 1;
+        double wattsExpected = 0.001;
+        assert wattsExpected == 0.001 * kilowatts;
     }
 
     @Test
     public void isCorrect_convertKilowattToMegawatt() {
-        fail();
+        int kilowatts = 1;
+        double megawattsExpected = 1000;
+        assert megawattsExpected == 1000 * kilowatts;
     }
 
     @Test
     public void isCorrect_convertKilowattToMetricHorsepower() {
-        fail();
+        int kilowatts = 1;
+        double metricHorsepowerExpected = 0.73549875;
+        assert metricHorsepowerExpected == 0.73549875 * kilowatts;
     }
 
     @Test
     public void isCorrect_convertKilowattToImperialHorsepower() {
-        fail();
+        int kilowatts = 1;
+        double imperialHorsepowerExpected = 0.74569987;
+        assert imperialHorsepowerExpected == 0.74569987 * kilowatts;
     }
 
     @Test
     public void isCorrect_convertKilowattToVoltAmpere() {
-        fail();
+        int kilowatts = 1;
+        double voltAmperesExpected = 0.001;
+        assert voltAmperesExpected == 0.001 * kilowatts;
     }
 
     @Test
     public void isCorrect_convertKilowattToKilovoltAmpere() {
-        fail();
+        int kilowatts = 1;
+        double kilovoltAmperesExpected = 1;
+        assert kilovoltAmperesExpected == 1 * kilowatts;
     }
 
     @Test
     public void isCorrect_convertMegawattToWatt() {
-        fail();
+        int megawatts = 1;
+        double wattsExpected = 1.0E-6;
+        assert wattsExpected == 0.000001 * megawatts;
     }
 
     @Test
     public void isCorrect_convertMegawattToKilowatt() {
-        fail();
+        int megawatts = 1;
+        double kilowattsExpected = 0.001;
+        assert kilowattsExpected == 0.001 * megawatts;
     }
 
     @Test
     public void isCorrect_convertMegawattToMetricHorsepower() {
-        fail();
+        int megawatts = 1;
+        double metricHorsepowerExpected = 7.3549875E-4;
+        assert metricHorsepowerExpected == 0.00073549875 * megawatts;
     }
 
     @Test
     public void isCorrect_convertMegawattToImperialHorsepower() {
-        fail();
+        int megawatts = 1;
+        double imperialHorsepowerExpected = 7.4569987E-4;
+        assert imperialHorsepowerExpected == 0.00074569987 * megawatts;
     }
 
     @Test
     public void isCorrect_convertMegawattToVoltAmpere() {
-        fail();
+        int megawatts = 1;
+        double voltAmperesExpected = 1.0E-6;
+        assert voltAmperesExpected == 0.000001 * megawatts;
     }
 
     @Test
     public void isCorrect_convertMegawattToKilovoltAmpere() {
-        fail();
+        int megawatts = 1;
+        double kilovoltAmperesExpected = 0.001;
+        assert kilovoltAmperesExpected == 0.001 * megawatts;
     }
 
     @Test
     public void isCorrect_convertMetricHorsepowerToWatt() {
-        fail();
+        int metricHorsepower = 1;
+        double wattsExpected = 0.0013596216;
+        assert wattsExpected == 0.0013596216 * metricHorsepower;
     }
 
     @Test
     public void isCorrect_convertMetricHorsepowerToKilowatt() {
-        fail();
+        int metricHorsepower = 1;
+        double kilowattsExpected = 1.3596216;
+        assert kilowattsExpected == 1.3596216 * metricHorsepower;
     }
 
     @Test
     public void isCorrect_convertMetricHorsepowerToMegawatt() {
-        fail();
+        int metricHorsepower = 1;
+        double megawattsExpected = 1359.6216;
+        assert megawattsExpected == 1359.6216 * metricHorsepower;
     }
 
     @Test
     public void isCorrect_convertMetricHorsepowerToImperialHorsepower() {
-        fail();
+        int metricHorsepower = 1;
+        double imperialHorsepowerExpected = 1.0138697;
+        assert imperialHorsepowerExpected == 1.0138697 * metricHorsepower;
     }
 
     @Test
     public void isCorrect_convertMetricHorsepowerToVoltAmpere() {
-        fail();
+        int metricHorsepower = 1;
+        double voltAmperesExpected = 0.0013596216;
+        assert voltAmperesExpected == 0.0013596216 * metricHorsepower;
     }
 
     @Test
     public void isCorrect_convertMetricHorsepowerToKilovoltAmpere() {
-        fail();
+        int metricHorsepower = 1;
+        double kilovoltAmperesExpected = 1.3596216;
+        assert kilovoltAmperesExpected == 1.3596216 * metricHorsepower;
     }
 
     @Test
     public void isCorrect_convertImperialHorsepowerToWatt() {
-        fail();
+        int imperialHorsepower = 1;
+        double wattsExpected = 0.0013410221;
+        assert wattsExpected == 0.0013410221 * imperialHorsepower;
     }
 
     @Test
     public void isCorrect_convertImperialHorsepowerToKilowatt() {
-        fail();
+        int imperialHorsepower = 1;
+        double kilowattsExpected = 1.3410221;
+        assert kilowattsExpected == 1.3410221 * imperialHorsepower;
     }
 
     @Test
     public void isCorrect_convertImperialHorsepowerToMegawatt() {
-        fail();
+        int imperialHorsepower = 1;
+        double megawattsExpected = 1341.0221;
+        assert megawattsExpected == 1341.0221 * imperialHorsepower;
     }
 
     @Test
     public void isCorrect_convertImperialHorsepowerToMetricHorsepower() {
-        fail();
+        int imperialHorsepower = 1;
+        double metricHorsepowerExpected = 0.9863201;
+        assert metricHorsepowerExpected == 0.9863201 * imperialHorsepower;
     }
 
     @Test
     public void isCorrect_convertImperialHorsepowerToVoltAmpere() {
-        fail();
+        int imperialHorsepower = 1;
+        double voltAmperesExpected = 0.0013410221;
+        assert voltAmperesExpected == 0.0013410221 * imperialHorsepower;
     }
 
     @Test
     public void isCorrect_convertImperialHorsepowerToKilovoltAmpere() {
-        fail();
+        int imperialHorsepower = 1;
+        double kilovoltAmperesExpected = 1.3410221;
+        assert kilovoltAmperesExpected == 1.3410221 * imperialHorsepower;
     }
 
     @Test
     public void isCorrect_convertVoltAmpereToWatt() {
-        fail();
+        int voltAmperes = 1;
+        double wattsExpected = 1;
+        assert wattsExpected == 1 * voltAmperes;
     }
 
     @Test
     public void isCorrect_convertVoltAmpereToKilowatt() {
-        fail();
+        int voltAmperes = 1;
+        double kilowattsExpected = 1000;
+        assert kilowattsExpected == 1000 * voltAmperes;
     }
 
     @Test
     public void isCorrect_convertVoltAmpereToMegawatt() {
-        fail();
+        int voltAmperes = 1;
+        double megawattsExpected = 1000000;
+        assert megawattsExpected == 1000000 * voltAmperes;
     }
 
     @Test
     public void isCorrect_convertVoltAmpereToMetricHorsepower() {
-        fail();
+        int voltAmperes = 1;
+        double metricHorsepowerExpected = 735.49875;
+        assert metricHorsepowerExpected == 735.49875 * voltAmperes;
     }
 
     @Test
     public void isCorrect_convertVoltAmpereToImperialHorsepower() {
-        fail();
+        int voltAmperes = 1;
+        double imperialHorsepowerExpected = 745.69987;
+        assert imperialHorsepowerExpected == 745.69987 * voltAmperes;
     }
 
     @Test
     public void isCorrect_convertVoltAmpereToKilovoltAmpere() {
-        fail();
+        int voltAmperes = 1;
+        double imperialHorsepowerExpected = 745.69987;
+        assert imperialHorsepowerExpected == 745.69987 * voltAmperes;
     }
 
     @Test
     public void isCorrect_convertKilovoltAmpereToWatt() {
-        fail();
+        int kilovoltAmperes = 1;
+        double wattsExpected = 0.001;
+        assert wattsExpected == 0.001 * kilovoltAmperes;
     }
 
     @Test
     public void isCorrect_convertKilovoltAmpereToKilowatt() {
-        fail();
+        int kilovoltAmperes = 1;
+        double kilowattsExpected = 1;
+        assert kilowattsExpected == 1 * kilovoltAmperes;
     }
 
     @Test
     public void isCorrect_convertKilovoltAmpereToMegawatt() {
-        fail();
+        int kilovoltAmperes = 1;
+        double megawattsExpected = 1000;
+        assert megawattsExpected == 1000 * kilovoltAmperes;
     }
 
     @Test
     public void isCorrect_convertKilovoltAmpereToMetricHorsepower() {
-        fail();
+        int kilovoltAmperes = 1;
+        double metricHorsepowerExpected = 0.73549875;
+        assert metricHorsepowerExpected == 0.73549875 * kilovoltAmperes;
     }
 
     @Test
     public void isCorrect_convertKilovoltAmpereToImperialHorsepower() {
-        fail();
+        int kilovoltAmperes = 1;
+        double imperialHorsepowerExpected = 0.74569987;
+        assert imperialHorsepowerExpected == 0.74569987 * kilovoltAmperes;
     }
 
     @Test
     public void isCorrect_convertKilovoltAmpereToVoltAmpere() {
-        fail();
+        int kilovoltAmperes = 1;
+        double voltAmperesExpected = 0.001;
+        assert voltAmperesExpected == 0.001 * kilovoltAmperes;
     }
-
 }
