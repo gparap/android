@@ -16,55 +16,52 @@
 package gparap.apps.converter_unit.converters;
 
 public class PressureConverter {
+    public double convertPascalToBar(double pascals) { return 100000 * pascals; }
+    public double convertPascalToAtmosphere(double pascals) { return 101325 * pascals; }
+    public double convertPascalToTorr(double pascals) { return 133.322 * pascals; }
+    public double convertPascalToPoundPerSquareInch(double pascals) { return 6894.76 * pascals; }
+    public double convertPascalToKilopascal(double pascals) { return 1000 * pascals; }
+    public double convertPascalToMillimeterOfMercury(double pascals) { return 133.322 * pascals; }
 
-    //TODO: replace stubs with actual methods
+    public double convertBarToPascal(double bars) { return 1 * Math.pow(10, -5) * bars; }
+    public double convertBarToAtmosphere(double bars) { return 1.01325 * bars; }
+    public double convertBarToTorr(double bars) { return 1.33322 * Math.pow(10, -3) * bars; }
+    public double convertBarToPoundPerSquareInch(double bars) { return 6.89476 * Math.pow(10, -2) * bars; }
+    public double convertBarToKilopascal(double bars) { return 0.01 * bars; }
+    public double convertBarToMillimeterOfMercury(double bars) { return 1.33322 * Math.pow(10, -3) * bars; }
 
-    public int convertPascalToBar() { return 0; }
-    public int convertPascalToAtmosphere() { return 0; }
-    public int convertPascalToTorr() { return 0; }
-    public int convertPascalToPoundPerSquareInch() { return 0; }
-    public int convertPascalToKilopascal() { return 0; }
-    public int convertPascalToMillimeterOfMercury() { return 0; }
+    public double convertAtmosphereToPascal(double atmospheres) { return 9.86923 * Math.pow(10, -6) * atmospheres; }
+    public double convertAtmosphereToBar(double atmospheres) { return 0.986923 * atmospheres; }
+    public double convertAtmosphereToTorr(double atmospheres) { return 1.31579 * Math.pow(10, -3) * atmospheres; }
+    public double convertAtmosphereToPoundPerSquareInch(double atmospheres) { return 6.8046 * Math.pow(10, -2) * atmospheres; }
+    public double convertAtmosphereToKilopascal(double atmospheres) { return 9.86923 * Math.pow(10, -3) * atmospheres; }
+    public double convertAtmosphereToMillimeterOfMercury(double atmospheres) { return 1.31579 * Math.pow(10, -3) * atmospheres; }
 
-    public int convertBarToPascal() { return 0; }
-    public int convertBarToAtmosphere() { return 0; }
-    public int convertBarToTorr() { return 0; }
-    public int convertBarToPoundPerSquareInch() { return 0; }
-    public int convertBarToKilopascal() { return 0; }
-    public int convertBarToMillimeterOfMercury() { return 0; }
+    public double convertTorrToPascal(double torr) { return 7.50062 * Math.pow(10, -3) * torr; }
+    public double convertTorrToBar(double torr) { return 750.062 * torr; }
+    public double convertTorrToAtmosphere(double torr) { return 760 * torr; }
+    public double convertTorrToPoundPerSquareInch(double torr) { return 51.7149 * torr; }
+    public double convertTorrToKilopascal(double torr) { return 7.50062 * torr; }
+    public double convertTorrToMillimeterOfMercury(double torr) { return 1 * torr; }
 
-    public int convertAtmosphereToPascal() { return 0; }
-    public int convertAtmosphereToBar() { return 0; }
-    public int convertAtmosphereToTorr() { return 0; }
-    public int convertAtmosphereToPoundPerSquareInch() { return 0; }
-    public int convertAtmosphereToKilopascal() { return 0; }
-    public int convertAtmosphereToMillimeterOfMercury() { return 0; }
+    public double convertPoundPerSquareInchToPascal(double poundsPerSquareInch) { return 1.45038 * Math.pow(10, -4) * poundsPerSquareInch; }
+    public double convertPoundPerSquareInchToBar(double poundsPerSquareInch) { return 14.5038 * poundsPerSquareInch; }
+    public double convertPoundPerSquareInchToAtmosphere(double poundsPerSquareInch) { return 14.6959 * poundsPerSquareInch; }
+    public double convertPoundPerSquareInchToTorr(double poundsPerSquareInch) { return 1.93368 * Math.pow(10, -2) * poundsPerSquareInch; }
+    public double convertPoundPerSquareInchToKilopascal(double poundsPerSquareInch) { return 0.145038 * poundsPerSquareInch; }
+    public double convertPoundPerSquareInchToMillimeterOfMercury(double poundsPerSquareInch) { return 1.93368 * Math.pow(10, -2) * poundsPerSquareInch; }
 
-    public int convertTorrToPascal() { return 0; }
-    public int convertTorrToBar() { return 0; }
-    public int convertTorrToAtmosphere() { return 0; }
-    public int convertTorrToPoundPerSquareInch() { return 0; }
-    public int convertTorrToKilopascal() { return 0; }
-    public int convertTorrToMillimeterOfMercury() { return 0; }
+    public double convertKilopascalToPascal(double kilopascals) { return 0.001 * kilopascals; }
+    public double convertKilopascalToBar(double kilopascals) { return 100 * kilopascals; }
+    public double convertKilopascalToAtmosphere(double kilopascals) { return 101.325 * kilopascals; }
+    public double convertKilopascalToTorr(double kilopascals) { return 0.133322 * kilopascals; }
+    public double convertKilopascalToPoundPerSquareInch(double kilopascals) { return 6.89476 * kilopascals; }
+    public double convertKilopascalToMillimeterOfMercury(double kilopascals) { return 0.133322 * kilopascals; }
 
-    public int convertPoundPerSquareInchToPascal() { return 0; }
-    public int convertPoundPerSquareInchToBar() { return 0; }
-    public int convertPoundPerSquareInchToAtmosphere() { return 0; }
-    public int convertPoundPerSquareInchToTorr() { return 0; }
-    public int convertPoundPerSquareInchToKilopascal() { return 0; }
-    public int convertPoundPerSquareInchToMillimeterOfMercury() { return 0; }
-
-    public int convertKilopascalToPascal() { return 0; }
-    public int convertKilopascalToBar() { return 0; }
-    public int convertKilopascalToAtmosphere() { return 0; }
-    public int convertKilopascalToTorr() { return 0; }
-    public int convertKilopascalToPoundPerSquareInch() { return 0; }
-    public int convertKilopascalToMillimeterOfMercury() { return 0; }
-
-    public int convertMillimeterOfMercuryToPascal() { return 0; }
-    public int convertMillimeterOfMercuryToBar() { return 0; }
-    public int convertMillimeterOfMercuryToAtmosphere() { return 0; }
-    public int convertMillimeterOfMercuryToTorr() { return 0; }
-    public int convertMillimeterOfMercuryToPoundPerSquareInch() { return 0; }
-    public int convertMillimeterOfMercuryToKilopascal() { return 0; }
+    public double convertMillimeterOfMercuryToPascal(double millimetersOfMercury) { return 7.50062 * Math.pow(10, -3) * millimetersOfMercury; }
+    public double convertMillimeterOfMercuryToBar(double millimetersOfMercury) { return 750.062 * millimetersOfMercury; }
+    public double convertMillimeterOfMercuryToAtmosphere(double millimetersOfMercury) { return 760 * millimetersOfMercury; }
+    public double convertMillimeterOfMercuryToTorr(double millimetersOfMercury) { return 1 * millimetersOfMercury; }
+    public double convertMillimeterOfMercuryToPoundPerSquareInch(double millimetersOfMercury) { return 51.7149 * millimetersOfMercury; }
+    public double convertMillimeterOfMercuryToKilopascal(double millimetersOfMercury) { return 7.50062 * millimetersOfMercury; }
 }
