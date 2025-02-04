@@ -16,22 +16,19 @@
 package gparap.apps.converter_unit.converters;
 
 public class TemperatureConverter {
+    public double convertCelsiusToFahrenheit(double celsius) { return (celsius * 9 / 5) + 32; }
+    public double convertCelsiusToKelvin(double celsius) { return celsius + 273.15; }
+    public double convertCelsiusToRankine(double celsius) { return (celsius + 273.15) * 9 / 5; }
 
-    //TODO: replace stubs with actual methods
-    public int convertCelsiusToFahrenheit() { return 0; }
-    public int convertCelsiusToKelvin() { return 0; }
-    public int convertCelsiusToRankine() { return 0; }
+    public double convertFahrenheitToCelsius(double fahrenheit) { return (fahrenheit - 32) * 5 / 9; }
+    public double convertFahrenheitToKelvin(double fahrenheit) { return (fahrenheit + 459.67) * 5 / 9; }
+    public double convertFahrenheitToRankine(double fahrenheit) { return fahrenheit + 459.67; }
 
-    public int convertFahrenheitToCelsius() { return 0; }
-    public int convertFahrenheitToKelvin() { return 0; }
-    public int convertFahrenheitToRankine() { return 0; }
+    public double convertKelvinToCelsius(double kelvin) { return kelvin - 273.15; }
+    public double convertKelvinToFahrenheit(double kelvin) { return (kelvin * 9 / 5) - 459.67; }
+    public double convertKelvinToRankine(double kelvin) { return kelvin * 9 / 5; }
 
-    public int convertKelvinToCelsius() { return 0; }
-    public int convertKelvinToFahrenheit() { return 0; }
-    public int convertKelvinToRankine() { return 0; }
-
-    public int convertRankineToCelsius() { return 0; }
-    public int convertRankineToFahrenheit() { return 0; }
-    public int convertRankineToKelvin() { return 0; }
-
+    public double convertRankineToCelsius(double rankine) { return (rankine - 491.67) * 5 / 9; }
+    public double convertRankineToFahrenheit(double rankine) { return rankine - 459.67; }
+    public double convertRankineToKelvin(double rankine) { return rankine * 5 / 9; }
 }
