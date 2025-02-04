@@ -15,69 +15,92 @@
  */
 package gparap.apps.converter_unit.converters;
 
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 
 public class TemperatureConverterUnitTest {
+    private final TemperatureConverter converter = new TemperatureConverter();
+
     @Test
     public void isCorrect_convertCelsiusToFahrenheit() {
-        fail();
+        double celsius = 1;
+        double fahrenheitExpected = 33.8;
+        assert fahrenheitExpected == converter.convertCelsiusToFahrenheit(celsius);
     }
 
     @Test
     public void isCorrect_convertCelsiusToKelvin() {
-        fail();
+        double celsius = 1;
+        double kelvinExpected = 274.15;
+        assert kelvinExpected == converter.convertCelsiusToKelvin(celsius);
     }
 
     @Test
     public void isCorrect_convertCelsiusToRankine() {
-        fail();
+        double celsius = 1;
+        double rankineExpected = 493.46999999999997;
+        assert rankineExpected == converter.convertCelsiusToRankine(celsius);
     }
 
     @Test
     public void isCorrect_convertFahrenheitToCelsius() {
-        fail();
+        double fahrenheit = 1;
+        double celsiusExpected = -17.22222222222222;
+        assert celsiusExpected == converter.convertFahrenheitToCelsius(fahrenheit);
     }
 
     @Test
     public void isCorrect_convertFahrenheitToKelvin() {
-        fail();
+        double fahrenheit = 1;
+        double kelvinExpected = 255.92777777777778;
+        assert kelvinExpected == converter.convertFahrenheitToKelvin(fahrenheit);
     }
 
     @Test
     public void isCorrect_convertFahrenheitToRankine() {
-        fail();
+        double fahrenheit = 1;
+        double rankineExpected = 460.67;
+        assert rankineExpected == converter.convertFahrenheitToRankine(fahrenheit);
     }
 
     @Test
     public void isCorrect_convertKelvinToCelsius() {
-        fail();
+        double kelvin = 1;
+        double celsiusExpected = -272.15;
+        assert celsiusExpected == converter.convertKelvinToCelsius(kelvin);
     }
 
     @Test
     public void isCorrect_convertKelvinToFahrenheit() {
-        fail();
+        double kelvin = 1;
+        double fahrenheitExpected = -457.87;
+        assert fahrenheitExpected == converter.convertKelvinToFahrenheit(kelvin);
     }
 
     @Test
     public void isCorrect_convertKelvinToRankine() {
-        fail();
+        double kelvin = 1;
+        double rankineExpected = 1.8;
+        assert rankineExpected == converter.convertKelvinToRankine(kelvin);
     }
 
     @Test
     public void isCorrect_convertRankineToCelsius() {
-        fail();
+        double rankine = 1;
+        double celsiusExpected = -272.59444444444443;
+        assert celsiusExpected == converter.convertRankineToCelsius(rankine);
     }
 
     @Test
     public void isCorrect_convertRankineToFahrenheit() {
-        fail();
+        double rankine = 1;
+        double fahrenheitExpected = -458.67;
+        assert fahrenheitExpected == converter.convertRankineToFahrenheit(rankine);
     }
 
     @Test
     public void isCorrect_convertRankineToKelvin() {
-        fail();
+        double rankine = 1;
+        double kelvinExpected = 0.5555555555555556;
+        assert kelvinExpected == converter.convertRankineToKelvin(rankine);
     }
-
 }
