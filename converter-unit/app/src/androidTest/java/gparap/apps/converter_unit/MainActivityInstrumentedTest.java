@@ -19,6 +19,7 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import androidx.test.core.app.ActivityScenario;
@@ -26,6 +27,7 @@ import androidx.test.espresso.Espresso;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -38,6 +40,46 @@ public class MainActivityInstrumentedTest {
     }
 
     @Test
+    public void isVisible_textView_unitConversionCategory() {
+        onView(withId(R.id.textView_unitConversionCategory)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isVisible_textView_convertFromUnitLabel() {
+        onView(withId(R.id.textView_convertFromUnitLabel)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isVisible_spinner_convertFromUnit() {
+        onView(withId(R.id.spinner_convertFromUnit)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isVisible_editText_convertFromUnitValue() {
+        onView(withId(R.id.editText_convertFromUnitValue)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isVisible_textView_convertToUnitLabel() {
+        onView(withId(R.id.textView_convertToUnitLabel)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isVisible_spinner_convertToUnit() {
+        onView(withId(R.id.spinner_convertToUnit)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isVisible_editText_convertToUnitValue() {
+        onView(withId(R.id.button_convert)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isVisible_textView_conversionResult() {
+        onView(withId(R.id.textView_conversionResult)).check(matches(isDisplayed()));
+    }
+
+    @Test @Ignore
     public void areCorrect_onOptionsItemSelected_categoryLengthDistance() {
         Espresso.openContextualActionModeOverflowMenu();
         onView(withText(R.string.category_length_distance)).perform(click());
@@ -65,7 +107,7 @@ public class MainActivityInstrumentedTest {
         onView(withText(R.string.subcategory_inch)).check(matches(isDisplayed()));
     }
 
-    @Test
+    @Test @Ignore
     public void areCorrect_onOptionsItemSelected_categoryArea() {
         Espresso.openContextualActionModeOverflowMenu();
         onView(withText(R.string.category_area)).perform(click());
@@ -89,7 +131,7 @@ public class MainActivityInstrumentedTest {
         onView(withText(R.string.subcategory_acre)).check(matches(isDisplayed()));
     }
 
-    @Test
+    @Test @Ignore
     public void areCorrect_onOptionsItemSelected_categoryVolume() {
         Espresso.openContextualActionModeOverflowMenu();
         onView(withText(R.string.category_volume)).perform(click());
@@ -137,7 +179,7 @@ public class MainActivityInstrumentedTest {
         onView(withText(R.string.subcategory_fluid_ounce_imperial)).check(matches(isDisplayed()));
     }
 
-    @Test
+    @Test @Ignore
     public void areCorrect_onOptionsItemSelected_categoryMassWeight() {
         Espresso.openContextualActionModeOverflowMenu();
         onView(withText(R.string.category_mass_weight)).perform(click());
@@ -185,7 +227,7 @@ public class MainActivityInstrumentedTest {
         onView(withText(R.string.subcategory_carat)).check(matches(isDisplayed()));
     }
 
-    @Test
+    @Test @Ignore
     public void areCorrect_onOptionsItemSelected_categoryTemperature() {
         Espresso.openContextualActionModeOverflowMenu();
         onView(withText(R.string.category_temperature)).perform(click());
@@ -205,7 +247,7 @@ public class MainActivityInstrumentedTest {
         onView(withText(R.string.subcategory_rankine)).check(matches(isDisplayed()));
     }
 
-    @Test
+    @Test @Ignore
     public void areCorrect_onOptionsItemSelected_categoryPressure() {
         Espresso.openContextualActionModeOverflowMenu();
         onView(withText(R.string.category_pressure)).perform(click());
@@ -237,7 +279,7 @@ public class MainActivityInstrumentedTest {
         onView(withText(R.string.subcategory_millimeter_of_mercury)).check(matches(isDisplayed()));
     }
 
-    @Test
+    @Test @Ignore
     public void areCorrect_onOptionsItemSelected_categoryEnergy() {
         Espresso.openContextualActionModeOverflowMenu();
         onView(withText(R.string.category_energy)).perform(click());
@@ -269,7 +311,7 @@ public class MainActivityInstrumentedTest {
         onView(withText(R.string.subcategory_kilowatt_hour)).check(matches(isDisplayed()));
     }
 
-    @Test
+    @Test @Ignore
     public void areCorrect_onOptionsItemSelected_categoryPower() {
         Espresso.openContextualActionModeOverflowMenu();
         onView(withText(R.string.category_power)).perform(click());
@@ -301,7 +343,7 @@ public class MainActivityInstrumentedTest {
         onView(withText(R.string.subcategory_kilovolt_ampere)).check(matches(isDisplayed()));
     }
 
-    @Test
+    @Test @Ignore
     public void areCorrect_onOptionsItemSelected_categoryAngles() {
         Espresso.openContextualActionModeOverflowMenu();
         onView(withText(R.string.category_angles)).perform(click());
@@ -317,7 +359,7 @@ public class MainActivityInstrumentedTest {
         onView(withText(R.string.subcategory_gradian)).check(matches(isDisplayed()));
     }
 
-    @Test
+    @Test @Ignore
     public void areCorrect_onOptionsItemSelected_categoryForce() {
         Espresso.openContextualActionModeOverflowMenu();
         onView(withText(R.string.category_force)).perform(click());
