@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">Unit Converter App</string>
+    <string name="label_unit_category">Unit Category:</string>
+    <string name="label_convert_from">Convert FROM</string>
+    <string name="label_convert_to">Convert TO</string>
+    <string name="hint_enter_unit_value">enter unit value</string>
+    <string name="button_convert">Convert Unit</string>
+    <string name="text_result">Conversion Result:</string>
 
     <!--Unit Categories-->
     <string name="category_length_distance">Length/Distance</string>
@@ -99,4 +105,9 @@
     <string name="subcategory_dyne">Dyne (dyn)</string>
     <string name="subcategory_ton_force_metric">Metric Ton-force (tf)</string>
     <string name="subcategory_ton_force_us">US (Short) Ton-force (tf)</string>
+
+    <!--Spinners items (default)-->
+    <array name="spinner_items_empty">
+        <item>Select a unit category</item>
+    </array>
 </resources>
