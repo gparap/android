@@ -74,7 +74,7 @@
 
             <!--Convert unit input value-->
             <EditText
-                android:id="@+id/editText_convertFromUnitValue"
+                android:id="@+id/editText_conversionInputValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
