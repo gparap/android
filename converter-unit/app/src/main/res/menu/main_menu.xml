@@ -5,301 +5,60 @@
     <item
         android:id="@+id/menu_item_length_distance"
         android:title="@string/category_length_distance">
-
-        <!--Submenu for Length/Distance category-->
-        <menu>
-            <item
-                android:id="@+id/submenu_item_meter"
-                android:title="@string/subcategory_meter" />
-            <item
-                android:id="@+id/submenu_item_kilometer"
-                android:title="@string/subcategory_kilometer" />
-            <item
-                android:id="@+id/submenu_item_mile"
-                android:title="@string/subcategory_mile" />
-            <item
-                android:id="@+id/submenu_item_yard"
-                android:title="@string/subcategory_yard" />
-            <item
-                android:id="@+id/submenu_item_foot"
-                android:title="@string/subcategory_foot" />
-            <item
-                android:id="@+id/submenu_item_inch"
-                android:title="@string/subcategory_inch" />
-        </menu>
     </item>
 
     <!--Area category-->
     <item
         android:id="@+id/menu_item_area"
         android:title="@string/category_area">
-
-        <!--Submenu for Area category-->
-        <menu>
-            <item
-                android:id="@+id/submenu_item_square_meter"
-                android:title="@string/subcategory_square_meter" />
-            <item
-                android:id="@+id/submenu_item_square_kilometer"
-                android:title="@string/subcategory_square_kilometer" />
-            <item
-                android:id="@+id/submenu_item_square_mile"
-                android:title="@string/subcategory_square_mile" />
-            <item
-                android:id="@+id/submenu_item_hectare"
-                android:title="@string/subcategory_hectare" />
-            <item
-                android:id="@+id/submenu_item_acre"
-                android:title="@string/subcategory_acre" />
-        </menu>
     </item>
 
     <!--Volume category-->
     <item
         android:id="@+id/menu_item_volume"
         android:title="@string/category_volume">
-
-        <!--Submenu for Volume category-->
-        <menu>
-            <item
-                android:id="@+id/submenu_item_cubic_meter"
-                android:title="@string/subcategory_cubic_meter" />
-            <item
-                android:id="@+id/submenu_item_liter"
-                android:title="@string/subcategory_liter" />
-            <item
-                android:id="@+id/submenu_item_milliliter"
-                android:title="@string/subcategory_milliliter" />
-            <item
-                android:id="@+id/submenu_item_gallon_us"
-                android:title="@string/subcategory_gallon_us" />
-            <item
-                android:id="@+id/submenu_item_gallon_imperial"
-                android:title="@string/subcategory_gallon_imperial" />
-            <item
-                android:id="@+id/submenu_item_quart_us"
-                android:title="@string/subcategory_quart_us" />
-            <item
-                android:id="@+id/submenu_item_quart_imperial"
-                android:title="@string/subcategory_quart_imperial" />
-            <item
-                android:id="@+id/submenu_item_pint_us"
-                android:title="@string/subcategory_pint_us" />
-            <item
-                android:id="@+id/submenu_item_pint_imperial"
-                android:title="@string/subcategory_pint_imperial" />
-            <item
-                android:id="@+id/submenu_item_fluid_ounce_us"
-                android:title="@string/subcategory_fluid_ounce_us" />
-            <item
-                android:id="@+id/submenu_item_fluid_ounce_imperial"
-                android:title="@string/subcategory_fluid_ounce_imperial" />
-        </menu>
     </item>
 
     <!--Mass/Weight category-->
     <item
         android:id="@+id/menu_item_mass_weight"
         android:title="@string/category_mass_weight">
-
-        <!--Submenu for Mass/Weight category-->
-        <menu>
-            <item
-                android:id="@+id/submenu_item_kilogram"
-                android:title="@string/subcategory_kilometer" />
-            <item
-                android:id="@+id/submenu_item_gram"
-                android:title="@string/subcategory_gram" />
-            <item
-                android:id="@+id/submenu_item_milligram"
-                android:title="@string/subcategory_milligram" />
-            <item
-                android:id="@+id/submenu_item_metric_ton"
-                android:title="@string/subcategory_metric_ton" />
-            <item
-                android:id="@+id/submenu_item_ton_us"
-                android:title="@string/subcategory_ton_us" />
-            <item
-                android:id="@+id/submenu_item_ton_imperial"
-                android:title="@string/subcategory_ton_imperial" />
-            <item
-                android:id="@+id/submenu_item_pound"
-                android:title="@string/subcategory_pound" />
-            <item
-                android:id="@+id/submenu_item_ounce_us"
-                android:title="@string/subcategory_ounce_us" />
-            <item
-                android:id="@+id/submenu_item_ounce_imperial"
-                android:title="@string/subcategory_ounce_imperial" />
-            <item
-                android:id="@+id/submenu_item_stone"
-                android:title="@string/subcategory_stone" />
-            <item
-                android:id="@+id/submenu_item_carat"
-                android:title="@string/subcategory_carat" />
-        </menu>
     </item>
 
     <!--Temperature category-->
     <item
         android:id="@+id/menu_item_temperature"
         android:title="@string/category_temperature">
-
-        <!--Submenu for Temperature category-->
-        <menu>
-            <item
-                android:id="@+id/submenu_item_celsius"
-                android:title="@string/subcategory_celsius" />
-            <item
-                android:id="@+id/submenu_item_fahrenheit"
-                android:title="@string/subcategory_fahrenheit" />
-            <item
-                android:id="@+id/submenu_item_kelvin"
-                android:title="@string/subcategory_kelvin" />
-            <item
-                android:id="@+id/submenu_item_rankine"
-                android:title="@string/subcategory_rankine" />
-        </menu>
     </item>
 
     <!--Pressure category-->
     <item
         android:id="@+id/menu_item_pressure"
         android:title="@string/category_pressure">
-
-        <!--Submenu for Pressure category-->
-        <menu>
-            <item
-                android:id="@+id/submenu_item_pascal"
-                android:title="@string/subcategory_pascal" />
-            <item
-                android:id="@+id/submenu_item_bar"
-                android:title="@string/subcategory_bar" />
-            <item
-                android:id="@+id/submenu_item_atmosphere"
-                android:title="@string/subcategory_atmosphere" />
-            <item
-                android:id="@+id/submenu_item_torr"
-                android:title="@string/subcategory_torr" />
-            <item
-                android:id="@+id/submenu_item_pound_per_square_inch"
-                android:title="@string/subcategory_pound_per_square_inch" />
-            <item
-                android:id="@+id/submenu_item_kilopascal"
-                android:title="@string/subcategory_kilopascal" />
-            <item
-                android:id="@+id/submenu_item_millimeter_of_mercury"
-                android:title="@string/subcategory_millimeter_of_mercury" />
-        </menu>
     </item>
 
     <!--Energy category-->
     <item
         android:id="@+id/menu_item_energy"
         android:title="@string/category_energy">
-
-        <!--Submenu for Energy category-->
-        <menu>
-            <item
-                android:id="@+id/submenu_item_joule"
-                android:title="@string/subcategory_joule" />
-            <item
-                android:id="@+id/submenu_item_calorie"
-                android:title="@string/subcategory_calorie" />
-            <item
-                android:id="@+id/submenu_item_kilocalorie"
-                android:title="@string/subcategory_kilocalorie" />
-            <item
-                android:id="@+id/submenu_item_electronvolt"
-                android:title="@string/subcategory_electronvolt" />
-            <item
-                android:id="@+id/submenu_item_watt_hour"
-                android:title="@string/subcategory_watt_hour" />
-            <item
-                android:id="@+id/submenu_item_british_thermal_unit"
-                android:title="@string/subcategory_british_thermal_unit" />
-            <item
-                android:id="@+id/submenu_item_kilowatt_hour"
-                android:title="@string/subcategory_kilowatt_hour" />
-        </menu>
     </item>
 
     <!--Power category-->
     <item
         android:id="@+id/menu_item_power"
         android:title="@string/category_power">
-
-        <!--Submenu for Power category-->
-        <menu>
-            <item
-                android:id="@+id/submenu_item_watt"
-                android:title="@string/subcategory_watt" />
-            <item
-                android:id="@+id/submenu_item_kilowatt"
-                android:title="@string/subcategory_kilowatt" />
-            <item
-                android:id="@+id/submenu_item_megawatt"
-                android:title="@string/subcategory_megawatt" />
-            <item
-                android:id="@+id/submenu_item_horsepower_metric"
-                android:title="@string/subcategory_horsepower_metric" />
-            <item
-                android:id="@+id/submenu_item_horsepower_imperial"
-                android:title="@string/subcategory_horsepower_imperial" />
-            <item
-                android:id="@+id/submenu_item_volt_ampere"
-                android:title="@string/subcategory_volt_ampere" />
-            <item
-                android:id="@+id/submenu_item_kilovolt_ampere"
-                android:title="@string/subcategory_kilovolt_ampere" />
-        </menu>
     </item>
 
     <!--Angles category-->
     <item
         android:id="@+id/menu_item_angles"
         android:title="@string/category_angles">
-
-        <!--Submenu for Angles category-->
-        <menu>
-            <item
-                android:id="@+id/submenu_item_degree"
-                android:title="@string/subcategory_degree" />
-            <item
-                android:id="@+id/submenu_item_radian"
-                android:title="@string/subcategory_radian" />
-            <item
-                android:id="@+id/submenu_item_gradian"
-                android:title="@string/subcategory_gradian" />
-        </menu>
     </item>
 
     <!--Force category-->
     <item
         android:id="@+id/menu_item_force"
         android:title="@string/category_force">
-
-        <!--Submenu for Force category-->
-        <menu>
-            <item
-                android:id="@+id/submenu_item_newton"
-                android:title="@string/subcategory_newton" />
-            <item
-                android:id="@+id/submenu_item_pound_force"
-                android:title="@string/subcategory_pound_force" />
-            <item
-                android:id="@+id/submenu_item_kilogram_force"
-                android:title="@string/subcategory_kilogram_force" />
-            <item
-                android:id="@+id/submenu_item_dyne"
-                android:title="@string/subcategory_dyne" />
-            <item
-                android:id="@+id/submenu_item_ton_force_metric"
-                android:title="@string/subcategory_ton_force_metric" />
-            <item
-                android:id="@+id/submenu_item_ton_force_us"
-                android:title="@string/subcategory_ton_force_us" />
-        </menu>
     </item>
 
 </menu>
