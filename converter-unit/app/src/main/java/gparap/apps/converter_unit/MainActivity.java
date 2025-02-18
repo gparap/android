@@ -19,6 +19,8 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -28,14 +30,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.ViewModelProvider;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import gparap.apps.converter_unit.viewmodels.MainActivityViewModel;
+
 public class MainActivity extends AppCompatActivity {
     private Spinner spinnerConvertFromUnit, spinnerConvertToUnit;
-    ArrayAdapter<CharSequence> spinnerItemsAdapter;
+    private ArrayAdapter<CharSequence> spinnerItemsAdapter;
+    private MainActivityViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,15 +54,49 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        //get the ViewModel for this activity
+        viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+
         //get spinner widgets
         spinnerConvertFromUnit = findViewById(R.id.spinner_convertFromUnit);
         spinnerConvertToUnit = findViewById(R.id.spinner_convertToUnit);
 
         //init spinners with an empty array
-        spinnerItemsAdapter = new ArrayAdapter<>(this,R.layout.layout_spinner_item);
+        spinnerItemsAdapter = new ArrayAdapter<>(this, R.layout.layout_spinner_item);
         setSpinnerAdapterItems(R.array.spinner_items_empty);
         spinnerConvertFromUnit.setAdapter(spinnerItemsAdapter);
         spinnerConvertToUnit.setAdapter(spinnerItemsAdapter);
+
+        //restore spinner adapter instance state
+        if (viewModel.getSelectedUnitCategoryId() != -1) {
+            setSpinnerAdapterItems(viewModel.getSelectedUnitCategoryId());
+        }
+
+        //observe spinnerFromUnit selected items
+        spinnerConvertFromUnit.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                viewModel.setSelectedSpinnerFromUnitItemLiveData(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        //observe spinnerToUnit selected items
+        spinnerConvertToUnit.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                viewModel.setSelectedSpinnerToUnitItemLiveData(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     @Override
@@ -75,43 +115,63 @@ public class MainActivity extends AppCompatActivity {
         switch (itemId) {
 
             //Category Length/Distance
-            case R.id.menu_item_length_distance: setSpinnerAdapterItems(R.array.spinner_items_length_distance);
-            break;
+            case R.id.menu_item_length_distance:
+                viewModel.setSelectedUnitCategoryId(R.array.spinner_items_length_distance);
+                setSpinnerAdapterItems(R.array.spinner_items_length_distance);
+                break;
 
             //Category Area
-            case R.id.menu_item_area: setSpinnerAdapterItems(R.array.spinner_items_area);
+            case R.id.menu_item_area:
+                viewModel.setSelectedUnitCategoryId(R.array.spinner_items_area);
+                setSpinnerAdapterItems(R.array.spinner_items_area);
                 break;
 
             //Category Volume
-            case R.id.menu_item_volume: setSpinnerAdapterItems(R.array.spinner_items_volume);
+            case R.id.menu_item_volume:
+                viewModel.setSelectedUnitCategoryId(R.array.spinner_items_volume);
+                setSpinnerAdapterItems(R.array.spinner_items_volume);
                 break;
 
             //Category MassWeight
-            case R.id.menu_item_mass_weight: setSpinnerAdapterItems(R.array.spinner_items_mass_weight);
+            case R.id.menu_item_mass_weight:
+                viewModel.setSelectedUnitCategoryId(R.array.spinner_items_mass_weight);
+                setSpinnerAdapterItems(R.array.spinner_items_mass_weight);
                 break;
 
             //Category Temperature
-            case R.id.menu_item_temperature: setSpinnerAdapterItems(R.array.spinner_items_temperature);
+            case R.id.menu_item_temperature:
+                viewModel.setSelectedUnitCategoryId(R.array.spinner_items_temperature);
+                setSpinnerAdapterItems(R.array.spinner_items_temperature);
                 break;
 
             //Category Pressure
-            case R.id.menu_item_pressure: setSpinnerAdapterItems(R.array.spinner_items_pressure);
+            case R.id.menu_item_pressure:
+                viewModel.setSelectedUnitCategoryId(R.array.spinner_items_pressure);
+                setSpinnerAdapterItems(R.array.spinner_items_pressure);
                 break;
 
             //Category Energy
-            case R.id.menu_item_energy: setSpinnerAdapterItems(R.array.spinner_items_energy);
+            case R.id.menu_item_energy:
+                viewModel.setSelectedUnitCategoryId(R.array.spinner_items_energy);
+                setSpinnerAdapterItems(R.array.spinner_items_energy);
                 break;
 
             //Category Power
-            case R.id.menu_item_power: setSpinnerAdapterItems(R.array.spinner_items_power);
+            case R.id.menu_item_power:
+                viewModel.setSelectedUnitCategoryId(R.array.spinner_items_power);
+                setSpinnerAdapterItems(R.array.spinner_items_power);
                 break;
 
             //Category Angles
-            case R.id.menu_item_angles: setSpinnerAdapterItems(R.array.spinner_items_angle);
+            case R.id.menu_item_angles:
+                viewModel.setSelectedUnitCategoryId(R.array.spinner_items_angle);
+                setSpinnerAdapterItems(R.array.spinner_items_angle);
                 break;
 
             //Category Force
-            case R.id.menu_item_force: setSpinnerAdapterItems(R.array.spinner_items_force);
+            case R.id.menu_item_force:
+                viewModel.setSelectedUnitCategoryId(R.array.spinner_items_force);
+                setSpinnerAdapterItems(R.array.spinner_items_force);
                 break;
         }
 
