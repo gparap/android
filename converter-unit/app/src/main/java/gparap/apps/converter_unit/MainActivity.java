@@ -36,6 +36,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import gparap.apps.converter_unit.utils.UnitCategory;
 import gparap.apps.converter_unit.viewmodels.MainActivityViewModel;
 
 public class MainActivity extends AppCompatActivity {
@@ -68,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
         spinnerConvertToUnit.setAdapter(spinnerItemsAdapter);
 
         //restore spinner adapter instance state
-        if (viewModel.getSelectedUnitCategoryId() != -1) {
-            setSpinnerAdapterItems(viewModel.getSelectedUnitCategoryId());
+        if (viewModel.getSelectedUnitCategory() != UnitCategory.NONE) {
+            setSpinnerAdapterItems(viewModel.getSpinnerItemsResIdByCategory(viewModel.getSelectedUnitCategory()));
         }
 
         //observe spinnerFromUnit selected items
@@ -116,61 +117,61 @@ public class MainActivity extends AppCompatActivity {
 
             //Category Length/Distance
             case R.id.menu_item_length_distance:
-                viewModel.setSelectedUnitCategoryId(R.array.spinner_items_length_distance);
+                viewModel.setSelectedUnitCategory(UnitCategory.LENGTH_DISTANCE);
                 setSpinnerAdapterItems(R.array.spinner_items_length_distance);
                 break;
 
             //Category Area
             case R.id.menu_item_area:
-                viewModel.setSelectedUnitCategoryId(R.array.spinner_items_area);
+                viewModel.setSelectedUnitCategory(UnitCategory.AREA);
                 setSpinnerAdapterItems(R.array.spinner_items_area);
                 break;
 
             //Category Volume
             case R.id.menu_item_volume:
-                viewModel.setSelectedUnitCategoryId(R.array.spinner_items_volume);
+                viewModel.setSelectedUnitCategory(UnitCategory.VOLUME);
                 setSpinnerAdapterItems(R.array.spinner_items_volume);
                 break;
 
             //Category MassWeight
             case R.id.menu_item_mass_weight:
-                viewModel.setSelectedUnitCategoryId(R.array.spinner_items_mass_weight);
+                viewModel.setSelectedUnitCategory(UnitCategory.MASS_WEIGHT);
                 setSpinnerAdapterItems(R.array.spinner_items_mass_weight);
                 break;
 
             //Category Temperature
             case R.id.menu_item_temperature:
-                viewModel.setSelectedUnitCategoryId(R.array.spinner_items_temperature);
+                viewModel.setSelectedUnitCategory(UnitCategory.TEMPERATURE);
                 setSpinnerAdapterItems(R.array.spinner_items_temperature);
                 break;
 
             //Category Pressure
             case R.id.menu_item_pressure:
-                viewModel.setSelectedUnitCategoryId(R.array.spinner_items_pressure);
+                viewModel.setSelectedUnitCategory(UnitCategory.PRESSURE);
                 setSpinnerAdapterItems(R.array.spinner_items_pressure);
                 break;
 
             //Category Energy
             case R.id.menu_item_energy:
-                viewModel.setSelectedUnitCategoryId(R.array.spinner_items_energy);
+                viewModel.setSelectedUnitCategory(UnitCategory.ENERGY);
                 setSpinnerAdapterItems(R.array.spinner_items_energy);
                 break;
 
             //Category Power
             case R.id.menu_item_power:
-                viewModel.setSelectedUnitCategoryId(R.array.spinner_items_power);
+                viewModel.setSelectedUnitCategory(UnitCategory.POWER);
                 setSpinnerAdapterItems(R.array.spinner_items_power);
                 break;
 
             //Category Angles
             case R.id.menu_item_angles:
-                viewModel.setSelectedUnitCategoryId(R.array.spinner_items_angle);
+                viewModel.setSelectedUnitCategory(UnitCategory.ANGLES);
                 setSpinnerAdapterItems(R.array.spinner_items_angle);
                 break;
 
             //Category Force
             case R.id.menu_item_force:
-                viewModel.setSelectedUnitCategoryId(R.array.spinner_items_force);
+                viewModel.setSelectedUnitCategory(UnitCategory.FORCE);
                 setSpinnerAdapterItems(R.array.spinner_items_force);
                 break;
         }
