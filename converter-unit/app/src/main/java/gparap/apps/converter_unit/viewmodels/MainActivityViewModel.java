@@ -19,6 +19,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import gparap.apps.converter_unit.R;
+import gparap.apps.converter_unit.converters.AnglesConverter;
 import gparap.apps.converter_unit.utils.UnitCategory;
 
 public class MainActivityViewModel extends ViewModel {
@@ -55,27 +56,78 @@ public class MainActivityViewModel extends ViewModel {
 
         switch (unitCategory) {
             case LENGTH_DISTANCE:
-                spinnerItemResId = R.array.spinner_items_length_distance; break;
+                spinnerItemResId = R.array.spinner_items_length_distance;
+                break;
             case AREA:
-                spinnerItemResId = R.array.spinner_items_area; break;
+                spinnerItemResId = R.array.spinner_items_area;
+                break;
             case VOLUME:
-                spinnerItemResId = R.array.spinner_items_volume; break;
+                spinnerItemResId = R.array.spinner_items_volume;
+                break;
             case MASS_WEIGHT:
-                spinnerItemResId = R.array.spinner_items_mass_weight; break;
+                spinnerItemResId = R.array.spinner_items_mass_weight;
+                break;
             case TEMPERATURE:
-                spinnerItemResId = R.array.spinner_items_temperature; break;
+                spinnerItemResId = R.array.spinner_items_temperature;
+                break;
             case PRESSURE:
-                spinnerItemResId = R.array.spinner_items_pressure; break;
+                spinnerItemResId = R.array.spinner_items_pressure;
+                break;
             case ENERGY:
-                spinnerItemResId = R.array.spinner_items_energy; break;
+                spinnerItemResId = R.array.spinner_items_energy;
+                break;
             case POWER:
-                spinnerItemResId = R.array.spinner_items_power; break;
+                spinnerItemResId = R.array.spinner_items_power;
+                break;
             case ANGLES:
-                spinnerItemResId = R.array.spinner_items_angle; break;
+                spinnerItemResId = R.array.spinner_items_angle;
+                break;
             case FORCE:
-                spinnerItemResId = R.array.spinner_items_force; break;
+                spinnerItemResId = R.array.spinner_items_force;
+                break;
         }
 
         return spinnerItemResId;
+    }
+
+    public double calculateConversionValueForAnglesCategory(int spinnerFromItemPosition, int spinnerToItemPosition, double inputValue) {
+        //create a converter object
+        AnglesConverter anglesConverter = new AnglesConverter();
+
+        //init the conversion result
+        double conversionResult = 0;
+
+        //!!! always check the 1st spinner for conversions (aka "convert from")
+        switch (spinnerFromItemPosition) {
+            //Degrees
+            case 0:
+                if (spinnerToItemPosition == 1) {
+                    conversionResult = anglesConverter.convertDegreeToRadian(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = anglesConverter.convertDegreeToGradian(inputValue);
+                }
+                break;
+
+            //Radians
+            case 1:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = anglesConverter.convertRadianToDegree(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = anglesConverter.convertRadianToGradian(inputValue);
+                }
+                break;
+
+            //Gradians
+            case 2:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = anglesConverter.convertGradianToDegree(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = anglesConverter.convertGradianToRadian(inputValue);
+                }
+                break;
+        }
+
+        //return the result of the unit conversion
+        return conversionResult;
     }
 }

@@ -22,7 +22,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -96,6 +98,50 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+
+        //convert units
+        findViewById(R.id.button_convert).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //get the input value
+                EditText editTextInputValue = findViewById(R.id.editText_conversionInputValue);
+                double inputValue = 0;
+                if (! editTextInputValue.getText().toString().isEmpty()) {
+                    inputValue = Double.parseDouble(editTextInputValue.getText().toString());
+                }
+
+                //init the conversion result
+                double conversionResult = 0;
+
+                //get spinners' selected item positions
+                int spinnerFromItemPosition = viewModel.getSelectedSpinnerFromUnitItemLiveData();
+                int spinnerToItemPosition = viewModel.getSelectedSpinnerToUnitItemLiveData();
+
+                //calculate the conversion result
+                switch (viewModel.getSelectedUnitCategory()) {
+
+                    case LENGTH_DISTANCE:   // TODO: Not implemented yet.
+                    case AREA:              // TODO: Not implemented yet.
+                    case VOLUME:            // TODO: Not implemented yet.
+                    case MASS_WEIGHT:       // TODO: Not implemented yet.
+                    case TEMPERATURE:       // TODO: Not implemented yet.
+                    case PRESSURE:          // TODO: Not implemented yet.
+                    case ENERGY:            // TODO: Not implemented yet.
+                    case POWER:             // TODO: Not implemented yet.
+
+                    case ANGLES:
+                        conversionResult = viewModel.calculateConversionValueForAnglesCategory(
+                                spinnerFromItemPosition, spinnerToItemPosition, inputValue);
+                        break;
+
+                    case FORCE:             // TODO: Not implemented yet.
+                }
+
+                //display the conversion result
+                TextView textViewConversionResult = findViewById(R.id.textView_conversionResult);
+                textViewConversionResult.setText(String.valueOf(conversionResult));
             }
         });
     }
