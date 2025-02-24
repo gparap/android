@@ -18,17 +18,20 @@ package gparap.apps.converter_unit.viewmodels;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import gparap.apps.converter_unit.R;
+import gparap.apps.converter_unit.utils.UnitCategory;
+
 public class MainActivityViewModel extends ViewModel {
-    private MutableLiveData<Integer> selectedUnitCategoryIdLiveData = new MutableLiveData<>(-1);
+    private MutableLiveData<UnitCategory> selectedUnitCategoryLiveData = new MutableLiveData<>(UnitCategory.NONE);
     private MutableLiveData<Integer> selectedSpinnerFromUnitItemLiveData = new MutableLiveData<>(0);
     private MutableLiveData<Integer> selectedSpinnerToUnitItemLiveData = new MutableLiveData<>(0);
 
-    public int getSelectedUnitCategoryId() {
-        return selectedUnitCategoryIdLiveData.getValue();
+    public UnitCategory getSelectedUnitCategory() {
+        return selectedUnitCategoryLiveData.getValue();
     }
 
-    public void setSelectedUnitCategoryId(int value) {
-        selectedUnitCategoryIdLiveData.setValue(value);
+    public void setSelectedUnitCategory(UnitCategory value) {
+        selectedUnitCategoryLiveData.setValue(value);
     }
 
     public int getSelectedSpinnerFromUnitItemLiveData() {
@@ -45,5 +48,34 @@ public class MainActivityViewModel extends ViewModel {
 
     public void setSelectedSpinnerToUnitItemLiveData(int value) {
         selectedSpinnerToUnitItemLiveData.setValue(value);
+    }
+
+    public int getSpinnerItemsResIdByCategory(UnitCategory unitCategory) {
+        int spinnerItemResId = R.array.spinner_items_empty;
+
+        switch (unitCategory) {
+            case LENGTH_DISTANCE:
+                spinnerItemResId = R.array.spinner_items_length_distance; break;
+            case AREA:
+                spinnerItemResId = R.array.spinner_items_area; break;
+            case VOLUME:
+                spinnerItemResId = R.array.spinner_items_volume; break;
+            case MASS_WEIGHT:
+                spinnerItemResId = R.array.spinner_items_mass_weight; break;
+            case TEMPERATURE:
+                spinnerItemResId = R.array.spinner_items_temperature; break;
+            case PRESSURE:
+                spinnerItemResId = R.array.spinner_items_pressure; break;
+            case ENERGY:
+                spinnerItemResId = R.array.spinner_items_energy; break;
+            case POWER:
+                spinnerItemResId = R.array.spinner_items_power; break;
+            case ANGLES:
+                spinnerItemResId = R.array.spinner_items_angle; break;
+            case FORCE:
+                spinnerItemResId = R.array.spinner_items_force; break;
+        }
+
+        return spinnerItemResId;
     }
 }
