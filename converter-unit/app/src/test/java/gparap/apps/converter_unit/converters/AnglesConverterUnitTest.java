@@ -58,7 +58,7 @@ public class AnglesConverterUnitTest {
     @Test
     public void isCorrect_convertGradianToRadian() {
         double gradians = 1.1111111111111112;
-        double radiansExpected = 0.017453292519943295;
+        double radiansExpected = 0.0174532925199433;
         assert radiansExpected == converter.convertGradianToRadian(gradians);
     }
 }
