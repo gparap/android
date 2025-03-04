@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModel;
 
 import gparap.apps.converter_unit.R;
 import gparap.apps.converter_unit.converters.AnglesConverter;
+import gparap.apps.converter_unit.converters.AreaConverter;
 import gparap.apps.converter_unit.utils.UnitCategory;
 
 public class MainActivityViewModel extends ViewModel {
@@ -123,6 +124,85 @@ public class MainActivityViewModel extends ViewModel {
                     conversionResult = anglesConverter.convertGradianToDegree(inputValue);
                 } else if (spinnerToItemPosition == 1) {
                     conversionResult = anglesConverter.convertGradianToRadian(inputValue);
+                }
+                break;
+        }
+
+        //return the result of the unit conversion
+        return conversionResult;
+    }
+
+    public double calculateConversionValueForAreaCategory(int spinnerFromItemPosition, int spinnerToItemPosition, double inputValue) {
+        //create a converter object
+        AreaConverter areaConverter = new AreaConverter();
+
+        //init the conversion result
+        double conversionResult = 0;
+
+        //!!! always check the 1st spinner for conversions (aka "convert from")
+        switch (spinnerFromItemPosition) {
+            //SquareMeter
+            case 0:
+                if (spinnerToItemPosition == 1) {
+                    conversionResult = areaConverter.convertSquareMeterToSquareKilometer(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = areaConverter.convertSquareMeterToSquareMile(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = areaConverter.convertSquareMeterToHectare(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = areaConverter.convertSquareMeterToAcre(inputValue);
+                }
+                break;
+
+            //SquareKilometer
+            case 1:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = areaConverter.convertSquareKilometerToSquareMeter(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = areaConverter.convertSquareKilometerToSquareMile(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = areaConverter.convertSquareKilometerToHectare(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = areaConverter.convertSquareKilometerToAcre(inputValue);
+                }
+                break;
+
+            //SquareMile
+            case 2:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = areaConverter.convertSquareMileToSquareMeter(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = areaConverter.convertSquareMileToSquareKilometer(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = areaConverter.convertSquareMileToHectare(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = areaConverter.convertSquareMileToAcre(inputValue);
+                }
+                break;
+
+            //Hectare
+            case 3:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = areaConverter.convertHectareToSquareMeter(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = areaConverter.convertHectareToSquareKilometer(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = areaConverter.convertHectareToSquareMile(inputValue);
+                }  else if (spinnerToItemPosition == 4) {
+                    conversionResult = areaConverter.convertHectareToAcre(inputValue);
+                }
+                break;
+
+            //Acre
+            case 4:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = areaConverter.convertAcreToSquareMeter(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = areaConverter.convertAcreToSquareKilometer(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = areaConverter.convertAcreToSquareMile(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = areaConverter.convertAcreToHectare(inputValue);
                 }
                 break;
         }

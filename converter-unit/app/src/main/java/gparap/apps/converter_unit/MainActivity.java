@@ -123,7 +123,12 @@ public class MainActivity extends AppCompatActivity {
                 switch (viewModel.getSelectedUnitCategory()) {
 
                     case LENGTH_DISTANCE:   // TODO: Not implemented yet.
-                    case AREA:              // TODO: Not implemented yet.
+
+                    case AREA:
+                        conversionResult = viewModel.calculateConversionValueForAreaCategory(
+                                spinnerFromItemPosition, spinnerToItemPosition, inputValue);
+                        break;
+
                     case VOLUME:            // TODO: Not implemented yet.
                     case MASS_WEIGHT:       // TODO: Not implemented yet.
                     case TEMPERATURE:       // TODO: Not implemented yet.
