@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModel;
 import gparap.apps.converter_unit.R;
 import gparap.apps.converter_unit.converters.AnglesConverter;
 import gparap.apps.converter_unit.converters.AreaConverter;
+import gparap.apps.converter_unit.converters.EnergyConverter;
 import gparap.apps.converter_unit.utils.UnitCategory;
 
 public class MainActivityViewModel extends ViewModel {
@@ -203,6 +204,139 @@ public class MainActivityViewModel extends ViewModel {
                     conversionResult = areaConverter.convertAcreToSquareMile(inputValue);
                 } else if (spinnerToItemPosition == 3) {
                     conversionResult = areaConverter.convertAcreToHectare(inputValue);
+                }
+                break;
+        }
+
+        //return the result of the unit conversion
+        return conversionResult;
+    }
+
+    public double calculateConversionValueForEnergyCategory(int spinnerFromItemPosition, int spinnerToItemPosition, double inputValue) {
+        //create a converter object
+        EnergyConverter energyConverter = new EnergyConverter();
+
+        //init the conversion result
+        double conversionResult = 0;
+
+        //!!! always check the 1st spinner for conversions (aka "convert from")
+        switch (spinnerFromItemPosition) {
+            //Joule
+            case 0:
+                if (spinnerToItemPosition == 1) {
+                    conversionResult = energyConverter.convertJouleToCalorie(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = energyConverter.convertJouleToKilocalorie(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = energyConverter.convertJouleToElectronvolt(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = energyConverter.convertJouleToWattHour(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = energyConverter.convertJouleToBritishThermalUnit(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = energyConverter.convertJouleToKilowattHour(inputValue);
+                }
+                break;
+
+            //Calorie
+            case 1:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = energyConverter.convertCalorieToJoule(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = energyConverter.convertCalorieToKilocalorie(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = energyConverter.convertCalorieToElectronvolt(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = energyConverter.convertCalorieToWattHour(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = energyConverter.convertCalorieToBritishThermalUnit(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = energyConverter.convertCalorieToKilowattHour(inputValue);
+                }
+                break;
+
+            //Kilocalorie
+            case 2:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = energyConverter.convertKilocalorieToJoule(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = energyConverter.convertKilocalorieToCalorie(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = energyConverter.convertKilocalorieToElectronvolt(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = energyConverter.convertKilocalorieToWattHour(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = energyConverter.convertKilocalorieToBritishThermalUnit(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = energyConverter.convertKilocalorieToKilowattHour(inputValue);
+                }
+                break;
+
+            //Electronvolt
+            case 3:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = energyConverter.convertElectronvoltToJoule(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = energyConverter.convertElectronvoltToCalorie(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = energyConverter.convertElectronvoltToKilocalorie(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = energyConverter.convertElectronvoltToWattHour(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = energyConverter.convertElectronvoltToBritishThermalUnit(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = energyConverter.convertElectronvoltToKilowattHour(inputValue);
+                }
+                break;
+
+            //WattHour
+            case 4:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = energyConverter.convertWattHourToJoule(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = energyConverter.convertWattHourToCalorie(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = energyConverter.convertWattHourToKilocalorie(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = energyConverter.convertWattHourToElectronvolt(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = energyConverter.convertWattHourToBritishThermalUnit(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = energyConverter.convertWattHourToKilowattHour(inputValue);
+                }
+                break;
+
+            //BritishThermalUnit
+            case 5:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = energyConverter.convertBritishThermalUnitToJoule(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = energyConverter.convertBritishThermalUnitToCalorie(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = energyConverter.convertBritishThermalUnitToKilocalorie(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = energyConverter.convertBritishThermalUnitToElectronvolt(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = energyConverter.convertBritishThermalUnitToWattHour(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = energyConverter.convertBritishThermalUnitToKilowattHour(inputValue);
+                }
+                break;
+
+            //KiloWattHour
+            case 6:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = energyConverter.convertKilowattHourToJoule(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = energyConverter.convertKilowattHourToCalorie(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = energyConverter.convertKilowattHourToKilocalorie(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = energyConverter.convertKilowattHourToElectronvolt(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = energyConverter.convertKilowattHourToWattHour(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = energyConverter.convertKilowattHourToBritishThermalUnit(inputValue);
                 }
                 break;
         }
