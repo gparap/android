@@ -146,7 +146,10 @@ public class MainActivity extends AppCompatActivity {
                                 spinnerFromItemPosition, spinnerToItemPosition, inputValue);
                         break;
 
-                    case FORCE:             // TODO: Not implemented yet.
+                    case FORCE:
+                        conversionResult = viewModel.calculateConversionValueForForceCategory(
+                                spinnerFromItemPosition, spinnerToItemPosition, inputValue);
+                        break;
                 }
 
                 //display the conversion result
