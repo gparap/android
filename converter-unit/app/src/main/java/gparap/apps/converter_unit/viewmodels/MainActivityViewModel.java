@@ -22,6 +22,7 @@ import gparap.apps.converter_unit.R;
 import gparap.apps.converter_unit.converters.AnglesConverter;
 import gparap.apps.converter_unit.converters.AreaConverter;
 import gparap.apps.converter_unit.converters.EnergyConverter;
+import gparap.apps.converter_unit.converters.ForceConverter;
 import gparap.apps.converter_unit.utils.UnitCategory;
 
 public class MainActivityViewModel extends ViewModel {
@@ -337,6 +338,110 @@ public class MainActivityViewModel extends ViewModel {
                     conversionResult = energyConverter.convertKilowattHourToWattHour(inputValue);
                 } else if (spinnerToItemPosition == 5) {
                     conversionResult = energyConverter.convertKilowattHourToBritishThermalUnit(inputValue);
+                }
+                break;
+        }
+
+        //return the result of the unit conversion
+        return conversionResult;
+    }
+
+    public double calculateConversionValueForForceCategory(int spinnerFromItemPosition, int spinnerToItemPosition, double inputValue) {
+        //create a converter object
+        ForceConverter forceConverter = new ForceConverter();
+
+        //init the conversion result
+        double conversionResult = 0;
+
+        //!!! always check the 1st spinner for conversions (aka "convert from")
+        switch (spinnerFromItemPosition) {
+            //Newton
+            case 0:
+                if (spinnerToItemPosition == 1) {
+                    conversionResult = forceConverter.convertNewtonToPoundForce(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = forceConverter.convertNewtonToKilogramForce(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = forceConverter.convertNewtonToDyne(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = forceConverter.convertNewtonToMetricTonForce(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = forceConverter.convertNewtonToUSTonForce(inputValue);
+                }
+                break;
+
+            //PoundForce
+            case 1:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = forceConverter.convertPoundForceToNewton(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = forceConverter.convertPoundForceToKilogramForce(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = forceConverter.convertPoundForceToDyne(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = forceConverter.convertPoundForceToMetricTonForce(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = forceConverter.convertPoundForceToUSTonForce(inputValue);
+                }
+                break;
+
+            //KilogramForce
+            case 2:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = forceConverter.convertKilogramForceToNewton(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = forceConverter.convertKilogramForceToPoundForce(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = forceConverter.convertKilogramForceToDyne(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = forceConverter.convertKilogramForceToMetricTonForce(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = forceConverter.convertKilogramForceToUSTonForce(inputValue);
+                }
+                break;
+
+            //Dyne
+            case 3:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = forceConverter.convertDyneToNewton(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = forceConverter.convertDyneToPoundForce(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = forceConverter.convertDyneToKilogramForce(inputValue);
+                }  else if (spinnerToItemPosition == 4) {
+                    conversionResult = forceConverter.convertDyneToMetricTonForce(inputValue);
+                }  else if (spinnerToItemPosition == 5) {
+                    conversionResult = forceConverter.convertDyneToUSTonForce(inputValue);
+                }
+                break;
+
+            //MetricTonForce
+            case 4:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = forceConverter.convertMetricTonForceToNewton(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = forceConverter.convertMetricTonForceToPoundForce(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = forceConverter.convertMetricTonForceToKilogramForce(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = forceConverter.convertMetricTonForceToDyne(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = forceConverter.convertMetricTonForceToUSTonForce(inputValue);
+                }
+                break;
+
+            //USTonForce
+            case 5:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = forceConverter.convertUSTonForceToNewton(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = forceConverter.convertUSTonForceToPoundForce(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = forceConverter.convertUSTonForceToKilogramForce(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = forceConverter.convertUSTonForceToDyne(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = forceConverter.convertUSTonForceToMetricTonForce(inputValue);
                 }
                 break;
         }
