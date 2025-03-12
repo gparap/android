@@ -122,7 +122,10 @@ public class MainActivity extends AppCompatActivity {
                 //calculate the conversion result
                 switch (viewModel.getSelectedUnitCategory()) {
 
-                    case LENGTH_DISTANCE:   // TODO: Not implemented yet.
+                    case LENGTH_DISTANCE:
+                        conversionResult = viewModel.calculateConversionValueForLengthDistanceCategory(
+                                spinnerFromItemPosition, spinnerToItemPosition, inputValue);
+                        break;
 
                     case AREA:
                         conversionResult = viewModel.calculateConversionValueForAreaCategory(

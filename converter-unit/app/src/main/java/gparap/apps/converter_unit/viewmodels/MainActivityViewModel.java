@@ -23,6 +23,7 @@ import gparap.apps.converter_unit.converters.AnglesConverter;
 import gparap.apps.converter_unit.converters.AreaConverter;
 import gparap.apps.converter_unit.converters.EnergyConverter;
 import gparap.apps.converter_unit.converters.ForceConverter;
+import gparap.apps.converter_unit.converters.LengthDistanceConverter;
 import gparap.apps.converter_unit.utils.UnitCategory;
 
 public class MainActivityViewModel extends ViewModel {
@@ -442,6 +443,110 @@ public class MainActivityViewModel extends ViewModel {
                     conversionResult = forceConverter.convertUSTonForceToDyne(inputValue);
                 } else if (spinnerToItemPosition == 4) {
                     conversionResult = forceConverter.convertUSTonForceToMetricTonForce(inputValue);
+                }
+                break;
+        }
+
+        //return the result of the unit conversion
+        return conversionResult;
+    }
+
+    public double calculateConversionValueForLengthDistanceCategory(int spinnerFromItemPosition, int spinnerToItemPosition, double inputValue) {
+        //create a converter object
+        LengthDistanceConverter lengthDistanceConverter = new LengthDistanceConverter();
+
+        //init the conversion result
+        double conversionResult = 0;
+
+        //!!! always check the 1st spinner for conversions (aka "convert from")
+        switch (spinnerFromItemPosition) {
+            //Meter
+            case 0:
+                if (spinnerToItemPosition == 1) {
+                    conversionResult = lengthDistanceConverter.convertMeterToKilometer(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = lengthDistanceConverter.convertMeterToMile(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = lengthDistanceConverter.convertMeterToYard(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = lengthDistanceConverter.convertMeterToFoot(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = lengthDistanceConverter.convertMeterToInch(inputValue);
+                }
+                break;
+
+            //Kilometer
+            case 1:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = lengthDistanceConverter.convertKilometerToMeter(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = lengthDistanceConverter.convertKilometerToMile(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = lengthDistanceConverter.convertKilometerToYard(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = lengthDistanceConverter.convertKilometerToFoot(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = lengthDistanceConverter.convertKilometerToInch(inputValue);
+                }
+                break;
+
+            //Mile
+            case 2:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = lengthDistanceConverter.convertMileToMeter(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = lengthDistanceConverter.convertMileToKilometer(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = lengthDistanceConverter.convertMileToYard(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = lengthDistanceConverter.convertMileToFoot(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = lengthDistanceConverter.convertMileToInch(inputValue);
+                }
+                break;
+
+            //Yard
+            case 3:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = lengthDistanceConverter.convertYardToMeter(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = lengthDistanceConverter.convertYardToKilometer(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = lengthDistanceConverter.convertYardToMile(inputValue);
+                }  else if (spinnerToItemPosition == 4) {
+                    conversionResult = lengthDistanceConverter.convertYardToFoot(inputValue);
+                }  else if (spinnerToItemPosition == 5) {
+                    conversionResult = lengthDistanceConverter.convertYardToInch(inputValue);
+                }
+                break;
+
+            //Foot
+            case 4:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = lengthDistanceConverter.convertFootToMeter(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = lengthDistanceConverter.convertFootToKilometer(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = lengthDistanceConverter.convertFootToMile(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = lengthDistanceConverter.convertFootToYard(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = lengthDistanceConverter.convertFootToInch(inputValue);
+                }
+                break;
+
+            //Inch
+            case 5:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = lengthDistanceConverter.convertInchToMeter(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = lengthDistanceConverter.convertInchToKilometer(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = lengthDistanceConverter.convertInchToMile(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = lengthDistanceConverter.convertInchToYard(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = lengthDistanceConverter.convertInchToFoot(inputValue);
                 }
                 break;
         }
