@@ -24,6 +24,7 @@ import gparap.apps.converter_unit.converters.AreaConverter;
 import gparap.apps.converter_unit.converters.EnergyConverter;
 import gparap.apps.converter_unit.converters.ForceConverter;
 import gparap.apps.converter_unit.converters.LengthDistanceConverter;
+import gparap.apps.converter_unit.converters.MassWeightConverter;
 import gparap.apps.converter_unit.utils.UnitCategory;
 
 public class MainActivityViewModel extends ViewModel {
@@ -547,6 +548,295 @@ public class MainActivityViewModel extends ViewModel {
                     conversionResult = lengthDistanceConverter.convertInchToYard(inputValue);
                 } else if (spinnerToItemPosition == 4) {
                     conversionResult = lengthDistanceConverter.convertInchToFoot(inputValue);
+                }
+                break;
+        }
+
+        //return the result of the unit conversion
+        return conversionResult;
+    }
+
+    public double calculateConversionValueForMassWeightCategory(int spinnerFromItemPosition, int spinnerToItemPosition, double inputValue) {
+        //create a converter object
+        MassWeightConverter massWeightConverter = new MassWeightConverter();
+
+        //init the conversion result
+        double conversionResult = 0;
+
+        //!!! always check the 1st spinner for conversions (aka "convert from")
+        switch (spinnerFromItemPosition) {
+            //Kilogram
+            case 0:
+                if (spinnerToItemPosition == 1) {
+                    conversionResult = massWeightConverter.convertKilogramToGram(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = massWeightConverter.convertKilogramToMilligram(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = massWeightConverter.convertKilogramToMetricTon(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = massWeightConverter.convertKilogramToUSTon(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = massWeightConverter.convertKilogramToImperialTon(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = massWeightConverter.convertKilogramToPound(inputValue);
+                } else if (spinnerToItemPosition == 7) {
+                    conversionResult = massWeightConverter.convertKilogramToUSOunce(inputValue);
+                } else if (spinnerToItemPosition == 8) {
+                    conversionResult = massWeightConverter.convertKilogramToImperialOunce(inputValue);
+                } else if (spinnerToItemPosition == 9) {
+                    conversionResult = massWeightConverter.convertKilogramToStone(inputValue);
+                } else if (spinnerToItemPosition == 10) {
+                    conversionResult = massWeightConverter.convertKilogramToCarat(inputValue);
+                }
+                break;
+
+            //Gram
+            case 1:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = massWeightConverter.convertGramToKilogram(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = massWeightConverter.convertGramToMilligram(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = massWeightConverter.convertGramToMetricTon(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = massWeightConverter.convertGramToUSTon(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = massWeightConverter.convertGramToImperialTon(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = massWeightConverter.convertGramToPound(inputValue);
+                } else if (spinnerToItemPosition == 7) {
+                    conversionResult = massWeightConverter.convertGramToUSOunce(inputValue);
+                } else if (spinnerToItemPosition == 8) {
+                    conversionResult = massWeightConverter.convertGramToImperialOunce(inputValue);
+                } else if (spinnerToItemPosition == 9) {
+                    conversionResult = massWeightConverter.convertGramToStone(inputValue);
+                } else if (spinnerToItemPosition == 10) {
+                    conversionResult = massWeightConverter.convertGramToCarat(inputValue);
+                }
+                break;
+
+            //Milligram
+            case 2:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = massWeightConverter.convertMilligramToKilogram(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = massWeightConverter.convertMilligramToGram(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = massWeightConverter.convertMilligramToMetricTon(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = massWeightConverter.convertMilligramToUSTon(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = massWeightConverter.convertMilligramToImperialTon(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = massWeightConverter.convertMilligramToPound(inputValue);
+                } else if (spinnerToItemPosition == 7) {
+                    conversionResult = massWeightConverter.convertMilligramToUSOunce(inputValue);
+                } else if (spinnerToItemPosition == 8) {
+                    conversionResult = massWeightConverter.convertMilligramToImperialOunce(inputValue);
+                } else if (spinnerToItemPosition == 9) {
+                    conversionResult = massWeightConverter.convertMilligramToStone(inputValue);
+                } else if (spinnerToItemPosition == 10) {
+                    conversionResult = massWeightConverter.convertMilligramToCarat(inputValue);
+                }
+                break;
+
+            //MetricTon
+            case 3:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = massWeightConverter.convertMetricTonToKilogram(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = massWeightConverter.convertMetricTonToGram(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = massWeightConverter.convertMetricTonToMilligram(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = massWeightConverter.convertMetricTonToUSTon(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = massWeightConverter.convertMetricTonToImperialTon(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = massWeightConverter.convertMetricTonToPound(inputValue);
+                } else if (spinnerToItemPosition == 7) {
+                    conversionResult = massWeightConverter.convertMetricTonToUSOunce(inputValue);
+                } else if (spinnerToItemPosition == 8) {
+                    conversionResult = massWeightConverter.convertMetricTonToImperialOunce(inputValue);
+                } else if (spinnerToItemPosition == 9) {
+                    conversionResult = massWeightConverter.convertMetricTonToStone(inputValue);
+                } else if (spinnerToItemPosition == 10) {
+                    conversionResult = massWeightConverter.convertMetricTonToCarat(inputValue);
+                }
+                break;
+
+            //USTon
+            case 4:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = massWeightConverter.convertUSTonToKilogram(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = massWeightConverter.convertUSTonToGram(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = massWeightConverter.convertUSTonToMilligram(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = massWeightConverter.convertUSTonToMetricTon(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = massWeightConverter.convertUSTonToImperialTon(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = massWeightConverter.convertUSTonToPound(inputValue);
+                } else if (spinnerToItemPosition == 7) {
+                    conversionResult = massWeightConverter.convertUSTonToUSOunce(inputValue);
+                } else if (spinnerToItemPosition == 8) {
+                    conversionResult = massWeightConverter.convertUSTonToImperialOunce(inputValue);
+                } else if (spinnerToItemPosition == 9) {
+                    conversionResult = massWeightConverter.convertUSTonToStone(inputValue);
+                } else if (spinnerToItemPosition == 10) {
+                    conversionResult = massWeightConverter.convertUSTonToCarat(inputValue);
+                }
+                break;
+
+            //ImperialTon
+            case 5:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = massWeightConverter.convertImperialTonToKilogram(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = massWeightConverter.convertImperialTonToGram(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = massWeightConverter.convertImperialTonToMilligram(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = massWeightConverter.convertImperialTonToMetricTon(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = massWeightConverter.convertImperialTonToUSTon(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = massWeightConverter.convertImperialTonToPound(inputValue);
+                } else if (spinnerToItemPosition == 7) {
+                    conversionResult = massWeightConverter.convertImperialTonToUSOunce(inputValue);
+                } else if (spinnerToItemPosition == 8) {
+                    conversionResult = massWeightConverter.convertImperialTonToImperialOunce(inputValue);
+                } else if (spinnerToItemPosition == 9) {
+                    conversionResult = massWeightConverter.convertImperialTonToStone(inputValue);
+                } else if (spinnerToItemPosition == 10) {
+                    conversionResult = massWeightConverter.convertImperialTonToCarat(inputValue);
+                }
+                break;
+
+            //Pound
+            case 6:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = massWeightConverter.convertPoundToKilogram(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = massWeightConverter.convertPoundToGram(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = massWeightConverter.convertPoundToMilligram(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = massWeightConverter.convertPoundToMetricTon(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = massWeightConverter.convertPoundToUSTon(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = massWeightConverter.convertPoundToImperialTon(inputValue);
+                } else if (spinnerToItemPosition == 7) {
+                    conversionResult = massWeightConverter.convertPoundToUSOunce(inputValue);
+                } else if (spinnerToItemPosition == 8) {
+                    conversionResult = massWeightConverter.convertPoundToImperialOunce(inputValue);
+                } else if (spinnerToItemPosition == 9) {
+                    conversionResult = massWeightConverter.convertPoundToStone(inputValue);
+                } else if (spinnerToItemPosition == 10) {
+                    conversionResult = massWeightConverter.convertPoundToCarat(inputValue);
+                }
+                break;
+
+            //USOunce
+            case 7:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = massWeightConverter.convertUSOunceToKilogram(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = massWeightConverter.convertUSOunceToGram(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = massWeightConverter.convertUSOunceToMilligram(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = massWeightConverter.convertUSOunceToMetricTon(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = massWeightConverter.convertUSOunceToUSTon(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = massWeightConverter.convertUSOunceToImperialTon(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = massWeightConverter.convertUSOunceToPound(inputValue);
+                } else if (spinnerToItemPosition == 8) {
+                    conversionResult = massWeightConverter.convertUSOunceToImperialOunce(inputValue);
+                } else if (spinnerToItemPosition == 9) {
+                    conversionResult = massWeightConverter.convertUSOunceToStone(inputValue);
+                } else if (spinnerToItemPosition == 10) {
+                    conversionResult = massWeightConverter.convertUSOunceToCarat(inputValue);
+                }
+                break;
+
+            //ImperialOunce
+            case 8:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = massWeightConverter.convertImperialOunceToKilogram(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = massWeightConverter.convertImperialOunceToGram(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = massWeightConverter.convertImperialOunceToMilligram(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = massWeightConverter.convertImperialOunceToMetricTon(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = massWeightConverter.convertImperialOunceToUSTon(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = massWeightConverter.convertImperialOunceToImperialTon(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = massWeightConverter.convertImperialOunceToPound(inputValue);
+                } else if (spinnerToItemPosition == 7) {
+                    conversionResult = massWeightConverter.convertImperialOunceToUSOunce(inputValue);
+                } else if (spinnerToItemPosition == 9) {
+                    conversionResult = massWeightConverter.convertImperialOunceToStone(inputValue);
+                } else if (spinnerToItemPosition == 10) {
+                    conversionResult = massWeightConverter.convertImperialOunceToCarat(inputValue);
+                }
+                break;
+
+            //Stone
+            case 9:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = massWeightConverter.convertStoneToKilogram(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = massWeightConverter.convertStoneToGram(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = massWeightConverter.convertStoneToMilligram(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = massWeightConverter.convertStoneToMetricTon(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = massWeightConverter.convertStoneToUSTon(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = massWeightConverter.convertStoneToImperialTon(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = massWeightConverter.convertStoneToPound(inputValue);
+                } else if (spinnerToItemPosition == 7) {
+                    conversionResult = massWeightConverter.convertStoneToUSOunce(inputValue);
+                } else if (spinnerToItemPosition == 8) {
+                    conversionResult = massWeightConverter.convertStoneToImperialOunce(inputValue);
+                } else if (spinnerToItemPosition == 10) {
+                    conversionResult = massWeightConverter.convertStoneToCarat(inputValue);
+                }
+                break;
+
+            //Carat
+            case 10:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = massWeightConverter.convertCaratToKilogram(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = massWeightConverter.convertCaratToGram(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = massWeightConverter.convertCaratToMilligram(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = massWeightConverter.convertCaratToMetricTon(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = massWeightConverter.convertCaratToUSTon(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = massWeightConverter.convertCaratToImperialTon(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = massWeightConverter.convertCaratToPound(inputValue);
+                } else if (spinnerToItemPosition == 7) {
+                    conversionResult = massWeightConverter.convertCaratToUSOunce(inputValue);
+                } else if (spinnerToItemPosition == 8) {
+                    conversionResult = massWeightConverter.convertCaratToImperialOunce(inputValue);
+                } else if (spinnerToItemPosition == 9) {
+                    conversionResult = massWeightConverter.convertCaratToStone(inputValue);
                 }
                 break;
         }

@@ -133,7 +133,12 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case VOLUME:            // TODO: Not implemented yet.
-                    case MASS_WEIGHT:       // TODO: Not implemented yet.
+
+                    case MASS_WEIGHT:
+                        conversionResult = viewModel.calculateConversionValueForMassWeightCategory(
+                                spinnerFromItemPosition, spinnerToItemPosition, inputValue);
+                        break;
+
                     case TEMPERATURE:       // TODO: Not implemented yet.
                     case PRESSURE:          // TODO: Not implemented yet.
 
