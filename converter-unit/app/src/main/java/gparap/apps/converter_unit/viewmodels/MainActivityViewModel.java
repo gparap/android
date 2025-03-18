@@ -25,6 +25,7 @@ import gparap.apps.converter_unit.converters.EnergyConverter;
 import gparap.apps.converter_unit.converters.ForceConverter;
 import gparap.apps.converter_unit.converters.LengthDistanceConverter;
 import gparap.apps.converter_unit.converters.MassWeightConverter;
+import gparap.apps.converter_unit.converters.PowerConverter;
 import gparap.apps.converter_unit.utils.UnitCategory;
 
 public class MainActivityViewModel extends ViewModel {
@@ -837,6 +838,139 @@ public class MainActivityViewModel extends ViewModel {
                     conversionResult = massWeightConverter.convertCaratToImperialOunce(inputValue);
                 } else if (spinnerToItemPosition == 9) {
                     conversionResult = massWeightConverter.convertCaratToStone(inputValue);
+                }
+                break;
+        }
+
+        //return the result of the unit conversion
+        return conversionResult;
+    }
+
+    public double calculateConversionValueForPowerCategory(int spinnerFromItemPosition, int spinnerToItemPosition, double inputValue) {
+        //create a converter object
+        PowerConverter powerConverter = new PowerConverter();
+
+        //init the conversion result
+        double conversionResult = 0;
+
+        //!!! always check the 1st spinner for conversions (aka "convert from")
+        switch (spinnerFromItemPosition) {
+            //Watt
+            case 0:
+                if (spinnerToItemPosition == 1) {
+                    conversionResult = powerConverter.convertWattToKilowatt(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = powerConverter.convertWattToMegawatt(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = powerConverter.convertWattToMetricHorsepower(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = powerConverter.convertWattToImperialHorsepower(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = powerConverter.convertWattToVoltAmpere(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = powerConverter.convertWattToKilovoltAmpere(inputValue);
+                }
+                break;
+
+            //Kilowatt
+            case 1:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = powerConverter.convertKilowattToWatt(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = powerConverter.convertKilowattToMegawatt(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = powerConverter.convertKilowattToMetricHorsepower(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = powerConverter.convertKilowattToImperialHorsepower(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = powerConverter.convertKilowattToVoltAmpere(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = powerConverter.convertKilowattToKilovoltAmpere(inputValue);
+                }
+                break;
+
+            //Megawatt
+            case 2:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = powerConverter.convertMegawattToWatt(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = powerConverter.convertMegawattToKilowatt(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = powerConverter.convertMegawattToMetricHorsepower(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = powerConverter.convertMegawattToImperialHorsepower(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = powerConverter.convertMegawattToVoltAmpere(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = powerConverter.convertMegawattToKilovoltAmpere(inputValue);
+                }
+                break;
+
+            //MetricHorsepower
+            case 3:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = powerConverter.convertMetricHorsepowerToWatt(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = powerConverter.convertMetricHorsepowerToKilowatt(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = powerConverter.convertMetricHorsepowerToMegawatt(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = powerConverter.convertMetricHorsepowerToImperialHorsepower(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = powerConverter.convertMetricHorsepowerToVoltAmpere(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = powerConverter.convertMetricHorsepowerToKilovoltAmpere(inputValue);
+                }
+                break;
+
+            //ImperialHorsepower
+            case 4:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = powerConverter.convertImperialHorsepowerToWatt(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = powerConverter.convertImperialHorsepowerToKilowatt(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = powerConverter.convertImperialHorsepowerToMegawatt(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = powerConverter.convertImperialHorsepowerToMetricHorsepower(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = powerConverter.convertImperialHorsepowerToVoltAmpere(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = powerConverter.convertImperialHorsepowerToKilovoltAmpere(inputValue);
+                }
+                break;
+
+            //VoltAmpere
+            case 5:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = powerConverter.convertVoltAmpereToWatt(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = powerConverter.convertVoltAmpereToKilowatt(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = powerConverter.convertVoltAmpereToMegawatt(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = powerConverter.convertVoltAmpereToMetricHorsepower(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = powerConverter.convertVoltAmpereToImperialHorsepower(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = powerConverter.convertVoltAmpereToKilovoltAmpere(inputValue);
+                }
+                break;
+
+            //KilovoltAmpere
+            case 6:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = powerConverter.convertKilovoltAmpereToWatt(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = powerConverter.convertKilovoltAmpereToKilowatt(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = powerConverter.convertKilovoltAmpereToMegawatt(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = powerConverter.convertKilovoltAmpereToMetricHorsepower(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = powerConverter.convertKilovoltAmpereToImperialHorsepower(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = powerConverter.convertKilovoltAmpereToVoltAmpere(inputValue);
                 }
                 break;
         }
