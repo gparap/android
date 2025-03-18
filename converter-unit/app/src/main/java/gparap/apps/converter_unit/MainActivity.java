@@ -147,7 +147,10 @@ public class MainActivity extends AppCompatActivity {
                                 spinnerFromItemPosition, spinnerToItemPosition, inputValue);
                         break;
 
-                    case POWER:             // TODO: Not implemented yet.
+                    case POWER:
+                        conversionResult = viewModel.calculateConversionValueForPowerCategory(
+                                spinnerFromItemPosition, spinnerToItemPosition, inputValue);
+                        break;
 
                     case ANGLES:
                         conversionResult = viewModel.calculateConversionValueForAnglesCategory(
