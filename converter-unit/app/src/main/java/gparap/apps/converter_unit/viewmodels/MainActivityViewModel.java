@@ -26,6 +26,7 @@ import gparap.apps.converter_unit.converters.ForceConverter;
 import gparap.apps.converter_unit.converters.LengthDistanceConverter;
 import gparap.apps.converter_unit.converters.MassWeightConverter;
 import gparap.apps.converter_unit.converters.PowerConverter;
+import gparap.apps.converter_unit.converters.PressureConverter;
 import gparap.apps.converter_unit.utils.UnitCategory;
 
 public class MainActivityViewModel extends ViewModel {
@@ -971,6 +972,139 @@ public class MainActivityViewModel extends ViewModel {
                     conversionResult = powerConverter.convertKilovoltAmpereToImperialHorsepower(inputValue);
                 } else if (spinnerToItemPosition == 5) {
                     conversionResult = powerConverter.convertKilovoltAmpereToVoltAmpere(inputValue);
+                }
+                break;
+        }
+
+        //return the result of the unit conversion
+        return conversionResult;
+    }
+
+    public double calculateConversionValueForPressureCategory(int spinnerFromItemPosition, int spinnerToItemPosition, double inputValue) {
+        //create a converter object
+        PressureConverter pressureConverter = new PressureConverter();
+
+        //init the conversion result
+        double conversionResult = 0;
+
+        //!!! always check the 1st spinner for conversions (aka "convert from")
+        switch (spinnerFromItemPosition) {
+            //Pascal
+            case 0:
+                if (spinnerToItemPosition == 1) {
+                    conversionResult = pressureConverter.convertPascalToBar(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = pressureConverter.convertPascalToAtmosphere(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = pressureConverter.convertPascalToTorr(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = pressureConverter.convertPascalToPoundPerSquareInch(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = pressureConverter.convertPascalToKilopascal(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = pressureConverter.convertPascalToMillimeterOfMercury(inputValue);
+                }
+                break;
+
+            //Bar
+            case 1:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = pressureConverter.convertBarToPascal(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = pressureConverter.convertBarToAtmosphere(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = pressureConverter.convertBarToTorr(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = pressureConverter.convertBarToPoundPerSquareInch(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = pressureConverter.convertBarToKilopascal(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = pressureConverter.convertBarToMillimeterOfMercury(inputValue);
+                }
+                break;
+
+            //Atmosphere
+            case 2:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = pressureConverter.convertAtmosphereToPascal(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = pressureConverter.convertAtmosphereToBar(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = pressureConverter.convertAtmosphereToTorr(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = pressureConverter.convertAtmosphereToPoundPerSquareInch(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = pressureConverter.convertAtmosphereToKilopascal(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = pressureConverter.convertAtmosphereToMillimeterOfMercury(inputValue);
+                }
+                break;
+
+            //Torr
+            case 3:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = pressureConverter.convertTorrToPascal(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = pressureConverter.convertTorrToBar(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = pressureConverter.convertTorrToAtmosphere(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = pressureConverter.convertTorrToPoundPerSquareInch(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = pressureConverter.convertTorrToKilopascal(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = pressureConverter.convertTorrToMillimeterOfMercury(inputValue);
+                }
+                break;
+
+            //PoundPerSquareInch
+            case 4:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = pressureConverter.convertPoundPerSquareInchToPascal(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = pressureConverter.convertPoundPerSquareInchToBar(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = pressureConverter.convertPoundPerSquareInchToAtmosphere(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = pressureConverter.convertPoundPerSquareInchToTorr(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = pressureConverter.convertPoundPerSquareInchToKilopascal(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = pressureConverter.convertPoundPerSquareInchToMillimeterOfMercury(inputValue);
+                }
+                break;
+
+            //Kilopascal
+            case 5:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = pressureConverter.convertKilopascalToPascal(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = pressureConverter.convertKilopascalToBar(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = pressureConverter.convertKilopascalToAtmosphere(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = pressureConverter.convertKilopascalToTorr(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = pressureConverter.convertKilopascalToPoundPerSquareInch(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = pressureConverter.convertKilopascalToMillimeterOfMercury(inputValue);
+                }
+                break;
+
+            //MillimeterOfMercury
+            case 6:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = pressureConverter.convertMillimeterOfMercuryToPascal(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = pressureConverter.convertMillimeterOfMercuryToBar(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = pressureConverter.convertMillimeterOfMercuryToAtmosphere(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = pressureConverter.convertMillimeterOfMercuryToTorr(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = pressureConverter.convertMillimeterOfMercuryToPoundPerSquareInch(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = pressureConverter.convertMillimeterOfMercuryToKilopascal(inputValue);
                 }
                 break;
         }
