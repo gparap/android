@@ -139,7 +139,10 @@ public class MainActivity extends AppCompatActivity {
                                 spinnerFromItemPosition, spinnerToItemPosition, inputValue);
                         break;
 
-                    case TEMPERATURE:       // TODO: Not implemented yet.
+                    case TEMPERATURE:
+                        conversionResult = viewModel.calculateConversionValueForTemperatureCategory(
+                                spinnerFromItemPosition, spinnerToItemPosition, inputValue);
+                        break;
 
                     case PRESSURE:
                         conversionResult = viewModel.calculateConversionValueForPressureCategory(

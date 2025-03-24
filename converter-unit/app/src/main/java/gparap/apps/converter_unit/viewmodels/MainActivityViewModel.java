@@ -27,6 +27,7 @@ import gparap.apps.converter_unit.converters.LengthDistanceConverter;
 import gparap.apps.converter_unit.converters.MassWeightConverter;
 import gparap.apps.converter_unit.converters.PowerConverter;
 import gparap.apps.converter_unit.converters.PressureConverter;
+import gparap.apps.converter_unit.converters.TemperatureConverter;
 import gparap.apps.converter_unit.utils.UnitCategory;
 
 public class MainActivityViewModel extends ViewModel {
@@ -1105,6 +1106,64 @@ public class MainActivityViewModel extends ViewModel {
                     conversionResult = pressureConverter.convertMillimeterOfMercuryToPoundPerSquareInch(inputValue);
                 } else if (spinnerToItemPosition == 5) {
                     conversionResult = pressureConverter.convertMillimeterOfMercuryToKilopascal(inputValue);
+                }
+                break;
+        }
+
+        //return the result of the unit conversion
+        return conversionResult;
+    }
+
+    public double calculateConversionValueForTemperatureCategory(int spinnerFromItemPosition, int spinnerToItemPosition, double inputValue) {
+        //create a converter object
+        TemperatureConverter temperatureConverter = new TemperatureConverter();
+
+        //init the conversion result
+        double conversionResult = 0;
+
+        //!!! always check the 1st spinner for conversions (aka "convert from")
+        switch (spinnerFromItemPosition) {
+            //Celsius
+            case 0:
+                if (spinnerToItemPosition == 1) {
+                    conversionResult = temperatureConverter.convertCelsiusToFahrenheit(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = temperatureConverter.convertCelsiusToKelvin(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = temperatureConverter.convertCelsiusToRankine(inputValue);
+                }
+                break;
+
+            //Fahrenheit
+            case 1:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = temperatureConverter.convertFahrenheitToCelsius(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = temperatureConverter.convertFahrenheitToKelvin(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = temperatureConverter.convertFahrenheitToRankine(inputValue);
+                }
+                break;
+
+            //Kelvin
+            case 2:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = temperatureConverter.convertKelvinToCelsius(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = temperatureConverter.convertKelvinToFahrenheit(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = temperatureConverter.convertKelvinToRankine(inputValue);
+                }
+                break;
+
+            //Rankine
+            case 3:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = temperatureConverter.convertRankineToCelsius(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = temperatureConverter.convertRankineToFahrenheit(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = temperatureConverter.convertRankineToKelvin(inputValue);
                 }
                 break;
         }
