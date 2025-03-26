@@ -132,7 +132,10 @@ public class MainActivity extends AppCompatActivity {
                                 spinnerFromItemPosition, spinnerToItemPosition, inputValue);
                         break;
 
-                    case VOLUME:            // TODO: Not implemented yet.
+                    case VOLUME:
+                        conversionResult = viewModel.calculateConversionValueForVolumeCategory(
+                                spinnerFromItemPosition, spinnerToItemPosition, inputValue);
+                        break;
 
                     case MASS_WEIGHT:
                         conversionResult = viewModel.calculateConversionValueForMassWeightCategory(

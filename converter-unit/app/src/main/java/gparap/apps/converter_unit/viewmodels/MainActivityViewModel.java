@@ -28,6 +28,7 @@ import gparap.apps.converter_unit.converters.MassWeightConverter;
 import gparap.apps.converter_unit.converters.PowerConverter;
 import gparap.apps.converter_unit.converters.PressureConverter;
 import gparap.apps.converter_unit.converters.TemperatureConverter;
+import gparap.apps.converter_unit.converters.VolumeConverter;
 import gparap.apps.converter_unit.utils.UnitCategory;
 
 public class MainActivityViewModel extends ViewModel {
@@ -1164,6 +1165,295 @@ public class MainActivityViewModel extends ViewModel {
                     conversionResult = temperatureConverter.convertRankineToFahrenheit(inputValue);
                 } else if (spinnerToItemPosition == 2) {
                     conversionResult = temperatureConverter.convertRankineToKelvin(inputValue);
+                }
+                break;
+        }
+
+        //return the result of the unit conversion
+        return conversionResult;
+    }
+
+    public double calculateConversionValueForVolumeCategory(int spinnerFromItemPosition, int spinnerToItemPosition, double inputValue) {
+        //create a converter object
+        VolumeConverter volumeConverter = new VolumeConverter();
+
+        //init the conversion result
+        double conversionResult = 0;
+
+        //!!! always check the 1st spinner for conversions (aka "convert from")
+        switch (spinnerFromItemPosition) {
+            //CubicMeter
+            case 0:
+                if (spinnerToItemPosition == 1) {
+                    conversionResult = volumeConverter.convertCubicMeterToLiter(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = volumeConverter.convertCubicMeterToMilliliter(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = volumeConverter.convertCubicMeterToUSGallon(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = volumeConverter.convertCubicMeterToImperialGallon(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = volumeConverter.convertCubicMeterToUSQuart(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = volumeConverter.convertCubicMeterToImperialQuart(inputValue);
+                } else if (spinnerToItemPosition == 7) {
+                    conversionResult = volumeConverter.convertCubicMeterToUSPint(inputValue);
+                } else if (spinnerToItemPosition == 8) {
+                    conversionResult = volumeConverter.convertCubicMeterToImperialPint(inputValue);
+                } else if (spinnerToItemPosition == 9) {
+                    conversionResult = volumeConverter.convertCubicMeterToUSFluidOunce(inputValue);
+                } else if (spinnerToItemPosition == 10) {
+                    conversionResult = volumeConverter.convertCubicMeterToImperialFluidOunce(inputValue);
+                }
+                break;
+
+            //Liter
+            case 1:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = volumeConverter.convertLiterToCubicMeter(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = volumeConverter.convertLiterToMilliliter(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = volumeConverter.convertLiterToUSGallon(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = volumeConverter.convertLiterToImperialGallon(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = volumeConverter.convertLiterToUSQuart(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = volumeConverter.convertLiterToImperialQuart(inputValue);
+                } else if (spinnerToItemPosition == 7) {
+                    conversionResult = volumeConverter.convertLiterToUSPint(inputValue);
+                } else if (spinnerToItemPosition == 8) {
+                    conversionResult = volumeConverter.convertLiterToImperialPint(inputValue);
+                } else if (spinnerToItemPosition == 9) {
+                    conversionResult = volumeConverter.convertLiterToUSFluidOunce(inputValue);
+                } else if (spinnerToItemPosition == 10) {
+                    conversionResult = volumeConverter.convertLiterToImperialFluidOunce(inputValue);
+                }
+                break;
+
+            //Milliliter
+            case 2:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = volumeConverter.convertMilliliterToCubicMeter(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = volumeConverter.convertMilliliterToLiter(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = volumeConverter.convertMilliliterToUSGallon(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = volumeConverter.convertMilliliterToImperialGallon(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = volumeConverter.convertMilliliterToUSQuart(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = volumeConverter.convertMilliliterToImperialQuart(inputValue);
+                } else if (spinnerToItemPosition == 7) {
+                    conversionResult = volumeConverter.convertMilliliterToUSPint(inputValue);
+                } else if (spinnerToItemPosition == 8) {
+                    conversionResult = volumeConverter.convertMilliliterToImperialPint(inputValue);
+                } else if (spinnerToItemPosition == 9) {
+                    conversionResult = volumeConverter.convertMilliliterToUSFluidOunce(inputValue);
+                } else if (spinnerToItemPosition == 10) {
+                    conversionResult = volumeConverter.convertMilliliterToImperialFluidOunce(inputValue);
+                }
+                break;
+
+            //USGallon
+            case 3:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = volumeConverter.convertUSGallonToCubicMeter(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = volumeConverter.convertUSGallonToLiter(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = volumeConverter.convertUSGallonToMilliliter(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = volumeConverter.convertUSGallonToImperialGallon(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = volumeConverter.convertUSGallonToUSQuart(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = volumeConverter.convertUSGallonToImperialQuart(inputValue);
+                } else if (spinnerToItemPosition == 7) {
+                    conversionResult = volumeConverter.convertUSGallonToUSPint(inputValue);
+                } else if (spinnerToItemPosition == 8) {
+                    conversionResult = volumeConverter.convertUSGallonToImperialPint(inputValue);
+                } else if (spinnerToItemPosition == 9) {
+                    conversionResult = volumeConverter.convertUSGallonToUSFluidOunce(inputValue);
+                } else if (spinnerToItemPosition == 10) {
+                    conversionResult = volumeConverter.convertUSGallonToImperialFluidOunce(inputValue);
+                }
+                break;
+
+            //ImperialGallon
+            case 4:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = volumeConverter.convertImperialGallonToCubicMeter(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = volumeConverter.convertImperialGallonToLiter(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = volumeConverter.convertImperialGallonToMilliliter(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = volumeConverter.convertImperialGallonToUSGallon(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = volumeConverter.convertImperialGallonToUSQuart(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = volumeConverter.convertImperialGallonToImperialQuart(inputValue);
+                } else if (spinnerToItemPosition == 7) {
+                    conversionResult = volumeConverter.convertImperialGallonToUSPint(inputValue);
+                } else if (spinnerToItemPosition == 8) {
+                    conversionResult = volumeConverter.convertImperialGallonToImperialPint(inputValue);
+                } else if (spinnerToItemPosition == 9) {
+                    conversionResult = volumeConverter.convertImperialGallonToUSFluidOunce(inputValue);
+                } else if (spinnerToItemPosition == 10) {
+                    conversionResult = volumeConverter.convertImperialGallonToImperialFluidOunce(inputValue);
+                }
+                break;
+
+            //USQuart
+            case 5:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = volumeConverter.convertUSQuartToCubicMeter(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = volumeConverter.convertUSQuartToLiter(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = volumeConverter.convertUSQuartToMilliliter(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = volumeConverter.convertUSQuartToUSGallon(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = volumeConverter.convertUSQuartToImperialGallon(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = volumeConverter.convertUSQuartToImperialQuart(inputValue);
+                } else if (spinnerToItemPosition == 7) {
+                    conversionResult = volumeConverter.convertUSQuartToUSPint(inputValue);
+                } else if (spinnerToItemPosition == 8) {
+                    conversionResult = volumeConverter.convertUSQuartToImperialPint(inputValue);
+                } else if (spinnerToItemPosition == 9) {
+                    conversionResult = volumeConverter.convertUSQuartToUSFluidOunce(inputValue);
+                } else if (spinnerToItemPosition == 10) {
+                    conversionResult = volumeConverter.convertUSQuartToImperialFluidOunce(inputValue);
+                }
+                break;
+
+            //ImperialQuart
+            case 6:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = volumeConverter.convertImperialQuartToCubicMeter(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = volumeConverter.convertImperialQuartToLiter(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = volumeConverter.convertImperialQuartToMilliliter(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = volumeConverter.convertImperialQuartToUSGallon(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = volumeConverter.convertImperialQuartToImperialGallon(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = volumeConverter.convertImperialQuartToUSQuart(inputValue);
+                } else if (spinnerToItemPosition == 7) {
+                    conversionResult = volumeConverter.convertImperialQuartToUSPint(inputValue);
+                } else if (spinnerToItemPosition == 8) {
+                    conversionResult = volumeConverter.convertImperialQuartToImperialPint(inputValue);
+                } else if (spinnerToItemPosition == 9) {
+                    conversionResult = volumeConverter.convertImperialQuartToUSFluidOunce(inputValue);
+                } else if (spinnerToItemPosition == 10) {
+                    conversionResult = volumeConverter.convertImperialQuartToImperialFluidOunce(inputValue);
+                }
+                break;
+
+            //USPint
+            case 7:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = volumeConverter.convertUSPintToCubicMeter(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = volumeConverter.convertUSPintToLiter(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = volumeConverter.convertUSPintToMilliliter(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = volumeConverter.convertUSPintToUSGallon(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = volumeConverter.convertUSPintToImperialGallon(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = volumeConverter.convertUSPintToUSQuart(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = volumeConverter.convertUSPintToImperialQuart(inputValue);
+                } else if (spinnerToItemPosition == 8) {
+                    conversionResult = volumeConverter.convertUSPintToImperialPint(inputValue);
+                } else if (spinnerToItemPosition == 9) {
+                    conversionResult = volumeConverter.convertUSPintToUSFluidOunce(inputValue);
+                } else if (spinnerToItemPosition == 10) {
+                    conversionResult = volumeConverter.convertUSPintToImperialFluidOunce(inputValue);
+                }
+                break;
+
+            //ImperialPint
+            case 8:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = volumeConverter.convertImperialPintToCubicMeter(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = volumeConverter.convertImperialPintToLiter(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = volumeConverter.convertImperialPintToMilliliter(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = volumeConverter.convertImperialPintToUSGallon(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = volumeConverter.convertImperialPintToImperialGallon(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = volumeConverter.convertImperialPintToUSQuart(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = volumeConverter.convertImperialPintToImperialQuart(inputValue);
+                } else if (spinnerToItemPosition == 7) {
+                    conversionResult = volumeConverter.convertImperialPintToUSPint(inputValue);
+                } else if (spinnerToItemPosition == 9) {
+                    conversionResult = volumeConverter.convertImperialPintToUSFluidOunce(inputValue);
+                } else if (spinnerToItemPosition == 10) {
+                    conversionResult = volumeConverter.convertImperialPintToImperialFluidOunce(inputValue);
+                }
+                break;
+
+            //USFluidOunce
+            case 9:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = volumeConverter.convertUSFluidOunceToCubicMeter(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = volumeConverter.convertUSFluidOunceToLiter(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = volumeConverter.convertUSFluidOunceToMilliliter(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = volumeConverter.convertUSFluidOunceToUSGallon(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = volumeConverter.convertUSFluidOunceToImperialGallon(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = volumeConverter.convertUSFluidOunceToUSQuart(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = volumeConverter.convertUSFluidOunceToImperialQuart(inputValue);
+                } else if (spinnerToItemPosition == 7) {
+                    conversionResult = volumeConverter.convertUSFluidOunceToUSPint(inputValue);
+                } else if (spinnerToItemPosition == 8) {
+                    conversionResult = volumeConverter.convertUSFluidOunceToImperialPint(inputValue);
+                } else if (spinnerToItemPosition == 10) {
+                    conversionResult = volumeConverter.convertUSFluidOunceToImperialFluidOunce(inputValue);
+                }
+                break;
+
+            //ImperialFluidOunce
+            case 10:
+                if (spinnerToItemPosition == 0) {
+                    conversionResult = volumeConverter.convertImperialFluidOunceToCubicMeter(inputValue);
+                } else if (spinnerToItemPosition == 1) {
+                    conversionResult = volumeConverter.convertImperialFluidOunceToLiter(inputValue);
+                } else if (spinnerToItemPosition == 2) {
+                    conversionResult = volumeConverter.convertImperialFluidOunceToMilliliter(inputValue);
+                } else if (spinnerToItemPosition == 3) {
+                    conversionResult = volumeConverter.convertImperialFluidOunceToUSGallon(inputValue);
+                } else if (spinnerToItemPosition == 4) {
+                    conversionResult = volumeConverter.convertImperialFluidOunceToImperialGallon(inputValue);
+                } else if (spinnerToItemPosition == 5) {
+                    conversionResult = volumeConverter.convertImperialFluidOunceToUSQuart(inputValue);
+                } else if (spinnerToItemPosition == 6) {
+                    conversionResult = volumeConverter.convertImperialFluidOunceToImperialQuart(inputValue);
+                } else if (spinnerToItemPosition == 7) {
+                    conversionResult = volumeConverter.convertImperialFluidOunceToUSPint(inputValue);
+                } else if (spinnerToItemPosition == 8) {
+                    conversionResult = volumeConverter.convertImperialFluidOunceToImperialPint(inputValue);
+                } else if (spinnerToItemPosition == 9) {
+                    conversionResult = volumeConverter.convertImperialFluidOunceToUSFluidOunce(inputValue);
                 }
                 break;
         }
