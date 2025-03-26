@@ -68,7 +68,7 @@ public class VolumeConverter {
     public double convertImperialGallonToImperialQuart(double imperialGallons) { return imperialGallons * 4; }
     public double convertImperialGallonToUSPint(double imperialGallons) { return imperialGallons * 9.60127; }
     public double convertImperialGallonToImperialPint(double imperialGallons) { return imperialGallons * 8; }
-    public double convertImperialGallonToUSFluidOunce(double imperialGallons) { return imperialGallons * 160; }
+    public double convertImperialGallonToUSFluidOunce(double imperialGallons) { return imperialGallons * 153.722; }
     public double convertImperialGallonToImperialFluidOunce(double imperialGallons) { return imperialGallons * 160; }
 
     public double convertUSQuartToCubicMeter(double usQuarts) { return usQuarts * 0.000946353; }
@@ -90,7 +90,7 @@ public class VolumeConverter {
     public double convertImperialQuartToUSQuart(double imperialQuarts) { return imperialQuarts * 1.20095; }
     public double convertImperialQuartToUSPint(double imperialQuarts) { return imperialQuarts * 2.4009; }
     public double convertImperialQuartToImperialPint(double imperialQuarts) { return imperialQuarts * 2; }
-    public double convertImperialQuartToUSFluidOunce(double imperialQuarts) { return imperialQuarts * 40; }
+    public double convertImperialQuartToUSFluidOunce(double imperialQuarts) { return imperialQuarts * 38.43; }
     public double convertImperialQuartToImperialFluidOunce(double imperialQuarts) { return imperialQuarts * 40; }
 
     public double convertUSPintToCubicMeter(double usPints) { return usPints * 0.000473176; }
@@ -111,8 +111,8 @@ public class VolumeConverter {
     public double convertImperialPintToImperialGallon(double imperialPints) { return imperialPints * 0.125; }
     public double convertImperialPintToUSQuart(double imperialPints) { return imperialPints * 0.625; }
     public double convertImperialPintToImperialQuart(double imperialPints) { return imperialPints * 0.5; }
-    public double convertImperialPintToUSPint(double imperialPints) { return imperialPints / 0.832674; }
-    public double convertImperialPintToUSFluidOunce(double imperialPints) { return imperialPints * 20; }
+    public double convertImperialPintToUSPint(double imperialPints) { return imperialPints * 1.20095; }
+    public double convertImperialPintToUSFluidOunce(double imperialPints) { return imperialPints * 19.215; }
     public double convertImperialPintToImperialFluidOunce(double imperialPints) { return imperialPints * 20; }
 
     public double convertUSFluidOunceToCubicMeter(double usFluidOunces) { return usFluidOunces * 0.0000295735; }
@@ -131,9 +131,9 @@ public class VolumeConverter {
     public double convertImperialFluidOunceToMilliliter(double imperialFluidOunces) { return imperialFluidOunces * 28.4131; }
     public double convertImperialFluidOunceToUSGallon(double imperialFluidOunces) { return imperialFluidOunces * 0.00750594; }
     public double convertImperialFluidOunceToImperialGallon(double imperialFluidOunces) { return imperialFluidOunces * 0.0078125; }
-    public double convertImperialFluidOunceToUSQuart(double imperialFluidOunces) { return imperialFluidOunces * 0.03125; }
-    public double convertImperialFluidOunceToImperialQuart(double imperialFluidOunces) { return imperialFluidOunces * 0.03125; }
-    public double convertImperialFluidOunceToUSPint(double imperialFluidOunces) { return imperialFluidOunces * 0.0625; }
-    public double convertImperialFluidOunceToImperialPint(double imperialFluidOunces) { return imperialFluidOunces * 0.0625; }
-    public double convertImperialFluidOunceToUSFluidOunce(double imperialFluidOunces) { return imperialFluidOunces / 0.96076; }
+    public double convertImperialFluidOunceToUSQuart(double imperialFluidOunces) { return imperialFluidOunces * 0.030; }
+    public double convertImperialFluidOunceToImperialQuart(double imperialFluidOunces) { return imperialFluidOunces * 0.025; }
+    public double convertImperialFluidOunceToUSPint(double imperialFluidOunces) { return imperialFluidOunces * 0.06; }
+    public double convertImperialFluidOunceToImperialPint(double imperialFluidOunces) { return imperialFluidOunces * 0.05; }
+    public double convertImperialFluidOunceToUSFluidOunce(double imperialFluidOunces) { return imperialFluidOunces * 1.042; }
 }

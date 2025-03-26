@@ -359,7 +359,7 @@ public class VolumeConverterUnitTest {
     @Test
     public void isCorrect_convertImperialGallonToUSFluidOunce() {
         double imperialGallons = 1;
-        double usFluidOuncesExpected = 160.0;
+        double usFluidOuncesExpected = 153.722;
         assert usFluidOuncesExpected == converter.convertImperialGallonToUSFluidOunce(imperialGallons);
     }
 
@@ -499,7 +499,7 @@ public class VolumeConverterUnitTest {
     @Test
     public void isCorrect_convertImperialQuartToUSFluidOunce() {
         double imperialQuarts = 1;
-        double usFluidOuncesExpected = 40.0;
+        double usFluidOuncesExpected = 38.43;
         assert usFluidOuncesExpected == converter.convertImperialQuartToUSFluidOunce(imperialQuarts);
     }
 
@@ -632,14 +632,14 @@ public class VolumeConverterUnitTest {
     @Test
     public void isCorrect_convertImperialPintToUSPint() {
         double imperialPints = 1;
-        double imperialPintsExpected = 1.2009501917917456;
+        double imperialPintsExpected = 1.20095;
         assert imperialPintsExpected == converter.convertImperialPintToUSPint(imperialPints);
     }
 
     @Test
     public void isCorrect_convertImperialPintToUSFluidOunce() {
         double imperialPints = 1;
-        double usFluidOuncesExpected = 20.0;
+        double usFluidOuncesExpected = 19.215;
         assert usFluidOuncesExpected == converter.convertImperialPintToUSFluidOunce(imperialPints);
     }
 
@@ -758,35 +758,35 @@ public class VolumeConverterUnitTest {
     @Test
     public void isCorrect_convertImperialFluidOunceToUSQuart() {
         double imperialFluidOunces = 1;
-        double usQuartsExpected = 0.03125;
+        double usQuartsExpected = 0.030;
         assert usQuartsExpected == converter.convertImperialFluidOunceToUSQuart(imperialFluidOunces);
     }
 
     @Test
     public void isCorrect_convertImperialFluidOunceToImperialQuart() {
         double imperialFluidOunces = 1;
-        double imperialQuartsExpected = 0.03125;
+        double imperialQuartsExpected = 0.025;
         assert imperialQuartsExpected == converter.convertImperialFluidOunceToImperialQuart(imperialFluidOunces);
     }
 
     @Test
     public void isCorrect_convertImperialFluidOunceToUSPint() {
         double imperialFluidOunces = 1;
-        double usPintsExpected = 0.0625;
+        double usPintsExpected = 0.06;
         assert usPintsExpected == converter.convertImperialFluidOunceToUSPint(imperialFluidOunces);
     }
 
     @Test
     public void isCorrect_convertImperialFluidOunceToImperialPint() {
         double imperialFluidOunces = 1;
-        double imperialPintsExpected = 0.0625;
+        double imperialPintsExpected = 0.05;
         assert imperialPintsExpected == converter.convertImperialFluidOunceToImperialPint(imperialFluidOunces);
     }
 
     @Test
     public void isCorrect_convertImperialFluidOunceToUSFluidOunce() {
         double imperialFluidOunces = 1;
-        double usFluidOuncesExpected = 1.0408426662225738;
+        double usFluidOuncesExpected = 1.042;
         assert usFluidOuncesExpected == converter.convertImperialFluidOunceToUSFluidOunce(imperialFluidOunces);
     }
 }
