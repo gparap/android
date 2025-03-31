@@ -6,6 +6,7 @@
     <string name="hint_enter_unit_value">enter unit value</string>
     <string name="button_convert">Convert Unit</string>
     <string name="text_result">Conversion Result:</string>
+    <string name="text_select_category">Select a unit category</string>
 
     <!--Unit Categories-->
     <string name="category_length_distance">Length/Distance</string>
@@ -108,7 +109,7 @@
 
     <!--Spinners items (default)-->
     <array name="spinner_items_empty">
-        <item>Select a unit category</item>
+        <item>@string/text_select_category</item>
     </array>
 
     <!--Spinners items for Length/Distance units-->
