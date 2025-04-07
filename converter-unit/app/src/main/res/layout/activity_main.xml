@@ -19,18 +19,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="48dp">
+            android:padding="@dimen/LinearLayout_padding">
 
             <!--Category label-->
             <TextView
                 android:id="@+id/textView_unitConversionCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
+                android:layout_marginBottom="@dimen/textView_unitConversionCategory_layout_marginBottom"
                 android:text="@string/label_unit_category"
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textSize="20sp"
+                android:textSize="@dimen/textView_unitConversionCategory_textSize"
                 android:textStyle="italic|bold"
                 tools:text="Category: Lorem Ipsum" />
 
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/label_convert_from"
                 android:textAlignment="center"
-                android:textSize="16sp"
+                android:textSize="@dimen/textView_convertToUnitLabel_textSize"
                 android:textStyle="bold" />
 
             <!--Convert FROM values-->
@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:entries="@array/spinner_items_empty"
-                android:minHeight="48dp"
+                android:minHeight="@dimen/Spinner_minHeight"
                 tools:entries="@array/spinner_items_empty" />
 
             <!--Convert TO label-->
@@ -58,11 +58,11 @@
                 android:id="@+id/textView_convertToUnitLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/textView_convertToUnitLabel_layout_marginTop"
                 android:text="@string/label_convert_to"
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textSize="16sp"
+                android:textSize="@dimen/textView_convertToUnitLabel_textSize"
                 android:textStyle="bold" />
 
             <!--Convert TO values-->
@@ -70,7 +70,7 @@
                 android:id="@+id/spinner_convertToUnit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="48dp" />
+                android:minHeight="@dimen/Spinner_minHeight" />
 
             <!--Convert unit input value-->
             <EditText
@@ -82,7 +82,7 @@
                 android:hint="@string/hint_enter_unit_value"
                 android:importantForAutofill="no"
                 android:inputType="numberDecimal"
-                android:minHeight="48dp"
+                android:minHeight="@dimen/EditText_minHeight"
                 android:textAlignment="center"
                 android:textStyle="italic" />
 
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
-                android:minHeight="48dp"
+                android:minHeight="@dimen/Button_minHeight"
                 android:text="@string/button_convert" />
 
             <!--Conversion result label-->
@@ -101,12 +101,12 @@
                 android:id="@+id/textView_conversionResultLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginTop="@dimen/textView_conversionResultLabel_layout_marginTop"
+                android:layout_marginBottom="@dimen/textView_conversionResultLabel_layout_marginBottom"
                 android:text="@string/text_result"
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textSize="20sp"
+                android:textSize="@dimen/textView_conversionResultLabel_textSize"
                 android:textStyle="italic|bold" />
 
             <!--Conversion result-->
@@ -116,6 +116,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textStyle="italic|bold"
+                android:textSize="@dimen/textView_conversionResult_textSize"
                 tools:text="99.99" />
 
         </LinearLayout>

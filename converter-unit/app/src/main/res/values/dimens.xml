@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Default dimensions: Medium Phone (411 x 891 dp, 420 dpi)-->
+
+    <!--Main activity layout-->
+    <!--generic-->
+    <dimen name="LinearLayout_padding">48dp</dimen>
+    <dimen name="Spinner_minHeight">48dp</dimen>
+    <dimen name="Button_minHeight">48dp</dimen>
+    <!--specific-->
+    <dimen name="textView_unitConversionCategory_layout_marginBottom">32dp</dimen>
+    <dimen name="textView_unitConversionCategory_textSize">20sp</dimen>
+    <dimen name="textView_convertFromUnitLabel_textSize">16sp</dimen>
+    <dimen name="textView_convertToUnitLabel_layout_marginTop">16dp</dimen>
+    <dimen name="textView_convertToUnitLabel_textSize">16sp</dimen>
+    <dimen name="EditText_minHeight">48dp</dimen>
+    <dimen name="button_convert_layout_marginTop">8dp</dimen>
+    <dimen name="textView_conversionResultLabel_layout_marginTop">32dp</dimen>
+    <dimen name="textView_conversionResultLabel_layout_marginBottom">16dp</dimen>
+    <dimen name="textView_conversionResultLabel_textSize">20sp</dimen>
+    <dimen name="textView_conversionResult_textSize">18sp</dimen>
+
+    <!--Spinner item layout-->
+    <dimen name="spinner_textview_padding">12dp</dimen>
+    <dimen name="spinner_textview_textSize">16sp</dimen>
+</resources>
