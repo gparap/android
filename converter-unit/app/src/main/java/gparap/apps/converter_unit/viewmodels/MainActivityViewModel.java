@@ -15,6 +15,7 @@
  */
 package gparap.apps.converter_unit.viewmodels;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -35,6 +36,7 @@ public class MainActivityViewModel extends ViewModel {
     private MutableLiveData<UnitCategory> selectedUnitCategoryLiveData = new MutableLiveData<>(UnitCategory.NONE);
     private MutableLiveData<Integer> selectedSpinnerFromUnitItemLiveData = new MutableLiveData<>(0);
     private MutableLiveData<Integer> selectedSpinnerToUnitItemLiveData = new MutableLiveData<>(0);
+    private MutableLiveData<Double> conversionResultLiveData = new MutableLiveData<>(0.0);
 
     public UnitCategory getSelectedUnitCategory() {
         return selectedUnitCategoryLiveData.getValue();
@@ -54,6 +56,14 @@ public class MainActivityViewModel extends ViewModel {
 
     public int getSelectedSpinnerToUnitItemLiveData() {
         return selectedSpinnerToUnitItemLiveData.getValue();
+    }
+
+    public void setConversionResultLiveData(double value) {
+        conversionResultLiveData.setValue(value);
+    }
+
+    public LiveData<Double> getConversionResultLiveData() {
+        return conversionResultLiveData;
     }
 
     public void setSelectedSpinnerToUnitItemLiveData(int value) {
