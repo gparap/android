@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Screen sizes: large-->
+
+    <!--Main activity layout-->
+    <!--generic-->
+    <dimen name="LinearLayout_padding">48dp</dimen>
+    <dimen name="Spinner_minHeight">48dp</dimen>
+    <dimen name="Button_minHeight">48dp</dimen>
+    <dimen name="EditText_minHeight">48dp</dimen>
+    <!--specific-->
+    <dimen name="textView_unitConversionCategory_layout_marginBottom">14dp</dimen>
+    <dimen name="textView_unitConversionCategory_textSize">22sp</dimen>
+    <dimen name="textView_convertFromUnitLabel_textSize">18sp</dimen>
+    <dimen name="textView_convertToUnitLabel_layout_marginTop">18dp</dimen>
+    <dimen name="textView_convertToUnitLabel_textSize">18sp</dimen>
+    <dimen name="editText_conversionInputValue">16sp</dimen>
+    <dimen name="button_convert_layout_marginTop">10dp</dimen>
+    <dimen name="textView_conversionResultLabel_layout_marginTop">36dp</dimen>
+    <dimen name="textView_conversionResultLabel_layout_marginBottom">18dp</dimen>
+    <dimen name="textView_conversionResultLabel_textSize">22sp</dimen>
+    <dimen name="textView_conversionResult_textSize">20sp</dimen>
+
+    <!--Spinner item layout-->
+    <dimen name="spinner_textview_padding">10dp</dimen>
+    <dimen name="spinner_textview_textSize">18sp</dimen>
+</resources>

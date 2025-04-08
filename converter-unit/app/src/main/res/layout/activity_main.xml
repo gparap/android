@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/label_convert_from"
                 android:textAlignment="center"
-                android:textSize="@dimen/textView_convertToUnitLabel_textSize"
+                android:textSize="@dimen/textView_convertFromUnitLabel_textSize"
                 android:textStyle="bold" />
 
             <!--Convert FROM values-->
@@ -51,7 +51,8 @@
                 android:layout_height="wrap_content"
                 android:entries="@array/spinner_items_empty"
                 android:minHeight="@dimen/Spinner_minHeight"
-                tools:entries="@array/spinner_items_empty" />
+                tools:entries="@array/spinner_items_empty"
+                tools:textAlignment="center" />
 
             <!--Convert TO label-->
             <TextView
@@ -61,7 +62,6 @@
                 android:layout_marginTop="@dimen/textView_convertToUnitLabel_layout_marginTop"
                 android:text="@string/label_convert_to"
                 android:textAlignment="center"
-                android:textAllCaps="true"
                 android:textSize="@dimen/textView_convertToUnitLabel_textSize"
                 android:textStyle="bold" />
 
@@ -70,7 +70,8 @@
                 android:id="@+id/spinner_convertToUnit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="@dimen/Spinner_minHeight" />
+                android:minHeight="@dimen/Spinner_minHeight"
+                tools:textAlignment="center" />
 
             <!--Convert unit input value-->
             <EditText
@@ -79,6 +80,8 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:ems="2"
+                tools:text="9999"
+                android:textSize="@dimen/editText_conversionInputValue"
                 android:hint="@string/hint_enter_unit_value"
                 android:importantForAutofill="no"
                 android:inputType="numberDecimal"
@@ -92,7 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/button_convert_layout_marginTop"
                 android:minHeight="@dimen/Button_minHeight"
                 android:text="@string/button_convert" />
 
@@ -115,8 +118,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:textStyle="italic|bold"
                 android:textSize="@dimen/textView_conversionResult_textSize"
+                android:textStyle="italic|bold"
                 tools:text="99.99" />
 
         </LinearLayout>

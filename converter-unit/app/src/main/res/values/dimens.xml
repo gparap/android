@@ -7,13 +7,14 @@
     <dimen name="LinearLayout_padding">48dp</dimen>
     <dimen name="Spinner_minHeight">48dp</dimen>
     <dimen name="Button_minHeight">48dp</dimen>
+    <dimen name="EditText_minHeight">48dp</dimen>
     <!--specific-->
     <dimen name="textView_unitConversionCategory_layout_marginBottom">32dp</dimen>
     <dimen name="textView_unitConversionCategory_textSize">20sp</dimen>
     <dimen name="textView_convertFromUnitLabel_textSize">16sp</dimen>
     <dimen name="textView_convertToUnitLabel_layout_marginTop">16dp</dimen>
     <dimen name="textView_convertToUnitLabel_textSize">16sp</dimen>
-    <dimen name="EditText_minHeight">48dp</dimen>
+    <dimen name="editText_conversionInputValue">14sp</dimen>
     <dimen name="button_convert_layout_marginTop">8dp</dimen>
     <dimen name="textView_conversionResultLabel_layout_marginTop">32dp</dimen>
     <dimen name="textView_conversionResultLabel_layout_marginBottom">16dp</dimen>
