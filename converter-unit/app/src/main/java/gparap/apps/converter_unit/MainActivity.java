@@ -101,6 +101,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //observe conversion result
+        TextView textViewConversionResult = findViewById(R.id.textView_conversionResult);
+        viewModel.getConversionResultLiveData().observe(this, conversionResult -> {
+            textViewConversionResult.setText(String.valueOf(conversionResult));
+        });
+
         //convert units
         findViewById(R.id.button_convert).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -174,8 +180,8 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 //display the conversion result
-                TextView textViewConversionResult = findViewById(R.id.textView_conversionResult);
                 textViewConversionResult.setText(String.valueOf(conversionResult));
+                viewModel.setConversionResultLiveData(Double.parseDouble(String.valueOf(conversionResult)));
             }
         });
     }
