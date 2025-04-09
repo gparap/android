@@ -23,6 +23,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -33,6 +34,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -183,6 +189,28 @@ public class MainActivity extends AppCompatActivity {
                 textViewConversionResult.setText(String.valueOf(conversionResult));
                 viewModel.setConversionResultLiveData(Double.parseDouble(String.valueOf(conversionResult)));
             }
+        });
+
+        //handle ads
+        runOnUiThread(() -> {
+            //initialize the Google Mobile Ads SDK on a background thread
+            MobileAds.initialize(this, initializationStatus -> {
+                //create a new ad view
+                AdView adView = new AdView(this);
+                adView.setAdUnitId("ca-app-pub-3940256099942544/9214589741");
+
+                //request an anchored adaptive banner with a width of 360
+                adView.setAdSize(AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, 360));
+
+                //replace ad container with new ad view
+                FrameLayout adContainerView = findViewById(R.id.ad_view_container);
+                adContainerView.removeAllViews();
+                adContainerView.addView(adView);
+
+                //load ad
+                AdRequest adRequest = new AdRequest.Builder().build();
+                adView.loadAd(adRequest);
+            });
         });
     }
 

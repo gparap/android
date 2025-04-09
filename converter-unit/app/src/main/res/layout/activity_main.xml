@@ -122,6 +122,14 @@
                 android:textStyle="italic|bold"
                 tools:text="99.99" />
 
+            <!--Ad view container-->
+            <FrameLayout
+                android:id="@+id/ad_view_container"
+                android:layout_width="match_parent"
+                android:layout_height="148dp"
+                android:layout_centerInParent="true"
+                android:layout_alignParentBottom="true" />
+
         </LinearLayout>
 
     </ScrollView>
