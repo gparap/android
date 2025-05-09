@@ -10,10 +10,6 @@ With this multiple manager app you can:
 
 -manage your passwords (edit, remove, etc.)
 
-View on Google Play:
---------------------
-https://play.google.com/store/apps/details?id=gparap.apps.password
-
 View on Amazon Appstore:
 ------------------------
 https://www.amazon.com/gp/product/B0CL98G5TF

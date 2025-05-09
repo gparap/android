@@ -10,10 +10,6 @@ Supports almost all known basic shapes, including:
 - Regular Pentagon, Hexagon,
 - Circle and Oval.
 
-View on Google Play:
---------------------
-https://play.google.com/store/apps/details?id=gparap.apps.calculator_area
-
 View on Amazon Appstore:
 ------------------------
 https://www.amazon.com/gp/product/B0B56JJV56

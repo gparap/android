@@ -2,10 +2,6 @@ Currency Converter:
 -------------------
 Live currency exchange rates are used to convert between two currencies.
 
-View on Google Play:
---------------------
-https://play.google.com/store/apps/details?id=gparap.apps.converter_currency
-
 View on Amazon Appstore:
 ------------------------
 https://www.amazon.com/gp/product/B0DKBD8MM3

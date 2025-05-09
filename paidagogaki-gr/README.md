@@ -6,10 +6,6 @@ Paidagogaki.gr:
 
 • Currently available on in native language (ISO 639-1 classification: el)
 
-View on Google Play:
---------------------
-https://play.google.com/store/apps/details?id=gparap.apps.paidagogaki_gr
-
 View on Amazon Appstore:
 ------------------------
 https://www.amazon.com/gp/product/B0D7TW47NN
