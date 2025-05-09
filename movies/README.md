@@ -10,10 +10,6 @@ App about vintage movies from the gold era of Hollywood.
 
 • Watch movies for free.
 
-View on Google Play:
---------------------
-https://play.google.com/store/apps/details?id=gparap.apps.movies
-
 View on Amazon:
 --------------------
 https://www.amazon.com/gp/product/B09Y5SXJH5

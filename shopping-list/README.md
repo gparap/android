@@ -9,10 +9,6 @@ An app to help you with your shopping:
 - Be informed of the amount of items in each shopping category
 - Your list is there as you left, every time you open the app
 
-View on Google Play:
---------------------
-https://play.google.com/store/apps/details?id=gparap.apps.shopping_list
-
 View on Uptodown:
 -----------------
 https://my-shopping-list.uptodown.com/android

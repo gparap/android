@@ -14,10 +14,6 @@ Music World:
 
 • Listen your song in the background while using other apps
 
-View on Google Play:
---------------------
-https://play.google.com/store/apps/details?id=gparap.apps.music
-
 View on Amazon Appstore:
 ------------------------
 https://www.amazon.com/gp/product/B0DQKQFDF3

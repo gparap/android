@@ -14,10 +14,6 @@ With this app the user has the option to:
 
 Tasks can contain a deadline reminder for specific time/date that they must be done, or they may act as a simple general thing to do, in the near future.
 
-View on Google Play:
---------------------
-https://play.google.com/store/apps/details?id=gparap.apps.todo_list
-
 View on Uptodown:
 -----------------
 https://my-to-do-list.uptodown.com/android
