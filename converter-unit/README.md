@@ -17,6 +17,10 @@ View on Amazon Appstore:
 ------------------------
 https://www.amazon.com/gp/product/B0F9B41Z2N
 
+View on Huawei AppGallery:
+------------------------
+https://appgallery.huawei.com/app/C114307161
+
 Releases:
 ---------
 version 1.0
