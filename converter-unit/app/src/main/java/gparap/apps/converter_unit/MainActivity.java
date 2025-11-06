@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
             MobileAds.initialize(this, initializationStatus -> {
                 //create a new ad view
                 AdView adView = new AdView(this);
-                adView.setAdUnitId("ca-app-pub-3940256099942544/9214589741");
+                adView.setAdUnitId("ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY");
 
                 //request an anchored adaptive banner with a width of 360
                 adView.setAdSize(AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, 360));

@@ -209,7 +209,7 @@
         android:layout_marginStart="@dimen/adView_layout_marginStart_land"
         android:layout_marginEnd="@dimen/adView_layout_marginEnd_land"
         app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-4227032191105066/7182664836"
+        app:adUnitId="ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonCalculate"
         app:layout_constraintStart_toStartOf="parent" />

@@ -40,7 +40,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-4227032191105066/4776162533"
+        app:adUnitId="ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

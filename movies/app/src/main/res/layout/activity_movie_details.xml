@@ -30,7 +30,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             app:adSize="BANNER"
-            app:adUnitId="ca-app-pub-4227032191105066/8237970402"
+            app:adUnitId="ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_view_movie_details" />
@@ -382,7 +382,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             app:adSize="BANNER"
-            app:adUnitId="ca-app-pub-4227032191105066/2811745411"
+            app:adUnitId="ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_watch_movie_link" />

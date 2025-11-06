@@ -182,7 +182,7 @@ class MainActivity : AppCompatActivity(), ColorPickerListener { //TODO: Refactor
         //load an interstitial ad
         InterstitialAd.load(
             this,
-            "ca-app-pub-4227032191105066/6370721282",
+            "ca-app-pub-XXXXXXXXXXXXXXXX/YYYYYYYYYY",
             AdRequest.Builder().build(),
             object : InterstitialAdLoadCallback() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
