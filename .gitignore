@@ -19,3 +19,10 @@ weather/.idea/deploymentTargetDropDown.xml
 weather/.idea/gradle.xml
 weather/.idea/misc.xml
 weather/.idea/runConfigurations.xml
+barcode/.idea/compiler.xml
+barcode/.idea/gradle.xml
+barcode/.idea/vcs.xml
+*.apk
+barcode/app/release/baselineProfiles/0/app-release.dm
+barcode/app/release/baselineProfiles/1/app-release.dm
+barcode/app/release/output-metadata.json

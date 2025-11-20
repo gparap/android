@@ -9,6 +9,17 @@
     <dimen name="text_layout_marginStart">32dp</dimen>
     <dimen name="text_layout_marginEnd">32dp</dimen>
 
+    <!-- Buttons. -->
+    <dimen name="buttonScanBarcode_layout_marginStart">8dp</dimen>
+    <dimen name="buttonScanBarcode_layout_marginEnd">8dp</dimen>
+    <dimen name="buttonScanBarcode_layout_marginBottom">4dp</dimen>
+    <dimen name="buttonScanBarcode_cornerRadius">0dp</dimen>
+    <dimen name="buttonGenerateBarcode_layout_marginStart">8dp</dimen>
+    <dimen name="buttonGenerateBarcode_layout_marginEnd">8dp</dimen>
+    <dimen name="buttonGenerateBarcode_layout_marginBottom">4dp</dimen>
+    <dimen name="buttonGenerateBarcode_cornerRadius">0dp</dimen>
+    <dimen name="buttonSaveGenerateBarcode_layout_marginTop">16dp</dimen>
+
     <!-- Text. -->
     <dimen name="textSize_normal">20sp</dimen>
 </resources>
