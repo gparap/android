@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Баркод</string>
+    <string name="title_scanner">Сканиране на баркод</string>
+    <string name="title_generator">Генериране на QR код</string>
+    <string name="description_generated_barcode">Генериран QR код</string>
+    <string name="hint_enter_text_to_generate_barcode">Въведете текст, за да генерирате QR код</string>
+    <string name="button_generate_barcode">Пораждам</string>
+    <string name="button_scan_barcode">Сканиране</string>
+    <string name="button_save_generated_barcode">Спасявам</string>
+    <string name="text_scan_barcode">Сканирайте всеки баркод..</string>
+    <string name="toast_empty_text_generator">Моля, въведете текст, за да генерирате QR код.</string>
+</resources>

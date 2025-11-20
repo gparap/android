@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Штрихкод</string>
+    <string name="title_scanner">Сканирование штрих-кода</string>
+    <string name="title_generator">Сгенерировать QR-код</string>
+    <string name="description_generated_barcode">Сгенерированный QR-код</string>
+    <string name="hint_enter_text_to_generate_barcode">Введите текст для генерации QR-кода</string>
+    <string name="button_generate_barcode">Порождать</string>
+    <string name="button_scan_barcode">Сканировать</string>
+    <string name="button_save_generated_barcode">Спасать</string>
+    <string name="text_scan_barcode">Сканировать любой штрих-код.</string>
+    <string name="toast_empty_text_generator">Пожалуйста, введите текст для генерации QR-кода.</string>
+</resources>

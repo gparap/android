@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cod de bare</string>
+    <string name="text_scan_barcode">scanați orice cod de bare..</string>
+    <string name="toast_empty_text_generator">Vă rugăm să introduceți text pentru a genera codul QR.</string>
+    <string name="title_scanner">Scanați codul de bare</string>
+    <string name="title_generator">Generați cod QR</string>
+    <string name="description_generated_barcode">Cod QR generat</string>
+    <string name="hint_enter_text_to_generate_barcode">Introduceți text pentru a genera codul QR</string>
+    <string name="button_generate_barcode">Genera</string>
+    <string name="button_scan_barcode">Scanare</string>
+    <string name="button_save_generated_barcode">Salva</string>
+</resources>
