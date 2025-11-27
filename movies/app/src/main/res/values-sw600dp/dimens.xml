@@ -19,4 +19,6 @@
     <dimen name="textView_padding">4dp</dimen>
     <dimen name="spinner_padding">16dp</dimen>
     <dimen name="spinner_textSize">18sp</dimen>
+    <dimen name="watchLink_marginTop">4dp</dimen>
+    <dimen name="bannerTop_marginTop">16dp</dimen>
 </resources>

@@ -28,6 +28,9 @@ data class MovieModel(
     @SerializedName("link")
     val watchLink: String,
 
+    @SerializedName("link_fallback")
+    val fallbackLink: String,
+
     @SerializedName("title")
     val title: String,
 

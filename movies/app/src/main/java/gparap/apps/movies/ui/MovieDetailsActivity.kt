@@ -59,7 +59,19 @@ class MovieDetailsActivity : AppCompatActivity() {
         val watchLink = findViewById<TextView>(R.id.text_view_watch_movie_link)
         watchLink.text = Utils.createWatchMovieLink(
             movie.watchLink,
-            resources.getString(R.string.text_watch_movie)
+            resources.getString(R.string.text_watch_movie).plus(
+                resources.getString(R.string.text_watch_movie_no_1)
+            )
+        )
+        watchLink.movementMethod = LinkMovementMethod.getInstance()
+
+        //create and display a fallback link to watch the movie in case the 1st link breaks
+        val fallbackLink = findViewById<TextView>(R.id.text_view_watch_movie_fallback_link)
+        fallbackLink.text = Utils.createWatchMovieLink(
+            movie.fallbackLink,
+            resources.getString(R.string.text_watch_movie).plus(
+                resources.getString(R.string.text_watch_movie_no_2)
+            )
         )
         watchLink.movementMethod = LinkMovementMethod.getInstance()
 

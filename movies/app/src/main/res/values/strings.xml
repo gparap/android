@@ -2,6 +2,8 @@
     <string name="app_name" translatable="false">Movies Vintage</string>
     <string name="desc_movie_image">Movie Image</string>
     <string name="text_watch_movie">WATCH MOVIE</string>
+    <string name="text_watch_movie_no_1" translatable="false">&#160;(1)</string>
+    <string name="text_watch_movie_no_2" translatable="false">&#160;(2)</string>
     <string name="text_search_movies">search movies</string>
     <string name="text_search_movies_by_title">search movies by title</string>
     <string name="text_search_movies_by_genre">search movies by genre</string>
