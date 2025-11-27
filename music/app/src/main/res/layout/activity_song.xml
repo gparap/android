@@ -182,21 +182,6 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/label_links_image_link"
             tools:text="links_image_link" />
-        <TextView
-            android:id="@+id/label_links_download_link"
-            style="@style/TextViewSongLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/label_download_link"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_links_image_link"
-            tools:text="file_information_file_size" />
-        <TextView
-            android:id="@+id/text_view_links_download_link"
-            style="@style/TextViewSongData"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/label_links_download_link"
-            tools:text="links_download_link" />
 
         <!--AdView-->
         <com.google.android.gms.ads.AdView

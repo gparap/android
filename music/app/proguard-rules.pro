@@ -19,3 +19,21 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+#Retrofit
+-keep class retrofit2.** { *; }
+-keep interface retrofit2.** { *; }
+
+#Gson
+-keep class com.google.gson.** { *; }
+-keep class * implements com.google.gson.TypeAdapterFactory { *; }
+-keep class * implements com.google.gson.JsonDeserializer { *; }
+-keep class * implements com.google.gson.JsonSerializer { *; }
+-keepattributes Signature
+-keepattributes *Annotation*
+
+#Keep API service interface
+-keep class gparap.apps.music.api.** { *; }
+
+#Keep model classes
+-keep class gparap.apps.music.data.** { *; }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text_main">Vítejte ve světě hudby!</string>
+    <string name="welcome_text_secondary">Prosím, vyberte hudební kategorii z jídelního lístku a dobrou chuť...</string>
+    <string name="medieval_period">Středověké období</string>
+    <string name="renaissance_period">Období renesance</string>
+    <string name="baroque_period">Období baroka</string>
+    <string name="classical_period">Klasické období</string>
+    <string name="classical_music">Klasická hudba</string>
+    <string name="instrumental_music">Instrumentální hudba</string>
+    <string name="traditional_music">Tradiční hudba</string>
+    <string name="folk_music">Lidová hudba</string>
+    <string name="world_music">Světová hudba</string>
+    <string name="label_music_genre">Hudební žánr</string>
+    <string name="label_time_period">Časové období</string>
+    <string name="label_song_title">Název písně</string>
+    <string name="label_song_duration">Délka skladby</string>
+    <string name="label_song_description">Popis písně</string>
+    <string name="label_song_date">Datum písně</string>
+    <string name="label_original_author">Původní autor</string>
+    <string name="label_modern_performer">Moderní výkon</string>
+    <string name="label_mime_type">Typ souboru</string>
+    <string name="label_file_size">Velikost souboru</string>
+    <string name="label_image_link">Odkaz na obrázek</string>
+    <string name="label_download_link">Odkaz ke stažení</string>
+    <string name="label_attribution_html">Přisuzování</string>
+    <string name="song_dialog_playing">Právě hraje...</string>
+    <string name="song_dialog_stop">Zastav</string>
+</resources>

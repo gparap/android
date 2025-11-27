@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text_main">Maligayang pagdating sa Mundo ng Musika!</string>
+    <string name="welcome_text_secondary">Pakisuyo, pumili ng kategorya ng musika mula sa menu at mag-enjoy…</string>
+    <string name="medieval_period">Panahon ng Gitnang Sugbo</string>
+    <string name="renaissance_period">Panahon ng Renasimyento</string>
+    <string name="baroque_period">Panahon ng Baroko</string>
+    <string name="classical_period">Panahon ng Klasikal</string>
+    <string name="classical_music">Klasikal na Musika</string>
+    <string name="instrumental_music">Instrumental na Musika</string>
+    <string name="traditional_music">Tradisyonal na Musika</string>
+    <string name="folk_music">Katutubong Musika</string>
+    <string name="world_music">Pandaigdigang Musika</string>
+    <string name="label_music_genre">Kategorya ng Musika</string>
+    <string name="label_time_period">Panahon</string>
+    <string name="label_song_title">Titulo ng Kanta</string>
+    <string name="label_song_duration">Tagal ng Kanta</string>
+    <string name="label_song_description">Deskripsyon ng Kanta</string>
+    <string name="label_song_date">Petsa ng Kanta</string>
+    <string name="label_original_author">Orihinal na Awtor</string>
+    <string name="label_modern_performer">Makabagong Tagapagsagawa</string>
+    <string name="label_mime_type">Uri ng File</string>
+    <string name="label_file_size">Sukat ng File</string>
+    <string name="label_image_link">"Link ng Imahe "</string>
+    <string name="label_download_link">Link ng Pag-download</string>
+    <string name="label_attribution_html">Pagkilala</string>
+    <string name="song_dialog_playing">Ngayon ay Pinapakinggan…</string>
+    <string name="song_dialog_stop">Itigil</string>
+</resources>

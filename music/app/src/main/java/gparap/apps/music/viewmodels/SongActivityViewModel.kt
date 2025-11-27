@@ -129,11 +129,6 @@ class SongActivityViewModel : ViewModel() {
             this.text = Utils.createLink(songInfoUrls?.imageUrl, songInfoUrls?.imageUrl)
             this.movementMethod = LinkMovementMethod.getInstance()
         }
-        activity.findViewById<TextView>(R.id.text_view_links_download_link).apply {
-            //display as link
-            this.text = Utils.createLink(songInfoUrls?.downloadUrl, songInfoUrls?.downloadUrl)
-            this.movementMethod = LinkMovementMethod.getInstance()
-        }
 
         //Attribution info
         activity.findViewById<WebView>(R.id.text_view_licence_attribution_html).apply {

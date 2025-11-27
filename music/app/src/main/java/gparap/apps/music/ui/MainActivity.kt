@@ -56,6 +56,10 @@ class MainActivity : AppCompatActivity() {
         viewModel.getSongs().observe(this) {
             recyclerViewSongs.adapter = SongsAdapter().apply {
                 setSongs(it)
+
+                //hide welcome text when songs are loaded
+                findViewById<TextView>(R.id.textViewWelcome_main).apply { this.visibility = View.GONE }
+                findViewById<TextView>(R.id.textViewWelcome_secondary).apply { this.visibility = View.GONE }
             }.apply {
                 //load an ad
                 val adView = findViewById<AdView>(R.id.adView_main)
