@@ -19,3 +19,21 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+##TODO
+#minifyEnabled false -> true
+#shrinkResources false -> true
+## Keep Retrofit interfaces
+#-keep interface com.yourpackage.api.* { *; }
+#
+## Keep all model classes and fields for Gson
+#-keep class com.yourpackage.model.** { *; }
+#
+## Keep Gson annotations (SerializedName, Expose)
+#-keepattributes *Annotation*
+#
+## Keep generic type information for Gson
+#-keepclassmembers class * {
+#    @com.google.gson.annotations.SerializedName <fields>;
+#}
+
