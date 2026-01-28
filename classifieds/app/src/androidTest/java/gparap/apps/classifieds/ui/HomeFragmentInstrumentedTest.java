@@ -13,43 +13,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.classifieds;
+package gparap.apps.classifieds.ui;
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
-import androidx.test.core.app.ActivityScenario;
+import androidx.fragment.app.testing.FragmentScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import gparap.apps.classifieds.R;
+import gparap.apps.classifieds.ui.home.HomeFragment;
+
 @RunWith(AndroidJUnit4.class)
-public class MainActivityInstrumentedTest {
+public class HomeFragmentInstrumentedTest {
     @Before
     public void setUp() {
-        ActivityScenario.launch(MainActivity.class);
+        FragmentScenario.launchInContainer (HomeFragment.class);
     }
 
     @Test
-    public void isLaunched_MarketFragment() {
-        onView(withId(R.id.navigation_market)).perform(click());
-        onView(withId(R.id.layout_fragment_market)).check(matches(isDisplayed()));
+    public void isVisible_textViewHome() {
+        onView(withId(R.id.text_view_home)).check(matches(isDisplayed()));
     }
 
     @Test
-    public void isLaunched_DashboardFragment() {
-        onView(withId(R.id.navigation_dashboard)).perform(click());
-        onView(withId(R.id.layout_fragment_dashboard)).check(matches(isDisplayed()));
-    }
-
-    @Test
-    public void isLaunched_NotificationsFragment() {
-        onView(withId(R.id.navigation_notifications)).perform(click());
-        onView(withId(R.id.layout_fragment_notifications)).check(matches(isDisplayed()));
+    public void isVisible_recyclerViewHomeFeed() {
+        onView(withId(R.id.recycler_view_home_feed)).check(matches(isDisplayed()));
     }
 }

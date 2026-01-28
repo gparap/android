@@ -4,4 +4,6 @@
     <string name="title_market">Market</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="imageView_classified_desc">Classified Image</string>
+    <string name="text_view_home">Latest Feed</string>
 </resources>
