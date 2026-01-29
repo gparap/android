@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layout_fragment_details"
+    tools:context=".ui.details.DetailsFragment">
+
+    <!--Classified image-->
+    <ImageView
+        android:id="@+id/imageView_classified_details"
+        android:layout_width="wrap_content"
+        android:layout_height="192dp"
+        android:contentDescription="@string/imageView_classified_desc"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <!--Classified details-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_classified_details">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--Classified description label-->
+            <TextView
+                android:id="@+id/textView_classified_details_description_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_classified_description" />
+
+            <!--Classified description-->
+            <TextView
+                android:id="@+id/textView_classified_details_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text=""
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fringilla vel magna scelerisque finibus. Aliquam erat volutpat. In in quam aliquet, finibus leo a, rutrum enim. Integer urna odio, suscipit at ligula eu, condimentum ullamcorper nisl. Pellentesque scelerisque consequat dui a posuere. Phasellus iaculis aliquet quam, et facilisis elit viverra eu. Mauris eget finibus est. Etiam porta, sapien eget vulputate pretium, ipsum lacus venenatis diam, vitae interdum enim lectus dapibus ipsum. Donec tincidunt vestibulum sodales. Sed non leo a dui gravida vestibulum. Mauris tincidunt placerat sollicitudin. Maecenas sit amet pharetra velit, venenatis mollis lorem. Aliquam erat volutpat. Donec placerat nibh vitae augue gravida lacinia. Donec et suscipit nibh." />
+
+            <!--Classified price -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView_classified_details_price_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="@string/label_classified_price" />
+
+                <TextView
+                    android:id="@+id/textView_classified_details_price"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="@string/text_classified_price_default" />
+            </LinearLayout>
+
+            <!--Classified contact info-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView_classified_details_contact_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="@string/label_classified_contact" />
+
+                <TextView
+                    android:id="@+id/textView_classified_details_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="@string/label_classified_contact_default" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

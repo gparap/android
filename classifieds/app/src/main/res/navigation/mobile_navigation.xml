@@ -10,7 +10,11 @@
         android:id="@+id/navigation_home"
         android:name="gparap.apps.classifieds.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_classifiedDetailsFragment"
+            app:destination="@id/navigation_details" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -28,4 +32,13 @@
         android:name="gparap.apps.classifieds.ui.market.MarketFragment"
         android:label="@string/title_market"
         tools:layout="@layout/fragment_market" />
+    <fragment
+        android:id="@+id/navigation_details"
+        android:name="gparap.apps.classifieds.ui.details.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <action
+            android:id="@+id/action_classifiedDetailsFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 </navigation>

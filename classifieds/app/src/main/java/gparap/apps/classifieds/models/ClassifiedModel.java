@@ -16,12 +16,24 @@
 package gparap.apps.classifieds.models;
 
 public class ClassifiedModel {
+    private String title;
     private String imageUrl;
     private String shortDescription;
+    private String longDescription;
+    private String price;
+    private String contactInfo;
 
     public ClassifiedModel(String imageUrl, String shortDescription) {
         this.imageUrl = imageUrl;
         this.shortDescription = shortDescription;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getImageUrl() {
@@ -38,5 +50,29 @@ public class ClassifiedModel {
 
     public void setShortDescription(String shortDescription) {
         this.shortDescription = shortDescription;
+    }
+
+    public String getLongDescription() {
+        return longDescription;
+    }
+
+    public void setLongDescription(String longDescription) {
+        this.longDescription = longDescription;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getContactInfo() {
+        return contactInfo;
+    }
+
+    public void setContactInfo(String contactInfo) {
+        this.contactInfo = contactInfo;
     }
 }

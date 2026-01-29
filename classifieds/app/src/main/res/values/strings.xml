@@ -6,4 +6,9 @@
     <string name="title_notifications">Notifications</string>
     <string name="imageView_classified_desc">Classified Image</string>
     <string name="text_view_home">Latest Feed</string>
+    <string name="label_classified_description">Description</string>
+    <string name="label_classified_price">Price</string>
+    <string name="text_classified_price_default">0</string>
+    <string name="label_classified_contact">Contact</string>
+    <string name="label_classified_contact_default">Unknown</string>
 </resources>
