@@ -50,7 +50,9 @@ public class HomeFragment extends Fragment {
 
         //create a test list of classifieds
         ArrayList<ClassifiedModel> classifieds = new ArrayList<>();
-        classifieds.add(new ClassifiedModel("", "test desc #1"));
+        ClassifiedModel testClassified = new ClassifiedModel("", "test desc #1");
+        testClassified.setPrice("999"); testClassified.setContactInfo("contact info 1");
+        classifieds.add(testClassified);
         classifieds.add(new ClassifiedModel("", "test desc #2"));
         classifieds.add(new ClassifiedModel("", "test desc #3"));
         classifieds.add(new ClassifiedModel("", "test desc #4"));

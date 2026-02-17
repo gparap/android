@@ -23,6 +23,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavAction;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -31,6 +35,8 @@ import java.util.ArrayList;
 
 import gparap.apps.classifieds.R;
 import gparap.apps.classifieds.models.ClassifiedModel;
+import gparap.apps.classifieds.ui.details.DetailsFragmentDirections;
+import gparap.apps.classifieds.ui.home.HomeFragmentDirections;
 
 public class ClassifiedsAdapter extends RecyclerView.Adapter<ClassifiedsAdapter.ClassifiedsViewHolder> {
     private Context context;
@@ -61,6 +67,22 @@ public class ClassifiedsAdapter extends RecyclerView.Adapter<ClassifiedsAdapter.
                 .into(holder.image);
 
         holder.shortDesc.setText(classifieds.get(position).getShortDescription());
+
+        //set the data for the details fragment
+        String fragmentDataDescription = holder.shortDesc.getText().toString();
+        String fragmentDataPrice = classifieds.get(position).getPrice();
+        String fragmentDataContact = classifieds.get(position).getContactInfo();
+
+        //display the classified details
+        holder.itemView.setOnClickListener(view -> {
+            NavController navController = Navigation.findNavController(view);
+            HomeFragmentDirections.ActionNavigationHomeToClassifiedDetailsFragment navAction =
+                    HomeFragmentDirections.actionNavigationHomeToClassifiedDetailsFragment();
+            navAction.setArgsClassifiedDescription(fragmentDataDescription);
+            navAction.setArgsClassifiedPrice(fragmentDataPrice);
+            navAction.setArgsClassifiedContact(fragmentDataContact);
+            navController.navigate(navAction);
+        });
     }
 
     public static class ClassifiedsViewHolder extends RecyclerView.ViewHolder {

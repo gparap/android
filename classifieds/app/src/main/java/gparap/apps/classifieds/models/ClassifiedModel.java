@@ -26,6 +26,9 @@ public class ClassifiedModel {
     public ClassifiedModel(String imageUrl, String shortDescription) {
         this.imageUrl = imageUrl;
         this.shortDescription = shortDescription;
+        this.longDescription = "";
+        this.price = "";
+        this.contactInfo = "";
     }
 
     public String getTitle() {

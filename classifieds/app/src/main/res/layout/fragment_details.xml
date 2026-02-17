@@ -90,7 +90,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
-                    android:text="@string/label_classified_contact_default" />
+                    android:text="@string/text_classified_contact_default" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

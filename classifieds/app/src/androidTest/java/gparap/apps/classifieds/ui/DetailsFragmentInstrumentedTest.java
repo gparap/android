@@ -20,6 +20,8 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
+import android.os.Bundle;
+
 import androidx.fragment.app.testing.FragmentScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -27,14 +29,22 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Objects;
+
 import gparap.apps.classifieds.R;
 import gparap.apps.classifieds.ui.details.DetailsFragment;
 
 @RunWith(AndroidJUnit4.class)
 public class DetailsFragmentInstrumentedTest {
+    FragmentScenario<DetailsFragment> fragmentScenario;
+
+
     @Before
     public void setUp() {
-        FragmentScenario.launchInContainer(DetailsFragment.class);
+        //start fragment with test arguments
+        Bundle bundle = new Bundle();
+        bundle.putString("test_key", "test_value");
+        fragmentScenario = FragmentScenario.launchInContainer(DetailsFragment.class, bundle);
     }
 
     @Test
@@ -70,5 +80,16 @@ public class DetailsFragmentInstrumentedTest {
     @Test
     public void isVisible_textView_classified_details_contact() {
         onView(withId(R.id.textView_classified_details_contact)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void areFragmentArgumentsDisplayedCorrectly() {
+        fragmentScenario.onFragment(detailsFragment -> {
+            Bundle args = detailsFragment.getArguments();
+            assert args != null;
+            assert args.containsKey("test_key");
+            String value = args.getString("test_key");
+            assert Objects.equals(value, "test_value");
+        });
     }
 }
