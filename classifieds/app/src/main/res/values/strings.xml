@@ -12,4 +12,24 @@
     <string name="text_classified_price_default">0</string>
     <string name="label_classified_contact">Contact</string>
     <string name="text_classified_contact_default">Unknown</string>
+
+    <string name="text_category_animals">Animals</string>
+    <string name="text_category_automobiles">Automobiles</string>
+    <string name="text_category_clothing">Clothing</string>
+    <string name="text_category_electronics">Electronics</string>
+    <string name="text_category_employment">Employment</string>
+    <string name="text_category_home">Home</string>
+    <string name="text_category_property">Property</string>
+    <string name="text_category_services">Services</string>
+    <string name="text_category_sports">Sports</string>
+
+    <string name="desc_market_category_automobiles">Automobiles Market Category</string>
+    <string name="desc_market_category_clothing">Clothing Market Category</string>
+    <string name="desc_market_category_animals">Animals Market Category</string>
+    <string name="desc_market_category_electronics">Electronics Market Category</string>
+    <string name="desc_market_category_employment">Employment Market Category</string>
+    <string name="desc_market_category_home">Home Market Category</string>
+    <string name="desc_market_category_property">Property Market Category</string>
+    <string name="desc_market_category_services">Services Market Category</string>
+    <string name="desc_market_category_sports">Sports Market Category</string>
 </resources>

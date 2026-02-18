@@ -33,3 +33,4 @@ movies/app/release/baselineProfiles/0/app-release.dm
 movies/app/release/baselineProfiles/1/app-release.dm
 movies/app/release/output-metadata.json
 *.png
+/classifieds/.idea
