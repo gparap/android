@@ -22,6 +22,18 @@
     <string name="text_category_property">Property</string>
     <string name="text_category_services">Services</string>
     <string name="text_category_sports">Sports</string>
+    <string name="text_category_animals_dogs">Dogs</string>
+    <string name="text_category_animals_dogs_details">Puppies and adult dogs for sale or adoption.</string>
+    <string name="text_category_animals_cats">Cats</string>
+    <string name="text_category_animals_cats_details">Kittens and cats looking for homes.</string>
+    <string name="text_category_animals_birds">Birds</string>
+    <string name="text_category_animals_birds_details">Pet birds like parrots, canaries, and finches.</string>
+    <string name="text_category_animals_fish">Fish</string>
+    <string name="text_category_animals_fish_details">Freshwater and saltwater fish, aquariums.</string>
+    <string name="text_category_animals_reptiles">Reptiles</string>
+    <string name="text_category_animals_reptiles_details">Snakes, lizards, turtles, and small exotic pets.</string>
+    <string name="text_category_animals_food">Food</string>
+    <string name="text_category_animals_food_details">Pet food and treats for all animals.</string>
 
     <string name="desc_market_category_automobiles">Automobiles Market Category</string>
     <string name="desc_market_category_clothing">Clothing Market Category</string>
@@ -32,4 +44,10 @@
     <string name="desc_market_category_property">Property Market Category</string>
     <string name="desc_market_category_services">Services Market Category</string>
     <string name="desc_market_category_sports">Sports Market Category</string>
+    <string name="desc_market_category_animals_dogs">Dogs Animals Market Category</string>
+    <string name="desc_market_category_animals_cats">Cats Animals Market Category</string>
+    <string name="desc_market_category_animals_birds">Birds Animals Market Category</string>
+    <string name="desc_market_category_animals_fish">Fish Animals Market Category</string>
+    <string name="desc_market_category_animals_reptiles">Reptiles Animals Market Category</string>
+    <string name="desc_market_category_animals_food">Food Animals Market Category</string>
 </resources>
