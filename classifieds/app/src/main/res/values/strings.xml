@@ -34,6 +34,18 @@
     <string name="text_category_animals_reptiles_details">Snakes, lizards, turtles, and small exotic pets.</string>
     <string name="text_category_animals_food">Food</string>
     <string name="text_category_animals_food_details">Pet food and treats for all animals.</string>
+    <string name="text_category_automobiles_accessories">Accessories</string>
+    <string name="text_category_automobiles_accessories_details">Accessories for all types of vehicles.</string>
+    <string name="text_category_automobiles_bicycles">Bicycles</string>
+    <string name="text_category_automobiles_bicycles_details">Pedal-powered and electric bicycles.</string>
+    <string name="text_category_automobiles_bikes">Bikes</string>
+    <string name="text_category_automobiles_bikes_details">Motorbikes and scooters.</string>
+    <string name="text_category_automobiles_cars">Cars</string>
+    <string name="text_category_automobiles_cars_details">New and used cars for sale.</string>
+    <string name="text_category_automobiles_parts">Parts</string>
+    <string name="text_category_automobiles_parts_details">Spare parts and replacement components.</string>
+    <string name="text_category_automobiles_utility">Utility</string>
+    <string name="text_category_automobiles_utility_details">Passenger or cargo vans and commercial vehicles.</string>
 
     <string name="desc_market_category_automobiles">Automobiles Market Category</string>
     <string name="desc_market_category_clothing">Clothing Market Category</string>
@@ -50,4 +62,11 @@
     <string name="desc_market_category_animals_fish">Fish Animals Market Category</string>
     <string name="desc_market_category_animals_reptiles">Reptiles Animals Market Category</string>
     <string name="desc_market_category_animals_food">Food Animals Market Category</string>
+    <string name="desc_market_category_automobiles_accessories">Accessories Automobiles Market Category</string>
+    <string name="desc_market_category_automobiles_bicycles">Bicycles Automobiles Market Category</string>
+    <string name="desc_market_category_automobiles_bikes">Bikes Automobiles Market Category</string>
+    <string name="desc_market_category_automobiles_cars">Cars Automobiles Market Category</string>
+    <string name="desc_market_category_automobiles_parts">Parts Automobiles Market Category</string>
+    <string name="desc_market_category_automobiles_utility">Utility Automobiles Market Category</string>
+
 </resources>
