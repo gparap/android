@@ -46,6 +46,18 @@
     <string name="text_category_automobiles_parts_details">Spare parts and replacement components.</string>
     <string name="text_category_automobiles_utility">Utility</string>
     <string name="text_category_automobiles_utility_details">Passenger or cargo vans and commercial vehicles.</string>
+    <string name="text_category_clothing_accessories">Accessories</string>
+    <string name="text_category_clothing_accessories_details">Bags, belts, hats, and jewelry.</string>
+    <string name="text_category_clothing_kids">Kids</string>
+    <string name="text_category_clothing_kids_details">Clothing for babies and children.</string>
+    <string name="text_category_clothing_men">Men</string>
+    <string name="text_category_clothing_men_details">Shirts, pants, jackets, and accessories for men.</string>
+    <string name="text_category_clothing_shoes">Shoes</string>
+    <string name="text_category_clothing_shoes_details">Footwear for all ages and styles.</string>
+    <string name="text_category_clothing_sportswear">Sportswear</string>
+    <string name="text_category_clothing_sportswear_details">Activewear, gym, and outdoor clothing.</string>
+    <string name="text_category_clothing_women">Women</string>
+    <string name="text_category_clothing_women_details">Dresses, tops, pants, and accessories for women.</string>
 
     <string name="desc_market_category_automobiles">Automobiles Market Category</string>
     <string name="desc_market_category_clothing">Clothing Market Category</string>
@@ -68,5 +80,11 @@
     <string name="desc_market_category_automobiles_cars">Cars Automobiles Market Category</string>
     <string name="desc_market_category_automobiles_parts">Parts Automobiles Market Category</string>
     <string name="desc_market_category_automobiles_utility">Utility Automobiles Market Category</string>
+    <string name="desc_market_category_clothing_accessories">Accessories Clothing Market Category</string>
+    <string name="desc_market_category_clothing_kids">Kids Clothing Market Category</string>
+    <string name="desc_market_category_clothing_men">Men Clothing Market Category</string>
+    <string name="desc_market_category_clothing_shoes">Shoes Clothing Market Category</string>
+    <string name="desc_market_category_clothing_sportswear">Sportswear Clothing Market Category</string>
+    <string name="desc_market_category_clothing_women">Women Clothing Market Category</string>
 
 </resources>
