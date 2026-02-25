@@ -58,6 +58,18 @@
     <string name="text_category_clothing_sportswear_details">Activewear, gym, and outdoor clothing.</string>
     <string name="text_category_clothing_women">Women</string>
     <string name="text_category_clothing_women_details">Dresses, tops, pants, and accessories for women.</string>
+    <string name="text_category_electronics_audio">Audio</string>
+    <string name="text_category_electronics_audio_details">Speakers, headphones, and sound systems.</string>
+    <string name="text_category_electronics_cameras">Cameras</string>
+    <string name="text_category_electronics_cameras_details">Digital cameras, DSLRs, and accessories.</string>
+    <string name="text_category_electronics_computers">Computers</string>
+    <string name="text_category_electronics_computers_details">Laptops, desktops, and peripherals.</string>
+    <string name="text_category_electronics_gadgets">Gadgets</string>
+    <string name="text_category_electronics_gadgets_details">Smartwatches, drones, and tech devices.</string>
+    <string name="text_category_electronics_mobiles">Mobiles</string>
+    <string name="text_category_electronics_mobiles_details">Smartphones, basic phones, and accessories.</string>
+    <string name="text_category_electronics_tvs">TVs</string>
+    <string name="text_category_electronics_tvs_details">Televisions, projectors, and home entertainment.</string>
 
     <string name="desc_market_category_automobiles">Automobiles Market Category</string>
     <string name="desc_market_category_clothing">Clothing Market Category</string>
@@ -86,5 +98,11 @@
     <string name="desc_market_category_clothing_shoes">Shoes Clothing Market Category</string>
     <string name="desc_market_category_clothing_sportswear">Sportswear Clothing Market Category</string>
     <string name="desc_market_category_clothing_women">Women Clothing Market Category</string>
+    <string name="desc_market_category_electronics_audio">Audio Electronics Market Category</string>
+    <string name="desc_market_category_electronics_cameras">Cameras Electronics Market Category</string>
+    <string name="desc_market_category_electronics_computers">Computers Electronics Market Category</string>
+    <string name="desc_market_category_electronics_gadgets">Gadgets Electronics Market Category</string>
+    <string name="desc_market_category_electronics_mobiles">Mobiles Electronics Market Category</string>
+    <string name="desc_market_category_electronics_tvs">TVs Electronics Market Category</string>
 
 </resources>
