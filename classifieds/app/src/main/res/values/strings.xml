@@ -70,6 +70,18 @@
     <string name="text_category_electronics_mobiles_details">Smartphones, basic phones, and accessories.</string>
     <string name="text_category_electronics_tvs">TVs</string>
     <string name="text_category_electronics_tvs_details">Televisions, projectors, and home entertainment.</string>
+    <string name="text_category_employment_freelance">Freelance</string>
+    <string name="text_category_employment_freelance_details">Short-term and contract work.</string>
+    <string name="text_category_employment_fullTime">FullTime</string>
+    <string name="text_category_employment_fullTime_details">Permanent full-time job openings.</string>
+    <string name="text_category_employment_internship">Internship</string>
+    <string name="text_category_employment_internship_details">Internships and training positions.</string>
+    <string name="text_category_employment_other">Other</string>
+    <string name="text_category_employment_other_details">Miscellaneous job opportunities.</string>
+    <string name="text_category_employment_partTime">PartTime</string>
+    <string name="text_category_employment_partTime_details">Part-time positions and shifts.</string>
+    <string name="text_category_employment_remote">Remote</string>
+    <string name="text_category_employment_remote_details">Work-from-home opportunities.</string>
 
     <string name="desc_market_category_automobiles">Automobiles Market Category</string>
     <string name="desc_market_category_clothing">Clothing Market Category</string>
@@ -104,5 +116,11 @@
     <string name="desc_market_category_electronics_gadgets">Gadgets Electronics Market Category</string>
     <string name="desc_market_category_electronics_mobiles">Mobiles Electronics Market Category</string>
     <string name="desc_market_category_electronics_tvs">TVs Electronics Market Category</string>
+    <string name="desc_market_category_employment_freelance">Freelance Employment Market Category</string>
+    <string name="desc_market_category_employment_fullTime">Full-time Employment Market Category</string>
+    <string name="desc_market_category_employment_internship">Internship Employment Market Category</string>
+    <string name="desc_market_category_employment_other">Other Employment Market Category</string>
+    <string name="desc_market_category_employment_partTime">Part-time Employment Market Category</string>
+    <string name="desc_market_category_employment_remote">Remote Employment Market Category</string>
 
 </resources>
