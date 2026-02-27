@@ -82,6 +82,18 @@
     <string name="text_category_employment_partTime_details">Part-time positions and shifts.</string>
     <string name="text_category_employment_remote">Remote</string>
     <string name="text_category_employment_remote_details">Work-from-home opportunities.</string>
+    <string name="text_category_home_appliances">Appliances</string>
+    <string name="text_category_home_appliances_details">Refrigerators, ovens, washers, and more.</string>
+    <string name="text_category_home_decor">Decor</string>
+    <string name="text_category_home_decor_details">Home decoration items and accessories.</string>
+    <string name="text_category_home_furniture">Furniture</string>
+    <string name="text_category_home_furniture_details">Sofas, beds, tables, and home furnishings.</string>
+    <string name="text_category_home_garden">Garden</string>
+    <string name="text_category_home_garden_details">Outdoor furniture, plants, and tools.</string>
+    <string name="text_category_home_kitchen">Kitchen</string>
+    <string name="text_category_home_kitchen_details">Cookware, utensils, and kitchen essentials.</string>
+    <string name="text_category_home_other">Other</string>
+    <string name="text_category_home_other_details">Miscellaneous home items.</string>
 
     <string name="desc_market_category_automobiles">Automobiles Market Category</string>
     <string name="desc_market_category_clothing">Clothing Market Category</string>
@@ -122,5 +134,11 @@
     <string name="desc_market_category_employment_other">Other Employment Market Category</string>
     <string name="desc_market_category_employment_partTime">Part-time Employment Market Category</string>
     <string name="desc_market_category_employment_remote">Remote Employment Market Category</string>
+    <string name="desc_market_category_home_appliances">Appliances Home Market Category</string>
+    <string name="desc_market_category_home_decor">Decor Home Market Category</string>
+    <string name="desc_market_category_home_furniture">Furniture Home Market Category</string>
+    <string name="desc_market_category_home_garden">Garden Home Market Category</string>
+    <string name="desc_market_category_home_kitchen">Kitchen Home Market Category</string>
+    <string name="desc_market_category_home_other">Other Home Market Category</string>
 
 </resources>
