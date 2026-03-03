@@ -94,6 +94,18 @@
     <string name="text_category_home_kitchen_details">Cookware, utensils, and kitchen essentials.</string>
     <string name="text_category_home_other">Other</string>
     <string name="text_category_home_other_details">Miscellaneous home items.</string>
+    <string name="text_category_property_commercial">Commercial</string>
+    <string name="text_category_property_commercial_details">Shops, offices, and business spaces.</string>
+    <string name="text_category_property_guest">Guest</string>
+    <string name="text_category_property_guest_details">Paying guest accommodations.</string>
+    <string name="text_category_property_land">Land</string>
+    <string name="text_category_property_land_details">Plots, farms, and vacant land.</string>
+    <string name="text_category_property_rent">Rent</string>
+    <string name="text_category_property_rent_details">Houses, apartments, and rooms for rent.</string>
+    <string name="text_category_property_sale">Sale</string>
+    <string name="text_category_property_sale_details">Properties available for purchase.</string>
+    <string name="text_category_property_other">Other</string>
+    <string name="text_category_property_other_details">Miscellaneous property listings.</string>
 
     <string name="desc_market_category_automobiles">Automobiles Market Category</string>
     <string name="desc_market_category_clothing">Clothing Market Category</string>
@@ -140,5 +152,10 @@
     <string name="desc_market_category_home_garden">Garden Home Market Category</string>
     <string name="desc_market_category_home_kitchen">Kitchen Home Market Category</string>
     <string name="desc_market_category_home_other">Other Home Market Category</string>
-
+    <string name="desc_market_category_property_commercial">Commercial Property Market Category</string>
+    <string name="desc_market_category_property_guest">Guest Property Market Category</string>
+    <string name="desc_market_category_property_land">Land Property Market Category</string>
+    <string name="desc_market_category_property_rent">Rent Property Market Category</string>
+    <string name="desc_market_category_property_sale">Sale Property Market Category</string>
+    <string name="desc_market_category_property_other">Other Property Market Category</string>
 </resources>
