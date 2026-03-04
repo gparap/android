@@ -106,6 +106,18 @@
     <string name="text_category_property_sale_details">Properties available for purchase.</string>
     <string name="text_category_property_other">Other</string>
     <string name="text_category_property_other_details">Miscellaneous property listings.</string>
+    <string name="text_category_services_beauty">Beauty</string>
+    <string name="text_category_services_beauty_details">Salon, spa, and personal care services.</string>
+    <string name="text_category_services_cleaning">Cleaning</string>
+    <string name="text_category_services_cleaning_details">House, office, and commercial cleaning.</string>
+    <string name="text_category_services_events">Events</string>
+    <string name="text_category_services_events_details">Event planning, photography, and catering.</string>
+    <string name="text_category_services_other">Other</string>
+    <string name="text_category_services_other_details">Miscellaneous service offerings.</string>
+    <string name="text_category_services_repair">Repair</string>
+    <string name="text_category_services_repair_details">Home, appliance, and vehicle repair services.</string>
+    <string name="text_category_services_tutoring">Tutoring</string>
+    <string name="text_category_services_tutoring_details">Academic and skill-based tutoring.</string>
 
     <string name="desc_market_category_automobiles">Automobiles Market Category</string>
     <string name="desc_market_category_clothing">Clothing Market Category</string>
@@ -158,4 +170,10 @@
     <string name="desc_market_category_property_rent">Rent Property Market Category</string>
     <string name="desc_market_category_property_sale">Sale Property Market Category</string>
     <string name="desc_market_category_property_other">Other Property Market Category</string>
+    <string name="desc_market_category_services_beauty">Beauty Services Market Category</string>
+    <string name="desc_market_category_services_cleaning">Cleaning Services Market Category</string>
+    <string name="desc_market_category_services_events">Events Services Market Category</string>
+    <string name="desc_market_category_services_other">Other Services Market Category</string>
+    <string name="desc_market_category_services_repair">Repair Services Market Category</string>
+    <string name="desc_market_category_services_tutoring">Tutoring Services Market Category</string>
 </resources>
