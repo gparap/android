@@ -118,6 +118,18 @@
     <string name="text_category_services_repair_details">Home, appliance, and vehicle repair services.</string>
     <string name="text_category_services_tutoring">Tutoring</string>
     <string name="text_category_services_tutoring_details">Academic and skill-based tutoring.</string>
+    <string name="text_category_sports_apparel">Apparel</string>
+    <string name="text_category_sports_apparel_details">Sportswear and shoes.</string>
+    <string name="text_category_sports_equipment">Equipment</string>
+    <string name="text_category_sports_equipment_details">Gear and accessories for all sports.</string>
+    <string name="text_category_sports_fitness">Fitness</string>
+    <string name="text_category_sports_fitness_details">Gym equipment and fitness accessories.</string>
+    <string name="text_category_sports_indoors">Indoors</string>
+    <string name="text_category_sports_indoors_details">Table tennis, chess, and indoor games.</string>
+    <string name="text_category_sports_other">Other</string>
+    <string name="text_category_sports_other_details">Miscellaneous sports items.</string>
+    <string name="text_category_sports_outdoors">Outdoors</string>
+    <string name="text_category_sports_outdoors_details">Camping, cycling, and adventure sports items.</string>
 
     <string name="desc_market_category_automobiles">Automobiles Market Category</string>
     <string name="desc_market_category_clothing">Clothing Market Category</string>
@@ -176,4 +188,10 @@
     <string name="desc_market_category_services_other">Other Services Market Category</string>
     <string name="desc_market_category_services_repair">Repair Services Market Category</string>
     <string name="desc_market_category_services_tutoring">Tutoring Services Market Category</string>
+    <string name="desc_market_category_sports_apparel">Commercial Sports Market Category</string>
+    <string name="desc_market_category_sports_equipment">Equipment Sports Market Category</string>
+    <string name="desc_market_category_sports_fitness">Fitness Sports Market Category</string>
+    <string name="desc_market_category_sports_indoors">Indoors Sports Market Category</string>
+    <string name="desc_market_category_sports_other">Other Sports Market Category</string>
+    <string name="desc_market_category_sports_outdoors">Outdoors Sports Market Category</string>
 </resources>
