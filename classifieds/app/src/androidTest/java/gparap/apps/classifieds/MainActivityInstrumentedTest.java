@@ -1,3 +1,18 @@
+/*
+ * Copyright 2026 gparap
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package gparap.apps.classifieds;
 
 import static androidx.test.espresso.Espresso.onView;
@@ -15,9 +30,11 @@ import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
 public class MainActivityInstrumentedTest {
+    ActivityScenario<MainActivity> activityScenario;
+
     @Before
     public void setUp() {
-        ActivityScenario.launch(MainActivity.class);
+        activityScenario = ActivityScenario.launch(MainActivity.class);
     }
 
     @Test
@@ -36,5 +53,68 @@ public class MainActivityInstrumentedTest {
     public void isLaunched_NotificationsFragment() {
         onView(withId(R.id.navigation_notifications)).perform(click());
         onView(withId(R.id.layout_fragment_notifications)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isCorrect_marketNavigationTo_Animals() {
+        onView(withId(R.id.navigation_market)).perform(click());
+        onView(withId(R.id.imageView_marketCategory_Animals)).perform(click());
+        onView(withId(R.id.layout_fragment_animals)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isCorrect_marketNavigationTo_Automobiles() {
+        onView(withId(R.id.navigation_market)).perform(click());
+        onView(withId(R.id.imageView_marketCategory_Automobiles)).perform(click());
+        onView(withId(R.id.layout_fragment_automobiles)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isCorrect_marketNavigationTo_Clothing() {
+        onView(withId(R.id.navigation_market)).perform(click());
+        onView(withId(R.id.imageView_marketCategory_Clothing)).perform(click());
+        onView(withId(R.id.layout_fragment_clothing)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isCorrect_marketNavigationTo_Electronics() {
+        onView(withId(R.id.navigation_market)).perform(click());
+        onView(withId(R.id.imageView_marketCategory_Electronics)).perform(click());
+        onView(withId(R.id.layout_fragment_electronics)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isCorrect_marketNavigationTo_Employment() {
+        onView(withId(R.id.navigation_market)).perform(click());
+        onView(withId(R.id.imageView_marketCategory_Employment)).perform(click());
+        onView(withId(R.id.layout_fragment_employment)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isCorrect_marketNavigationTo_Home() {
+        onView(withId(R.id.navigation_market)).perform(click());
+        onView(withId(R.id.imageView_marketCategory_Home)).perform(click());
+        onView(withId(R.id.layout_fragment_home)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isCorrect_marketNavigationTo_Property() {
+        onView(withId(R.id.navigation_market)).perform(click());
+        onView(withId(R.id.imageView_marketCategory_Property)).perform(click());
+        onView(withId(R.id.layout_fragment_property)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isCorrect_marketNavigationTo_Services() {
+        onView(withId(R.id.navigation_market)).perform(click());
+        onView(withId(R.id.imageView_marketCategory_Services)).perform(click());
+        onView(withId(R.id.layout_fragment_services)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isCorrect_marketNavigationTo_Sports() {
+        onView(withId(R.id.navigation_market)).perform(click());
+        onView(withId(R.id.imageView_marketCategory_Sports)).perform(click());
+        onView(withId(R.id.layout_fragment_sports)).check(matches(isDisplayed()));
     }
 }

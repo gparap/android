@@ -31,7 +31,35 @@
         android:id="@+id/navigation_market"
         android:name="gparap.apps.classifieds.ui.market.MarketFragment"
         android:label="@string/title_market"
-        tools:layout="@layout/fragment_market" />
+        tools:layout="@layout/fragment_market" >
+        <action
+            android:id="@+id/action_navigation_market_to_animalsFragment"
+            app:destination="@id/animalsFragment" />
+        <action
+            android:id="@+id/action_navigation_market_to_automobilesFragment"
+            app:destination="@id/automobilesFragment" />
+        <action
+            android:id="@+id/action_navigation_market_to_clothingFragment"
+            app:destination="@id/clothingFragment" />
+        <action
+            android:id="@+id/action_navigation_market_to_electronicsFragment"
+            app:destination="@id/electronicsFragment" />
+        <action
+            android:id="@+id/action_navigation_market_to_employmentFragment"
+            app:destination="@id/employmentFragment" />
+        <action
+            android:id="@+id/action_navigation_market_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_navigation_market_to_propertyFragment"
+            app:destination="@id/propertyFragment" />
+        <action
+            android:id="@+id/action_navigation_market_to_servicesFragment"
+            app:destination="@id/servicesFragment" />
+        <action
+            android:id="@+id/action_navigation_market_to_sportsFragment"
+            app:destination="@id/sportsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_details"
         android:name="gparap.apps.classifieds.ui.details.DetailsFragment"
@@ -53,4 +81,49 @@
             android:defaultValue=""
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/animalsFragment"
+        android:name="gparap.apps.classifieds.ui.market.categories.animals.AnimalsFragment"
+        android:label="fragment_category_animals"
+        tools:layout="@layout/fragment_category_animals" />
+    <fragment
+        android:id="@+id/automobilesFragment"
+        android:name="gparap.apps.classifieds.ui.market.categories.automobiles.AutomobilesFragment"
+        android:label="fragment_category_automobiles"
+        tools:layout="@layout/fragment_category_automobiles" />
+    <fragment
+        android:id="@+id/clothingFragment"
+        android:name="gparap.apps.classifieds.ui.market.categories.clothing.ClothingFragment"
+        android:label="fragment_category_clothing"
+        tools:layout="@layout/fragment_category_clothing" />
+    <fragment
+        android:id="@+id/electronicsFragment"
+        android:name="gparap.apps.classifieds.ui.market.categories.electronics.ElectronicsFragment"
+        android:label="fragment_category_electronics"
+        tools:layout="@layout/fragment_category_electronics" />
+    <fragment
+        android:id="@+id/employmentFragment"
+        android:name="gparap.apps.classifieds.ui.market.categories.employment.EmploymentFragment"
+        android:label="fragment_category_employment"
+        tools:layout="@layout/fragment_category_employment" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="gparap.apps.classifieds.ui.market.categories.home.HomeFragment"
+        android:label="fragment_category_home"
+        tools:layout="@layout/fragment_category_home" />
+    <fragment
+        android:id="@+id/propertyFragment"
+        android:name="gparap.apps.classifieds.ui.market.categories.property.PropertyFragment"
+        android:label="fragment_category_property"
+        tools:layout="@layout/fragment_category_property" />
+    <fragment
+        android:id="@+id/servicesFragment"
+        android:name="gparap.apps.classifieds.ui.market.categories.services.ServicesFragment"
+        android:label="fragment_category_services"
+        tools:layout="@layout/fragment_category_services" />
+    <fragment
+        android:id="@+id/sportsFragment"
+        android:name="gparap.apps.classifieds.ui.market.categories.sports.SportsFragment"
+        android:label="fragment_category_sports"
+        tools:layout="@layout/fragment_category_sports" />
 </navigation>

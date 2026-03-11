@@ -28,13 +28,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import gparap.apps.classifieds.R;
-import gparap.apps.classifieds.ui.market.MarketFragment;
 
 @RunWith(AndroidJUnit4.class)
 public class MarketFragmentInstrumentedTest {
+    FragmentScenario<MarketFragment> fragmentScenario;
+
     @Before
     public void setUp() {
-        FragmentScenario.launchInContainer(MarketFragment.class);
+        fragmentScenario = FragmentScenario.launchInContainer(MarketFragment.class);
     }
 
     @Test

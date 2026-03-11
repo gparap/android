@@ -17,11 +17,12 @@ package gparap.apps.classifieds;
 
 import android.os.Bundle;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
+import androidx.navigation.NavGraph;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -29,6 +30,9 @@ import gparap.apps.classifieds.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * @noinspection FieldCanBeLocal
+     */
     private ActivityMainBinding binding;
 
     @Override
@@ -38,22 +42,34 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+        //create options for NavigationUI interactions with the app bar
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
+                R.id.navigation_home, R.id.navigation_market, R.id.navigation_dashboard, R.id.navigation_notifications)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+
+        //get NavHostFragment from container layout
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment_activity_main);
+
+        //get NavController from NavHostFragment
+        assert navHostFragment != null;
+        NavController navController = navHostFragment.getNavController();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        //pop the controller's back stack back to home destination
+        //handle bottom navigation item selections with special options for navigate actions
         binding.navView.setOnItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.navigation_home) {
-                navController.popBackStack(R.id.navigation_home, false);
-                return true;
-            }
-            return NavigationUI.onNavDestinationSelected(item, navController);
+            int itemId = item.getItemId();
+
+            //setup navigate actions
+            NavOptions navOptions = new NavOptions.Builder()
+                    .setLaunchSingleTop(true)
+                    .setRestoreState(true)
+                    .setPopUpTo(NavGraph.findStartDestination(navController.getGraph()).getId(), false, true)
+                    .build();
+            navController.navigate(itemId, null, navOptions);
+
+            return true;
         });
     }
 
