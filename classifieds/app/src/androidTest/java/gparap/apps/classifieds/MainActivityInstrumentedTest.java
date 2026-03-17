@@ -20,6 +20,7 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -116,5 +117,17 @@ public class MainActivityInstrumentedTest {
         onView(withId(R.id.navigation_market)).perform(click());
         onView(withId(R.id.imageView_marketCategory_Sports)).perform(click());
         onView(withId(R.id.layout_fragment_sports)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void isCorrect_marketNavigation_AnimalsCategoryToSubCategories() {
+        onView(withId(R.id.navigation_market)).perform(click());
+        onView(withId(R.id.imageView_marketCategory_Animals)).perform(click());
+        onView(withText(R.string.text_category_animals_birds)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_animals_cats)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_animals_dogs)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_animals_fish)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_animals_food)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_animals_reptiles)).check(matches(isDisplayed()));
     }
 }

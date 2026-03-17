@@ -31,7 +31,7 @@
         android:id="@+id/navigation_market"
         android:name="gparap.apps.classifieds.ui.market.MarketFragment"
         android:label="@string/title_market"
-        tools:layout="@layout/fragment_market" >
+        tools:layout="@layout/fragment_market">
         <action
             android:id="@+id/action_navigation_market_to_animalsFragment"
             app:destination="@id/animalsFragment" />
@@ -85,45 +85,95 @@
         android:id="@+id/animalsFragment"
         android:name="gparap.apps.classifieds.ui.market.categories.animals.AnimalsFragment"
         android:label="fragment_category_animals"
-        tools:layout="@layout/fragment_category_animals" />
+        tools:layout="@layout/fragment_category_animals">
+        <action
+            android:id="@+id/action_animalsFragment_to_baseFragment"
+            app:destination="@id/baseFragment" />
+    </fragment>
     <fragment
         android:id="@+id/automobilesFragment"
         android:name="gparap.apps.classifieds.ui.market.categories.automobiles.AutomobilesFragment"
         android:label="fragment_category_automobiles"
-        tools:layout="@layout/fragment_category_automobiles" />
+        tools:layout="@layout/fragment_category_automobiles">
+        <action
+            android:id="@+id/action_automobilesFragment_to_baseFragment"
+            app:destination="@id/baseFragment" />
+    </fragment>
     <fragment
         android:id="@+id/clothingFragment"
         android:name="gparap.apps.classifieds.ui.market.categories.clothing.ClothingFragment"
         android:label="fragment_category_clothing"
-        tools:layout="@layout/fragment_category_clothing" />
+        tools:layout="@layout/fragment_category_clothing">
+        <action
+            android:id="@+id/action_clothingFragment_to_baseFragment"
+            app:destination="@id/baseFragment" />
+    </fragment>
     <fragment
         android:id="@+id/electronicsFragment"
         android:name="gparap.apps.classifieds.ui.market.categories.electronics.ElectronicsFragment"
         android:label="fragment_category_electronics"
-        tools:layout="@layout/fragment_category_electronics" />
+        tools:layout="@layout/fragment_category_electronics">
+        <action
+            android:id="@+id/action_electronicsFragment_to_baseFragment"
+            app:destination="@id/baseFragment" />
+    </fragment>
     <fragment
         android:id="@+id/employmentFragment"
         android:name="gparap.apps.classifieds.ui.market.categories.employment.EmploymentFragment"
         android:label="fragment_category_employment"
-        tools:layout="@layout/fragment_category_employment" />
+        tools:layout="@layout/fragment_category_employment">
+        <action
+            android:id="@+id/action_employmentFragment_to_baseFragment"
+            app:destination="@id/baseFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="gparap.apps.classifieds.ui.market.categories.home.HomeFragment"
         android:label="fragment_category_home"
-        tools:layout="@layout/fragment_category_home" />
+        tools:layout="@layout/fragment_category_home">
+        <action
+            android:id="@+id/action_homeFragment_to_baseFragment"
+            app:destination="@id/baseFragment" />
+    </fragment>
     <fragment
         android:id="@+id/propertyFragment"
         android:name="gparap.apps.classifieds.ui.market.categories.property.PropertyFragment"
         android:label="fragment_category_property"
-        tools:layout="@layout/fragment_category_property" />
+        tools:layout="@layout/fragment_category_property">
+        <action
+            android:id="@+id/action_propertyFragment_to_baseFragment"
+            app:destination="@id/baseFragment" />
+    </fragment>
     <fragment
         android:id="@+id/servicesFragment"
         android:name="gparap.apps.classifieds.ui.market.categories.services.ServicesFragment"
         android:label="fragment_category_services"
-        tools:layout="@layout/fragment_category_services" />
+        tools:layout="@layout/fragment_category_services">
+        <action
+            android:id="@+id/action_servicesFragment_to_baseFragment"
+            app:destination="@id/baseFragment" />
+    </fragment>
     <fragment
         android:id="@+id/sportsFragment"
         android:name="gparap.apps.classifieds.ui.market.categories.sports.SportsFragment"
         android:label="fragment_category_sports"
-        tools:layout="@layout/fragment_category_sports" />
+        tools:layout="@layout/fragment_category_sports">
+        <action
+            android:id="@+id/action_sportsFragment_to_baseFragment"
+            app:destination="@id/baseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/baseFragment"
+        android:name="gparap.apps.classifieds.ui.market.BaseFragment"
+        android:label="fragment_market_base"
+        tools:layout="@layout/fragment_market_base">
+        <argument
+            android:name="argsMarketCategoryName"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="argsMarketSubCategoryName"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
 </navigation>
