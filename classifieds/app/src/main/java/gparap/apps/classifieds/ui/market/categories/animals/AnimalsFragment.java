@@ -48,73 +48,23 @@ public class AnimalsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //TODO: Refactor
-        //------------------------------------------------------------------------------------------
-        //open Birds category
-        ImageView imageViewBirds = AnimalsFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Animals_Birds);
-        imageViewBirds.setOnClickListener(v -> {
-            NavController navController = Navigation.findNavController(v);
-            AnimalsFragmentDirections.ActionAnimalsFragmentToBaseFragment navAction =
-                    AnimalsFragmentDirections.actionAnimalsFragmentToBaseFragment();
-            navAction.setArgsMarketCategoryName("Animals");
-            navAction.setArgsMarketSubCategoryName("Birds");
-            navController.navigate(navAction);
-        });
+        openAnimalCategory(R.id.imageButton_marketCategory_Animals_Birds, "Birds");
+        openAnimalCategory(R.id.imageButton_marketCategory_Animals_Cats, "Cats");
+        openAnimalCategory(R.id.imageButton_marketCategory_Animals_Dogs, "Dogs");
+        openAnimalCategory(R.id.imageButton_marketCategory_Animals_Fish, "Fish");
+        openAnimalCategory(R.id.imageButton_marketCategory_Animals_Food, "Food");
+        openAnimalCategory(R.id.imageButton_marketCategory_Animals_Reptiles, "Reptiles");
+    }
 
-        //open Cats category
-        ImageView imageViewCats = AnimalsFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Animals_Cats);
-        imageViewCats.setOnClickListener(v -> {
+    private void openAnimalCategory(int imageResId, String subCategoryName) {
+        ImageView imageView = AnimalsFragment.this.requireView().findViewById(imageResId);
+        imageView.setOnClickListener(v -> {
             NavController navController = Navigation.findNavController(v);
             AnimalsFragmentDirections.ActionAnimalsFragmentToBaseFragment navAction =
                     AnimalsFragmentDirections.actionAnimalsFragmentToBaseFragment();
             navAction.setArgsMarketCategoryName("Animals");
-            navAction.setArgsMarketSubCategoryName("Cats");
+            navAction.setArgsMarketSubCategoryName(subCategoryName);
             navController.navigate(navAction);
         });
-
-        //open Dogs category
-        ImageView imageViewDogs = AnimalsFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Animals_Dogs);
-        imageViewDogs.setOnClickListener(v -> {
-            NavController navController = Navigation.findNavController(v);
-            AnimalsFragmentDirections.ActionAnimalsFragmentToBaseFragment navAction =
-                    AnimalsFragmentDirections.actionAnimalsFragmentToBaseFragment();
-            navAction.setArgsMarketCategoryName("Animals");
-            navAction.setArgsMarketSubCategoryName("Dogs");
-            navController.navigate(navAction);
-        });
-
-        //open Fish category
-        ImageView imageViewFish = AnimalsFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Animals_Fish);
-        imageViewFish.setOnClickListener(v -> {
-            NavController navController = Navigation.findNavController(v);
-            AnimalsFragmentDirections.ActionAnimalsFragmentToBaseFragment navAction =
-                    AnimalsFragmentDirections.actionAnimalsFragmentToBaseFragment();
-            navAction.setArgsMarketCategoryName("Animals");
-            navAction.setArgsMarketSubCategoryName("Fish");
-            navController.navigate(navAction);
-        });
-
-        //open Food category
-        ImageView imageViewFood = AnimalsFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Animals_Food);
-        imageViewFood.setOnClickListener(v -> {
-            NavController navController = Navigation.findNavController(v);
-            AnimalsFragmentDirections.ActionAnimalsFragmentToBaseFragment navAction =
-                    AnimalsFragmentDirections.actionAnimalsFragmentToBaseFragment();
-            navAction.setArgsMarketCategoryName("Animals");
-            navAction.setArgsMarketSubCategoryName("Food");
-            navController.navigate(navAction);
-        });
-
-        //open Reptiles category
-        ImageView imageViewReptiles = AnimalsFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Animals_Reptiles);
-        imageViewReptiles.setOnClickListener(v -> {
-            NavController navController = Navigation.findNavController(v);
-            AnimalsFragmentDirections.ActionAnimalsFragmentToBaseFragment navAction =
-                    AnimalsFragmentDirections.actionAnimalsFragmentToBaseFragment();
-            navAction.setArgsMarketCategoryName("Animals");
-            navAction.setArgsMarketSubCategoryName("Reptiles");
-            navController.navigate(navAction);
-        });
-        //------------------------------------------------------------------------------------------
     }
 }

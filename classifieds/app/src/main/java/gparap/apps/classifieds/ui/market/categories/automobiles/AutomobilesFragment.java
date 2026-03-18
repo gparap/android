@@ -15,17 +15,17 @@
  */
 package gparap.apps.classifieds.ui.market.categories.automobiles;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import gparap.apps.classifieds.R;
 
@@ -44,10 +44,26 @@ public class AutomobilesFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(AutomobilesViewModel.class);
-        // TODO: Use the ViewModel
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        openAutomobilesCategory(R.id.imageButton_marketCategory_Automobiles_Accessories, "Accessories");
+        openAutomobilesCategory(R.id.imageButton_marketCategory_Automobiles_Bicycles, "Bicycles");
+        openAutomobilesCategory(R.id.imageButton_marketCategory_Automobiles_Bikes, "Bikes");
+        openAutomobilesCategory(R.id.imageButton_marketCategory_Automobiles_Cars, "Cars");
+        openAutomobilesCategory(R.id.imageButton_marketCategory_Automobiles_Parts, "Parts");
+        openAutomobilesCategory(R.id.imageButton_marketCategory_Automobiles_Utility, "Utility");
     }
 
+    private void openAutomobilesCategory(int imageResId, String subCategoryName) {
+        ImageView imageView = AutomobilesFragment.this.requireView().findViewById(imageResId);
+        imageView.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(v);
+            AutomobilesFragmentDirections.ActionAutomobilesFragmentToBaseFragment navAction =
+                    AutomobilesFragmentDirections.actionAutomobilesFragmentToBaseFragment();
+            navAction.setArgsMarketCategoryName("Automobiles");
+            navAction.setArgsMarketSubCategoryName(subCategoryName);
+            navController.navigate(navAction);
+        });
+    }
 }

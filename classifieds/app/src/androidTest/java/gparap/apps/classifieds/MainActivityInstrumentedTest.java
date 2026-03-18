@@ -130,4 +130,16 @@ public class MainActivityInstrumentedTest {
         onView(withText(R.string.text_category_animals_food)).check(matches(isDisplayed()));
         onView(withText(R.string.text_category_animals_reptiles)).check(matches(isDisplayed()));
     }
+
+    @Test
+    public void isCorrect_marketNavigation_AutomobilesCategoryToSubCategories() {
+        onView(withId(R.id.navigation_market)).perform(click());
+        onView(withId(R.id.imageView_marketCategory_Automobiles)).perform(click());
+        onView(withText(R.string.text_category_automobiles_accessories)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_automobiles_bicycles)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_automobiles_bikes)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_automobiles_cars)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_automobiles_parts)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_automobiles_utility)).check(matches(isDisplayed()));
+    }
 }
