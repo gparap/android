@@ -142,4 +142,16 @@ public class MainActivityInstrumentedTest {
         onView(withText(R.string.text_category_automobiles_parts)).check(matches(isDisplayed()));
         onView(withText(R.string.text_category_automobiles_utility)).check(matches(isDisplayed()));
     }
+
+    @Test
+    public void isCorrect_marketNavigation_ClothingCategoryToSubCategories() {
+        onView(withId(R.id.navigation_market)).perform(click());
+        onView(withId(R.id.imageView_marketCategory_Clothing)).perform(click());
+        onView(withText(R.string.text_category_clothing_accessories)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_clothing_kids)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_clothing_men)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_clothing_shoes)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_clothing_sportswear)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_clothing_women)).check(matches(isDisplayed()));
+    }
 }

@@ -22,12 +22,17 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import gparap.apps.classifieds.R;
+import gparap.apps.classifieds.ui.market.categories.clothing.ClothingFragment;
+import gparap.apps.classifieds.ui.market.categories.clothing.ClothingFragmentDirections;
 
 public class ClothingFragment extends Fragment {
 
@@ -44,10 +49,26 @@ public class ClothingFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ClothingViewModel.class);
-        // TODO: Use the ViewModel
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        openClothingCategory(R.id.imageButton_marketCategory_Clothing_Accessories, "Accessories");
+        openClothingCategory(R.id.imageButton_marketCategory_Clothing_Kids, "Kids");
+        openClothingCategory(R.id.imageButton_marketCategory_Clothing_Men, "Men");
+        openClothingCategory(R.id.imageButton_marketCategory_Clothing_Shoes, "Shoes");
+        openClothingCategory(R.id.imageButton_marketCategory_Clothing_Sportswear, "Sportswear");
+        openClothingCategory(R.id.imageButton_marketCategory_Clothing_Women, "Women");
     }
 
+    private void openClothingCategory(int imageResId, String subCategoryName) {
+        ImageView imageView = ClothingFragment.this.requireView().findViewById(imageResId);
+        imageView.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(v);
+            ClothingFragmentDirections.ActionClothingFragmentToBaseFragment navAction =
+                    ClothingFragmentDirections.actionClothingFragmentToBaseFragment();
+            navAction.setArgsMarketCategoryName("Clothing");
+            navAction.setArgsMarketSubCategoryName(subCategoryName);
+            navController.navigate(navAction);
+        });
+    }
 }
