@@ -22,10 +22,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import gparap.apps.classifieds.R;
 
@@ -44,10 +47,26 @@ public class ElectronicsFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ElectronicsViewModel.class);
-        // TODO: Use the ViewModel
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        openElectronicsCategory(R.id.imageButton_marketCategory_Electronics_Audio, "Audio");
+        openElectronicsCategory(R.id.imageButton_marketCategory_Electronics_Cameras, "Cameras");
+        openElectronicsCategory(R.id.imageButton_marketCategory_Electronics_Computers, "Computers");
+        openElectronicsCategory(R.id.imageButton_marketCategory_Electronics_Gadgets, "Gadgets");
+        openElectronicsCategory(R.id.imageButton_marketCategory_Electronics_Mobiles, "Mobiles");
+        openElectronicsCategory(R.id.imageButton_marketCategory_Electronics_tvs, "TVs");
     }
 
+    private void openElectronicsCategory(int imageResId, String subCategoryName) {
+        ImageView imageView = ElectronicsFragment.this.requireView().findViewById(imageResId);
+        imageView.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(v);
+            ElectronicsFragmentDirections.ActionElectronicsFragmentToBaseFragment navAction =
+                    ElectronicsFragmentDirections.actionElectronicsFragmentToBaseFragment();
+            navAction.setArgsMarketCategoryName("Electronics");
+            navAction.setArgsMarketSubCategoryName(subCategoryName);
+            navController.navigate(navAction);
+        });
+    }
 }
