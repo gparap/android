@@ -166,4 +166,16 @@ public class MainActivityInstrumentedTest {
         onView(withText(R.string.text_category_electronics_mobiles)).check(matches(isDisplayed()));
         onView(withText(R.string.text_category_electronics_tvs)).check(matches(isDisplayed()));
     }
+
+    @Test
+    public void isCorrect_marketNavigation_EmploymentCategoryToSubCategories() {
+        onView(withId(R.id.navigation_market)).perform(click());
+        onView(withId(R.id.imageView_marketCategory_Employment)).perform(click());
+        onView(withText(R.string.text_category_employment_freelance)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_employment_fullTime)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_employment_internship)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_employment_other)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_employment_partTime)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_employment_remote)).check(matches(isDisplayed()));
+    }
 }

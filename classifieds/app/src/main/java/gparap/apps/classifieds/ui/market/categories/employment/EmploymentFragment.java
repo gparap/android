@@ -15,17 +15,17 @@
  */
 package gparap.apps.classifieds.ui.market.categories.employment;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import gparap.apps.classifieds.R;
 
@@ -44,10 +44,26 @@ public class EmploymentFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(EmploymentViewModel.class);
-        // TODO: Use the ViewModel
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        openAnimalCategory(R.id.imageButton_marketCategory_Employment_Freelance, "Freelance");
+        openAnimalCategory(R.id.imageButton_marketCategory_Employment_FullTime, "FullTime");
+        openAnimalCategory(R.id.imageButton_marketCategory_Employment_Internship, "Internship");
+        openAnimalCategory(R.id.imageButton_marketCategory_Employment_Other, "Other");
+        openAnimalCategory(R.id.imageButton_marketCategory_Employment_PartTime, "PartTime");
+        openAnimalCategory(R.id.imageButton_marketCategory_Employment_Remote, "Remote");
     }
 
+    private void openAnimalCategory(int imageResId, String subCategoryName) {
+        ImageView imageView = EmploymentFragment.this.requireView().findViewById(imageResId);
+        imageView.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(v);
+            EmploymentFragmentDirections.ActionEmploymentFragmentToBaseFragment navAction =
+                    EmploymentFragmentDirections.actionEmploymentFragmentToBaseFragment();
+            navAction.setArgsMarketCategoryName("Employment");
+            navAction.setArgsMarketSubCategoryName(subCategoryName);
+            navController.navigate(navAction);
+        });
+    }
 }
