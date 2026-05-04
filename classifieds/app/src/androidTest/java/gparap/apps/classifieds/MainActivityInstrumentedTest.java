@@ -178,4 +178,16 @@ public class MainActivityInstrumentedTest {
         onView(withText(R.string.text_category_employment_partTime)).check(matches(isDisplayed()));
         onView(withText(R.string.text_category_employment_remote)).check(matches(isDisplayed()));
     }
+
+    @Test
+    public void isCorrect_marketNavigation_HomeCategoryToSubCategories() {
+        onView(withId(R.id.navigation_market)).perform(click());
+        onView(withId(R.id.imageView_marketCategory_Home)).perform(click());
+        onView(withText(R.string.text_category_home_appliances)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_home_decor)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_home_furniture)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_home_garden)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_home_kitchen)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_home_other)).check(matches(isDisplayed()));
+    }
 }

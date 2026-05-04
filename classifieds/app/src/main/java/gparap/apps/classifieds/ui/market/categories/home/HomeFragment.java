@@ -15,17 +15,17 @@
  */
 package gparap.apps.classifieds.ui.market.categories.home;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import gparap.apps.classifieds.R;
 
@@ -44,10 +44,26 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-        // TODO: Use the ViewModel
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        openAnimalCategory(R.id.imageButton_marketCategory_Home_Appliances, "Appliances");
+        openAnimalCategory(R.id.imageButton_marketCategory_Home_Decor, "Decor");
+        openAnimalCategory(R.id.imageButton_marketCategory_Home_Furniture, "Furniture");
+        openAnimalCategory(R.id.imageButton_marketCategory_Home_Garden, "Garden");
+        openAnimalCategory(R.id.imageButton_marketCategory_Home_Kitchen, "Kitchen");
+        openAnimalCategory(R.id.imageButton_marketCategory_Home_Other, "Other");
     }
 
+    private void openAnimalCategory(int imageResId, String subCategoryName) {
+        ImageView imageView = HomeFragment.this.requireView().findViewById(imageResId);
+        imageView.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(v);
+            HomeFragmentDirections.ActionHomeFragmentToBaseFragment navAction =
+                    HomeFragmentDirections.actionHomeFragmentToBaseFragment();
+            navAction.setArgsMarketCategoryName("Home");
+            navAction.setArgsMarketSubCategoryName(subCategoryName);
+            navController.navigate(navAction);
+        });
+    }
 }
