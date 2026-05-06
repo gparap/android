@@ -180,14 +180,14 @@ public class MainActivityInstrumentedTest {
     }
 
     @Test
-    public void isCorrect_marketNavigation_HomeCategoryToSubCategories() {
+    public void isCorrect_marketNavigation_PropertyCategoryToSubCategories() {
         onView(withId(R.id.navigation_market)).perform(click());
-        onView(withId(R.id.imageView_marketCategory_Home)).perform(click());
-        onView(withText(R.string.text_category_home_appliances)).check(matches(isDisplayed()));
-        onView(withText(R.string.text_category_home_decor)).check(matches(isDisplayed()));
-        onView(withText(R.string.text_category_home_furniture)).check(matches(isDisplayed()));
-        onView(withText(R.string.text_category_home_garden)).check(matches(isDisplayed()));
-        onView(withText(R.string.text_category_home_kitchen)).check(matches(isDisplayed()));
-        onView(withText(R.string.text_category_home_other)).check(matches(isDisplayed()));
+        onView(withId(R.id.imageView_marketCategory_Property)).perform(click());
+        onView(withText(R.string.text_category_property_commercial)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_property_guest)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_property_land)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_property_rent)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_property_sale)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_property_other)).check(matches(isDisplayed()));
     }
 }

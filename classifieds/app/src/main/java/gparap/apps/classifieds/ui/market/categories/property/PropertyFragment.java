@@ -15,17 +15,17 @@
  */
 package gparap.apps.classifieds.ui.market.categories.property;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import gparap.apps.classifieds.R;
 
@@ -44,10 +44,26 @@ public class PropertyFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(PropertyViewModel.class);
-        // TODO: Use the ViewModel
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        openAnimalCategory(R.id.imageButton_marketCategory_Property_Commercial, "Commercial");
+        openAnimalCategory(R.id.imageButton_marketCategory_Property_Guest, "Guest");
+        openAnimalCategory(R.id.imageButton_marketCategory_Property_Land, "Land");
+        openAnimalCategory(R.id.imageButton_marketCategory_Property_Rent, "Rent");
+        openAnimalCategory(R.id.imageButton_marketCategory_Property_Sale, "Sale");
+        openAnimalCategory(R.id.imageButton_marketCategory_Property_Other, "Other");
     }
 
+    private void openAnimalCategory(int imageResId, String subCategoryName) {
+        ImageView imageView = PropertyFragment.this.requireView().findViewById(imageResId);
+        imageView.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(v);
+            PropertyFragmentDirections.ActionPropertyFragmentToBaseFragment navAction =
+                    PropertyFragmentDirections.actionPropertyFragmentToBaseFragment();
+            navAction.setArgsMarketCategoryName("Property");
+            navAction.setArgsMarketSubCategoryName(subCategoryName);
+            navController.navigate(navAction);
+        });
+    }
 }
