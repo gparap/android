@@ -15,17 +15,17 @@
  */
 package gparap.apps.classifieds.ui.market.categories.services;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import gparap.apps.classifieds.R;
 
@@ -44,10 +44,26 @@ public class ServicesFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(ServicesViewModel.class);
-        // TODO: Use the ViewModel
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        openServicesCategory(R.id.imageButton_marketCategory_Services_Beauty, "Beauty");
+        openServicesCategory(R.id.imageButton_marketCategory_Services_Cleaning, "Cleaning");
+        openServicesCategory(R.id.imageButton_marketCategory_Services_Events, "Events");
+        openServicesCategory(R.id.imageButton_marketCategory_Services_Other, "Other");
+        openServicesCategory(R.id.imageButton_marketCategory_Services_Repair, "Repair");
+        openServicesCategory(R.id.imageButton_marketCategory_Services_Tutoring, "Tutoring");
     }
 
+    private void openServicesCategory(int imageResId, String subCategoryName) {
+        ImageView imageView = ServicesFragment.this.requireView().findViewById(imageResId);
+        imageView.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(v);
+            ServicesFragmentDirections.ActionServicesFragmentToBaseFragment navAction =
+                    ServicesFragmentDirections.actionServicesFragmentToBaseFragment();
+            navAction.setArgsMarketCategoryName("Services");
+            navAction.setArgsMarketSubCategoryName(subCategoryName);
+            navController.navigate(navAction);
+        });
+    }
 }

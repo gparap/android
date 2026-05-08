@@ -190,4 +190,16 @@ public class MainActivityInstrumentedTest {
         onView(withText(R.string.text_category_property_sale)).check(matches(isDisplayed()));
         onView(withText(R.string.text_category_property_other)).check(matches(isDisplayed()));
     }
+
+    @Test
+    public void isCorrect_marketNavigation_ServicesCategoryToSubCategories() {
+        onView(withId(R.id.navigation_market)).perform(click());
+        onView(withId(R.id.imageView_marketCategory_Services)).perform(click());
+        onView(withText(R.string.text_category_services_beauty)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_services_cleaning)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_services_events)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_services_other)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_services_repair)).check(matches(isDisplayed()));
+        onView(withText(R.string.text_category_services_tutoring)).check(matches(isDisplayed()));
+    }
 }
