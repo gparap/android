@@ -15,17 +15,17 @@
  */
 package gparap.apps.classifieds.ui.market.categories.sports;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import gparap.apps.classifieds.R;
 
@@ -44,10 +44,26 @@ public class SportsFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(SportsViewModel.class);
-        // TODO: Use the ViewModel
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        openSportsCategory(R.id.imageButton_marketCategory_Sports_Apparel, "Apparel");
+        openSportsCategory(R.id.imageButton_marketCategory_Sports_Equipment, "Equipment");
+        openSportsCategory(R.id.imageButton_marketCategory_Sports_Fitness, "Fitness");
+        openSportsCategory(R.id.imageButton_marketCategory_Sports_Indoors, "Indoors");
+        openSportsCategory(R.id.imageButton_marketCategory_Sports_Other, "Other");
+        openSportsCategory(R.id.imageButton_marketCategory_Sports_Outdoors, "Outdoors");
     }
 
+    private void openSportsCategory(int imageResId, String subCategoryName) {
+        ImageView imageView = SportsFragment.this.requireView().findViewById(imageResId);
+        imageView.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(v);
+            SportsFragmentDirections.ActionSportsFragmentToBaseFragment navAction =
+                    SportsFragmentDirections.actionSportsFragmentToBaseFragment();
+            navAction.setArgsMarketCategoryName("Sports");
+            navAction.setArgsMarketSubCategoryName(subCategoryName);
+            navController.navigate(navAction);
+        });
+    }
 }
