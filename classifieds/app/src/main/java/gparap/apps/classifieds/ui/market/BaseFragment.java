@@ -20,9 +20,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.ArrayMap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,9 +34,10 @@ import java.util.ArrayList;
 
 import gparap.apps.classifieds.R;
 import gparap.apps.classifieds.adapters.ClassifiedsAdapter;
+import gparap.apps.classifieds.callbacks.ClassifiedCallback;
 import gparap.apps.classifieds.models.ClassifiedModel;
 
-public class BaseFragment extends Fragment {
+public class BaseFragment extends Fragment implements ClassifiedCallback {
     ArrayList<ClassifiedModel> classifiedsMarket;
     private BaseViewModel mViewModel;
 
@@ -47,12 +51,13 @@ public class BaseFragment extends Fragment {
 
         //create a test list of classifieds with generic category & sub-category
         classifiedsMarket = new ArrayList<>();
-        ClassifiedModel testClassified = new ClassifiedModel("", "short desc #1");
-        testClassified.setPrice("111"); testClassified.setContactInfo("contact info 1");
+        ClassifiedModel testClassified = new ClassifiedModel("", "base short desc #1");
+        testClassified.setPrice("222");
+        testClassified.setContactInfo("contact info 1");
         classifiedsMarket.add(testClassified);
-        classifiedsMarket.add(new ClassifiedModel("", " desc #2"));
-        classifiedsMarket.add(new ClassifiedModel("", " desc #3"));
-        classifiedsMarket.add(new ClassifiedModel("", " desc #4"));
+        classifiedsMarket.add(new ClassifiedModel("", " base desc #2"));
+        classifiedsMarket.add(new ClassifiedModel("", " base desc #3"));
+        classifiedsMarket.add(new ClassifiedModel("", " base desc #4"));
 
         return inflater.inflate(R.layout.fragment_market_base, container, false);
     }
@@ -63,12 +68,13 @@ public class BaseFragment extends Fragment {
 
         //get fragment arguments
         BaseFragmentArgs args = BaseFragmentArgs.fromBundle(getArguments());
-        String  marketCategoryName = args.getArgsMarketCategoryName();
-        String  marketSubCategoryName = args.getArgsMarketSubCategoryName();
+        String marketCategoryName = args.getArgsMarketCategoryName();
+        String marketSubCategoryName = args.getArgsMarketSubCategoryName();
 
         //create adapter and add classifieds based on category & sub-category
         //!!! using the test list
         ClassifiedsAdapter classifiedsAdapter = new ClassifiedsAdapter();
+        classifiedsAdapter.setMarketCategoryCallback(this);
         switch (marketCategoryName) {
             case "Animals":
                 switch (marketSubCategoryName) {
@@ -77,8 +83,9 @@ public class BaseFragment extends Fragment {
                     case "Cats":
                     case "Fish":
                     case "Food":
-                    case "Reptiles": classifiedsAdapter.setClassifieds(classifiedsMarket);
-                    break;
+                    case "Reptiles":
+                        classifiedsAdapter.setClassifieds(classifiedsMarket);
+                        break;
                 }
                 break;
 
@@ -89,7 +96,8 @@ public class BaseFragment extends Fragment {
                     case "Bikes":
                     case "Cars":
                     case "Parts":
-                    case "Utility": classifiedsAdapter.setClassifieds(classifiedsMarket);
+                    case "Utility":
+                        classifiedsAdapter.setClassifieds(classifiedsMarket);
                         break;
                 }
                 break;
@@ -101,7 +109,8 @@ public class BaseFragment extends Fragment {
                     case "Men":
                     case "Shoes":
                     case "Sportswear":
-                    case "Women": classifiedsAdapter.setClassifieds(classifiedsMarket);
+                    case "Women":
+                        classifiedsAdapter.setClassifieds(classifiedsMarket);
                         break;
                 }
                 break;
@@ -113,7 +122,8 @@ public class BaseFragment extends Fragment {
                     case "Computers":
                     case "Gadgets":
                     case "Mobiles":
-                    case "TVs": classifiedsAdapter.setClassifieds(classifiedsMarket);
+                    case "TVs":
+                        classifiedsAdapter.setClassifieds(classifiedsMarket);
                         break;
                 }
                 break;
@@ -125,7 +135,8 @@ public class BaseFragment extends Fragment {
                     case "Internship":
                     case "Other":
                     case "PartTime":
-                    case "Remote": classifiedsAdapter.setClassifieds(classifiedsMarket);
+                    case "Remote":
+                        classifiedsAdapter.setClassifieds(classifiedsMarket);
                         break;
                 }
                 break;
@@ -137,7 +148,8 @@ public class BaseFragment extends Fragment {
                     case "Furniture":
                     case "Garden":
                     case "Kitchen":
-                    case "Other": classifiedsAdapter.setClassifieds(classifiedsMarket);
+                    case "Other":
+                        classifiedsAdapter.setClassifieds(classifiedsMarket);
                         break;
                 }
                 break;
@@ -149,7 +161,8 @@ public class BaseFragment extends Fragment {
                     case "Land":
                     case "Rent":
                     case "Sale":
-                    case "Other": classifiedsAdapter.setClassifieds(classifiedsMarket);
+                    case "Other":
+                        classifiedsAdapter.setClassifieds(classifiedsMarket);
                         break;
                 }
                 break;
@@ -161,7 +174,8 @@ public class BaseFragment extends Fragment {
                     case "Events":
                     case "Other":
                     case "Repair":
-                    case "Tutoring": classifiedsAdapter.setClassifieds(classifiedsMarket);
+                    case "Tutoring":
+                        classifiedsAdapter.setClassifieds(classifiedsMarket);
                         break;
                 }
                 break;
@@ -173,7 +187,8 @@ public class BaseFragment extends Fragment {
                     case "Fitness":
                     case "Indoors":
                     case "Other":
-                    case "Outdoors": classifiedsAdapter.setClassifieds(classifiedsMarket);
+                    case "Outdoors":
+                        classifiedsAdapter.setClassifieds(classifiedsMarket);
                         break;
                 }
                 break;
@@ -183,5 +198,17 @@ public class BaseFragment extends Fragment {
         RecyclerView recyclerViewMarket = view.findViewById(R.id.recycler_view_market);
         recyclerViewMarket.setLayoutManager(new LinearLayoutManager(requireActivity().getBaseContext()));
         recyclerViewMarket.setAdapter(classifiedsAdapter);
+    }
+
+    @Override
+    public void onClassifiedClick(ArrayMap<String, String> classifiedDetails) {
+        //navigate to fragment details
+        NavController navController = Navigation.findNavController(this.requireView());
+        BaseFragmentDirections.ActionBaseFragmentToNavigationDetails navAction =
+                BaseFragmentDirections.actionBaseFragmentToNavigationDetails();
+        navAction.setArgsClassifiedDescription(classifiedDetails.get("description"));
+        navAction.setArgsClassifiedPrice(classifiedDetails.get("price"));
+        navAction.setArgsClassifiedContact(classifiedDetails.get("contact"));
+        navController.navigate(navAction);
     }
 }

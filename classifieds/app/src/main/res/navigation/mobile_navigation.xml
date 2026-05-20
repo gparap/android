@@ -80,6 +80,9 @@
             android:name="argsClassifiedContact"
             android:defaultValue=""
             app:argType="string" />
+        <action
+            android:id="@+id/action_navigation_details_to_baseFragment"
+            app:destination="@id/baseFragment" />
     </fragment>
     <fragment
         android:id="@+id/animalsFragment"
@@ -175,5 +178,8 @@
             android:name="argsMarketSubCategoryName"
             android:defaultValue=""
             app:argType="string" />
+        <action
+            android:id="@+id/action_baseFragment_to_navigation_details"
+            app:destination="@id/navigation_details" />
     </fragment>
 </navigation>

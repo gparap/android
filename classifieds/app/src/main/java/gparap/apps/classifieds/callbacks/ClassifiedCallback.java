@@ -13,22 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package gparap.apps.classifieds.ui.notifications;
+package gparap.apps.classifieds.callbacks;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
+import android.util.ArrayMap;
 
-public class NotificationsViewModel extends ViewModel {
-
-    private final MutableLiveData<String> mText;
-
-    public NotificationsViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is notifications fragment");
-    }
-
-    public LiveData<String> getText() {
-        return mText;
-    }
+public interface ClassifiedCallback {
+    void onClassifiedClick(ArrayMap<String, String> classifiedDetails);
 }
