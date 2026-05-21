@@ -17,6 +17,8 @@ package gparap.apps.classifieds.ui.market;
 
 import static androidx.navigation.Navigation.findNavController;
 
+import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,13 +28,13 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
+
+import java.util.ArrayList;
 
 import gparap.apps.classifieds.databinding.FragmentMarketBinding;
+import gparap.apps.classifieds.utils.Utils;
 
 public class MarketFragment extends Fragment {
-    NavController navController;
 
     private FragmentMarketBinding binding;
 
@@ -42,8 +44,7 @@ public class MarketFragment extends Fragment {
         binding = FragmentMarketBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        navController = Navigation.findNavController(container);
-
+        loadMarketCategoryAssets();
         openMarketCategory();
 
         return root;
@@ -53,6 +54,35 @@ public class MarketFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void loadMarketCategoryAssets() {
+        String[] assets = new String[]{"animals.png", "automobiles.png", "clothing.png",
+                "electronics.png", "employment.png", "home.jpg", "property.jpg", "services.png",
+                "sports.png"};
+        AssetManager assetManager = requireActivity().getAssets();
+        String path = "market/categories";
+        ArrayList<Drawable> drawables = Utils.getInstance().getDrawablesFromAssets(assetManager, assets, path);
+
+        //Sets the drawables as the content of the ImageViews
+        ImageView animals = binding.imageViewMarketCategoryAnimals;
+        animals.setImageDrawable(drawables.get(0));
+        ImageView automobiles = binding.imageViewMarketCategoryAutomobiles;
+        automobiles.setImageDrawable(drawables.get(1));
+        ImageView clothing = binding.imageViewMarketCategoryClothing;
+        clothing.setImageDrawable(drawables.get(2));
+        ImageView electronics = binding.imageViewMarketCategoryElectronics;
+        electronics.setImageDrawable(drawables.get(3));
+        ImageView employment = binding.imageViewMarketCategoryEmployment;
+        employment.setImageDrawable(drawables.get(4));
+        ImageView home = binding.imageViewMarketCategoryHome;
+        home.setImageDrawable(drawables.get(5));
+        ImageView property = binding.imageViewMarketCategoryProperty;
+        property.setImageDrawable(drawables.get(6));
+        ImageView services = binding.imageViewMarketCategoryServices;
+        services.setImageDrawable(drawables.get(7));
+        ImageView sports = binding.imageViewMarketCategorySports;
+        sports.setImageDrawable(drawables.get(8));
     }
 
     private void openMarketCategory() {
