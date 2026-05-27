@@ -21,26 +21,37 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.ArrayMap;
+import android.widget.ImageButton;
 
 import androidx.fragment.app.testing.FragmentScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 import gparap.apps.classifieds.R;
 import gparap.apps.classifieds.ui.market.categories.animals.AnimalsFragment;
+import gparap.apps.classifieds.utils.Utils;
 
 @RunWith(AndroidJUnit4.class)
 public class AnimalsFragmentInstrumentedTest {
     private final ArrayMap<String, String> categoryNames = new ArrayMap<>();
     private final ArrayMap<String, String> categoryDescriptions = new ArrayMap<>();
+    FragmentScenario<AnimalsFragment> fragmentScenario;
 
     @Before
     public void setUp() {
-        FragmentScenario.launchInContainer(AnimalsFragment.class);
+        fragmentScenario = FragmentScenario.launchInContainer(AnimalsFragment.class);
 
         //init category actual values
         categoryNames.put("Dogs", "Dogs");
@@ -181,5 +192,48 @@ public class AnimalsFragmentInstrumentedTest {
     public void isCorrect_textWithDetails_categoryFood() {
         onView(withText(R.string.text_category_animals_food)).check(matches(withText(categoryNames.get("Food"))));
         onView(withText(R.string.text_category_animals_food_details)).check(matches(withText(categoryDescriptions.get("Food"))));
+    }
+
+
+    @Test
+    public void areCorrect_imageButtons_Drawables() {   /* !!! Compact test for all images. */
+        String[] assets = new String[]{"birds.jpg", "cats.jpg", "dogs.jpg", "fish.jpg", "food.jpg", "reptiles.jpg"};
+        AssetManager assetManager = InstrumentationRegistry.getInstrumentation().getTargetContext().getAssets();
+        String path = "market/categories/animals";
+        ArrayList<Drawable> drawables = Utils.getInstance().getDrawablesFromAssets(assetManager, assets, path);
+
+        //TODO: refactor
+        fragmentScenario.onFragment(fragment -> {
+            //birds.jpg
+            ImageButton imageButton = Objects.requireNonNull(fragment.getView()).findViewById(R.id.imageButton_marketCategory_Animals_Birds);
+            Bitmap bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            Bitmap bitmapActual = ((BitmapDrawable) drawables.get(0)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //cats.jpg
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Animals_Cats);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(1)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //dogs.jpg
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Animals_Dogs);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(2)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //fish.jpg
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Animals_Fish);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(3)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //food.jpg
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Animals_Food);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(4)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //reptiles.jpg
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Animals_Reptiles);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(5)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+        });
     }
 }
