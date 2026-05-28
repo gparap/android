@@ -15,6 +15,8 @@
  */
 package gparap.apps.classifieds.ui.market.categories.automobiles;
 
+import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +29,10 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import java.util.ArrayList;
+
 import gparap.apps.classifieds.R;
+import gparap.apps.classifieds.utils.Utils;
 
 public class AutomobilesFragment extends Fragment {
 
@@ -47,12 +52,35 @@ public class AutomobilesFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        loadAutomobilesCategoryAssets();
+
         openAutomobilesCategory(R.id.imageButton_marketCategory_Automobiles_Accessories, "Accessories");
         openAutomobilesCategory(R.id.imageButton_marketCategory_Automobiles_Bicycles, "Bicycles");
         openAutomobilesCategory(R.id.imageButton_marketCategory_Automobiles_Bikes, "Bikes");
         openAutomobilesCategory(R.id.imageButton_marketCategory_Automobiles_Cars, "Cars");
         openAutomobilesCategory(R.id.imageButton_marketCategory_Automobiles_Parts, "Parts");
         openAutomobilesCategory(R.id.imageButton_marketCategory_Automobiles_Utility, "Utility");
+    }
+
+    private void loadAutomobilesCategoryAssets() {
+        String[] assets = new String[]{"accessories.jpg", "bicycles.jpg", "bikes.jpg", "cars.jpg", "parts.jpg", "utility.jpg"};
+        AssetManager assetManager = requireActivity().getAssets();
+        String path = "market/categories/automobiles";
+        ArrayList<Drawable> drawables = Utils.getInstance().getDrawablesFromAssets(assetManager, assets, path);
+
+        //Sets the drawables as the content of the ImageViews
+        ImageView accessories = AutomobilesFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Automobiles_Accessories);
+        accessories.setImageDrawable(drawables.get(0));
+        ImageView bicycles = AutomobilesFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Automobiles_Bicycles);
+        bicycles.setImageDrawable(drawables.get(1));
+        ImageView bikes = AutomobilesFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Automobiles_Bikes);
+        bikes.setImageDrawable(drawables.get(2));
+        ImageView cars = AutomobilesFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Automobiles_Cars);
+        cars.setImageDrawable(drawables.get(3));
+        ImageView parts = AutomobilesFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Automobiles_Parts);
+        parts.setImageDrawable(drawables.get(4));
+        ImageView utility = AutomobilesFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Automobiles_Utility);
+        utility.setImageDrawable(drawables.get(5));
     }
 
     private void openAutomobilesCategory(int imageResId, String subCategoryName) {
