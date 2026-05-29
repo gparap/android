@@ -21,26 +21,37 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.ArrayMap;
+import android.widget.ImageButton;
 
 import androidx.fragment.app.testing.FragmentScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 import gparap.apps.classifieds.R;
 import gparap.apps.classifieds.ui.market.categories.clothing.ClothingFragment;
+import gparap.apps.classifieds.utils.Utils;
 
 @RunWith(AndroidJUnit4.class)
 public class ClothingFragmentInstrumentedTest {
     private final ArrayMap<String, String> categoryNames = new ArrayMap<>();
     private final ArrayMap<String, String> categoryDescriptions = new ArrayMap<>();
+    FragmentScenario<ClothingFragment> fragmentScenario;
 
     @Before
     public void setUp() {
-        FragmentScenario.launchInContainer(ClothingFragment.class);
+        fragmentScenario = FragmentScenario.launchInContainer(ClothingFragment.class);
 
         //init category actual values
         categoryNames.put("Accessories", "Accessories");
@@ -181,5 +192,47 @@ public class ClothingFragmentInstrumentedTest {
     public void isCorrect_textWithDetails_categoryWomen() {
         onView(withText(R.string.text_category_clothing_women)).check(matches(withText(categoryNames.get("Women"))));
         onView(withText(R.string.text_category_clothing_women_details)).check(matches(withText(categoryDescriptions.get("Women"))));
+    }
+
+    @Test
+    public void areCorrect_imageButtons_Drawables() {   /* !!! Compact test for all images. */
+        String[] assets = new String[]{"accessories.jpg", "kids.jpg", "men.jpg", "shoes.jpg", "sportsware.jpg", "women.jpg"};
+        AssetManager assetManager = InstrumentationRegistry.getInstrumentation().getTargetContext().getAssets();
+        String path = "market/categories/clothing";
+        ArrayList<Drawable> drawables = Utils.getInstance().getDrawablesFromAssets(assetManager, assets, path);
+
+        //TODO: refactor
+        fragmentScenario.onFragment(fragment -> {
+            //Accessories
+            ImageButton imageButton = Objects.requireNonNull(fragment.getView()).findViewById(R.id.imageButton_marketCategory_Clothing_Accessories);
+            Bitmap bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            Bitmap bitmapActual = ((BitmapDrawable) drawables.get(0)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //kids
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Clothing_Kids);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(1)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //men
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Clothing_Men);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(2)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //shoes
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Clothing_Shoes);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(3)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //sportsware
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Clothing_Sportswear);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(4)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //women
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Clothing_Women);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(5)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+        });
     }
 }

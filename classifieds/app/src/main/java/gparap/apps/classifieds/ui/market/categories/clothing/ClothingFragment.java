@@ -17,6 +17,8 @@ package gparap.apps.classifieds.ui.market.categories.clothing;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -30,9 +32,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+
 import gparap.apps.classifieds.R;
 import gparap.apps.classifieds.ui.market.categories.clothing.ClothingFragment;
+import gparap.apps.classifieds.ui.market.categories.clothing.ClothingFragment;
 import gparap.apps.classifieds.ui.market.categories.clothing.ClothingFragmentDirections;
+import gparap.apps.classifieds.utils.Utils;
 
 public class ClothingFragment extends Fragment {
 
@@ -52,12 +58,35 @@ public class ClothingFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        loadClothingCategoryAssets();
+                
         openClothingCategory(R.id.imageButton_marketCategory_Clothing_Accessories, "Accessories");
         openClothingCategory(R.id.imageButton_marketCategory_Clothing_Kids, "Kids");
         openClothingCategory(R.id.imageButton_marketCategory_Clothing_Men, "Men");
         openClothingCategory(R.id.imageButton_marketCategory_Clothing_Shoes, "Shoes");
         openClothingCategory(R.id.imageButton_marketCategory_Clothing_Sportswear, "Sportswear");
         openClothingCategory(R.id.imageButton_marketCategory_Clothing_Women, "Women");
+    }
+
+    private void loadClothingCategoryAssets() {
+        String[] assets = new String[]{"accessories.jpg", "kids.jpg", "men.jpg", "shoes.jpg", "sportsware.jpg", "women.jpg"};
+        AssetManager assetManager = requireActivity().getAssets();
+        String path = "market/categories/clothing";
+        ArrayList<Drawable> drawables = Utils.getInstance().getDrawablesFromAssets(assetManager, assets, path);
+
+        //Sets the drawables as the content of the ImageViews
+        ImageView accessories = ClothingFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Clothing_Accessories);
+        accessories.setImageDrawable(drawables.get(0));
+        ImageView kids = ClothingFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Clothing_Kids);
+        kids.setImageDrawable(drawables.get(1));
+        ImageView men = ClothingFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Clothing_Men);
+        men.setImageDrawable(drawables.get(2));
+        ImageView shoes = ClothingFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Clothing_Shoes);
+        shoes.setImageDrawable(drawables.get(3));
+        ImageView sportswear = ClothingFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Clothing_Sportswear);
+        sportswear.setImageDrawable(drawables.get(4));
+        ImageView women = ClothingFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Clothing_Women);
+        women.setImageDrawable(drawables.get(5));
     }
 
     private void openClothingCategory(int imageResId, String subCategoryName) {
