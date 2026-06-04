@@ -15,9 +15,13 @@
  */
 package gparap.apps.classifieds.ui.market.categories.electronics;
 
-import androidx.lifecycle.ViewModelProvider;
-
+import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,12 +29,11 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import java.util.ArrayList;
 
 import gparap.apps.classifieds.R;
+import gparap.apps.classifieds.ui.market.categories.clothing.ClothingFragment;
+import gparap.apps.classifieds.utils.Utils;
 
 public class ElectronicsFragment extends Fragment {
 
@@ -50,12 +53,35 @@ public class ElectronicsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        loadElectronicsCategoryAssets();
+
         openElectronicsCategory(R.id.imageButton_marketCategory_Electronics_Audio, "Audio");
         openElectronicsCategory(R.id.imageButton_marketCategory_Electronics_Cameras, "Cameras");
         openElectronicsCategory(R.id.imageButton_marketCategory_Electronics_Computers, "Computers");
         openElectronicsCategory(R.id.imageButton_marketCategory_Electronics_Gadgets, "Gadgets");
         openElectronicsCategory(R.id.imageButton_marketCategory_Electronics_Mobiles, "Mobiles");
         openElectronicsCategory(R.id.imageButton_marketCategory_Electronics_tvs, "TVs");
+    }
+
+    private void loadElectronicsCategoryAssets() {
+        String[] assets = new String[]{"audio.jpg", "cameras.jpg", "computers.jpg", "gadgets.jpg", "mobiles.jpg", "tvs.jpg"};
+        AssetManager assetManager = requireActivity().getAssets();
+        String path = "market/categories/electronics";
+        ArrayList<Drawable> drawables = Utils.getInstance().getDrawablesFromAssets(assetManager, assets, path);
+
+        //Sets the drawables as the content of the ImageViews
+        ImageView audio = ElectronicsFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Electronics_Audio);
+        audio.setImageDrawable(drawables.get(0));
+        ImageView cameras = ElectronicsFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Electronics_Cameras);
+        cameras.setImageDrawable(drawables.get(1));
+        ImageView computers = ElectronicsFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Electronics_Computers);
+        computers.setImageDrawable(drawables.get(2));
+        ImageView gadgets = ElectronicsFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Electronics_Gadgets);
+        gadgets.setImageDrawable(drawables.get(3));
+        ImageView mobiles = ElectronicsFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Electronics_Mobiles);
+        mobiles.setImageDrawable(drawables.get(4));
+        ImageView tvs = ElectronicsFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Electronics_tvs);
+        tvs.setImageDrawable(drawables.get(5));
     }
 
     private void openElectronicsCategory(int imageResId, String subCategoryName) {

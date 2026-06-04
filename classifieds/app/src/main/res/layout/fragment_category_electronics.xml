@@ -5,12 +5,15 @@
     android:id="@+id/layout_fragment_electronics"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".ui.market.categories.electronics.ElectronicsFragment">
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
+        android:paddingTop="0dp"
+        android:paddingBottom="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,8 +21,9 @@
 
         <!--1st row-->
         <LinearLayout
+
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:baselineAligned="false"
             android:orientation="horizontal"
@@ -37,9 +41,10 @@
                 <ImageButton
                     android:id="@+id/imageButton_marketCategory_Electronics_Audio"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/design_default_color_background"
                     android:contentDescription="@string/desc_market_category_electronics_audio"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -51,25 +56,27 @@
                     android:id="@+id/textView_marketCategory_Electronics_Audio"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
+
                     android:text="@string/text_category_electronics_audio"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
                 <TextView
-                    android:id="@+id/textView_marketCategory_Electronics_audioDetails"
                     android:layout_width="wrap_content"
+
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
+
                     android:text="@string/text_category_electronics_audio_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Electronics_Audio"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -82,9 +89,10 @@
                 <ImageButton
                     android:id="@+id/imageButton_marketCategory_Electronics_Cameras"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/design_default_color_background"
                     android:contentDescription="@string/desc_market_category_electronics_cameras"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -96,13 +104,12 @@
                     android:id="@+id/textView_marketCategory_Electronics_Cameras"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
                     android:text="@string/text_category_electronics_cameras"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
@@ -110,11 +117,12 @@
                     android:id="@+id/textView_marketCategory_Electronics_camerasDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
                     android:text="@string/text_category_electronics_cameras_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageButton_marketCategory_Electronics_Cameras"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Electronics_Cameras"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -123,7 +131,7 @@
         <!--2nd row-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:baselineAligned="false"
             android:orientation="horizontal"
@@ -141,9 +149,10 @@
                 <ImageButton
                     android:id="@+id/imageButton_marketCategory_Electronics_Computers"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/design_default_color_background"
                     android:contentDescription="@string/desc_market_category_electronics_computers"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -155,13 +164,12 @@
                     android:id="@+id/textView_marketCategory_Electronics_Computers"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
                     android:text="@string/text_category_electronics_computers"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
@@ -169,11 +177,12 @@
                     android:id="@+id/textView_marketCategory_Electronics_computersDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
                     android:text="@string/text_category_electronics_computers_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Electronics_Computers"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -186,9 +195,10 @@
                 <ImageButton
                     android:id="@+id/imageButton_marketCategory_Electronics_Gadgets"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/design_default_color_background"
                     android:contentDescription="@string/desc_market_category_electronics_gadgets"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -200,13 +210,12 @@
                     android:id="@+id/textView_marketCategory_Electronics_Gadgets"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
                     android:text="@string/text_category_electronics_gadgets"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
@@ -214,11 +223,12 @@
                     android:id="@+id/textView_marketCategory_Electronics_gadgetsDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
                     android:text="@string/text_category_electronics_gadgets_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Electronics_Gadgets"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -227,7 +237,7 @@
         <!--3rd row-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:baselineAligned="false"
             android:orientation="horizontal"
@@ -245,9 +255,10 @@
                 <ImageButton
                     android:id="@+id/imageButton_marketCategory_Electronics_Mobiles"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/design_default_color_background"
                     android:contentDescription="@string/desc_market_category_electronics_mobiles"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -259,13 +270,12 @@
                     android:id="@+id/textView_marketCategory_Electronics_Mobiles"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
                     android:text="@string/text_category_electronics_mobiles"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
@@ -273,11 +283,12 @@
                     android:id="@+id/textView_marketCategory_Electronics_mobilesDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
                     android:text="@string/text_category_electronics_mobiles_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Electronics_Mobiles"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -290,9 +301,10 @@
                 <ImageButton
                     android:id="@+id/imageButton_marketCategory_Electronics_tvs"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/design_default_color_background"
                     android:contentDescription="@string/desc_market_category_electronics_tvs"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -304,13 +316,12 @@
                     android:id="@+id/textView_marketCategory_Electronics_tvs"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
                     android:text="@string/text_category_electronics_tvs"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
@@ -318,11 +329,12 @@
                     android:id="@+id/textView_marketCategory_Electronics_tvsDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
                     android:text="@string/text_category_electronics_tvs_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Electronics_tvs"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>

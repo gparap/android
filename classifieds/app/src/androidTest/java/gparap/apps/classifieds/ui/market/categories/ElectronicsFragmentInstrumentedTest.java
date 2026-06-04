@@ -21,26 +21,37 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.ArrayMap;
+import android.widget.ImageButton;
 
 import androidx.fragment.app.testing.FragmentScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 import gparap.apps.classifieds.R;
 import gparap.apps.classifieds.ui.market.categories.electronics.ElectronicsFragment;
+import gparap.apps.classifieds.utils.Utils;
 
 @RunWith(AndroidJUnit4.class)
 public class ElectronicsFragmentInstrumentedTest {
     private final ArrayMap<String, String> categoryNames = new ArrayMap<>();
     private final ArrayMap<String, String> categoryDescriptions = new ArrayMap<>();
+    FragmentScenario<ElectronicsFragment> fragmentScenario;
 
     @Before
     public void setUp() {
-        FragmentScenario.launchInContainer(ElectronicsFragment.class);
+        fragmentScenario = FragmentScenario.launchInContainer(ElectronicsFragment.class);
 
         //init category actual values
         categoryNames.put("Audio", "Audio");
@@ -64,7 +75,7 @@ public class ElectronicsFragmentInstrumentedTest {
 
     @Test
     public void isVisible_textView_marketCategory_Electronics_audioDetails() {
-        onView(withId(R.id.textView_marketCategory_Electronics_audioDetails)).check(matches(isDisplayed()));
+        onView(withId(R.id.textView_marketCategory_Electronics_Audio)).check(matches(isDisplayed()));
     }
 
     @Test
@@ -181,5 +192,47 @@ public class ElectronicsFragmentInstrumentedTest {
     public void isCorrect_textWithDetails_category_tvs() {
         onView(withText(R.string.text_category_electronics_tvs)).check(matches(withText(categoryNames.get("TVs"))));
         onView(withText(R.string.text_category_electronics_tvs_details)).check(matches(withText(categoryDescriptions.get("TVs"))));
+    }
+
+    @Test
+    public void areCorrect_imageButtons_Drawables() {   /* !!! Compact test for all images. */
+        String[] assets = new String[]{"audio.jpg", "cameras.jpg", "computers.jpg", "gadgets.jpg", "mobiles.jpg", "tvs.jpg"};
+        AssetManager assetManager = InstrumentationRegistry.getInstrumentation().getTargetContext().getAssets();
+        String path = "market/categories/electronics";
+        ArrayList<Drawable> drawables = Utils.getInstance().getDrawablesFromAssets(assetManager, assets, path);
+
+        //TODO: refactor
+        fragmentScenario.onFragment(fragment -> {
+            //audio
+            ImageButton imageButton = Objects.requireNonNull(fragment.getView()).findViewById(R.id.imageButton_marketCategory_Electronics_Audio);
+            Bitmap bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            Bitmap bitmapActual = ((BitmapDrawable) drawables.get(0)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //cameras
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Electronics_Cameras);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(1)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //computers
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Electronics_Computers);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(2)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //gadgets
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Electronics_Gadgets);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(3)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //mobiles
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Electronics_Mobiles);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(4)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //tvs
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Electronics_tvs);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(5)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+        });
     }
 }
