@@ -15,6 +15,8 @@
  */
 package gparap.apps.classifieds.ui.market.categories.employment;
 
+import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +29,10 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import java.util.ArrayList;
+
 import gparap.apps.classifieds.R;
+import gparap.apps.classifieds.utils.Utils;
 
 public class EmploymentFragment extends Fragment {
 
@@ -47,15 +52,39 @@ public class EmploymentFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        openAnimalCategory(R.id.imageButton_marketCategory_Employment_Freelance, "Freelance");
-        openAnimalCategory(R.id.imageButton_marketCategory_Employment_FullTime, "FullTime");
-        openAnimalCategory(R.id.imageButton_marketCategory_Employment_Internship, "Internship");
-        openAnimalCategory(R.id.imageButton_marketCategory_Employment_Other, "Other");
-        openAnimalCategory(R.id.imageButton_marketCategory_Employment_PartTime, "PartTime");
-        openAnimalCategory(R.id.imageButton_marketCategory_Employment_Remote, "Remote");
+        loadEmploymentCategoryAssets();
+
+        openEmploymentCategory(R.id.imageButton_marketCategory_Employment_Freelance, "Freelance");
+        openEmploymentCategory(R.id.imageButton_marketCategory_Employment_FullTime, "FullTime");
+        openEmploymentCategory(R.id.imageButton_marketCategory_Employment_Internship, "Internship");
+        openEmploymentCategory(R.id.imageButton_marketCategory_Employment_Other, "Other");
+        openEmploymentCategory(R.id.imageButton_marketCategory_Employment_PartTime, "PartTime");
+        openEmploymentCategory(R.id.imageButton_marketCategory_Employment_Remote, "Remote");
     }
 
-    private void openAnimalCategory(int imageResId, String subCategoryName) {
+    private void loadEmploymentCategoryAssets() {
+        String[] assets = new String[]{"freelance.jpg", "full_time.jpg", "internship.jpg", "other.jpg", 
+                "part_time.jpg", "remote.jpg"};
+        AssetManager assetManager = requireActivity().getAssets();
+        String path = "market/categories/employment";
+        ArrayList<Drawable> drawables = Utils.getInstance().getDrawablesFromAssets(assetManager, assets, path);
+
+        //Sets the drawables as the content of the ImageViews
+        ImageView freelance = EmploymentFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Employment_Freelance);
+        freelance.setImageDrawable(drawables.get(0));
+        ImageView fullTime = EmploymentFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Employment_FullTime);
+        fullTime.setImageDrawable(drawables.get(1));
+        ImageView internship = EmploymentFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Employment_Internship);
+        internship.setImageDrawable(drawables.get(2));
+        ImageView other = EmploymentFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Employment_Other);
+        other.setImageDrawable(drawables.get(3));
+        ImageView partTime = EmploymentFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Employment_PartTime);
+        partTime.setImageDrawable(drawables.get(4));
+        ImageView remote = EmploymentFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Employment_Remote);
+        remote.setImageDrawable(drawables.get(5));
+    }
+
+    private void openEmploymentCategory(int imageResId, String subCategoryName) {
         ImageView imageView = EmploymentFragment.this.requireView().findViewById(imageResId);
         imageView.setOnClickListener(v -> {
             NavController navController = Navigation.findNavController(v);

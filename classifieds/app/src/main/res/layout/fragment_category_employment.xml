@@ -8,9 +8,11 @@
     tools:context=".ui.market.categories.employment.EmploymentFragment">
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
+        android:paddingTop="0dp"
+        android:paddingBottom="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,9 +39,10 @@
                 <ImageButton
                     android:id="@+id/imageButton_marketCategory_Employment_Freelance"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/design_default_color_background"
                     android:contentDescription="@string/desc_market_category_employment_freelance"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -48,28 +51,31 @@
                     tools:src="@tools:sample/backgrounds/scenic" />
 
                 <TextView
+                    android:paddingTop="8dp"
                     android:id="@+id/textView_marketCategory_Employment_Freelance"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
                     android:text="@string/text_category_employment_freelance"
+                    android:textAlignment="center"
+                    android:minHeight="48dp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:textColor="@color/white"
+                    tools:textSize="22sp" />
+
+                <TextView android:minHeight="48dp"
+                    android:id="@+id/textView_marketCategory_Employment_freelanceDetails"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
+                    android:text="@string/text_category_employment_freelance_details"
                     android:textAlignment="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
-                    tools:textColor="@color/white"
-                    tools:textSize="22sp" />
-
-                <TextView
-                    android:id="@+id/textView_marketCategory_Employment_freelanceDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/text_category_employment_freelance_details"
-                    android:textAlignment="center"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Employment_Freelance"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -82,9 +88,10 @@
                 <ImageButton
                     android:id="@+id/imageButton_marketCategory_Employment_FullTime"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/design_default_color_background"
                     android:contentDescription="@string/desc_market_category_employment_fullTime"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -93,28 +100,31 @@
                     tools:src="@tools:sample/backgrounds/scenic" />
 
                 <TextView
+                    android:minHeight="48dp"
+                    android:paddingTop="8dp"
                     android:id="@+id/textView_marketCategory_Employment_FullTime"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
                     android:text="@string/text_category_employment_fullTime"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
-                <TextView
+                <TextView android:minHeight="48dp"
                     android:id="@+id/textView_marketCategory_Employment_fullTimeDetails"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
                     android:text="@string/text_category_employment_fullTime_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageButton_marketCategory_Employment_FullTime"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Employment_FullTime"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -141,9 +151,10 @@
                 <ImageButton
                     android:id="@+id/imageButton_marketCategory_Employment_Internship"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/design_default_color_background"
                     android:contentDescription="@string/desc_market_category_employment_internship"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -152,28 +163,31 @@
                     tools:src="@tools:sample/backgrounds/scenic" />
 
                 <TextView
+                    android:minHeight="48dp"
+                    android:paddingTop="8dp"
                     android:id="@+id/textView_marketCategory_Employment_Internship"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
                     android:text="@string/text_category_employment_internship"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:textColor="@color/white"
+                    tools:textSize="22sp" />
+
+                <TextView android:minHeight="48dp"
+                    android:id="@+id/textView_marketCategory_Employment_internshipDetails"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
+                    android:text="@string/text_category_employment_internship_details"
                     android:textAlignment="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
-                    tools:textColor="@color/white"
-                    tools:textSize="22sp" />
-
-                <TextView
-                    android:id="@+id/textView_marketCategory_Employment_internshipDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/text_category_employment_internship_details"
-                    android:textAlignment="center"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Employment_Internship"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -186,9 +200,10 @@
                 <ImageButton
                     android:id="@+id/imageButton_marketCategory_Employment_Other"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/design_default_color_background"
                     android:contentDescription="@string/desc_market_category_employment_other"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -197,28 +212,32 @@
                     tools:src="@tools:sample/backgrounds/scenic" />
 
                 <TextView
+                    android:minHeight="48dp"
+                    android:paddingTop="8dp"
                     android:id="@+id/textView_marketCategory_Employment_Other"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
                     android:text="@string/text_category_employment_other"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
                 <TextView
                     android:id="@+id/textView_marketCategory_Employment_otherDetails"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:minHeight="48dp"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
                     android:text="@string/text_category_employment_other_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageButton_marketCategory_Employment_Other"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Employment_Other"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -245,9 +264,10 @@
                 <ImageButton
                     android:id="@+id/imageButton_marketCategory_Employment_PartTime"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/design_default_color_background"
                     android:contentDescription="@string/desc_market_category_employment_partTime"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -256,28 +276,32 @@
                     tools:src="@tools:sample/backgrounds/scenic" />
 
                 <TextView
+                    android:minHeight="48dp"
+                    android:paddingTop="8dp"
                     android:id="@+id/textView_marketCategory_Employment_PartTime"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
                     android:text="@string/text_category_employment_partTime"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
                 <TextView
+                    android:paddingBottom="8dp"
                     android:id="@+id/textView_marketCategory_Employment_partTimeDetails"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
                     android:text="@string/text_category_employment_partTime_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageButton_marketCategory_Employment_PartTime"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Employment_PartTime"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -290,9 +314,10 @@
                 <ImageButton
                     android:id="@+id/imageButton_marketCategory_Employment_Remote"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/design_default_color_background"
                     android:contentDescription="@string/desc_market_category_employment_remote"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -301,28 +326,32 @@
                     tools:src="@tools:sample/backgrounds/scenic" />
 
                 <TextView
+                    android:minHeight="48dp"
+                    android:paddingTop="8dp"
                     android:id="@+id/textView_marketCategory_Employment_Remote"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
                     android:text="@string/text_category_employment_remote"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
                 <TextView
+                    android:paddingBottom="8dp"
                     android:id="@+id/textView_marketCategory_Employment_remoteDetails"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@color/material_dynamic_primary70"
                     android:text="@string/text_category_employment_remote_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageButton_marketCategory_Employment_Remote"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Employment_Remote"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,26 +21,37 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.ArrayMap;
+import android.widget.ImageButton;
 
 import androidx.fragment.app.testing.FragmentScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 import gparap.apps.classifieds.R;
 import gparap.apps.classifieds.ui.market.categories.employment.EmploymentFragment;
+import gparap.apps.classifieds.utils.Utils;
 
 @RunWith(AndroidJUnit4.class)
 public class EmploymentFragmentInstrumentedTest {
     private final ArrayMap<String, String> categoryNames = new ArrayMap<>();
     private final ArrayMap<String, String> categoryDescriptions = new ArrayMap<>();
+    FragmentScenario<EmploymentFragment> fragmentScenario;
 
     @Before
     public void setUp() {
-        FragmentScenario.launchInContainer(EmploymentFragment.class);
+        fragmentScenario = FragmentScenario.launchInContainer(EmploymentFragment.class);
 
         //init category actual values
         categoryNames.put("Freelance", "Freelance");
@@ -181,5 +192,48 @@ public class EmploymentFragmentInstrumentedTest {
     public void isCorrect_textWithDetails_category_remote() {
         onView(withText(R.string.text_category_employment_remote)).check(matches(withText(categoryNames.get("Remote"))));
         onView(withText(R.string.text_category_employment_remote_details)).check(matches(withText(categoryDescriptions.get("Remote"))));
+    }
+
+    @Test
+    public void areCorrect_imageButtons_Drawables() {   /* !!! Compact test for all images. */
+        String[] assets = new String[]{"freelance.jpg", "full_time.jpg", "internship.jpg", "other.jpg",
+                "part_time.jpg", "remote.jpg"};
+        AssetManager assetManager = InstrumentationRegistry.getInstrumentation().getTargetContext().getAssets();
+        String path = "market/categories/employment";
+        ArrayList<Drawable> drawables = Utils.getInstance().getDrawablesFromAssets(assetManager, assets, path);
+
+        //TODO: refactor
+        fragmentScenario.onFragment(fragment -> {
+            //freelance
+            ImageButton imageButton = Objects.requireNonNull(fragment.getView()).findViewById(R.id.imageButton_marketCategory_Employment_Freelance);
+            Bitmap bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            Bitmap bitmapActual = ((BitmapDrawable) drawables.get(0)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //full_time
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Employment_FullTime);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(1)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //internship
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Employment_Internship);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(2)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //other
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Employment_Other);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(3)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //part_time
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Employment_PartTime);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(4)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //remote
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Employment_Remote);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(5)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+        });
     }
 }
