@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="textView_marketCategory">
+        <item name="android:background">@color/material_dynamic_primary70</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="textView_marketCategory_Label" parent="textView_marketCategory">
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="textView_marketCategory_Details" parent="textView_marketCategory" />
+</resources>

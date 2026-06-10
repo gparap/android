@@ -21,26 +21,37 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.ArrayMap;
+import android.widget.ImageButton;
 
 import androidx.fragment.app.testing.FragmentScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 import gparap.apps.classifieds.R;
 import gparap.apps.classifieds.ui.market.categories.home.HomeFragment;
+import gparap.apps.classifieds.utils.Utils;
 
 @RunWith(AndroidJUnit4.class)
 public class HomeFragmentInstrumentedTest {
     private final ArrayMap<String, String> categoryNames = new ArrayMap<>();
     private final ArrayMap<String, String> categoryDescriptions = new ArrayMap<>();
+    FragmentScenario<HomeFragment> fragmentScenario;
 
     @Before
     public void setUp() {
-        FragmentScenario.launchInContainer(HomeFragment.class);
+        fragmentScenario = FragmentScenario.launchInContainer(HomeFragment.class);
 
         //init category actual values
         categoryNames.put("Appliances", "Appliances");
@@ -181,5 +192,48 @@ public class HomeFragmentInstrumentedTest {
     public void isCorrect_textWithDetails_category_other() {
         onView(withText(R.string.text_category_home_other)).check(matches(withText(categoryNames.get("Other"))));
         onView(withText(R.string.text_category_home_other_details)).check(matches(withText(categoryDescriptions.get("Other"))));
+    }
+
+    @Test
+    public void areCorrect_imageButtons_Drawables() {   /* !!! Compact test for all images. */
+        String[] assets = new String[]{"appliances.jpg", "decor.jpg", "furniture.jpg", "garden.jpg",
+                "kitchen.jpg", "other.jpg"};
+        AssetManager assetManager = InstrumentationRegistry.getInstrumentation().getTargetContext().getAssets();
+        String path = "market/categories/home";
+        ArrayList<Drawable> drawables = Utils.getInstance().getDrawablesFromAssets(assetManager, assets, path);
+
+        //TODO: refactor
+        fragmentScenario.onFragment(fragment -> {
+            //freelance
+            ImageButton imageButton = Objects.requireNonNull(fragment.getView()).findViewById(R.id.imageButton_marketCategory_Home_Appliances);
+            Bitmap bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            Bitmap bitmapActual = ((BitmapDrawable) drawables.get(0)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //full_time
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Home_Decor);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(1)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //internship
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Home_Furniture);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(2)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //other
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Home_Garden);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(3)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //part_time
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Home_Kitchen);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(4)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+            //remote
+            imageButton = fragment.getView().findViewById(R.id.imageButton_marketCategory_Home_Other);
+            bitmapExpected = ((BitmapDrawable) imageButton.getDrawable()).getBitmap();
+            bitmapActual = ((BitmapDrawable) drawables.get(5)).getBitmap();
+            assert bitmapExpected.sameAs(bitmapActual);
+        });
     }
 }
