@@ -8,9 +8,11 @@
     tools:context=".ui.market.categories.property.PropertyFragment">
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
+        android:paddingTop="0dp"
+        android:paddingBottom="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,12 +36,12 @@
                 android:layout_weight="1"
                 tools:ignore="NestedWeights">
 
-                <ImageButton
+                <ImageButton android:background="@color/design_default_color_background"
                     android:id="@+id/imageButton_marketCategory_Property_Commercial"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:contentDescription="@string/desc_market_category_property_commercial"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -47,29 +49,27 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/backgrounds/scenic" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Label"
                     android:id="@+id/textView_marketCategory_Property_Commercial"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_category_property_commercial"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Details"
                     android:id="@+id/textView_marketCategory_Property_commercialDetails"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:text="@string/text_category_property_commercial_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Property_Commercial"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -79,12 +79,12 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
-                <ImageButton
+                <ImageButton android:background="@color/design_default_color_background"
                     android:id="@+id/imageButton_marketCategory_Property_Guest"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:contentDescription="@string/desc_market_category_property_guest"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -92,29 +92,27 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/backgrounds/scenic" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Label"
                     android:id="@+id/textView_marketCategory_Property_Guest"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_category_property_guest"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Details"
                     android:id="@+id/textView_marketCategory_Property_guestDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:text="@string/text_category_property_guest_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Property_Guest"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -138,12 +136,12 @@
                 android:layout_weight="1"
                 tools:ignore="NestedWeights">
 
-                <ImageButton
+                <ImageButton android:background="@color/design_default_color_background"
                     android:id="@+id/imageButton_marketCategory_Property_Land"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:contentDescription="@string/desc_market_category_property_land"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -151,29 +149,27 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/backgrounds/scenic" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Label"
                     android:id="@+id/textView_marketCategory_Property_Land"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_category_property_land"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Details"
                     android:id="@+id/textView_marketCategory_Property_landDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:text="@string/text_category_property_land_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageButton_marketCategory_Property_Land"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Property_Land"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -183,12 +179,12 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
-                <ImageButton
+                <ImageButton android:background="@color/design_default_color_background"
                     android:id="@+id/imageButton_marketCategory_Property_Rent"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:contentDescription="@string/desc_market_category_property_rent"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -196,29 +192,27 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/backgrounds/scenic" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Label"
                     android:id="@+id/textView_marketCategory_Property_Rent"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_category_property_rent"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Details"
                     android:id="@+id/textView_marketCategory_Property_rentDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:text="@string/text_category_property_rent_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Property_Rent"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -242,12 +236,12 @@
                 android:layout_weight="1"
                 tools:ignore="NestedWeights">
 
-                <ImageButton
+                <ImageButton android:background="@color/design_default_color_background"
                     android:id="@+id/imageButton_marketCategory_Property_Sale"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:contentDescription="@string/desc_market_category_property_sale"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -255,29 +249,27 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/backgrounds/scenic" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Label"
                     android:id="@+id/textView_marketCategory_Property_Sale"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_category_property_sale"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Details"
                     android:id="@+id/textView_marketCategory_Property_saleDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:text="@string/text_category_property_sale_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Property_Sale"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -287,12 +279,12 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
-                <ImageButton
+                <ImageButton android:background="@color/design_default_color_background"
                     android:id="@+id/imageButton_marketCategory_Property_Other"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:contentDescription="@string/desc_market_category_property_other"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -300,29 +292,27 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/backgrounds/scenic" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Label"
                     android:id="@+id/textView_marketCategory_Property_Other"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_category_property_other"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Details"
                     android:id="@+id/textView_marketCategory_Property_otherDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:text="@string/text_category_property_other_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Property_Other"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>

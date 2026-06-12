@@ -15,6 +15,8 @@
  */
 package gparap.apps.classifieds.ui.market.categories.property;
 
+import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +29,11 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import java.util.ArrayList;
+
 import gparap.apps.classifieds.R;
+import gparap.apps.classifieds.ui.market.categories.property.PropertyFragment;
+import gparap.apps.classifieds.utils.Utils;
 
 public class PropertyFragment extends Fragment {
 
@@ -47,15 +53,38 @@ public class PropertyFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        openAnimalCategory(R.id.imageButton_marketCategory_Property_Commercial, "Commercial");
-        openAnimalCategory(R.id.imageButton_marketCategory_Property_Guest, "Guest");
-        openAnimalCategory(R.id.imageButton_marketCategory_Property_Land, "Land");
-        openAnimalCategory(R.id.imageButton_marketCategory_Property_Rent, "Rent");
-        openAnimalCategory(R.id.imageButton_marketCategory_Property_Sale, "Sale");
-        openAnimalCategory(R.id.imageButton_marketCategory_Property_Other, "Other");
+        loadPropertyCategoryAssets();
+
+        openPropertyCategory(R.id.imageButton_marketCategory_Property_Commercial, "Commercial");
+        openPropertyCategory(R.id.imageButton_marketCategory_Property_Guest, "Guest");
+        openPropertyCategory(R.id.imageButton_marketCategory_Property_Land, "Land");
+        openPropertyCategory(R.id.imageButton_marketCategory_Property_Rent, "Rent");
+        openPropertyCategory(R.id.imageButton_marketCategory_Property_Sale, "Sale");
+        openPropertyCategory(R.id.imageButton_marketCategory_Property_Other, "Other");
     }
 
-    private void openAnimalCategory(int imageResId, String subCategoryName) {
+    private void loadPropertyCategoryAssets() {
+        String[] assets = new String[]{"commercial.jpg", "guest.jpg", "land.jpg", "other.jpg", "rent.jpg", "sale.jpg"};
+        AssetManager assetManager = requireActivity().getAssets();
+        String path = "market/categories/property";
+        ArrayList<Drawable> drawables = Utils.getInstance().getDrawablesFromAssets(assetManager, assets, path);
+
+        //Sets the drawables as the content of the ImageViews
+        ImageView commercial = PropertyFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Property_Commercial);
+        commercial.setImageDrawable(drawables.get(0));
+        ImageView guest = PropertyFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Property_Guest);
+        guest.setImageDrawable(drawables.get(1));
+        ImageView land = PropertyFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Property_Land);
+        land.setImageDrawable(drawables.get(2));
+        ImageView other = PropertyFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Property_Other);
+        other.setImageDrawable(drawables.get(3));
+        ImageView rent = PropertyFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Property_Rent);
+        rent.setImageDrawable(drawables.get(4));
+        ImageView sale = PropertyFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Property_Sale);
+        sale.setImageDrawable(drawables.get(5));
+    }
+
+    private void openPropertyCategory(int imageResId, String subCategoryName) {
         ImageView imageView = PropertyFragment.this.requireView().findViewById(imageResId);
         imageView.setOnClickListener(v -> {
             NavController navController = Navigation.findNavController(v);
