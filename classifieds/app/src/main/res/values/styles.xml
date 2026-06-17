@@ -12,5 +12,8 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="textView_marketCategory_Details" parent="textView_marketCategory" />
+    <style name="textView_marketCategory_Details" parent="textView_marketCategory">
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+    </style>
 </resources>
