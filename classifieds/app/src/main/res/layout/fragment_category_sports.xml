@@ -8,9 +8,11 @@
     tools:context=".ui.market.categories.sports.SportsFragment">
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
+        android:paddingTop="0dp"
+        android:paddingBottom="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,12 +36,12 @@
                 android:layout_weight="1"
                 tools:ignore="NestedWeights">
 
-                <ImageButton
+                <ImageButton android:background="@color/material_dynamic_primary70"
                     android:id="@+id/imageButton_marketCategory_Sports_Apparel"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:contentDescription="@string/desc_market_category_sports_apparel"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -47,29 +49,27 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/backgrounds/scenic" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Label"
                     android:id="@+id/textView_marketCategory_Sports_Apparel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_category_sports_apparel"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Details"
                     android:id="@+id/textView_marketCategory_Sports_apparelDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:text="@string/text_category_sports_apparel_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Sports_Apparel"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -79,12 +79,12 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
-                <ImageButton
+                <ImageButton android:background="@color/material_dynamic_primary70"
                     android:id="@+id/imageButton_marketCategory_Sports_Equipment"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:contentDescription="@string/desc_market_category_sports_equipment"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -92,29 +92,27 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/backgrounds/scenic" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Label"
                     android:id="@+id/textView_marketCategory_Sports_Equipment"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_category_sports_equipment"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Details"
                     android:id="@+id/textView_marketCategory_Sports_equipmentDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:text="@string/text_category_sports_equipment_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Sports_Equipment"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -138,12 +136,12 @@
                 android:layout_weight="1"
                 tools:ignore="NestedWeights">
 
-                <ImageButton
+                <ImageButton android:background="@color/material_dynamic_primary70"
                     android:id="@+id/imageButton_marketCategory_Sports_Fitness"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:contentDescription="@string/desc_market_category_sports_fitness"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -151,29 +149,27 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/backgrounds/scenic" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Label"
                     android:id="@+id/textView_marketCategory_Sports_Fitness"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_category_sports_fitness"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Details"
                     android:id="@+id/textView_marketCategory_Sports_fitnessDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:text="@string/text_category_sports_fitness_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Sports_Fitness"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -183,12 +179,12 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
-                <ImageButton
+                <ImageButton android:background="@color/material_dynamic_primary70"
                     android:id="@+id/imageButton_marketCategory_Sports_Indoors"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:contentDescription="@string/desc_market_category_sports_indoors"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -196,29 +192,27 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/backgrounds/scenic" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Label"
                     android:id="@+id/textView_marketCategory_Sports_Indoors"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_category_sports_indoors"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Details"
                     android:id="@+id/textView_marketCategory_Sports_indoorsDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:text="@string/text_category_sports_indoors_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageButton_marketCategory_Sports_Indoors"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Sports_Indoors"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -242,12 +236,12 @@
                 android:layout_weight="1"
                 tools:ignore="NestedWeights">
 
-                <ImageButton
+                <ImageButton android:background="@color/material_dynamic_primary70"
                     android:id="@+id/imageButton_marketCategory_Sports_Other"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:contentDescription="@string/desc_market_category_sports_other"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -255,29 +249,27 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/backgrounds/scenic" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Label"
                     android:id="@+id/textView_marketCategory_Sports_Other"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_category_sports_other"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Details"
                     android:id="@+id/textView_marketCategory_Sports_otherDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:text="@string/text_category_sports_other_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Sports_Other"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -287,12 +279,12 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
-                <ImageButton
+                <ImageButton android:background="@color/material_dynamic_primary70"
                     android:id="@+id/imageButton_marketCategory_Sports_Outdoors"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:contentDescription="@string/desc_market_category_sports_outdoors"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_launcher_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -300,29 +292,27 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@tools:sample/backgrounds/scenic" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Label"
                     android:id="@+id/textView_marketCategory_Sports_Outdoors"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/text_category_sports_outdoors"
                     android:textAlignment="center"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.25"
                     tools:textColor="@color/white"
                     tools:textSize="22sp" />
 
-                <TextView
+                <TextView style="@style/textView_marketCategory_Details"
                     android:id="@+id/textView_marketCategory_Sports_outdoorsDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:text="@string/text_category_sports_outdoors_details"
                     android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_marketCategory_Sports_Outdoors"
                     tools:textColor="@color/white"
                     tools:textSize="18sp" />
             </androidx.constraintlayout.widget.ConstraintLayout>

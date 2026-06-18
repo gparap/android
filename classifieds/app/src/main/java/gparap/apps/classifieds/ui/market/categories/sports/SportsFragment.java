@@ -15,6 +15,8 @@
  */
 package gparap.apps.classifieds.ui.market.categories.sports;
 
+import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +29,11 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import java.util.ArrayList;
+
 import gparap.apps.classifieds.R;
+import gparap.apps.classifieds.ui.market.categories.sports.SportsFragment;
+import gparap.apps.classifieds.utils.Utils;
 
 public class SportsFragment extends Fragment {
 
@@ -47,12 +53,36 @@ public class SportsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        loadSportsCategoryAssets();
+
         openSportsCategory(R.id.imageButton_marketCategory_Sports_Apparel, "Apparel");
         openSportsCategory(R.id.imageButton_marketCategory_Sports_Equipment, "Equipment");
         openSportsCategory(R.id.imageButton_marketCategory_Sports_Fitness, "Fitness");
         openSportsCategory(R.id.imageButton_marketCategory_Sports_Indoors, "Indoors");
         openSportsCategory(R.id.imageButton_marketCategory_Sports_Other, "Other");
         openSportsCategory(R.id.imageButton_marketCategory_Sports_Outdoors, "Outdoors");
+    }
+
+    private void loadSportsCategoryAssets() {
+        String[] assets = new String[]{"apparel.jpg", "equipment.jpg", "fitness.jpg", "indoors.jpg",
+                "other.jpg", "outdoors.jpg"};
+        AssetManager assetManager = requireActivity().getAssets();
+        String path = "market/categories/sports";
+        ArrayList<Drawable> drawables = Utils.getInstance().getDrawablesFromAssets(assetManager, assets, path);
+
+        //Sets the drawables as the content of the ImageViews
+        ImageView apparel = SportsFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Sports_Apparel);
+        apparel.setImageDrawable(drawables.get(0));
+        ImageView equipment = SportsFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Sports_Equipment);
+        equipment.setImageDrawable(drawables.get(1));
+        ImageView fitness = SportsFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Sports_Fitness);
+        fitness.setImageDrawable(drawables.get(2));
+        ImageView indoors = SportsFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Sports_Indoors);
+        indoors.setImageDrawable(drawables.get(3));
+        ImageView other = SportsFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Sports_Other);
+        other.setImageDrawable(drawables.get(4));
+        ImageView outdoors = SportsFragment.this.requireView().findViewById(R.id.imageButton_marketCategory_Sports_Outdoors);
+        outdoors.setImageDrawable(drawables.get(5));
     }
 
     private void openSportsCategory(int imageResId, String subCategoryName) {
