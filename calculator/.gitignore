@@ -15,3 +15,4 @@
 /.idea/inspectionProfiles/Project_Default.xml
 /app/release/app-release.aab
 /.idea/
+!fastlane/metadata/android/en-US/images/phoneScreenshots/*.png

@@ -1,0 +1,11 @@
+Basic Operations Calculator:
+----------------------------
+Basic operations supported (+, -, *, /)
+Modulo supported (%)
+Decimal numbers supported
+
+Latest updates:
+---------------
+Version 1.0.3 minor update
+Update app with the latest tools
+Supports API level 34 (UpsideDownCake)
