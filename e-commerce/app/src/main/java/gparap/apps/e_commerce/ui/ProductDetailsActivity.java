@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 gparap
+ * Copyright 2023–2026 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,7 +55,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         }
 
         //create the image Uri prefix based on category
-        String uriPrefix = Utils.getInstance().createUriPrefix(productDetails.get(0).getCategoryId());
+        String uriPrefix = Utils.getInstance().createUriPrefix(productDetails.get(0).getCategoryId(), this.getApplicationContext());
 
         //create the image Uri
         Uri uri = Uri.parse(uriPrefix + productDetails.get(0).getUrl());
@@ -68,8 +68,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
         TextView productPrice = findViewById(R.id.text_view_price_product_details);
         productPrice.setText(
                 getResources().getString(R.string.price_prefix) +
-                productDetails.get(0).getPrice().toString() +
-                getResources().getString(R.string.price_suffix)
+                        productDetails.get(0).getPrice().toString() +
+                        getResources().getString(R.string.price_suffix)
         );
 
         //show the product discount, if exists
@@ -140,7 +140,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
     protected void onDestroy() {
         try {
             cartRepository.closeDatabase();
-        }catch (Exception ignored){}
+        } catch (Exception ignored) {
+        }
         super.onDestroy();
     }
 }

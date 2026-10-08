@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 gparap
+ * Copyright 2023–2026 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,6 +41,7 @@ import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -48,6 +49,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import gparap.apps.e_commerce.R;
 import gparap.apps.e_commerce.data.CartRepository;
 import gparap.apps.e_commerce.utils.AppConstants;
+import gparap.apps.e_commerce.utils.Utils;
 
 public class MainActivityInstrumentedTest {
     private final String username = "test_user";
@@ -200,6 +202,18 @@ public class MainActivityInstrumentedTest {
 
         //check if the item's quantity changed
         onView(withText("0")).check(matches(isDisplayed()));
+    }
+
+    @Ignore("moved here because of shared preferences to skip the fluff")
+    @Test
+    public void createUriPrefix_isCorrect() {
+        int categoryId = 1;
+        String categoryName = Utils.getInstance().getCategoryNameById(categoryId, context);
+        String expectedUriPrefix = AppConstants.IMAGES_URL + AppConstants.PRODUCTS_SUB_PATH + categoryName + "/";
+        String actualUriPrefix = Utils.getInstance().createUriPrefix(categoryId, context);
+        System.out.println("E" + expectedUriPrefix);
+        System.out.println("A" + actualUriPrefix);
+        assertEquals(expectedUriPrefix, actualUriPrefix);
     }
 
     //open the first category, select the first item and add it to cart

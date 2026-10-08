@@ -51,4 +51,7 @@ dependencies {
 
     // RecyclerViewActions dependency
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.5.1'
+
+    // Method put in org.json.JSONObject not mocked
+    testImplementation "org.json:json:20240303"
 }

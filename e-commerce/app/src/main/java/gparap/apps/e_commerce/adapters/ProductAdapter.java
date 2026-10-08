@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 gparap
+ * Copyright 2023–2026 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,12 +43,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     private Context context;
 
     @SuppressWarnings("unused")
-    public ArrayList<ProductResponseModel> getCategories() {
+        public ArrayList<ProductResponseModel> getCategories() {
         return products;
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void setProducts(ArrayList<ProductResponseModel> products) {
+        public void setProducts(ArrayList<ProductResponseModel> products) {
         this.products = products;
         notifyDataSetChanged();
     }
@@ -72,7 +72,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         //create the image Uri prefix based on category
-        String uriPrefix = Utils.getInstance().createUriPrefix(products.get(position).getCategoryId());
+        String uriPrefix = Utils.getInstance().createUriPrefix(products.get(position).getCategoryId(), context);
 
         //create the image Uri
         Uri uri = Uri.parse(uriPrefix + products.get(position).getUrl());

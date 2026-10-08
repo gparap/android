@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 gparap
+ * Copyright 2023–2026 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,10 @@
  */
 package gparap.apps.e_commerce.utils;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 
@@ -23,11 +27,16 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.badge.BadgeDrawable;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Locale;
 
 import gparap.apps.e_commerce.R;
 import gparap.apps.e_commerce.data.CartItemModel;
+import gparap.apps.e_commerce.data.CategoryResponseModel;
 
 public class Utils {
     private static Utils instance = null;
@@ -58,28 +67,14 @@ public class Utils {
     /**
      * Creates the product's image Uri prefix based on its category.
      */
-    public String createUriPrefix(int categoryId) {
+    public String createUriPrefix(int categoryId, Context context) {
         String uriPrefix = AppConstants.IMAGES_URL;
-        switch (categoryId) {
-            case 1:
-                uriPrefix += AppConstants.PRODUCTS_AUTOS_URL;
-                break;
-            case 2:
-                uriPrefix += AppConstants.PRODUCTS_BIKES_URL;
-                break;
-            case 3:
-                uriPrefix += AppConstants.PRODUCTS_DRINKS_URL;
-                break;
-            case 4:
-                uriPrefix += AppConstants.PRODUCTS_GARDEN_URL;
-                break;
-            case 5:
-                uriPrefix += AppConstants.PRODUCTS_GYM_URL;
-                break;
-            case 6:
-                uriPrefix += AppConstants.PRODUCTS_TECH_URL;
-                break;
-        }
+
+        //get category name from id
+        String categoryName = Utils.getInstance().getCategoryNameById(categoryId, context);
+        System.out.println(categoryName);
+
+        uriPrefix += AppConstants.PRODUCTS_SUB_PATH + categoryName + "/";
         return uriPrefix;
     }
 
@@ -129,7 +124,7 @@ public class Utils {
      */
     public int getCartTotalItems(ArrayList<CartItemModel> items) {
         int count = 0;
-        for (CartItemModel item: items) {
+        for (CartItemModel item : items) {
             count += item.getQuantity();
         }
         return count;
@@ -140,7 +135,7 @@ public class Utils {
      */
     public float getCartTotalCost(ArrayList<CartItemModel> items) {
         float cost = 0;
-        for (CartItemModel item: items) {
+        for (CartItemModel item : items) {
             cost += item.getPrice() * item.getQuantity();
         }
         return cost;
@@ -152,7 +147,7 @@ public class Utils {
     public float getCartFinalCost(ArrayList<CartItemModel> items) {
         float totalCost;
         float finalCost = 0;
-        for (CartItemModel item: items) {
+        for (CartItemModel item : items) {
             float cost;
             totalCost = item.getPrice() * item.getQuantity();
             cost = totalCost - item.getPrice() * item.getQuantity() * ((float) item.getDiscount() / 100);
@@ -172,10 +167,52 @@ public class Utils {
         return discount;
     }
 
-    /** Formats a price in the form of ie. "9.99€". */
+    /**
+     * Formats a price in the form of ie. "9.99€".
+     */
     public String formatPrice(float cost, String priceSuffix) {
         String formattedCost;
         formattedCost = String.format(Locale.getDefault(), "%.2f", cost) + priceSuffix;
         return formattedCost;
+    }
+
+    /**
+     * Keeps category IDs and names (only) in an array.
+     */
+    public JSONArray getCategoriesAsJSON(ArrayList<CategoryResponseModel> categories) {
+        JSONArray jsonArray = new JSONArray();
+        for (CategoryResponseModel category : categories) {
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("id", category.getId());
+                jsonObject.put("name", category.getName());
+                jsonArray.put(jsonObject);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return jsonArray;
+    }
+
+    public String getCategoryNameById(int id, Context context) {
+        String name = "";
+
+        //search in shared preferences to match category IDs with names
+        SharedPreferences preferences = context.getSharedPreferences(AppConstants.SHARED_PREFERENCES, MODE_PRIVATE);
+        try {
+            JSONArray categories = new JSONArray(preferences.getString(AppConstants.PREFS_CATEGORIES_JSON, "[]"));
+            int length = categories.length();
+            for (int i = 0; i < length; i++) {
+                JSONObject jsonObject = categories.getJSONObject(i);
+                if ((int) jsonObject.get("id") == id) {
+                    name = jsonObject.get("name").toString();
+                    break;
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return name;
     }
 }

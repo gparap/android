@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 gparap
+ * Copyright 2023–2026 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -70,14 +70,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         //create the image Uri
-        String uriString = AppConstants.IMAGES_URL + categories.get(position).getUrl();
+        String uriString = AppConstants.IMAGES_URL + AppConstants.CATEGORIES_SUB_PATH + categories.get(position).getUrl();
         Uri uri = Uri.parse(uriString);
 
         //set the category image
         Picasso.get().load(uri).into(holder.imageView);
 
         //show products of this category in another activity
-        holder.imageView.setOnClickListener(view->{
+        holder.imageView.setOnClickListener(view -> {
             Intent intent = new Intent(context, ProductActivity.class);
             intent.putExtra(AppConstants.CATEGORY_ID, categories.get(position).getId());
             context.startActivity(intent);

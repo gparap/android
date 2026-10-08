@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 gparap
+ * Copyright 2023–2026 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,14 +28,11 @@ public class AppConstants {
     public static String USER_LOGIN_STATUS = "user_login_status";
     public static String LOGIN_STATUS_0 = "logged_out";
     public static String LOGIN_STATUS_1 = "logged_in";
+    public static String PREFS_CATEGORIES_JSON = "categories_json";
 
-    //Products constants
-    public static final String PRODUCTS_AUTOS_URL = "products/autos/";
-    public static final String PRODUCTS_BIKES_URL = "products/bikes/";
-    public static final String PRODUCTS_DRINKS_URL = "products/drinks/";
-    public static final String PRODUCTS_GARDEN_URL = "products/garden/";
-    public static final String PRODUCTS_TECH_URL = "products/tech/";
-    public static final String PRODUCTS_GYM_URL = "products/gym/";
+    //E-Commerce path segment constants
+    public static final String PRODUCTS_SUB_PATH = "products/";
+    public static final String CATEGORIES_SUB_PATH = "categories/";
 
     //Intent extras
     public static final String EXTRAS_PRODUCT_DETAILS = "product_details_parcel";

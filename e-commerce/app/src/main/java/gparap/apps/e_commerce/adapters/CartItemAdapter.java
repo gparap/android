@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 gparap
+ * Copyright 2023–2026 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,6 @@ import gparap.apps.e_commerce.R;
 import gparap.apps.e_commerce.data.CartItemModel;
 import gparap.apps.e_commerce.data.CartRepository;
 import gparap.apps.e_commerce.ui.CartActivity;
-import gparap.apps.e_commerce.utils.AppConstants;
 import gparap.apps.e_commerce.utils.Utils;
 
 public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartItemViewHolder> {
@@ -82,32 +81,10 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull CartItemViewHolder holder, int position) {
-        //get the cart item's image path from its category id
-        int categoryId = cartItems.get(position).getCategoryId();
-        String itemImagePath = "";
-        switch (categoryId) {
-            case 1:
-                itemImagePath = AppConstants.PRODUCTS_AUTOS_URL;
-                break;
-            case 2:
-                itemImagePath = AppConstants.PRODUCTS_BIKES_URL;
-                break;
-            case 3:
-                itemImagePath = AppConstants.PRODUCTS_DRINKS_URL;
-                break;
-            case 4:
-                itemImagePath = AppConstants.PRODUCTS_GARDEN_URL;
-                break;
-            case 5:
-                itemImagePath = AppConstants.PRODUCTS_GYM_URL;
-                break;
-            case 6:
-                itemImagePath = AppConstants.PRODUCTS_TECH_URL;
-                break;
-        }
-
         //create the image URI reference
-        String uriString = AppConstants.IMAGES_URL + itemImagePath + cartItems.get(position).getImageUrl();
+        int categoryId = cartItems.get(position).getCategoryId();
+        String imageUrl = cartItems.get(position).getImageUrl();
+        String uriString = Utils.getInstance().createUriPrefix(categoryId, context) + imageUrl;
         Uri uri = Uri.parse(uriString);
 
         //set the cart item image
@@ -195,7 +172,9 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
         return cartItems.size();
     }
 
-    /** Update the total items details in shopping cart. */
+    /**
+     * Update the total items details in shopping cart.
+     */
     public void updateCartItemDetails() {
         //total items
         cartTotalItems.setText(String.valueOf(Utils.getInstance().getCartTotalItems(cartItems)));

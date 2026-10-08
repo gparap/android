@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 gparap
+ * Copyright 2023–2026 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package gparap.apps.e_commerce.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,6 +32,8 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.badge.BadgeUtils;
 import com.google.android.material.badge.ExperimentalBadgeUtils;
+
+import org.json.JSONArray;
 
 import java.util.ArrayList;
 
@@ -90,6 +93,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call<ArrayList<CategoryResponseModel>> call, @NonNull Response<ArrayList<CategoryResponseModel>> response) {
                 adapter.setCategories(response.body());
+
+                //keep categories as JSON
+                JSONArray jsonArray = Utils.getInstance().getCategoriesAsJSON(adapter.getCategories());
+
+                //put categories into shared preferences
+                SharedPreferences preferences = getSharedPreferences(AppConstants.SHARED_PREFERENCES, MODE_PRIVATE);
+                preferences.edit().putString(AppConstants.PREFS_CATEGORIES_JSON, jsonArray.toString()).apply();
             }
 
             @Override

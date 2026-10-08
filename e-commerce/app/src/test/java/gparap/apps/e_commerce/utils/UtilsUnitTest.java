@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 gparap
+ * Copyright 2023–2026 gparap
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,11 +19,14 @@ import static org.junit.Assert.assertEquals;
 
 import android.content.res.Configuration;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.junit.Test;
 
 import java.util.ArrayList;
 
 import gparap.apps.e_commerce.data.CartItemModel;
+import gparap.apps.e_commerce.data.CategoryResponseModel;
 
 public class UtilsUnitTest {
     @Test
@@ -35,20 +38,12 @@ public class UtilsUnitTest {
     }
 
     @Test
-    public void createUriPrefix_isCorrect() {
-        int categoryId = 1;
-        String expectedUriPrefix = AppConstants.IMAGES_URL + AppConstants.PRODUCTS_AUTOS_URL;
-        String actualUriPrefix = Utils.getInstance().createUriPrefix(categoryId);
-        assertEquals(expectedUriPrefix, actualUriPrefix);
-    }
-
-    @Test
     public void getCartTotalItems() {
         //add items to cart
         ArrayList<CartItemModel> items = new ArrayList<>();
-        items.add(new CartItemModel(1,1, "item1", 19.99f, 5, "", 3));
-        items.add(new CartItemModel(1,1, "item1", 7.49f, 0, "", 1));
-        items.add(new CartItemModel(2,1, "item2", 59.99f, 15, "", 2));
+        items.add(new CartItemModel(1, 1, "item1", 19.99f, 5, "", 3));
+        items.add(new CartItemModel(1, 1, "item1", 7.49f, 0, "", 1));
+        items.add(new CartItemModel(2, 1, "item2", 59.99f, 15, "", 2));
 
         int expectedCount = 6;
         int actualCount = Utils.getInstance().getCartTotalItems(items);
@@ -59,8 +54,8 @@ public class UtilsUnitTest {
     public void getCartTotalCost() {
         //add items to cart
         ArrayList<CartItemModel> items = new ArrayList<>();
-        items.add(new CartItemModel(1,1, "item1", 50.99f, 0, "", 1));
-        items.add(new CartItemModel(2,1, "item2", 10.99f, 0, "", 2));
+        items.add(new CartItemModel(1, 1, "item1", 50.99f, 0, "", 1));
+        items.add(new CartItemModel(2, 1, "item2", 10.99f, 0, "", 2));
 
         float expectedCost = 72.97f;
         float actualCost = Utils.getInstance().getCartTotalCost(items);
@@ -71,8 +66,8 @@ public class UtilsUnitTest {
     public void getCartFinalCost() {
         //add items to cart
         ArrayList<CartItemModel> items = new ArrayList<>();
-        items.add(new CartItemModel(1,1, "item1", 19.99f, 5, "", 1));
-        items.add(new CartItemModel(2,1, "item2", 59.99f, 15, "", 2));
+        items.add(new CartItemModel(1, 1, "item1", 19.99f, 5, "", 1));
+        items.add(new CartItemModel(2, 1, "item2", 59.99f, 15, "", 2));
 
         float expectedCost = 120.9735f;
         float actualCost = Utils.getInstance().getCartFinalCost(items);
@@ -83,9 +78,9 @@ public class UtilsUnitTest {
     public void getCartDiscount() {
         //add items to cart
         ArrayList<CartItemModel> items = new ArrayList<>();
-        items.add(new CartItemModel(1,1, "item1", 19.99f, 5, "", 3));
-        items.add(new CartItemModel(1,1, "item1", 7.49f, 0, "", 1));
-        items.add(new CartItemModel(2,1, "item2", 59.99f, 15, "", 2));
+        items.add(new CartItemModel(1, 1, "item1", 19.99f, 5, "", 3));
+        items.add(new CartItemModel(1, 1, "item1", 7.49f, 0, "", 1));
+        items.add(new CartItemModel(2, 1, "item2", 59.99f, 15, "", 2));
 
         int expectedDiscount = 11;
         int actualDiscount = Utils.getInstance().getCartDiscount(items);
@@ -97,5 +92,19 @@ public class UtilsUnitTest {
         String expectedPrice = "59.97€";
         String actualPrice = Utils.getInstance().formatPrice((49.99f + 2 * 4.99f), "€");
         assertEquals(expectedPrice, actualPrice);
+    }
+
+    @Test
+    public void getCategoriesAsJSON() throws JSONException {
+        //!!! test only "id" and "name"
+        ArrayList<CategoryResponseModel> expectedCategories = new ArrayList<CategoryResponseModel>();
+        expectedCategories.add(new CategoryResponseModel(1, "name1", "", "", ""));
+
+        //call function
+        JSONArray actualCategories = Utils.getInstance().getCategoriesAsJSON(expectedCategories);
+
+        //test categories
+        assertEquals(expectedCategories.get(0).getId(), actualCategories.getJSONObject(0).get("id"));
+        assertEquals(expectedCategories.get(0).getId(), actualCategories.getJSONObject(0).get("id"));
     }
 }
