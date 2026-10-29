@@ -10,4 +10,15 @@ Generates QR codes from text.
 
 View on Amazon:
 --------------------
-https://www.amazon.com/gp/product/B09HPPTN7C
+https://www.amazon.com/gp/product/B0G3XXRJF6
+
+View on Huawei AppGallery:
+--------------------------
+https://appgallery.huawei.com/app/C118248357
+
+Releases:
+---------
+version 1.0
+
+- Scans barcodes
+- Generates QR codes
